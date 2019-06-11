@@ -1,0 +1,23 @@
+<ion-content>
+<div class="c-wrp">
+    <div class="c-title">Мои заказы</div>
+    <div class="c-body">
+      <div class="order-list">
+        <div class="ol-head">
+            <span class="ol-col oc-adress">Адрес</span>
+            <span class="ol-col oc-status">Статус</span>
+            <span class="ol-col oc-price">Цена</span>
+        </div>
+        <cdk-virtual-scroll-viewport  style="height: 100%" itemSize="90" *ngIf = "ordersInit" >
+            <ng-container *cdkVirtualFor="let order of orders" >
+                <div class="ol-item" (click) = "selectOrder(order.order_id)">
+                    <span class="ol-col oc-adress">{{ order.client_address }}</span>
+                    <span class="ol-col oc-status">{{ getStatus(order) }}</span>
+                    <span class="ol-col oc-price">{{ getPrice(order) }}</span>
+                  </div>
+            </ng-container>
+        </cdk-virtual-scroll-viewport>
+    </div>
+    </div>
+</div>
+</ion-content>

@@ -1,5 +1,7 @@
 {
   "name": "Postsrvs",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

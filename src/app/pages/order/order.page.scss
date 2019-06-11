@@ -1,0 +1,48 @@
+.o-wrp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.o-title{
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: Roboto;
+    box-shadow: 0 0 6px 1px #c7c7c7;
+    margin: 0 0 5px 0;
+    color: #4c4c4c;
+    position: relative;
+}
+
+
+.o-body{
+    color: #3c3c3c;
+    height: 100%;
+}
+
+.menu-icon{
+    position: fixed;
+    left: 0;
+    top: 0;
+    font-size: 34px;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 -1px 2px 1px #c7c7c7;
+}
+
+.o-row{
+    margin: 15% 10px 0 10px;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    padding: 10px 0;
+    height: 10%;
+    overflow: hidden;
+}

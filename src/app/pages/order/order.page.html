@@ -1,0 +1,55 @@
+<ion-content>
+  <div class="o-wrp">
+      <div class="o-title">Заказ № <span class="order-n">{{orderId}}</span><span class="menu-icon" (click) = "navBack()"><i class="fas fa-angle-left"></i></span></div>
+      <div class="o-body" *ngIf="pageInit">
+        <div class="status-row o-row">
+            <div class="sr-title">Статус:</div>
+            <div class="sr-status">{{status}}</div>
+        </div>
+        <div class="adress-row o-row">
+          <div class="ar-title">Адрес:</div>
+          <div class="ar-adress">{{address}}</div>
+        </div>
+        <div class="contacts-row o-row">
+            <div class="cr-title">Контакты клиента:</div>
+            <div class="cr-row">
+              <div class="cr-name-title">Имя</div>
+              <div class="cr-name">{{name}}</div>
+            </div>
+            <div class="cr-row o-row">
+                <div class="cr-phone-title">Телефон</div>
+                <div class="cr-phone">{{phone}}</div>
+            </div>
+          </div>
+         <div class="time-row o-row">
+            <div class="tr-title">Время доставки:</div>
+            <div class="tr-row">
+              <div class="tr-from-title">После</div>
+              <div class="cr-from">{{timeFrom}}</div>
+            </div>
+            <div class="tr-row">
+                <div class="tr-to-title">До</div>
+                <div class="tr-to">{{timeTo}}</div>
+            </div>
+         </div> 
+        <div class="goods-row o-row">
+            <div class="gr-title">Товары в заказе</div>
+
+            <div class="gr-goods-list">
+              <div class="gr-head">
+                <div class="gr-col">Название</div>
+                <div class="gr-col">Кол-во</div>
+                <div class="gr-col">Цена</div>
+              </div>
+              <div *ngFor="let good of goods">
+                  <div class="gr-item">
+                      <div class="gr-col .gr-name">{{good.good_name}}</div>
+                      <div class="gr-col .gr-quant">{{good.quantity}}</div>
+                      <div class="gr-col .gr-price">{{good.unit_price}}р.</div>
+                    </div>
+              </div>
+            </div>
+        </div>        
+      </div>
+    </div>
+</ion-content>

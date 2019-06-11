@@ -1,0 +1,85 @@
+.c-title{
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: Roboto;
+    box-shadow: 0 0 6px 1px #c7c7c7;
+    margin: 0 0 5px 0;
+    color: #4c4c4c;
+}
+
+.c-body{
+    color: #3c3c3c;
+}
+
+.order-list{
+    margin: 15% 5px 0 5px;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    padding: 10px 0;
+    height: 60%;
+    overflow: hidden;
+}
+
+.ol-head{
+    height: 25px;
+}
+
+.ol-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ol-item, .ol-head{
+    display: grid;
+    grid-template-columns: 60% 25% 15%;
+    font-size: 15px;
+}
+
+.ol-item{
+    min-height: 70px;
+    width: 100%;
+    padding: 0 0px 0 7px;
+    box-shadow: 0px 0px 1px 0.5px #c7c7c7;
+}
+
+.item-native ,ion-item{
+    padding: 0!important;
+}
+
+.c-wrp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.c-body{
+    height: 100%;
+}
+
+.ol-head .oc-adress, .ol-head .oc-status{
+    border-right: 1px solid #c7c7c7;
+}
+
+.ol-item .oc-adress{
+    justify-content: flex-start;
+}
+
+.ol-head{
+    font-size: 18px;
+    font-weight: bold;
+    height: 24px;
+    padding: 0px 0 30px 0;
+    border-bottom: 1px solid #c7c7c7;
+    width: 100%;
+}
+
+
+// .ol-item .oc-price{
+//     justify-content: flex-end;
+// }

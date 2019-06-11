@@ -1,0 +1,29 @@
+.lg-wrp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lg-btn{
+    height: 15%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lg-login{
+    outline: none;
+    height: 50%;
+    width: 100%;
+    background: no-repeat;
+    box-shadow: 0 0 1px 1px #bdbdbd;
+    border-radius: 3px;
+    color: #4a4a4a;
+    font-size: 19px;
+}
