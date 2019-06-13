@@ -16,8 +16,8 @@ export class AuthService {
   this.barcodeScannerOptions = {
     showTorchButton: true,
     showFlipCameraButton: true
-  };
-  localStorage.setItem('user', '1');           
+  };       
+  this.setUser('3431');
 }
 
   public sendPost(url, data){
@@ -51,6 +51,8 @@ export class AuthService {
     return this.sendPost('auth', code);
   }
   
+
+
   auth_by_scan(){
 
  }

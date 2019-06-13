@@ -32,9 +32,9 @@ public getOrders(){
   var url   = "orders";
   var data  = {
                 'action' : 'getOrders',
-                'courier_id' : this.auth.getUserId()
+                'sync_id' : this.auth.getUserId()
               }
-  
+  console.log('get_data', data);
   return this.sendPost(url, data);
 }
 
@@ -47,9 +47,18 @@ public getStatuses(){
 
 public getOrderInfo(id){
   var url   = 'orders';
-  var data  = {'action' : 'getOrderInfo', 'orderId' : id}
+  var data  = {'action' : 'getOrderInfo', 'sync_id' : id}
   
   return this.sendPost(url, data);
 }
+
+public getBalance(){
+  var url   = "https://terminal.vestovoy.ru/info/stat.php?cid=" + this.auth.getUserId();
+  
+
+
+  return this.http.get(url);
+}
+
 
 }

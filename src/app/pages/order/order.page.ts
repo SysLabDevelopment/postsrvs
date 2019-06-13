@@ -30,6 +30,7 @@ export class OrderPage implements OnInit {
               this.orderId = this.route.snapshot.paramMap.get('id');
               console.log('id', this.route.snapshot.paramMap.get('id'));
               this.getOrderInfo();
+              this.getBalnce();
    }
 
   ngOnInit() {
@@ -85,6 +86,12 @@ export class OrderPage implements OnInit {
       }
 
     }
+  }
+
+  public getBalnce(){
+    this.courier.getBalance().subscribe((data) =>{
+        console.log('data_balance', data );
+    });
   }
 
 }

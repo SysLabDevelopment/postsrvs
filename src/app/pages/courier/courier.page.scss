@@ -35,15 +35,19 @@
 
 .ol-item, .ol-head{
     display: grid;
-    grid-template-columns: 60% 25% 15%;
+    grid-template-columns: 55% 30% 15%;
     font-size: 15px;
 }
 
 .ol-item{
     min-height: 70px;
     width: 100%;
-    padding: 0 0px 0 7px;
+    padding: 0 7px 0 7px;
     box-shadow: 0px 0px 1px 0.5px #c7c7c7;
+}
+
+.oc-price{
+    justify-content: flex-end;
 }
 
 .item-native ,ion-item{

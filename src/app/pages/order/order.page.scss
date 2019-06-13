@@ -1,9 +1,9 @@
 .o-wrp{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
 }
 
 .o-title{
@@ -23,10 +23,11 @@
 .o-body{
     color: #3c3c3c;
     height: 100%;
+    margin-bottom: 30px;
 }
 
 .menu-icon{
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     font-size: 34px;
@@ -39,10 +40,52 @@
 }
 
 .o-row{
-    margin: 15% 10px 0 10px;
+    margin: 5% 10px 0 10px;
     box-shadow: 0 0 1px 1px #c7c7c7;
     border-radius: 3px;
     padding: 10px 0;
-    height: 10%;
     overflow: hidden;
+    padding: 0px 10px 10px 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25px auto;
+}
+
+.o-t{
+    font-weight: bold;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+.sr-status, .ar-adress{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+.gr-goods-list{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-template-rows: repeat(auto-fill, 20px);
+}
+
+.gr-head{
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+}
+
+.gr-item{
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+}
+
+.gr-head .gr-col{
+    text-align: center;
+    font-weight: 500;
+}
+
+.gr-quant, .gr-price{
+    text-align: center;
 }

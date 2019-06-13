@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
         var resp = JSON.parse(data);
         console.log('authResponseObj', data);
         if (resp.success == "true"){
-          self.auth.setUser(resp.id);
+          self.auth.setUser(resp.sync_id);
           self.router.navigate(['courier']);
         } else {
           this.showError(1);
