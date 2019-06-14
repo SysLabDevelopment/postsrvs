@@ -3,7 +3,6 @@ import { CourierService } from '../../services/courier.service';
 import { Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-courier',
   templateUrl: './courier.page.html',

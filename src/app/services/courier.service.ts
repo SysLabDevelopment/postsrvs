@@ -47,16 +47,14 @@ public getStatuses(){
 
 public getOrderInfo(id){
   var url   = 'orders';
-  var data  = {'action' : 'getOrderInfo', 'sync_id' : id}
+  var data  = {'action' : 'getOrderInfo', 'order_id' : id}
   
   return this.sendPost(url, data);
 }
 
 public getBalance(){
-  var url   = "https://terminal.vestovoy.ru/info/stat.php?cid=" + this.auth.getUserId();
+  var url   = "https://terminal.vestovoy.ru/info/stat.php?cid=3431";
   
-
-
   return this.http.get(url);
 }
 

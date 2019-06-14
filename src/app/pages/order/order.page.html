@@ -7,8 +7,12 @@
       <div class="o-body" *ngIf="pageInit">
         <div class="status-row o-row">
             <div class="sr-title o-t">Статус:</div>
-            <div class="sr-status">{{status}}</div>
+            <div class="sr-status">{{status}} 
+              <!-- <button class="change_status" (click)="changeStatus()">
+                  <i class="far fa-edit"></i>
+              </button>  -->
         </div>
+        </div>s
         <div class="adress-row o-row">
           <div class="ar-title o-t">Адрес:</div>
           <div class="ar-adress">{{address}}</div>
@@ -53,6 +57,11 @@
               </div>
             </div>
         </div>        
+      </div>
+    </div>
+    <div class="change-reason" [@openClose]="changeWindow ? 'open' : 'closed' ">
+      <div class="cr-wrp" *ngFor="let statuses of status">
+      <div class="status-item">{{status}}</div>
       </div>
     </div>
 </ion-content>

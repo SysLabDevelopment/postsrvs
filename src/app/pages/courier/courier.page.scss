@@ -9,6 +9,9 @@
     margin: 0 0 5px 0;
     color: #4c4c4c;
 }
+.c-wrp{
+    height: 100%;
+}
 
 .c-body{
     color: #3c3c3c;
@@ -50,20 +53,12 @@
     justify-content: flex-end;
 }
 
+.ol-head .oc-price{
+    justify-content: center;
+}
+
 .item-native ,ion-item{
     padding: 0!important;
-}
-
-.c-wrp{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.c-body{
-    height: 100%;
 }
 
 .ol-head .oc-adress, .ol-head .oc-status{

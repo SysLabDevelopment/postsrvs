@@ -1,0 +1,32 @@
+
+.o-title{
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: Roboto;
+    box-shadow: 0 0 6px 1px #c7c7c7;
+    margin: 0 0 5px 0;
+    color: #4c4c4c;
+    position: relative;
+}
+
+
+.o-body{
+    color: #3c3c3c;
+    height: 100%;
+    margin-bottom: 30px;
+}
+
+.b-row{
+    margin: 5% 10px 0 10px;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    padding: 10px 0;
+    overflow: hidden;
+    padding: 0px 10px 10px 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25px auto;
+}

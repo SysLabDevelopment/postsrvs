@@ -8,7 +8,7 @@
             <span class="ol-col oc-status">Статус</span>
             <span class="ol-col oc-price">Цена</span>
         </div>
-        <cdk-virtual-scroll-viewport  style="height: 100%" itemSize="90" *ngIf = "ordersInit" >
+        <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" *ngIf = "ordersInit" >
             <ng-container *cdkVirtualFor="let order of orders" >
                 <div class="ol-item" (click) = "selectOrder(order.order_id)">
                     <span class="ol-col oc-adress">{{ order.client_address }}</span>

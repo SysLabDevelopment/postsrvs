@@ -1,0 +1,66 @@
+.c-title{
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-family: Roboto;
+    box-shadow: 0 0 6px 1px #c7c7c7;
+    color: #4c4c4c;
+}
+.c-wrp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.c-body{
+    color: #3c3c3c;
+    height: 100%;
+}
+
+#shirm{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: RGBA(255,255,255,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sh-wrp{
+    width: 320px;
+    height: 60px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.sh-title{
+    color: #424040;
+    text-align: center;
+}
+
+.sh-icons{
+    height: 100%;
+    position: relative;
+}
+
+.fa-spinner{
+    position: absolute;
+    left: 140px;
+    top: 4%;
+    font-size: 53px;
+    color: #e80101;
+}
+
+.fa-city{
+    position: absolute;
+    left: 157px;
+    top: 22px;
+    color: #004ecc;
+}

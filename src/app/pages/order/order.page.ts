@@ -2,9 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { CourierService } from '../../services/courier.service';
 import { MenuController } from '@ionic/angular';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'app-order',
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        display: 'block',
+      })),
+      state('closed', style({
+        display: 'none',
+      })),
+      transition('open => closed', [
+        animate('1s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+    ]),
+  ],
   templateUrl: './order.page.html',
   styleUrls: ['./order.page.scss'],
 })
@@ -20,7 +45,7 @@ export class OrderPage implements OnInit {
   public phone:string = null;
   public pageInit:boolean = false;
   public statuses:any = null;
-
+  public changeWindow:boolean = false;
 
   constructor(private router:Router,
               private route:ActivatedRoute,
@@ -92,6 +117,17 @@ export class OrderPage implements OnInit {
     this.courier.getBalance().subscribe((data) =>{
         console.log('data_balance', data );
     });
+  }
+
+  public changeStatus(){
+  //   if (!this.changeWindow){
+  //     this.changeWindow = true;
+  //   }
+  //   var url = 'orders';
+  //   var data = {'action' : 'changedStatus' , 'sync_id' : '1111', 'status' : '1' , 'comment' : 'сделал, начальник'};
+  //   this.courier.sendPost(url, data).subscribe((data) => {
+  //     console.log('change_data', data);
+  //   });
   }
 
 }
