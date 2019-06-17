@@ -3,10 +3,46 @@
       <div class="o-title">Инфо</div>
       <div class="o-body" *ngIf="pageInit">
         <div class="b-row">
-          <div class="b-line">
+
             <div class="b-item .b-title">Общая сумма</div>
             <div class="b-item">{{info.sumAll}}р</div>
-          </div>
+
+        </div>
+        <div class="b-row">
+
+            <div class="b-item .b-title">Сумма на карте</div>
+            <div class="b-item">{{info.sumCard}}р</div>
+
+        </div>
+        <div class="b-row">
+    
+            <div class="b-item .b-title">Сумма наличными</div>
+            <div class="b-item">{{info.sumNal}}р</div>
+    
+        </div>
+        <div class="b-row">
+    
+            <div class="b-item .b-title">Всего заказов</div>
+            <div class="b-item">{{info.ordersAll}}</div>
+   
+        </div>
+        <div class="b-row">
+       
+            <div class="b-item .b-title">Заказов выполнено</div>
+            <div class="b-item">{{info.ordersDone}}</div>
+      
+        </div>
+        <div class="b-row">
+        
+            <div class="b-item .b-title">Заказов в работе</div>
+            <div class="b-item">{{info.ordersInWork}}</div>
+      
+        </div>
+        <div class="b-row">
+       
+            <div class="b-item .b-title">Заказов отменено</div>
+            <div class="b-item">{{info.ordersFail}}</div>
+        
         </div>
       </div>
     </div>

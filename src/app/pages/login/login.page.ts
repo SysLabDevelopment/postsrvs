@@ -13,7 +13,6 @@ export class LoginPage implements OnInit {
   constructor(private auth:AuthService,
               private router:Router,
               private alert:AlertController) {
-
    }
 
   ngOnInit() {
@@ -24,8 +23,25 @@ export class LoginPage implements OnInit {
 
     this.auth.scanData().then((data) => {
       console.log('data', data);
+
+      var auth_id = data.text.slice(-4);
+      // auth_id = "0031";
+      // console.log('auth_id', auth_id);
+      // if (auth_id.length != 0){
+      //   var i = 1;
+      //   while (i < auth_id.length){
+      //     if (auth_id.substr(0,i) == '0' ){
+      //       auth_id = auth_id.substr(i);
+      //     } else {
+      //       break;
+      //     }
+      //     i++;
+      //   }
+      // }
+      console.log('auth_after_while', auth_id);
+
       var a_data = {  'action'  : 'auth',
-                    'barcode' : data.text};
+                      'barcode' : auth_id};
 
       self.auth.login(a_data).subscribe((data:any) => {
         console.log('authResponse', data);
@@ -33,7 +49,7 @@ export class LoginPage implements OnInit {
         console.log('authResponseObj', data);
         if (resp.success == "true"){
           self.auth.setUser(resp.sync_id);
-          self.router.navigate(['courier']);
+          self.router.navigate(['balance']);
         } else {
           this.showError(1);
         }
@@ -46,7 +62,6 @@ export class LoginPage implements OnInit {
       case 1:
           const alert = await this.alert.create({
             header: 'Ошибка',
-            subHeader: 'Subtitle',
             message: 'Ошибка авторизации, повторите попытку позже.',
             buttons: ['OK']
           });

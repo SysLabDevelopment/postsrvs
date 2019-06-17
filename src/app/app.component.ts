@@ -48,7 +48,7 @@ export class AppComponent {
           this.router.navigate(['courier']);
           break;
       case 4:
-          this.router.navigate(['history']);
+          // this.router.navigate(['history']);
         break;   
     }
   }

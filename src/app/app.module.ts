@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { MapService } from './services/map.service';
 
 @NgModule({
   declarations: [AppComponent],

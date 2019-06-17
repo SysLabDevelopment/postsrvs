@@ -18,7 +18,6 @@ export class AuthService {
     showTorchButton: true,
     showFlipCameraButton: true
   };       
-  this.setUser('3431');
 }
 
   public sendPost(url, data){
