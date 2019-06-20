@@ -8,7 +8,7 @@
         <div class="status-row o-row">
             <div class="sr-title o-t">Статус:</div>
             <div class="sr-status">{{status}} 
-              <button class="change_status" (click)="changeStatus()">
+              <button class="change_status" (click)="getReasons()">
                   <i class="far fa-edit"></i>
               </button> 
         </div>
@@ -50,9 +50,9 @@
               </div>
               <div *ngFor="let good of goods">
                   <div class="gr-item">
-                      <div class="gr-col gr-name">{{good.good_name}}</div>
-                      <div class="gr-col gr-quant">{{good.quantity}}</div>
-                      <div class="gr-col gr-price">{{good.unit_price}}р.</div>
+                      <div class="gr-col gr-name">{{good.Name}}</div>
+                      <div class="gr-col gr-quant">{{good.kol_vo}}</div>
+                      <div class="gr-col gr-price">{{good.Price}}р.</div>
                     </div>
               </div>
             </div>
@@ -60,8 +60,8 @@
       </div>
     </div>
     <div class="change-reason" [@openClose]="changeWindow ? 'open' : 'closed' ">
-      <div class="cr-wrp" *ngFor="let statuses of status">
-      <div class="status-item">{{status}}</div>
+      <div class="cr-wrp" *ngFor="let status of statuses">
+        <div class="cr-item" (click)="selectStatus(status.id)">{{status.status}}</div>
       </div>
     </div>
 </ion-content>

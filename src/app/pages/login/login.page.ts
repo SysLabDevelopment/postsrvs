@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService }       from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,23 @@ export class LoginPage implements OnInit {
 
   constructor(private auth:AuthService,
               private router:Router,
-              private alert:AlertController) {
+              private alert:AlertController,
+              private plt:Platform,
+              ) {
+        var self = this;
+        this.plt.ready().then(() => {
+          self.auth.checkAuth().subscribe((data:any) => {
+            if (data.success = 'true'){
+              self.auth.auth_state.next('login_true');
+              self.router.navigate(['balance']);
+            }
+          })
+        });
    }
 
   ngOnInit() {
   }
+
 
   public scanAuth(){
     var self = this;
@@ -24,31 +37,17 @@ export class LoginPage implements OnInit {
     this.auth.scanData().then((data) => {
       console.log('data', data);
 
-      var auth_id = data.text.slice(-4);
-      // auth_id = "0031";
-      // console.log('auth_id', auth_id);
-      // if (auth_id.length != 0){
-      //   var i = 1;
-      //   while (i < auth_id.length){
-      //     if (auth_id.substr(0,i) == '0' ){
-      //       auth_id = auth_id.substr(i);
-      //     } else {
-      //       break;
-      //     }
-      //     i++;
-      //   }
-      // }
-      console.log('auth_after_while', auth_id);
-
       var a_data = {  'action'  : 'auth',
-                      'barcode' : auth_id};
+                      'barcode' : data.text,
+                      };
+      
+                      console.log('request_auth_data', a_data);
 
       self.auth.login(a_data).subscribe((data:any) => {
         console.log('authResponse', data);
-        var resp = JSON.parse(data);
+       
         console.log('authResponseObj', data);
-        if (resp.success == "true"){
-          self.auth.setUser(resp.sync_id);
+        if (data.success == "true"){
           self.router.navigate(['balance']);
         } else {
           this.showError(1);

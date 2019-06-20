@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, forkJoin, interval, Observable, Subject } from 'rxjs';
-import { takeUntil, takeWhile } from 'rxjs/operators';
+import { BehaviorSubject, forkJoin, interval, Observable, Subject, combineLatest } from 'rxjs';
+import { takeUntil, takeWhile, merge } from 'rxjs/operators';
 import { Geolocation, GeolocationOptions} from '@ionic-native/geolocation/ngx';
 import { CourierService } from '../services/courier.service';
 
@@ -23,6 +23,10 @@ export class MapService {
   public route_f:BehaviorSubject<any> = new BehaviorSubject(false);
   public points_f:boolean = false;
 
+  public map_state:BehaviorSubject<any> = new BehaviorSubject(null);
+  public route_state:BehaviorSubject<any> = new BehaviorSubject('not_init');
+
+
   public interval_3:Observable<any>  = interval(3000);
   public interval_1:Observable<any>  = interval(1000);
   public interval_30:Observable<any> = interval(30000);
@@ -33,10 +37,11 @@ export class MapService {
 
   constructor(private geo: Geolocation, private courier:CourierService) { 
 
-    if (!this.map_f.getValue()){
-      console.log('map condition');
+    if (this.map_state.getValue() != 'map_init'){
+      console.log('start_init_map');
       this.initMap();
     }
+
     var self = this;
 
     this.stop$.subscribe(()=>{
@@ -49,17 +54,63 @@ export class MapService {
     console.log('map_service_construct');
   }
 
-  public initMap() 
-  {
-    var self = this;
-    
-    //наблюдаем за перемещением
-    this.initGeo();
+  public redrawMap(){
+    if (this.map_state.getValue() == 'map_init'){
+      console.log('map_service_redraw');
+      var self = this;
 
-    //следим за заказами
-    this.initPoints();
-    
-    //инит самой карты
+      ymaps.ready().then(() => {
+        self.l_map.container.fitToViewport();;
+      });
+      
+    }
+  }
+
+  public initMap() 
+  { 
+    var self = this;
+    this.map_state.pipe(takeUntil(this.courier.$stop)).subscribe((state) => {
+      console.log('map_state', state);
+        switch (state){
+          case 'init':
+            self.buildMap();
+            self.initParams();
+            break;
+          case 'map_init':
+            self.checkChanges();
+            break;  
+        }
+    })
+    this.map_state.next('init');
+  }
+
+  public initParams(){
+        //наблюдаем за перемещением
+        this.initGeo();
+
+        //следим за заказами
+        this.initPoints();
+  }
+
+  public checkChanges(){
+    combineLatest(this.points, this.position).pipe(takeUntil(this.courier.$stop)).subscribe((states) => {
+      console.log('changes',states);
+
+      switch (this.route_state.getValue()) {
+        case 'not_init':
+          this.buildWay();
+        break;
+        case 'init_done':
+          this.changeWay();
+          break; 
+      }
+    })
+  }
+  
+  //инит самой карты
+  public buildMap(){
+    var self = this;
+
     ymaps.ready().then(() => {
       self.l_map = new ymaps.Map('map', {
         center: [55.75222, 37.61556],
@@ -67,37 +118,26 @@ export class MapService {
         zoom: 12
       });
 
-      self.map_f.next(true);
-
-      self.interval_3.pipe(takeWhile((a) => self.route_f.getValue() != true )).subscribe((resp) => {
-        console.log('way_init_iter');
-          self.initWay();
-      });
-
+      self.map_state.next('map_init');
       console.log('map_init_s');
     });
   }
-  
+
 
   public initPoints(){
     var self = this;
     console.log('thi')
-    if (this.courier.orders.getValue() != null){
+    if (this.courier.way.getValue() != null){
       this.getPoints(this.courier.orders.getValue());
     }
 
-    this.courier.orders.pipe(takeUntil(this.courier.$stop)).subscribe((orders) => {
+    this.courier.way.pipe(takeUntil(this.courier.$stop)).subscribe((orders) => {
       console.log('check_points_iter', orders);
       if (orders){
         self.getPoints(orders);
-        self.changeWay();
       }
     })
-
-
-
   }
-
 
   public initGeo(){
     var self = this;
@@ -116,7 +156,6 @@ export class MapService {
         if (pos){
           var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
           self.position.next(position);
-          self.changeWay();
         }
       });
     })
@@ -137,7 +176,7 @@ export class MapService {
     }
   }
 
-  public initWay(){
+  public buildWay(){
     console.log('initCourierWay');
     console.log('this.points.getValue()', this.points.getValue());
     console.log('this.position.getValue()', this.position.getValue());
@@ -145,7 +184,7 @@ export class MapService {
     var self = this;
 
     if (this.points.getValue() != null && this.position.getValue() != null) {
-      this.route_f.next(true);
+     this.route_state.next('init_process');
 
       ymaps.ready().then(() => {
       var route_points:Array<any> = self.points.getValue();
@@ -166,17 +205,20 @@ export class MapService {
       });
 
       self.l_map.geoObjects.add(self.l_route);
-
-       self.map.next(self.l_map);
+      self.map.next(self.l_map);
+      self.route_state.next('init_done');
     });
     }
   }
 
 
+
 public changeWay(){
   var self = this;
 
-  if (this.route_f.getValue()){
+  if (this.points.getValue() != null && this.position.getValue() != null){
+      this.route_state.next('init_process');
+
       var route_points:Array<any> = self.points.getValue();
       console.log('router_points_pre', route_points);
 
@@ -194,6 +236,7 @@ public changeWay(){
       //   boundsAutoApply: true,
       // });
       });
+      self.route_state.next('init_done');
     }
   }
 }

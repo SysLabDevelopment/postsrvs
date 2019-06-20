@@ -12,6 +12,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { MapService } from './services/map.service';
+import { Device } from '@ionic-native/device/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,8 @@ import { MapService } from './services/map.service';
     BarcodeScanner,
     SplashScreen,
     Geolocation,
+    MapService,
+    Device,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

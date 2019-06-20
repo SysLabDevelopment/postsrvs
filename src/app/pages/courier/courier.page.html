@@ -10,7 +10,7 @@
         </div>
         <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" *ngIf = "ordersInit" >
             <ng-container *cdkVirtualFor="let order of orders" >
-                <div class="ol-item" (click) = "selectOrder(order.order_id)">
+                <div class="ol-item" (click) = "selectOrder(order.id)">
                     <span class="ol-col oc-adress">{{ order.client_address }}</span>
                     <span class="ol-col oc-status">{{ getStatus(order) }}</span>
                     <span class="ol-col oc-price">{{ getPrice(order) }}</span>
