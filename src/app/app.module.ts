@@ -13,6 +13,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { MapService } from './services/map.service';
 import { Device } from '@ionic-native/device/ngx';
+import { WebIntent } from '@ionic-native/web-intent/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { Device } from '@ionic-native/device/ngx';
     Geolocation,
     MapService,
     Device,
+    WebIntent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

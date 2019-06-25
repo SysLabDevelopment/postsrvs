@@ -1,6 +1,11 @@
 <ion-content>
 <div class="c-wrp">
     <div class="c-title">Мои заказы</div>
+    <div class="o-tab-wrp">
+            <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 1}" (click)="tabSelect(1)">В работе</div>
+            <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 2}"(click)="tabSelect(2)">Доставлено</div>
+            <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 3}"(click)="tabSelect(3)">Не доставлено</div>
+    </div>
     <div class="c-body">
       <div class="order-list">
         <div class="ol-head">
@@ -8,15 +13,35 @@
             <span class="ol-col oc-status">Статус</span>
             <span class="ol-col oc-price">Цена</span>
         </div>
-        <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" *ngIf = "ordersInit" >
+        <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" >
             <ng-container *cdkVirtualFor="let order of orders" >
-                <div class="ol-item" (click) = "selectOrder(order.id)">
+                <div class="ol-item" (click) = "selectOrder(order.id)" *ngIf=" getCondition(order.status_id) ">
                     <span class="ol-col oc-adress">{{ order.client_address }}</span>
                     <span class="ol-col oc-status">{{ getStatus(order) }}</span>
                     <span class="ol-col oc-price">{{ getPrice(order) }}</span>
                   </div>
             </ng-container>
         </cdk-virtual-scroll-viewport>
+
+        <!-- <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" *ngIf = "ordersInit && tabSelected == 2" >
+                <ng-container *cdkVirtualFor="let order of orders"  >
+                    <div class="ol-item" (click) = "selectOrder(order.id)" *ngIf="getStatus(order) == 5 || getStatus(order) == 6 ">
+                        <span class="ol-col oc-adress">{{ order.client_address }}</span>
+                        <span class="ol-col oc-status">{{ getStatus(order) }}</span>
+                        <span class="ol-col oc-price">{{ getPrice(order) }}</span>
+                      </div>
+                </ng-container>
+        </cdk-virtual-scroll-viewport>
+
+        <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" *ngIf = "ordersInit && tabSelected == 3" >
+                <ng-container *cdkVirtualFor="let order of orders" >
+                    <div class="ol-item" (click) = "selectOrder(order.id)" *ngIf="getStatus(order) == 4 ">
+                        <span class="ol-col oc-adress">{{ order.client_address }}</span>
+                        <span class="ol-col oc-status">{{ getStatus(order) }}</span>
+                        <span class="ol-col oc-price">{{ getPrice(order) }}</span>
+                        </div>
+                </ng-container>
+        </cdk-virtual-scroll-viewport> -->
     </div>
     </div>
 </div>

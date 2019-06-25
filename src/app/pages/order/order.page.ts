@@ -46,7 +46,11 @@ export class OrderPage implements OnInit {
   public phone:string = null;
   public pageInit:boolean = true;
   public statuses:any = null;
+  public reasons:any = null;
+  public commentText:any = null;
+  public g_quants:any = {};
   public changeWindow:boolean = false;
+
 
   public selectedReason:any = null;
   public selectedStatus:any = null;
@@ -58,7 +62,7 @@ export class OrderPage implements OnInit {
 
               this.orderId = this.route.snapshot.paramMap.get('id');
               console.log('id', this.route.snapshot.paramMap.get('id'));
-
+              this.getReasons();
               this.getOrderInfo();
               this.getBalnce();
    }
@@ -84,11 +88,6 @@ export class OrderPage implements OnInit {
     // })
 
     this.initOrder();
-
-    this.courier.state.pipe(takeUntil(this.courier.$stop)).subscribe((state) => {
-      this.initOrder();
-    })
-
     this.getStatuses();
   }
 
@@ -103,7 +102,52 @@ export class OrderPage implements OnInit {
         this.timeTo = this.order.del_time_to;
         this.phone  = this.order.client_phone;
         this.status = this.order.status_text;
+        this.setQuants();
     }
+  }
+
+  public setQuants(){
+    var goods = this.order.goods;
+
+    for (var i = 0; i < goods.length; i++ ){
+      var good = goods[i];
+      var code = good.Code;
+
+      this.g_quants[code] = Number(good.kol_vo);
+    }
+    console.log('setQuants_done', this.g_quants);
+  }
+
+  public changeQuant(code, action){
+    var q:number = this.g_quants[code];
+    var good = null;
+
+    for (var i = 0; i < this.order.goods.length; i++ ){
+      if (this.order.goods[i].Code == code){
+        good = this.order.goods[i];
+      }
+    }
+
+    if (action == "plus"){
+      var n_q = q+1;
+
+      if (n_q > good.kol_vo ){
+        return false;
+      } else {
+        this.g_quants[code] = n_q;
+      }
+      console.log('plus', code, q);
+    } else if (action == "minus"){
+      console.log('minus', code, q);
+      var n_q  = q - 1;
+
+      if (n_q < 0){
+        return false;
+      } else {
+        this.g_quants[code] = n_q;
+      }
+    }
+
   }
 
   public parseOrder(orders){
@@ -133,26 +177,15 @@ export class OrderPage implements OnInit {
   }
 
   public getStatus():string{
-    console.log('this.statses', this.statuses);
-    console.log('this.order', this.order);
-    if (this.courier.statuses.getValue() == 'status_init'){
-      for (var i = 0; i < this.statuses.length; i++ ){
-        var status = this.statuses[i];
-
-        if (status.id == this.order.del_status){
-          return status.status;
-        }
-      }
-    }
+    return this.courier.getStatus(this.order);
   }
 
   public getBalnce(){
-    this.courier.getBalance().subscribe((data) =>{
-        console.log('data_balance', data );
-    });
+
   }
 
   public changeStatus(){
+    console.log('open-close itter', this.changeWindow);
     if (!this.changeWindow){
       this.changeWindow = true;
     }
@@ -169,12 +202,55 @@ export class OrderPage implements OnInit {
 
   public selectStatus(id){
     console.log('select_status', id);
+    this.selectedStatus = id;
+  }
+
+  public selectReason(id){
+    console.log('select_reason', id);
+    this.selectedReason = id;
   }
 
   public getReasons(){
-    this.courier.getReasons().subscribe((data) => {
-      console.log('data_reasons', data)
-    })
+   this.reasons = this.courier.reasons 
+  }
+
+  public submitChange(){
+    console.log('submit_call');
+    var self = this;
+
+    switch (this.selectedStatus){
+      case 4:
+        if (this.selectedReason != null){
+          this.courier.changeStatus(this.selectedStatus, this.order.id, undefined, this.selectedReason).subscribe((data) => {
+            console.log('statusChange_response', data);
+            if (data.success == 'true'){
+              self.changeWindow = false;
+              self.courier.state.next('init');
+            }
+          });
+        }
+        break;
+      case 5:
+        var text = this.commentText ? this.commentText : '';
+        this.courier.changeStatus(this.selectedStatus, this.order.id,text).subscribe((data) => {
+          console.log('statusChange_response', data);
+          if (data.success == 'true'){
+            self.changeWindow = false;
+            self.courier.state.next('init');
+          }
+        });
+          break;
+      case 6:
+        console.log('quants', this.g_quants);
+         this.courier.changeStatus(this.selectedStatus, this.order.id, undefined, undefined, this.g_quants).subscribe((data) => {
+          console.log('statusChange_response', data);
+          if (data.success == 'true'){
+            self.changeWindow = false;
+            self.courier.state.next('init');
+          }
+        });
+          break;      
+    }
   }
 
 

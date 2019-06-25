@@ -1,12 +1,14 @@
 .c-title{
     display: flex;
+    flex-direction: column;
     height: 60px;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     font-family: Roboto;
     box-shadow: 0 0 6px 1px #c7c7c7;
-    color: #4c4c4c;
+    background: #2b637e;
+    color: #ffffff;
 }
 .c-wrp{
     position: fixed;
@@ -63,4 +65,24 @@
     left: 157px;
     top: 22px;
     color: #004ecc;
+}
+
+.toNav{
+    position: relative;
+    bottom: 164px;
+    border-radius: 3px;
+    background-color: #ffdb4d;
+    width: 210px;
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #363d40;
+    text-decoration: none;
+    margin: 0 auto;
+}
+
+.subtitle{
+    font-size: 12px;
+    font-style: italic;
 }

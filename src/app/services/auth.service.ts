@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Device } from '@ionic-native/device/ngx';
 import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,25 @@ export class AuthService {
   constructor(private bScan:BarcodeScanner,
               private http:HttpClient,
               private device: Device,
-              private plt:Platform) { 
+              private plt:Platform,
+              private router:Router) { 
 
   this.barcodeScannerOptions = {
     showTorchButton: true,
     showFlipCameraButton: true
   };  
+  
+  var self  =this;
+  this.plt.ready().then(() => {
+    this.checkAuth().subscribe((data:any) => {
+      console.log('check_auth_data', data);
+      if (data.success == 'true'){
+        self.auth_state.next('login_true');
+        self.router.navigate(['balance']);
+      }
+    });
+  })
+
   console.log('Device UUID is: ' + this.device.uuid);  
 }
   public checkAuth(){
@@ -52,6 +66,7 @@ export class AuthService {
       return this.http.post(url, data);
   }
   public getUuid(){
+    // return 'ac9069a5846948e2';
     return this.device.uuid;
   }
 

@@ -16,18 +16,26 @@ export class LoginPage implements OnInit {
               private alert:AlertController,
               private plt:Platform,
               ) {
-        var self = this;
-        this.plt.ready().then(() => {
-          self.auth.checkAuth().subscribe((data:any) => {
-            if (data.success = 'true'){
-              self.auth.auth_state.next('login_true');
-              self.router.navigate(['balance']);
-            }
-          })
-        });
    }
 
   ngOnInit() {
+  }
+
+  public testAuth(){
+    var a_data = {  'action'  : 'auth',
+    'barcode' : '33dbcda2db5311e39760309e88d17f08,3431',
+    };
+    
+    var self = this;
+
+    this.auth.login(a_data).subscribe((data:any) => {
+      console.log('auth_data', data);
+
+      if (data.success == 'true'){
+        self.router.navigate(['balance']);
+      }
+    })
+
   }
 
 
@@ -36,7 +44,10 @@ export class LoginPage implements OnInit {
 
     this.auth.scanData().then((data) => {
       console.log('data', data);
-
+      
+      var id = data.text.slice(0, -4);
+      console.log('cid', id);
+      localStorage.setItem('cId', id);
       var a_data = {  'action'  : 'auth',
                       'barcode' : data.text,
                       };

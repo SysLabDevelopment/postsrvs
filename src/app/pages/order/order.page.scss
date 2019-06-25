@@ -1,19 +1,19 @@
 
-.change-status{
+.change_status{
     align-items: center;
     background: none;
     font-size: 21px;
-    padding: 0 0 0 3px;
+    padding: 0 0 0 5px;
     box-shadow: 0 0 1px 1px #adadad;
     display: flex;
     justify-content: center;
     height: 35px;
-    width: 35px;
+    width: 37px;
     position: absolute;
-    color: #3e2ead;
+    color: #2b637e;
     border-radius: 4px;
-    right: 13%;
-    top: -66%;
+    right: 15%;
+    top: 17%;
     outline: none;
 }
 
@@ -26,7 +26,8 @@
     font-family: Roboto;
     box-shadow: 0 0 6px 1px #c7c7c7;
     margin: 0 0 5px 0;
-    color: #4c4c4c;
+    background: #2b637e;
+    color: #ffffff;
     position: relative;
 }
 
@@ -99,4 +100,86 @@
 
 .gr-quant, .gr-price{
     text-align: center;
+}
+
+.status-row{
+    position: relative;
+}
+
+.sc-status{
+    width: 71%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    margin: 4px 0;
+    border-radius: 2px;
+}
+
+.sc-statuses{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 5px;
+}
+
+.status_active{
+    background: #2b637e;
+    color: #fff;
+}
+
+.sc-r-title{
+    font-weight: bold;
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+.sc-reason{
+    width: 96%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    margin: 4px 0;
+    border-radius: 2px;
+}
+
+.sc-reasons-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sc-comment-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gr-quant{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sc-submit{
+    background: none;
+    box-shadow: 0 0 1px 1px #2b637e;
+    height: 38px;
+    width: 60%;
+    margin: 25px 0px 2px 0;
+    border-radius: 3px;
+    font-size: 18px;
+    outline: none;
+}
+
+.sc-s-wrp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
 }

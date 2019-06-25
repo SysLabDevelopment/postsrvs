@@ -1,10 +1,12 @@
 <ion-content>
   <div class="c-wrp">
-    <div class="c-title">Маршрут</div>
+    <div class="c-title">Маршрут<span class="subtitle">Показаны первые 10 заказов</span></div>
     <div class="c-body">
       <div id="map" style="height:100%;width:100%"></div>
     </div>
+    <button [disabled]="disLink" class="toNav" (click)="intentStart()" >Открыть в навигаторе</button>
   </div>
+
   <div id="shirm" *ngIf='loader'>
     <div class="sh-wrp">
       <div class="sh-title"></div>

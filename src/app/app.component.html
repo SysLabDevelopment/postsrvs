@@ -1,21 +1,5 @@
 <ion-app>
   <ion-router-outlet id="content1"></ion-router-outlet>
-  <!-- <ion-menu side="start" type="overlay" menuId="first" contentId="content1" class="my-custom-menu">
-      <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title>Start Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list>
-          <ion-item>Menu Item</ion-item>
-          <ion-item>Menu Item</ion-item>
-          <ion-item>Menu Item</ion-item>
-          <ion-item>Menu Item</ion-item>
-          <ion-item>Menu Item</ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu> -->
     <div id="bottom-menu" *ngIf = "nav != 0">
       <div class="bm-item" (click)="navTo(1)" [ngClass]="{active:nav == 1}"><i class="fas fa-user"></i></div>
       <div class="bm-item" (click)="navTo(2)" [ngClass]="{active:nav == 2}"><i class="fas fa-map-marked-alt"></i></div>

@@ -6,8 +6,8 @@
     font-size: 24px;
     font-family: Roboto;
     box-shadow: 0 0 6px 1px #c7c7c7;
-    margin: 0 0 5px 0;
-    color: #4c4c4c;
+    background: #2b637e;
+    color: #ffffff;
 }
 .c-wrp{
     height: 100%;
@@ -18,7 +18,7 @@
 }
 
 .order-list{
-    margin: 15% 5px 0 5px;
+    margin: 7% 5px 0 5px;
     box-shadow: 0 0 1px 1px #c7c7c7;
     border-radius: 3px;
     padding: 10px 0;
@@ -78,6 +78,29 @@
     width: 100%;
 }
 
+.o-tab-wrp{
+    display: grid;
+    grid-template-rows: 50px;
+    grid-template-columns: auto auto auto;
+    box-shadow: 0 2px 4px 0px #c7c7c7;
+    color: #4c4c4c;
+}
+
+.o-tab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #c7c7c7;
+}
+
+.o-tab:first-child{
+    border-left: none;
+}
+
+.tab_active{
+    background: #e5eeeb;
+    color: #2b637e;
+}
 
 // .ol-item .oc-price{
 //     justify-content: flex-end;
