@@ -2,7 +2,8 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { CourierService } from '../../services/courier.service';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
-
+import { StateService } from '../../services/state.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-courier',
@@ -15,43 +16,55 @@ export class CourierPage implements OnInit {
   public selectedTab = 1;
   public ordersInit:boolean = false;
 
+  public local_stop$:Subject<any> = new Subject();
+  public localcheck:boolean = false;
+  
+
   constructor(private courier:CourierService,
-              private router:Router) { 
+              private router:Router,
+              private state$:StateService,
+              ) {
                 this.initContent();
+                var self = this;
+                
+                this.state$.interval_3.pipe(takeUntil(this.local_stop$)).subscribe(() => {
+                  self.initContent();
+                })
+
+                this.state$.stop$.subscribe(() => {
+                  self.local_stop$.next();
+                });
   }
 
   ngOnInit() {
    
   }
 
+  ngOnDestroy(){
+    this.local_stop$.next();
+  }
+
   public initContent(){
     var self = this;
 
-    if (this.courier.state.getValue() == 'orders_init'){
-      this.orders = this.courier.orders.getValue();
-      this.statuses = this.courier.statuses.getValue();
+    if (this.state$.state.getValue() == 'orders_init'){
+      this.orders = this.state$.orders.getValue();
+      this.statuses = this.state$.statuses.getValue();
       this.ordersInit = true;
-      console.log('cp_initContent.orders', this.orders);
-    } else {
-      this.courier.state.subscribe((state) => {
+
+    } 
+
+    if (!this.state$.orders_page_check){
+      this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
         if (state == "orders_init"){
-          self.orders = self.courier.orders.getValue();
-          self.statuses = self.courier.statuses.getValue();
+          self.orders = self.state$.orders.getValue();
+          self.statuses = self.state$.statuses.getValue();
           self.ordersInit = true;
+          console.log('cp_initContent.orders_subscribe', self.orders);
         }
       })
+      this.state$.orders_page_check = true;
     }
-
-    this.courier.state.pipe(takeUntil(this.courier.$stop)).subscribe((state) => {
-      if (state == "orders_init"){
-        self.orders = self.courier.orders.getValue();
-        self.statuses = self.courier.statuses.getValue();
-        self.ordersInit = true;
-        console.log('cp_initContent-courier-statuses',self.courier.statuses.getValue());
-        console.log('cp_initContent-courier-o_status',self.courier.o_status.getValue());
-        console.log('cp_initContent.orders_subscribe', self.orders);
-      }
-    })
   }
 
   public getPrice(order){
@@ -82,7 +95,7 @@ export class CourierPage implements OnInit {
 
     switch (this.selectedTab){
       case 1:
-          if (status == 0) return true;   
+          if (status == 1) return true;   
           break;
       case 2:
           if (status == 5 || status == 6 ) return true;  

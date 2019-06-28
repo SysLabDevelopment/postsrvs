@@ -1,136 +1,110 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthService}  from '../services/auth.service';
+import { StateService}  from '../services/state.service';
 import { forkJoin, interval, BehaviorSubject, Subject, Observable } from 'rxjs';
-import { takeUntil, merge } from 'rxjs/operators';
+import { takeUntil, merge, take } from 'rxjs/operators';
 import { Platform } from '@ionic/angular';
-
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourierService {
-public orders:BehaviorSubject<any> = new BehaviorSubject(null);
-public statuses:BehaviorSubject<any> = new BehaviorSubject(null);
-public way:BehaviorSubject<any> = new BehaviorSubject(null);
-
-public reasons:any = null;
-
-public o_status:BehaviorSubject<any> = new BehaviorSubject(null);
-public state:BehaviorSubject<any> = new BehaviorSubject(null);
-public s_state:BehaviorSubject<any> = new BehaviorSubject(null);
-
-private interval_3m = interval(5000);
-
-public  $stop:Subject<any> = new Subject();
-
-private check_state:boolean = false;
-
 
 constructor(private http:HttpClient,
-            private auth:AuthService,
             private router:Router,
-            private plt:Platform
+            private plt:Platform,
+            private state$:StateService,
+            private auth:AuthService
             ) {
-              this.initOrders();
+              //при выходе из приложения возвращаем начальное состояние
               var self  = this;
+              this.state$.stop$.subscribe(() => {
+                console.log('STOP$_COURIER');
+                self.logout();
+              });
 
-              this.getReasons().subscribe((data:any) => {
-                if (data.success = 'true'){
-                  self.reasons = data.reasons;
-                  console.log('get_reasons', this.reasons);
+              this.state$.g_state.subscribe((state) => {
+                if (state == 'login'){
+                  self.initOrders();
                 }
+              })
+
+              this.state$.status_changed.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+                self.state$.state.next('init');
               })
             }
 
 ngOnDestroy(){
-  this.$stop.next();
-  this.$stop.complete();
+  console.log('COURIER_ON_DESTROY');
 }
 
 ngOnInit(){
-  
+  console.log('COURIER_ON_INIT');
 }
 
-
-//запрос к backend
-public sendPost(url, data){
-  var host = "https://postsrvs.ru/mobile/";
-  url = host+url;
-  data['uuid'] = this.auth.getUuid();
-  data = JSON.stringify(data);
-  
-  console.log('courier_sendPost', data);
-
-  const httpOptions = {
-    headers: new HttpHeaders({
-    'Content-Type':'application/json',
-    'Access-Control-Allow-Origin': '*'
-    })
-  };
-  var self = this;
-  var resp = new Subject<any>();
-  
-  this.plt.ready().then(() => {
-    self.http.post(url, data).subscribe((data:any) => {
-    
-      console.log('respTest_data', data);
-      console.log('data.success', data.success );
-      console.log('data.reason', data.reason );
-      if (data.success == 'false' && data.reason == "not_auth"){
-        console.log('unsuccess');
-        self.$stop.next();
-        self.$stop.complete();
-        self.auth.auth_state.next('not_login');
-        self.router.navigate(['login']);
-      } else {
-        resp.next(data);
-      }
-    });
-  });
-
-  return resp.asObservable();
-}
 
 //Собираем необходимую инфу по заказам 
 public initOrders(){
   var self = this;
+
   //Запускаем инициализацию
+  this.getReasons().subscribe((data:any) => {
+    if (data.success = 'true'){
+      self.state$.reasons = data.reasons;
+      console.log('get_reasons', this.state$.reasons);
+    }
+  });
 
   this.getStatuses().subscribe((data) => {
+    console.log('GET_STATUSES_DATA', data);
     if (data.success == 'true'){
-      self.statuses.next(data.statuses);
-      self.s_state.next('status_init');
+      self.state$.statuses.next(data.statuses);
+      console.log('statuses_val', self.state$.statuses.getValue());
+      self.state$.s_state.next('status_init');
     }
-  })
-
-  this.state.pipe(takeUntil(this.$stop)).subscribe((state) => {
-    console.log('courier_state', state);
-
+  });
+if (!this.state$.courier_init){
+  this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
+    console.log('COURIER_STAET_STATE', state);
     switch ( state ){
       case 'init':
           self.getWay().subscribe((data:any) => {
-            console.log('way_get_data',data);
             if (data.success == 'true'){
-              self.way.next(data.orders);
-              self.state.next('way_init');
+              self.state$.way.next(data.orders);
+              self.state$.state.next('way_init');
             }
           });
         break;
       case 'way_init':
         self.getOrders().subscribe((data:any) => {
-          console.log('orders_get_data',data);
           if (data.success == 'true'){
-            self.orders.next(data.orders);
-            self.state.next('orders_init');
+            self.state$.orders.next(data.orders);
+            self.state$.state.next('orders_init');
           }
         });
         break;
     }
   });
-  this.state.next('init');
+  this.state$.courier_init = true;
+}
+
+  this.state$.state.next('init');
   this.checkWay();
+}
+
+//следит за изменениями заказов
+public checkWay(){
+  var self = this;
+  if (!this.state$.check_state){
+    console.log('checkWay_start');
+    console.log('this.state$.check_state', this.state$.check_state);
+    this.state$.interval_3m.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+      self.state$.state.next('init');
+    });
+    this.state$.check_state = true;
+  } 
 }
 
 // запрос списка заказов курьера
@@ -140,28 +114,18 @@ public getWay(){
     'action' : 'getWay',
   }
 
-  return this.sendPost( url, data);
-}
-
-//следит за изменениями заказов
-public checkWay(){
-  var self = this;
-  if (this.check_state){
-    this.interval_3m.pipe(takeUntil(this.$stop)).subscribe(() => {
-      self.state.next('init');
-    });
-    this.check_state = true;
-  } 
+  return this.auth.sendPost( url, data);
 }
 
 public getOrders():Observable<any>{
   var url   = "orders";
 
   var ids = [];
-  var way = this.way.getValue();
-
-  for (var i=0; i < way.length; i++ ){
+  var way = this.state$.way.getValue();
+  console.log('get_orders_way', way);
+  for (let i=0; i < way.length; i++ ){
     ids.push(way[i].id);
+    console.log('get_orders_iter',i,way[i].id);
   }
 
   var data  = {
@@ -169,14 +133,14 @@ public getOrders():Observable<any>{
                 'orders_id' : ids
               }
 
-  return this.sendPost(url, data);
+  return this.auth.sendPost(url, data);
 }
 
 public getStatuses():Observable<any>{
   var url   = "orders";
   var data  = {'action' : 'getStatuses'};
 
-  return this.sendPost(url, data);
+  return this.auth.sendPost(url, data);
 }
 
 public getBalance(sync_id){
@@ -190,15 +154,15 @@ public getReasons(){
   var url   = "orders";
   var data  = { 'action' : 'getReasons'};
 
-  return this.sendPost(url, data);
+  return this.auth.sendPost(url, data);
 }
 
 public getStatus(order){
 
-      if (order.status_id == 0) {
+      if (order.status_id == 1) {
         return 'Доставляется';
       } else {
-        var statuses = this.statuses.getValue();
+        var statuses = this.state$.statuses.getValue();
 
         for (var i = 0; i < statuses.length; i++ ){
           var status = statuses[i];
@@ -220,8 +184,12 @@ public changeStatus(status = '', id = '', comment = '', reason = '', goods = '')
     'reason' : reason,
     'goods'  : goods
   };
-  console.log('change_data', data);
 
-  return this.sendPost(url, data);
+  return this.auth.sendPost(url, data);
 }
+
+public logout(){
+
+}
+
 }

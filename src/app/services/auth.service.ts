@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Device } from '@ionic-native/device/ngx';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { StateService } from './state.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,30 +14,23 @@ import { Router } from '@angular/router';
 export class AuthService {
   public user:boolean = false;
   public auth_state:BehaviorSubject<any> = new BehaviorSubject('not_login');
-
+  public stop$:Subject<any> = new Subject(); // останаливает все подписки;
   barcodeScannerOptions: BarcodeScannerOptions;
 
-  constructor(private bScan:BarcodeScanner,
+  constructor(
+              private bScan:BarcodeScanner,
               private http:HttpClient,
               private device: Device,
               private plt:Platform,
-              private router:Router) { 
+              private router:Router,
+              private state$:StateService,
+              ) { 
 
   this.barcodeScannerOptions = {
     showTorchButton: true,
     showFlipCameraButton: true
   };  
   
-  var self  =this;
-  this.plt.ready().then(() => {
-    this.checkAuth().subscribe((data:any) => {
-      console.log('check_auth_data', data);
-      if (data.success == 'true'){
-        self.auth_state.next('login_true');
-        self.router.navigate(['balance']);
-      }
-    });
-  })
 
   console.log('Device UUID is: ' + this.device.uuid);  
 }
@@ -49,13 +44,14 @@ export class AuthService {
   }
 
   public sendPost(url, data){
+    console.log('SEND_POST_CALL');
       var host = "https://postsrvs.ru/mobile/";
       url = host+url;
       data['uuid'] = this.getUuid();
   
-      console.log('sendpostData', data)
-      
+      console.log('REQUEST_DATA', data);
       data = JSON.stringify(data);
+
       const httpOptions = {
         headers: new HttpHeaders({
         'Content-Type':'application/json',
@@ -63,6 +59,23 @@ export class AuthService {
         })
       };
   
+      var self = this;
+      var resp = new Subject<any>();
+      
+      this.plt.ready().then(() => {
+        self.http.post(url, data).subscribe((data:any) => {
+          console.log('RESPONSE_DATA', data);
+
+          if (data.success == 'false' && data.reason == "not_auth"){
+            console.log('unsuccess');
+            self.logout();
+          } else {
+            resp.next(data);
+          }
+        });
+      });
+
+
       return this.http.post(url, data);
   }
   public getUuid(){
@@ -87,10 +100,16 @@ export class AuthService {
     return this.sendPost('auth', code);
   }
   
+  public initLogin(){
+    this.state$.g_state.next('login');
+    
+  }
 
-
-  auth_by_scan(){
-
- }
+  public logout(){
+    console.log('AUTH_LOGOUT');
+    this.state$.logout();
+    this.router.navigate(['login']);
+    
+  }
 
 }

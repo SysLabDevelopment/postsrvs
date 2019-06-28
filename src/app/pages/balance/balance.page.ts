@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { CourierService } from '../../services/courier.service';
 import { AuthService } from '../../services/auth.service';
+import { MapService} from '../../services/map.service';
+import { StateService } from '../../services/state.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-balance',
@@ -11,17 +16,35 @@ export class BalancePage implements OnInit {
   public info = null;
   public pageInit:boolean = false;
 
-  constructor(private courier:CourierService, private auth:AuthService) {
+  constructor(private courier:CourierService,
+              private auth:AuthService,
+              private router:Router,
+              private map:MapService,
+              private state$:StateService
+             ) {
+
     var self = this;
+
+    if (!this.state$.balance_check){
+      this.state$.interval_2s.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+        self.updateInfo();
+      });
+    }
+   }
+
+  ngOnInit() {
+   
+  }
+  
+
+  public updateInfo(){
+    var self =this;
+
     this.auth.checkAuth().subscribe((data:any) => {
       if (data.success = 'true'){
         self.getInfo(data.sync_id);
       }
     })
-   }
-
-  ngOnInit() {
-   
   }
 
   public getInfo(sync_id){
@@ -32,5 +55,17 @@ export class BalancePage implements OnInit {
       self.info =data;
       self.pageInit = true;
     });
+  }
+
+  public logout(){
+    var url = 'orders';
+    var data = {'action' : 'logout'}
+
+    var self = this;
+    this.auth.sendPost(url, data).subscribe((data:any) => {
+      if (data.success == 'true' ){
+        self.auth.logout();
+      }
+    })
   }
 }

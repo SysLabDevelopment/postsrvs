@@ -23,25 +23,6 @@
             </ng-container>
         </cdk-virtual-scroll-viewport>
 
-        <!-- <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" *ngIf = "ordersInit && tabSelected == 2" >
-                <ng-container *cdkVirtualFor="let order of orders"  >
-                    <div class="ol-item" (click) = "selectOrder(order.id)" *ngIf="getStatus(order) == 5 || getStatus(order) == 6 ">
-                        <span class="ol-col oc-adress">{{ order.client_address }}</span>
-                        <span class="ol-col oc-status">{{ getStatus(order) }}</span>
-                        <span class="ol-col oc-price">{{ getPrice(order) }}</span>
-                      </div>
-                </ng-container>
-        </cdk-virtual-scroll-viewport>
-
-        <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" *ngIf = "ordersInit && tabSelected == 3" >
-                <ng-container *cdkVirtualFor="let order of orders" >
-                    <div class="ol-item" (click) = "selectOrder(order.id)" *ngIf="getStatus(order) == 4 ">
-                        <span class="ol-col oc-adress">{{ order.client_address }}</span>
-                        <span class="ol-col oc-status">{{ getStatus(order) }}</span>
-                        <span class="ol-col oc-price">{{ getPrice(order) }}</span>
-                        </div>
-                </ng-container>
-        </cdk-virtual-scroll-viewport> -->
     </div>
     </div>
 </div>

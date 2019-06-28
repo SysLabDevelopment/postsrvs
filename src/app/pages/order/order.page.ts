@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { CourierService } from '../../services/courier.service';
+import { StateService } from '../../services/state.service';
 import { MenuController } from '@ionic/angular';
 import {
   trigger,
@@ -58,7 +59,7 @@ export class OrderPage implements OnInit {
   constructor(private router:Router,
               private route:ActivatedRoute,
               private courier:CourierService,
-              private menu:MenuController) {
+              private state$:StateService) {
 
               this.orderId = this.route.snapshot.paramMap.get('id');
               console.log('id', this.route.snapshot.paramMap.get('id'));
@@ -92,8 +93,8 @@ export class OrderPage implements OnInit {
   }
 
   public initOrder(){
-    if (this.courier.state.getValue() == 'orders_init' ){
-        this.order = this.parseOrder(this.courier.orders.getValue());
+    if (this.state$.state.getValue() == 'orders_init' ){
+        this.order = this.parseOrder(this.state$.orders.getValue());
         this.order = this.order;
         this.goods = this.order.goods;
         this.address = this.order.client_address
@@ -164,11 +165,11 @@ export class OrderPage implements OnInit {
 
   public getStatuses(){
     var self = this;
-    if (this.courier.s_state.getValue() == 'status_init'){
-      self.statuses = self.courier.statuses.getValue();
+    if (this.state$.s_state.getValue() == 'status_init'){
+      self.statuses = self.state$.statuses.getValue();
     } else {
       console.log('statuses_not_init');
-      this.courier.s_state.pipe(takeUntil(this.courier.$stop)).subscribe((state) => {
+      this.state$.s_state.pipe(takeUntil(this.state$.$stop)).subscribe((state) => {
         if (state == "status_init"){
           self.getStatuses();
         }
@@ -191,7 +192,7 @@ export class OrderPage implements OnInit {
     }
     // var url = 'orders';
     // var data = {'action' : 'changedStatus' , 'sync_id' : '1111', 'status' : '1' , 'comment' : 'сделал, начальник'};
-    // this.courier.sendPost(url, data).subscribe((data) => {
+    // this.courier.sendPost(url, data).subscribe((data:any) => {
     //   console.log('change_data', data);
     // });
   }
@@ -211,7 +212,7 @@ export class OrderPage implements OnInit {
   }
 
   public getReasons(){
-   this.reasons = this.courier.reasons 
+   this.reasons = this.state$.reasons 
   }
 
   public submitChange(){
@@ -221,32 +222,32 @@ export class OrderPage implements OnInit {
     switch (this.selectedStatus){
       case 4:
         if (this.selectedReason != null){
-          this.courier.changeStatus(this.selectedStatus, this.order.id, undefined, this.selectedReason).subscribe((data) => {
+          this.courier.changeStatus(this.selectedStatus, this.order.id, undefined, this.selectedReason).subscribe((data:any) => {
             console.log('statusChange_response', data);
             if (data.success == 'true'){
               self.changeWindow = false;
-              self.courier.state.next('init');
+              self.state$.state.next('init');
             }
           });
         }
         break;
       case 5:
         var text = this.commentText ? this.commentText : '';
-        this.courier.changeStatus(this.selectedStatus, this.order.id,text).subscribe((data) => {
+        this.courier.changeStatus(this.selectedStatus, this.order.id,text).subscribe((data:any) => {
           console.log('statusChange_response', data);
           if (data.success == 'true'){
             self.changeWindow = false;
-            self.courier.state.next('init');
+            self.state$.state.next('init');
           }
         });
           break;
       case 6:
         console.log('quants', this.g_quants);
-         this.courier.changeStatus(this.selectedStatus, this.order.id, undefined, undefined, this.g_quants).subscribe((data) => {
+         this.courier.changeStatus(this.selectedStatus, this.order.id, undefined, undefined, this.g_quants).subscribe((data:any) => {
           console.log('statusChange_response', data);
           if (data.success == 'true'){
             self.changeWindow = false;
-            self.courier.state.next('init');
+            self.state$.state.next('init');
           }
         });
           break;      

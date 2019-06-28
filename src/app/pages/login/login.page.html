@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="lg-wrp">
+  <div class="lg-wrp" *ngIf='!disLogin'>
     <div class="lg-btn">
       <button class="lg-login" (click)="scanAuth()">Войти по QR-коду</button>
     </div>

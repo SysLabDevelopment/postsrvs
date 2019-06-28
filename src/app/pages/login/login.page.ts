@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService }       from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
+
+import { AuthService } from '../../services/auth.service';
+import { StateService } from '../../services/state.service';
 
 @Component({
   selector: 'app-login',
@@ -10,32 +12,33 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  public disLogin:boolean = true;
 
   constructor(private auth:AuthService,
               private router:Router,
               private alert:AlertController,
               private plt:Platform,
+              private state$:StateService
               ) {
-   }
+    var self = this;
+    
+    //проверяет авторизован ли пользователь на сервере
 
-  ngOnInit() {
+    this.plt.ready().then(() => {
+      this.auth.checkAuth().subscribe((data:any) => {  
+          console.log('check_auth_data', data);
+            if (data.success == 'true'){
+              self.router.navigate(['balance']);
+              self.auth.initLogin();
+            } else {
+              self.disLogin = false;
+            }
+        });
+    })
   }
 
-  public testAuth(){
-    var a_data = {  'action'  : 'auth',
-    'barcode' : '33dbcda2db5311e39760309e88d17f08,3431',
-    };
+  ngOnInit() {
     
-    var self = this;
-
-    this.auth.login(a_data).subscribe((data:any) => {
-      console.log('auth_data', data);
-
-      if (data.success == 'true'){
-        self.router.navigate(['balance']);
-      }
-    })
-
   }
 
 
@@ -56,12 +59,12 @@ export class LoginPage implements OnInit {
 
       self.auth.login(a_data).subscribe((data:any) => {
         console.log('authResponse', data);
-       
-        console.log('authResponseObj', data);
+
         if (data.success == "true"){
           self.router.navigate(['balance']);
+          self.auth.initLogin();
         } else {
-          this.showError(1);
+          self.showError(1);
         }
       });
     });
@@ -80,14 +83,4 @@ export class LoginPage implements OnInit {
       break;
     }
   }
-
-  public tryAuth(){
-    var code = {'login' : '123'};
-    this.auth.login(code).subscribe((data) => {
-      console.log('loginData', data);
-    });
-  }
-
-
-
 }
