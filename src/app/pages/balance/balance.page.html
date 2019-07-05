@@ -1,7 +1,7 @@
 <ion-content>
-      <div class="o-title">Инфо</div>
+      <div class="o-title" (click)='p_btn()'>Инфо</div>
       <div class="o-body" *ngIf="pageInit">
-        <cdk-virtual-scroll-viewport  style="height: 80%" itemSize="auto" >
+        <cdk-virtual-scroll-viewport  style="height: 90%" itemSize="auto" >
                 <div class="b-row">
                     <div class="b-item b-title">Имя курьера</div>
                     <div class="b-item">{{info.name}}</div>
@@ -53,6 +53,6 @@
                     
                     </div>
         </cdk-virtual-scroll-viewport>
-        <div class="lg-b-wrp"><button class="logout-btn" (click)="logout()">Выйти</button></div>
+        <!-- <div class="lg-b-wrp"><button class="logout-btn" (click)="logout()">Выйти</button></div> -->
       </div>
 </ion-content>

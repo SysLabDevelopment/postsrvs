@@ -17,9 +17,10 @@ export class StateService {
   public interval_3:Observable<any>  = interval(4000);
   public interval_1:Observable<any>  = interval(3000);
   public interval_30:Observable<any> = interval(30000);
-  public interval_1s:Observable<any> = interval(1000);
+  public interval_1s:Observable<any> = interval(2000);
   public interval_2s:Observable<any> = interval(2000);
   public interval_3m:Observable<any> = interval(3000);
+  public interval_1m:Observable<any> = interval(60000);
 
 //MAP
 
@@ -70,7 +71,8 @@ export class StateService {
   public sc_flag:boolean = false;
 
   public page_orders_check:boolean = false;
-
+  
+  public client_states:BehaviorSubject<any> = new BehaviorSubject(null);
   constructor() { 
 
   }

@@ -57,7 +57,7 @@
     border-radius: 3px;
     padding: 10px 0;
     overflow: hidden;
-    padding: 0px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 25px auto;
@@ -83,6 +83,10 @@
     grid-template-rows: repeat(auto-fill, 20px);
 }
 
+.goods-row{
+    background: #fff;
+}
+
 .gr-head{
     display: grid;
     grid-template-columns: 50% 25% 25%;
@@ -106,6 +110,10 @@
     position: relative;
 }
 
+.sc-row{
+    display: block;
+}
+
 .sc-status{
     width: 71%;
     height: 30px;
@@ -115,6 +123,7 @@
     box-shadow: 0 0 1px 1px #c7c7c7;
     margin: 4px 0;
     border-radius: 2px;
+    background: #fff;
 }
 
 .sc-statuses{
@@ -125,10 +134,7 @@
     margin: 5px 5px;
 }
 
-.status_active{
-    background: #2b637e;
-    color: #fff;
-}
+
 
 .sc-r-title{
     font-weight: bold;
@@ -145,6 +151,7 @@
     box-shadow: 0 0 1px 1px #c7c7c7;
     margin: 4px 0;
     border-radius: 2px;
+    background: #fff;
 }
 
 .sc-reasons-block{
@@ -175,11 +182,190 @@
     border-radius: 3px;
     font-size: 18px;
     outline: none;
+    background: #fff;
 }
 
 .sc-s-wrp{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0px;
+}
+
+.sc-payment{
+    margin: 5% 10px 0 10px;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    padding: 10px 0;
+    overflow: hidden;
+    padding: 0px 10px 10px 10px;
+    display: grid;
+    grid-template-rows: aut 50%;
+    background: #fff;
+}
+
+.sc-payment__title{
+    font-weight: bold;
+    text-align: center;
+}
+
+.dc-payment__wrp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 9px auto;
+    width: 72%;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    height: 33px;
+}
+
+.sc-payment-item {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.payment_active{
+    background: #2b637e;
+    color: #fff;
+}
+
+.state-title{
+    font-weight: bold;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.state-row{
+    margin: 5% 10px 0 10px;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    padding: 10px 0;
+    overflow: hidden;
+    padding: 0px 0px 10px 5px;
+    display: grid;
+    grid-template-columns: 54% 46%;
+    grid-template-rows: 67px auto;
+}
+
+.robot-icon{
+    height: 50px;
+    position: absolute;
+    left: -12px;
+}
+
+.st_state, .st_dt{
+    padding: 2px 0 8px 0;
+    
+}
+
+.order-n{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 0px 0 60px;
+}
+
+.status_done{
+    color: #33b150;
+}
+
+.status_wait{
+    color:#d8d510;
+}
+
+.status_fail{
+    color: #d21212;
+}
+
+.st_process{
+    background: #fffdc7;
+    
+}
+
+.st_done{
+    background: #33b150;
+    color: #fff;
+}
+
+.st_fail{
+    background: #d21212;
+    color:#fff;
+}
+
+.status_none{
+    color:#71777d;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin: 0 auto;
+}
+
+.st_dt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sum-body{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #2b637e;
+}
+
+.sc-payment-block{
+    margin: 5% 10px 0px 10px;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    padding: 10px 0;
+    overflow: hidden;
+    padding: 10px 10px 20px 10px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 50% 50%;
+    background: #fff;
+    gap: 10px;
+}
+
+.sc-payment-block input{
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 2px;
+    height: 33px;
+    outline: none;
+    border: none;
+    background: no-repeat;
+}
+
+.pb-email, .pb-phone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pb-email__title, .pb-phone__title{
+    font-weight: bold;
+    text-align: center;
+}
+
+.sc-row{
+    box-shadow: 0 0 1px 1px #ff0000;
+    background: #e8f5ff;
+}
+
+.status_active{
+    background: #2b637e;
+    color: #fff;
 }

@@ -8,22 +8,29 @@
     </div>
     <div class="c-body">
       <div class="order-list">
-        <div class="ol-head">
-            <span class="ol-col oc-adress">Адрес</span>
-            <span class="ol-col oc-status">Статус</span>
-            <span class="ol-col oc-price">Цена</span>
-        </div>
-        <cdk-virtual-scroll-viewport  style="height: 380px" itemSize="auto" >
-            <ng-container *cdkVirtualFor="let order of orders" >
-                <div class="ol-item" (click) = "selectOrder(order.id)" *ngIf=" getCondition(order.status_id) ">
-                    <span class="ol-col oc-adress">{{ order.client_address }}</span>
-                    <span class="ol-col oc-status">{{ getStatus(order) }}</span>
-                    <span class="ol-col oc-price">{{ getPrice(order) }}</span>
-                  </div>
+
+        <cdk-virtual-scroll-viewport  style="height: 100%" itemSize="auto" >
+            <ng-container *cdkVirtualFor="let order of orders; trackBy:customTrackBy" >
+                <div class="ol-item" (click) = "selectOrder(order.id)" *ngIf="  (order.status_id == 1 && selectedTab == 1) ||
+                                                                                (order.status_id == 5 && selectedTab == 2) ||
+                                                                                (order.status_id == 6 && selectedTab == 2) ||
+                                                                                (order.status_id == 4 && selectedTab == 3) ">
+                    <div class="ol-col oc-left">
+                        <div class="oc-left-row c_number">{{order.client_id}}</div>
+                        <div class="oc-left-row c_address">{{order.client_address}}</div>
+                    </div>
+                    <div class="ol-col oc-right">
+                        <div class="c-status" [ngClass]="{  status_done : order.client_status_id == 1,
+                                                            status_wait : order.client_status_id == 2,
+                                                            status_fail : order.client_status_id == 3,
+                                                            status_none : order.client_status_id == 8 }">{{order.client_status}}</div>
+                    </div>
+                </div>
             </ng-container>
         </cdk-virtual-scroll-viewport>
 
     </div>
     </div>
+    <div class="c-bottom"></div>
 </div>
 </ion-content>

@@ -53,6 +53,7 @@ export class LoginPage implements OnInit {
       localStorage.setItem('cId', id);
       var a_data = {  'action'  : 'auth',
                       'barcode' : data.text,
+                      //'barcode' : '33dbcda2db5311e39760309e88d17f08,3431',
                       };
       
                       console.log('request_auth_data', a_data);

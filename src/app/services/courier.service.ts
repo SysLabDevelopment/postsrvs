@@ -65,12 +65,14 @@ public initOrders(){
       self.state$.s_state.next('status_init');
     }
   });
+
 if (!this.state$.courier_init){
   this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
     console.log('COURIER_STAET_STATE', state);
     switch ( state ){
       case 'init':
           self.getWay().subscribe((data:any) => {
+            console.log('get_way_response', data);
             if (data.success == 'true'){
               self.state$.way.next(data.orders);
               self.state$.state.next('way_init');
@@ -94,13 +96,22 @@ if (!this.state$.courier_init){
   this.checkWay();
 }
 
+//Получаем api key & login
+public getPayData(){
+  var url   = 'pay_order';
+  var data  = {'action' : 'getData'}
+  
+  return this.auth.sendPost(url, data);
+}
+
 //следит за изменениями заказов
 public checkWay(){
   var self = this;
   if (!this.state$.check_state){
     console.log('checkWay_start');
     console.log('this.state$.check_state', this.state$.check_state);
-    this.state$.interval_3m.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+    this.state$.interval_1m.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+      console.log('interval 1m done');
       self.state$.state.next('init');
     });
     this.state$.check_state = true;
@@ -174,7 +185,8 @@ public getStatus(order){
       }
 }
 
-public changeStatus(status = '', id = '', comment = '', reason = '', goods = ''){
+
+public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '' ){
   var url = 'orders';
   var data = {
     'action' : 'changedStatus',
@@ -182,7 +194,8 @@ public changeStatus(status = '', id = '', comment = '', reason = '', goods = '')
     'id'     : id,
     'comment' : comment,
     'reason' : reason,
-    'goods'  : goods
+    'goods'  : goods,
+    'payment'  : payment
   };
 
   return this.auth.sendPost(url, data);
@@ -190,6 +203,13 @@ public changeStatus(status = '', id = '', comment = '', reason = '', goods = '')
 
 public logout(){
 
+}
+
+//отправляет запрос на оплату
+public sendPay(order,isDone = true, quants = null){
+  if (isDone){
+    
+  }  
 }
 
 }

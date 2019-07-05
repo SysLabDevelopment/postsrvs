@@ -67,17 +67,6 @@ export class CourierPage implements OnInit {
     }
   }
 
-  public getPrice(order){
-    
-    if (order){
-      var price: number = 0;
-        for( var i = 0; i < order.goods.length; i++){
-          var good = order.goods[i];
-          price += Number(good.Price) * Number(good.kol_vo) ;
-        }      
-      return price;
-    }
-  }
 
   public getStatus(order){
     return this.courier.getStatus(order);
@@ -89,6 +78,10 @@ export class CourierPage implements OnInit {
 
   public tabSelect(tab){
     this.selectedTab = tab;
+  }
+
+  customTrackBy(index: number, obj: any): any{
+    return index;
   }
 
   public getCondition(status){

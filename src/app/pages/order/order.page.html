@@ -3,61 +3,26 @@
     <div class="o-balance">
         {{balance}}
     </div>
-      <div class="o-title">Заказ № <span class="order-n">{{orderId}}</span><span class="menu-icon" (click) = "navBack()"><i class="fas fa-angle-left"></i></span></div>
+      <div class="o-title"><span class="order-n">{{clientId}}</span><span class="menu-icon" (click) = "navBack()"><i class="fas fa-angle-left"></i></span></div>
       <div class="o-body" *ngIf="pageInit">
-        <div class="status-row o-row">
+        <div class="status-row o-row" [ngClass]="{ st_process : status_id == 1,
+          st_done : status_id == 5 || status_id == 6 ,
+          st_fail : status_id == 4}
+            ">
             <div class="sr-title o-t">Статус:</div>
-            <div class="sr-status">{{getStatus()}} 
-              <button class="change_status" (click)="changeStatus()">
+            <div class="sr-status" >{{getStatus()}} 
+              <!-- <button class="change_status" (click)="changeStatus()">
                   <i class="far fa-edit"></i>
-              </button> 
+              </button>  -->
             </div>
-        </div>
-        <div class="sc-row o-row" [@openClose]= "changeWindow ? 'open' : 'closed' " >
-          <div class="sc-statuses" >
-              <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of statuses" (click) = "selectStatus(status.id)" >{{status.status}}</div>
-          </div>
-          <div class="sc-reasons">
-              <div class="sc-resons-block" *ngIf="selectedStatus == 4 ">
-                <div class="sc-r-title">Причина:</div>
-                    <div class="sc-reason" [ngClass] = "{'status_active' : selectedReason == reason.id}" *ngFor="let reason of reasons" (click) = "selectReason(reason.id)"> {{reason.reason}}</div>
-              </div>
-              <div class="sc-comment-block" *ngIf="selectedStatus == 5 ">
-                  <div class="sc-r-title">Комментарий:</div>
-                  <textarea [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>                     
-              </div>
-              <div class="sc-goods-block" *ngIf="selectedStatus == 6 ">
-                  <div class="goods-row o-row">
-                      <div class="gr-title o-t">Товары в заказе</div>
-          
-                      <div class="gr-goods-list">
-                        <div class="gr-head">
-                          <div class="gr-col">Название</div>
-                          <div class="gr-col">Кол-во</div>
-                          <div class="gr-col">Цена</div>
-                        </div>
-                        <div *ngFor="let good of goods">
-                            <div class="gr-item">
-                                <div class="gr-col gr-name">{{good.Name}}</div>
-                                <div class="gr-col gr-quant">
-                                  <div class="m-btn" (click)="changeQuant(good.Code,'minus')"><i class="fas fa-minus"></i></div>
-                                  {{g_quants[good.Code]}}
-                                  <div class="p-btn" (click)="changeQuant(good.Code,'plus')"><i class="fas fa-plus"></i></div>
-                                </div>
-                                <div class="gr-col gr-price">{{good.Price}}р.</div>
-                              </div>
-                        </div>
-                      </div>
-                  </div>                      
-              </div>
-              <div class="sc-s-wrp">
-                  <button class="sc-submit" (click) ="submitChange()">Изменить статус</button>
-              </div>
-          </div>
         </div>
         <div class="adress-row o-row">
           <div class="ar-title o-t">Адрес:</div>
           <div class="ar-adress">{{address}}</div>
+        </div>
+        <div class="sum-row o-row">
+          <div class="sum-title o-t">Сумма с клиента:</div>
+          <div class="sum-body">{{order_sum}}р.</div>
         </div>
         <div class="contacts-row o-row">
             <div class="cr-title o-t">Контакты клиента:</div>
@@ -80,7 +45,95 @@
                 <div class="tr-to-title">До</div>
                 <div class="tr-to">{{timeTo}}</div>
             </div>
-         </div>      
+         </div>
+         <div class="state-row o-row">
+            <div class="state-title o-t"><img src="../../../assets/bender.png" class="robot-icon"> <span class="st-status-text">Робот дозвон:</span></div>
+            <div class="st_state" [ngClass]="{  status_done : client_status_id == 1,
+                                                status_wait : client_status_id == 2,
+                                                status_fail : client_status_id == 3,
+                                                status_none : client_status_id == 8 }">{{client_status}}</div>
+            <div class="st_dt">{{client_status_dt}}</div>
+         </div> 
+         <div class="sc-row o-row" >
+          <div class="sc-statuses" >
+              <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of statuses" (click) = "selectStatus(status.id)" >{{status.status}}</div>
+          </div>
+          <div class="sc-reasons">
+              <div class="sc-resons-block" *ngIf="selectedStatus == 4 ">
+                <div class="sc-r-title">Причина:</div>
+                    <div class="sc-reason" [ngClass] = "{'status_active' : selectedReason == reason.id}" *ngFor="let reason of reasons" (click) = "selectReason(reason.id)"> {{reason.reason}}</div>
+              </div>
+              <div class="sc-comment-block" *ngIf="selectedStatus == 5">                    
+                  <div class="sc-r-title">Комментарий:</div>
+                  <textarea [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>                     
+              </div>
+              <div class="sc-payment" *ngIf = "selectedStatus == 5 || selectedStatus == 6" >
+                  <div class="sc-payment__title">Оплата</div>
+                  <div class="dc-payment__wrp">
+                      <div class="sc-payment-item" [ngClass] = "{'payment_active' : selectedPayment == 1}"  (click) = "selectPayment('1')" >Наличными</div>
+                      <div class="sc-payment-item" [ngClass] = "{'payment_active' : selectedPayment == 2}"  (click) = "selectPayment('2')" >Картой</div>
+                  </div>
+                </div>
+              <div class="sc-goods-block" *ngIf="selectedStatus == 6 ">
+                  <div class="goods-row o-row">
+                      <div class="gr-title o-t">Товары в заказе</div>
+          
+                      <div class="gr-goods-list">
+                        <div class="gr-head">
+                          <div class="gr-col">Название</div>
+                          <div class="gr-col">Кол-во</div>
+                          <div class="gr-col">Цена</div>
+                        </div>
+                        <div *ngFor="let good of goods">
+                            <div class="gr-item">
+                                <div class="gr-col gr-name">{{good.Name}}</div>
+                                <div class="gr-col gr-quant">
+                                  <div class="m-btn" (click)="changeQuant(good.Code,'minus')"><i class="fas fa-minus"></i></div>
+                                  {{g_quants[good.Code]['amount']}}
+                                  <div class="p-btn" (click)="changeQuant(good.Code,'plus')"><i class="fas fa-plus"></i></div>
+                                </div>
+                                <div class="gr-col gr-price">{{good.Price}}р.</div>
+                              </div>
+                        </div>
+                      </div>
+                  </div>                      
+              </div>
+              <div class="goods-row o-row" *ngIf="selectedStatus == 5  && selectedPayment == 1">
+                  <div class="gr-title o-t">Товары в заказе</div>
+      
+                  <div class="gr-goods-list">
+                    <div class="gr-head">
+                      <div class="gr-col">Название</div>
+                      <div class="gr-col">Кол-во</div>
+                      <div class="gr-col">Цена</div>
+                    </div>
+                    <div *ngFor="let good of goods">
+                        <div class="gr-item">
+                            <div class="gr-col gr-name">{{good.Name}}</div>
+                            <div class="gr-col gr-quant">
+                             {{good.kol_vo}}
+                            </div>
+                            <div class="gr-col gr-price">{{good.Price}}р.</div>
+                          </div>
+                    </div>
+                  </div>
+              </div> 
+              <div class="sc-payment-block o-row" *ngIf="(selectedStatus == 5 || selectedStatus == 6) && selectedPayment == 1">
+                <div class="pb-email">
+                  <div class="pb-email__title">Email клиента</div>
+                  <input type="email" class="pb-email__input" [(ngModel)] = "email_input">
+                </div>
+                <div class="pb-phone">
+                  <div class="pb-phone__title">Телефон клиента</div>
+                    <input type="tel" class="pb-phone__input" [(ngModel)] = "phone_input">
+                </div>
+              </div>
+              <div class="sc-s-wrp">
+                  <button class="sc-submit" *ngIf = "(selectedPayment != 1 && (selectedStatus == 6 || selectedStatus == 5)) || selectedStatus == 4" (click) ="submitChange()">Изменить статус</button>
+                  <button class="sc-submit" *ngIf = "(selectedStatus == 5 || selectedStatus == 6) && selectedPayment == 1" (click) ="sendPay()">Отправить чек</button>
+              </div>
+          </div>
+        </div>       
       </div>
     </div>
 </ion-content>

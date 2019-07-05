@@ -301,14 +301,10 @@ public changeWay(){
   }
 
   public setRoute(){
-   var self = this;
-   ymaps.ready().then(() => {
-    this.state$.l_route.setBounds(this.state$.l_route.geoObjects.getBounds());
-   });
-      
-      
-
-   
+  //  var self = this;
+  //  ymaps.ready().then(() => {
+  //   self.state$.l_route.setBounds(self.state$.l_route.geoObjects.getBounds());
+  //  });
   }
 
   public getLink(){

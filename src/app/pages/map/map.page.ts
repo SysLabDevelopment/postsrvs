@@ -37,6 +37,7 @@ export class MapPage implements OnInit {
         if (state == 'map_init'){
           console.log('map_page_map_init');
           self.map_s.buildWay();
+          
         }
       });
       
@@ -46,11 +47,10 @@ export class MapPage implements OnInit {
         if (state == 'init_done'){
           console.log('map_page_route_init');
           self.initLink();
-          self.map_s.setRoute();
         }
       })
 
-      this.state$.interval_2s.pipe(takeUntil(this.local_stop$)).subscribe(() => {
+      this.state$.interval_1.pipe(takeUntil(this.local_stop$)).subscribe(() => {
         console.log('MAP_PAGE_CHANGE_CALL');
         self.map_s.changeWay();
         self.initLink();
@@ -71,6 +71,7 @@ export class MapPage implements OnInit {
           if (state == 'init_done'){
             console.log('map_page_var_2_init_done');
             self.initLink();
+            
           }
         })
       

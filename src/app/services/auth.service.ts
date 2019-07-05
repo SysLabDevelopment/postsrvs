@@ -31,8 +31,11 @@ export class AuthService {
     showFlipCameraButton: true
   };  
   
-
   console.log('Device UUID is: ' + this.device.uuid);  
+}
+
+ngOnInit(){
+  console.log('AUH_INIT');
 }
   public checkAuth(){
     var url = 'orders';
@@ -54,8 +57,7 @@ export class AuthService {
 
       const httpOptions = {
         headers: new HttpHeaders({
-        'Content-Type':'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Content-Type':'application/json'
         })
       };
   
@@ -63,12 +65,15 @@ export class AuthService {
       var resp = new Subject<any>();
       
       this.plt.ready().then(() => {
-        self.http.post(url, data).subscribe((data:any) => {
+        self.http.post(url, data, httpOptions).subscribe((data:any) => {
           console.log('RESPONSE_DATA', data);
-
-          if (data.success == 'false' && data.reason == "not_auth"){
-            console.log('unsuccess');
-            self.logout();
+          if (data){
+            if (data.success == 'false' && data.reason == "not_auth"){
+              console.log('unsuccess');
+              self.logout();
+            } else {
+              resp.next(data);
+            }
           } else {
             resp.next(data);
           }
@@ -76,11 +81,11 @@ export class AuthService {
       });
 
 
-      return this.http.post(url, data);
+      return resp ;
   }
   public getUuid(){
     // return 'ac9069a5846948e2';
-    return this.device.uuid;
+     return this.device.uuid;
   }
 
   public setUser(id){

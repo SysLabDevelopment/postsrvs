@@ -15,6 +15,8 @@ import { takeUntil } from 'rxjs/operators';
 export class BalancePage implements OnInit {
   public info = null;
   public pageInit:boolean = false;
+  public out_process:boolean = false;
+  public out_counter = 0;
 
   constructor(private courier:CourierService,
               private auth:AuthService,
@@ -41,6 +43,7 @@ export class BalancePage implements OnInit {
     var self =this;
 
     this.auth.checkAuth().subscribe((data:any) => {
+      console.log('update_info_data', data);
       if (data.success = 'true'){
         self.getInfo(data.sync_id);
       }
@@ -55,6 +58,25 @@ export class BalancePage implements OnInit {
       self.info =data;
       self.pageInit = true;
     });
+  }
+
+  public p_btn(){
+    setTimeout(() => {
+      this.out_counter = 0;
+      this.out_process = false;
+      console.log('outprocess_die');
+    }, 1000);
+
+    if (this.out_process){
+      this.out_counter++;
+      console.log('outprocess_true', this.out_counter);
+      if (this.out_counter == 2){
+        this.logout();
+      }
+    } else {
+      console.log('outprocess_false');
+      this.out_process = true;
+    }
   }
 
   public logout(){
