@@ -12,7 +12,7 @@
 .c-wrp{
     height: 100%;
     display: grid;
-    grid-template-rows: 60px 50px auto 3px 40px;
+    grid-template-rows: 60px 50px auto 70px 3px 40px;
 }
 
 .c-body{
@@ -181,4 +181,21 @@
     justify-content: center;
     align-items: center;
     font-size: 17px;
+}
+
+.start-route{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.satrt-r-btn{
+    box-shadow: 0 0 1px 1px #2b637e;
+    height: 38px;
+    width: 60%;
+    border-radius: 3px;
+    font-size: 18px;
+    outline: none;
+    background: #2b637e;
+    color: #fff;
 }

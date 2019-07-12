@@ -77,7 +77,7 @@ export class StateService {
   //STATUS-BAR
   public load_lvl:BehaviorSubject<any> = new BehaviorSubject(0);
 
-  
+  public c_update_content_f:boolean = false;
   
   constructor() { 
 
@@ -123,7 +123,7 @@ export class StateService {
     this.sc_flag = false;
     this.page_orders_check = false;
     this.balance_check = false;
-  
+    this.c_update_content_f = false;
     this.load_lvl.next(0);
   }
 

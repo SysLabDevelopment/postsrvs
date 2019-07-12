@@ -17,7 +17,7 @@ export class BalancePage implements OnInit {
   public pageInit:boolean = false;
   public out_process:boolean = false;
   public out_counter = 0;
-  public loader = false;
+  public loader = true;
 
   constructor(private courier:CourierService,
               private auth:AuthService,
@@ -28,7 +28,7 @@ export class BalancePage implements OnInit {
     if (this.info == null){
      this.loader = true;
     } else {
-      this.loader = false;
+      this.loader = true;
     }
 
     var self = this;

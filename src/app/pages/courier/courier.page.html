@@ -32,10 +32,13 @@
             <div class="olab-amount" *ngIf="selectedTab == 1 && g_process != 0">Всего заказов: <span class="amount-labl">{{g_process}}</span></div>
             <div class="olab-amount" *ngIf="selectedTab == 2 && g_done != 0">Всего заказов: <div class="amount-labl">{{g_done}}</div></div>
             <div class="olab-amount" *ngIf="selectedTab == 3 && g_fail != 0">Всего заказов: <div class="amount-labl">{{g_fail}}</div></div>
-            <div class="olab-empty" *ngIf=" selectedTab == 1 && g_process == 0 ||
-                                            selectedTab == 2 && g_done == 0 ||
-                                            selectedTab == 3 && g_fail == 0"><span class="center-title">Нет заказов</span></div>
+            <div class="olab-empty" *ngIf=" (selectedTab == 1 && g_process == 0) ||
+                                            (selectedTab == 2 && g_done == 0) ||
+                                            (selectedTab == 3 && g_fail == 0)"><span class="center-title">Нет заказов</span></div>
         </div>  
+    </div>
+    <div class="start-route">
+        <button class="satrt-r-btn" (click) ="startRoute()">Начать маршрут</button>  
     </div>
     <div class="ind-lable"><div class="lvl" [ngStyle]="lvl_ind"></div></div>
     <div class="c-bottom"></div>

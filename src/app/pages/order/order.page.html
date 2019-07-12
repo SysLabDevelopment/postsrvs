@@ -70,7 +70,7 @@
                                                 status_none : client_status_id == 8 }">{{client_status}}</div>
             <div class="st_dt">{{client_status_dt}}</div>
          </div> 
-         <div class="sc-row o-row" *ngIf="!(hide_status || statusId != 5 || statusId != 6)">
+         <div class="sc-row o-row" *ngIf="!(hide_status || statusId == 5 || statusId == 6)">
           <div class="sc-statuses" >
               <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of statuses" (click) = "selectStatus(status.id)" >{{status.status}}</div>
           </div>

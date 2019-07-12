@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { StateService } from '../../services/state.service';
 import { Subject } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-courier',
@@ -26,13 +27,15 @@ export class CourierPage implements OnInit {
   constructor(private courier:CourierService,
               private router:Router,
               private state$:StateService,
+              private auth:AuthService
               ) 
 {
     this.initContent();
     var self = this;
-    
-    this.state$.interval_3.pipe(takeUntil(this.local_stop$)).subscribe(() => {
+
+    self.state$.interval_3.pipe(takeUntil(self.local_stop$)).subscribe(() => {
       self.initContent();
+      self.count_orders();
     })
 
     this.state$.stop$.subscribe(() => {
@@ -53,6 +56,7 @@ export class CourierPage implements OnInit {
 
   ngOnDestroy(){
     this.local_stop$.next();
+    this.state$.orders_page_check = false;
   }
 
   public initContent(){
@@ -62,7 +66,7 @@ export class CourierPage implements OnInit {
       this.orders = this.state$.orders.getValue();
       this.statuses = this.state$.statuses.getValue();
       this.ordersInit = true;
-      this.count_orders();
+      self.count_orders();
     } 
 
     if (!this.state$.orders_page_check){
@@ -119,17 +123,18 @@ export class CourierPage implements OnInit {
     let g_fail = 0;
 
     for (let i = 0; i < this.orders.length; i++ ){
+      console.log('ORDERS_STATUSES_CAE',this.orders[i].status_id );
       switch ( this.orders[i].status_id){
-        case 4 :
+        case '4' :
           g_fail++;
           break;
-        case 5:
+        case '5':
           g_done++;
           break;
-        case 6:
+        case '6':
           g_done++;
           break;   
-        case 1:
+        case '1':
           g_process++;
           break;  
       }
@@ -138,6 +143,26 @@ export class CourierPage implements OnInit {
     this.g_done = g_done;
     this.g_process = g_process;
     this.g_fail = g_fail;
+    console.log('ORDERS_STATE_PROCESS', this.g_done, this.g_process, this.g_fail);
+  }
+
+  startRoute(){
+    var self = this;
+    this.auth.checkAuth().subscribe((data) => {
+      if (data.success == 'true'){
+        self.sendStartRoute(data.sync_id);
+      }
+    })
+    
+  }
+
+  public sendStartRoute(cid){
+    var url   = "geo/route_start.php";
+    var data  = {'cid' : cid };
+
+    this.auth.sendPost(url, data).subscribe((data) => {
+      console.log('GO_ROUTE_DATA', data);
+    });
   }
 
 }
