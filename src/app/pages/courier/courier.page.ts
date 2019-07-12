@@ -23,6 +23,7 @@ export class CourierPage implements OnInit {
   public g_process = 0;
   public g_fail = 0;
   public lvl_ind = {width : '0%'};
+  public btn_go:boolean = false;
 
   constructor(private courier:CourierService,
               private router:Router,
@@ -32,6 +33,8 @@ export class CourierPage implements OnInit {
 {
     this.initContent();
     var self = this;
+
+    this.startRoute(false);
 
     self.state$.interval_3.pipe(takeUntil(self.local_stop$)).subscribe(() => {
       self.initContent();
@@ -146,22 +149,43 @@ export class CourierPage implements OnInit {
     console.log('ORDERS_STATE_PROCESS', this.g_done, this.g_process, this.g_fail);
   }
 
-  startRoute(){
+  public startRoute(start = true, stop = false){
     var self = this;
     this.auth.checkAuth().subscribe((data) => {
       if (data.success == 'true'){
-        self.sendStartRoute(data.sync_id);
+       
+        self.sendStartRoute(data.sync_id, start, stop);
       }
     })
     
   }
 
-  public sendStartRoute(cid){
+  public stopRoute(){
+    this.startRoute(false, true);
+  }
+
+
+  public sendStartRoute(cid, start, stop){
     var url   = "geo/route_start.php";
     var data  = {'cid' : cid };
+    if (start){
+      data['start'] = '1';
+    }
 
+    if (stop){
+      data['stop'] = '1';
+    }
+    var self = this;
+    console.log('SEND_CALL', data);
     this.auth.sendPost(url, data).subscribe((data) => {
       console.log('GO_ROUTE_DATA', data);
+      if (data.success == true){
+        self.btn_go = true;
+        if (data.result == 'stop'){
+          self.btn_go = false;
+        }
+      }
+
     });
   }
 

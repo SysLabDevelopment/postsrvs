@@ -158,7 +158,7 @@
 .olab-empty{
     position: fixed;
     top: 110px;
-    bottom: 40px;
+    bottom: 110px;
     left: 0;
     right: 0;
     display: flex;
@@ -198,4 +198,8 @@
     outline: none;
     background: #2b637e;
     color: #fff;
+}
+
+.sr-stop{
+    background: #d21212;
 }

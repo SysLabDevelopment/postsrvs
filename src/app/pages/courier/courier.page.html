@@ -38,7 +38,8 @@
         </div>  
     </div>
     <div class="start-route">
-        <button class="satrt-r-btn" (click) ="startRoute()">Начать маршрут</button>  
+        <button class="satrt-r-btn" *ngIf = "!btn_go" (click) ="startRoute()">Начать маршрут</button>  
+        <button class="satrt-r-btn sr-stop" *ngIf = "btn_go"  (click) ="stopRoute()">Остановить маршрут</button>  
     </div>
     <div class="ind-lable"><div class="lvl" [ngStyle]="lvl_ind"></div></div>
     <div class="c-bottom"></div>
