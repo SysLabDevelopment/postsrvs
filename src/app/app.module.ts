@@ -14,6 +14,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { MapService } from './services/map.service';
 import { Device } from '@ionic-native/device/ngx';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +29,8 @@ import { WebIntent } from '@ionic-native/web-intent/ngx';
     MapService,
     Device,
     WebIntent,
+    QRCodeModule,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

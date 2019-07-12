@@ -52,7 +52,7 @@
 }
 
 .o-row{
-    margin: 5% 10px 0 10px;
+    margin: 2% 10px 0 10px;
     box-shadow: 0 0 1px 1px #c7c7c7;
     border-radius: 3px;
     padding: 10px 0;
@@ -246,7 +246,7 @@
 }
 
 .state-row{
-    margin: 5% 10px 0 10px;
+    margin: 2% 10px 0 10px;
     box-shadow: 0 0 1px 1px #c7c7c7;
     border-radius: 3px;
     padding: 10px 0;
@@ -334,7 +334,7 @@
     padding: 10px 10px 20px 10px;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: auto;
     background: #fff;
     gap: 10px;
 }
@@ -366,6 +366,52 @@
 }
 
 .status_active{
+    background: #2b637e;
+    color: #fff;
+}
+
+.qr{
+    margin: 16px 0;
+}
+
+.message-body{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.office-body{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+.show-phone{
+    box-shadow: 0 0 1px 1px #2b637e;
+    height: 38px;
+    width: 60%;
+    margin: 9px auto;
+    border-radius: 3px;
+    font-size: 18px;
+    outline: none;
+    background: #fff;
+}
+
+.sh-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    font-size: 41px;
+    color: #2b637e;
+}
+
+.email-error{
+    color: #ff5252;
+    margin: 3px 0 0px 0;
+}
+
+.to-list{
+    margin: 14px 0 0 0;
     background: #2b637e;
     color: #fff;
 }

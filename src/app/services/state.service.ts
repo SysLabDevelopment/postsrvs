@@ -21,6 +21,7 @@ export class StateService {
   public interval_2s:Observable<any> = interval(2000);
   public interval_3m:Observable<any> = interval(3000);
   public interval_1m:Observable<any> = interval(60000);
+  public interval_1ss:Observable<any> = interval(1000);
 
 //MAP
 
@@ -60,7 +61,7 @@ export class StateService {
 
   public check_state:boolean = false;
 
-  public g_state:BehaviorSubject<any> = new BehaviorSubject(null);
+  public g_state:BehaviorSubject<any> = new BehaviorSubject('unLogin');
   
   public courier_init:boolean = false;
 
@@ -73,6 +74,11 @@ export class StateService {
   public page_orders_check:boolean = false;
   
   public client_states:BehaviorSubject<any> = new BehaviorSubject(null);
+  //STATUS-BAR
+  public load_lvl:BehaviorSubject<any> = new BehaviorSubject(0);
+
+  
+  
   constructor() { 
 
   }
@@ -117,6 +123,8 @@ export class StateService {
     this.sc_flag = false;
     this.page_orders_check = false;
     this.balance_check = false;
+  
+    this.load_lvl.next(0);
   }
 
 

@@ -19,6 +19,12 @@ constructor(private http:HttpClient,
             private auth:AuthService
             ) {
               //при выходе из приложения возвращаем начальное состояние
+              var self = this;
+              this.state$.interval_1ss.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+                let old_val = self.state$.load_lvl.getValue();
+                self.state$.load_lvl.next(old_val + 1.7);
+              });
+
               var self  = this;
               this.state$.stop$.subscribe(() => {
                 console.log('STOP$_COURIER');
@@ -96,14 +102,6 @@ if (!this.state$.courier_init){
   this.checkWay();
 }
 
-//Получаем api key & login
-public getPayData(){
-  var url   = 'pay_order';
-  var data  = {'action' : 'getData'}
-  
-  return this.auth.sendPost(url, data);
-}
-
 //следит за изменениями заказов
 public checkWay(){
   var self = this;
@@ -112,6 +110,7 @@ public checkWay(){
     console.log('this.state$.check_state', this.state$.check_state);
     this.state$.interval_1m.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
       console.log('interval 1m done');
+      self.state$.load_lvl.next(0);
       self.state$.state.next('init');
     });
     this.state$.check_state = true;

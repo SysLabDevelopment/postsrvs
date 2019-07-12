@@ -84,8 +84,8 @@ ngOnInit(){
       return resp ;
   }
   public getUuid(){
-    // return 'ac9069a5846948e2';
-     return this.device.uuid;
+    //return '4191a54e85f2d5f6';
+    return this.device.uuid;
   }
 
   public setUser(id){
@@ -114,6 +114,7 @@ ngOnInit(){
     console.log('AUTH_LOGOUT');
     this.state$.logout();
     this.router.navigate(['login']);
+    this.state$.g_state.next('unLogin');
     
   }
 

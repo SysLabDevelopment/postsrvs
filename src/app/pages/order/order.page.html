@@ -20,6 +20,10 @@
           <div class="ar-title o-t">Адрес:</div>
           <div class="ar-adress">{{address}}</div>
         </div>
+        <div class="o-row poruch-row podrazd">
+            <span class="vp-title o-t">Отдел</span>
+            <span class="pp office-body">{{podrazd}}</span>
+        </div>        
         <div class="sum-row o-row">
           <div class="sum-title o-t">Сумма с клиента:</div>
           <div class="sum-body">{{order_sum}}р.</div>
@@ -46,15 +50,27 @@
                 <div class="tr-to">{{timeTo}}</div>
             </div>
          </div>
+         <div class="o-row amount-row">
+            <span class="a-title o-t">Количество / Вес</span>
+             <p class="ap sum-body">{{amount}}шт. / {{mass}}кг.</p>
+          </div>
+         <div class="o-row vlog-row">
+           <span class="vp-title o-t">Комментарий к вложению</span>
+            <p class="vp message-body">{{vlog}}</p>
+         </div>
+         <div class="o-row poruch-row">
+              <span class="vp-title o-t">Комментарий к заказу</span>
+              <p class="pp message-body">{{poruch}}</p>
+         </div>
          <div class="state-row o-row">
-            <div class="state-title o-t"><img src="../../../assets/bender.png" class="robot-icon"> <span class="st-status-text">Робот дозвон:</span></div>
+            <div class="state-title o-t"><img src="../../../assets/bender.png" class="robot-icon"> <span class="st-status-text">Робот прозвон:</span></div>
             <div class="st_state" [ngClass]="{  status_done : client_status_id == 1,
                                                 status_wait : client_status_id == 2,
                                                 status_fail : client_status_id == 3,
                                                 status_none : client_status_id == 8 }">{{client_status}}</div>
             <div class="st_dt">{{client_status_dt}}</div>
          </div> 
-         <div class="sc-row o-row" >
+         <div class="sc-row o-row" *ngIf="!(hide_status || statusId != 5 || statusId != 6)">
           <div class="sc-statuses" >
               <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of statuses" (click) = "selectStatus(status.id)" >{{status.status}}</div>
           </div>
@@ -121,19 +137,35 @@
               <div class="sc-payment-block o-row" *ngIf="(selectedStatus == 5 || selectedStatus == 6) && selectedPayment == 1">
                 <div class="pb-email">
                   <div class="pb-email__title">Email клиента</div>
-                  <input type="email" class="pb-email__input" [(ngModel)] = "email_input">
+                  <input type="email" class="pb-email__input" [(ngModel)] = "email_input" (input) = "emailChange()">
+                  <span class="email-error" *ngIf="email_error">Заполните поле</span>
                 </div>
                 <div class="pb-phone">
-                  <div class="pb-phone__title">Телефон клиента</div>
-                    <input type="tel" class="pb-phone__input" [(ngModel)] = "phone_input">
+                    <button class="show-phone" (click) ="enterPhone()">Указать телефон</button>
+                  <div class="pb-phone__title" *ngIf="showPhone">Телефон клиента</div>
+                    <input *ngIf="showPhone" type="tel" class="pb-phone__input" [(ngModel)] = "phone_input">
                 </div>
               </div>
               <div class="sc-s-wrp">
                   <button class="sc-submit" *ngIf = "(selectedPayment != 1 && (selectedStatus == 6 || selectedStatus == 5)) || selectedStatus == 4" (click) ="submitChange()">Изменить статус</button>
                   <button class="sc-submit" *ngIf = "(selectedStatus == 5 || selectedStatus == 6) && selectedPayment == 1" (click) ="sendPay()">Отправить чек</button>
+                  
               </div>
           </div>
-        </div>       
+        </div>   
+        <div class="code-loader" *ngIf="hide_status && !barcode_flag" >
+            <div class="sh-icons">
+                <i class="fas fa-spinner fa-spin"></i>
+              </div>
+        </div> 
+        <div class="sc-s-wrp" *ngIf = "barcode_flag">
+          <qrcode class="qr" [qrdata]="barcode" [size]="256" [level]="'M'"></qrcode>
+          <button class="sc-submit show-check" *ngIf = "barcode_flag" (click) ="showCheck()">Показать чек</button>
+          
+      </div>
+      <div class="sc-s-wrp" >
+        <button class="sc-submit show-check to-list" (click) ="navBack()">К списку заказов</button>
+    </div>     
       </div>
     </div>
 </ion-content>

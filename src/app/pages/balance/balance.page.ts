@@ -17,6 +17,7 @@ export class BalancePage implements OnInit {
   public pageInit:boolean = false;
   public out_process:boolean = false;
   public out_counter = 0;
+  public loader = false;
 
   constructor(private courier:CourierService,
               private auth:AuthService,
@@ -24,6 +25,11 @@ export class BalancePage implements OnInit {
               private map:MapService,
               private state$:StateService
              ) {
+    if (this.info == null){
+     this.loader = true;
+    } else {
+      this.loader = false;
+    }
 
     var self = this;
 
@@ -57,6 +63,7 @@ export class BalancePage implements OnInit {
       console.log('balance_data', data);
       self.info =data;
       self.pageInit = true;
+      self.loader = false;
     });
   }
 

@@ -1,8 +1,8 @@
 <ion-app>
   <ion-router-outlet id="content1"></ion-router-outlet>
     <div id="bottom-menu" *ngIf = "nav != 0">
-      <div class="bm-item" (click)="navTo(1)" [ngClass]="{active:nav == 1}"><i class="fas fa-user"></i></div>
-      <div class="bm-item" (click)="navTo(2)" [ngClass]="{active:nav == 2}"><i class="fas fa-map-marked-alt"></i></div>
       <div class="bm-item" (click)="navTo(3)" [ngClass]="{active:nav == 3}"><i class="fas fa-shipping-fast"></i></div>
+      <div class="bm-item" (click)="navTo(2)" [ngClass]="{active:nav == 2}"><i class="fas fa-map-marked-alt"></i></div>
+      <div class="bm-item" (click)="navTo(1)" [ngClass]="{active:nav == 1}"><i class="fas fa-user"></i></div>
     </div>
 </ion-app>

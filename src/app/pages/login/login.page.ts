@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
       this.auth.checkAuth().subscribe((data:any) => {  
           console.log('check_auth_data', data);
             if (data.success == 'true'){
-              self.router.navigate(['balance']);
+              self.router.navigate(['courier']);
               self.auth.initLogin();
             } else {
               self.disLogin = false;
@@ -62,7 +62,7 @@ export class LoginPage implements OnInit {
         console.log('authResponse', data);
 
         if (data.success == "true"){
-          self.router.navigate(['balance']);
+          self.router.navigate(['courier']);
           self.auth.initLogin();
         } else {
           self.showError(1);

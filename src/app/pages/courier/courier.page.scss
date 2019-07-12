@@ -12,12 +12,13 @@
 .c-wrp{
     height: 100%;
     display: grid;
-    grid-auto-rows: 60px 50px auto 40px;
+    grid-template-rows: 60px 50px auto 3px 40px;
 }
 
 .c-body{
     color: #3c3c3c;
     height: 100%;
+    grid-template-rows: 90% 10%;
 
 }
 
@@ -112,10 +113,6 @@
     grid-template-columns: 100%;
 }
 
-.oc-left-row{
-
-}
-
 .c_number{
     text-align: center;
     font-weight: bold;
@@ -133,10 +130,6 @@
     align-items: center;
 }
 
-.c-status{
-
-}
-
 .status_done{
     color: #33b150;
 }
@@ -151,4 +144,41 @@
 
 .status_none{
     color:#71777d;
+}
+
+.ind-lable{
+    width: 100%;
+}
+
+.lvl{
+    background: #33b150;
+    height: 100%;
+}
+
+.olab-empty{
+    position: fixed;
+    top: 110px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    background: rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.2);
+}
+
+.amount-labl{
+    margin: 0 8px;
+    font-size: 18px;
+    color: #2b637e;
+    font-weight: bold;
+}
+
+.olab-amount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
 }

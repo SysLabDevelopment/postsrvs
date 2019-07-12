@@ -5,6 +5,8 @@ import { StateService } from '../../services/state.service';
 import { AuthService } from '../../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 import {
   trigger,
   state,
@@ -61,25 +63,38 @@ export class OrderPage implements OnInit {
   public client_status_dt = '';
   public client_status_id = '';
   public order_sum = null;
+  public vlog = null;
+  public poruch = null;
+  public mass = null;
+  public amount = null;
   public email_input = '';
   public phone_input = '';
-
+  public barcode_flag = false;
+  public barcode_url = null;
+  public barcode = null;
   public selectedReason:any = null;
   public selectedStatus:any = null;
-  
+  public hide_status = false;
+  public $codeStop:Subject<any> = new Subject();
+  public showPhone:boolean = false;
+  public podrazd = null;
+  public email_error = false;
+
   constructor(private router:Router,
               private route:ActivatedRoute,
               private courier:CourierService,
               private state$:StateService,
               private auth:AuthService,
               private plt:Platform,
-              private http:HttpClient) {
+              private http:HttpClient,
+              private iab:InAppBrowser) {
 
               this.orderId = this.route.snapshot.paramMap.get('id');
 
               this.getReasons();
               this.getOrderInfo();
               this.getBalnce();
+              this.ifPaid();
    }
 
   ngOnInit() {
@@ -132,6 +147,11 @@ export class OrderPage implements OnInit {
         this.client_status = this.order.client_status;
         this.client_status_dt = this.order.client_status_dt;
         this.client_status_id = this.order.client_status_id;
+        this.vlog = this.order.vlog;
+        this.poruch = this.order.poruch;
+        this.mass = this.order.mass,
+        this.amount = this.order.amount;
+        this.podrazd = this.order.Podrazd;
         this.setQuants();
         this.getSum();
     }
@@ -278,7 +298,7 @@ export class OrderPage implements OnInit {
               this.selectedPayment = '1';
               this.selectedReason = null;
               this.selectedStatus = null;
-              self.initOrder();
+              self.router.navigate(['courier']);
             }
           });
         }
@@ -341,11 +361,16 @@ if (order){
 }
 }
 
+
   public selectPayment(item){
     this.selectedPayment = item;
   }
 
   public sendPay(){
+    if (this.email_input == null || this.email_input == "" ){
+      this.email_error = true;
+      return false;
+    }
     // var data  = {'action' : 'test_pay'};
     // var url   = 'pay_order';
 
@@ -374,26 +399,29 @@ if (order){
         }
       }
     }
+    
 
     var purchase = {'products' : products};
     console.log('goods_description\n', purchase);
     var self = this;
 
-    this.courier.getPayData().subscribe((data:any) => {
+    this.getPayData().subscribe((data:any) => {
       console.log('api_data', data);
       if (data['success'] == 'true'){
         let api_key = data['api_key'];
         let login = data['login'];
+        let cashier = data['cashier_name'];
 
         let order_data = {
           'apikey'  : String(api_key),
           'login'   : String(login),
+          'cashier_name' : String(cashier),
           'purchase'  : purchase,
-          'test'    : 1,
           'callback_url' : callback_url,
           'cash_amount' : '#',
           'mode' : 'email',
-          'customer_email' : this.email_input, 
+          'customer_email' : this.email_input,
+          'customer_phone' : this.phone_input 
         }
 
         if (this.phone_input != ''){
@@ -409,14 +437,70 @@ if (order){
     // })
   }
 
+  //Получаем api key & login
+  public getPayData(){
+    var url   = 'pay_order';
+    var data  = {'action' : 'getData', 'orderId' : this.orderId}
+    
+    return this.auth.sendPost(url, data);
+  }
+
+  public barcodeCheck(){
+
+  }
+
   public send_api_data(api_data){
       var url = 'pay_order';
       var self = this;
-      var data = {'action' : 'sendPay', 'orderData' : api_data};
+      var data = {'action' : 'sendPay', 'orderData' : api_data, 'orderId' : this.order.id};
       this.auth.sendPost(url, data).subscribe((res:any) => {
         console.log('serv_response', res);
         self.submitChange();
-
+        self.checkPayment();
+        self.hide_status = true;
       })
+  }
+
+  public showCheck(){
+    const browser = this.iab.create(this.barcode_url);
+  }
+
+  public checkPayment(){
+    var self = this;
+    this.state$.interval_1ss.pipe(takeUntil(this.$codeStop)).subscribe(() => {
+      self.ifPaid();
+      console.log ('paid_iter');
+    })
+  }
+
+  public ifPaid(){
+    var url = 'pay_order';
+    var data = {'action' : 'checkPaid', 'orderId' : this.order.id};
+    var self = this;
+    
+    this.auth.sendPost(url, data).subscribe((data) => {
+      
+      if (data.success == 'true' && data.barcode != null){
+        self.barcode_flag = true;
+        self.barcode_url  = data.barcode_url;
+        self.barcode  = data.barcode; 
+        self.$codeStop.next();
+        self.hide_status = true;
+      }
+    })
+  }
+
+  public enterPhone(){
+    if (this.showPhone){
+      this.showPhone = false;
+    } else {
+      this.showPhone = true;
+    }
+  }
+
+  public emailChange(){
+    if (this.email_error){
+      this.email_error = false;
+    }
   }
 }

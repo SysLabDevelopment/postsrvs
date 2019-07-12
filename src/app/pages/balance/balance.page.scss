@@ -68,3 +68,22 @@
     border-radius: 3px;
     font-size: 19px;
 }
+
+.shirm{
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    right: 0px;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: RGBA(0,0,0,0.1);
+}
+
+.shirm i{
+    position: relative;
+    margin: auto;
+    font-size: 43px;
+    color: #2b637e;
+}
