@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin, interval, Observable, Subject, combineLatest } from 'rxjs';
 import { takeUntil, takeWhile, merge } from 'rxjs/operators';
 import { Geolocation, GeolocationOptions} from '@ionic-native/geolocation/ngx';
-import { StateService } from '../services/state.service';;
+import { StateService } from '../services/state.service';
 
 declare var ymaps:any;
 
@@ -196,13 +196,18 @@ ngOnDestroy(){
   }
 
   public initGeo(){
+    console.log('initStart');
     var self = this;
     this.geo.getCurrentPosition().then((pos) => {
 
       if (pos){
+        if (self.state$.position.getValue() == null){
+          self.state$.init_params_state.next('init_geo_done');
+        }
         var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
         self.state$.position.next(position);
       }
+      console.log('geo_position_init', self.state$.position.getValue());
     });
 
     //отслеживаем изменение позиции и перестраиваем маршрут
@@ -212,6 +217,9 @@ ngOnDestroy(){
         this.geo.getCurrentPosition().then((pos) => {
 
           if (pos){
+            if (self.state$.position.getValue() == null){
+              self.state$.init_params_state.next('init_geo_done');
+            }
             var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
             self.state$.position.next(position);
             console.log('geo_itter', self.state$.position.getValue());
@@ -220,6 +228,7 @@ ngOnDestroy(){
       })
       this.state$.geo_check.next('init_done');
     }
+    
   }
 
   public buildWay(){

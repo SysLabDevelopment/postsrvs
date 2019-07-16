@@ -20,7 +20,11 @@
           <div class="ar-title o-t">Адрес:</div>
           <div class="ar-adress">{{address}}</div>
         </div>
-        <div class="o-row poruch-row podrazd">
+        <div class="o-row poruch-row podrazd" *ngIf="order.company">
+          <span class="vp-title o-t">Компания</span>
+          <span class="pp office-body">{{order.company}}</span>
+        </div>          
+        <div class="o-row poruch-row podrazd" *ngIf="podrazd">
             <span class="vp-title o-t">Отдел</span>
             <span class="pp office-body">{{podrazd}}</span>
         </div>        
@@ -36,7 +40,7 @@
             </div>
             <div class="cr-row ">
                 <div class="cr-phone-title">Телефон</div>
-                <div class="cr-phone">{{phone}}</div>
+                <div class="cr-phone" (click)="phoneClick()">{{phone}}<i class="fas fa-phone"></i></div>
             </div>
           </div>
          <div class="time-row o-row">
@@ -70,7 +74,7 @@
                                                 status_none : client_status_id == 8 }">{{client_status}}</div>
             <div class="st_dt">{{client_status_dt}}</div>
          </div> 
-         <div class="sc-row o-row" *ngIf="!(hide_status || statusId == 5 || statusId == 6)">
+         <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
           <div class="sc-statuses" >
               <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of statuses" (click) = "selectStatus(status.id)" >{{status.status}}</div>
           </div>
@@ -114,7 +118,7 @@
                       </div>
                   </div>                      
               </div>
-              <div class="goods-row o-row" *ngIf="selectedStatus == 5  && selectedPayment == 1">
+              <div class="goods-row o-row" *ngIf="selectedStatus == 5 ">
                   <div class="gr-title o-t">Товары в заказе</div>
       
                   <div class="gr-goods-list">
@@ -134,21 +138,21 @@
                     </div>
                   </div>
               </div> 
-              <div class="sc-payment-block o-row" *ngIf="(selectedStatus == 5 || selectedStatus == 6) && selectedPayment == 1">
-                <div class="pb-email">
+              <div class="sc-payment-block o-row" *ngIf="pay_access && (selectedStatus == 5 || selectedStatus == 6)  ">
+                <div class="pb-email" *ngIf="show_email">
                   <div class="pb-email__title">Email клиента</div>
                   <input type="email" class="pb-email__input" [(ngModel)] = "email_input" (input) = "emailChange()">
                   <span class="email-error" *ngIf="email_error">Заполните поле</span>
                 </div>
                 <div class="pb-phone">
-                    <button class="show-phone" (click) ="enterPhone()">Указать телефон</button>
                   <div class="pb-phone__title" *ngIf="showPhone">Телефон клиента</div>
                     <input *ngIf="showPhone" type="tel" class="pb-phone__input" [(ngModel)] = "phone_input">
                 </div>
+                <button class="show-phone" (click) ="enterPhone()">Прочее</button>
               </div>
               <div class="sc-s-wrp">
-                  <button class="sc-submit" *ngIf = "(selectedPayment != 1 && (selectedStatus == 6 || selectedStatus == 5)) || selectedStatus == 4" (click) ="submitChange()">Изменить статус</button>
-                  <button class="sc-submit" *ngIf = "(selectedStatus == 5 || selectedStatus == 6) && selectedPayment == 1" (click) ="sendPay()">Отправить чек</button>
+                  <button class="sc-submit" *ngIf = "selectedStatus == 4 || !pay_access" (click) ="submitChange()">Изменить статус</button>
+                  <button class="sc-submit" *ngIf = "(selectedStatus == 5 || selectedStatus == 6) && pay_access" (click) ="sendPay()">Отправить чек</button>
                   
               </div>
           </div>

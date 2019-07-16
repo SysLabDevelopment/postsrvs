@@ -30,7 +30,7 @@ export class BalancePage implements OnInit {
     } else {
       this.loader = true;
     }
-
+    this.state$.map_state.next('init');
     var self = this;
 
     if (!this.state$.balance_check){

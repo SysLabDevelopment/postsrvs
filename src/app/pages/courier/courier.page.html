@@ -1,5 +1,5 @@
 <ion-content>
-<div class="c-wrp">
+<div class="c-wrp" *ngIf="ordersInit">
     <div class="c-title">Мои заказы</div>
     <div class="o-tab-wrp">
             <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 1}" (click)="tabSelect(1)">В работе</div>
@@ -19,19 +19,24 @@
                         <div class="oc-left-row c_address">{{order.client_address}}</div>
                     </div>
                     <div class="ol-col oc-right">
-                        <div class="c-status" [ngClass]="{  status_done : order.client_status_id == 1,
+                        <div *ngIf="order.status_id == 1" class="c-status" [ngClass]="{  status_done : order.client_status_id == 1,
                                                             status_wait : order.client_status_id == 2,
                                                             status_fail : order.client_status_id == 3,
                                                             status_none : order.client_status_id == 8 }">{{order.client_status}}</div>
+                        <div class="done-time" *ngIf="order.status_id != 1">
+                            <div class="done-title">Время</div> 
+                            <div class="done-body">{{order.date}}</div> 
+                        </div>
                     </div>
                 </div>
             </ng-container>
         </cdk-virtual-scroll-viewport>
         </div>
         <div class="orders-lable">
-            <div class="olab-amount" *ngIf="selectedTab == 1 && g_process != 0">Всего заказов: <span class="amount-labl">{{g_process}}</span></div>
-            <div class="olab-amount" *ngIf="selectedTab == 2 && g_done != 0">Всего заказов: <div class="amount-labl">{{g_done}}</div></div>
-            <div class="olab-amount" *ngIf="selectedTab == 3 && g_fail != 0">Всего заказов: <div class="amount-labl">{{g_fail}}</div></div>
+            <div class="all-amount olab-amount">Всего заказов: <span class="amount-labl">{{orders.length}}</span></div>
+            <div class="olab-amount" *ngIf="selectedTab == 1 && g_process != 0">Заказов на вкладке: <span class="amount-labl">{{g_process}}</span></div>
+            <div class="olab-amount" *ngIf="selectedTab == 2 && g_done != 0">Заказов на вкладке: <div class="amount-labl">{{g_done}}</div></div>
+            <div class="olab-amount" *ngIf="selectedTab == 3 && g_fail != 0">Заказов на вкладке: <div class="amount-labl">{{g_fail}}</div></div>
             <div class="olab-empty" *ngIf=" (selectedTab == 1 && g_process == 0) ||
                                             (selectedTab == 2 && g_done == 0) ||
                                             (selectedTab == 3 && g_fail == 0)"><span class="center-title">Нет заказов</span></div>

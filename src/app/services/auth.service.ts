@@ -6,7 +6,7 @@ import { Device } from '@ionic-native/device/ngx';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { StateService } from './state.service';
-
+import { MapService} from './map.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,7 @@ export class AuthService {
               private plt:Platform,
               private router:Router,
               private state$:StateService,
+              private map:MapService
               ) { 
 
   this.barcodeScannerOptions = {
@@ -107,7 +108,7 @@ ngOnInit(){
   
   public initLogin(){
     this.state$.g_state.next('login');
-    
+    this.state$.map_state.next('init');
   }
 
   public logout(){

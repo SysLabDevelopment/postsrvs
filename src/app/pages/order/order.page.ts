@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 import {
   trigger,
@@ -79,6 +80,10 @@ export class OrderPage implements OnInit {
   public showPhone:boolean = false;
   public podrazd = null;
   public email_error = false;
+  public pay_access:boolean = false;
+  public pay_access_data = null;
+  public show_info:boolean = false;
+  public show_email:boolean = false;
 
   constructor(private router:Router,
               private route:ActivatedRoute,
@@ -87,14 +92,12 @@ export class OrderPage implements OnInit {
               private auth:AuthService,
               private plt:Platform,
               private http:HttpClient,
-              private iab:InAppBrowser) {
+              private iab:InAppBrowser,
+              private CL:CallNumber) {
 
               this.orderId = this.route.snapshot.paramMap.get('id');
 
-              this.getReasons();
               this.getOrderInfo();
-              this.getBalnce();
-              this.ifPaid();
    }
 
   ngOnInit() {
@@ -118,7 +121,6 @@ export class OrderPage implements OnInit {
     // })
 
     this.initOrder();
-    this.getStatuses();
   }
 
   public sendPost(url, data){
@@ -130,6 +132,19 @@ export class OrderPage implements OnInit {
       return  this.http.post(url, data);
     
   }
+
+  public phoneClick(){
+    const regex = /(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/g;
+    const str = String(this.phone);
+    let m;
+    let result = regex.exec(str);
+    console.log('PHONE_FIND', result);
+
+    if (result != null){
+      this.CL.callNumber(String(result[0]), true).then(() => {});
+    }
+  }
+
 
   public initOrder(){
     if (this.state$.state.getValue() == 'orders_init' ){
@@ -153,7 +168,13 @@ export class OrderPage implements OnInit {
         this.amount = this.order.amount;
         this.podrazd = this.order.Podrazd;
         this.setQuants();
+        this.getStatuses();
         this.getSum();
+        this.ifPaid();
+        this.getReasons();
+        this.getBalnce();
+        this.getPayData();
+        this.initClientInfo();
     }
   }
 
@@ -405,23 +426,27 @@ if (order){
     console.log('goods_description\n', purchase);
     var self = this;
 
-    this.getPayData().subscribe((data:any) => {
-      console.log('api_data', data);
-      if (data['success'] == 'true'){
-        let api_key = data['api_key'];
-        let login = data['login'];
-        let cashier = data['cashier_name'];
+    if (this.pay_access) {
+        let api_key = this.pay_access_data['api_key'];
+        let login = this.pay_access_data['login'];
+        let cashier = this.pay_access_data['cashier_name'];
+        let phone;
+
 
         let order_data = {
-          'apikey'  : String(api_key),
-          'login'   : String(login),
-          'cashier_name' : String(cashier),
+          'apikey'  : String(this.pay_access_data.api_key),
+          'login'   : '7' + String(this.pay_access_data.phone),
+          'cashier_name' : String(this.pay_access_data.name) + String(this.pay_access_data.phone),
           'purchase'  : purchase,
           'callback_url' : callback_url,
-          'cash_amount' : '#',
           'mode' : 'email',
           'customer_email' : this.email_input,
           'customer_phone' : this.phone_input 
+        }
+        if (self.selectedPayment == '2'){
+          order_data['card_amount'] = '#'
+        } else {
+          order_data['cash_amount'] = '#'
         }
 
         if (this.phone_input != ''){
@@ -429,8 +454,7 @@ if (order){
         }
 
         self.send_api_data(order_data);
-      }
-    })
+    }
   
     // this.courier.sendPay().subscribe((data) => {
     //   console.log('send_pay_data', data);
@@ -441,8 +465,17 @@ if (order){
   public getPayData(){
     var url   = 'pay_order';
     var data  = {'action' : 'getData', 'orderId' : this.orderId}
-    
-    return this.auth.sendPost(url, data);
+    var self = this;
+
+    this.auth.sendPost(url, data).subscribe((res:any) => {
+      console.log('GET_PAY_DATA', res);
+      if (res.success == 'true'){
+        self.pay_access = true;
+        self.pay_access_data = res;
+      } else {
+        self.pay_access = false;
+      }
+    });
   }
 
   public barcodeCheck(){
@@ -493,14 +526,30 @@ if (order){
   public enterPhone(){
     if (this.showPhone){
       this.showPhone = false;
+      this.show_email = false;
     } else {
       this.showPhone = true;
+      this.show_email = true;
     }
+
   }
 
   public emailChange(){
     if (this.email_error){
       this.email_error = false;
     }
+  }
+
+  public initClientInfo(){
+    let mail_exp  = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
+    let infoStr   = this.phone;
+    let mail      = mail_exp.exec(infoStr);
+    
+    if (mail != null ){
+      this.email_input = mail[0];
+    } else {
+      this.show_email = true;
+    }
+    
   }
 }

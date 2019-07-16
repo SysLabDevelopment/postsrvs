@@ -11,26 +11,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { MapService } from './services/map.service';
 import { Device } from '@ionic-native/device/ngx';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { QRCodeModule } from 'angularx-qrcode';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import {NgxMaskModule} from 'ngx-mask'
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,BrowserAnimationsModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, ScrollingModule],
+  imports: [BrowserModule,BrowserAnimationsModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule,NgxMaskModule.forRoot(), ScrollingModule],
   providers: [
     StatusBar,
     BarcodeScanner,
     SplashScreen,
     Geolocation,
-    MapService,
     Device,
     WebIntent,
     QRCodeModule,
     InAppBrowser,
+    CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

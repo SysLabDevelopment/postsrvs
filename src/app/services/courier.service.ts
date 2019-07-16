@@ -54,7 +54,20 @@ ngOnInit(){
 //Собираем необходимую инфу по заказам 
 public initOrders(){
   var self = this;
-
+  console.log('initOrders_call');
+  //проверяем наличие координат перед запуском
+  if (this.state$.position.getValue() == null){
+    console.log('position is null');
+    this.state$.init_params_state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
+      console.log('init_params_state', state);  
+      if (state == 'init_geo_done' && self.state$.position.getValue() != null ){
+        console.log('initOrdersReCall');
+          self.initOrders();
+        }
+    })
+    return false;
+  }
+  console.log('initOrders_resume');
   //Запускаем инициализацию
   this.getReasons().subscribe((data:any) => {
     if (data.success = 'true'){
@@ -121,7 +134,9 @@ public checkWay(){
 public getWay(){
   var url = 'orders';
   var data = {
-    'action' : 'getWay',
+    'action'  : 'getWay',
+    'lt'      : this.state$.position.getValue().lt,
+    'lg'      : this.state$.position.getValue().lg
   }
 
   return this.auth.sendPost( url, data);

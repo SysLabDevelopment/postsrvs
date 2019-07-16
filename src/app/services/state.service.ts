@@ -9,7 +9,7 @@ export class StateService {
 // переменные состояний 
 
 //GLOBAL
-
+  public login_state:BehaviorSubject<any> = new BehaviorSubject('not_login'); 
   public stop$:Subject<any> = new Subject(); // останаливает все подписки;
 
 //INTERVALS
@@ -80,7 +80,7 @@ export class StateService {
   public c_update_content_f:boolean = false;
   
   constructor() { 
-
+    console.log("INIT_STATE_SERVICE");
   }
 
   //BALANCE

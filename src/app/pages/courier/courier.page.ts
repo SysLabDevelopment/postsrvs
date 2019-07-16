@@ -38,7 +38,6 @@ export class CourierPage implements OnInit {
 
     self.state$.interval_3.pipe(takeUntil(self.local_stop$)).subscribe(() => {
       self.initContent();
-      self.count_orders();
     })
 
     this.state$.stop$.subscribe(() => {
@@ -84,6 +83,7 @@ export class CourierPage implements OnInit {
       })
       this.state$.orders_page_check = true;
     }
+    self.count_orders();
   }
 
 
@@ -127,7 +127,7 @@ export class CourierPage implements OnInit {
 
     for (let i = 0; i < this.orders.length; i++ ){
       console.log('ORDERS_STATUSES_CAE',this.orders[i].status_id );
-      switch ( this.orders[i].status_id){
+      switch ( String(this.orders[i].status_id)){
         case '4' :
           g_fail++;
           break;
@@ -167,7 +167,9 @@ export class CourierPage implements OnInit {
 
   public sendStartRoute(cid, start, stop){
     var url   = "geo/route_start.php";
-    var data  = {'cid' : cid };
+    var data  = {'cid' : cid,
+                 'lt'  : this.state$.position.getValue().lt,
+                 'lg'  : this.state$.position.getValue().lg };
     if (start){
       data['start'] = '1';
     }
