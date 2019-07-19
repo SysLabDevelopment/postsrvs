@@ -13,7 +13,7 @@
       <div class="order-list">
         <cdk-virtual-scroll-viewport  style="height: 100%" itemSize="auto" >
             <ng-container *cdkVirtualFor="let order of orders; trackBy:customTrackBy" >
-                <div class="ol-item" (click) = "selectOrder(order.id)" *ngIf="  (order.status_id == 1 && selectedTab == 1) ||
+                <div class="ol-item" [ngClass]= "{'shopTake' : order.SMACode != NULL}" (click) = "selectOrder(order.id)" *ngIf="  (order.status_id == 1 && selectedTab == 1) ||
                                                                                 (order.status_id == 5 && selectedTab == 2) ||
                                                                                 (order.status_id == 6 && selectedTab == 2) ||
                                                                                 (order.status_id == 4 && selectedTab == 3) ">

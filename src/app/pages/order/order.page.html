@@ -3,7 +3,10 @@
     <div class="o-balance">
         {{balance}}
     </div>
-      <div class="o-title"><span class="order-n">{{clientId}}</span><span class="menu-icon" (click) = "navBack()"><i class="fas fa-angle-left"></i></span></div>
+      <div class="o-title">
+        <span class="order-n"><span class="shopTake" *ngIf="order.SMACode != NULL">Забор </span> {{clientId}}</span>
+        <span class="menu-icon" (click) = "navBack()"><i class="fas fa-angle-left"></i></span>
+      </div>
       <div class="o-body" *ngIf="pageInit">
         <div class="status-row o-row" [ngClass]="{ st_process : status_id == 1,
           st_done : status_id == 5 || status_id == 6 ,
@@ -76,7 +79,7 @@
          </div> 
          <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
           <div class="sc-statuses" >
-              <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of (statuses | partFilter:status.partial)" (click) = "selectStatus(status.id)" >{{status.status}}</div>
+              <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of (statuses | partFilter:order.partial)" (click) = "selectStatus(status.id)" >{{status.status}}</div>
           </div>
           <div class="sc-reasons">
               <div class="sc-resons-block" *ngIf="selectedStatus == 4 ">
