@@ -32,7 +32,6 @@ export class MapPage implements OnInit {
       
       // this.map_s.buildWay();
       this.map_s.buildMap();
-
       this.state$.map_state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
         if (state == 'map_init'){
           console.log('map_page_map_init');

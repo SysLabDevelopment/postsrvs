@@ -16,8 +16,9 @@ import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { QRCodeModule } from 'angularx-qrcode';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-import {NgxMaskModule} from 'ngx-mask'
-
+import {NgxMaskModule} from 'ngx-mask';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,8 @@ import {NgxMaskModule} from 'ngx-mask'
     WebIntent,
     QRCodeModule,
     InAppBrowser,
+    AndroidPermissions,
+    Diagnostic,
     CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

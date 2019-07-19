@@ -1,4 +1,5 @@
 <ion-content>
+  <div class="notification" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</div>
   <div class="lg-wrp" >
     <div class="lg-btn">
       <button class="lg-login" [@openClose1]="auth_step ? 'closed' : 'open'" (click)="scanAuth()">Войти по QR-коду</button>
@@ -33,14 +34,17 @@
                                            class="phone-inp" 
                                            [showMaskTyped] = "true"
                                            [(ngModel)] = "code"
-                                           (input)= "changeCode()">
+                                           (input)= "changePhone()">
                   <button class="enter-phone" (click) ="enterCode()">Отправить</button>
+                  <button class="enter-phone" 
+                          [ngClass]="{'btn-resend' : resend_dis}" 
+                          (click) ="reEnterPhone()">Отправить повторно {{dis_timer}}</button>
                 </div>
                 <div class="sh-icons" *ngIf="loader">
                   <i class="fas fa-spinner fa-spin"></i>
                 </div>
             </div>            
-        </div>                                   
+        </div>                                 
       </button>
     </div>
   </div>

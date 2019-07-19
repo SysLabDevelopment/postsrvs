@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { StateService } from '../../services/state.service';
 import { Subject } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-courier',
@@ -16,7 +17,7 @@ export class CourierPage implements OnInit {
   public statuses:any = null;
   public selectedTab = 1;
   public ordersInit:boolean = false;
-
+  public loader:boolean = false;
   public local_stop$:Subject<any> = new Subject();
   public localcheck:boolean = false;
   public g_done = 0;
@@ -24,32 +25,31 @@ export class CourierPage implements OnInit {
   public g_fail = 0;
   public lvl_ind = {width : '0%'};
   public btn_go:boolean = false;
+  public notification = null;
 
   constructor(private courier:CourierService,
               private router:Router,
               private state$:StateService,
-              private auth:AuthService
+              private auth:AuthService,
+              private bs:BarcodeScanner
               ) 
 {
-    this.initContent();
-    var self = this;
+  var self = this;
+  
+  this.initContent();
+  this.startRoute(false);
+  this.state$.stop$.subscribe(() => {
+    self.local_stop$.next();
+  });
+  this.lvl_ind.width = this.state$.load_lvl.getValue()+'%'; 
+  this.state$.load_lvl.pipe(takeUntil(this.local_stop$)).subscribe((lvl) => {
+    console.log('lvl_ind', lvl);
+    self.lvl_ind.width = lvl+'%';
+  })
+  this.state$.updateWayInfo.pipe(takeUntil(this.local_stop$)).subscribe(() => {
+    self.initContent();
+  })
 
-    this.startRoute(false);
-
-    self.state$.interval_3.pipe(takeUntil(self.local_stop$)).subscribe(() => {
-      self.initContent();
-    })
-
-    this.state$.stop$.subscribe(() => {
-      self.local_stop$.next();
-    });
-
-    this.lvl_ind.width = this.state$.load_lvl.getValue()+'%'; 
-
-    this.state$.load_lvl.pipe(takeUntil(this.local_stop$)).subscribe((lvl) => {
-      console.log('lvl_ind', lvl);
-      self.lvl_ind.width = lvl+'%';
-    })
   }
 
   ngOnInit() {
@@ -62,27 +62,19 @@ export class CourierPage implements OnInit {
   }
 
   public initContent(){
+  
     var self = this;
-
-    if (this.state$.state.getValue() == 'orders_init'){
-      this.orders = this.state$.orders.getValue();
-      this.statuses = this.state$.statuses.getValue();
-      this.ordersInit = true;
-      self.count_orders();
+    this.orders = this.state$.orders_data;
+    this.statuses = this.state$.statuses_data;
+    if (this.orders == null || this.statuses == null){
+        this.loader = true;
+        setTimeout(function(){
+          self.initContent();
+        }, 500);
+        return false;
     } 
-
-    if (!this.state$.orders_page_check){
-      this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
-        if (state == "orders_init"){
-          self.orders = self.state$.orders.getValue();
-          self.statuses = self.state$.statuses.getValue();
-          self.ordersInit = true;
-          self.count_orders();
-          console.log('cp_initContent.orders_subscribe', self.orders);
-        }
-      })
-      this.state$.orders_page_check = true;
-    }
+    this.loader = false;
+    this.ordersInit = true;
     self.count_orders();
   }
 
@@ -188,6 +180,21 @@ export class CourierPage implements OnInit {
         }
       }
 
+    });
+  }
+
+  public findOrder(){
+    var self = this;
+    this.bs.scan().then((data) => {
+      console.log('findOrder_scanData', data);
+      self.courier.findOrder(data.text).subscribe((res) => {
+        console.log('find_order_response', res);
+        if (res.success == 'true'){
+          self.selectOrder(res.order_id);
+        } else {
+          self.auth.showError(2);
+        }
+      })
     });
   }
 

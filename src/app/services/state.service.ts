@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, interval, BehaviorSubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -79,13 +80,63 @@ export class StateService {
 
   public c_update_content_f:boolean = false;
   
-  constructor() { 
-    console.log("INIT_STATE_SERVICE");
-  }
-
   //BALANCE
   public balance_check:boolean = false;
+  // BROADCAST
+  //обновляем все данные с сервера
+  public updateWayInfo:Subject<any> = new Subject();
+  // DATA
+  public orders_data = null;
+  public reasons_data = null;
+  public statuses_data = null;
+  //NOTIFICATIONS
+  public notifications = [];
+  public notificationStr = null;
+
+  constructor() { 
+    console.log("INIT_STATE_SERVICE");
+    var self = this;
+    /* Подписываемся на все сабжекты поставляющие данные и запоминаем в переменных
+        для отрисовки на страницах (дабы убрать подписки со страниц)
+    */
+
+    this.orders.pipe(takeUntil(this.stop$)).subscribe((od) => {
+      if (od != null){
+        self.orders_data = od;
+      }
+    });
+    this.statuses.pipe(takeUntil(this.stop$)).subscribe((st) => {
+      if (st != null){
+        self.statuses_data = st;
+      }
+    }); 
+  }
   
+  public setNotification(tag:string, mes:string){
+    console.log('set_notification', tag, mes);
+    this.notifications[tag] = mes;
+    this.setNotificationStr();
+  }
+
+  public unsetNotification(tag:string){
+    console.log('unset_notification', tag);
+    delete(this.notifications[tag]);
+    this.setNotificationStr();
+  }
+
+  public getNotification(tag:string):string{
+    return this.notifications[tag];
+  }
+
+  private setNotificationStr(){
+    let n_s = "";
+    for (let tag in this.notifications){
+      n_s += this.notifications[tag]; 
+    }
+    this.notificationStr = n_s;
+    console.log('set_notificationStr', this.notificationStr);
+  }
+
   //при выходе возвращаем приложение в иходное состояние
   public logout(){
     this.stop$.next();

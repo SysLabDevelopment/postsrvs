@@ -1,5 +1,8 @@
 <ion-content>
-      <div class="o-title" (click)='p_btn()'>Инфо</div>
+        <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
+      <div class="o-title" (click)='p_btn()'>  
+            <span class="ct">Мои заказы</span>
+    </div>
       <div class="o-body" *ngIf="pageInit">
         <cdk-virtual-scroll-viewport  style="height: 90%" itemSize="auto" >
                 <div class="b-row">

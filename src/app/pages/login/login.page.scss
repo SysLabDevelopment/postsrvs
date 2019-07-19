@@ -120,3 +120,22 @@
     font-size: 35px;
     color: #2b637e;
 }
+
+.btn-resend{
+    color: #8d999e;
+}
+
+.notification{
+    position: fixed;
+    top: 0;
+    left: 0px;
+    right: 0px;
+    background: rgba(192, 26, 26, 0.472);
+    min-height: 30px;
+    color: #d21212;
+    font-size: 15px;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

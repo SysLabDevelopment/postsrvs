@@ -1,12 +1,15 @@
 <ion-content>
-<div class="c-wrp" *ngIf="ordersInit">
-    <div class="c-title">Мои заказы</div>
-    <div class="o-tab-wrp">
+        <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
+<div class="c-wrp" >
+    <div class="c-title">
+        <span class="ct">Мои заказы</span>
+    </div>
+    <div class="o-tab-wrp" *ngIf="ordersInit">
             <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 1}" (click)="tabSelect(1)">В работе</div>
             <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 2}"(click)="tabSelect(2)">Доставлено</div>
             <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 3}"(click)="tabSelect(3)">Не доставлено</div>
     </div>
-    <div class="c-body">
+    <div class="c-body" *ngIf="ordersInit">
       <div class="order-list">
         <cdk-virtual-scroll-viewport  style="height: 100%" itemSize="auto" >
             <ng-container *cdkVirtualFor="let order of orders; trackBy:customTrackBy" >
@@ -42,11 +45,16 @@
                                             (selectedTab == 3 && g_fail == 0)"><span class="center-title">Нет заказов</span></div>
         </div>  
     </div>
-    <div class="start-route">
+    <div class="start-route" *ngIf="ordersInit">
         <button class="satrt-r-btn" *ngIf = "!btn_go" (click) ="startRoute()">Начать маршрут</button>  
         <button class="satrt-r-btn sr-stop" *ngIf = "btn_go"  (click) ="stopRoute()">Остановить маршрут</button>  
+        <button class="satrt-r-btn find-o-btn" (click)="findOrder()" >Найти заказ</button>
     </div>
-    <div class="ind-lable"><div class="lvl" [ngStyle]="lvl_ind"></div></div>
+    <div class="ind-lable" *ngIf="ordersInit"><div class="lvl" [ngStyle]="lvl_ind"></div></div>
     <div class="c-bottom"></div>
+</div>
+
+<div class="shirm" *ngIf="loader">
+    <i class="fas fa-spinner fa-spin"></i>
 </div>
 </ion-content>

@@ -1,6 +1,9 @@
 <ion-content>
+  <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
   <div class="c-wrp">
-    <div class="c-title">Маршрут<span class="subtitle">Показаны первые 10 заказов</span></div>
+    <div class="c-title">Маршрут
+      <span class="subtitle" >Показаны первые 10 заказов</span>
+    </div>  
     <div class="c-body">
       <div id="map" style="height:100%;width:100%"></div>
     </div>

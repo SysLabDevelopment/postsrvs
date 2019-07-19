@@ -97,30 +97,10 @@ export class OrderPage implements OnInit {
 
               this.orderId = this.route.snapshot.paramMap.get('id');
 
-              this.getOrderInfo();
+              this.initOrder();
    }
 
   ngOnInit() {
-  }
-
-  public getOrderInfo(){
-    var self = this;
-
-    // this.courier.getOrderInfo(this.orderId).subscribe((data:any) => {
-    //   console.log('orderOnfoDATA', data);
-    //   if (data.success = "true"){
-    //     self.order = data.order;
-    //     self.goods = data.order.goods;
-    //     self.address = data.order.client_address
-    //     self.name = data.order.client_name
-    //     self.timeFrom = data.order.del_time_from;
-    //     self.timeTo = data.order.del_time_to;
-    //     self.phone = data.order.client_phone;
-    //     self.getStatuses();
-    //   }
-    // })
-
-    this.initOrder();
   }
 
   public sendPost(url, data){
@@ -147,8 +127,7 @@ export class OrderPage implements OnInit {
 
 
   public initOrder(){
-    if (this.state$.state.getValue() == 'orders_init' ){
-        this.order = this.parseOrder(this.state$.orders.getValue());
+        this.order = this.parseOrder(this.state$.orders_data);
         this.order = this.order;
         this.goods = this.order.goods;
         this.address = this.order.client_address
@@ -167,15 +146,14 @@ export class OrderPage implements OnInit {
         this.mass = this.order.mass,
         this.amount = this.order.amount;
         this.podrazd = this.order.Podrazd;
+        this.statuses = this.state$.statuses_data;
+        this.reasons = this.state$.reasons; 
         this.setQuants();
-        this.getStatuses();
         this.getSum();
         this.ifPaid();
-        this.getReasons();
         this.getBalnce();
         this.getPayData();
         this.initClientInfo();
-    }
   }
 
   public getClientState(){
@@ -248,20 +226,6 @@ export class OrderPage implements OnInit {
     this.router.navigate(['/courier']);
   }
 
-  public getStatuses(){
-    var self = this;
-    if (this.state$.s_state.getValue() == 'status_init'){
-      self.statuses = self.state$.statuses.getValue();
-    } else {
-
-      this.state$.s_state.pipe(takeUntil(this.state$.$stop)).subscribe((state) => {
-        if (state == "status_init"){
-          self.getStatuses();
-        }
-      })
-    }
-  }
-
   public getStatus():string{
     return this.courier.getStatus(this.order);
   }
@@ -300,10 +264,6 @@ export class OrderPage implements OnInit {
     this.selectedReason = id;
   }
 
-  public getReasons(){
-   this.reasons = this.state$.reasons 
-  }
-
   public submitChange(){
     console.log('submit_call');
     var self = this;
@@ -316,10 +276,11 @@ export class OrderPage implements OnInit {
             if (data.success == 'true'){
               self.changeWindow = false;
               self.state$.state.next('init');
-              this.selectedPayment = '1';
-              this.selectedReason = null;
-              this.selectedStatus = null;
+              self.selectedPayment = '1';
+              self.selectedReason = null;
+              self.selectedStatus = null;
               self.router.navigate(['courier']);
+              self.state$.updateWayInfo.next('0');
             }
           });
         }
@@ -331,10 +292,14 @@ export class OrderPage implements OnInit {
           if (data.success == 'true'){
             self.changeWindow = false;
             self.state$.state.next('init');
-            this.selectedPayment = '1';
-            this.selectedReason = null;
-            this.selectedStatus = null;
+            self.selectedPayment = '1';
+            self.selectedReason = null;
+            self.selectedStatus = null;
+            if (!self.pay_access){
+              self.router.navigate(['courier']);
+            }
             self.initOrder();
+            self.state$.updateWayInfo.next('0');
           }
         });
           break;
@@ -345,10 +310,14 @@ export class OrderPage implements OnInit {
           if (data.success == 'true'){
             self.changeWindow = false;
             self.state$.state.next('init');
-            this.selectedPayment = '1';
-            this.selectedReason = null;
-            this.selectedStatus = null;
+            self.selectedPayment = '1';
+            self.selectedReason = null;
+            self.selectedStatus = null;
+            if (!self.pay_access){
+              self.router.navigate(['courier']);
+            }            
             self.initOrder();
+            self.state$.updateWayInfo.next('0');
           }
         });
           break;      
@@ -392,12 +361,6 @@ if (order){
       this.email_error = true;
       return false;
     }
-    // var data  = {'action' : 'test_pay'};
-    // var url   = 'pay_order';
-
-    // this.sendPost(url, data).subscribe((data) => {
-    //   console.log('send_pay_data', data);
-    // });
 
     let order  = this.order;
     let goods  = this.order.goods;
@@ -455,10 +418,6 @@ if (order){
 
         self.send_api_data(order_data);
     }
-  
-    // this.courier.sendPay().subscribe((data) => {
-    //   console.log('send_pay_data', data);
-    // })
   }
 
   //Получаем api key & login

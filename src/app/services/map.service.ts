@@ -3,6 +3,8 @@ import { BehaviorSubject, forkJoin, interval, Observable, Subject, combineLatest
 import { takeUntil, takeWhile, merge } from 'rxjs/operators';
 import { Geolocation, GeolocationOptions} from '@ionic-native/geolocation/ngx';
 import { StateService } from '../services/state.service';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
 declare var ymaps:any;
 
@@ -14,9 +16,10 @@ export class MapService {
 
   private local_stop$:Subject<any> = new Subject();
 
-  constructor(private geo: Geolocation, private state$:StateService) { 
+  constructor(private geo: Geolocation, private state$:StateService, private AP:AndroidPermissions, private dg:Diagnostic) { 
     
     var self = this;
+    this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     this.state$.stop$.subscribe(() => {
       console.log('STOP$_MAP');  
       self.logout();
@@ -116,7 +119,7 @@ ngOnDestroy(){
     //   case 'init_done':
     //     this.changeWay();
     //     break; 
-    // }
+    // }diagnostic
   }
 
   public checkChanges(){
@@ -198,34 +201,50 @@ ngOnDestroy(){
   public initGeo(){
     console.log('initStart');
     var self = this;
-    this.geo.getCurrentPosition().then((pos) => {
-
-      if (pos){
-        if (self.state$.position.getValue() == null){
-          self.state$.init_params_state.next('init_geo_done');
-        }
-        var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
-        self.state$.position.next(position);
-      }
-      console.log('geo_position_init', self.state$.position.getValue());
-    });
+    // this.AP.checkPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION).then((res) => {
+    //   if (res.hasPermission){
+    //     console.log('GEO_PERMISSION_OK');
+    //     self.geo.getCurrentPosition().then((pos) => {
+  
+    //       if (pos){
+    //         var pre = self.state$.position.getValue(); 
+    //         var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
+    //         self.state$.position.next(position);
+    //         if (pre == null ){
+    //           self.state$.init_params_state.next('init_geo_done');
+    //         }
+    //       }
+    //       console.log('geo_position_init', self.state$.position.getValue());
+    //     });
+    //   }
+    // });
 
     //отслеживаем изменение позиции и перестраиваем маршрут
     if (this.state$.geo_check.getValue() == "not_init"){
       console.log('start_geo_subscribe');
       this.state$.interval_3.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
-        this.geo.getCurrentPosition().then((pos) => {
-
-          if (pos){
-            if (self.state$.position.getValue() == null){
-              self.state$.init_params_state.next('init_geo_done');
+        self.dg.isLocationAvailable().then((res) => {
+          console.log('PERMISSION_CHECK', res);
+          if (res){
+            console.log('GEO_PERMISSION_OK');
+            self.state$.unsetNotification('geo');
+            self.geo.getCurrentPosition().then((pos) => {
+  
+            if (pos){
+              var pre = self.state$.position.getValue(); 
+              var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
+              self.state$.position.next(position);
+              console.log('geo_itter', self.state$.position.getValue());
+              if (pre == null ){
+                self.state$.init_params_state.next('init_geo_done');
+              }
             }
-            var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
-            self.state$.position.next(position);
-            console.log('geo_itter', self.state$.position.getValue());
+          });
+          } else {
+            self.state$.setNotification('geo', 'Необходимо включить геолокацию!');
           }
-        });
       })
+    });
       this.state$.geo_check.next('init_done');
     }
     

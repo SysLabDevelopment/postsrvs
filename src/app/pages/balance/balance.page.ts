@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { MapService} from '../../services/map.service';
 import { StateService } from '../../services/state.service';
 import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-balance',
@@ -18,6 +19,7 @@ export class BalancePage implements OnInit {
   public out_process:boolean = false;
   public out_counter = 0;
   public loader = true;
+  public local_stop$:Subject<any> = new Subject();
 
   constructor(private courier:CourierService,
               private auth:AuthService,
@@ -32,7 +34,6 @@ export class BalancePage implements OnInit {
     }
     this.state$.map_state.next('init');
     var self = this;
-
     if (!this.state$.balance_check){
       this.state$.interval_2s.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
         self.updateInfo();
@@ -40,10 +41,11 @@ export class BalancePage implements OnInit {
     }
    }
 
-  ngOnInit() {
-   
-  }
+  ngOnInit() {}
   
+  ngOnDestroy(){
+    this.local_stop$.next();
+  }
 
   public updateInfo(){
     var self =this;

@@ -14,6 +14,8 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { catchError, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -24,7 +26,7 @@ import {
     trigger('openClose', [
       // ...
       state('open', style({
-        height: '220px',
+        height: '264px',
       })),
       state('closed', style({
         height: '50px',
@@ -62,7 +64,10 @@ export class LoginPage implements OnInit {
   public loader:boolean = false;
   public auth_step:boolean = false;
   public code = null;
-
+  public resend_dis:boolean = false;
+  public dis_timer = null;
+  public $stopTimer:Subject<any> = new Subject();
+  
   constructor(private auth:AuthService,
               private router:Router,
               private alert:AlertController,
@@ -112,25 +117,12 @@ export class LoginPage implements OnInit {
           self.router.navigate(['balance']);
           self.auth.initLogin();
         } else {
-          self.showError(1);
+          self.auth.showError(1);
         }
       });
     });
   }
 
-  public async showError(err){
-    switch (err){
-      case 1:
-          const alert = await this.alert.create({
-            header: 'Ошибка',
-            message: 'Ошибка авторизации, повторите попытку позже.',
-            buttons: ['OK']
-          });
-      
-          await alert.present();
-      break;
-    }
-  }
 
   public phoneAuth(){
     if (!this.auth_step){
@@ -161,11 +153,18 @@ export class LoginPage implements OnInit {
     
     this.sendPost(url, data).subscribe((res:any) => {
       console.log('sendPhone', res);
-
+      this.state$.unsetNotification('internet');
       if (res.success == 'true'){
         self.authStep();
+      } else {
+        this.showLoginError(4);
       }
+    }, (err) => {
+      console.log('auth_error', err);
+      this.showLoginError(3);
+      this.state$.setNotification('internet', 'Проверьте интернет соединение!');
     }) 
+    this.startTimer();
   }
 
   public sendPost(url, data){
@@ -195,6 +194,8 @@ export class LoginPage implements OnInit {
 
       if (res.success == 'true'){
         self.login(res.user);
+      } else {
+        self.error_phone = true;
       }
     }) 
   }
@@ -214,9 +215,52 @@ export class LoginPage implements OnInit {
         self.router.navigate(['balance']);
         self.auth.initLogin();
       } else {
-        self.showError(1);
+        self.auth.showError(1);
       }
     });                
+  }
+
+  public showLoginError(err_n){
+    switch (err_n){
+      case 3:
+          this.loader = false;
+          this.phone = null;
+          this.pl_window = false;
+          this.auth.showError(err_n);
+        break;
+      case 4:
+          this.loader = false;
+          this.phone = null;
+          this.pl_window = false;
+          this.auth.showError(err_n);
+        break;  
+    }
+    
+  }
+
+  public startTimer(){
+    if (this.resend_dis){
+      return false;
+    }
+    this.resend_dis = true;
+    this.dis_timer = 30;
+    var self = this;
+
+    this.state$.interval_1ss.pipe(takeUntil(this.$stopTimer)).subscribe(() => {
+      self.dis_timer--;
+      if (self.dis_timer == 0){
+        self.dis_timer = null;
+        self.$stopTimer.next();
+        self.resend_dis = false;
+      }
+    });
+  }
+
+  public reEnterPhone(){
+    if (this.resend_dis){
+      return false;
+    }
+    this.sendPhone();
   }
 
   public changeCode(){}

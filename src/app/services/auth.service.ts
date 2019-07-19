@@ -6,7 +6,8 @@ import { Device } from '@ionic-native/device/ngx';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { StateService } from './state.service';
-import { MapService} from './map.service';
+import { MapService } from './map.service';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,8 @@ export class AuthService {
               private plt:Platform,
               private router:Router,
               private state$:StateService,
-              private map:MapService
+              private map:MapService,
+              private alert:AlertController
               ) { 
 
   this.barcodeScannerOptions = {
@@ -68,6 +70,7 @@ ngOnInit(){
       this.plt.ready().then(() => {
         self.http.post(url, data, httpOptions).subscribe((data:any) => {
           console.log('RESPONSE_DATA', data);
+          this.state$.unsetNotification('internet');
           if (data){
             if (data.success == 'false' && data.reason == "not_auth"){
               console.log('unsuccess');
@@ -78,6 +81,8 @@ ngOnInit(){
           } else {
             resp.next(data);
           }
+        }, (err) => {
+          this.state$.setNotification('internet', 'Проверьте интернет соединение!');
         });
       });
 
@@ -117,6 +122,47 @@ ngOnInit(){
     this.router.navigate(['login']);
     this.state$.g_state.next('unLogin');
     
+  }
+
+  public async showError(err){
+    switch (err){
+      case 1:
+          const alert = await this.alert.create({
+            header: 'Ошибка',
+            message: 'Ошибка авторизации, повторите попытку позже.',
+            buttons: ['OK']
+          });
+      
+          await alert.present();
+      break;
+      case 2:
+          const alert2 = await this.alert.create({
+            header: 'Ошибка',
+            message: 'Заказ не найден.',
+            buttons: ['OK']
+          });
+      
+          await alert2.present();
+      break;
+      case 3:
+          const alert3 = await this.alert.create({
+            header: 'Ошибка',
+            message: 'Ошибка отправки запроса, повторите попытку позже.',
+            buttons: ['OK']
+          });
+      
+          await alert3.present();
+      break;
+      case 4:
+          const alert4 = await this.alert.create({
+            header: 'Ошибка',
+            message: 'Телефон не зарегистрирован.',
+            buttons: ['OK']
+          });
+      
+          await alert4.present();
+      break;                 
+    }
   }
 
 }

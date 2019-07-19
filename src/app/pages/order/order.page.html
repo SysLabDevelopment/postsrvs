@@ -76,7 +76,7 @@
          </div> 
          <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
           <div class="sc-statuses" >
-              <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of statuses" (click) = "selectStatus(status.id)" >{{status.status}}</div>
+              <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of (statuses | partFilter:status.partial)" (click) = "selectStatus(status.id)" >{{status.status}}</div>
           </div>
           <div class="sc-reasons">
               <div class="sc-resons-block" *ngIf="selectedStatus == 4 ">

@@ -6,41 +6,65 @@ import { forkJoin, interval, BehaviorSubject, Subject, Observable } from 'rxjs';
 import { takeUntil, merge, take } from 'rxjs/operators';
 import { Platform } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
+import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourierService {
+barcodeScannerOptions: BarcodeScannerOptions;
 
 constructor(private http:HttpClient,
             private router:Router,
             private plt:Platform,
             private state$:StateService,
-            private auth:AuthService
+            private auth:AuthService,
+            private bs:BarcodeScanner
             ) {
-              //при выходе из приложения возвращаем начальное состояние
-              var self = this;
-              this.state$.interval_1ss.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
-                let old_val = self.state$.load_lvl.getValue();
-                self.state$.load_lvl.next(old_val + 1.7);
-              });
+  this.barcodeScannerOptions = {
+    showTorchButton: true,
+    showFlipCameraButton: true
+  };  
+  //при выходе из приложения возвращаем начальное состояние
+  var self = this;
+  this.state$.interval_1ss.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+    let old_val = self.state$.load_lvl.getValue();
+    self.state$.load_lvl.next(old_val + 1.7);
+  });
 
-              var self  = this;
-              this.state$.stop$.subscribe(() => {
-                console.log('STOP$_COURIER');
-                self.logout();
-              });
+  var self  = this;
+  this.state$.stop$.subscribe(() => {
+    console.log('STOP$_COURIER');
+    self.logout();
+  });
+  //обновляем заказы по запросу 
+  this.state$.updateWayInfo.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+    self.getWay().subscribe((data:any) => {
+      console.log('get_way_response', data);
+      if (data.success == 'true'){
+        self.state$.way.next(data.orders);
+        self.state$.state.next('way_init');
+      }
+    });
+  });
 
-              this.state$.g_state.subscribe((state) => {
-                if (state == 'login'){
-                  self.initOrders();
-                }
-              })
+  this.state$.g_state.subscribe((state) => {
+    if (state == 'login'){
+      self.initOrders();
+    }
+  })
 
-              this.state$.status_changed.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
-                self.state$.state.next('init');
-              })
-            }
+  var check_state$ =  this.state$.init_params_state.subscribe((state) => {
+    if (state == 'init_geo_done'){
+      console.log('init_orders : geo_state_init');
+      self.initOrders();
+    }
+  })
+
+  this.state$.status_changed.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+    self.state$.state.next('init');
+  })
+}
 
 ngOnDestroy(){
   console.log('COURIER_ON_DESTROY');
@@ -57,14 +81,7 @@ public initOrders(){
   console.log('initOrders_call');
   //проверяем наличие координат перед запуском
   if (this.state$.position.getValue() == null){
-    console.log('position is null');
-    this.state$.init_params_state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
-      console.log('init_params_state', state);  
-      if (state == 'init_geo_done' && self.state$.position.getValue() != null ){
-        console.log('initOrdersReCall');
-          self.initOrders();
-        }
-    })
+    console.log('init_orders: geo_is_null');
     return false;
   }
   console.log('initOrders_resume');
@@ -224,6 +241,14 @@ public sendPay(order,isDone = true, quants = null){
   if (isDone){
     
   }  
+}
+
+public findOrder(code){
+  let self = this;
+  var url = 'orders';
+  var data = {'action'  : 'findOrder',
+              'code'    : code}
+  return this.auth.sendPost(url, data);
 }
 
 }
