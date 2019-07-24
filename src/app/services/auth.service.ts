@@ -60,7 +60,7 @@ ngOnInit(){
 
       const httpOptions = {
         headers: new HttpHeaders({
-        'Content-Type':'application/json'
+        
         })
       };
   
@@ -82,7 +82,12 @@ ngOnInit(){
             resp.next(data);
           }
         }, (err) => {
-          this.state$.setNotification('internet', 'Проверьте интернет соединение!');
+          console.error('An error occurred:', err);
+          if (err.error instanceof Error) {
+            // A client-side or network error occurred. Handle it accordingly.
+            
+            this.state$.setNotification('internet', 'Проверьте интернет соединение!');
+          }
         });
       });
 

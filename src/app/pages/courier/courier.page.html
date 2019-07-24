@@ -18,14 +18,15 @@
                                                                                 (order.status_id == 6 && selectedTab == 2) ||
                                                                                 (order.status_id == 4 && selectedTab == 3) ">
                     <div class="ol-col oc-left">
-                        <div class="oc-left-row c_number">{{order.client_id}}</div>
+                    <div class="oc-left-row c_number"><span class="show-t" *ngIf="order.SMACode != NULL">Забор &nbsp;</span>{{order.client_id}} <span class="order-company" *ngIf="order.company">({{order.company}})</span>      </div>
                         <div class="oc-left-row c_address">{{order.client_address}}</div>
                     </div>
                     <div class="ol-col oc-right">
-                        <div *ngIf="order.status_id == 1" class="c-status" [ngClass]="{  status_done : order.client_status_id == 1,
-                                                            status_wait : order.client_status_id == 2,
-                                                            status_fail : order.client_status_id == 3,
-                                                            status_none : order.client_status_id == 8 }">{{order.client_status}}</div>
+                        <div *ngIf="order.status_id == 1" class="c-status" [ngClass]="{  'status_done' : order.client_status_id == 1,
+                                                            'status_wait' : order.client_status_id == 2,
+                                                            'status_fail' : order.client_status_id == 3,
+                                                            'status_none' : order.client_status_id == 8,
+                                                            'cl-status-voice' : order.client_status_id == 4 }">{{order.client_status}}</div>
                         <div class="done-time" *ngIf="order.status_id != 1">
                             <div class="done-title">Время</div> 
                             <div class="done-body">{{order.date}}</div> 
@@ -50,7 +51,7 @@
         <button class="satrt-r-btn sr-stop" *ngIf = "btn_go"  (click) ="stopRoute()">Остановить маршрут</button>  
         <button class="satrt-r-btn find-o-btn" (click)="findOrder()" >Найти заказ</button>
     </div>
-    <div class="ind-lable" *ngIf="ordersInit"><div class="lvl" [ngStyle]="lvl_ind"></div></div>
+    
     <div class="c-bottom"></div>
 </div>
 

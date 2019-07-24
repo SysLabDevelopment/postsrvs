@@ -19,6 +19,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 import {NgxMaskModule} from 'ngx-mask';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { Diagnostic } from '@ionic-native/diagnostic/ngx';
     InAppBrowser,
     AndroidPermissions,
     Diagnostic,
+    Camera,
     CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

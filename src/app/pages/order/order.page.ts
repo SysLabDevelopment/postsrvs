@@ -127,8 +127,7 @@ export class OrderPage implements OnInit {
 
 
   public initOrder(){
-        this.order = this.parseOrder(this.state$.orders_data);
-        this.order = this.order;
+        this.order = this.parseOrder(this.state$.orders.getValue());
         this.goods = this.order.goods;
         this.address = this.order.client_address
         this.name = this.order.client_name
@@ -455,6 +454,10 @@ if (order){
 
   public showCheck(){
     const browser = this.iab.create(this.barcode_url);
+  }
+
+  public voiceLink(){
+    const browser = this.iab.create(this.order.r_url);
   }
 
   public checkPayment(){

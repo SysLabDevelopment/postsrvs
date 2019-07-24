@@ -37,17 +37,17 @@ export class CourierPage implements OnInit {
   var self = this;
   
   this.initContent();
-  this.startRoute(false);
-  this.state$.stop$.subscribe(() => {
-    self.local_stop$.next();
-  });
-  this.lvl_ind.width = this.state$.load_lvl.getValue()+'%'; 
-  this.state$.load_lvl.pipe(takeUntil(this.local_stop$)).subscribe((lvl) => {
-    console.log('lvl_ind', lvl);
-    self.lvl_ind.width = lvl+'%';
-  })
-  this.state$.updateWayInfo.pipe(takeUntil(this.local_stop$)).subscribe(() => {
-    self.initContent();
+  if (this.state$.position.getValue() != null){
+    this.startRoute(false);
+  }
+
+
+  this.state$.state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
+    console.log('courier_page_ordeers_subscribe', state);
+    if (state == 'orders_init'){
+      console.log('courier_page_orders_init');
+      self.initContent();
+    }
   })
 
   }
@@ -61,11 +61,12 @@ export class CourierPage implements OnInit {
     this.state$.orders_page_check = false;
   }
 
+
   public initContent(){
   
     var self = this;
-    this.orders = this.state$.orders_data;
-    this.statuses = this.state$.statuses_data;
+    this.orders = this.state$.orders.getValue();
+    this.statuses = this.state$.statuses.getValue();
     if (this.orders == null || this.statuses == null){
         this.loader = true;
         setTimeout(function(){
@@ -108,7 +109,6 @@ export class CourierPage implements OnInit {
           if (status == 4) return true;  
           break;
     }
-
     return false;
   }
 
@@ -170,7 +170,7 @@ export class CourierPage implements OnInit {
       data['stop'] = '1';
     }
     var self = this;
-    console.log('SEND_CALL', data);
+    console.log('SEND_CALL_ROUTE', data);
     this.auth.sendPost(url, data).subscribe((data) => {
       console.log('GO_ROUTE_DATA', data);
       if (data.success == true){

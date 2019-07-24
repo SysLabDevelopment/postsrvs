@@ -39,18 +39,13 @@ constructor(private http:HttpClient,
   });
   //обновляем заказы по запросу 
   this.state$.updateWayInfo.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
-    self.getWay().subscribe((data:any) => {
-      console.log('get_way_response', data);
-      if (data.success == 'true'){
-        self.state$.way.next(data.orders);
-        self.state$.state.next('way_init');
-      }
-    });
+    self.updateOrders();
   });
 
   this.state$.g_state.subscribe((state) => {
     if (state == 'login'){
       self.initOrders();
+      self.updateOrders();
     }
   })
 
@@ -64,6 +59,11 @@ constructor(private http:HttpClient,
   this.state$.status_changed.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
     self.state$.state.next('init');
   })
+}
+
+public updateOrders(){
+  console.log('UPDATEORDERS_CALL');
+  this.state$.state.next('init');
 }
 
 ngOnDestroy(){
@@ -117,6 +117,7 @@ if (!this.state$.courier_init){
         break;
       case 'way_init':
         self.getOrders().subscribe((data:any) => {
+          console.log('GET_ORDERS_DATA', data);
           if (data.success == 'true'){
             self.state$.orders.next(data.orders);
             self.state$.state.next('orders_init');

@@ -1,10 +1,10 @@
 <ion-content>
-        <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
+        <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">{{state$.notificationStr}}</span>
       <div class="o-title" (click)='p_btn()'>  
             <span class="ct">Мои заказы</span>
     </div>
       <div class="o-body" *ngIf="pageInit">
-        <cdk-virtual-scroll-viewport  style="height: 90%" itemSize="auto" >
+        <cdk-virtual-scroll-viewport  style="height: 80%" itemSize="auto" >
                 <div class="b-row">
                     <div class="b-item b-title">Имя курьера</div>
                     <div class="b-item">{{info.name}}</div>
@@ -62,9 +62,38 @@
                     
                     </div>
         </cdk-virtual-scroll-viewport>
-        <!-- <div class="lg-b-wrp"><button class="logout-btn" (click)="logout()">Выйти</button></div> -->
+        <div class="lg-b-wrp">
+            <button *ngIf="(info != null) && !cashCheck " class="logout-btn" (click)="cashOut()">Сдать средства</button>
+            <div class="check-labl" *ngIf="cashCheck">
+                    <div class="cl-body">
+                            <div class="cl-row">
+                                <div class="cl-r__title">Средств сдано:</div>
+                                <div class="cl-r_text">{{cashCheckData.sum}}р.</div>
+                            </div>
+                            <div class="cl-row">
+                                    <div class="cl-r__title">Комментарий:</div>
+                                    <div class="cl-r_text" *ngIf="cashCheckData.comment != null && cashCheckData.comment != ''">{{cashCheckData.comment}}</div>
+                            </div>
+                        </div>
+            </div>
+        </div>
       </div>
       <div class="shirm" *ngIf="loader">
         <i class="fas fa-spinner fa-spin"></i>
+    </div>
+    <div class="confirm-shirm" [@openClose]="confirmWindow ? 'open' : 'closed' " *ngIf="(info != null) && !cashCheck">
+        <div class="confirm">
+            <div class="close-btn" (click) ="cashOut()"><i class="far fa-times-circle"></i></div>
+            <div class="cf-qwe">Вы сдаете <span class="cf-num">{{info.sumNal}}</span> р. Верно? </div>
+            <div class="cf-comment"> 
+                <div class="cf-comment-title">Комментарий</div>
+                <textarea (input)="commentInput()" [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea> 
+                <span class="comment-er" *ngIf="commentError">Необходимо оставить комментарий</span>
+            </div>
+            <div class="cf-btns">
+            <div class="cf-btn ok" (click)="getPhoto(true)">Да</div>
+                <div class="cf-btn not" (click)="getPhoto(false)">Нет</div>
+            </div>
+        </div>
     </div>
 </ion-content>

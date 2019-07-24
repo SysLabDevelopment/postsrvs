@@ -13,7 +13,7 @@
 .c-wrp{
     height: 100%;
     display: grid;
-    grid-template-rows: 60px 50px auto 70px 3px 40px;
+    grid-template-rows: 60px 50px auto 70px 40px;
 }
 
 .c-body{
@@ -273,4 +273,8 @@
 
 .shopTake{
     background: rgba(217, 255, 0, 0.335);
+}
+
+.cl-status-voice{
+    color: rgb(85, 32, 134);
 }

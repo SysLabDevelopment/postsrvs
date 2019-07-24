@@ -4,7 +4,7 @@
         {{balance}}
     </div>
       <div class="o-title">
-        <span class="order-n"><span class="shopTake" *ngIf="order.SMACode != NULL">Забор </span> {{clientId}}</span>
+        <span class="order-n"><span class="shopTake" *ngIf="order.SMACode != NULL">Забор &nbsp; </span> {{clientId}}</span>
         <span class="menu-icon" (click) = "navBack()"><i class="fas fa-angle-left"></i></span>
       </div>
       <div class="o-body" *ngIf="pageInit">
@@ -71,11 +71,13 @@
          </div>
          <div class="state-row o-row">
             <div class="state-title o-t"><img src="../../../assets/bender.png" class="robot-icon"> <span class="st-status-text">Робот прозвон:</span></div>
-            <div class="st_state" [ngClass]="{  status_done : client_status_id == 1,
-                                                status_wait : client_status_id == 2,
-                                                status_fail : client_status_id == 3,
-                                                status_none : client_status_id == 8 }">{{client_status}}</div>
+            <div class="st_state" [ngClass]="{  'status_done' : client_status_id == 1,
+                                                'status_wait' : client_status_id == 2,
+                                                'status_fail' : client_status_id == 3,
+                                                'status_none' : client_status_id == 8,
+                                                'cl-status-voice' : client_status_id == 4 }">{{client_status}}</div>
             <div class="st_dt">{{client_status_dt}}</div>
+            <button class="sc-submit voice-comment" *ngIf = "client_status_id == 4" (click) ="voiceLink()">Прослушать</button>
          </div> 
          <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
           <div class="sc-statuses" >
