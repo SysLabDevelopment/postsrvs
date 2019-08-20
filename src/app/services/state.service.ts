@@ -7,12 +7,18 @@ import { takeUntil } from 'rxjs/operators';
 })
 
 export class StateService {
+
+  public testData:any = [{name : "test1"} ,{ name : "test2" },{ name : "test3" } ];
 // переменные состояний 
 
 //GLOBAL
   public login_state:BehaviorSubject<any> = new BehaviorSubject('not_login'); 
   public stop$:Subject<any> = new Subject(); // останаливает все подписки;
-
+  /* Режим работы с маршрутом
+      auto    - маршрут с бека
+      manual  - курьер рисует сам 
+  */ 
+  public route_mode:String = "auto"; 
 //INTERVALS
 
   public interval_3:Observable<any>  = interval(4000);

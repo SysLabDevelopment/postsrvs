@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>test</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="test-w">
+    <div class="test-nav">
+      <button class="test-btn" (click)="initStates()">Init</button>
+      <button class="test-btn" (click)="add()">Добавить</button>
+      <button class="test-btn" (click)="delete()">Удалить</button>
+      <button class="test-btn" (click)="scrollT()">Наверх , блять</button>
+    </div>
+    <div class="test-show" >
+      <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)"    itemSize="50" style="height:100%; width: 100%" class="example-viewport">
+          <div class="example-box" *ngFor="let movie of td" cdkDrag>{{movie.name}}</div>
+      </cdk-virtual-scroll-viewport>  
+    </div>
+    <div class="test-items">
+      <div class="t-item" *ngFor="let movie of td" >{{movie.name}}</div>
+    </div>
+  </div>
+</ion-content>

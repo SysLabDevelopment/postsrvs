@@ -71,7 +71,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 28px;
+   
     /* font-size: 24px; */
 }
 
@@ -82,6 +82,7 @@
     color: #fff;
     border-radius: 3px;
     font-size: 19px;
+    margin: 21px 0 0 0;
 }
 
 .shirm{
@@ -94,6 +95,7 @@
     justify-content: center;
     align-items: center;
     background: RGBA(0,0,0,0.1);
+    z-index: 999999;
 }
 
 .shirm i{
@@ -104,6 +106,7 @@
 }
 
 .confirm-shirm{
+    display: none;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -111,7 +114,7 @@
     right: 0;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
 }
 
 .confirm{
@@ -188,6 +191,7 @@
 .cl-r__title{
     color: #2b637e;
     margin: 0 7px 0 0;
+    font-size: 18px;
 }
 .cl-row{
     display: flex;
@@ -198,6 +202,31 @@
     box-shadow: 0 0 0.5px 0.5px #b7b7b7;
     padding: 8px 8px;
     display: flex;
+    justify-content: flex-start;
+    width: 81%;
+    height: 100%;
+}
+
+.cl-body{
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.cl-row .comment{
+    height: 100%;
+    margin: 4px 0 0 0px;
+}
+
+.photo-btn{
+    display: flex;
+    height: 62px;
+    width: 80%;
+    background: #319bce;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 19px;
     justify-content: center;
-    width: 48%;
+    align-items: center;
 }

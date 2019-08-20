@@ -6,6 +6,7 @@ import { StateService } from '../../services/state.service';
 import { Subject } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
+import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-courier',
@@ -56,6 +57,9 @@ export class CourierPage implements OnInit {
    
   }
 
+  public drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
+  }
   ngOnDestroy(){
     this.local_stop$.next();
     this.state$.orders_page_check = false;

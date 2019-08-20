@@ -107,13 +107,7 @@ if (!this.state$.courier_init){
     console.log('COURIER_STAET_STATE', state);
     switch ( state ){
       case 'init':
-          self.getWay().subscribe((data:any) => {
-            console.log('get_way_response', data);
-            if (data.success == 'true'){
-              self.state$.way.next(data.orders);
-              self.state$.state.next('way_init');
-            }
-          });
+          self.getWay();
         break;
       case 'way_init':
         self.getOrders().subscribe((data:any) => {
@@ -148,7 +142,11 @@ public checkWay(){
   } 
 }
 
-// запрос списка заказов курьера
+
+/*Запрос списка заказов курьера
+  В зависимости от режима либо запоминаем данные в сервисе,
+  либо сравниваем с маршрутом созданным курьером(manualWay)
+*/
 public getWay(){
   var url = 'orders';
   var data = {
@@ -157,7 +155,31 @@ public getWay(){
     'lg'      : this.state$.position.getValue().lg
   }
 
-  return this.auth.sendPost( url, data);
+  data['mode'] = this.state$.route_mode; 
+  let resp:Subject<any> = new Subject();
+  let self = this;
+
+  this.auth.sendPost( url, data).subscribe((orders:any) => {
+    if (orders.success == 'true'){
+      if (self.state$.route_mode == "manual"){
+        self.manualWay(orders.data);
+      } else {
+        self.state$.way.next(orders.orders);
+        self.state$.state.next('way_init');
+      }
+    }
+  });
+}
+/* Проверяем на доставленные заказы в маршруте курьера
+    если есть - удаляем */
+private manualWay(orders){
+  if (this.state$.way == null){
+    
+  }
+}
+
+public set_manual_way(){
+
 }
 
 public getOrders():Observable<any>{

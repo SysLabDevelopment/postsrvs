@@ -3,7 +3,7 @@
       <div class="o-title" (click)='p_btn()'>  
             <span class="ct">Мои заказы</span>
     </div>
-      <div class="o-body" *ngIf="pageInit">
+      <div class="o-body" *ngIf="info">
         <cdk-virtual-scroll-viewport  style="height: 80%" itemSize="auto" >
                 <div class="b-row">
                     <div class="b-item b-title">Имя курьера</div>
@@ -70,7 +70,7 @@
                                 <div class="cl-r__title">Средств сдано:</div>
                                 <div class="cl-r_text">{{cashCheckData.sum}}р.</div>
                             </div>
-                            <div class="cl-row">
+                            <div class="cl-row comment">
                                     <div class="cl-r__title">Комментарий:</div>
                                     <div class="cl-r_text" *ngIf="cashCheckData.comment != null && cashCheckData.comment != ''">{{cashCheckData.comment}}</div>
                             </div>
@@ -81,8 +81,8 @@
       <div class="shirm" *ngIf="loader">
         <i class="fas fa-spinner fa-spin"></i>
     </div>
-    <div class="confirm-shirm" [@openClose]="confirmWindow ? 'open' : 'closed' " *ngIf="(info != null) && !cashCheck">
-        <div class="confirm">
+    <div class="confirm-shirm" [@openClose]="confirmWindow ? 'open' : 'closed' " *ngIf="info != null && !cashCheck" >
+        <div class="confirm"[@closeConfirm]="!openBtn ? 'open' : 'closed' " >
             <div class="close-btn" (click) ="cashOut()"><i class="far fa-times-circle"></i></div>
             <div class="cf-qwe">Вы сдаете <span class="cf-num">{{info.sumNal}}</span> р. Верно? </div>
             <div class="cf-comment"> 
@@ -91,9 +91,10 @@
                 <span class="comment-er" *ngIf="commentError">Необходимо оставить комментарий</span>
             </div>
             <div class="cf-btns">
-            <div class="cf-btn ok" (click)="getPhoto(true)">Да</div>
-                <div class="cf-btn not" (click)="getPhoto(false)">Нет</div>
+            <div class="cf-btn ok" (click)="answer(true)">Да</div>
+                <div class="cf-btn not" (click)="answer(false)">Нет</div>
             </div>
         </div>
+        <div class="photo-btn" [@openBtn]="openBtn ? 'open' : 'closed' " (click) = "getPhoto()">Сфотографировать пломбу</div>
     </div>
 </ion-content>
