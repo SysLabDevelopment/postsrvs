@@ -1,0 +1,81 @@
+.rw-shirm{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.rw-window{
+    display: grid;
+    grid-template-rows: 26% 74%;
+    background: #fff;
+    height: 268px;
+    width: 92%;
+}
+
+.rw-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-family: Roboto;
+    background: #2b637e;
+    color: #ffffff;
+    position: relative;
+}
+
+.rw-btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-ok{
+    height: 38px;
+    width: 60%;
+    background: #2b637e;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 19px;
+    margin: 7px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-not{
+
+}
+
+i{
+    position: absolute;
+    right: 3px;
+    top: 2px;
+    font-size: 21px;
+}
+
+.rw-body{
+    display: grid;
+    grid-template-rows: 75% 15%;
+}
+
+.rw-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.rw-text-title{
+    color: #ccc;
+    font-style: italic;
+}

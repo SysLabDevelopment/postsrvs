@@ -4,7 +4,7 @@
             <span class="ct">Мои заказы</span>
     </div>
       <div class="o-body" *ngIf="info">
-        <cdk-virtual-scroll-viewport  style="height: 80%" itemSize="auto" >
+        <cdk-virtual-scroll-viewport  style="height: 79%;" itemSize="auto" >
                 <div class="b-row">
                     <div class="b-item b-title">Имя курьера</div>
                     <div class="b-item">{{info.name}}</div>
@@ -76,6 +76,7 @@
                             </div>
                         </div>
             </div>
+            <button  class="logout-btn review_btn " (click)="writeReview()">Отзыв о приложении</button>
         </div>
       </div>
       <div class="shirm" *ngIf="loader">
@@ -97,4 +98,5 @@
         </div>
         <div class="photo-btn" [@openBtn]="openBtn ? 'open' : 'closed' " (click) = "getPhoto()">Сфотографировать пломбу</div>
     </div>
+    <app-review *ngIf="review_w" (close_E)="writeReview()" (send_E)="sendReview($event)"></app-review>
 </ion-content>

@@ -1,0 +1,14 @@
+<div class="rw-shirm">
+  <div class="rw-window">
+    <div class="rw-title">Отзыв о работе приложения<i class="far fa-window-close" (click)="close()"></i></div>
+    <div class="rw-body">
+      <div class="rw-text">
+        <div class="rw-text-title">Введите текст отзыва</div>
+        <textarea [(ngModel)]="r_text" name="" id="" cols="30" rows="5"></textarea>
+      </div>
+      <div class="rw-btns">
+        <div class="btn-ok" (click)="send()">Отправить отзыв</div>
+      </div>
+    </div>
+  </div>
+</div>

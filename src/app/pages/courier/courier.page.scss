@@ -243,6 +243,7 @@
     justify-content: center;
     align-items: center;
     background: RGBA(0,0,0,0.1);
+    z-index: 99999999;
 }
 
 .shirm i{
@@ -277,4 +278,73 @@
 
 .cl-status-voice{
     color: rgb(85, 32, 134);
+}
+
+.manual_btn{
+    background: #d21212;
+    color: #fff;
+    box-shadow: none;
+}
+
+.manual_lable{
+    position: fixed;
+    left: 0px;
+    bottom: 139px;
+    text-align: center;
+    background: #2b637ee0;
+    min-height: 30px;
+    color: #2fff00;
+    font-size: 15px;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.submit-order_wrp{
+    position: fixed;
+    top: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 99;
+}
+
+.submit-order{
+    background: #44b347;
+    height: 50px;
+    width: 73%;
+    opacity: 1;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.find-order-btn{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 60px;
+    width: 60px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+}
+
+.submit-order-btn{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 60px;
+    width: 60px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
 }

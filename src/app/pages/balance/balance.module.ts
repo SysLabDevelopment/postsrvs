@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { IonicModule } from '@ionic/angular';
-
+import { ReviewComponent } from '../../components/balance/review/review.component';
 import { BalancePage } from './balance.page';
 
 const routes: Routes = [
@@ -22,6 +22,6 @@ const routes: Routes = [
     ScrollingModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [BalancePage]
+  declarations: [BalancePage, ReviewComponent]
 })
 export class BalancePageModule {}

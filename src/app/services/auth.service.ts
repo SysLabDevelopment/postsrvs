@@ -34,11 +34,11 @@ export class AuthService {
     showFlipCameraButton: true
   };  
   
-  console.log('Device UUID is: ' + this.device.uuid);  
+  
 }
 
 ngOnInit(){
-  console.log('AUH_INIT');
+  
 }
   public checkAuth(){
     var url = 'orders';
@@ -50,49 +50,41 @@ ngOnInit(){
   }
 
   public sendPost(url, data){
-    console.log('SEND_POST_CALL');
-      var host = "https://postsrvs.ru/mobile/";
-      url = host+url;
-      data['uuid'] = this.getUuid();
-  
-      console.log('REQUEST_DATA', data);
-      data = JSON.stringify(data);
-
-      const httpOptions = {
-        headers: new HttpHeaders({
-        
-        })
-      };
-  
-      var self = this;
-      var resp = new Subject<any>();
-      
-      this.plt.ready().then(() => {
-        self.http.post(url, data, httpOptions).subscribe((data:any) => {
-          console.log('RESPONSE_DATA', data);
-          this.state$.unsetNotification('internet');
-          if (data){
-            if (data.success == 'false' && data.reason == "not_auth"){
-              console.log('unsuccess');
-              self.logout();
-            } else {
-              resp.next(data);
-            }
+    var host = "https://postsrvs.ru/mobile/";
+    url = host+url;
+    data['uuid'] = this.getUuid();
+    data = JSON.stringify(data);
+    const httpOptions = {headers: new HttpHeaders({})};
+    console.log('AUTH.SendPOst() data',data);
+    var self = this;
+    var resp = new Subject<any>();
+    
+    this.plt.ready().then(() => {
+      self.http.post(url, data, httpOptions).subscribe((data:any) => {
+        console.log('AUTH.SendPOst() RESPONSE',data);
+        this.state$.unsetNotification('internet');
+        if (data){
+          if (data.success == 'false' && data.reason == "not_auth"){
+            
+            self.logout();
           } else {
             resp.next(data);
           }
-        }, (err) => {
-          console.error('An error occurred:', err);
-          if (err.error instanceof Error) {
-            // A client-side or network error occurred. Handle it accordingly.
-            
-            this.state$.setNotification('internet', 'Проверьте интернет соединение!');
-          }
-        });
+        } else {
+          resp.next(data);
+        }
+      }, (err) => {
+        console.error('An error occurred:', err);
+        if (err.error instanceof Error) {
+          // A client-side or network error occurred. Handle it accordingly.
+          
+          this.state$.setNotification('internet', 'Проверьте интернет соединение!');
+        }
       });
+    });
 
 
-      return resp ;
+    return resp ;
   }
   public getUuid(){
     //return '4191a54e85f2d5f6';
@@ -122,7 +114,7 @@ ngOnInit(){
   }
 
   public logout(){
-    console.log('AUTH_LOGOUT');
+    
     this.state$.logout();
     this.router.navigate(['login']);
     this.state$.g_state.next('unLogin');
@@ -166,7 +158,44 @@ ngOnInit(){
           });
       
           await alert4.present();
-      break;                 
+      break;
+      case 5:
+          const alert5 = await this.alert.create({
+            header: 'Ошибка',
+            message: 'Не удалось сменить режим маршрута.',
+            buttons: ['OK']
+          });
+      
+          await alert5.present();
+      break;
+      case 6:
+        const alert6 = await this.alert.create({
+          header: 'Ошибка',
+          message: 'Не удалось подтвердить заказ.',
+          buttons: ['OK']
+        });
+    
+        await alert6.present();
+    break;
+    case 7:
+      const alert7 = await this.alert.create({
+        header: 'Спасибо!',
+        message: 'Отзыв успешно отправлен.',
+        buttons: ['OK']
+      });
+  
+      await alert7.present();
+  break;
+  case 8:
+    const alert8 = await this.alert.create({
+      header: 'Ошибка',
+      message: 'Не удалось отправить отзыв.',
+      buttons: ['OK']
+    });
+
+    await alert8.present();
+  break;   
+                             
     }
   }
 

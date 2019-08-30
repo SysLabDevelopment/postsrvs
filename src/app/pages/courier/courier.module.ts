@@ -6,6 +6,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { IonicModule } from '@ionic/angular';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CourierPage } from './courier.page';
+import { OrdersListFirstComponent } from '../../components/courier/orders-list-first/orders-list-first.component';
+import { OrdersListSecondComponent } from '../../components/courier/orders-list-second/orders-list-second.component';
+import { OTTabPipePipe } from '../../pipes/o-t-tab-pipe.pipe';
 
 const routes: Routes = [
   {
@@ -23,6 +26,6 @@ const routes: Routes = [
     ScrollingModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CourierPage]
+  declarations: [CourierPage,OrdersListFirstComponent,OTTabPipePipe,OrdersListSecondComponent]
 })
 export class CourierPageModule {}

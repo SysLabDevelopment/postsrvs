@@ -156,9 +156,15 @@
                 <button class="show-phone" (click) ="enterPhone()">Прочее</button>
               </div>
               <div class="sc-s-wrp">
-                  <button class="sc-submit" *ngIf = "selectedStatus == 4 || !pay_access" (click) ="submitChange()">Изменить статус</button>
-                  <button class="sc-submit" *ngIf = "(selectedStatus == 5 || selectedStatus == 6) && pay_access" (click) ="sendPay()">Отправить чек</button>
-                  
+                  <button class="sc-submit" 
+                      (click) ="sendPayCall()"
+                      *ngIf="selectedStatus"
+                      [ngClass] = "{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6,
+                                    'c_t_u_del'  : selectedStatus == 4}"
+                      >
+                      <span *ngIf="selectedStatus == 5 || selectedStatus == 6" class="l_btn_del">Доставлено</span>
+                      <span *ngIf="selectedStatus == 4" class="l_btn_u_del">Завершить заказ</span>
+                    </button>
               </div>
           </div>
         </div>   

@@ -18,14 +18,16 @@ export class StateService {
       auto    - маршрут с бека
       manual  - курьер рисует сам 
   */ 
-  public route_mode:String = "auto"; 
+  public manual_route:boolean = false; 
+  public old_way:any = null;
+  public confirmed:boolean = false;
 //INTERVALS
 
   public interval_3:Observable<any>  = interval(4000);
   public interval_1:Observable<any>  = interval(3000);
   public interval_30:Observable<any> = interval(30000);
   public interval_1s:Observable<any> = interval(2000);
-  public interval_2s:Observable<any> = interval(2000);
+  public interval_2s:Observable<any> = interval(15000);
   public interval_3m:Observable<any> = interval(3000);
   public interval_1m:Observable<any> = interval(60000);
   public interval_1ss:Observable<any> = interval(1000);
@@ -182,6 +184,7 @@ export class StateService {
     this.balance_check = false;
     this.c_update_content_f = false;
     this.load_lvl.next(0);
+    this.old_way = null;
   }
 
 

@@ -15,8 +15,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
-import { domainToASCII } from 'url';
+
 
 @Component({
   selector: 'app-balance',
@@ -83,6 +82,7 @@ export class BalancePage implements OnInit {
   public cashCheck:boolean = false;
   public cashCheckData:any = null;
   public openBtn:boolean = false;
+  public review_w:boolean = false;
 
   constructor(private courier:CourierService,
               private auth:AuthService,
@@ -92,6 +92,7 @@ export class BalancePage implements OnInit {
               private alert:AlertController,
               private camera:Camera
              ) {
+              
     if (this.info == null){
      this.loader = true;
     } else {
@@ -99,6 +100,8 @@ export class BalancePage implements OnInit {
     }
     this.state$.map_state.next('init');
     var self = this;
+    self.updateInfo();
+    self.initCashout();
     if (!this.state$.balance_check){
       this.state$.interval_2s.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
         self.updateInfo();
@@ -267,6 +270,31 @@ export class BalancePage implements OnInit {
 
   public commentInput(){
     this.commentError = false;
+  }
+
+  //отзыв о приложении
+  public writeReview(){
+    this.review_w = !this.review_w;
+  }
+
+
+  public sendReview(text){
+    this.loader = true;
+    let url = 'orders';
+    let data = {
+      'action'  : 'writeReview',
+      'text'    : text
+    }
+    let self = this;
+    this.auth.sendPost(url, data).subscribe((resp:any) => {
+      if (resp.success == 'true'){
+        self.auth.showError(7);
+      } else {
+        self.auth.showError(8);
+      }
+      self.review_w = false;
+      self.loader = false;
+    });
   }
 
 }

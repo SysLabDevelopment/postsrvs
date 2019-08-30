@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TestPage } from './test.page';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 
 const routes: Routes = [
   {

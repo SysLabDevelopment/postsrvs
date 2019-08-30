@@ -7,6 +7,7 @@ import { takeUntil, merge, take } from 'rxjs/operators';
 import { Platform } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
+import { OrderPage } from '../pages/order/order.page';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ constructor(private http:HttpClient,
 
   var self  = this;
   this.state$.stop$.subscribe(() => {
-    console.log('STOP$_COURIER');
+    
     self.logout();
   });
   //обновляем заказы по запросу 
@@ -51,7 +52,7 @@ constructor(private http:HttpClient,
 
   var check_state$ =  this.state$.init_params_state.subscribe((state) => {
     if (state == 'init_geo_done'){
-      console.log('init_orders : geo_state_init');
+      
       self.initOrders();
     }
   })
@@ -60,61 +61,99 @@ constructor(private http:HttpClient,
     self.state$.state.next('init');
   })
 }
+/**
+ * Меняем на серере режим маршрута
+ */
+public changeRouteMode(mode){
+  let url = 'orders';
+  let data = {'action' : 'changeRouteMode','routeId' : this.state$.way.getValue()[0].route};
+
+  if (mode == 'auto' || mode =='manual'){
+    data['mode'] = mode;
+  } else {
+    this.auth.showError(5);
+    return false;
+  } 
+  
+  let self = this;
+  this.auth.sendPost(url, data).subscribe((resp) => {
+    if (resp.success == 'true'){
+      self.state$.manual_route = resp.mode == 'manual' ? true : false;
+      self.state$.updateWayInfo.next();
+    } else {
+      self.auth.showError(5);
+    }
+  });
+
+}
 
 public updateOrders(){
-  console.log('UPDATEORDERS_CALL');
+  
   this.state$.state.next('init');
 }
 
 ngOnDestroy(){
-  console.log('COURIER_ON_DESTROY');
+  
 }
 
 ngOnInit(){
-  console.log('COURIER_ON_INIT');
+  
 }
 
 
 //Собираем необходимую инфу по заказам 
 public initOrders(){
   var self = this;
-  console.log('initOrders_call');
+  
   //проверяем наличие координат перед запуском
   if (this.state$.position.getValue() == null){
-    console.log('init_orders: geo_is_null');
+    
     return false;
   }
-  console.log('initOrders_resume');
+  
   //Запускаем инициализацию
   this.getReasons().subscribe((data:any) => {
     if (data.success = 'true'){
       self.state$.reasons = data.reasons;
-      console.log('get_reasons', this.state$.reasons);
+      
     }
   });
 
   this.getStatuses().subscribe((data) => {
-    console.log('GET_STATUSES_DATA', data);
+    
     if (data.success == 'true'){
       self.state$.statuses.next(data.statuses);
-      console.log('statuses_val', self.state$.statuses.getValue());
+      
       self.state$.s_state.next('status_init');
     }
   });
 
 if (!this.state$.courier_init){
   this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
-    console.log('COURIER_STAET_STATE', state);
+    
     switch ( state ){
       case 'init':
           self.getWay();
         break;
       case 'way_init':
         self.getOrders().subscribe((data:any) => {
-          console.log('GET_ORDERS_DATA', data);
+          
           if (data.success == 'true'){
             self.state$.orders.next(data.orders);
+            self.state$.orders_data = data.orders;
             self.state$.state.next('orders_init');
+            this.state$.confirmed = true;
+            data.orders.forEach(order => {
+              if (order.confirm == '0'){
+                self.state$.confirmed = false;
+              }
+            });
+          } else if (data.reason = 'empty'){
+            let rmpt = [];
+            self.state$.orders.next(rmpt);
+            self.state$.orders_data = rmpt;
+            self.state$.state.next('orders_init');
+            this.state$.confirmed = true;
           }
         });
         break;
@@ -131,10 +170,10 @@ if (!this.state$.courier_init){
 public checkWay(){
   var self = this;
   if (!this.state$.check_state){
-    console.log('checkWay_start');
-    console.log('this.state$.check_state', this.state$.check_state);
+    
+    
     this.state$.interval_1m.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
-      console.log('interval 1m done');
+      
       self.state$.load_lvl.next(0);
       self.state$.state.next('init');
     });
@@ -155,42 +194,38 @@ public getWay(){
     'lg'      : this.state$.position.getValue().lg
   }
 
-  data['mode'] = this.state$.route_mode; 
+  data['mode'] = this.state$.manual_route ? "manual" : "auto";
+  if (this.state$.manual_route){
+    data['old_way'] = this.state$.old_way; 
+  } 
   let resp:Subject<any> = new Subject();
   let self = this;
 
   this.auth.sendPost( url, data).subscribe((orders:any) => {
-    if (orders.success == 'true'){
-      if (self.state$.route_mode == "manual"){
-        self.manualWay(orders.data);
-      } else {
+    if (orders.success == 'true'){   
+        self.state$.manual_route = orders.mode == "manual" ? true : false; 
         self.state$.way.next(orders.orders);
         self.state$.state.next('way_init');
-      }
+    } else if (orders.reason == 'empty'){
+      self.state$.manual_route = false;
+      let emt = [];
+      self.state$.way.next(emt);
+      self.state$.state.next('way_init');
     }
   });
 }
-/* Проверяем на доставленные заказы в маршруте курьера
-    если есть - удаляем */
-private manualWay(orders){
-  if (this.state$.way == null){
-    
-  }
-}
 
-public set_manual_way(){
 
-}
 
 public getOrders():Observable<any>{
   var url   = "orders";
 
   var ids = [];
   var way = this.state$.way.getValue();
-  console.log('get_orders_way', way);
+  
   for (let i=0; i < way.length; i++ ){
     ids.push(way[i].id);
-    console.log('get_orders_iter',i,way[i].id);
+    
   }
 
   var data  = {
@@ -272,6 +307,26 @@ public findOrder(code){
   var data = {'action'  : 'findOrder',
               'code'    : code}
   return this.auth.sendPost(url, data);
+}
+
+public sumbitOrder(orderId){
+  let url = 'orders';
+  let data = {
+    'action' : 'submitOrder',
+    'orderId' : orderId
+  }
+  let self = this;
+  let ret:Subject<any> = new Subject<any>();
+  this.auth.sendPost(url, data).subscribe((resp:any) => {
+    if (resp.success == 'true'){
+      self.state$.updateWayInfo.next();
+      ret.next(true);
+    } else {
+      self.auth.showError(6);
+      ret.next(false);
+    }
+  });
+  return ret;
 }
 
 }

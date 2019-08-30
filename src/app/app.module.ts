@@ -20,6 +20,7 @@ import {NgxMaskModule} from 'ngx-mask';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { Camera } from '@ionic-native/camera/ngx';
     Device,
     WebIntent,
     QRCodeModule,
+    Vibration,
     InAppBrowser,
     AndroidPermissions,
     Diagnostic,

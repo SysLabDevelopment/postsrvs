@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, ViewChildren, ViewChild, QueryList } from '@angular/core';
 import { CourierService } from '../../services/courier.service';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
@@ -6,7 +6,9 @@ import { StateService } from '../../services/state.service';
 import { Subject } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
-import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { OTTabPipePipe } from '../../pipes/o-t-tab-pipe.pipe';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-courier',
@@ -14,6 +16,10 @@ import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
   styleUrls: ['./courier.page.scss'],
 })
 export class CourierPage implements OnInit {
+  @ViewChildren(CdkDrag) DragItems : QueryList<CdkDrag>;
+  @ViewChild(CdkDropList,{static:false}) Drop_L:CdkDropList;
+
+
   public orders:any = null;
   public statuses:any = null;
   public selectedTab = 1;
@@ -27,12 +33,14 @@ export class CourierPage implements OnInit {
   public lvl_ind = {width : '0%'};
   public btn_go:boolean = false;
   public notification = null;
+  public dragStarted:boolean = false;
 
   constructor(private courier:CourierService,
               private router:Router,
               private state$:StateService,
               private auth:AuthService,
-              private bs:BarcodeScanner
+              private bs:BarcodeScanner,
+              private vbr:Vibration
               ) 
 {
   var self = this;
@@ -42,34 +50,80 @@ export class CourierPage implements OnInit {
     this.startRoute(false);
   }
 
-
   this.state$.state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
-    console.log('courier_page_ordeers_subscribe', state);
     if (state == 'orders_init'){
-      console.log('courier_page_orders_init');
       self.initContent();
     }
   })
-
   }
 
-  ngOnInit() {
-   
+  ngAfterViewInit(){}
+  ngOnInit() {}
+
+  public submitOrder(){
+    var self = this;
+    console.log('SUBMIT_ORDER_CALL');
+    this.bs.scan().then((data) => {
+      console.log('SCAN_RETURN_DATA', data);
+      if (data.text != ""){
+        self.loader = true;
+        self.courier.findOrder(data.text).subscribe((res) => {
+          if (res.success == 'true'){
+            self.courier.sumbitOrder(res.order_id).subscribe((re_s) => {
+              if (re_s){
+                self.submitOrder();
+              }
+              self.loader = false;
+            });
+          } else {
+            self.auth.showError(2);
+            self.loader = false;
+          }
+          self.state$.confirmed = true;
+          self.orders.forEach(order => {
+            if (order.confirm == '0'){
+              self.state$.confirmed = false;
+            }
+          });
+        })
+      } else {
+        self.loader = false;
+      }
+    });
   }
 
-  public drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
+  public ordersListChanged(orders){
+    console.log('OrdesListChanges orders',orders);
+    this.orders = orders;
+    let way:any[] = new Array();
+    orders.forEach(order => {
+      if (order.status_id == 1){
+        way.push(order.id);
+      }
+    });
+    this.state$.old_way = way;
+    console.log('OrdesListChanges newWay',way);
   }
+
   ngOnDestroy(){
     this.local_stop$.next();
     this.state$.orders_page_check = false;
   }
 
+  public manualRoute(){
+    if (this.state$.manual_route){
+      this.courier.changeRouteMode('auto');
+    } else {
+      this.courier.changeRouteMode('manual');
+    }
+    this.vbr.vibrate(300);
+  }
+
 
   public initContent(){
-  
+    console.log('INIT_CONTENT_CALL');
     var self = this;
-    this.orders = this.state$.orders.getValue();
+    this.orders = this.state$.orders_data;
     this.statuses = this.state$.statuses.getValue();
     if (this.orders == null || this.statuses == null){
         this.loader = true;
@@ -89,6 +143,13 @@ export class CourierPage implements OnInit {
   }
 
   public selectOrder(id){
+    for (var i=0; i < this.orders.length; i++){
+      if (this.orders[i].id == id){
+          if (this.orders[i].confirm ==  '0'){
+            return false;
+          }
+      }
+    }
     this.router.navigate(['/order', id]);
   }
 
@@ -101,7 +162,6 @@ export class CourierPage implements OnInit {
   }
 
   public getCondition(status){
-
     switch (this.selectedTab){
       case 1:
           if (status == 1) return true;   
@@ -122,7 +182,6 @@ export class CourierPage implements OnInit {
     let g_fail = 0;
 
     for (let i = 0; i < this.orders.length; i++ ){
-      console.log('ORDERS_STATUSES_CAE',this.orders[i].status_id );
       switch ( String(this.orders[i].status_id)){
         case '4' :
           g_fail++;
@@ -138,22 +197,18 @@ export class CourierPage implements OnInit {
           break;  
       }
     }
-
     this.g_done = g_done;
     this.g_process = g_process;
     this.g_fail = g_fail;
-    console.log('ORDERS_STATE_PROCESS', this.g_done, this.g_process, this.g_fail);
   }
 
   public startRoute(start = true, stop = false){
     var self = this;
     this.auth.checkAuth().subscribe((data) => {
       if (data.success == 'true'){
-       
         self.sendStartRoute(data.sync_id, start, stop);
       }
     })
-    
   }
 
   public stopRoute(){
@@ -169,32 +224,31 @@ export class CourierPage implements OnInit {
     if (start){
       data['start'] = '1';
     }
-
     if (stop){
       data['stop'] = '1';
     }
     var self = this;
-    console.log('SEND_CALL_ROUTE', data);
     this.auth.sendPost(url, data).subscribe((data) => {
-      console.log('GO_ROUTE_DATA', data);
       if (data.success == true){
         self.btn_go = true;
         if (data.result == 'stop'){
           self.btn_go = false;
         }
       }
-
     });
   }
 
   public findOrder(){
     var self = this;
     this.bs.scan().then((data) => {
-      console.log('findOrder_scanData', data);
       self.courier.findOrder(data.text).subscribe((res) => {
-        console.log('find_order_response', res);
         if (res.success == 'true'){
-          self.selectOrder(res.order_id);
+          this.orders.forEach((order) => {
+            if (order.id == res.order_id){
+            self.selectOrder(res.order_id);
+            return false;   
+            } 
+          })
         } else {
           self.auth.showError(2);
         }

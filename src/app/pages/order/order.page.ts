@@ -263,6 +263,14 @@ export class OrderPage implements OnInit {
     this.selectedReason = id;
   }
 
+  public sendPayCall(){
+    if ((this.selectedStatus == 5 || this.selectedStatus == 6) && this.pay_access){
+      this.sendPay();
+    } else {
+      this.submitChange();
+    }
+  }
+
   public submitChange(){
     console.log('submit_call');
     var self = this;

@@ -21,14 +21,14 @@ export class MapService {
     var self = this;
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     this.state$.stop$.subscribe(() => {
-      console.log('STOP$_MAP');  
+      
       self.logout();
     });
 
     this.initMap();
     this.state$.g_state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
       if (state == 'login'){
-        console.log('LOGIN_ON_MAP');
+        
         self.initMap();
         this.state$.map_state.next('init');
       }
@@ -37,11 +37,11 @@ export class MapService {
 
 
 ngOnInit(){
-  console.log('MAP_ON_INIT');
+  
 }
 
 ngOnDestroy(){
-  console.log('MAP_ON_DESTROY');
+  
   this.local_stop$.next();
 }
 
@@ -69,7 +69,7 @@ ngOnDestroy(){
     var self = this;
     if (!this.state$.init_map_state){
       this.state$.map_state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
-        console.log('map_state', state);
+        
           switch (state){
             case 'init':
               // self.buildMap();
@@ -89,7 +89,7 @@ ngOnDestroy(){
     this.state$.map_state.next('init');
 
     this.state$.map_event.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
-      console.log('map_events', state);
+      
       switch (state){
         case 'reInit':
             self.buildMap();
@@ -111,7 +111,7 @@ ngOnDestroy(){
   }
 
   public registerChanges(){
-    console.log('register_changes_call');
+    
     // switch (this.state$.route_state.getValue()) {
     //   case 'not_init':
     //     this.buildWay();
@@ -126,7 +126,7 @@ ngOnDestroy(){
     var self = this;
 
     if (this.state$.check_changes_state.getValue() == 'not_init'){
-      console.log('start_cahnges_subscribe');
+      
       this.state$.points.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
         self.registerChanges();
     });
@@ -150,7 +150,7 @@ ngOnDestroy(){
       });
 
       self.state$.map_state.next('map_init');
-      console.log('map_init_s');
+      
     });
     this.buildWay();
   }
@@ -176,7 +176,7 @@ ngOnDestroy(){
     }
 
     if (this.state$.point_check.getValue() == "not_init"){
-      console.log('point_check_subscribe');
+      
       this.state$.way.pipe(takeUntil(this.state$.stop$)).subscribe((orders) => {
         
         if (orders){
@@ -199,11 +199,11 @@ ngOnDestroy(){
   }
 
   public initGeo(){
-    console.log('initStart');
+    
     var self = this;
     // this.AP.checkPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION).then((res) => {
     //   if (res.hasPermission){
-    //     console.log('GEO_PERMISSION_OK');
+    //     
     //     self.geo.getCurrentPosition().then((pos) => {
   
     //       if (pos){
@@ -214,19 +214,19 @@ ngOnDestroy(){
     //           self.state$.init_params_state.next('init_geo_done');
     //         }
     //       }
-    //       console.log('geo_position_init', self.state$.position.getValue());
+    //       
     //     });
     //   }
     // });
 
     //отслеживаем изменение позиции и перестраиваем маршрут
     if (this.state$.geo_check.getValue() == "not_init"){
-      console.log('start_geo_subscribe');
+      
       this.state$.interval_3.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
         self.dg.isLocationAvailable().then((res) => {
-          console.log('PERMISSION_CHECK', res);
+          
           if (res){
-            console.log('GEO_PERMISSION_OK');
+            
             self.state$.unsetNotification('geo');
             self.geo.getCurrentPosition().then((pos) => {
   
@@ -234,7 +234,7 @@ ngOnDestroy(){
               var pre = self.state$.position.getValue(); 
               var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
               self.state$.position.next(position);
-              console.log('geo_itter', self.state$.position.getValue());
+              
               if (pre == null ){
                 self.state$.init_params_state.next('init_geo_done');
               }
@@ -251,7 +251,7 @@ ngOnDestroy(){
   }
 
   public buildWay(){
-    console.log('build_way');
+    
     var self = this;
 
     if (this.state$.points.getValue() != null && this.state$.position.getValue() != null && this.state$.route_state.getValue() != 'init_process' ) {
@@ -287,6 +287,26 @@ ngOnDestroy(){
       self.state$.l_map.geoObjects.add(self.state$.l_route);
       
       self.state$.route_state.next('init_done');
+      let points = self.state$.l_route.getWayPoints();
+      console.log('routePoints', points);
+      self.state$.l_route.model.events.once("requestsuccess", function () {
+        for (let i = 0; i < r_points.length; i++){
+          let cnt = i + 1;
+          let order = self.state$.orders_data[i];
+          let addr = order.client_address;
+          let yandexWayPoint = self.state$.l_route.getWayPoints().get(i);
+          ymaps.geoObject.addon.balloon.get(yandexWayPoint);
+          yandexWayPoint.options.set({
+            preset: "islands#blueStretchyIcon",
+            iconContentLayout: ymaps.templateLayoutFactory.createClass(
+                '<span style="color: red;">'+ cnt +'</span>'
+            ),
+            balloonContentLayout: ymaps.templateLayoutFactory.createClass(
+                '{{ '+ addr +'|raw }}'
+            )
+        });
+        }
+    });
     });
     }
   }
@@ -294,7 +314,7 @@ ngOnDestroy(){
 
 
 public changeWay(){
-  console.log('change_way');
+  
   var self = this;
 
   if (this.state$.points.getValue() != null 

@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { StateService } from '../../services/state.service';
 import {CdkDragDrop, moveItemInArray, CdkDrag, CdkDragMove, CdkDropList} from '@angular/cdk/drag-drop';
 import { ExtendedScrollToOptions , CdkScrollable, CdkVirtualScrollViewport} from '@angular/cdk/scrolling';
+
 
 @Component({
   selector: 'app-test',
@@ -9,9 +10,9 @@ import { ExtendedScrollToOptions , CdkScrollable, CdkVirtualScrollViewport} from
   styleUrls: ['./test.page.scss'],
 })
 export class TestPage implements OnInit {
-  @ViewChild(CdkVirtualScrollViewport) VS:CdkVirtualScrollViewport;
-  @ViewChildren(CdkDrag) DragItems:CdkDrag[];
-  @ViewChild(CdkDropList) Drop_L:CdkDropList;
+  @ViewChild(CdkVirtualScrollViewport,{static:false}) VS:CdkVirtualScrollViewport;
+  @ViewChildren(CdkDrag) DragItems : QueryList<CdkDrag>;
+  @ViewChild(CdkDropList,{static:false}) Drop_L:CdkDropList;
   
   
   public td:any;
@@ -40,29 +41,68 @@ export class TestPage implements OnInit {
 
   ngAfterViewInit(){
     let self = this;
+    
     // this.DragItems.forEach(DragItem => {
     //   self.ItemMove(DragItem);
     // });
-    this.Drop_L.sorted.subscribe((item) => {
-      console.log('is_dragged', item);
-      self.ItemMove(item);
+    this.Drop_L.autoScrollDisabled = false;
+
+    this.DragItems.changes.subscribe((r) =>{
+      self.DragItems.forEach(DragItem => {
+        DragItem.dragStartDelay = 500;
+        console.log('DragItem',DragItem);
+      })
     })
+    // this.Drop_L.sorted.subscribe((item) => {
+    //   console.log('is_dragged', item);
+    //   self.ItemMove(item);
+    // })
   }
 
   public ItemMove(DragItem){
+    this.VS.checkViewportSize();
     let c_ind = DragItem.currentIndex;
     let p_ind = DragItem.previousIndex;
     let delta = c_ind - p_ind;
-
+    let item_size = 60;
+    let offset_top = this.VS.measureScrollOffset('top');
+    let offset_btm = this.VS.measureScrollOffset('bottom');
+    let content_size = this.VS.measureRenderedContentSize();
+    let viewport_size = content_size - (offset_btm + offset_top);
+    let offset_top_to_item = c_ind * item_size; 
   
-    console.log('offsetToTop' ,this.VS.measureScrollOffset('top'));
-    console.log('offsetToBottom' ,this.VS.measureScrollOffset('bottom'));
-    console.log('element_h', DragItem.item.element.nativeElement.offsetHeight);
-    console.log('element_item', DragItem.item);
-    console.log('element_item_element', DragItem.item.element);
-    console.log('element_item_element_native', DragItem.item.element.nativeElement);
+    console.log('offsetToTop' ,offset_top);
+    console.log('offsetToBottom' ,offset_btm);
+    console.log('rendered_content' ,content_size);
+    console.log('element_h', 60);
+    console.log('viewport_size', viewport_size);
+    console.log('offset_top_to_item', offset_top_to_item);
     
-
+    if (delta < 0 && offset_top > 0){
+      if (offset_top_to_item < offset_top + 70){
+        console.log('ВМТ');
+        let n_top_offset = item_size*2;
+        if (offset_top < n_top_offset){
+          this.VS.scrollToOffset(0,'smooth');
+          this.Drop_L.start();
+        } else {
+          this.VS.scrollToOffset(offset_top - n_top_offset,'smooth');
+          this.Drop_L.start();
+        }
+      }  
+    }else if (delta > 0 && offset_btm > 0){
+      if (offset_top_to_item > (offset_top + viewport_size - 70)){
+        console.log('НМТ');
+        let n_btm_offset = item_size*2;
+        if (offset_btm < n_btm_offset){
+          this.VS.scrollToOffset(content_size - viewport_size,'smooth');
+          this.Drop_L.start();
+        } else {
+          this.VS.scrollToOffset(offset_top + n_btm_offset, 'smooth');
+          this.Drop_L.start();
+        }
+      }
+    }
 
   
     // console.log('range',self.VS.measureScrollOffset('top') );
