@@ -8,6 +8,7 @@ import { StateService } from '../../services/state.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AlertController } from '@ionic/angular';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import {
   trigger,
   state,
@@ -90,9 +91,10 @@ export class BalancePage implements OnInit {
               private map:MapService,
               private state$:StateService,
               private alert:AlertController,
-              private camera:Camera
+              private camera:Camera,
+              private AP:AndroidPermissions
              ) {
-              
+    this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     if (this.info == null){
      this.loader = true;
     } else {
