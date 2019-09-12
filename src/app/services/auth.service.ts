@@ -9,6 +9,7 @@ import { StateService } from './state.service';
 import { MapService } from './map.service';
 import { AlertController } from '@ionic/angular';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,16 +34,16 @@ export class AuthService {
     showTorchButton: true,
     showFlipCameraButton: true
   };  
-  
-  
 }
 
 ngOnInit(){
   
 }
+
   public checkAuth(){
     var url = 'orders';
     var data = {
+      
       'action' : 'checkAuth',
     }
 
@@ -194,9 +195,19 @@ ngOnInit(){
     });
 
     await alert8.present();
-  break;   
+  break;
+  case 9:
+    const alert9 = await this.alert.create({
+      header: 'Звонок клиенту',
+      message: 'Запрос обрабатывается, вам сейчас позвонят.',
+      buttons: ['OK']
+    });
+
+    await alert9.present();
+  break;    
                              
     }
   }
 
+  public sendCa
 }

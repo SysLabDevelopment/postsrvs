@@ -17,6 +17,7 @@ import {
   transition
 } from '@angular/animations';
 
+import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
 
 @Component({
   selector: 'app-balance',
@@ -92,8 +93,9 @@ export class BalancePage implements OnInit {
               private state$:StateService,
               private alert:AlertController,
               private camera:Camera,
-              private AP:AndroidPermissions
-             ) {
+              private AP:AndroidPermissions,
+              private fs:AndroidFullScreen
+             ){
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     if (this.info == null){
      this.loader = true;
@@ -112,12 +114,20 @@ export class BalancePage implements OnInit {
     }
 
     this.initCashout();
+    this.setFs();
    }
 
   ngOnInit() {}
   
   ngOnDestroy(){
     this.local_stop$.next();
+  }
+
+  public setFs(){
+    let self = this;
+    this.fs.isImmersiveModeSupported()
+      .then(() => {console.log('fs_support'); self.fs.immersiveMode()})
+      .catch((error: any) => console.log(error));
   }
 
   public updateInfo(){

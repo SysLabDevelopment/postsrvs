@@ -84,7 +84,7 @@ export class OrderPage implements OnInit {
   public pay_access_data = null;
   public show_info:boolean = false;
   public show_email:boolean = false;
-
+  
   constructor(private router:Router,
               private route:ActivatedRoute,
               private courier:CourierService,
@@ -113,15 +113,37 @@ export class OrderPage implements OnInit {
     
   }
 
-  public phoneClick(){
+  public  parsePhone(phone){
     const regex = /(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/g;
-    const str = String(this.phone);
-    let m;
+    const str = String(phone);
     let result = regex.exec(str);
-    console.log('PHONE_FIND', result);
+    let tel = result[0];
+    if (tel != null) {
+      if (tel[0] == '+'){
+        tel = '8' + tel.slice(2);
+      }
+      return tel;
+    }
+    return false;
+  }
 
-    if (result != null){
-      this.CL.callNumber(String(result[0]), true).then(() => {});
+  public phoneClick(){
+    let orderPhone = this.parsePhone(this.phone);
+    let courierPhone = this.parsePhone(this.order.courier_phone);
+    console.log('courier_p', courierPhone);
+    console.log('order_p', orderPhone);
+
+    if (orderPhone && courierPhone){
+      let url = 'orders';
+      let data = {
+        'action'        : 'send_phone',
+        'client_number' : orderPhone,
+        'cur_number'    : courierPhone 
+      }
+      this.auth.sendPost(url, data).subscribe((resp) => {
+        console.log('call_subs', resp);
+      });
+      this.auth.showError(9);
     }
   }
 
@@ -147,6 +169,7 @@ export class OrderPage implements OnInit {
         this.podrazd = this.order.Podrazd;
         this.statuses = this.state$.statuses_data;
         this.reasons = this.state$.reasons; 
+        
         this.setQuants();
         this.getSum();
         this.ifPaid();
@@ -405,7 +428,7 @@ if (order){
 
         let order_data = {
           'apikey'  : String(this.pay_access_data.api_key),
-          'login'   : '7' + String(this.pay_access_data.phone),
+          'login'   : String(this.pay_access_data.phone),
           'cashier_name' : String(this.pay_access_data.name) + String(this.pay_access_data.phone),
           'purchase'  : purchase,
           'callback_url' : callback_url,
@@ -430,7 +453,7 @@ if (order){
   //Получаем api key & login
   public getPayData(){
     var url   = 'pay_order';
-    var data  = {'action' : 'getData', 'orderId' : this.orderId}
+    var data  = {'action' : 'getData', 'orderId' : this.clientId}
     var self = this;
 
     this.auth.sendPost(url, data).subscribe((res:any) => {

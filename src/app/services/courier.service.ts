@@ -315,9 +315,11 @@ public sumbitOrder(orderId){
     'action' : 'submitOrder',
     'orderId' : orderId
   }
+  console.log('submit_order_data', data);
   let self = this;
   let ret:Subject<any> = new Subject<any>();
   this.auth.sendPost(url, data).subscribe((resp:any) => {
+    console.log('submit_order_response', resp);
     if (resp.success == 'true'){
       self.state$.updateWayInfo.next();
       ret.next(true);

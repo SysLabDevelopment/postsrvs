@@ -11,9 +11,13 @@
     color: #ffffff;
 }
 .c-wrp{
-    height: 100%;
+    position: absolute;
     display: grid;
     grid-template-rows: 60px 50px auto 70px 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 40px;
 }
 
 .c-body{
@@ -334,6 +338,7 @@
     justify-content: center;
     align-items: center;
     font-size: 36px;
+    z-index: 999;
 }
 
 .submit-order-btn{
@@ -347,4 +352,5 @@
     justify-content: center;
     align-items: center;
     font-size: 36px;
+    z-index: 999;
 }

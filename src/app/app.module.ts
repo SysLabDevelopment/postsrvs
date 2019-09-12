@@ -21,6 +21,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
     Diagnostic,
     Camera,
     CallNumber,
+    AndroidFullScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
