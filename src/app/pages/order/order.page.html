@@ -43,7 +43,7 @@
             </div>
             <div class="cr-row ">
                 <div class="cr-phone-title">Телефон</div>
-                <div class="cr-phone" (click)="phoneClick()">Позвонить клиенту<i class="fas fa-phone"></i></div>
+                <div class="cr-phone" (click)="phoneClick('init')">Позвонить клиенту<i class="fas fa-phone"></i></div>
             </div>
           </div>
          <div class="time-row o-row">
@@ -183,4 +183,11 @@
     </div>     
       </div>
     </div>
+    <div class="call-window" *ngIf="callWindow">
+      <div class="cw-body">
+        <i (click)="phoneClick('init')" class="far fa-times-circle"></i>
+          <button class="cw_phone" (click)="phoneClick('phone')">Позвонить со своего телефона</button>
+          <button class="cw_operator" (click)="phoneClick('operator')">Позвонить через оператора</button>
+      </div>
+  </div>
 </ion-content>

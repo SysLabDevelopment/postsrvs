@@ -417,18 +417,17 @@
 }
 
 .cr-phone{
-    padding: 5px 5px;
+    padding: 10px 4px;
     color: #2b637e;
+    width: 157px;
+    margin: 6px 0px 0 0;
+    box-shadow: 0px 0px 0.5px 0.5px #2b637e;
     font-size: 14px;
-    box-shadow: 0 0 1px 1px#2b637e;
     border-radius: 3px;
-    width: 101%;
-    text-align: center;
-    vertical-align: middle;
 }
 
 .cr-phone i{
-    font-size: 13px;
+    font-size: 14px;
     margin: 0 0 0 7px;
 }
 
@@ -460,4 +459,46 @@
     width: 94%;
     text-transform: uppercase;
     box-shadow: 0 0 1px 1px #f55656;
+}
+
+.call-window{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+
+}
+
+.cw-body{
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    height: 25%;
+    border-radius: 5px;
+    position: relative;
+}
+
+.cw-body button{
+    background: none;
+    height: 44px;
+    width: 80%;
+    box-shadow: 0px 0px 0.5px 0.5px #7cd5ff;
+    border-radius: 3px;
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.far{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 19px;
 }

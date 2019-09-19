@@ -84,7 +84,7 @@ export class OrderPage implements OnInit {
   public pay_access_data = null;
   public show_info:boolean = false;
   public show_email:boolean = false;
-  
+  public callWindow:boolean = false;
   constructor(private router:Router,
               private route:ActivatedRoute,
               private courier:CourierService,
@@ -127,24 +127,36 @@ export class OrderPage implements OnInit {
     return false;
   }
 
-  public phoneClick(){
+  public phoneClick(action){
+    console.log('phoneClick', action);
     let orderPhone = this.parsePhone(this.phone);
     let courierPhone = this.parsePhone(this.order.courier_phone);
-    console.log('courier_p', courierPhone);
-    console.log('order_p', orderPhone);
 
-    if (orderPhone && courierPhone){
-      let url = 'orders';
-      let data = {
-        'action'        : 'send_phone',
-        'client_number' : orderPhone,
-        'cur_number'    : courierPhone 
-      }
-      this.auth.sendPost(url, data).subscribe((resp) => {
-        console.log('call_subs', resp);
-      });
-      this.auth.showError(9);
+    switch (action){
+      case 'init':
+        this.callWindow = !this.callWindow;
+        break;
+      case 'phone':
+          this.CL.callNumber(String(orderPhone), true).then(() => {});
+          this.callWindow = false;
+        break;
+      case 'operator':
+          if (orderPhone && courierPhone){
+            let url = 'orders';
+            let data = {
+              'action'        : 'send_phone',
+              'client_number' : orderPhone,
+              'cur_number'    : courierPhone 
+            }
+            this.auth.sendPost(url, data).subscribe((resp) => {
+              console.log('call_subs', resp);
+            });
+            this.auth.showError(9);
+            this.callWindow = false;
+          }
+        break;
     }
+
   }
 
 
