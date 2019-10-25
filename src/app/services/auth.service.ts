@@ -33,7 +33,15 @@ export class AuthService {
   this.barcodeScannerOptions = {
     showTorchButton: true,
     showFlipCameraButton: true
-  };  
+  };
+
+  if (!this.getMode()){
+    console.log('setMode');
+    this.setMode('manual_wo');
+  }
+  if (!this.getScanMode()){
+    this.setScanMode('camera');
+  }
 }
 
 ngOnInit(){
@@ -50,6 +58,21 @@ ngOnInit(){
     return this.sendPost(url, data);
   }
 
+  public setMode(mode){
+    localStorage.setItem('mode', mode);
+  }
+
+  public getMode():String {
+    return localStorage.getItem('mode');
+  }
+
+  public setScanMode(mode){
+    localStorage.setItem('scan_mode', mode);
+  }
+  //меняет способ сканирования 
+  public getScanMode():string{
+    return localStorage.getItem('scan_mode');
+  }
   public sendPost(url, data){
     var host = "https://postsrvs.ru/mobile/";
     url = host+url;
@@ -204,7 +227,15 @@ ngOnInit(){
     });
 
     await alert9.present();
-  break;    
+  break;
+  case 10:
+      const alert10 = await this.alert.create({
+        header: 'Настройки сохранены!',
+        buttons: ['OK']
+      });
+  
+      await alert10.present();
+    break;     
                              
     }
   }

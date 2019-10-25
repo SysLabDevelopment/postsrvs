@@ -124,6 +124,7 @@
     position: relative;
 }
 
+
 .cf-title, .cf-qwe, .cf-comment, .cf-btns{
     display: flex;
     justify-content: center;
@@ -233,3 +234,46 @@
     margin-top: 5px;
 }
 
+.of-comment{
+    width: 100%;
+}
+
+.of-number{
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    margin: 3px 0;
+}
+
+.of-confirm{
+    width: 90%;
+    height: unset;
+    display: flex;
+    flex-direction: column;
+}
+
+.of-btns, .of-btn{
+    width:100%;
+}
+
+.of-btns{
+    margin: 15px auto;
+}
+
+.of-qwe{
+    font-size: 21px;
+    display: inline;
+    margin: 24px 0;
+    text-align: center;
+}
+
+.of-title{
+    margin: 22px 0 6px 0;
+    font-size: 17px;
+}
+
+.fa-cogs{
+    position: absolute;
+    left: 6%;
+    top: 34%;
+}

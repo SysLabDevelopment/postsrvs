@@ -13,6 +13,8 @@ export class OrdersListSecondComponent implements OnInit {
   public orders_c;
   @Input() 
   public selectedTab;
+  @Input() 
+  public confirm_cond;
   @Output()
   orderSelected_E = new EventEmitter<any>();
   

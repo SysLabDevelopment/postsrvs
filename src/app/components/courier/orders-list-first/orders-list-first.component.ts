@@ -12,6 +12,8 @@ export class OrdersListFirstComponent implements OnInit {
   @Input() 
   public orders_c;
   @Input() 
+  public confirm_cond;
+  @Input() 
   public selectedTab;
   @Output() 
   ordersChange_E = new EventEmitter<any>();
@@ -21,26 +23,12 @@ export class OrdersListFirstComponent implements OnInit {
   DragItems : QueryList<CdkDrag>;
   @ViewChild(CdkDropList,{static:false}) 
   Drop_L:CdkDropList;
-  
-  public selectOrder(id){
-    this.orderSelected_E.emit(id);
-  }
-
-  drop(event: CdkDragDrop<any[]>) {
-    
-    moveItemInArray(this.orders_c, event.previousIndex, event.currentIndex);
-    this.ordersChange_E.emit(this.orders_c);
-  }
-
-
    
+  
   constructor() { }
 
-  ngOnInit() {
-    
-    
-    
-  }
+  ngOnInit() {}
+  
   ngAfterViewChecked(){
     var self = this;
     
@@ -56,5 +44,15 @@ export class OrdersListFirstComponent implements OnInit {
   }
   ngAfterViewInit(){ 
     
+  }
+
+  public selectOrder(id){
+    this.orderSelected_E.emit(id);
+  }
+
+  drop(event: CdkDragDrop<any[]>) {
+    
+    moveItemInArray(this.orders_c, event.previousIndex, event.currentIndex);
+    this.ordersChange_E.emit(this.orders_c);
   }
 }

@@ -354,3 +354,39 @@
     font-size: 36px;
     z-index: 999;
 }
+
+.m_lbl{
+    bottom: 40px;
+}
+
+.m_wrp{
+    grid-template-rows: 60px 50px auto 0px 40px;
+}
+
+.scanWindow{
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: RGBA(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999999;
+}
+
+.ionInp{
+    box-shadow: 0 0 1px 1px #cecece;
+    margin: 7px 0;
+}
+
+.sw-wrp{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 22px;
+    border-radius: 3px;
+}

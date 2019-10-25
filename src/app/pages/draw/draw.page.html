@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Подпись</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <canvas #myCanvas (touchstart)="handleStart($event)" (touchmove)="handleMove($event)"></canvas>
+  <div class="error" *ngIf="error_mes">Необходимо оставить подпись</div>
+  <div class="btns">
+    <button class="save-btn" (click)="saveImage()">Отправить</button>
+    <button class="save-btn clear-btn" (click)="clearCanvas()">Очистить</button>
+    <button class="save-btn back" (click)="back()">Назад</button>
+  </div>
+
+</ion-content>

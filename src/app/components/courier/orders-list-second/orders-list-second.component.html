@@ -2,7 +2,7 @@
   <cdk-virtual-scroll-viewport itemSize="50" style="height:100%; width: 100%" >  
       <div *ngFor="let order of orders_c | oTTabPipe : selectedTab" 
                       class="ol-item"
-                      [ngClass]="{  'non-confirmed' : order.confirm == 0,
+                      [ngClass]="{  'non-confirmed' : order.confirm == 0 && confirm_cond,
                                     'overdue'       : order.overdue == 1}"  
                       (click) = "selectOrder(order.id)" >
           <div class="ol-col oc-left">

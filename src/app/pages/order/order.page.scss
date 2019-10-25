@@ -502,3 +502,62 @@
     top: 5px;
     font-size: 19px;
 }
+
+.draw{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 10px 0px 10px;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    padding: 10px 0;
+    overflow: hidden;
+    padding: 10px 10px 20px 10px;
+    background: #fff;
+}
+
+.changeDraw{
+    box-shadow: 0 0 1px 1px #2b637e;
+    height: 38px;
+    width: 75%;
+    margin: 9px auto;
+    border-radius: 3px;
+    font-size: 18px;
+    outline: none;
+    background: #fff;
+}
+
+.asc-row .title{
+    font-weight: bold;
+    text-align: center;
+}
+
+.draw-btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 9px auto;
+    width: 72%;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    height: 33px;
+}
+
+.drawBtn{
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 9px auto;
+    width: 72%;
+    box-shadow: 0 0 1px 1px #c7c7c7;
+    border-radius: 3px;
+    height: 33px;
+    background: #fff;
+}
+
+.draw_btn_active{
+    background: #2b637e;
+    color: #fff;
+}

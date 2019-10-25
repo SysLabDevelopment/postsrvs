@@ -85,6 +85,10 @@ export class OrderPage implements OnInit {
   public show_info:boolean = false;
   public show_email:boolean = false;
   public callWindow:boolean = false;
+  public drawimage:boolean = false;
+  public drawNeedle:boolean = false;
+  public imageToShow = null;
+
   constructor(private router:Router,
               private route:ActivatedRoute,
               private courier:CourierService,
@@ -98,9 +102,20 @@ export class OrderPage implements OnInit {
               this.orderId = this.route.snapshot.paramMap.get('id');
 
               this.initOrder();
+              var img = localStorage.getItem('drawImg');
+              if (img){
+                this.imageToShow = 'data:image/jpg;base64,' + img;
+              }
    }
 
   ngOnInit() {
+  }
+
+  ngAfterViewChecked(){
+    var img = localStorage.getItem('drawImg');
+    if (img){
+      this.imageToShow = 'data:image/jpg;base64,' + img;
+    }
   }
 
   public sendPost(url, data){
@@ -111,6 +126,15 @@ export class OrderPage implements OnInit {
 
       return  this.http.post(url, data);
     
+  }
+
+  public drawBtn(need){
+    this.drawNeedle = need;
+    if (need){
+      this.router.navigate(['draw']);
+    } else {
+      localStorage.removeItem('drawImg');
+    }
   }
 
   public  parsePhone(phone){
@@ -257,6 +281,7 @@ export class OrderPage implements OnInit {
   }
 
   public navBack(){
+    localStorage.removeItem('drawImg');
     this.router.navigate(['/courier']);
   }
 
@@ -324,6 +349,7 @@ export class OrderPage implements OnInit {
               self.router.navigate(['courier']);
               self.state$.updateWayInfo.next('0');
             }
+            localStorage.removeItem('drawImg');
           });
         }
         break;
@@ -343,6 +369,7 @@ export class OrderPage implements OnInit {
             self.initOrder();
             self.state$.updateWayInfo.next('0');
           }
+          localStorage.removeItem('drawImg');
         });
           break;
       case 6:
@@ -361,6 +388,7 @@ export class OrderPage implements OnInit {
             self.initOrder();
             self.state$.updateWayInfo.next('0');
           }
+          localStorage.removeItem('drawImg');
         });
           break;      
     }

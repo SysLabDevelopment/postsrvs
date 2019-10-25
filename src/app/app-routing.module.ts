@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'map', loadChildren: './pages/map/map.module#MapPageModule', canActivate: [AuthGuard] },
   { path: 'balance', loadChildren: './pages/balance/balance.module#BalancePageModule',  canActivate: [AuthGuard] },
   { path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
+  { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
+  { path: 'draw', loadChildren: './pages/draw/draw.module#DrawPageModule' },
 ];
 
 @NgModule({

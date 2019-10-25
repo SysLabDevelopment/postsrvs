@@ -1,0 +1,54 @@
+<ion-content>
+  <span class="cn" *ngIf="state.notificationStr && state.notificationStr.length != 0">{{state.notificationStr}}</span>
+<div class="o-title" (click)='p_btn()'>  
+      <span class="ct">Настройки</span>
+      <i class="fas fa-chevron-left" (click)="navToBalance()"></i>
+</div>
+<div class="o-body" >
+  <div class="settings">
+      <div class="mode-block">
+          <ion-list>
+            <ion-radio-group (ionChange)="modeChange($event)">
+              <ion-list-header>
+                <ion-label>Режим работы приложения</ion-label>
+              </ion-list-header>
+              <ion-item 
+                *ngFor="let mode of modes"
+                (ionSelect)="itemsSelect($event)">
+                <ion-label>{{mode.val}}</ion-label>
+                <ion-radio slot="start" name="{{mode.value}}" value = "{{mode.value}}" checked="{{mode.isChecked}}"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+        <div class="mode-block">
+          <ion-list> 
+            <ion-radio-group (ionChange)="scanChange($event)">
+              <ion-list-header>
+                <ion-label>Режим сканирования штрих-кода</ion-label>
+              </ion-list-header>
+              <ion-item 
+                *ngFor="let mode of scanModes"
+                (ionSelect)="itemsSelect($event)">
+                <ion-label>{{mode.val}}</ion-label>
+                <ion-radio slot="start" name="{{mode.value}}" value = "{{mode.value}}" checked="{{mode.isChecked}}"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+        <div class="ss-block">
+            <div class="ss-title">ID сессии</div>
+            <input type="text" class="ss-inp">
+        </div>
+      </div>
+      <div class="sv">
+        <div class="sv-btn" *ngIf="!pswdView" (click)="saveSetings()">Сохранить</div>
+      </div>
+  </div>
+<div class="pswd-wrp" *ngIf="pswdView">
+  <div class="ps">
+    <div class="ps-title">Введите пароль для настройки приложения</div>
+    <input type="password" (keyup)="pswdChange()" [(ngModel)]='pswdInp' class="pswd-inp">
+  </div>
+</div>
+</ion-content>

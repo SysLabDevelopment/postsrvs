@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, ViewChildren, ViewChild, QueryList } from '@angular/core';
+import { Component, OnInit, Injectable, ViewChildren, ViewChild, QueryList, ElementRef , Renderer, Renderer2} from '@angular/core';
 import { CourierService } from '../../services/courier.service';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scan
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { OTTabPipePipe } from '../../pipes/o-t-tab-pipe.pipe';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-courier',
@@ -18,7 +19,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 export class CourierPage implements OnInit {
   @ViewChildren(CdkDrag) DragItems : QueryList<CdkDrag>;
   @ViewChild(CdkDropList,{static:false}) Drop_L:CdkDropList;
-
+  @ViewChild('sInput',{static:false}) public sInput:ElementRef;
 
   public orders:any = null;
   public statuses:any = null;
@@ -34,13 +35,18 @@ export class CourierPage implements OnInit {
   public btn_go:boolean = false;
   public notification = null;
   public dragStarted:boolean = false;
-
+  public subBtnCond:boolean = true;
+  public scanView:boolean = false;
+  public scanInput;
+  public scan_process = false;
+  public find_order:boolean = false;
   constructor(private courier:CourierService,
               private router:Router,
               private state$:StateService,
               private auth:AuthService,
               private bs:BarcodeScanner,
-              private vbr:Vibration
+              private vbr:Vibration,
+              private rn:Renderer2
               ) 
 {
   var self = this;
@@ -50,19 +56,99 @@ export class CourierPage implements OnInit {
     this.startRoute(false);
   }
 
+
   this.state$.state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
     if (state == 'orders_init'){
       self.initContent();
     }
   })
+  this.initConditions();
   }
 
-  ngAfterViewInit(){}
+  public initConditions(){
+    let app_mode = this.auth.getMode();
+    console.log('init conditions mode', app_mode);
+    switch(app_mode){
+      case 'auto':
+        if (!this.state$.confirmed) this.subBtnCond = true;;
+        break;
+      case 'auto_wo':
+          this.subBtnCond = false;
+        break;
+      case 'manual':
+          if (!this.state$.confirmed) this.subBtnCond = true;;
+        break;
+      case 'manual_wo':
+          this.subBtnCond = false;
+        break;
+    }
+  }
+
+  ngAfterViewChecked(){}
+  
   ngOnInit() {}
+  
+  public scanInputStart(){
+    let self = this;
+    this.scanView = !this.scanView;
+    this.loader = true;
+    if (this.auth.getScanMode() == 'scan'){
+      self.courier.findOrder(this.scanInput).subscribe((res) => {
+        self.scanInput = null;
+        if (res.success == 'true'){
+          self.courier.sumbitOrder(res.order_id).subscribe((re_s) => {
+            console.log('courier_page sbo resp', re_s);
+            if (re_s){
+              self.submitOrder();
+            } else {
+              self.scanView =false;
+            }
+            self.loader = false;
+          });
+        } else {
+          self.auth.showError(2);
+          self.loader = false;
+          self.scanView =false;
+        }
+        self.state$.confirmed = true;
+        self.orders.forEach(order => {
+          if (order.confirm == '0'){
+            self.state$.confirmed = false;
+          }
+        });
+      })
+    } else {
+      self.loader = false;
+    }
+    this.scan_process = false;
+  }
+  
+  public scanInputChange(){
+    console.log('inputData', this.scanInput);
+    let self = this;
+    if (this.scan_process) return false;
+    this.scan_process = true;
+    if (this.find_order){
+      setTimeout(function(){
+        self.scanSearch();
+      }, 1500)
+    } else {
+      setTimeout(function(){
+        self.scanInputStart();
+      }, 1500)
+    }
+  }
 
   public submitOrder(){
     var self = this;
     console.log('SUBMIT_ORDER_CALL');
+    if (this.auth.getScanMode() == 'scan'){
+      this.scanView = !this.scanView;
+      setTimeout(function(){
+        self.sInput.nativeElement.focus();
+      }, 500);
+      return false
+    }
     this.bs.scan().then((data) => {
       console.log('SCAN_RETURN_DATA', data);
       if (data.text != ""){
@@ -145,7 +231,7 @@ export class CourierPage implements OnInit {
   public selectOrder(id){
     for (var i=0; i < this.orders.length; i++){
       if (this.orders[i].id == id){
-          if (this.orders[i].confirm ==  '0'){
+          if (this.orders[i].confirm ==  '0' && this.subBtnCond){
             return false;
           }
       }
@@ -238,17 +324,43 @@ export class CourierPage implements OnInit {
     });
   }
 
+  public scanSearch(){
+    let self = this;
+    this.scanView = !this.scanView;
+    this.loader = true;
+    if (this.auth.getScanMode() == 'scan'){
+      self.courier.findOrder(this.scanInput).subscribe((res) => {
+        self.scanInput = null;
+        if (res.success == 'true'){
+          self.selectOrder(res.order_id);
+        } else {
+          self.auth.showError(2);
+        }
+        self.loader = false;
+        self.scanView =false;
+      })
+    } else {
+      self.loader = false;
+    }
+    this.scan_process = false;
+    this.find_order = false;
+  }
+
   public findOrder(){
     var self = this;
+    if (this.auth.getScanMode() == 'scan'){
+      this.scanView = !this.scanView;
+      this.find_order = true;
+      setTimeout(function(){
+        self.sInput.nativeElement.focus();
+      }, 500);
+      return false
+    }
+
     this.bs.scan().then((data) => {
       self.courier.findOrder(data.text).subscribe((res) => {
         if (res.success == 'true'){
-          this.orders.forEach((order) => {
-            if (order.id == res.order_id){
-            self.selectOrder(res.order_id);
-            return false;   
-            } 
-          })
+          self.selectOrder(res.order_id);
         } else {
           self.auth.showError(2);
         }

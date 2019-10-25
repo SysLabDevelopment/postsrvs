@@ -22,6 +22,7 @@ import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +43,7 @@ import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
     Camera,
     CallNumber,
     AndroidFullScreen,
+    ScreenOrientation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

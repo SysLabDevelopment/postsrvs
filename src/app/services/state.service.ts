@@ -21,6 +21,7 @@ export class StateService {
   public manual_route:boolean = false; 
   public old_way:any = null;
   public confirmed:boolean = false;
+  public scan_mode:boolean = false;
 //INTERVALS
 
   public interval_3:Observable<any>  = interval(4000);

@@ -1,0 +1,85 @@
+
+canvas {
+    display: block;
+    border: 1px solid rgb(187, 178, 178);
+    height: 75%;
+    width: 100%;
+}
+
+#wrp{
+    height: 100%;
+    overflow: hidden;
+}
+
+.btns{
+    position: absolute;
+    margin: 0 auto;
+    bottom: 10px;
+    left: 0px;
+    right: 0px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999;
+}
+
+.save-btn{
+    height: 50px;
+    width: 300px;
+    background: #474fc8;
+    color: #fff;
+    outline: none;
+    
+    width: 30%;
+    margin: 0 4px;
+}
+
+.clear-btn{
+    outline:none;
+}
+
+.mi-table{
+    display: grid;
+    grid-template-rows: 40px auto;
+    border: 1px solid #e4e4e4;
+}
+
+.m-row{
+    display: grid;
+    grid-template-columns: 120px 180px 180px 120px 100px 100px 100px 100px 150px 150px;
+    min-height: 40px;
+}
+
+.m-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-row{
+    box-shadow: -2px 0 0.5px 0.5px #e4e4e4
+}
+
+.m-row-h{
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.m-col{
+    border-left: 1px solid #e4e4e4;
+}
+
+.m-col:first-child{
+    border-left: none;
+}
+
+.ion-toolbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.error{
+    color: red;
+    width: 100%;
+    text-align: center;
+}

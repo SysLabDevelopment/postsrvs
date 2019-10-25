@@ -5,6 +5,8 @@ import { Platform } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { StateService } from '../../services/state.service';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
 import {
   trigger,
   state,
@@ -73,10 +75,12 @@ export class LoginPage implements OnInit {
               private plt:Platform,
               private http:HttpClient,
               private state$:StateService,
+              private AP:AndroidPermissions
               ) {
     var self = this;
+    this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     //проверяет авторизован ли пользователь на сервере
-
+    
     this.plt.ready().then(() => {
       this.auth.checkAuth().subscribe((data:any) => {  
           console.log('check_auth_data', data);

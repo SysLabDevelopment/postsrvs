@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { CourierService } from '../../services/courier.service';
 import { AuthService } from '../../services/auth.service';
-import { MapService} from '../../services/map.service';
 import { StateService } from '../../services/state.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -85,11 +84,14 @@ export class BalancePage implements OnInit {
   public cashCheckData:any = null;
   public openBtn:boolean = false;
   public review_w:boolean = false;
+  public failsOrder:boolean = false;
+  public failsOrderNotFull:boolean = false;
+  public failOrdersCount:Number = 0;
+  public fo_comment:String = ""; //комментарий к частичной сдаче заказов
 
   constructor(private courier:CourierService,
               private auth:AuthService,
               private router:Router,
-              private map:MapService,
               private state$:StateService,
               private alert:AlertController,
               private camera:Camera,
@@ -200,6 +202,13 @@ export class BalancePage implements OnInit {
       data['isFull']  = '1';
     }
 
+    if (this.failsOrderNotFull){
+      data['ordersCount']   = this.failOrdersCount;
+      data['ordersComment'] = this.fo_comment;
+    }
+    console.log('o_c', data['ordersCount']);
+    console.log('ocm',data['ordersComment'] );
+
     var self = this;
     this.auth.sendPost(url, data).subscribe((resp:any) => {
       console.log('CASHOUT_RESPONSE', resp);
@@ -254,22 +263,19 @@ export class BalancePage implements OnInit {
         message: 'Средства успешно сданы',
         buttons: ['OK']
       });
-
+      await alert.present();
       this.confirmWindow = false;
       this.loader = false;
-      await alert.present();
     } else {
       const alert2 = await this.alert.create({
         header: 'Ошибка',
         message: 'Ошибка сдачи средств',
         buttons: ['OK']
       });
-      this.confirmWindow = false;
-     this.loader = false;
       await alert2.present();
+      this.confirmWindow = false;
+      this.loader = false;
     }
-
-    
   }
 
   public answer(isFull){
@@ -277,7 +283,39 @@ export class BalancePage implements OnInit {
       this.commentError = true;
       return false;
     }
-    this.openBtn = true;
+   this.failOrders();
+  }
+
+  //спрашивает, сколько заказов не сдано
+  public failOrders(){
+    if (this.info.ordersFail == 0){
+      this.openBtn = true;
+      return false;
+    } else {
+      this.failsOrder = true;
+    }
+  }
+
+  public fo_answer(flag){
+    
+    if (!this.failsOrderNotFull){
+      if (flag){
+        this.failsOrderNotFull = false;
+        this.openBtn = true;
+      } else {
+        this.failsOrderNotFull = true;
+      }
+    } else {
+      if (flag){
+        this.failsOrderNotFull = false;
+      } else {
+        if (this.failOrdersCount == 0 || this.fo_comment == "" || !this.fo_comment){
+          this.commentError = true;
+        } else {
+          this.openBtn = true;
+        }
+      }
+    }
   }
 
   public commentInput(){
@@ -309,4 +347,7 @@ export class BalancePage implements OnInit {
     });
   }
 
+  public navToSettings(){
+    this.router.navigate(['settings']);
+  }
 }

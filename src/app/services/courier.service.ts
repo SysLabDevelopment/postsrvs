@@ -193,11 +193,12 @@ public getWay(){
     'lt'      : this.state$.position.getValue().lt,
     'lg'      : this.state$.position.getValue().lg
   }
-
-  data['mode'] = this.state$.manual_route ? "manual" : "auto";
-  if (this.state$.manual_route){
-    data['old_way'] = this.state$.old_way; 
-  } 
+  let app_mode = this.auth.getMode();
+  if ((app_mode == 'manual' || app_mode == 'manual_wo') || this.state$.manual_route){
+    data['mode'] = "manual";
+  } else {
+    data['mode'] = "auto";
+  }
   let resp:Subject<any> = new Subject();
   let self = this;
 
@@ -277,6 +278,7 @@ public getStatus(order){
 
 public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '' ){
   var url = 'orders';
+  var draw = localStorage.getItem('drawImg');
   var data = {
     'action' : 'changedStatus',
     'status' : status,
@@ -286,6 +288,7 @@ public changeStatus(status = '', id = '', comment = '', reason = '', goods = '',
     'goods'  : goods,
     'payment'  : payment
   };
+  if (draw) data['sign'] = draw;
 
   return this.auth.sendPost(url, data);
 }
@@ -301,12 +304,41 @@ public sendPay(order,isDone = true, quants = null){
   }  
 }
 
+/**
+ * Ищет заказ в милевском(через 4 круга ада)
+ * Возвращает adress_code
+ * проверяем, если заказ есть в списке заказов курьера - возыращаем его
+ * если нет - false
+ * @param code //штрих-код
+ */
 public findOrder(code){
   let self = this;
   var url = 'orders';
   var data = {'action'  : 'findOrder',
               'code'    : code}
-  return this.auth.sendPost(url, data);
+  let resp:Subject<any> = new Subject();
+  let orders = this.state$.orders_data;
+
+  this.auth.sendPost(url, data).subscribe((od) => {
+    if (od.success == 'true'){
+      let n_f = true;
+      let orderId = od.order_id;
+
+      for (var i=0; i < orders.length; i++){
+        if (orders[i].id == orderId){
+          n_f = false;
+        }
+      }
+      if (n_f){
+        resp.next(false);
+      } else {
+        resp.next(od);
+      }
+    } else {
+      resp.next(od);
+    }
+  });
+  return resp;
 }
 
 public sumbitOrder(orderId){
@@ -318,6 +350,7 @@ public sumbitOrder(orderId){
   console.log('submit_order_data', data);
   let self = this;
   let ret:Subject<any> = new Subject<any>();
+  
   this.auth.sendPost(url, data).subscribe((resp:any) => {
     console.log('submit_order_response', resp);
     if (resp.success == 'true'){
@@ -328,6 +361,7 @@ public sumbitOrder(orderId){
       ret.next(false);
     }
   });
+  
   return ret;
 }
 
