@@ -13,7 +13,7 @@ import {
   state,
   style,
   animate,
-  transition,
+  transition
   // ...
 } from '@angular/animations';
 import { takeUntil } from 'rxjs/operators';
@@ -24,41 +24,43 @@ import { Subject } from 'rxjs';
   animations: [
     trigger('openClose', [
       // ...
-      state('open', style({
-        display: 'block',
-      })),
-      state('closed', style({
-        display: 'none',
-      })),
-      transition('open => closed', [
-        animate('1s')
-      ]),
-      transition('closed => open', [
-        animate('0.5s')
-      ]),
-    ]),
+      state(
+        'open',
+        style({
+          display: 'block'
+        })
+      ),
+      state(
+        'closed',
+        style({
+          display: 'none'
+        })
+      ),
+      transition('open => closed', [animate('1s')]),
+      transition('closed => open', [animate('0.5s')])
+    ])
   ],
   templateUrl: './order.page.html',
-  styleUrls: ['./order.page.scss'],
+  styleUrls: ['./order.page.scss']
 })
 export class OrderPage implements OnInit {
   public orderId: string = null;
   public clientId: string = null;
   public status_id: string = null;
   public status: string = null;
-  public goods:any = null;
-  public address:any = null;
-  public order:any = null;
-  public name:string = null;
-  public timeFrom:string = null;
-  public timeTo:string = null;
-  public phone:string = null;
-  public pageInit:boolean = true;
-  public statuses:any = null;
-  public reasons:any = null;
-  public commentText:any = null;
-  public g_quants:any = {};
-  public changeWindow:boolean = false;
+  public goods: any = null;
+  public address: any = null;
+  public order: any = null;
+  public name: string = null;
+  public timeFrom: string = null;
+  public timeTo: string = null;
+  public phone: string = null;
+  public pageInit: boolean = true;
+  public statuses: any = null;
+  public reasons: any = null;
+  public commentText: any = null;
+  public g_quants: any = {};
+  public changeWindow: boolean = false;
   public selectedPayment = '1';
   public client_status = '';
   public client_status_dt = '';
@@ -73,77 +75,76 @@ export class OrderPage implements OnInit {
   public barcode_flag = false;
   public barcode_url = null;
   public barcode = null;
-  public selectedReason:any = null;
-  public selectedStatus:any = null;
+  public selectedReason: any = null;
+  public selectedStatus: any = null;
   public hide_status = false;
-  public $codeStop:Subject<any> = new Subject();
-  public showPhone:boolean = false;
+  public $codeStop: Subject<any> = new Subject();
+  public showPhone: boolean = false;
   public podrazd = null;
   public email_error = false;
-  public pay_access:boolean = false;
+  public pay_access: boolean = false;
   public pay_access_data = null;
-  public show_info:boolean = false;
-  public show_email:boolean = false;
-  public callWindow:boolean = false;
-  public drawimage:boolean = false;
-  public drawNeedle:boolean = false;
+  public show_info: boolean = false;
+  public show_email: boolean = false;
+  public callWindow: boolean = false;
+  public drawimage: boolean = false;
+  public drawNeedle: boolean = false;
   public imageToShow = null;
 
-  constructor(private router:Router,
-              private route:ActivatedRoute,
-              private courier:CourierService,
-              private state$:StateService,
-              private auth:AuthService,
-              private plt:Platform,
-              private http:HttpClient,
-              private iab:InAppBrowser,
-              private CL:CallNumber) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private courier: CourierService,
+    private state$: StateService,
+    private auth: AuthService,
+    private plt: Platform,
+    private http: HttpClient,
+    private iab: InAppBrowser,
+    private CL: CallNumber
+  ) {
+    this.orderId = this.route.snapshot.paramMap.get('id');
 
-              this.orderId = this.route.snapshot.paramMap.get('id');
-
-              this.initOrder();
-              var img = localStorage.getItem('drawImg');
-              if (img){
-                this.imageToShow = 'data:image/jpg;base64,' + img;
-              }
-   }
-
-  ngOnInit() {
-  }
-
-  ngAfterViewChecked(){
+    this.initOrder();
     var img = localStorage.getItem('drawImg');
-    if (img){
+    if (img) {
       this.imageToShow = 'data:image/jpg;base64,' + img;
     }
   }
 
-  public sendPost(url, data){
-    console.log('SEND_POST_CALL');
-  
-      console.log('REQUEST_DATA', data);
-      data = JSON.stringify(data);
+  ngOnInit() {}
 
-      return  this.http.post(url, data);
-    
+  ngAfterViewChecked() {
+    var img = localStorage.getItem('drawImg');
+    if (img) {
+      this.imageToShow = 'data:image/jpg;base64,' + img;
+    }
   }
 
-  public drawBtn(need){
+  public sendPost(url, data) {
+    console.log('SEND_POST_CALL');
+
+    console.log('REQUEST_DATA', data);
+    data = JSON.stringify(data);
+
+    return this.http.post(url, data);
+  }
+
+  public drawBtn(need) {
     this.drawNeedle = need;
-    if (need){
+    if (need) {
       this.router.navigate(['draw']);
     } else {
       localStorage.removeItem('drawImg');
     }
   }
 
-  public  parsePhone(phone){
+  public parsePhone(phone) {
     const regex = /(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/g;
     const str = String(phone);
     let result = regex.exec(str);
     let tel = result[0];
     if (tel != null) {
-      if (tel[0] == '+'){
+      if (tel[0] == '+') {
         tel = '8' + tel.slice(2);
       }
       return tel;
@@ -151,75 +152,72 @@ export class OrderPage implements OnInit {
     return false;
   }
 
-  public phoneClick(action){
+  public phoneClick(action) {
     console.log('phoneClick', action);
     let orderPhone = this.parsePhone(this.phone);
     let courierPhone = this.parsePhone(this.order.courier_phone);
 
-    switch (action){
+    switch (action) {
       case 'init':
         this.callWindow = !this.callWindow;
         break;
       case 'phone':
-          this.CL.callNumber(String(orderPhone), true).then(() => {});
-          this.callWindow = false;
+        this.CL.callNumber(String(orderPhone), true).then(() => {});
+        this.callWindow = false;
         break;
       case 'operator':
-          if (orderPhone && courierPhone){
-            let url = 'orders';
-            let data = {
-              'action'        : 'send_phone',
-              'client_number' : orderPhone,
-              'cur_number'    : courierPhone 
-            }
-            this.auth.sendPost(url, data).subscribe((resp) => {
-              console.log('call_subs', resp);
-            });
-            this.auth.showError(9);
-            this.callWindow = false;
-          }
+        if (orderPhone && courierPhone) {
+          let url = 'orders';
+          let data = {
+            action: 'send_phone',
+            client_number: orderPhone,
+            cur_number: courierPhone
+          };
+          this.auth.sendPost(url, data).subscribe(resp => {
+            console.log('call_subs', resp);
+          });
+          this.auth.showError(9);
+          this.callWindow = false;
+        }
         break;
     }
-
   }
 
+  public initOrder() {
+    this.order = this.parseOrder(this.state$.orders.getValue());
+    this.goods = this.order.goods;
+    this.address = this.order.client_address;
+    this.name = this.order.client_name;
+    this.timeFrom = this.order.datetime_from;
+    this.timeTo = this.order.datetime_to;
+    this.phone = this.order.client_phone;
+    this.status = this.order.status_text;
+    this.status_id = this.order.status_id;
+    this.clientId = this.order.client_id;
+    this.client_status = this.order.client_status;
+    this.client_status_dt = this.order.client_status_dt;
+    this.client_status_id = this.order.client_status_id;
+    this.vlog = this.order.vlog;
+    this.poruch = this.order.poruch;
+    (this.mass = this.order.mass), (this.amount = this.order.amount);
+    this.podrazd = this.order.Podrazd;
+    this.statuses = this.state$.statuses_data;
+    this.reasons = this.state$.reasons;
 
-  public initOrder(){
-        this.order = this.parseOrder(this.state$.orders.getValue());
-        this.goods = this.order.goods;
-        this.address = this.order.client_address
-        this.name = this.order.client_name
-        this.timeFrom = this.order.datetime_from;
-        this.timeTo = this.order.datetime_to;
-        this.phone  = this.order.client_phone;
-        this.status = this.order.status_text;
-        this.status_id = this.order.status_id;
-        this.clientId = this.order.client_id;
-        this.client_status = this.order.client_status;
-        this.client_status_dt = this.order.client_status_dt;
-        this.client_status_id = this.order.client_status_id;
-        this.vlog = this.order.vlog;
-        this.poruch = this.order.poruch;
-        this.mass = this.order.mass,
-        this.amount = this.order.amount;
-        this.podrazd = this.order.Podrazd;
-        this.statuses = this.state$.statuses_data;
-        this.reasons = this.state$.reasons; 
-        
-        this.setQuants();
-        this.getSum();
-        this.ifPaid();
-        this.getBalnce();
-        this.getPayData();
-        this.initClientInfo();
+    this.setQuants();
+    this.getSum();
+    this.ifPaid();
+    this.getBalnce();
+    this.getPayData();
+    this.initClientInfo();
   }
 
-  public getClientState(){
+  public getClientState() {
     var states = this.state$.client_states.getValue();
     var state_id = this.order.client_state;
 
-    for (let i = 0; i < states.length; i++ ){
-      if (states[i].id == state_id){
+    for (let i = 0; i < states.length; i++) {
+      if (states[i].id == state_id) {
         return states[i].state;
       }
     }
@@ -227,43 +225,40 @@ export class OrderPage implements OnInit {
     return '';
   }
   //Заполняет массив с ценой товаров и их количеством(для частички)
-  public setQuants(){
+  public setQuants() {
     var goods = this.order.goods;
 
-    for (var i = 0; i < goods.length; i++ ){
+    for (var i = 0; i < goods.length; i++) {
       var good = goods[i];
       var code = good.Code;
-      var quant  = {'amount' : good.kol_vo, 'price' : good.Price }
+      var quant = { amount: good.kol_vo, price: good.Price };
       this.g_quants[code] = quant;
-      
     }
-    console.log('set_quants', this.g_quants );
+    console.log('set_quants', this.g_quants);
   }
 
-  public changeQuant(code, action){
-    var q:number = this.g_quants[code]['amount'];
+  public changeQuant(code, action) {
+    var q: number = this.g_quants[code]['amount'];
     var good = null;
 
-    for (var i = 0; i < this.order.goods.length; i++ ){
-      if (this.order.goods[i].Code == code){
+    for (var i = 0; i < this.order.goods.length; i++) {
+      if (this.order.goods[i].Code == code) {
         good = this.order.goods[i];
       }
     }
 
-    if (action == "plus"){
-      var n_q = q+1;
+    if (action == 'plus') {
+      var n_q = q + 1;
 
-      if (n_q > good.kol_vo ){
+      if (n_q > good.kol_vo) {
         return false;
       } else {
         this.g_quants[code]['amount'] = n_q;
       }
+    } else if (action == 'minus') {
+      var n_q = q - 1;
 
-    } else if (action == "minus"){
-
-      var n_q  = q - 1;
-
-      if (n_q < 0){
+      if (n_q < 0) {
         return false;
       } else {
         this.g_quants[code]['amount'] = n_q;
@@ -272,30 +267,27 @@ export class OrderPage implements OnInit {
     this.getSum();
   }
 
-  public parseOrder(orders){
-    for (var i =0; i < orders.length; i++ ){
-      if (orders[i].id == this.orderId){
+  public parseOrder(orders) {
+    for (var i = 0; i < orders.length; i++) {
+      if (orders[i].id == this.orderId) {
         return orders[i];
       }
     }
   }
 
-  public navBack(){
+  public navBack() {
     localStorage.removeItem('drawImg');
     this.router.navigate(['/courier']);
   }
 
-  public getStatus():string{
+  public getStatus(): string {
     return this.courier.getStatus(this.order);
   }
 
-  public getBalnce(){
+  public getBalnce() {}
 
-  }
-
-  public changeStatus(){
-
-    if (!this.changeWindow){
+  public changeStatus() {
+    if (!this.changeWindow) {
       this.changeWindow = true;
     }
     // var url = 'orders';
@@ -305,100 +297,124 @@ export class OrderPage implements OnInit {
     // });
   }
 
-  public close_window(){
+  public close_window() {
     this.changeWindow = false;
   }
 
-  public selectStatus(id){
+  public selectStatus(id) {
     console.log('select_status', id);
     this.selectedStatus = id;
-    if (id == 4 || id == 5 ){
+    if (id == 4 || id == 5) {
       this.setQuants();
       this.getSum();
     }
   }
 
-  public selectReason(id){
+  public selectReason(id) {
     console.log('select_reason', id);
     this.selectedReason = id;
   }
 
-  public sendPayCall(){
-    if ((this.selectedStatus == 5 || this.selectedStatus == 6) && this.pay_access){
+  public sendPayCall() {
+    if (
+      (this.selectedStatus == 5 || this.selectedStatus == 6) &&
+      this.pay_access
+    ) {
       this.sendPay();
     } else {
       this.submitChange();
     }
   }
 
-  public submitChange(){
+  public submitChange() {
     console.log('submit_call');
     var self = this;
 
-    switch (this.selectedStatus){
+    switch (this.selectedStatus) {
       case 4:
-        if (this.selectedReason != null){
-          this.courier.changeStatus(this.selectedStatus, this.order.id, undefined, this.selectedReason).subscribe((data:any) => {
-
-            if (data.success == 'true'){
+        if (this.selectedReason != null) {
+          this.courier
+            .changeStatus(
+              this.selectedStatus,
+              this.order.id,
+              undefined,
+              this.selectedReason
+            )
+            .subscribe((data: any) => {
+              if (data.success == 'true') {
+                self.changeWindow = false;
+                self.state$.state.next('init');
+                self.selectedPayment = '1';
+                self.selectedReason = null;
+                self.selectedStatus = null;
+                self.router.navigate(['courier']);
+                self.state$.updateWayInfo.next('0');
+              }
+              localStorage.removeItem('drawImg');
+            });
+        }
+        break;
+      case 5:
+        var text = this.commentText ? this.commentText : '';
+        this.courier
+          .changeStatus(
+            this.selectedStatus,
+            this.order.id,
+            text,
+            undefined,
+            undefined,
+            this.selectedPayment
+          )
+          .subscribe((data: any) => {
+            if (data.success == 'true') {
               self.changeWindow = false;
               self.state$.state.next('init');
               self.selectedPayment = '1';
               self.selectedReason = null;
               self.selectedStatus = null;
-              self.router.navigate(['courier']);
+              if (!self.pay_access) {
+                self.router.navigate(['courier']);
+              }
+              self.initOrder();
               self.state$.updateWayInfo.next('0');
             }
             localStorage.removeItem('drawImg');
           });
-        }
         break;
-      case 5:
-        var text = this.commentText ? this.commentText : '';
-        this.courier.changeStatus(this.selectedStatus, this.order.id,text,undefined,undefined, this.selectedPayment).subscribe((data:any) => {
-
-          if (data.success == 'true'){
-            self.changeWindow = false;
-            self.state$.state.next('init');
-            self.selectedPayment = '1';
-            self.selectedReason = null;
-            self.selectedStatus = null;
-            if (!self.pay_access){
-              self.router.navigate(['courier']);
-            }
-            self.initOrder();
-            self.state$.updateWayInfo.next('0');
-          }
-          localStorage.removeItem('drawImg');
-        });
-          break;
       case 6:
-
-         this.courier.changeStatus(this.selectedStatus, this.order.id, undefined, undefined, this.g_quants, this.selectedPayment).subscribe((data:any) => {
-
-          if (data.success == 'true'){
-            self.changeWindow = false;
-            self.state$.state.next('init');
-            self.selectedPayment = '1';
-            self.selectedReason = null;
-            self.selectedStatus = null;
-            if (!self.pay_access){
-              self.router.navigate(['courier']);
-            }            
-            self.initOrder();
-            self.state$.updateWayInfo.next('0');
-          }
-          localStorage.removeItem('drawImg');
-        });
-          break;      
+        this.courier
+          .changeStatus(
+            this.selectedStatus,
+            this.order.id,
+            undefined,
+            undefined,
+            this.g_quants,
+            this.selectedPayment
+          )
+          .subscribe((data: any) => {
+            if (data.success == 'true') {
+              self.changeWindow = false;
+              self.state$.state.next('init');
+              self.selectedPayment = '1';
+              self.selectedReason = null;
+              self.selectedStatus = null;
+              if (!self.pay_access) {
+                self.router.navigate(['courier']);
+              }
+              self.initOrder();
+              self.state$.updateWayInfo.next('0');
+            }
+            localStorage.removeItem('drawImg');
+          });
+        break;
     }
   }
 
-  public getSum(){
-    if (this.order){
-      var price :number = 0;
-      let quants  = this.g_quants;
-      for (let code in quants){
+  public getSum() {
+    if (this.order) {
+      var price: number = 0;
+      let quants = this.g_quants;
+      for (let code in quants) {
         price += quants[code]['price'] * quants[code]['amount'];
       }
 
@@ -408,97 +424,100 @@ export class OrderPage implements OnInit {
   }
 
   //подсчитывает сумму заказа
-public getPrice(order){
-  console.log('get_price_order', order);
-if (order){
-  var price: number = 0;
-    for( var i = 0; i < order.goods.length; i++){
-      var good = order.goods[i];
-      price += Number(good.Price) * Number(good.kol_vo) ;
-    }      
-    console.log('get_price_return', price);
-  return price;
-}
-}
+  public getPrice(order) {
+    console.log('get_price_order', order);
+    if (order) {
+      var price: number = 0;
+      for (var i = 0; i < order.goods.length; i++) {
+        var good = order.goods[i];
+        price += Number(good.Price) * Number(good.kol_vo);
+      }
+      console.log('get_price_return', price);
+      return price;
+    }
+  }
 
-
-  public selectPayment(item){
+  public selectPayment(item) {
     this.selectedPayment = item;
   }
 
-  public sendPay(){
-    if (this.email_input == null || this.email_input == "" ){
-      this.email_error = true;
-      return false;
-    }
+  public sendPay() {
+    // if (this.email_input == null || this.email_input == "" ){
+    //   this.email_error = true;
+    //   return false;
+    // }
 
-    let order  = this.order;
-    let goods  = this.order.goods;
+    let order = this.order;
+    let goods = this.order.goods;
     let quants = this.g_quants;
     let amount = Math.round(this.order_sum * 100) / 100;
     let callback_url = 'https://postsrvs.ru/mobile/pay_callback.php';
     let description = '';
     let products = [];
 
-    for (let code in quants){
-      if (quants[code]['amount'] > 0){
-        for (let i = 0; i < goods.length; i++){
-          if (goods[i]['Code'] == code){
-            let good_name   = goods[i]['Name'];
+    for (let code in quants) {
+      if (quants[code]['amount'] > 0) {
+        for (let i = 0; i < goods.length; i++) {
+          if (goods[i]['Code'] == code) {
+            let good_name = goods[i]['Name'];
             let good_amount = quants[code]['amount'];
-            let good_price  = Math.round(quants[code]['price'] * 100) / 100;
-            let pos = {'name' : good_name, 'price' : good_price, 'quantity' : good_amount };       
+            let good_price = Math.round(quants[code]['price'] * 100) / 100;
+            let pos = {
+              name: good_name,
+              price: good_price,
+              quantity: good_amount
+            };
             products.push(pos);
           }
         }
       }
     }
-    
 
-    var purchase = {'products' : products};
+    var purchase = { products: products };
     console.log('goods_description\n', purchase);
     var self = this;
 
     if (this.pay_access) {
-        let api_key = this.pay_access_data['api_key'];
-        let login = this.pay_access_data['login'];
-        let cashier = this.pay_access_data['cashier_name'];
-        let phone;
+      let api_key = this.pay_access_data['api_key'];
+      let login = this.pay_access_data['login'];
+      let cashier = this.pay_access_data['cashier_name'];
+      let phone;
 
+      let order_data = {
+        apikey: String(this.pay_access_data.api_key),
+        login: String(this.pay_access_data.phone),
+        cashier_name:
+          String(this.pay_access_data.name) +
+          String(this.pay_access_data.phone),
+        purchase: purchase,
+        callback_url: callback_url,
+        mode: 'email',
+        customer_email: this.email_input,
+        customer_phone: this.phone_input
+      };
+      if (self.selectedPayment == '2') {
+        order_data['card_amount'] = '#';
+      } else {
+        order_data['cash_amount'] = '#';
+      }
 
-        let order_data = {
-          'apikey'  : String(this.pay_access_data.api_key),
-          'login'   : String(this.pay_access_data.phone),
-          'cashier_name' : String(this.pay_access_data.name) + String(this.pay_access_data.phone),
-          'purchase'  : purchase,
-          'callback_url' : callback_url,
-          'mode' : 'email',
-          'customer_email' : this.email_input,
-          'customer_phone' : this.phone_input 
-        }
-        if (self.selectedPayment == '2'){
-          order_data['card_amount'] = '#'
-        } else {
-          order_data['cash_amount'] = '#'
-        }
+      if (this.phone_input != '') {
+        order_data['customer_phone'] = this.phone_input;
+      }
 
-        if (this.phone_input != ''){
-          order_data['customer_phone'] = this.phone_input;
-        }
-
-        self.send_api_data(order_data);
+      self.send_api_data(order_data);
     }
   }
 
   //Получаем api key & login
-  public getPayData(){
-    var url   = 'pay_order';
-    var data  = {'action' : 'getData', 'orderId' : this.clientId}
+  public getPayData() {
+    var url = 'pay_order';
+    var data = { action: 'getData', orderId: this.clientId };
     var self = this;
 
-    this.auth.sendPost(url, data).subscribe((res:any) => {
+    this.auth.sendPost(url, data).subscribe((res: any) => {
       console.log('GET_PAY_DATA', res);
-      if (res.success == 'true'){
+      if (res.success == 'true') {
         self.pay_access = true;
         self.pay_access_data = res;
       } else {
@@ -507,82 +526,81 @@ if (order){
     });
   }
 
-  public barcodeCheck(){
+  public barcodeCheck() {}
 
+  public send_api_data(api_data) {
+    var url = 'pay_order';
+    var self = this;
+    var data = {
+      action: 'sendPay',
+      orderData: api_data,
+      orderId: this.order.id
+    };
+    this.auth.sendPost(url, data).subscribe((res: any) => {
+      console.log('serv_response', res);
+      self.submitChange();
+      self.checkPayment();
+      self.hide_status = true;
+    });
   }
 
-  public send_api_data(api_data){
-      var url = 'pay_order';
-      var self = this;
-      var data = {'action' : 'sendPay', 'orderData' : api_data, 'orderId' : this.order.id};
-      this.auth.sendPost(url, data).subscribe((res:any) => {
-        console.log('serv_response', res);
-        self.submitChange();
-        self.checkPayment();
-        self.hide_status = true;
-      })
-  }
-
-  public showCheck(){
+  public showCheck() {
     const browser = this.iab.create(this.barcode_url);
   }
 
-  public voiceLink(){
+  public voiceLink() {
     const browser = this.iab.create(this.order.r_url);
   }
 
-  public checkPayment(){
+  public checkPayment() {
     var self = this;
     this.state$.interval_1ss.pipe(takeUntil(this.$codeStop)).subscribe(() => {
       self.ifPaid();
-      console.log ('paid_iter');
-    })
+      console.log('paid_iter');
+    });
   }
 
-  public ifPaid(){
+  public ifPaid() {
     var url = 'pay_order';
-    var data = {'action' : 'checkPaid', 'orderId' : this.order.id};
+    var data = { action: 'checkPaid', orderId: this.order.id };
     var self = this;
-    
-    this.auth.sendPost(url, data).subscribe((data) => {
-      
-      if (data.success == 'true' && data.barcode != null){
+
+    this.auth.sendPost(url, data).subscribe(data => {
+      if (data.success == 'true' && data.barcode != null) {
         self.barcode_flag = true;
-        self.barcode_url  = data.barcode_url;
-        self.barcode  = data.barcode; 
+        self.barcode_url = data.barcode_url;
+        self.barcode = data.barcode;
         self.$codeStop.next();
         self.hide_status = true;
       }
-    })
+    });
   }
 
-  public enterPhone(){
-    if (this.showPhone){
+  public enterPhone() {
+    if (this.showPhone) {
       this.showPhone = false;
       this.show_email = false;
     } else {
       this.showPhone = true;
       this.show_email = true;
     }
-
   }
 
-  public emailChange(){
-    if (this.email_error){
+  public emailChange() {
+    if (this.email_error) {
       this.email_error = false;
     }
   }
 
-  public initClientInfo(){
-    let mail_exp  = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
-    let infoStr   = this.phone;
-    let mail      = mail_exp.exec(infoStr);
-    
-    if (mail != null ){
+  public initClientInfo() {
+    let mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
+    let infoStr = this.phone;
+    let mail = mail_exp.exec(infoStr);
+
+    if (mail != null) {
       this.email_input = mail[0];
     } else {
       this.show_email = true;
     }
-    
   }
 }

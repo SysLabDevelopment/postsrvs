@@ -193,6 +193,7 @@
             <div class="sh-icons">
                 <i class="fas fa-spinner fa-spin"></i>
               </div>
+              <div class="await-check">Ожидание чека...</div>
         </div> 
         <div class="sc-s-wrp" *ngIf = "barcode_flag">
           <qrcode class="qr" [qrdata]="barcode" [size]="256" [level]="'M'"></qrcode>
