@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, interval, BehaviorSubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { WebIntent } from '@ionic-native/web-intent/ngx';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,92 +10,92 @@ import { takeUntil } from 'rxjs/operators';
 
 export class StateService {
 
-  public testData:any = [{name : "test1"} ,{ name : "test2" },{ name : "test3" } ];
-// переменные состояний 
+  public testData: any = [{ name: "test1" }, { name: "test2" }, { name: "test3" }];
+  // переменные состояний 
 
-//GLOBAL
-  public login_state:BehaviorSubject<any> = new BehaviorSubject('not_login'); 
-  public stop$:Subject<any> = new Subject(); // останаливает все подписки;
+  //GLOBAL
+  public login_state: BehaviorSubject<any> = new BehaviorSubject('not_login');
+  public stop$: Subject<any> = new Subject(); // останаливает все подписки;
   /* Режим работы с маршрутом
       auto    - маршрут с бека
       manual  - курьер рисует сам 
-  */ 
-  public manual_route:boolean = false; 
-  public old_way:any = null;
-  public confirmed:boolean = false;
-  public scan_mode:boolean = false;
-//INTERVALS
+  */
+  public manual_route: boolean = false;
+  public old_way: any = null;
+  public confirmed: boolean = false;
+  public scan_mode: boolean = false;
+  //INTERVALS
 
-  public interval_3:Observable<any>  = interval(4000);
-  public interval_1:Observable<any>  = interval(3000);
-  public interval_30:Observable<any> = interval(30000);
-  public interval_1s:Observable<any> = interval(2000);
-  public interval_2s:Observable<any> = interval(15000);
-  public interval_3m:Observable<any> = interval(3000);
-  public interval_1m:Observable<any> = interval(60000);
-  public interval_1ss:Observable<any> = interval(1000);
+  public interval_3: Observable<any> = interval(4000);
+  public interval_1: Observable<any> = interval(3000);
+  public interval_30: Observable<any> = interval(30000);
+  public interval_1s: Observable<any> = interval(2000);
+  public interval_2s: Observable<any> = interval(15000);
+  public interval_3m: Observable<any> = interval(3000);
+  public interval_1m: Observable<any> = interval(60000);
+  public interval_1ss: Observable<any> = interval(1000);
 
-//MAP
+  //MAP
 
-  public position:BehaviorSubject<any> = new BehaviorSubject(null);
-  public points:BehaviorSubject<any> = new BehaviorSubject(null);
+  public position: BehaviorSubject<any> = new BehaviorSubject(null);
+  public points: BehaviorSubject<any> = new BehaviorSubject(null);
   public l_route;
   public l_map;
   public duration;
-  public map_state:BehaviorSubject<any> = new BehaviorSubject(null);
-  public route_state:BehaviorSubject<any> = new BehaviorSubject('not_init');
-  public change_state:BehaviorSubject<any> = new BehaviorSubject('not_init');
-  public map_event:BehaviorSubject<any> = new BehaviorSubject(null);
-  public point_check:BehaviorSubject<any> = new BehaviorSubject('not_init');
-  public geo_check:BehaviorSubject<any> = new BehaviorSubject('not_init');
-  public init_params_state:BehaviorSubject<any> = new BehaviorSubject('not_init');
-  public init_map_state:boolean = false;
-  public check_changes_state:BehaviorSubject<any> = new BehaviorSubject('not_init');
-  public linkPoints:BehaviorSubject<any> = new BehaviorSubject('not_init');
-  public link_init:boolean = false;
-  public map_state_watch:boolean = false;
+  public map_state: BehaviorSubject<any> = new BehaviorSubject(null);
+  public route_state: BehaviorSubject<any> = new BehaviorSubject('not_init');
+  public change_state: BehaviorSubject<any> = new BehaviorSubject('not_init');
+  public map_event: BehaviorSubject<any> = new BehaviorSubject(null);
+  public point_check: BehaviorSubject<any> = new BehaviorSubject('not_init');
+  public geo_check: BehaviorSubject<any> = new BehaviorSubject('not_init');
+  public init_params_state: BehaviorSubject<any> = new BehaviorSubject('not_init');
+  public init_map_state: boolean = false;
+  public check_changes_state: BehaviorSubject<any> = new BehaviorSubject('not_init');
+  public linkPoints: BehaviorSubject<any> = new BehaviorSubject('not_init');
+  public link_init: boolean = false;
+  public map_state_watch: boolean = false;
   public link;
-  public disLink:boolean = true;
+  public disLink: boolean = true;
 
-//COURIER
+  //COURIER
 
-  public orders:BehaviorSubject<any> = new BehaviorSubject(null);
-  public statuses:BehaviorSubject<any> = new BehaviorSubject(null);
-  public way:BehaviorSubject<any> = new BehaviorSubject(null);
+  public orders: BehaviorSubject<any> = new BehaviorSubject(null);
+  public statuses: BehaviorSubject<any> = new BehaviorSubject(null);
+  public way: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  public reasons:any = null;
+  public reasons: any = null;
 
-  public o_status:BehaviorSubject<any> = new BehaviorSubject(null);
-  public state:BehaviorSubject<any> = new BehaviorSubject(null);
-  public s_state:BehaviorSubject<any> = new BehaviorSubject(null);
- 
-  public  $stop:Subject<any> = new Subject();
+  public o_status: BehaviorSubject<any> = new BehaviorSubject(null);
+  public state: BehaviorSubject<any> = new BehaviorSubject(null);
+  public s_state: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  public check_state:boolean = false;
+  public $stop: Subject<any> = new Subject();
 
-  public g_state:BehaviorSubject<any> = new BehaviorSubject('unLogin');
-  
-  public courier_init:boolean = false;
+  public check_state: boolean = false;
 
-  public orders_page_check:boolean = false;
-  
-  public status_changed:Subject<any> = new Subject();
+  public g_state: BehaviorSubject<any> = new BehaviorSubject('unLogin');
 
-  public sc_flag:boolean = false;
+  public courier_init: boolean = false;
 
-  public page_orders_check:boolean = false;
-  
-  public client_states:BehaviorSubject<any> = new BehaviorSubject(null);
+  public orders_page_check: boolean = false;
+
+  public status_changed: Subject<any> = new Subject();
+
+  public sc_flag: boolean = false;
+
+  public page_orders_check: boolean = false;
+
+  public client_states: BehaviorSubject<any> = new BehaviorSubject(null);
   //STATUS-BAR
-  public load_lvl:BehaviorSubject<any> = new BehaviorSubject(0);
+  public load_lvl: BehaviorSubject<any> = new BehaviorSubject(0);
 
-  public c_update_content_f:boolean = false;
-  
+  public c_update_content_f: boolean = false;
+
   //BALANCE
-  public balance_check:boolean = false;
+  public balance_check: boolean = false;
   // BROADCAST
   //обновляем все данные с сервера
-  public updateWayInfo:Subject<any> = new Subject();
+  public updateWayInfo: Subject<any> = new Subject();
   // DATA
   public orders_data = null;
   public reasons_data = null;
@@ -102,7 +104,7 @@ export class StateService {
   public notifications = [];
   public notificationStr = null;
 
-  constructor() { 
+  constructor(private wi: WebIntent, private http: HttpClient) {
     console.log("INIT_STATE_SERVICE");
     var self = this;
     /* Подписываемся на все сабжекты поставляющие данные и запоминаем в переменных
@@ -110,49 +112,49 @@ export class StateService {
     */
 
     this.orders.pipe(takeUntil(this.stop$)).subscribe((od) => {
-      if (od != null){
+      if (od != null) {
         self.orders_data = od;
       }
     });
     this.statuses.pipe(takeUntil(this.stop$)).subscribe((st) => {
-      if (st != null){
+      if (st != null) {
         self.statuses_data = st;
       }
-    }); 
+    });
   }
-  
-  public setNotification(tag:string, mes:string){
+
+  public setNotification(tag: string, mes: string) {
     console.log('set_notification', tag, mes);
     this.notifications[tag] = mes;
     this.setNotificationStr();
   }
 
-  public unsetNotification(tag:string){
+  public unsetNotification(tag: string) {
     console.log('unset_notification', tag);
-    delete(this.notifications[tag]);
+    delete (this.notifications[tag]);
     this.setNotificationStr();
   }
 
-  public getNotification(tag:string):string{
+  public getNotification(tag: string): string {
     return this.notifications[tag];
   }
 
-  private setNotificationStr(){
+  private setNotificationStr() {
     let n_s = "";
-    for (let tag in this.notifications){
-      n_s += this.notifications[tag]; 
+    for (let tag in this.notifications) {
+      n_s += this.notifications[tag];
     }
     this.notificationStr = n_s;
     console.log('set_notificationStr', this.notificationStr);
   }
 
   //при выходе возвращаем приложение в иходное состояние
-  public logout(){
+  public logout() {
     this.stop$.next();
     // map
     this.position.next(null);
     this.points.next(null);
-    this.l_route = null ;
+    this.l_route = null;
     this.l_map = null;
     this.duration = null;
     this.map_state.next(null);
@@ -173,7 +175,7 @@ export class StateService {
     this.statuses.next(null);
     this.way.next(null);
     this.reasons = null;
-      
+
     this.o_status.next(null);
     this.state.next(null);
     this.s_state.next(null);
@@ -188,5 +190,24 @@ export class StateService {
     this.old_way = null;
   }
 
+  //Открыть маршрут в навигаторе
+  public intentStart(coordinates) {
+    console.log('sys:: coordinates', coordinates);
+    const options = {
+      action: this.wi.ACTION_VIEW,
+      url: 'yandexnavi://build_route_on_map?lat_to=' + coordinates[1] + '&lon_to=' + coordinates[0],
+      package: 'ru.yandex.yandexnavi'
+    }
 
+    this.wi.startActivity(options).then((data) => {
+      console.log('wi_success', data);
+    });
+  }
+
+  //adress - строка с адресом
+  getCoordinates(adress) {
+
+    return this.http.get('https://geocode-maps.yandex.ru/1.x/?apikey=4949ca72-35d9-48b0-892d-72d307850c87&format=json&geocode=' + adress)
+
+  }
 }

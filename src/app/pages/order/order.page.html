@@ -202,6 +202,9 @@
       </div>
       <div class="sc-s-wrp" >
         <button class="sc-submit show-check to-list" (click) ="navBack()">К списку заказов</button>
+        <ion-button (click)="intentStart()" *ngIf="coords">
+          Открыть в навигаторе
+        </ion-button>
     </div>     
       </div>
     </div>

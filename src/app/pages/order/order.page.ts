@@ -90,6 +90,7 @@ export class OrderPage implements OnInit {
   public drawimage: boolean = false;
   public drawNeedle: boolean = false;
   public imageToShow = null;
+  coords: Array<any>;
 
   constructor(
     private router: Router,
@@ -111,7 +112,12 @@ export class OrderPage implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.state$.getCoordinates(this.address).subscribe((data: any) => {
+      this.coords = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
+      console.log('sys:: Координаты заказа', this.coords)
+    })
+  }
 
   ngAfterViewChecked() {
     var img = localStorage.getItem('drawImg');
@@ -162,7 +168,7 @@ export class OrderPage implements OnInit {
         this.callWindow = !this.callWindow;
         break;
       case 'phone':
-        this.CL.callNumber(String(orderPhone), true).then(() => {});
+        this.CL.callNumber(String(orderPhone), true).then(() => { });
         this.callWindow = false;
         break;
       case 'operator':
@@ -284,7 +290,7 @@ export class OrderPage implements OnInit {
     return this.courier.getStatus(this.order);
   }
 
-  public getBalnce() {}
+  public getBalnce() { }
 
   public changeStatus() {
     if (!this.changeWindow) {
@@ -526,7 +532,7 @@ export class OrderPage implements OnInit {
     });
   }
 
-  public barcodeCheck() {}
+  public barcodeCheck() { }
 
   public send_api_data(api_data) {
     var url = 'pay_order';
@@ -602,5 +608,12 @@ export class OrderPage implements OnInit {
     } else {
       this.show_email = true;
     }
+  }
+  intentStart() {
+    this.state$.getCoordinates(this.address).subscribe((data: any) => {
+      this.coords = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
+      console.log('sys:: Координаты заказа', this.coords);
+      this.state$.intentStart(this.coords);
+    })
   }
 }
