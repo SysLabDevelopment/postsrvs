@@ -10,22 +10,22 @@ import { CourierService } from '../../services/courier.service';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-  public modes:any[] = [];
-  public activeMode:String = 'auto';
+  public modes: any[] = [];
+  public activeMode: String = 'auto';
   public pswdInp = '';
-  public pswdError:boolean = false;
-  public pswdView:boolean = true;
+  public pswdError: boolean = false;
+  public pswdView: boolean = true;
   private ps;
   private newMode = null;
 
-  public scanModes:any = [];
-  public scanMode:string = '';
-  public newScanMode:string = '';
+  public scanModes: any = [];
+  public scanMode: string = '';
+  public newScanMode: string = '';
 
-  constructor(private router:Router, private auth:AuthService, private state:StateService, private courier:CourierService) { 
+  constructor(private router: Router, private auth: AuthService, public state: StateService, private courier: CourierService) {
     this.initModes();
     this.getA().subscribe((ps) => {
-      if (ps.success){
+      if (ps.success) {
         this.ps = ps.pswd;
       }
     });
@@ -34,47 +34,47 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
   }
 
-  public initModes(){
+  public initModes() {
     this.activeMode = this.auth.getMode();
     this.scanMode = this.auth.getScanMode();
     this.modes = [
-      {val : 'Авто', value: 'auto', isChecked : this.activeMode == 'auto' ? true :false},
-      {val : 'Авто(без приема заказов)', value: 'auto_wo', isChecked : this.activeMode == 'auto_wo' ? true :false},
-      {val : 'Ручной режим(с приемом заказов)', value: 'manual', isChecked : this.activeMode == 'manual' ? true :false},
-      {val : 'Ручной режим(без приема заказов)', value: 'manual_wo', isChecked : this.activeMode == 'manual_wo' ? true :false},
+      { val: 'Авто', value: 'auto', isChecked: this.activeMode == 'auto' ? true : false },
+      { val: 'Авто(без приема заказов)', value: 'auto_wo', isChecked: this.activeMode == 'auto_wo' ? true : false },
+      { val: 'Ручной режим(с приемом заказов)', value: 'manual', isChecked: this.activeMode == 'manual' ? true : false },
+      { val: 'Ручной режим(без приема заказов)', value: 'manual_wo', isChecked: this.activeMode == 'manual_wo' ? true : false },
     ]
     this.scanModes = [
-      {val : 'Камера', value: 'camera', isChecked : this.scanMode == 'camera' ? true :false},
-      {val : 'Сканнер', value: 'scan', isChecked : this.scanMode == 'scan' ? true :false}
+      { val: 'Камера', value: 'camera', isChecked: this.scanMode == 'camera' ? true : false },
+      { val: 'Сканнер', value: 'scan', isChecked: this.scanMode == 'scan' ? true : false }
     ]
   }
 
-  private getA(){
+  private getA() {
     let url = "orders"
-    let data = {'action' : 'get_a'}
+    let data = { 'action': 'get_a' }
     return this.auth.sendPost(url, data);
   }
 
-  public navToBalance(){
+  public navToBalance() {
     this.router.navigate(['balance']);
   }
 
-  public pswdChange(){
+  public pswdChange() {
     if (this.pswdInp == this.ps) this.pswdView = false;
   }
 
-  public modeChange($event){
+  public modeChange($event) {
     console.log('mode_changed', $event);
     this.newMode = $event.detail.value;
   }
 
-  public scanChange($event){
+  public scanChange($event) {
     console.log('scanMode_changed', $event);
     this.newScanMode = $event.detail.value;
   }
 
-  public saveSetings(){
-    if (this.newMode == 'manual' || this.newMode == 'manual_wo'){
+  public saveSetings() {
+    if (this.newMode == 'manual' || this.newMode == 'manual_wo') {
       this.courier.changeRouteMode('manual');
     } else {
       this.courier.changeRouteMode('auto');

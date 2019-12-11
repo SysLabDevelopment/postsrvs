@@ -1,10 +1,10 @@
 <ion-content>
   <div class="o-wrp">
     <div class="o-balance">
-        {{balance}}
+        <!-- {{balance}} -->
     </div>
       <div class="o-title">
-        <span class="order-n"><span class="shopTake" *ngIf="order.SMACode != NULL">Забор &nbsp; </span> {{clientId}}</span>
+        <span class="order-n"><span class="shopTake" *ngIf="order.SMACode">Забор &nbsp; </span> {{clientId}}</span>
         <span class="menu-icon" (click) = "navBack()"><i class="fas fa-angle-left"></i></span>
       </div>
       <div class="o-body" *ngIf="pageInit">
@@ -204,6 +204,9 @@
         <button class="sc-submit show-check to-list" (click) ="navBack()">К списку заказов</button>
         <ion-button (click)="intentStart()" *ngIf="coords">
           Открыть в навигаторе
+        </ion-button>
+        <ion-button (click)="onMap()" *ngIf="coords">
+          Показать на карте
         </ion-button>
     </div>     
       </div>

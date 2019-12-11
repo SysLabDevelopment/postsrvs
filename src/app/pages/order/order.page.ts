@@ -616,4 +616,9 @@ export class OrderPage implements OnInit {
       this.state$.intentStart(this.coords);
     })
   }
+
+  onMap() {
+    this.state$.coords = this.coords;
+    this.router.navigate(['map/order']);
+  }
 }

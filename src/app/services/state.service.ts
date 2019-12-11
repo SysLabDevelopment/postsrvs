@@ -103,6 +103,11 @@ export class StateService {
   //NOTIFICATIONS
   public notifications = [];
   public notificationStr = null;
+  public coords: any;
+  public orderCoordinates(): Observable<any> {
+    return this.coords;
+  };
+
 
   constructor(private wi: WebIntent, private http: HttpClient) {
     console.log("INIT_STATE_SERVICE");
@@ -210,4 +215,6 @@ export class StateService {
     return this.http.get('https://geocode-maps.yandex.ru/1.x/?apikey=4949ca72-35d9-48b0-892d-72d307850c87&format=json&geocode=' + adress)
 
   }
+
+
 }

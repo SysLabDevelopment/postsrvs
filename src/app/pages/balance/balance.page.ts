@@ -72,35 +72,35 @@ import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
 })
 export class BalancePage implements OnInit {
   public info = null;
-  public pageInit:boolean = false;
-  public out_process:boolean = false;
+  public pageInit: boolean = false;
+  public out_process: boolean = false;
   public out_counter = 0;
   public loader = true;
-  public local_stop$:Subject<any> = new Subject();
-  public confirmWindow:boolean = false;
-  public commentText:any = null;
-  public commentError:boolean = false;
-  public cashCheck:boolean = false;
-  public cashCheckData:any = null;
-  public openBtn:boolean = false;
-  public review_w:boolean = false;
-  public failsOrder:boolean = false;
-  public failsOrderNotFull:boolean = false;
-  public failOrdersCount:Number = 0;
-  public fo_comment:String = ""; //комментарий к частичной сдаче заказов
+  public local_stop$: Subject<any> = new Subject();
+  public confirmWindow: boolean = false;
+  public commentText: any = null;
+  public commentError: boolean = false;
+  public cashCheck: boolean = false;
+  public cashCheckData: any = null;
+  public openBtn: boolean = false;
+  public review_w: boolean = false;
+  public failsOrder: boolean = false;
+  public failsOrderNotFull: boolean = false;
+  public failOrdersCount: Number = 0;
+  public fo_comment: String = ""; //комментарий к частичной сдаче заказов
 
-  constructor(private courier:CourierService,
-              private auth:AuthService,
-              private router:Router,
-              private state$:StateService,
-              private alert:AlertController,
-              private camera:Camera,
-              private AP:AndroidPermissions,
-              private fs:AndroidFullScreen
-             ){
+  constructor(private courier: CourierService,
+    private auth: AuthService,
+    private router: Router,
+    public state$: StateService,
+    private alert: AlertController,
+    private camera: Camera,
+    private AP: AndroidPermissions,
+    private fs: AndroidFullScreen
+  ) {
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
-    if (this.info == null){
-     this.loader = true;
+    if (this.info == null) {
+      this.loader = true;
     } else {
       this.loader = true;
     }
@@ -108,7 +108,7 @@ export class BalancePage implements OnInit {
     var self = this;
     self.updateInfo();
     self.initCashout();
-    if (!this.state$.balance_check){
+    if (!this.state$.balance_check) {
       this.state$.interval_2s.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
         self.updateInfo();
         self.initCashout();
@@ -117,54 +117,54 @@ export class BalancePage implements OnInit {
 
     this.initCashout();
     this.setFs();
-   }
+  }
 
-  ngOnInit() {}
-  
-  ngOnDestroy(){
+  ngOnInit() { }
+
+  ngOnDestroy() {
     this.local_stop$.next();
   }
 
-  public setFs(){
+  public setFs() {
     let self = this;
     this.fs.isImmersiveModeSupported()
-      .then(() => {console.log('fs_support'); self.fs.immersiveMode()})
+      .then(() => { console.log('fs_support'); self.fs.immersiveMode() })
       .catch((error: any) => console.log(error));
   }
 
-  public updateInfo(){
-    var self =this;
+  public updateInfo() {
+    var self = this;
 
-    this.auth.checkAuth().subscribe((data:any) => {
+    this.auth.checkAuth().subscribe((data: any) => {
       console.log('update_info_data', data);
-      if (data.success = 'true'){
+      if (data.success = 'true') {
         self.getInfo(data.sync_id);
       }
     })
   }
 
-  public getInfo(sync_id){
+  public getInfo(sync_id) {
     var self = this;
-    
+
     this.courier.getBalance(sync_id).subscribe((data) => {
       console.log('balance_data', data);
-      self.info =data;
+      self.info = data;
       self.pageInit = true;
       self.loader = false;
     });
   }
 
-  public p_btn(){
+  public p_btn() {
     setTimeout(() => {
       this.out_counter = 0;
       this.out_process = false;
       console.log('outprocess_die');
     }, 1000);
 
-    if (this.out_process){
+    if (this.out_process) {
       this.out_counter++;
       console.log('outprocess_true', this.out_counter);
-      if (this.out_counter == 2){
+      if (this.out_counter == 2) {
         this.logout();
       }
     } else {
@@ -173,73 +173,73 @@ export class BalancePage implements OnInit {
     }
   }
 
-  public logout(){
+  public logout() {
     var url = 'orders';
-    var data = {'action' : 'logout'}
+    var data = { 'action': 'logout' }
 
     var self = this;
-    this.auth.sendPost(url, data).subscribe((data:any) => {
-      if (data.success == 'true' ){
+    this.auth.sendPost(url, data).subscribe((data: any) => {
+      if (data.success == 'true') {
         self.auth.logout();
       }
     })
   }
 
-  public cashOut(){
+  public cashOut() {
     this.confirmWindow = !this.confirmWindow;
   }
 
-  public sendCash(photo){
+  public sendCash(photo) {
     this.loader = true;
 
     var url = 'orders';
-    var data = {'action' : 'cashout','sum' : this.info.sumNal, 'image' : photo };
+    var data = { 'action': 'cashout', 'sum': this.info.sumNal, 'image': photo };
 
-    if (this.commentText != '' && this.commentText){
-      data['isFull']  = '0';
+    if (this.commentText != '' && this.commentText) {
+      data['isFull'] = '0';
       data['comment'] = this.commentText;
     } else {
-      data['isFull']  = '1';
+      data['isFull'] = '1';
     }
 
-    if (this.failsOrderNotFull){
-      data['ordersCount']   = this.failOrdersCount;
+    if (this.failsOrderNotFull) {
+      data['ordersCount'] = this.failOrdersCount;
       data['ordersComment'] = this.fo_comment;
     }
     console.log('o_c', data['ordersCount']);
-    console.log('ocm',data['ordersComment'] );
+    console.log('ocm', data['ordersComment']);
 
     var self = this;
-    this.auth.sendPost(url, data).subscribe((resp:any) => {
+    this.auth.sendPost(url, data).subscribe((resp: any) => {
       console.log('CASHOUT_RESPONSE', resp);
-        if (resp.success == 'true'){
-          self.cashoutResult(true);
-        } else {
-          self.cashoutResult(false);
-        }
+      if (resp.success == 'true') {
+        self.cashoutResult(true);
+      } else {
+        self.cashoutResult(false);
+      }
     })
   }
 
-  public checkCash(){
+  public checkCash() {
     var url = 'orders';
-    var data = {'action' : 'checkCashout'}
+    var data = { 'action': 'checkCashout' }
 
     return this.auth.sendPost(url, data);
   }
 
-  public initCashout(){
+  public initCashout() {
     var self = this;
-    this.checkCash().subscribe((data:any) => {
-      if (data.success == 'true'){
+    this.checkCash().subscribe((data: any) => {
+      if (data.success == 'true') {
         self.cashCheck = true;
-        self.cashCheckData = data; 
+        self.cashCheckData = data;
       } else {
         self.cashCheck = false;
       }
     })
   }
 
-  public getPhoto(){
+  public getPhoto() {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -255,9 +255,9 @@ export class BalancePage implements OnInit {
     });
   }
 
-  public async cashoutResult(result){
+  public async cashoutResult(result) {
 
-    if (result){
+    if (result) {
       const alert = await this.alert.create({
         header: 'Сдача',
         message: 'Средства успешно сданы',
@@ -278,17 +278,17 @@ export class BalancePage implements OnInit {
     }
   }
 
-  public answer(isFull){
-    if (!isFull && (!this.commentText || this.commentText == '')){
+  public answer(isFull) {
+    if (!isFull && (!this.commentText || this.commentText == '')) {
       this.commentError = true;
       return false;
     }
-   this.failOrders();
+    this.failOrders();
   }
 
   //спрашивает, сколько заказов не сдано
-  public failOrders(){
-    if (this.info.ordersFail == 0){
+  public failOrders() {
+    if (this.info.ordersFail == 0) {
       this.openBtn = true;
       return false;
     } else {
@@ -296,20 +296,20 @@ export class BalancePage implements OnInit {
     }
   }
 
-  public fo_answer(flag){
-    
-    if (!this.failsOrderNotFull){
-      if (flag){
+  public fo_answer(flag) {
+
+    if (!this.failsOrderNotFull) {
+      if (flag) {
         this.failsOrderNotFull = false;
         this.openBtn = true;
       } else {
         this.failsOrderNotFull = true;
       }
     } else {
-      if (flag){
+      if (flag) {
         this.failsOrderNotFull = false;
       } else {
-        if (this.failOrdersCount == 0 || this.fo_comment == "" || !this.fo_comment){
+        if (this.failOrdersCount == 0 || this.fo_comment == "" || !this.fo_comment) {
           this.commentError = true;
         } else {
           this.openBtn = true;
@@ -318,26 +318,26 @@ export class BalancePage implements OnInit {
     }
   }
 
-  public commentInput(){
+  public commentInput() {
     this.commentError = false;
   }
 
   //отзыв о приложении
-  public writeReview(){
+  public writeReview() {
     this.review_w = !this.review_w;
   }
 
 
-  public sendReview(text){
+  public sendReview(text) {
     this.loader = true;
     let url = 'orders';
     let data = {
-      'action'  : 'writeReview',
-      'text'    : text
+      'action': 'writeReview',
+      'text': text
     }
     let self = this;
-    this.auth.sendPost(url, data).subscribe((resp:any) => {
-      if (resp.success == 'true'){
+    this.auth.sendPost(url, data).subscribe((resp: any) => {
+      if (resp.success == 'true') {
         self.auth.showError(7);
       } else {
         self.auth.showError(8);
@@ -347,7 +347,7 @@ export class BalancePage implements OnInit {
     });
   }
 
-  public navToSettings(){
+  public navToSettings() {
     this.router.navigate(['settings']);
   }
 }
