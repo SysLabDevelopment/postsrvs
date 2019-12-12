@@ -191,24 +191,23 @@
         </div>   
         <div class="code-loader" *ngIf="hide_status && !barcode_flag" >
             <div class="sh-icons">
-                <i class="fas fa-spinner fa-spin"></i>
-              </div>
-              <div class="await-check">Ожидание чека...</div>
+              <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            <div class="await-check">Ожидание чека...</div>
         </div> 
         <div class="sc-s-wrp" *ngIf = "barcode_flag">
           <qrcode class="qr" [qrdata]="barcode" [size]="256" [level]="'M'"></qrcode>
           <button class="sc-submit show-check" *ngIf = "barcode_flag" (click) ="showCheck()">Показать чек</button>
-          
-      </div>
-      <div class="sc-s-wrp" >
-        <button class="sc-submit show-check to-list" (click) ="navBack()">К списку заказов</button>
-        <ion-button (click)="intentStart()" *ngIf="coords">
-          Открыть в навигаторе
-        </ion-button>
-        <ion-button (click)="onMap()" *ngIf="coords">
-          Показать на карте
-        </ion-button>
-    </div>     
+        </div>
+        <div class="sc-s-wrp" >
+          <button class="sc-submit show-check to-list" (click) ="navBack()">К списку заказов</button>
+          <ion-button (click)="intentStart()" *ngIf="coords">
+            Открыть в навигаторе
+          </ion-button>
+          <ion-button (click)="onMap()" *ngIf="coords">
+            Показать на карте
+          </ion-button>
+        </div>     
       </div>
     </div>
     <div class="call-window" *ngIf="callWindow">

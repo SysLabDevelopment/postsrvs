@@ -18,6 +18,8 @@ import {
 } from '@angular/animations';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { MapService } from '../../services/map.service';
+
 
 @Component({
   selector: 'app-order',
@@ -92,7 +94,7 @@ export class OrderPage implements OnInit {
   public imageToShow = null;
   coords: Array<any>;
 
-  constructor(
+  constructor(private map: MapService,
     private router: Router,
     private route: ActivatedRoute,
     private courier: CourierService,
@@ -115,7 +117,7 @@ export class OrderPage implements OnInit {
   ngOnInit() {
     this.state$.getCoordinates(this.address).subscribe((data: any) => {
       this.coords = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
-      console.log('sys:: Координаты заказа', this.coords)
+      console.log('sys:: Данные заказа', this.order)
     })
   }
 
@@ -619,6 +621,7 @@ export class OrderPage implements OnInit {
 
   onMap() {
     this.state$.coords = this.coords;
+    this.map.oneOrder = true;
     this.router.navigate(['map/order']);
   }
 }

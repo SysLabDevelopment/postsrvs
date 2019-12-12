@@ -1,13 +1,18 @@
 <ion-content>
   <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
   <div class="c-wrp">
-    <div class="c-title">Маршрут
+    <div class="c-title">
+      <button (click)="allOrders()"  *ngIf="map_s.oneOrder" class='display-content' color='primary'>
+        Все заказы
+      </button>
+      Маршрут
       <span class="subtitle" >Показаны первые 10 заказов</span>
     </div>  
     <div class="c-body">
       <div id="map" style="height:100%;width:100%"></div>
     </div>
     <button [disabled]="dislink" class="toNav" (click)="intentStart()" >Открыть в навигаторе</button>
+   
   </div>
 
   <div id="shirm" *ngIf='loader'>

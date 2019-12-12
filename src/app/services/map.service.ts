@@ -15,7 +15,7 @@ declare var ymaps: any;
 export class MapService {
 
   private local_stop$: Subject<any> = new Subject();
-
+  public oneOrder = false;
   constructor(private geo: Geolocation, private state$: StateService, private AP: AndroidPermissions, private dg: Diagnostic) {
 
     var self = this;
@@ -356,6 +356,41 @@ export class MapService {
 
   public getLink() {
 
+  }
+
+  showOrder(coords) {
+
+    console.log('sys:: Показать маршрут заказа ', coords);
+    ymaps.ready().then(() => {
+      this.geo.getCurrentPosition().then((pos) => {
+        console.log('sys:: pos', pos);
+        if (pos) {
+          const currentGeo = [pos.coords.latitude, pos.coords.longitude];
+          console.log('sys:: currentGeo', currentGeo);
+          console.log('sys:: coords', coords);
+          /**
+          * Создаем мультимаршрут.
+          * @see https://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/multiRouter.MultiRoute.xml
+          */
+          const multiRoute = new ymaps.multiRouter.MultiRoute({
+            referencePoints: [
+              currentGeo,
+              [coords[1], coords[0]]
+            ],
+            params: {
+              //Тип маршрутизации - пешеходная маршрутизация.
+              mapStateAutoApply: true
+            }
+          }, {
+            // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
+            boundsAutoApply: true
+          });
+          this.state$.l_map.geoObjects.removeAll();
+          this.state$.l_map.geoObjects.add(multiRoute);
+        }
+      });
+
+    })
   }
 
 }

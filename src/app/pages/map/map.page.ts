@@ -131,40 +131,22 @@ export class MapPage implements OnInit {
   }
   ngOnInit() {
     console.log('map_init');
-    this.route.paramMap.subscribe(params => {
-      if (params) {
-        this.showOrder(this.state$.coords);
+    this.route.paramMap.subscribe((params) => {
+      if (this.map_s.oneOrder) {
+        this.map_s.showOrder(this.state$.coords);
+      }
+      if (params.get('order')) {
+        console.log('sys:: координаты', this.state$.coords);
+
+        console.log('sys:: параметры url ', params.get('order'));
+        this.map_s.oneOrder = true;
+
       }
     });
   }
 
-  showOrder(coords) {
-    console.log('sys:: Показать маршрут заказа ', coords);
-    this.state$.l_map.ready.then(() => {
-      this.geo.getCurrentPosition().then((pos) => {
-        if (pos) {
-          let currentGeo = { 'lt': pos.coords.latitude, 'lg': pos.coords.longitude };
-          /**
-          * Создаем мультимаршрут.
-          * @see https://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/multiRouter.MultiRoute.xml
-          */
-          const multiRoute = new ymaps.multiRouter.MultiRoute({
-            referencePoints: [
-              currentGeo,
-              [coords[1], coords[0]]
-            ],
-            params: {
-              //Тип маршрутизации - пешеходная маршрутизация.
-              routingMode: 'pedestrian'
-            }
-          }, {
-            // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
-            boundsAutoApply: true
-          });
-          this.state$.l_map.geoObjects.add(multiRoute);
-        }
-      });
-
-    })
+  allOrders() {
+    this.map_s.oneOrder = false;
+    this.map_s.buildWay();
   }
 }

@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
   { path: 'draw', loadChildren: './pages/draw/draw.module#DrawPageModule' },
-  { path: 'map/:order', loadChildren: './pages/map/map.module#MapPageModule', canActivate: [AuthGuard] },
-
+  // { path: 'map/:order', loadChildren: './pages/map/map.module#MapPageModule', canActivate: [AuthGuard] },
+  { path: 'map/:order', redirectTo: 'map' }
 ];
 
 @NgModule({
