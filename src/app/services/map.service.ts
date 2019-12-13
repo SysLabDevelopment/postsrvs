@@ -5,6 +5,7 @@ import { Geolocation, GeolocationOptions } from '@ionic-native/geolocation/ngx';
 import { StateService } from '../services/state.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+import { Router } from '@angular/router';
 
 declare var ymaps: any;
 
@@ -16,7 +17,7 @@ export class MapService {
 
   private local_stop$: Subject<any> = new Subject();
   public oneOrder = false;
-  constructor(private geo: Geolocation, private state$: StateService, private AP: AndroidPermissions, private dg: Diagnostic) {
+  constructor(public router: Router, private geo: Geolocation, private state$: StateService, private AP: AndroidPermissions, private dg: Diagnostic) {
 
     var self = this;
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
@@ -283,6 +284,7 @@ export class MapService {
         self.state$.l_route.model.setParams({
           boundsAutoApply: true,
         });
+        console.log('sys:: Отрисовка маршрута');
         self.state$.l_map.geoObjects.add(self.state$.l_route);
 
         self.state$.route_state.next('init_done');
@@ -293,15 +295,26 @@ export class MapService {
             let cnt = i + 1;
             let order = self.state$.orders_data[i];
             let addr = order.client_address;
+            if (order.datetime_to !== null) {
+              order.datetime_to = 'до ' + order.datetime_to
+            } else {
+              order.datetime_to = ''
+            }
             let yandexWayPoint = self.state$.l_route.getWayPoints().get(i);
+            console.log('sys:: Данные заказа в балун ', order);
             ymaps.geoObject.addon.balloon.get(yandexWayPoint);
             yandexWayPoint.options.set({
               preset: "islands#blueStretchyIcon",
+              order: order,
+              addr: order.client_address,
               iconContentLayout: ymaps.templateLayoutFactory.createClass(
                 '<span style="color: red;">' + cnt + '</span>'
               ),
               balloonContentLayout: ymaps.templateLayoutFactory.createClass(
-                '{{ ' + addr + '|raw }}'
+                '<b>Заказ ' + order.id + '</b><br/>' +
+                addr + '<hr/>' +
+                'Доставка:<br/>c ' + order.datetime_from + '<br/>' + order.datetime_to + '<br/>' +
+                `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
               )
             });
           }
@@ -392,5 +405,9 @@ export class MapService {
 
     })
   }
-
+  orderDetails(orderId) {
+    console.log('sys:: переход на страницу заказа ', orderId);
+    this.router.navigate(['/order', orderId]);
+    localStorage.removeItem('needOrder');
+  }
 }

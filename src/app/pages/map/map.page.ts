@@ -50,8 +50,8 @@ export class MapPage implements OnInit {
       }
     })
 
-    this.state$.interval_1.pipe(takeUntil(this.local_stop$)).subscribe(() => {
-      console.log('MAP_PAGE_CHANGE_CALL');
+    this.state$.interval_1m.pipe(takeUntil(this.local_stop$)).subscribe(() => {
+      console.log('sys:: Перерисовка маршрута');
       self.map_s.changeWay();
       self.initLink();
       self.dislink = self.state$.disLink;
@@ -148,5 +148,14 @@ export class MapPage implements OnInit {
   allOrders() {
     this.map_s.oneOrder = false;
     this.map_s.buildWay();
+  }
+
+  ngAfterViewInit() {
+    this.state$.interval_1ss.pipe(takeUntil(this.local_stop$)).subscribe(() => {
+      let orderId = localStorage.getItem('needOrder');
+      if (orderId) {
+        this.map_s.orderDetails(orderId)
+      }
+    })
   }
 }
