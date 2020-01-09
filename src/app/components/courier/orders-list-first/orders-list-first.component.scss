@@ -1,51 +1,69 @@
-.order-list{
-    // box-shadow: 0 0 1px 1px #c7c7c7;
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.23, autoprefixer: v9.7.3) */
+
+.order-list {
     border-radius: 3px;
     height: 90%;
     overflow: hidden;
     margin-top: 10px;
 }
 
-.ol-col{
+.ol-col {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
-.ol-item{
+.ol-item {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 70% 30%;
     grid-template-columns: 70% 30%;
     font-size: 15px;
     height: 100%;
     width: 100%;
     padding: 0 3px 0 3px;
+    -webkit-box-shadow: 0px 0.7px 0.5px 0.1px #c7c7c7;
     box-shadow: 0px 0.7px 0.5px 0.1px #c7c7c7;
     padding: 10px 0 5px 0;
     max-height: 150px;
     overflow: hidden;
 }
 
-.oc-price{
+.oc-price {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
 }
 
- .oc-price{
+.oc-price {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
-.item-native ,ion-item{
-    padding: 0!important;
+.item-native,
+ion-item {
+    padding: 0 !important;
 }
 
- .oc-adress, .ol-head .oc-status{
+.oc-adress,
+.ol-head .oc-status {
     border-right: 1px solid #c7c7c7;
 }
 
-.ol-item .oc-adress{
+.ol-item .oc-adress {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
 }
 
-.ol-head{
+.ol-head {
     font-size: 18px;
     font-weight: bold;
     height: 24px;
@@ -54,66 +72,94 @@
     width: 100%;
 }
 
-.c-status{
+.c-status {
     margin-left: 4px;
 }
 
-.oc-left{
+.oc-left {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-rows: 40% 60%;
     grid-template-rows: 40% 60%;
+    -ms-grid-columns: 100%;
     grid-template-columns: 100%;
 }
 
-.c_number{
+.oc-left>*:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.oc-left>*:nth-child(2) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.c_number {
     text-align: center;
     font-weight: bold;
     margin: 0 0 4px 0;
 }
 
-.c_address{
+.c_address {
     margin: 5px 0 10px 0;
     height: 100%;
 }
 
-.oc-right{
+.oc-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
-.status_done{
+.status_done {
     color: #33b150;
 }
 
-.status_wait{
-    color:#d8d510;
+.status_wait {
+    color: #d8d510;
 }
 
-.status_fail{
+.status_fail {
     color: #d21212;
 }
 
-.status_none{
-    color:#71777d;
+.status_none {
+    color: #71777d;
 }
+
 .cdk-drag-placeholder {
     opacity: 0;
     background: #71777d;
 }
 
 .cdk-drag-preview {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 4px;
     background: #b9e4da;
+    -webkit-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
 
-  .overdue{
+.overdue {
     background: #f35e5e;
 }
 
-  .non-confirmed{
-      background: #858585!important; 
-  }
+.non-confirmed {
+    background: #858585 !important;
+}

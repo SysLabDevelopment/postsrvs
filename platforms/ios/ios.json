@@ -149,12 +149,10 @@
           ],
           "NSLocationWhenInUseUsageDescription": [
             {
-              "xml": "<string>This app always requires location tracking</string>",
-              "count": 1
-            },
-            {
-              "xml": "<string>This app requires access to your location when the screen is on and the app is displayed.</string>",
-              "count": 1
+              "xml": "<string>We use your location for full functionality of certain app features.</string>",
+              "count": 1,
+              "mode": "merge",
+              "id": "config.xml"
             }
           ],
           "NSLocationAlwaysAndWhenInUseUsageDescription": [
@@ -199,6 +197,10 @@
             {
               "xml": "<string>This app requires camera access to function properly.</string>",
               "count": 1
+            },
+            {
+              "xml": "<string>You need scan barcodes and take photos</string>",
+              "count": 6
             }
           ],
           "NSPhotoLibraryUsageDescription": [

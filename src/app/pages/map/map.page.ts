@@ -25,7 +25,7 @@ export class MapPage implements OnInit {
   public dislink: boolean = this.state$.disLink;
   public local_stop$: Subject<any> = new Subject();
 
-  constructor(private route: ActivatedRoute, private geo: Geolocation, public state$: StateService, private map_s: MapService, private wi: WebIntent) {
+  constructor(private route: ActivatedRoute, private geo: Geolocation, public state$: StateService, public map_s: MapService, private wi: WebIntent) {
     console.log('map_construct');
 
     var self = this;

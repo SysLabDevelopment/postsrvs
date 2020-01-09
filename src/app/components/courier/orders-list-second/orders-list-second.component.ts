@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild,EventEmitter, Input, Output, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Input, Output, ViewChildren, QueryList } from '@angular/core';
 import { OTTabPipePipe } from '../../../pipes/o-t-tab-pipe.pipe';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { CourierService } from '../../../services/courier.service';
 
 @Component({
   selector: 'app-orders-list-second',
@@ -9,19 +10,21 @@ import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk
   providers: [OTTabPipePipe]
 })
 export class OrdersListSecondComponent implements OnInit {
-  @Input() 
+  @Input()
   public orders_c;
-  @Input() 
+  @Input()
   public selectedTab;
-  @Input() 
+  @Input()
   public confirm_cond;
   @Output()
   orderSelected_E = new EventEmitter<any>();
-  
-  constructor() { }
-  public selectOrder(id){
+
+  constructor(public courier: CourierService) { }
+  public selectOrder(id) {
     this.orderSelected_E.emit(id);
   }
-  ngOnInit() {}
+  ngOnInit() {
+    // this.orders_c = this.courier.ordersInfo;
+  }
 
 }

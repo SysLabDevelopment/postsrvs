@@ -209,7 +209,9 @@ export class CourierPage implements OnInit {
     console.log('INIT_CONTENT_CALL');
     var self = this;
     this.orders = this.state$.orders_data;
+    console.log('sys::initСontent orders', JSON.stringify(this.orders));
     this.statuses = this.state$.statuses.getValue();
+    console.log('sys::initСontent statuses', JSON.stringify(this.statuses));
     if (this.orders == null || this.statuses == null) {
       this.loader = true;
       setTimeout(function () {

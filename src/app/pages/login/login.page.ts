@@ -97,18 +97,18 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
 
   public scanAuth() {
-    var self = this;
+    let self = this;
 
     this.auth.scanData().then((data) => {
       console.log('data', data);
 
-      var id = data.text.slice(0, -4);
+      let id = data.text.slice(0, -4);
       console.log('cid', id);
       localStorage.setItem('cId', id);
-      var a_data = {
+      let a_data = {
         'action': 'auth',
         'barcode': data.text,
-        //'barcode' : '33dbcda2db5311e39760309e88d17f08,3431',
+        // 'barcode': '33dbcda2db5311e39760309e88d17f08,3431',
       };
 
       console.log('request_auth_data', a_data);

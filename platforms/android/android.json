@@ -371,6 +371,18 @@
             }
           ]
         }
+      },
+      "*-Info.plist": {
+        "parents": {
+          "NSLocationWhenInUseUsageDescription": [
+            {
+              "xml": "<string>We use your location for full functionality of certain app features.</string>",
+              "count": 1,
+              "mode": "merge",
+              "id": "config.xml"
+            }
+          ]
+        }
       }
     }
   },

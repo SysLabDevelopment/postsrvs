@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="8" id="postsrvs.w" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="10" id="postsrvs.w" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ps@psvs.com" href="http://psvs.com/">Psvs Team</author>
@@ -23,6 +23,9 @@
         <resource-file src="/resources/icon.png" target="app/src/main/res/mipmap/icon.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+            <string>We use your location for full functionality of certain app features.</string>
         </edit-config>
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
@@ -93,6 +96,12 @@
         <icon height="196" src="resources/ios/icon/icon-98@2x.png" width="196" />
         <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
         <splash height="1125" src="resources/ios/splash/Default-Landscape-2436h.png" width="2436" />
+        <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+            <string>You need scan barcodes and take photos</string>
+        </config-file>
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+            <string>We use your location for full functionality of certain app features.</string>
+        </edit-config>
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
     <plugin name="cordova-plugin-statusbar" spec="2.4.2" />

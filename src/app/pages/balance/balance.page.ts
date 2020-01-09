@@ -146,11 +146,12 @@ export class BalancePage implements OnInit {
   public getInfo(sync_id) {
     var self = this;
 
-    this.courier.getBalance(sync_id).subscribe((data) => {
+    this.courier.getBalance(sync_id).subscribe((data: any) => {
       console.log('balance_data', data);
       self.info = data;
       self.pageInit = true;
       self.loader = false;
+      this.courier.ordersInfo = data.res_more;
     });
   }
 
@@ -186,7 +187,12 @@ export class BalancePage implements OnInit {
   }
 
   public cashOut() {
+    console.log('sys::cashOut()');
+    console.log('sys::cashOut() info != null', this.info != null);
+    console.log('sys::cashOut() !cashCheck', !this.cashCheck);
     this.confirmWindow = !this.confirmWindow;
+    console.log('sys::cashOut() confirmWindow', this.confirmWindow);
+    console.log('sys::cashOut() !openBtn && !failsOrder', !this.openBtn && !this.failsOrder);
   }
 
   public sendCash(photo) {
@@ -279,6 +285,7 @@ export class BalancePage implements OnInit {
   }
 
   public answer(isFull) {
+    console.log('sys:: answer');
     if (!isFull && (!this.commentText || this.commentText == '')) {
       this.commentError = true;
       return false;
@@ -288,6 +295,7 @@ export class BalancePage implements OnInit {
 
   //спрашивает, сколько заказов не сдано
   public failOrders() {
+    console.log('sys:: failOrders');
     if (this.info.ordersFail == 0) {
       this.openBtn = true;
       return false;

@@ -223,6 +223,12 @@ export class MapService {
     if (this.state$.geo_check.getValue() == "not_init") {
 
       this.state$.interval_3.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+        this.geo.getCurrentPosition().then((resp) => {
+          console.log('sys:: Координаты lt', resp.coords.latitude);
+          console.log('sys:: Координаты lg', resp.coords.longitude);
+        }).catch((error) => {
+          console.log('Невозможно получить координаты!', error);
+        });
         self.dg.isLocationAvailable().then((res) => {
 
           if (res) {

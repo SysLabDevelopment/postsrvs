@@ -808,12 +808,16 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 0.0.3;
+				CURRENT_PROJECT_VERSION = 0.0.6;
 				DEVELOPMENT_TEAM = GC2M858ZDN;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Postsrvs/Postsrvs-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Postsrvs/Postsrvs-Info.plist";
@@ -823,6 +827,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = flexcore.postsrvs.w;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				WK_WEB_VIEW_ONLY = 0;
 			};
 			name = Debug;
 		};
@@ -837,10 +842,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 0.0.3;
+				CURRENT_PROJECT_VERSION = 0.0.6;
 				DEVELOPMENT_TEAM = GC2M858ZDN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Postsrvs/Postsrvs-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Postsrvs/Postsrvs-Info.plist";
@@ -850,6 +856,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = flexcore.postsrvs.w;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				WK_WEB_VIEW_ONLY = 0;
 			};
 			name = Release;
 		};

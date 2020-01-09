@@ -14,7 +14,7 @@ import { OrderPage } from '../pages/order/order.page';
 })
 export class CourierService {
   barcodeScannerOptions: BarcodeScannerOptions;
-
+  public ordersInfo: any;
   constructor(private http: HttpClient,
     private router: Router,
     private plt: Platform,
@@ -113,7 +113,7 @@ export class CourierService {
 
     //Запускаем инициализацию
     this.getReasons().subscribe((data: any) => {
-      if (data.success = 'true') {
+      if (data.success == 'true') {
         self.state$.reasons = data.reasons;
 
       }
@@ -130,14 +130,14 @@ export class CourierService {
 
     if (!this.state$.courier_init) {
       this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
-
+        console.log('sys:: state', JSON.stringify(state));
         switch (state) {
           case 'init':
             self.getWay();
             break;
           case 'way_init':
             self.getOrders().subscribe((data: any) => {
-
+              console.log('sys:: Данные о заказах', data);
               if ((data.success == 'true') && (data.reason !== 'нет заказов')) {
                 self.state$.orders.next(data.orders);
                 self.state$.orders_data = data.orders;
@@ -156,7 +156,10 @@ export class CourierService {
                 self.state$.state.next('orders_init');
                 this.state$.confirmed = true;
               }
-            });
+            },
+              (error) => {
+                console.error('sys:: Ошибка получения данных о заказах!')
+              });
             break;
         }
       });
@@ -188,8 +191,8 @@ export class CourierService {
     либо сравниваем с маршрутом созданным курьером(manualWay)
   */
   public getWay() {
-    var url = 'orders';
-    var data = {
+    let url = 'orders';
+    let data = {
       'action': 'getWay',
       'lt': this.state$.position.getValue().lt,
       'lg': this.state$.position.getValue().lg
@@ -247,7 +250,7 @@ export class CourierService {
 
   public getBalance(sync_id) {
     var id = localStorage.getItem('cId');
-    var url = "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id;
+    var url = "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=1';
 
     return this.http.get(url);
   }

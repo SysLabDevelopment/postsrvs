@@ -624,4 +624,8 @@ export class OrderPage implements OnInit {
     this.map.oneOrder = true;
     this.router.navigate(['map/order']);
   }
+
+  pickedUpOrder() {
+
+  }
 }

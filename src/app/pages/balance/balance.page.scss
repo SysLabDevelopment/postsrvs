@@ -1,5 +1,4 @@
-
-.o-title{
+.o-title {
     display: flex;
     height: 60px;
     justify-content: center;
@@ -14,7 +13,7 @@
     position: relative;
 }
 
-.cn{
+.cn {
     position: fixed;
     top: 60px;
     left: 0px;
@@ -29,7 +28,7 @@
     align-items: center;
 }
 
-.o-body{
+.o-body {
     color: #3c3c3c;
     overflow: hidden;
     right: 0;
@@ -39,7 +38,7 @@
     justify-content: space-between;
 }
 
-.b-row{
+.b-row {
     margin: 2% 4px 7px 4px;
     box-shadow: 0 0 1px 1px #c7c7c7;
     border-radius: 3px;
@@ -52,20 +51,20 @@
     background-color: rgba(229, 238, 235, 1);
 }
 
-.b-item{
+.b-item {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.b-title{
+.b-title {
     justify-content: flex-start;
     color: rgba(72, 113, 135, 1);
     text-transform: uppercase;
 
 }
 
-.lg-b-wrp{
+.lg-b-wrp {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -73,7 +72,7 @@
     align-items: center;
 }
 
-.logout-btn{
+.logout-btn {
     height: 50px;
     width: 80%;
     background: #2b637e;
@@ -83,7 +82,7 @@
     margin: 7px 0 0 0;
 }
 
-.shirm{
+.shirm {
     position: fixed;
     top: 60px;
     left: 0px;
@@ -92,19 +91,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: RGBA(0,0,0,0.1);
+    background: RGBA(0, 0, 0, 0.1);
     z-index: 999999;
 }
 
-.shirm i{
+.shirm i {
     position: relative;
     margin: auto;
     font-size: 43px;
     color: #2b637e;
 }
 
-.confirm-shirm{
-    display: none;
+.confirm-shirm {
+    display: flex;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -112,10 +111,10 @@
     right: 0;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
 }
 
-.confirm{
+.confirm {
     background: #fff;
     height: 243px;
     display: grid;
@@ -125,14 +124,17 @@
 }
 
 
-.cf-title, .cf-qwe, .cf-comment, .cf-btns{
+.cf-title,
+.cf-qwe,
+.cf-comment,
+.cf-btns {
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 
-.cf-btn{
+.cf-btn {
     box-shadow: 0px 0px 0.5px 0.5px #bbb;
     height: 36px;
     width: 85px;
@@ -142,61 +144,63 @@
     border-radius: 3px;
     margin: 0 10px;
 }
-.cf-comment{
+
+.cf-comment {
     width: 80%;
     margin: 0 auto;
     flex-direction: column;
 }
 
-.sc-comment{
+.sc-comment {
     width: 90%;
     margin: 0px 0;
 }
 
-.cf-qwe{
+.cf-qwe {
     font-size: 21px;
     align-items: flex-end;
 }
 
-.cf-btns{
-    width:80%;
+.cf-btns {
+    width: 80%;
     margin: 0 auto;
 
 }
 
-.not{
+.not {
     background: #f95a5a;
     color: #fff;
 }
 
-.cf-num{
+.cf-num {
     color: #2b637e;
     font-weight: bold;
     margin: 0 3px;
 }
 
-.close-btn{
+.close-btn {
     position: absolute;
     right: 3px;
     top: 3px;
     font-size: 20px;
 }
 
-.comment-er{
+.comment-er {
     color: #d22e2e;
     font-size: 12px;
 }
 
-.cl-r__title{
+.cl-r__title {
     color: #2b637e;
     margin: 0 7px 0 0;
     font-size: 18px;
 }
-.cl-row{
+
+.cl-row {
     display: flex;
 }
 
-.check-labl{
+.check-labl {
     align-items: center;
     box-shadow: 0 0 0.5px 0.5px #b7b7b7;
     padding: 8px 8px;
@@ -206,19 +210,19 @@
     height: 100%;
 }
 
-.cl-body{
+.cl-body {
     height: 100%;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
 }
 
-.cl-row .comment{
+.cl-row .comment {
     height: 100%;
     margin: 4px 0 0 0px;
 }
 
-.photo-btn{
+.photo-btn {
     display: flex;
     height: 62px;
     width: 80%;
@@ -230,49 +234,50 @@
     align-items: center;
 }
 
-.review_btn{
+.review_btn {
     margin-top: 5px;
 }
 
-.of-comment{
+.of-comment {
     width: 100%;
 }
 
-.of-number{
+.of-number {
     width: 40px;
     text-align: center;
     height: 40px;
     margin: 3px 0;
 }
 
-.of-confirm{
+.of-confirm {
     width: 90%;
     height: unset;
     display: flex;
     flex-direction: column;
 }
 
-.of-btns, .of-btn{
-    width:100%;
+.of-btns,
+.of-btn {
+    width: 100%;
 }
 
-.of-btns{
+.of-btns {
     margin: 15px auto;
 }
 
-.of-qwe{
+.of-qwe {
     font-size: 21px;
     display: inline;
     margin: 24px 0;
     text-align: center;
 }
 
-.of-title{
+.of-title {
     margin: 22px 0 6px 0;
     font-size: 17px;
 }
 
-.fa-cogs{
+.fa-cogs {
     position: absolute;
     left: 6%;
     top: 34%;
