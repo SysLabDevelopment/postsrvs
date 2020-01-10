@@ -200,7 +200,7 @@
             },
             {
               "xml": "<string>You need scan barcodes and take photos</string>",
-              "count": 6
+              "count": 7
             }
           ],
           "NSPhotoLibraryUsageDescription": [
