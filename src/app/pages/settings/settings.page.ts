@@ -21,7 +21,7 @@ export class SettingsPage implements OnInit {
   public scanModes: any = [];
   public scanMode: string = '';
   public newScanMode: string = '';
-
+  public guessMode = this.auth.getGuessMode(); //Режим приема заказов по штрихкоду
   constructor(private router: Router, private auth: AuthService, public state: StateService, private courier: CourierService) {
     this.initModes();
     this.getA().subscribe((ps) => {

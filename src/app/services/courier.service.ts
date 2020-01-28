@@ -15,6 +15,7 @@ import { OrderPage } from '../pages/order/order.page';
 export class CourierService {
   barcodeScannerOptions: BarcodeScannerOptions;
   public ordersInfo: any;
+
   constructor(private http: HttpClient,
     private router: Router,
     private plt: Platform,
@@ -119,14 +120,12 @@ export class CourierService {
       }
     });
 
-    this.getStatuses().subscribe((data) => {
+    //Костыль для мгновенного отображения листина в обход ожидания статусов по апи
+    const statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
+    self.state$.statuses.next(statuses);
+    self.state$.s_state.next('status_init');
 
-      if (data.success == 'true') {
-        self.state$.statuses.next(data.statuses);
 
-        self.state$.s_state.next('status_init');
-      }
-    });
 
     if (!this.state$.courier_init) {
       this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {

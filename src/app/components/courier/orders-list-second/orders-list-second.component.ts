@@ -24,7 +24,7 @@ export class OrdersListSecondComponent implements OnInit {
     this.orderSelected_E.emit(id);
   }
   ngOnInit() {
-    // this.orders_c = this.courier.ordersInfo;
+    this.orders_c = this.courier.ordersInfo;
   }
 
 }

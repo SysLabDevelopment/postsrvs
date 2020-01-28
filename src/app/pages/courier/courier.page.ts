@@ -209,10 +209,11 @@ export class CourierPage implements OnInit {
     console.log('INIT_CONTENT_CALL');
     var self = this;
     this.orders = this.state$.orders_data;
+    let ordersInfo = this.courier.ordersInfo;
     console.log('sys::initСontent orders', JSON.stringify(this.orders));
-    this.statuses = this.state$.statuses.getValue();
+    this.statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
     console.log('sys::initСontent statuses', JSON.stringify(this.statuses));
-    if (this.orders == null || this.statuses == null) {
+    if (ordersInfo == null) {
       this.loader = true;
       setTimeout(function () {
         self.initContent();

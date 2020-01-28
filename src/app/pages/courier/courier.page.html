@@ -1,8 +1,12 @@
 <ion-content>
         <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
         <span class="manual_lable" [ngClass]="{  'm_lbl' : auth.getMode() == 'manual' || auth.getMode() == 'manual_wo'}" *ngIf="state$.manual_route && selectedTab == 1">Для сортировки зажмите заказ и перетащите</span>
-        <span class="find-order-btn" (click)="findOrder()"><i class="fas fa-search"></i></span>
-        <span class="submit-order-btn" *ngIf="subBtnCond" (click)="submitOrder()"><i class="fas fa-box-open"></i></span>
+        <span class="find-order-btn" (click)="findOrder()">
+            <i class="fas fa-search"></i>
+        </span>
+        <span class="submit-order-btn" *ngIf="subBtnCond" (click)="submitOrder()">
+            <i class="fas fa-box-open"></i>
+        </span>
 <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'manual' || auth.getMode() == 'manual_wo'}" >
     <div class="c-title">
         <span class="ct">Мои заказы</span>
@@ -14,12 +18,12 @@
     </div>
     <div class="c-body" *ngIf="ordersInit">
         <app-orders-list-first  
-        
                                 [selectedTab]="selectedTab"
                                 [confirm_cond]="subBtnCond"
                                 *ngIf="selectedTab == 1 && this.state$.manual_route"
                                 (ordersChange_E)="ordersListChanged($event)"
-                                (orderSelected_E)="selectOrder($event)"></app-orders-list-first>
+                                (orderSelected_E)="selectOrder($event)">
+        </app-orders-list-first>
         <app-orders-list-second
                                 [orders_c]="orders"
                                 [selectedTab]="selectedTab"

@@ -241,5 +241,10 @@ export class AuthService {
     }
   }
 
-  // public sendCa
+  setGuessMode(guessMode) {
+    localStorage.setItem('guessMode', guessMode);
+  }
+  getGuessMode() {
+    return localStorage.getItem('guessMode');
+  }
 }
