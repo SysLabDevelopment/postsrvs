@@ -158,22 +158,26 @@ export class MapService {
 
   public initPoints() {
     var self = this;
-    if (this.state$.way.getValue() != null) {
+    let orders: any;
+    if (this.state$.way.getValue() == null) {
+      orders = this.state$.orders_data;
+    } else {
 
-      var orders = this.state$.way.getValue();
-      var n_points = new Array();
-
-      var i_j = 0;
-      for (var i = 0; i < orders.length; i++) {
-        if (i_j == 9) break;
-        if (orders[i].status == 1) {
-          i_j++;
-          n_points.push(orders[i]);
-        }
-      }
-
-      self.state$.points.next(n_points);
+      orders = this.state$.way.getValue();
     }
+    var n_points = new Array();
+
+    var i_j = 0;
+    for (var i = 0; i < orders.length; i++) {
+      if (i_j == 9) break;
+      if (orders[i].status == 1) {
+        i_j++;
+        n_points.push(orders[i]);
+      }
+    }
+
+    self.state$.points.next(n_points);
+
 
     if (this.state$.point_check.getValue() == "not_init") {
 
@@ -415,5 +419,28 @@ export class MapService {
     console.log('sys:: переход на страницу заказа ', orderId);
     this.router.navigate(['/order', orderId]);
     localStorage.removeItem('needOrder');
+  }
+
+  pointsRender() {
+    console.log('sys::pointsRender');
+    let self = this;
+    let cnt: number = 0;
+    ymaps.ready().then(() => {
+      self.state$.orders_data.forEach(order => {
+        console.log('sys::pointsRender order', order);
+
+        let placemark = new ymaps.Placemark([order.lt, order.lg], {
+          // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+          balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
+          balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
+            order.client_address + '<hr/>' +
+            'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
+            `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
+        });
+
+        self.state$.l_map.geoObjects.add(placemark);
+
+      });
+    })
   }
 }

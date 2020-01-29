@@ -247,4 +247,13 @@ export class AuthService {
   getGuessMode() {
     return localStorage.getItem('guessMode');
   }
+
+  //Сохранение режима построения маршрута по умолчанию
+  setDefaultRouteBuilding(defaultRouteBuilding) {
+    localStorage.setItem('defaultRouteBuilding', defaultRouteBuilding);
+  }
+
+  getDefaultRouteBuilding() {
+    return localStorage.getItem('defaultRouteBuilding');
+  }
 }

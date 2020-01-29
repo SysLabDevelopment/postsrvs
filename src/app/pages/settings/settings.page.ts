@@ -22,6 +22,7 @@ export class SettingsPage implements OnInit {
   public scanMode: string = '';
   public newScanMode: string = '';
   public guessMode = this.auth.getGuessMode(); //Режим приема заказов по штрихкоду
+  public defaultRouteBuilding = this.auth.getDefaultRouteBuilding(); //Режим построения маршрута по умолчанию
   constructor(private router: Router, private auth: AuthService, public state: StateService, private courier: CourierService) {
     this.initModes();
     this.getA().subscribe((ps) => {
@@ -82,5 +83,7 @@ export class SettingsPage implements OnInit {
     this.auth.setScanMode(this.newScanMode);
     this.auth.setMode(this.newMode);
     this.auth.showError(10);
+    this.auth.setGuessMode(this.guessMode);
+    this.auth.setDefaultRouteBuilding(this.defaultRouteBuilding);
   }
 }

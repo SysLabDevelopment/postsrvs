@@ -44,6 +44,10 @@
           <ion-label>Guess</ion-label>
           <ion-checkbox slot="start" [(ngModel)]="guessMode"></ion-checkbox>
         </ion-item>
+        <ion-item>
+          <ion-label>Сразу строить маршрут</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="defaultRouteBuilding"></ion-checkbox>
+        </ion-item>
       </div>
       <div class="sv">
         <div class="sv-btn" *ngIf="!pswdView" (click)="saveSetings()">Сохранить</div>

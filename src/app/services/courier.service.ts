@@ -8,7 +8,9 @@ import { Platform } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { OrderPage } from '../pages/order/order.page';
+import { MapService } from '../services/map.service';
 
+declare var ymaps: any;
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +23,7 @@ export class CourierService {
     private plt: Platform,
     private state$: StateService,
     private auth: AuthService,
-    private bs: BarcodeScanner
+    private bs: BarcodeScanner, private map: MapService,
   ) {
     this.barcodeScannerOptions = {
       showTorchButton: true,
@@ -132,7 +134,14 @@ export class CourierService {
         console.log('sys:: state', JSON.stringify(state));
         switch (state) {
           case 'init':
-            self.getWay();
+            if (this.auth.getDefaultRouteBuilding() == 'true') {
+              console.log('sys:: дефолтное построение маршрута ', this.auth.getDefaultRouteBuilding());
+              self.getWay();
+            } else {
+              self.state$.state.next('way_init');
+              self.mapRender();
+            }
+
             break;
           case 'way_init':
             self.getOrders().subscribe((data: any) => {
@@ -140,6 +149,7 @@ export class CourierService {
               if ((data.success == 'true') && (data.reason !== 'нет заказов')) {
                 self.state$.orders.next(data.orders);
                 self.state$.orders_data = data.orders;
+                self.map.pointsRender();
                 self.state$.state.next('orders_init');
                 this.state$.confirmed = true;
                 data.orders.forEach(order => {
@@ -226,6 +236,11 @@ export class CourierService {
 
     var ids = [];
     var way = this.state$.way.getValue();
+
+    if (way == null) {
+      way = this.ordersInfo;
+    }
+
 
     for (let i = 0; i < way.length; i++) {
       ids.push(way[i].id);
@@ -370,4 +385,10 @@ export class CourierService {
     return ret;
   }
 
+  //Отрисовка точек на карте
+  mapRender() {
+    ymaps.ready().then(() => {
+
+    })
+  }
 }
