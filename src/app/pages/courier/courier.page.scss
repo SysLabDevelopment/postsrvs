@@ -126,7 +126,7 @@ ion-item {
   color: #4c4c4c;
 }
 
-.o-tab-wrp > *:nth-child(1) {
+.o-tab-wrp>*:nth-child(1) {
   -ms-grid-row: 1;
 
   -ms-grid-column: 1;
@@ -134,14 +134,14 @@ ion-item {
   grid-column: 1;
 }
 
-.o-tab-wrp > *:nth-child(2) {
+.o-tab-wrp>*:nth-child(2) {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-row: 1;
   grid-column: 2;
 }
 
-.o-tab-wrp > *:nth-child(3) {
+.o-tab-wrp>*:nth-child(3) {
   -ms-grid-row: 1;
   -ms-grid-column: 3;
   grid-row: 1;
@@ -183,14 +183,14 @@ ion-item {
   grid-template-columns: 100%;
 }
 
-.oc-left > *:nth-child(1) {
+.oc-left>*:nth-child(1) {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-row: 1;
   grid-column: 1;
 }
 
-.oc-left > *:nth-child(2) {
+.oc-left>*:nth-child(2) {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-row: 2;
@@ -313,6 +313,7 @@ ion-item {
 
 .sr-stop {
   background: #d21212;
+  margin: auto;
 }
 
 .orders-lable {
@@ -339,14 +340,14 @@ ion-item {
   grid-template-columns: 100%;
 }
 
-.done-time > *:nth-child(1) {
+.done-time>*:nth-child(1) {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-row: 1;
   grid-column: 1;
 }
 
-.done-time > *:nth-child(2) {
+.done-time>*:nth-child(2) {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-row: 2;
