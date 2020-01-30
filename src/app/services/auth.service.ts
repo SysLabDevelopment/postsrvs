@@ -256,4 +256,10 @@ export class AuthService {
   getDefaultRouteBuilding() {
     return localStorage.getItem('defaultRouteBuilding');
   }
+  setRoutingMode(auto) {
+    localStorage.setItem('auto', auto);
+  }
+  getRoutingMode() {
+    return localStorage.getItem('auto');
+  }
 }

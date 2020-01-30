@@ -68,25 +68,31 @@ export class CourierService {
    * Меняем на серере режим маршрута
    */
   public changeRouteMode(mode) {
-    let url = 'orders';
-    let data = { 'action': 'changeRouteMode', 'routeId': this.state$.way.getValue()[0].route };
+    if (this.state$.way.getValue() !== null) {
+      let url = 'orders';
+      const routeId = this.state$.way.getValue()[0].route;
 
-    if (mode == 'auto' || mode == 'manual') {
-      data['mode'] = mode;
-    } else {
-      this.auth.showError(5);
-      return false;
-    }
 
-    let self = this;
-    this.auth.sendPost(url, data).subscribe((resp) => {
-      if (resp.success == 'true') {
-        self.state$.manual_route = resp.mode == 'manual' ? true : false;
-        self.state$.updateWayInfo.next();
+
+      let data = { 'action': 'changeRouteMode', 'routeId': this.state$.way.getValue()[0].route };
+
+      if (mode == 'auto' || mode == 'manual') {
+        data['mode'] = mode;
       } else {
-        self.auth.showError(5);
+        this.auth.showError(5);
+        return false;
       }
-    });
+
+      let self = this;
+      this.auth.sendPost(url, data).subscribe((resp) => {
+        if (resp.success == 'true') {
+          self.state$.manual_route = resp.mode == 'manual' ? true : false;
+          self.state$.updateWayInfo.next();
+        } else {
+          self.auth.showError(5);
+        }
+      });
+    }
 
   }
 
@@ -139,7 +145,6 @@ export class CourierService {
               self.getWay();
             } else {
               self.state$.state.next('way_init');
-              self.mapRender();
             }
 
             break;
@@ -149,7 +154,9 @@ export class CourierService {
               if ((data.success == 'true') && (data.reason !== 'нет заказов')) {
                 self.state$.orders.next(data.orders);
                 self.state$.orders_data = data.orders;
-                self.map.pointsRender();
+                if (this.auth.getDefaultRouteBuilding() !== 'true') {
+                  self.map.pointsRender();
+                }
                 self.state$.state.next('orders_init');
                 this.state$.confirmed = true;
                 data.orders.forEach(order => {
@@ -200,11 +207,19 @@ export class CourierService {
     либо сравниваем с маршрутом созданным курьером(manualWay)
   */
   public getWay() {
+    console.log('sys::getWay()');
+    let mode = this.auth.getRoutingMode();
+    if (mode) {
+      mode = '1';
+    } else {
+      mode = '0'
+    }
     let url = 'orders';
     let data = {
       'action': 'getWay',
       'lt': this.state$.position.getValue().lt,
-      'lg': this.state$.position.getValue().lg
+      'lg': this.state$.position.getValue().lg,
+      'auto': mode
     }
     let app_mode = this.auth.getMode();
     if ((app_mode == 'manual' || app_mode == 'manual_wo') || this.state$.manual_route) {
@@ -385,10 +400,5 @@ export class CourierService {
     return ret;
   }
 
-  //Отрисовка точек на карте
-  mapRender() {
-    ymaps.ready().then(() => {
 
-    })
-  }
 }

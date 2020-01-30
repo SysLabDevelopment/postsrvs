@@ -48,6 +48,12 @@
           <ion-label>Сразу строить маршрут</ion-label>
           <ion-checkbox slot="start" [(ngModel)]="defaultRouteBuilding"></ion-checkbox>
         </ion-item>
+        Тип построения маршрута
+        <ion-item>
+          <ion-label>Обычный</ion-label>
+          <ion-toggle [(ngModel)]="auto"></ion-toggle>
+          <ion-label>Магистраль</ion-label>
+        </ion-item>
       </div>
       <div class="sv">
         <div class="sv-btn" *ngIf="!pswdView" (click)="saveSetings()">Сохранить</div>

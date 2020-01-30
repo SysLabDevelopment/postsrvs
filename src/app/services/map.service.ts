@@ -140,6 +140,7 @@ export class MapService {
 
   //инит самой карты
   public buildMap() {
+    console.log('sys::buildMap()');
     var self = this;
 
     ymaps.ready().then(() => {
@@ -157,27 +158,27 @@ export class MapService {
 
 
   public initPoints() {
+    console.log('sys::initPoints()');
     var self = this;
     let orders: any;
-    if (this.state$.way.getValue() == null) {
-      orders = this.state$.orders_data;
-    } else {
+    orders = this.state$.way.getValue();
+    if (this.state$.way.getValue() !== null) {
+      console.log('sys:: state$.way.getValue() == null', (this.state$.way.getValue() == null));
 
-      orders = this.state$.way.getValue();
-    }
-    var n_points = new Array();
+      var n_points = new Array();
 
-    var i_j = 0;
-    for (var i = 0; i < orders.length; i++) {
-      if (i_j == 9) break;
-      if (orders[i].status == 1) {
-        i_j++;
-        n_points.push(orders[i]);
+      var i_j = 0;
+      console.log('sys::initPoints orders', orders);
+      for (var i = 0; i < orders.length; i++) {
+        if (i_j == 9) break;
+        if (orders[i].status == 1) {
+          i_j++;
+          n_points.push(orders[i]);
+        }
       }
+
+      self.state$.points.next(n_points);
     }
-
-    self.state$.points.next(n_points);
-
 
     if (this.state$.point_check.getValue() == "not_init") {
 
@@ -261,7 +262,7 @@ export class MapService {
   }
 
   public buildWay() {
-
+    console.log('sys::buildWay()');
     var self = this;
 
     if (this.state$.points.getValue() != null && this.state$.position.getValue() != null && this.state$.route_state.getValue() != 'init_process') {
@@ -287,7 +288,6 @@ export class MapService {
           ,
           params:
           {
-            //Тип маршрутизации - пешеходная маршрутизация.
             mapStateAutoApply: true
           }
         });
@@ -401,7 +401,6 @@ export class MapService {
               [coords[1], coords[0]]
             ],
             params: {
-              //Тип маршрутизации - пешеходная маршрутизация.
               mapStateAutoApply: true
             }
           }, {

@@ -33,9 +33,9 @@ export class MapPage implements OnInit {
 
     // this.map_s.buildWay();
     this.map_s.buildMap();
+    console.log('sys::buildMap');
     this.state$.map_state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
       if (state == 'map_init') {
-        console.log('map_page_map_init');
         self.map_s.buildWay();
 
       }
@@ -146,6 +146,7 @@ export class MapPage implements OnInit {
   }
 
   allOrders() {
+    console.log('sys::allOrders()');
     this.map_s.oneOrder = false;
     this.map_s.buildWay();
   }
