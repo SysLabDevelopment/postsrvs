@@ -2,9 +2,9 @@
   <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)"  itemSize="50" style="height:100%; width: 100%" >  
     <div *ngFor="let order of orders_c  | oTTabPipe : selectedTab" 
                       class="ol-item"
-                      [ngClass]="{  'non-confirmed' : order.confirm == 0 && confirm_cond,
-                                    'overdue'       : order.overdue == 1}" 
-                      (click) = "selectOrder(order.id)" cdkDrag>
+                      [ngClass]="{  'non-confirmed' : order.confirm == '0' && confirm_cond,
+                                    'overdue'       : order.overdue == '1'}" 
+                      (click) = "selectOrder(order.id)" cdkDrag [cdkDragStartDelay]="750">
           <div class="ol-col oc-left">
             <div class="oc-left-row c_number">
               {{order.client_id}} 

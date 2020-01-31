@@ -38,7 +38,7 @@ export class OrdersListFirstComponent implements OnInit {
     this.Drop_L.autoScrollDisabled = false;
     this.DragItems.changes.subscribe((r) => {
       self.DragItems.forEach(DragItem => {
-        DragItem.dragStartDelay = 500;
+        DragItem.dragStartDelay = 100000;
 
       })
     });
