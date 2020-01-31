@@ -6,7 +6,7 @@ import { StateService } from '../../services/state.service';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { takeLast, takeUntil, take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-
+import { AuthService } from '../../services/auth.service';
 declare var ymaps: any;
 
 @Component({
@@ -25,12 +25,12 @@ export class MapPage implements OnInit {
   public dislink: boolean = this.state$.disLink;
   public local_stop$: Subject<any> = new Subject();
 
-  constructor(private route: ActivatedRoute, private geo: Geolocation, public state$: StateService, public map_s: MapService, private wi: WebIntent) {
-    console.log('map_construct');
+  constructor(
+    private route: ActivatedRoute, private geo: Geolocation, public state$: StateService, public map_s: MapService, private wi: WebIntent,
+    private auth: AuthService
+  ) {
 
     var self = this;
-
-
     // this.map_s.buildWay();
     this.map_s.buildMap();
     console.log('sys::buildMap');
@@ -69,7 +69,6 @@ export class MapPage implements OnInit {
     //   console.log('map_page_var_2');
     this.state$.route_state.pipe(takeUntil(this.state$.$stop)).subscribe((state) => {
       if (state == 'init_done') {
-        console.log('map_page_var_2_init_done');
         self.initLink();
 
       }
@@ -126,23 +125,25 @@ export class MapPage implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('map_destroy');
     this.local_stop$.next();
   }
   ngOnInit() {
-    console.log('map_init');
     this.route.paramMap.subscribe((params) => {
       if (this.map_s.oneOrder) {
         this.map_s.showOrder(this.state$.coords);
       }
       if (params.get('order')) {
         console.log('sys:: координаты', this.state$.coords);
-
         console.log('sys:: параметры url ', params.get('order'));
         this.map_s.oneOrder = true;
 
       }
     });
+    this.state$.map_state.subscribe((state) => {
+      if ((state == 'map_init') && !this.auth.getDefaultRouteBuilding()) {
+        this.map_s.pointsRender();
+      }
+    })
   }
 
   allOrders() {

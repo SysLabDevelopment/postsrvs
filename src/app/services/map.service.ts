@@ -17,7 +17,8 @@ export class MapService {
 
   private local_stop$: Subject<any> = new Subject();
   public oneOrder = false;
-  constructor(public router: Router, private geo: Geolocation, private state$: StateService, private AP: AndroidPermissions, private dg: Diagnostic) {
+  constructor(public router: Router, private geo: Geolocation, private state$: StateService, private AP: AndroidPermissions, private dg: Diagnostic,
+  ) {
 
     var self = this;
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
@@ -77,6 +78,7 @@ export class MapService {
             break;
           case 'map_init':
             self.checkChanges();
+
             break;
           case 'reInit':
             // self.buildMap();
