@@ -78,7 +78,7 @@
                                                 'cl-status-voice' : client_status_id == 4 }">{{client_status}}</div>
             <div class="st_dt">{{client_status_dt}}</div>
             <button class="sc-submit voice-comment" *ngIf = "client_status_id == 4" (click) ="voiceLink()">Прослушать</button>
-         </ion-content>
+         </div>
          <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
           <div class="sc-statuses" >
               <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of (statuses | partFilter:order.partial)" (click) = "selectStatus(status.id)" >{{status.status}}</div>
