@@ -277,8 +277,8 @@ export class CourierPage implements OnInit {
     let g_process = 0;
     let g_fail = 0;
 
-    for (let i = 0; i < this.orders.length; i++) {
-      switch (String(this.orders[i].status_id)) {
+    for (let i = 0; i < this.courier.ordersInfo.length; i++) {
+      switch (String(this.courier.ordersInfo[i].status_id)) {
         case '4':
           g_fail++;
           break;

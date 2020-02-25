@@ -16,7 +16,8 @@ declare var ymaps: any;
 })
 export class CourierService {
   barcodeScannerOptions: BarcodeScannerOptions;
-  public ordersInfo: Subject<any> = new Subject();
+  public ordersInfo: any;
+  public ordersShortData: Subject<any> = new Subject();
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -247,22 +248,30 @@ export class CourierService {
 
 
   public getOrders(): Observable<any> {
-    var url = "orders";
+    const url = "orders";
 
-    var ids = [];
-    var way = this.state$.way.getValue();
+    let ids = [];
 
-    if (way == null) {
-      way = this.ordersInfo;
+
+
+    let way = this.ordersInfo;
+    this.ordersShortData.subscribe((data) => {
+      way = data;
+    })
+
+    if (way !== undefined) {
+      for (let i = 0; i < way.length; i++) {
+        ids.push(way[i].id);
+
+      }
+    } else {
+      ids = [];
     }
 
 
-    for (let i = 0; i < way.length; i++) {
-      ids.push(way[i].id);
 
-    }
 
-    var data = {
+    let data = {
       'action': 'getOrders',
       'orders_id': ids
     }

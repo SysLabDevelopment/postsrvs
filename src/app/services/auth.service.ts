@@ -69,7 +69,7 @@ export class AuthService {
   public setScanMode(mode) {
     localStorage.setItem('scan_mode', mode);
   }
-  //меняет способ сканирования 
+  //меняет способ сканирования
   public getScanMode(): string {
     return localStorage.getItem('scan_mode');
   }
@@ -86,7 +86,7 @@ export class AuthService {
     this.plt.ready().then(() => {
       self.http.post(url, data, httpOptions).subscribe((data: any) => {
         // data = JSON.stringify(data);
-        console.log('AUTH.SendPOst() RESPONSE', JSON.stringify(data));
+        console.log('AUTH.SendPOst() RESPONSE', data);
         this.state$.unsetNotification('internet');
         if (data) {
           console.log('sys:: data == true, data.success', data.success);
@@ -112,8 +112,8 @@ export class AuthService {
     return resp;
   }
   public getUuid() {
-    //return '4191a54e85f2d5f6';
-    return this.device.uuid;
+    return 'c446ca560c6e0383';
+    // return this.device.uuid;
   }
 
   public setUser(id) {
