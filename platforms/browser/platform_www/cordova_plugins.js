@@ -213,9 +213,9 @@ module.exports.metadata =
     "cordova-plugin-uniquedeviceid": "1.3.2",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-whitelist": "1.3.4",
-    "cordova.plugins.diagnostic": "5.0.0",
     "es6-promise-plugin": "4.2.2",
-    "phonegap-plugin-barcodescanner": "8.0.1"
+    "phonegap-plugin-barcodescanner": "8.0.1",
+    "cordova.plugins.diagnostic": "5.0.1"
 }
 // BOTTOM OF METADATA
 });

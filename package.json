@@ -136,16 +136,16 @@
       "cordova-plugin-inappbrowser": {},
       "mx.ferreyra.callnumber": {},
       "cordova-plugin-android-permissions": {},
-      "cordova.plugins.diagnostic": {
-        "ANDROID_SUPPORT_VERSION": "28.+"
-      },
       "cordova-plugin-camera": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "call-number": {},
       "cordova-plugin-vibration": {},
       "cordova-plugin-fullscreen": {},
-      "cordova-plugin-screen-orientation": {}
+      "cordova-plugin-screen-orientation": {},
+      "cordova.plugins.diagnostic": {
+        "ANDROID_SUPPORT_VERSION": "28.+"
+      }
     },
     "platforms": [
       "android",

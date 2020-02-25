@@ -13,7 +13,7 @@
           st_fail : status_id == 4}
             ">
             <div class="sr-title o-t">Статус:</div>
-            <div class="sr-status" >{{getStatus()}} 
+            <div class="sr-status" >{{getStatus()}}
               <!-- <button class="change_status" (click)="changeStatus()">
                   <i class="far fa-edit"></i>
               </button>  -->
@@ -26,14 +26,14 @@
         <div class="o-row poruch-row podrazd" *ngIf="order.company">
           <span class="vp-title o-t">Компания</span>
           <span class="pp office-body">{{order.company}}</span>
-        </div>          
+        </div>
         <div class="o-row poruch-row podrazd" *ngIf="podrazd">
             <span class="vp-title o-t">Отдел</span>
             <span class="pp office-body">{{podrazd}}</span>
-        </div>        
+        </div>
         <div class="sum-row o-row">
           <div class="sum-title o-t">Сумма с клиента:</div>
-          <div class="sum-body">{{order_sum}}р.</div>
+          <div class="sum-body">{{order.rur}}р.</div>
         </div>
         <div class="contacts-row o-row">
             <div class="cr-title o-t">Контакты клиента:</div>
@@ -78,7 +78,7 @@
                                                 'cl-status-voice' : client_status_id == 4 }">{{client_status}}</div>
             <div class="st_dt">{{client_status_dt}}</div>
             <button class="sc-submit voice-comment" *ngIf = "client_status_id == 4" (click) ="voiceLink()">Прослушать</button>
-         </div> 
+         </ion-content>
          <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
           <div class="sc-statuses" >
               <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of (statuses | partFilter:order.partial)" (click) = "selectStatus(status.id)" >{{status.status}}</div>
@@ -88,9 +88,9 @@
                 <div class="sc-r-title">Причина:</div>
                     <div class="sc-reason" [ngClass] = "{'status_active' : selectedReason == reason.id}" *ngFor="let reason of reasons" (click) = "selectReason(reason.id)"> {{reason.reason}}</div>
               </div>
-              <div class="sc-comment-block" *ngIf="selectedStatus == 5">                    
+              <div class="sc-comment-block" *ngIf="selectedStatus == 5">
                   <div class="sc-r-title">Комментарий:</div>
-                  <textarea [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>                     
+                  <textarea [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>
               </div>
               <div class="sc-payment" *ngIf = "selectedStatus == 5 || selectedStatus == 6" >
                   <div class="sc-payment__title">Оплата</div>
@@ -102,7 +102,7 @@
               <div class="sc-goods-block" *ngIf="selectedStatus == 6 ">
                   <div class="goods-row o-row">
                       <div class="gr-title o-t">Товары в заказе</div>
-          
+
                       <div class="gr-goods-list">
                         <div class="gr-head">
                           <div class="gr-col">Название</div>
@@ -121,11 +121,11 @@
                               </div>
                         </div>
                       </div>
-                  </div>                      
+                  </div>
               </div>
               <div class="goods-row o-row" *ngIf="selectedStatus == 5 ">
                   <div class="gr-title o-t">Товары в заказе</div>
-      
+
                   <div class="gr-goods-list">
                     <div class="gr-head">
                       <div class="gr-col">Название</div>
@@ -142,7 +142,7 @@
                           </div>
                     </div>
                   </div>
-              </div> 
+              </div>
               <div class="sc-payment-block o-row" *ngIf="pay_access && (selectedStatus == 5 || selectedStatus == 6)  ">
                 <div class="pb-email" *ngIf="show_email">
                   <div class="pb-email__title">Email клиента</div>
@@ -177,7 +177,7 @@
                 <button *ngIf = "drawNeedle" class=" drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
               </div>
               <div class="sc-s-wrp">
-                  <button class="sc-submit" 
+                  <button class="sc-submit"
                       (click) ="sendPayCall()"
                       *ngIf="selectedStatus"
                       [ngClass] = "{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6,
@@ -188,13 +188,13 @@
                     </button>
               </div>
           </div>
-        </div>   
+        </div>
         <div class="code-loader" *ngIf="hide_status && !barcode_flag" >
             <div class="sh-icons">
               <i class="fas fa-spinner fa-spin"></i>
             </div>
             <div class="await-check">Ожидание чека...</div>
-        </div> 
+        </div>
         <div class="sc-s-wrp" *ngIf = "barcode_flag">
           <qrcode class="qr" [qrdata]="barcode" [size]="256" [level]="'M'"></qrcode>
           <button class="sc-submit show-check" *ngIf = "barcode_flag" (click) ="showCheck()">Показать чек</button>
@@ -210,7 +210,7 @@
           <ion-button (click)="pickedUpOrder()">
             Забрал заказ
           </ion-button>
-        </div>     
+        </div>
       </div>
     </div>
     <div class="call-window" *ngIf="callWindow">
