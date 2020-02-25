@@ -120,7 +120,7 @@ export class MapService {
     //   break;
     //   case 'init_done':
     //     this.changeWay();
-    //     break; 
+    //     break;
     // }diagnostic
   }
 
@@ -210,18 +210,18 @@ export class MapService {
     var self = this;
     // this.AP.checkPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION).then((res) => {
     //   if (res.hasPermission){
-    //     
+    //
     //     self.geo.getCurrentPosition().then((pos) => {
 
     //       if (pos){
-    //         var pre = self.state$.position.getValue(); 
+    //         var pre = self.state$.position.getValue();
     //         var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
     //         self.state$.position.next(position);
     //         if (pre == null ){
     //           self.state$.init_params_state.next('init_geo_done');
     //         }
     //       }
-    //       
+    //
     //     });
     //   }
     // });
@@ -427,20 +427,21 @@ export class MapService {
     let self = this;
     let cnt: number = 0;
     ymaps.ready().then(() => {
+      self.state$.l_map.geoObjects.removeAll();
       self.state$.orders_data.forEach(order => {
-        console.log('sys::pointsRender order', order);
+        if (order.status_id == '1') {
+          console.log('sys::pointsRender order', order);
+          let placemark = new ymaps.Placemark([order.lt, order.lg], {
+            // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+            balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
+            balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
+              order.client_address + '<hr/>' +
+              'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
+              `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
+          });
 
-        let placemark = new ymaps.Placemark([order.lt, order.lg], {
-          // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
-          balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
-          balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
-            order.client_address + '<hr/>' +
-            'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
-            `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
-        });
-
-        self.state$.l_map.geoObjects.add(placemark);
-
+          self.state$.l_map.geoObjects.add(placemark);
+        }
       });
     })
   }

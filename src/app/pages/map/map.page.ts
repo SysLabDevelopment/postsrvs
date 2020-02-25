@@ -16,7 +16,7 @@ declare var ymaps: any;
 })
 export class MapPage implements OnInit {
 
-  // public route:any; 
+  // public route:any;
   public loader: boolean = false;
   // public points = null;
   // public position = null;
@@ -139,6 +139,7 @@ export class MapPage implements OnInit {
 
       }
     });
+    if (this.state$.map_state.getValue() == 'map_init') { this.map_s.pointsRender() }
     this.state$.map_state.subscribe((state) => {
       if ((state == 'map_init') && !this.auth.getDefaultRouteBuilding()) {
         this.map_s.pointsRender();

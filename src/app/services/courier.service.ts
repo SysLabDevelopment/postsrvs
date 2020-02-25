@@ -16,7 +16,7 @@ declare var ymaps: any;
 })
 export class CourierService {
   barcodeScannerOptions: BarcodeScannerOptions;
-  public ordersInfo: any;
+  public ordersInfo: Subject<any> = new Subject();
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -41,7 +41,7 @@ export class CourierService {
 
       self.logout();
     });
-    //обновляем заказы по запросу 
+    //обновляем заказы по запросу
     this.state$.updateWayInfo.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
       self.updateOrders();
     });
@@ -110,7 +110,7 @@ export class CourierService {
   }
 
 
-  //Собираем необходимую инфу по заказам 
+  //Собираем необходимую инфу по заказам
   public initOrders() {
     var self = this;
 

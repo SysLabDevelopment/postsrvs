@@ -152,6 +152,9 @@ export class BalancePage implements OnInit {
       self.pageInit = true;
       self.loader = false;
       this.courier.ordersInfo = data.res_more;
+      if (this.state$.orders.getValue() == null) {
+        this.courier.getOrders();
+      }
     });
   }
 
