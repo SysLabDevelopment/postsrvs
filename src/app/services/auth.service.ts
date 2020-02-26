@@ -112,8 +112,8 @@ export class AuthService {
     return resp;
   }
   public getUuid() {
-    return 'c446ca560c6e0383';
-    // return this.device.uuid;
+    // return 'c446ca560c6e0383';
+    return this.device.uuid;
   }
 
   public setUser(id) {
