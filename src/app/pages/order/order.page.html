@@ -88,6 +88,26 @@
                 <div class="sc-r-title">Причина:</div>
                     <div class="sc-reason" [ngClass] = "{'status_active' : selectedReason == reason.id}" *ngFor="let reason of reasons" (click) = "selectReason(reason.id)"> {{reason.reason}}</div>
               </div>
+
+              <!-- Блок подписи -->
+              <div class="draw" *ngIf="selectedStatus == 5 || selectedStatus == 6">
+                <div class="asc-row">
+                  <div class="title">Требуется ли подпись клиента?</div>
+                  <div class="draw-btns">
+                    <button class=" drawBtn " [ngClass] = "{'draw_btn_active'   : drawNeedle}" (click)="drawBtn(true)">Да</button>
+                    <button class=" drawBtn " [ngClass] = "{'draw_btn_active'   : !drawNeedle}" (click)="drawBtn(false)">Нет</button>
+                  </div>
+                </div>
+                <img [src]="imageToShow"
+                      alt=""
+                      *ngIf="imageToShow && drawNeedle"
+                      style="height : 200px;">
+                <button *ngIf = "drawNeedle" class=" drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
+              </div>
+
+              <details *ngIf="selectedStatus">
+                <summary>Дополнительно</summary>
+
               <div class="sc-comment-block" *ngIf="selectedStatus == 5">
                   <div class="sc-r-title">Комментарий:</div>
                   <textarea [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>
@@ -155,6 +175,7 @@
                 </div>
                 <button class="show-phone" (click) ="enterPhone()">Прочее</button>
               </div>
+              </details>
               <div class="dt-picker" *ngIf="selectedReason == 8">
                 <ion-item>
                   <ion-label position="floating">MM/DD/YYYY</ion-label>
@@ -162,20 +183,6 @@
                 </ion-item>
               </div>
 
-              <div class="draw" *ngIf="selectedStatus == 5 || selectedStatus == 6">
-              <div class="asc-row">
-                  <div class="title">Требуется ли подпись клиента?</div>
-                  <div class="draw-btns">
-                    <button class=" drawBtn " [ngClass] = "{'draw_btn_active'   : drawNeedle}" (click)="drawBtn(true)">Да</button>
-                    <button class=" drawBtn " [ngClass] = "{'draw_btn_active'   : !drawNeedle}" (click)="drawBtn(false)">Нет</button>
-                  </div>
-                </div>
-                <img [src]="imageToShow"
-                      alt=""
-                      *ngIf="imageToShow && drawNeedle"
-                      style="height : 200px;">
-                <button *ngIf = "drawNeedle" class=" drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
-              </div>
               <div class="sc-s-wrp">
                   <button class="sc-submit"
                       (click) ="sendPayCall()"
