@@ -40,7 +40,8 @@ export class CourierPage implements OnInit {
   public scanInput;
   public scan_process = false;
   public find_order: boolean = false;
-  constructor(private courier: CourierService,
+
+  constructor(public courier: CourierService,
     private router: Router,
     public state$: StateService,
     public auth: AuthService,

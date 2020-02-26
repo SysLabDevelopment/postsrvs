@@ -56,7 +56,7 @@
         </cdk-virtual-scroll-viewport>
         </div> -->
         <div class="orders-lable">
-            <div class="all-amount olab-amount">Всего заказов: <span class="amount-labl">{{orders.length}}</span></div>
+            <div class="all-amount olab-amount">Всего заказов: <span class="amount-labl">{{courier.ordersInfo.length}}</span></div>
             <div class="olab-amount" *ngIf="selectedTab == 1 && g_process != 0">Заказов на вкладке: <span class="amount-labl">{{g_process}}</span></div>
             <div class="olab-amount" *ngIf="selectedTab == 2 && g_done != 0">Заказов на вкладке: <div class="amount-labl">{{g_done}}</div></div>
             <div class="olab-amount" *ngIf="selectedTab == 3 && g_fail != 0">Заказов на вкладке: <div class="amount-labl">{{g_fail}}</div></div>
@@ -65,7 +65,7 @@
                                             (selectedTab == 3 && g_fail == 0)"><span class="center-title">Нет заказов</span></div>
         </div>
     </div>
-    <div class="start-route" *ngIf="ordersInit && state$.orders_data.length != 0 && state$.orders_data !== null">
+    <div class="start-route" *ngIf="ordersInit && state$.orders_data != [] && state$.orders_data !== null">
         <button class="satrt-r-btn" *ngIf = "!btn_go && !this.state$.manual_route" (click) ="startRoute()">Начать маршрут</button>
         <button class="satrt-r-btn sr-stop" *ngIf = "btn_go && !this.state$.manual_route"  (click) ="stopRoute()">Остановить маршрут</button>
         <!-- <button class="satrt-r-btn find-o-btn" (click)="findOrder()" >Найти заказ</button> -->
