@@ -271,10 +271,13 @@ export class MapService {
     if (this.state$.points.getValue() != null && this.state$.position.getValue() != null && this.state$.route_state.getValue() != 'init_process') {
       this.state$.route_state.next('init_process');
 
-      var route_orders = self.state$.points.getValue();
-      var r_points = new Array();
-      var pos_points = [this.state$.position.getValue().lt, this.state$.position.getValue().lg];
+      let route_orders = self.state$.points.getValue();
+      let r_points = new Array();
+      let pos_points = [this.state$.position.getValue().lt, this.state$.position.getValue().lg];
 
+      if (localStorage.getItem('auto') == 'true') {
+        route_orders = [route_orders[0]];
+      }
       for (var i = 0; i < route_orders.length; i++) {
         r_points.push([route_orders[i].lat, route_orders[i].lng]);
       }
@@ -302,7 +305,6 @@ export class MapService {
 
         self.state$.route_state.next('init_done');
         let points = self.state$.l_route.getWayPoints();
-        console.log('routePoints', points);
         self.state$.l_route.model.events.once("requestsuccess", function () {
           for (let i = 0; i < r_points.length; i++) {
             let cnt = i + 1;
@@ -423,13 +425,15 @@ export class MapService {
     localStorage.removeItem('needOrder');
   }
 
-  pointsRender() {
+  pointsRender(orders = this.state$.orders_data) {
     console.log('sys::pointsRender');
     let self = this;
     let cnt: number = 0;
-
+    if (localStorage.getItem('auto') == 'true') {
+      orders = [orders[0]];
+    }
     self.state$.l_map.geoObjects.removeAll();
-    self.state$.orders_data.forEach(order => {
+    orders.forEach(order => {
       if (order.status_id == '1') {
         console.log('sys::pointsRender order', order);
         let placemark = new ymaps.Placemark([order.lt, order.lg], {

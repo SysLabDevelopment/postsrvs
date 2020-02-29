@@ -143,9 +143,7 @@
       "cordova-plugin-vibration": {},
       "cordova-plugin-fullscreen": {},
       "cordova-plugin-screen-orientation": {},
-      "cordova.plugins.diagnostic": {
-        "ANDROID_SUPPORT_VERSION": "28.+"
-      }
+      "cordova.plugins.diagnostic": {}
     },
     "platforms": [
       "android",

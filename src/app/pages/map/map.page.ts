@@ -139,7 +139,11 @@ export class MapPage implements OnInit {
 
       }
     });
-    if (this.state$.map_state.getValue() == 'map_init') { this.map_s.pointsRender() }
+    if (
+      this.state$.map_state.getValue() == 'map_init' && this.auth.getDefaultRouteBuilding() !== 'true'
+    ) {
+      this.map_s.pointsRender()
+    }
     this.state$.map_state.subscribe((state) => {
       if ((state == 'map_init') && !this.auth.getDefaultRouteBuilding()) {
         this.map_s.pointsRender();
