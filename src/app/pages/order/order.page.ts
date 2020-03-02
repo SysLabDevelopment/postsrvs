@@ -450,11 +450,6 @@ export class OrderPage implements OnInit {
   }
 
   public sendPay() {
-    // if (this.email_input == null || this.email_input == "" ){
-    //   this.email_error = true;
-    //   return false;
-    // }
-
     let order = this.order;
     let goods = this.order.goods;
     let quants = this.g_quants;
@@ -545,7 +540,6 @@ export class OrderPage implements OnInit {
       orderId: this.order.id
     };
     this.auth.sendPost(url, data).subscribe((res: any) => {
-      console.log('serv_response', res);
       self.submitChange();
       self.checkPayment();
       self.hide_status = true;

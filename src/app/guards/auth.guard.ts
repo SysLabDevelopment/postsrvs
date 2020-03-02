@@ -47,20 +47,7 @@ export class AuthGuard implements CanActivate {
         if (this.state.g_state.getValue() == 'login') {
           return false;
         }
-        if (localStorage.getItem('cId') == '33dbcda2db5311e39760309e88d17f08,') {
-          const a_data = {
-            'action': 'auth',
-            'barcode': '33dbcda2db5311e39760309e88d17f08,3431'
-          }
-          this.auth.login(a_data).subscribe((data) => {
-            if (data.success == "true") {
-              this.router.navigate(['balance']);
-              this.auth.initLogin();
-            } else {
-              this.auth.showError(1);
-            }
-          })
-        }
+
       default:
         this.nav_s.tabNav.next(0);
         break;

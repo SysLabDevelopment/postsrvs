@@ -151,7 +151,7 @@
           "NSCameraUsageDescription": [
             {
               "xml": "<string>You need scan barcodes and take photos</string>",
-              "count": 12
+              "count": 13
             }
           ],
           "NSPhotoLibraryUsageDescription": [],
