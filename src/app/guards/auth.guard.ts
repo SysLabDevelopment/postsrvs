@@ -23,11 +23,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
-    console.log('AuthGuard#canActivate called', next.routeConfig.path);
-    var url = next.routeConfig.path;
-    console.log('guard_url', url);
-    console.log('quard_sate', state);
-    console.log('quard_next', next);
+    let url = next.routeConfig.path;
 
     switch (url) {
       case 'courier':
@@ -54,4 +50,5 @@ export class AuthGuard implements CanActivate {
     }
     return true;
   }
+
 }

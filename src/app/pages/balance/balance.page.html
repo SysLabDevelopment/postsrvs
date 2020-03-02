@@ -1,6 +1,6 @@
 <ion-content>
         <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">{{state$.notificationStr}}</span>
-      <div class="o-title" (click)='p_btn()'>  
+      <div class="o-title" (click)='p_btn()'>
             <span class="ct">Мои заказы</span>
             <i class="fas fa-cogs" (click)="navToSettings()"></i>
     </div>
@@ -13,54 +13,54 @@
                 <div class="b-row">
                             <div class="b-item b-title">Бонусная сумма</div>
                             <div class="b-item">{{info.bonusBalance}}р</div>
-                </div>                    
+                </div>
                 <div class="b-row">
-            
+
                         <div class="b-item b-title">Общая сумма</div>
                         <div class="b-item">{{info.sumAll}}р</div>
-            
+
                 </div>
                     <div class="b-row">
-            
+
                         <div class="b-item b-title">Оплачено по карте</div>
                         <div class="b-item">{{info.sumCard}}р</div>
-            
+
                     </div>
                     <div class="b-row">
-                
+
                         <div class="b-item b-title">Оплачено наличными</div>
                         <div class="b-item">{{info.sumNal}}р</div>
-                
+
                     </div>
                     <div class="b-row">
-                
+
                         <div class="b-item b-title">Всего заказов</div>
                         <div class="b-item">{{info.ordersAll}}</div>
-               
+
                     </div>
                     <div class="b-row">
-                   
+
                         <div class="b-item b-title">Заказов выполнено</div>
                         <div class="b-item">{{info.ordersDone}}</div>
-                  
+
                     </div>
                     <div class="b-row">
-                    
+
                         <div class="b-item b-title">Частично доставлено</div>
                         <div class="b-item">{{info.ordersSomeDone}}</div>
-                  
+
                     </div>
                     <div class="b-row">
-                    
+
                         <div class="b-item b-title">Заказов в работе</div>
                         <div class="b-item">{{info.ordersInWork}}</div>
-                  
+
                     </div>
                     <div class="b-row">
-                   
+
                         <div class="b-item b-title">Заказов отменено</div>
                         <div class="b-item">{{info.ordersFail}}</div>
-                    
+
                     </div>
         </cdk-virtual-scroll-viewport>
         <div class="lg-b-wrp">
@@ -84,13 +84,13 @@
         <i class="fas fa-spinner fa-spin"></i>
     </div>
     <!-- <div class="confirm-shirm" [@openClose]="confirmWindow ? 'open' : 'closed' " *ngIf="info != null && !cashCheck" > -->
-    <div class="confirm-shirm"   *ngIf="info != null && !cashCheck && confirmWindow" >    
+    <div class="confirm-shirm"   *ngIf="info != null && !cashCheck && confirmWindow" >
         <div class="confirm" *ngIf="!openBtn && !failsOrder  " >
             <div class="close-btn" (click) ="cashOut()"><i class="far fa-times-circle"></i></div>
             <div class="cf-qwe">Вы сдаете <span class="cf-num">{{info.sumNal}}</span> р. Верно? </div>
-            <div class="cf-comment"> 
+            <div class="cf-comment">
                 <div class="cf-comment-title">Комментарий</div>
-                <textarea (input)="commentInput()" [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea> 
+                <textarea (input)="commentInput()" [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>
                 <span class="comment-er" *ngIf="commentError">Необходимо оставить комментарий</span>
             </div>
             <div class="cf-btns">
@@ -101,11 +101,11 @@
         <div class="confirm of-confirm" *ngIf="failsOrder && !openBtn" >
             <div class="close-btn" (click) ="cashOut()"><i class="far fa-times-circle"></i></div>
             <div class="cf-qwe of-qwe" *ngIf="!failsOrderNotFull" ><span>Вы сдаете на склад</span> <span class="cf-num">{{info.ordersFail}}</span> <span>заказов, верно?</span></div>
-            <div class="cf-comment of-comment" *ngIf="failsOrderNotFull"> 
+            <div class="cf-comment of-comment" *ngIf="failsOrderNotFull">
                 <div class="cf-comment-title of-title">Укажите, сколько заказов вы сдаете</div>
                 <input (input)="commentInput()" [(ngModel)] = "failOrdersCount" class="sc-comment of-number" type="number">
                 <div class="cf-comment-title">Комментарий</div>
-                <textarea (input)="commentInput()" [(ngModel)] = "fo_comment" cols="30" rows="3" class="sc-comment"></textarea> 
+                <textarea (input)="commentInput()" [(ngModel)] = "fo_comment" cols="30" rows="3" class="sc-comment"></textarea>
                 <span class="comment-er" *ngIf="commentError">Необходимо оставить комментарий и кол-во заказов</span>
             </div>
             <div class="cf-btns of-btns">
@@ -117,4 +117,5 @@
         <div class="photo-btn" *ngIf="openBtn" (click) = "getPhoto()">Сфотографировать пломбу</div>
     </div>
     <app-review *ngIf="review_w" (close_E)="writeReview()" (send_E)="sendReview($event)"></app-review>
+
 </ion-content>

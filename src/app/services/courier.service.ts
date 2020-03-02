@@ -18,6 +18,7 @@ export class CourierService {
   barcodeScannerOptions: BarcodeScannerOptions;
   public ordersInfo: any;
   public ordersShortData: Subject<any> = new Subject();
+  public checkedOnWork: boolean = false;
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -409,5 +410,23 @@ export class CourierService {
     return ret;
   }
 
-
+  public check_to_work() {
+    let url = 'https://postsrvs.ru/admin/ajax/check_to_work.php';
+    let data = {
+      cId: this.auth.getUserId(),
+      token: "l;sdfjkhglsoapl[",
+      uuid: this.auth.getUuid()
+    }
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-type': 'application/x-www-form-urlencoded'
+    })
+    this.http.post(url, data, { headers: headers }).subscribe((data: any) => {
+      if (data.success == 'true') {
+        let checkedDate = new Date();
+        localStorage.setItem('checkedDate', checkedDate.toString());
+        this.checkedOnWork = true;
+      }
+    })
+  }
 }

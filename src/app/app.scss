@@ -1,15 +1,15 @@
 // App Styles
 // ----------------------------------------------------------------------------
-// Put style rules here that you want to apply to the entire application. These 
-// styles are for the entire app and not just one component. Additionally, this 
-// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
 // and used throughout the application.
 
 .my-custom-menu {
-    --width: 500px;
-  }
+  --width: 500px;
+}
 
-#bottom-menu{
+#bottom-menu {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -23,13 +23,20 @@
   font-size: 25px;
 }
 
-.bm-item{
+.bm-item {
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 
-.active{
+.active {
   background-color: rgba(229, 238, 235, 1);
   color: #2b637e;
+}
+
+.check_to_work {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
 }

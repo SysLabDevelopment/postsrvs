@@ -136,7 +136,6 @@ export class BalancePage implements OnInit {
     var self = this;
 
     this.auth.checkAuth().subscribe((data: any) => {
-      console.log('update_info_data', data);
       if (data.success = 'true') {
         self.getInfo(data.sync_id);
       }
@@ -147,7 +146,6 @@ export class BalancePage implements OnInit {
     var self = this;
 
     this.courier.getBalance(sync_id).subscribe((data: any) => {
-      console.log('balance_data', data);
       self.info = data;
       self.pageInit = true;
       self.loader = false;
@@ -361,5 +359,8 @@ export class BalancePage implements OnInit {
 
   public navToSettings() {
     this.router.navigate(['settings']);
+  }
+  public check_to_work() {
+
   }
 }

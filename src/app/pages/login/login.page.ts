@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { StateService } from '../../services/state.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { CourierService } from '../../services/courier.service';
 
 import {
   trigger,
@@ -75,7 +76,8 @@ export class LoginPage implements OnInit {
     private plt: Platform,
     private http: HttpClient,
     public state$: StateService,
-    private AP: AndroidPermissions
+    private AP: AndroidPermissions,
+    public courier: CourierService
   ) {
     var self = this;
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
@@ -83,8 +85,8 @@ export class LoginPage implements OnInit {
 
     this.plt.ready().then(() => {
       this.auth.checkAuth().subscribe((data: any) => {
-        console.log('check_auth_data', data);
         if (data.success == 'true') {
+          this.auth.setUser(data.sync_id);
           self.router.navigate(['balance']);
           self.auth.initLogin();
         } else {
@@ -94,14 +96,17 @@ export class LoginPage implements OnInit {
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    let today = new Date().toString();
+    if (localStorage.getItem('checkedDate') == today) {
+      this.courier.checkedOnWork = true;
+    }
+  }
 
   public scanAuth() {
     let self = this;
 
     this.auth.scanData().then((data) => {
-      console.log('data', data);
-
       let id = data.text.slice(0, -4);
       console.log('cid', id);
       localStorage.setItem('cId', id);
@@ -110,12 +115,7 @@ export class LoginPage implements OnInit {
         'barcode': data.text,
         // 'barcode': '33dbcda2db5311e39760309e88d17f08,3431',
       };
-
-      console.log('request_auth_data', a_data);
-
       self.auth.login(a_data).subscribe((data: any) => {
-        console.log('authResponse', data);
-
         if (data.success == "true") {
           self.router.navigate(['balance']);
           self.auth.initLogin();
@@ -134,7 +134,6 @@ export class LoginPage implements OnInit {
   }
 
   public enterPhone() {
-    console.log('PHONE_DATA,', this.phone, this.phone.length);
     if (this.phone && this.phone.length > 9) {
       this.loader = true;
       this.sendPhone();
@@ -151,11 +150,8 @@ export class LoginPage implements OnInit {
   public sendPhone() {
     var url = "https://mok.flexcore.ru/client/registerP/";
     var data = "action=registerP&phone=8" + this.phone + "&type=courier";
-
     var self = this;
-
     this.sendPost(url, data).subscribe((res: any) => {
-      console.log('sendPhone', res);
       this.state$.unsetNotification('internet');
       if (res.success == 'true') {
         self.authStep();
@@ -163,7 +159,6 @@ export class LoginPage implements OnInit {
         this.showLoginError(4);
       }
     }, (err) => {
-      console.log('auth_error', err);
       this.showLoginError(3);
       this.state$.setNotification('internet', 'Проверьте интернет соединение!');
     })
