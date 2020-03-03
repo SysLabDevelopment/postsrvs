@@ -97,8 +97,11 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    let today = new Date().toString();
-    if (localStorage.getItem('checkedDate') == today) {
+    let today = new Date();
+    if (localStorage.getItem('checkedDate') == today.toLocaleDateString()) {
+      this.courier.checkedOnWork = true;
+    }
+    if (!this.auth.getUserId()) {
       this.courier.checkedOnWork = true;
     }
   }

@@ -432,22 +432,23 @@ export class MapService {
     if (localStorage.getItem('auto') == 'true') {
       orders = [orders[0]];
     }
-    self.state$.l_map.geoObjects.removeAll();
-    orders.forEach(order => {
-      if (order.status_id == '1') {
-        console.log('sys::pointsRender order', order);
-        let placemark = new ymaps.Placemark([order.lt, order.lg], {
-          // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
-          balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
-          balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
-            order.client_address + '<hr/>' +
-            'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
-            `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
-        });
+    ymaps.ready().then(() => {
+      self.state$.l_map.geoObjects.removeAll();
+      orders.forEach(order => {
+        if (order.status_id == '1') {
+          console.log('sys::pointsRender order', order);
+          let placemark = new ymaps.Placemark([order.lt, order.lg], {
+            // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+            balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
+            balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
+              order.client_address + '<hr/>' +
+              'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
+              `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
+          });
 
-        self.state$.l_map.geoObjects.add(placemark);
-      }
-    });
-
+          self.state$.l_map.geoObjects.add(placemark);
+        }
+      });
+    })
   }
 }

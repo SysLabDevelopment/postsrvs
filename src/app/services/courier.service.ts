@@ -415,16 +415,15 @@ export class CourierService {
     let data = {
       cId: this.auth.getUserId(),
       token: "l;sdfjkhglsoapl[",
-      uuid: this.auth.getUuid()
     }
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
-      'Content-type': 'application/x-www-form-urlencoded'
+      'Content-type': 'application/json'
     })
     this.http.post(url, data, { headers: headers }).subscribe((data: any) => {
-      if (data.success == 'true') {
+      if (data.success == true) {
         let checkedDate = new Date();
-        localStorage.setItem('checkedDate', checkedDate.toString());
+        localStorage.setItem('checkedDate', checkedDate.toLocaleDateString());
         this.checkedOnWork = true;
       }
     })

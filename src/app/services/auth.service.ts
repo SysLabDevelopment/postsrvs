@@ -18,6 +18,7 @@ export class AuthService {
   public auth_state: BehaviorSubject<any> = new BehaviorSubject('not_login');
   public stop$: Subject<any> = new Subject(); // останаливает все подписки;
   barcodeScannerOptions: BarcodeScannerOptions;
+  public checkState: string = undefined; //Состояние чекнутости на складе
 
   constructor(
     private bScan: BarcodeScanner,
@@ -77,16 +78,12 @@ export class AuthService {
     let host = "https://postsrvs.ru/mobile/";
     url = host + url;
     data['uuid'] = this.getUuid();
-    // data = JSON.stringify(data);
     const httpOptions = { headers: new HttpHeaders({}) };
-    console.log('AUTH.SendPOst() data', JSON.stringify(data));
     let self = this;
     let resp = new Subject<any>();
 
     this.plt.ready().then(() => {
       self.http.post(url, data, httpOptions).subscribe((data: any) => {
-        // data = JSON.stringify(data);
-        console.log('AUTH.SendPOst() RESPONSE', data);
         this.state$.unsetNotification('internet');
         if (data) {
           console.log('sys:: data == true, data.success', data.success);
@@ -99,10 +96,7 @@ export class AuthService {
           resp.next(data);
         }
       }, (err) => {
-        console.error('An error occurred:', err);
         if (err.error instanceof Error) {
-          // A client-side or network error occurred. Handle it accordingly.
-
           this.state$.setNotification('internet', 'Проверьте интернет соединение!');
         }
       });
@@ -261,5 +255,26 @@ export class AuthService {
   }
   getRoutingMode() {
     return localStorage.getItem('auto');
+  }
+
+  public check(mode: string) {
+    this.bScan.scan().then((scanData) => {
+      let url = 'https://postsrvs.ru/admin/ajax/wh.php';
+      let data = {
+        'cId': this.getUserId(),
+        'token': "l;sdfjkhglsoapl[",
+        'qr': scanData.text,
+        'mode': 'check' + mode
+      }
+      const headers = new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Content-type': 'application/json'
+      })
+      this.http.post(url, data, { headers: headers }).subscribe((data: any) => {
+        if (data.success == true) {
+          this.checkState = 'checked' + mode;
+        }
+      })
+    })
   }
 }
