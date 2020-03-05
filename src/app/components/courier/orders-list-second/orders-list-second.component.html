@@ -1,9 +1,9 @@
 <div class="order-list">
-  <cdk-virtual-scroll-viewport itemSize="50" style="height:100%; width: 100%" >  
-      <div *ngFor="let order of orders_c | oTTabPipe : selectedTab" 
+  <cdk-virtual-scroll-viewport itemSize="50" style="height:100%; width: 100%" >
+      <div *ngFor="let order of orders_c | oTTabPipe : selectedTab"
                       class="ol-item"
                       [ngClass]="{  'non-confirmed' : order.confirm == 0 && confirm_cond,
-                                    'overdue'       : order.overdue == 1}"  
+                                    'overdue'       : order.overdue == 1 || order.required == true}"
                       (click) = "selectOrder(order.id)" >
           <div class="ol-col oc-left">
           <div class="oc-left-row c_number"><span class="show-t" *ngIf="order.SMACode != NULL">Забор &nbsp;</span>{{order.client_id}} <span class="order-company" *ngIf="order.company">({{order.company}})</span>      </div>
@@ -16,8 +16,8 @@
                                                   'status_none' : order.client_status_id == 8,
                                                   'cl-status-voice' : order.client_status_id == 4 }">{{order.client_status}}</div>
               <div class="done-time" *ngIf="order.status_id != 1">
-                  <div class="done-title">Время</div> 
-                  <div class="done-body">{{order.date}}</div> 
+                  <div class="done-title">Время</div>
+                  <div class="done-body">{{order.date}}</div>
               </div>
           </div>
       </div>

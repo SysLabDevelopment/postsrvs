@@ -1,6 +1,6 @@
 <ion-content>
   <span class="cn" *ngIf="state.notificationStr && state.notificationStr.length != 0">{{state.notificationStr}}</span>
-<div class="o-title" >  
+<div class="o-title" >
       <span class="ct">Настройки</span>
       <i class="fas fa-chevron-left" (click)="navToBalance()"></i>
 </div>
@@ -12,7 +12,7 @@
               <ion-list-header>
                 <ion-label>Режим работы приложения</ion-label>
               </ion-list-header>
-              <ion-item 
+              <ion-item
                 *ngFor="let mode of modes"
                 (ionSelect)="itemsSelect($event)">
                 <ion-label>{{mode.val}}</ion-label>
@@ -22,12 +22,12 @@
           </ion-list>
         </div>
         <div class="mode-block">
-          <ion-list> 
+          <ion-list>
             <ion-radio-group (ionChange)="scanChange($event)">
               <ion-list-header>
                 <ion-label>Режим сканирования штрих-кода</ion-label>
               </ion-list-header>
-              <ion-item 
+              <ion-item
                 *ngFor="let mode of scanModes"
                 (ionSelect)="itemsSelect($event)">
                 <ion-label>{{mode.val}}</ion-label>
@@ -53,6 +53,10 @@
           <ion-label>Обычный</ion-label>
           <ion-toggle [(ngModel)]="auto"></ion-toggle>
           <ion-label>Магистраль</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Перевозчик</ion-label>
+          <ion-input [(ngModel)]="cl" type="text" mode="md"></ion-input>
         </ion-item>
       </div>
       <div class="sv">

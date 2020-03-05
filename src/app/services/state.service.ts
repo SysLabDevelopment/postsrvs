@@ -11,7 +11,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class StateService {
 
   public testData: any = [{ name: "test1" }, { name: "test2" }, { name: "test3" }];
-  // переменные состояний 
+  // переменные состояний
 
   //GLOBAL
   public login_state: BehaviorSubject<any> = new BehaviorSubject('not_login');
@@ -19,7 +19,7 @@ export class StateService {
 
   /* Режим работы с маршрутом
       auto    - маршрут с бека
-      manual  - курьер рисует сам 
+      manual  - курьер рисует сам
   */
   public manual_route: boolean = false;
   public old_way: any = null;
@@ -104,13 +104,13 @@ export class StateService {
   public notifications = [];
   public notificationStr = null;
   public coords: any;
+  public filial: string = '';
   public orderCoordinates(): Observable<any> {
     return this.coords;
   };
 
 
   constructor(private wi: WebIntent, private http: HttpClient) {
-    console.log("INIT_STATE_SERVICE");
     var self = this;
     /* Подписываемся на все сабжекты поставляющие данные и запоминаем в переменных
         для отрисовки на страницах (дабы убрать подписки со страниц)

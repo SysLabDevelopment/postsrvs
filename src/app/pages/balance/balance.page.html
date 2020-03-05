@@ -2,6 +2,9 @@
         <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">{{state$.notificationStr}}</span>
       <div class="o-title" (click)='p_btn()'>
             <span class="ct">Мои заказы</span>
+            <ion-text color="dark" class='filial' *ngIf="info">
+                {{info.filial}}
+            </ion-text>
             <i class="fas fa-cogs" (click)="navToSettings()"></i>
     </div>
       <div class="o-body" *ngIf="info">

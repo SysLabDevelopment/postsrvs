@@ -151,6 +151,9 @@ export class MapService {
         center: [55.75222, 37.61556],
         controls: ['zoomControl'],
         zoom: 12
+      }, {
+        // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
+        boundsAutoApply: true
       });
 
       self.state$.map_state.next('map_init');

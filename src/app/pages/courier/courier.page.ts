@@ -75,7 +75,6 @@ export class CourierPage implements OnInit {
 
   public initConditions() {
     let app_mode = this.auth.getMode();
-    console.log('init conditions mode', app_mode);
     switch (app_mode) {
       case 'auto':
         if (!this.state$.confirmed) this.subBtnCond = true;;

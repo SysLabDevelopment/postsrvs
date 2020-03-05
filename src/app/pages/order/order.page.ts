@@ -335,7 +335,6 @@ export class OrderPage implements OnInit {
   }
 
   public submitChange() {
-    console.log('submit_call');
     var self = this;
 
     switch (this.selectedStatus) {

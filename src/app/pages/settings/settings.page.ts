@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StateService } from '../../services/state.service';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../../services/courier.service';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -22,9 +23,18 @@ export class SettingsPage implements OnInit {
   public scanMode: string = '';
   public newScanMode: string = '';
   public guessMode = this.auth.getGuessMode(); //Режим приема заказов по штрихкоду
-  public defaultRouteBuilding = this.auth.getDefaultRouteBuilding(); //Режим построения маршрута по умолчанию
+  public defaultRouteBuilding: boolean = false; //Режим построения маршрута по умолчанию
   public auto = this.auth.getRoutingMode();//Тип построения маршрута авто/магистраль
-  constructor(private router: Router, private auth: AuthService, public state: StateService, private courier: CourierService) {
+  public cl: string = '';
+
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    public state: StateService,
+    private courier: CourierService,
+    public settings: SettingsService
+  ) {
+
     this.initModes();
     this.getA().subscribe((ps) => {
       if (ps.success) {
@@ -34,6 +44,9 @@ export class SettingsPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log('sys:: settings Boolean(this.auth.getDefaultRouteBuilding())', Boolean(this.auth.getDefaultRouteBuilding()));
+    this.defaultRouteBuilding = Boolean(this.auth.getDefaultRouteBuilding());
+    this.cl = this.settings.get('cl');
   }
 
   public initModes() {
@@ -88,5 +101,6 @@ export class SettingsPage implements OnInit {
     this.auth.setDefaultRouteBuilding(this.defaultRouteBuilding);
     this.auth.setRoutingMode(this.auto);
     this.state.state.next('init');
+    this.settings.set('cl', this.cl);
   }
 }

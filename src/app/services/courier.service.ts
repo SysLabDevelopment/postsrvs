@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { OrderPage } from '../pages/order/order.page';
 import { MapService } from '../services/map.service';
+import { SettingsService } from './settings.service';
 
 declare var ymaps: any;
 @Injectable({
@@ -25,7 +26,9 @@ export class CourierService {
     private plt: Platform,
     private state$: StateService,
     private auth: AuthService,
-    private bs: BarcodeScanner, private map: MapService,
+    private bs: BarcodeScanner,
+    private map: MapService,
+    private settings: SettingsService
   ) {
     this.barcodeScannerOptions = {
       showTorchButton: true,
@@ -288,8 +291,8 @@ export class CourierService {
   }
 
   public getBalance(sync_id) {
-    var id = localStorage.getItem('cId');
-    var url = "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=1';
+    let CL = this.settings.get('cl');
+    let url = "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=1' + '&CL=' + CL;
 
     return this.http.get(url);
   }

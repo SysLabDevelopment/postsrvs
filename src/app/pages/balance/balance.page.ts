@@ -154,6 +154,7 @@ export class BalancePage implements OnInit {
       if (this.state$.orders.getValue() == null) {
         this.courier.getOrders();
       }
+      this.state$.filial = data.filial;
     });
   }
 
