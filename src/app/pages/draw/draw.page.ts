@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Renderer } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
@@ -22,15 +22,15 @@ export class DrawPage implements OnInit {
   brushSize: number = 10;
 
   public save_process:boolean = false;
-  constructor(private platform:Platform,public router:Router, public renderer: Renderer, private orientation:ScreenOrientation, private location : Location){
+  constructor(private platform:Platform,public router:Router, public renderer: Renderer2, private orientation:ScreenOrientation, private location : Location){
 
   }
   ngAfterViewInit(){
 
     this.canvasElement = this.canvas.nativeElement;
 
-    this.renderer.setElementAttribute(this.canvasElement, 'width', this.platform.width() + '');
-    this.renderer.setElementAttribute(this.canvasElement, 'height', this.platform.height() + '');
+    __ngRendererSetElementAttributeHelper(this.renderer, this.canvasElement, 'width', this.platform.width() + '');
+    __ngRendererSetElementAttributeHelper(this.renderer, this.canvasElement, 'height', this.platform.height() + '');
 
 }
 
@@ -84,4 +84,24 @@ public back(){
   this.location.back();
 }
 
+}
+
+type AnyDuringRendererMigration = any;
+
+function __ngRendererSplitNamespaceHelper(name: AnyDuringRendererMigration) {
+    if (name[0] === ":") {
+        const match = name.match(/^:([^:]+):(.+)$/);
+        return [match[1], match[2]];
+    }
+    return ["", name];
+}
+
+function __ngRendererSetElementAttributeHelper(renderer: AnyDuringRendererMigration, element: AnyDuringRendererMigration, namespaceAndName: AnyDuringRendererMigration, value?: AnyDuringRendererMigration) {
+    const [namespace, name] = __ngRendererSplitNamespaceHelper(namespaceAndName);
+    if (value != null) {
+        renderer.setAttribute(element, name, value, namespace);
+    }
+    else {
+        renderer.removeAttribute(element, name, namespace);
+    }
 }

@@ -115,14 +115,6 @@ export class MapService {
 
   public registerChanges() {
 
-    // switch (this.state$.route_state.getValue()) {
-    //   case 'not_init':
-    //     this.buildWay();
-    //   break;
-    //   case 'init_done':
-    //     this.changeWay();
-    //     break;
-    // }diagnostic
   }
 
   public checkChanges() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, ViewChildren, ViewChild, QueryList, ElementRef, Renderer, Renderer2 } from '@angular/core';
+import { Component, OnInit, Injectable, ViewChildren, ViewChild, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { CourierService } from '../../services/courier.service';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
@@ -18,8 +18,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class CourierPage implements OnInit {
   @ViewChildren(CdkDrag) DragItems: QueryList<CdkDrag>;
-  @ViewChild(CdkDropList, { static: false }) Drop_L: CdkDropList;
-  @ViewChild('sInput', { static: false }) public sInput: ElementRef;
+  @ViewChild(CdkDropList) Drop_L: CdkDropList;
+  @ViewChild('sInput') public sInput: ElementRef;
 
   public orders: any = null;
   public statuses: any = null;
@@ -47,7 +47,6 @@ export class CourierPage implements OnInit {
     public auth: AuthService,
     private bs: BarcodeScanner,
     private vbr: Vibration,
-    private rn: Renderer2
   ) {
     var self = this;
 

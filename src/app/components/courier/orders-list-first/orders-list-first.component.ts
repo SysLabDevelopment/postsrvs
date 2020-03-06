@@ -21,7 +21,7 @@ export class OrdersListFirstComponent implements OnInit {
   orderSelected_E = new EventEmitter<any>();
   @ViewChildren(CdkDrag)
   DragItems: QueryList<CdkDrag>;
-  @ViewChild(CdkDropList, { static: false })
+  @ViewChild(CdkDropList)
   Drop_L: CdkDropList;
 
 

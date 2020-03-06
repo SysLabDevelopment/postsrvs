@@ -41,7 +41,7 @@
                                 [orders_c]="orders"
                                 [selectedTab]="selectedTab"
                                 [confirm_cond]="subBtnCond"
-                                *ngIf="!(this.state$.manual_route && selectedTab == 1) && auth.getGuessMode() == 'true' "
+                                *ngIf="!(this.state$.manual_route && selectedTab == 1) && auth.getGuessMode() !== 'true' "
                                 (orderSelected_E)="selectOrder($event)">
         </app-orders-list-second>
 

@@ -129,13 +129,11 @@ export class StateService {
   }
 
   public setNotification(tag: string, mes: string) {
-    console.log('set_notification', tag, mes);
     this.notifications[tag] = mes;
     this.setNotificationStr();
   }
 
   public unsetNotification(tag: string) {
-    console.log('unset_notification', tag);
     delete (this.notifications[tag]);
     this.setNotificationStr();
   }
@@ -150,7 +148,6 @@ export class StateService {
       n_s += this.notifications[tag];
     }
     this.notificationStr = n_s;
-    console.log('set_notificationStr', this.notificationStr);
   }
 
   //при выходе возвращаем приложение в иходное состояние

@@ -1,7 +1,8 @@
 {
   "name": "Postsrvs",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

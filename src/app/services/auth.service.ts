@@ -75,10 +75,16 @@ export class AuthService {
     return localStorage.getItem('scan_mode');
   }
   public sendPost(url, data) {
-    let host = "https://postsrvs.ru/mobile/";
+    const host = "https://postsrvs.ru/mobile/";
     url = host + url;
     data['uuid'] = this.getUuid();
-    const httpOptions = { headers: new HttpHeaders({}) };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'access-control-allow-headers': '*',
+        'Access-Control-Allow-Origin': '*',
+        'Content-type': 'application/json'
+      })
+    };
     let self = this;
     let resp = new Subject<any>();
 
@@ -97,7 +103,7 @@ export class AuthService {
         }
       }, (err) => {
         if (err.error instanceof Error) {
-          this.state$.setNotification('internet', 'Проверьте интернет соединение!');
+          this.state$.setNotification('internet', 'Ошибка ответа сервера! Обратитесь к разработчикам.');
         }
       });
     });

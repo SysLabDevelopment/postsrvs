@@ -151,8 +151,8 @@ export class LoginPage implements OnInit {
   }
 
   public sendPhone() {
-    var url = "https://mok.flexcore.ru/client/registerP/";
-    var data = "action=registerP&phone=8" + this.phone + "&type=courier";
+    const url = "https://mok.flexcore.ru/client/registerP/";
+    const data = "action=registerP&phone=8" + this.phone + "&type=courier";
     var self = this;
     this.sendPost(url, data).subscribe((res: any) => {
       this.state$.unsetNotification('internet');
@@ -163,7 +163,6 @@ export class LoginPage implements OnInit {
       }
     }, (err) => {
       this.showLoginError(3);
-      this.state$.setNotification('internet', 'Проверьте интернет соединение!');
     })
     this.startTimer();
   }
@@ -173,7 +172,8 @@ export class LoginPage implements OnInit {
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
-        'Content-type': 'application/x-www-form-urlencoded'
+        'Content-type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Headers': '*'
       })
     };
 
@@ -211,7 +211,6 @@ export class LoginPage implements OnInit {
     };
 
     this.auth.login(a_data).subscribe((data: any) => {
-      console.log('authResponse', data);
 
       if (data.success == "true") {
         self.router.navigate(['balance']);
