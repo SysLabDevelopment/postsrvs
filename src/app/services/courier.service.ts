@@ -343,12 +343,6 @@ export class CourierService {
 
   }
 
-  //отправляет запрос на оплату
-  public sendPay(order, isDone = true, quants = null) {
-    if (isDone) {
-
-    }
-  }
 
   /**
    * Ищет заказ в милевском(через 4 круга ада)

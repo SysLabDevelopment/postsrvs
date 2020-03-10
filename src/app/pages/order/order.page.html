@@ -130,7 +130,7 @@
                           <div class="gr-col">Цена</div>
                         </div>
                         <div *ngFor="let good of goods">
-                            <div class="gr-item">
+                            <div class="gr-item" [ngClass]="{'st_fail': (g_quants[good.Code]['amount'] == 0)}">
                                 <div class="gr-col gr-name">{{good.Name}}</div>
                                 <div class="gr-col gr-quant">
                                   <div class="m-btn" (click)="changeQuant(good.Code,'minus')"><i class="fas fa-minus"></i></div>
@@ -153,7 +153,7 @@
                       <div class="gr-col">Цена</div>
                     </div>
                     <div *ngFor="let good of goods">
-                        <div class="gr-item">
+                        <div class="gr-item" [ngClass]="{'st_fail': good.kol_vo == 0}" >
                             <div class="gr-col gr-name">{{good.Name}}</div>
                             <div class="gr-col gr-quant">
                              {{good.kol_vo}}

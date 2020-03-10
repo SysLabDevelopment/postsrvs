@@ -470,14 +470,12 @@ export class OrderPage implements OnInit {
 
   //подсчитывает сумму заказа
   public getPrice(order) {
-    console.log('get_price_order', order);
     if (order) {
-      var price: number = 0;
-      for (var i = 0; i < order.goods.length; i++) {
-        var good = order.goods[i];
+      let price: number = 0;
+      for (let i = 0; i < order.goods.length; i++) {
+        let good = order.goods[i];
         price += Number(good.Price) * Number(good.kol_vo);
       }
-      console.log('get_price_return', price);
       return price;
     }
   }
@@ -566,11 +564,16 @@ export class OrderPage implements OnInit {
     });
   }
 
-  public barcodeCheck() { }
 
   public send_api_data(api_data) {
     var url = 'pay_order';
     var self = this;
+    this.order.rur = 0;
+
+    api_data.purchase.products.forEach((product) => {
+      this.order.rur += product.price * product.quantity;
+    })
+
     var data = {
       action: 'sendPay',
       orderData: api_data,

@@ -201,8 +201,8 @@ export class BalancePage implements OnInit {
   public sendCash(photo) {
     this.loader = true;
 
-    var url = 'orders';
-    var data = { 'action': 'cashout', 'sum': this.info.sumNal, 'image': photo };
+    const url = 'orders';
+    let data = { 'action': 'cashout', 'sum': this.info.sumNal, 'image': photo };
 
     if (this.commentText != '' && this.commentText) {
       data['isFull'] = '0';
