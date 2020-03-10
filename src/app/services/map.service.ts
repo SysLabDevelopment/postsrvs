@@ -424,9 +424,7 @@ export class MapService {
     console.log('sys::pointsRender');
     let self = this;
     let cnt: number = 0;
-    if (localStorage.getItem('auto') == 'true') {
-      orders = [orders[0]];
-    }
+
     ymaps.ready().then(() => {
       self.state$.l_map.geoObjects.removeAll();
       orders.forEach(order => {
@@ -442,6 +440,9 @@ export class MapService {
           });
 
           self.state$.l_map.geoObjects.add(placemark);
+          if (localStorage.getItem('auto') == 'true') {
+            orders = [];
+          }
         }
       });
     })

@@ -192,32 +192,67 @@ export class OrderPage implements OnInit {
   }
 
   public initOrder() {
-    this.order = this.parseOrder(this.state$.orders.getValue());
-    this.goods = this.order.goods;
-    this.address = this.order.client_address;
-    this.name = this.order.client_name;
-    this.timeFrom = this.order.datetime_from;
-    this.timeTo = this.order.datetime_to;
-    this.phone = this.order.client_phone;
-    this.status = this.order.status_text;
-    this.status_id = this.order.status_id;
-    this.clientId = this.order.client_id;
-    this.client_status = this.order.client_status;
-    this.client_status_dt = this.order.client_status_dt;
-    this.client_status_id = this.order.client_status_id;
-    this.vlog = this.order.vlog;
-    this.poruch = this.order.poruch;
-    (this.mass = this.order.mass), (this.amount = this.order.amount);
-    this.podrazd = this.order.Podrazd;
-    this.statuses = this.state$.statuses_data;
-    this.reasons = this.state$.reasons;
+    if (this.state$.orders.getValue() == null) {
+      this.courier.getOrders().subscribe((data) => {
+        this.order = this.parseOrder(data.orders);
+        this.goods = this.order.goods;
+        this.address = this.order.client_address;
+        this.name = this.order.client_name;
+        this.timeFrom = this.order.datetime_from;
+        this.timeTo = this.order.datetime_to;
+        this.phone = this.order.client_phone;
+        this.status = this.order.status_text;
+        this.status_id = this.order.status_id;
+        this.clientId = this.order.client_id;
+        this.client_status = this.order.client_status;
+        this.client_status_dt = this.order.client_status_dt;
+        this.client_status_id = this.order.client_status_id;
+        this.vlog = this.order.vlog;
+        this.poruch = this.order.poruch;
+        (this.mass = this.order.mass), (this.amount = this.order.amount);
+        this.podrazd = this.order.Podrazd;
+        this.statuses = this.state$.statuses_data;
+        this.reasons = this.state$.reasons;
 
-    this.setQuants();
-    this.getSum();
-    this.ifPaid();
-    this.getBalnce();
-    this.getPayData();
-    this.initClientInfo();
+        this.setQuants();
+        this.getSum();
+        this.ifPaid();
+        this.getBalnce();
+        this.getPayData();
+        this.initClientInfo();
+      })
+    } else {
+
+
+      this.order = this.parseOrder(this.state$.orders.getValue());
+
+      this.goods = this.order.goods;
+      this.address = this.order.client_address;
+      this.name = this.order.client_name;
+      this.timeFrom = this.order.datetime_from;
+      this.timeTo = this.order.datetime_to;
+      this.phone = this.order.client_phone;
+      this.status = this.order.status_text;
+      this.status_id = this.order.status_id;
+      this.clientId = this.order.client_id;
+      this.client_status = this.order.client_status;
+      this.client_status_dt = this.order.client_status_dt;
+      this.client_status_id = this.order.client_status_id;
+      this.vlog = this.order.vlog;
+      this.poruch = this.order.poruch;
+      (this.mass = this.order.mass), (this.amount = this.order.amount);
+      this.podrazd = this.order.Podrazd;
+      this.statuses = this.state$.statuses_data;
+      this.reasons = this.state$.reasons;
+
+      this.setQuants();
+      this.getSum();
+      this.ifPaid();
+      this.getBalnce();
+      this.getPayData();
+      this.initClientInfo();
+    }
+
   }
 
   public getClientState() {
@@ -276,6 +311,9 @@ export class OrderPage implements OnInit {
   }
 
   public parseOrder(orders) {
+    if (this.state$.orders.getValue() == null) {
+      this.courier.getOrders();
+    }
     for (var i = 0; i < orders.length; i++) {
       if (orders[i].id == this.orderId) {
         return orders[i];

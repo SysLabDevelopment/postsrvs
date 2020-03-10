@@ -185,7 +185,6 @@ export class CourierPage implements OnInit {
   }
 
   public ordersListChanged(orders) {
-    console.log('OrdesListChanges orders', orders);
     this.orders = orders;
     let way: any[] = new Array();
     orders.forEach(order => {
@@ -194,7 +193,6 @@ export class CourierPage implements OnInit {
       }
     });
     this.state$.old_way = way;
-    console.log('OrdesListChanges newWay', way);
   }
 
   ngOnDestroy() {
@@ -213,7 +211,6 @@ export class CourierPage implements OnInit {
 
 
   public initContent() {
-    console.log('INIT_CONTENT_CALL');
     var self = this;
     this.orders = this.state$.orders_data;
     let ordersInfo = this.courier.ordersInfo;
@@ -238,10 +235,25 @@ export class CourierPage implements OnInit {
   }
 
   public selectOrder(id) {
-    for (var i = 0; i < this.orders.length; i++) {
-      if (this.orders[i].id == id) {
-        if (this.orders[i].confirm == '0' && this.subBtnCond) {
-          return false;
+    if (this.orders == null) {
+      this.courier.getOrders().subscribe((data) => {
+        this.orders = data.orders;
+        for (var i = 0; i < this.orders.length; i++) {
+          if (this.orders[i].id == id) {
+            if (this.orders[i].confirm == '0' && this.subBtnCond) {
+              return false;
+            }
+          }
+        }
+      })
+    } else {
+
+
+      for (var i = 0; i < this.orders.length; i++) {
+        if (this.orders[i].id == id) {
+          if (this.orders[i].confirm == '0' && this.subBtnCond) {
+            return false;
+          }
         }
       }
     }
