@@ -104,14 +104,6 @@
                       style="height : 200px;">
                 <button *ngIf = "drawNeedle" class=" drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
               </div>
-
-              <details *ngIf="selectedStatus">
-                <summary>Дополнительно</summary>
-
-              <div class="sc-comment-block" *ngIf="selectedStatus == 5">
-                  <div class="sc-r-title">Комментарий:</div>
-                  <textarea [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>
-              </div>
               <div class="sc-payment" *ngIf = "selectedStatus == 5 || selectedStatus == 6" >
                   <div class="sc-payment__title">Оплата</div>
                   <div class="dc-payment__wrp">
@@ -119,6 +111,14 @@
                       <div class="sc-payment-item" [ngClass] = "{'payment_active' : selectedPayment == 2}"  (click) = "selectPayment('2')" >Картой</div>
                   </div>
                 </div>
+              <details *ngIf="selectedStatus">
+                <summary>Дополнительно</summary>
+
+              <div class="sc-comment-block" *ngIf="selectedStatus == 5">
+                  <div class="sc-r-title">Комментарий:</div>
+                  <textarea [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>
+              </div>
+
               <div class="sc-goods-block" *ngIf="selectedStatus == 6 ">
                   <div class="goods-row o-row">
                       <div class="gr-title o-t">Товары в заказе</div>
