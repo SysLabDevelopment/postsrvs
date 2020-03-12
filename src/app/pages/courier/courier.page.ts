@@ -48,7 +48,7 @@ export class CourierPage implements OnInit {
     private bs: BarcodeScanner,
     private vbr: Vibration,
   ) {
-    var self = this;
+    let self = this;
 
     this.initContent();
     if (this.state$.position.getValue() != null) {
@@ -58,14 +58,7 @@ export class CourierPage implements OnInit {
 
     this.state$.state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
       const a = state;
-      console.log('sys:: a', a);
-      console.log('sys:: a==orders_init', a == 'orders_init');
-      console.log('sys:: kjsrgjlkasfjndbjlkdjgnfjdpog');
-      console.log('sys:: state=', state);
-      console.log('sys:: kjsrgjlkasfjndbjlkdjgnfjdpog222222222222');
-      console.log('sys:: state==orders_init', (state == 'orders_init'));
       if (state == 'orders_init') {
-        console.log('sys:: state=="orders_init"', state == 'orders_init');
         self.initContent();
       }
     })
@@ -214,7 +207,7 @@ export class CourierPage implements OnInit {
     var self = this;
     this.orders = this.state$.orders_data;
     let ordersInfo = this.courier.ordersInfo;
-    console.log('sys::initСontent orders', JSON.stringify(this.orders));
+    console.log('sys::initСontent orders', this.orders);
     this.statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
     console.log('sys::initСontent statuses', JSON.stringify(this.statuses));
     if (ordersInfo == null) {

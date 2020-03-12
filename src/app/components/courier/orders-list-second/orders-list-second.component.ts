@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, EventEmitter, Input, Output, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter, Input, Output, ViewChildren, QueryList } from '@angular/core';
 import { OTTabPipePipe } from '../../../pipes/o-t-tab-pipe.pipe';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CourierService } from '../../../services/courier.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-orders-list-second',
@@ -9,7 +10,7 @@ import { CourierService } from '../../../services/courier.service';
   styleUrls: ['./orders-list-second.component.scss'],
   providers: [OTTabPipePipe]
 })
-export class OrdersListSecondComponent implements OnInit {
+export class OrdersListSecondComponent implements OnChanges, OnInit {
   @Input()
   public orders_c;
   @Input()
@@ -19,12 +20,33 @@ export class OrdersListSecondComponent implements OnInit {
   @Output()
   orderSelected_E = new EventEmitter<any>();
 
-  constructor(public courier: CourierService) { }
+  constructor(
+    public courier: CourierService,
+    public auth: AuthService
+  ) { }
+
   public selectOrder(id) {
     this.orderSelected_E.emit(id);
   }
+
+  ngOnChanges() {
+    console.log('sys::ngOnChanges исходный массив заказов в компоненте: ', this.orders_c);
+    if (this.auth.routingModeAuto == 'true' && this.orders_c) {
+      this.orders_c = this.orders_c
+        .filter(order => order.status_id == 1);
+      this.orders_c.splice(1)
+    }
+    console.log('sys:: orders-list', this.orders_c);
+  }
+
   ngOnInit() {
-    this.orders_c = this.courier.ordersInfo;
+    console.log('sys:: исходный массив заказов в компоненте: ', this.orders_c);
+    if (this.auth.routingModeAuto == 'true' && this.orders_c) {
+      this.orders_c = this.orders_c
+        .filter(order => order.status_id == '1');
+      this.orders_c.splice(1)
+    }
+    console.log('sys:: orders-list', this.orders_c);
   }
 
 }

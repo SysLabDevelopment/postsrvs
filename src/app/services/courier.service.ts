@@ -20,7 +20,7 @@ export class CourierService {
   public ordersInfo: any;
   public ordersShortData: Subject<any> = new Subject();
   public checkedOnWork: boolean = false;
-
+  public sortOrders;
   constructor(private http: HttpClient,
     private router: Router,
     private plt: Platform,
@@ -272,7 +272,12 @@ export class CourierService {
       ids = [];
     }
 
-
+    let auto = this.auth.getRoutingMode();
+    if (auto) {
+      auto = '1'
+    } else {
+      auto = '0'
+    }
 
 
     let data = {
@@ -424,5 +429,34 @@ export class CourierService {
         this.checkedOnWork = true;
       }
     })
+  }
+
+  public count_orders(orders) {
+    let g_done = 0;
+    let g_process = 0;
+    let g_fail = 0;
+    let all = orders.length;
+    for (let i = 0; i < orders.length; i++) {
+      switch (String(orders[i].status_id)) {
+        case '4':
+          g_fail++;
+          break;
+        case '5':
+          g_done++;
+          break;
+        case '6':
+          g_done++;
+          break;
+        case '1':
+          g_process++;
+          break;
+      }
+    }
+    this.sortOrders = {
+      g_done: g_done,
+      g_process: g_process,
+      g_fail: g_fail,
+      all: all
+    }
   }
 }

@@ -32,7 +32,7 @@
         <app-orders-list-first
                                 [selectedTab]="selectedTab"
                                 [confirm_cond]="subBtnCond"
-                                *ngIf="selectedTab == 1 && this.state$.manual_route && auth.getGuessMode() !== 'true'"
+                                *ngIf="selectedTab == 1 && this.state$.manual_route && auth.getGuessMode() !== 'true' && orders"
                                 (ordersChange_E)="ordersListChanged($event)"
                                 (orderSelected_E)="selectOrder($event)">
         </app-orders-list-first>
@@ -47,15 +47,34 @@
 
 
 
-        <div class="orders-lable">
-            <div class="all-amount olab-amount">Всего заказов: <span class="amount-labl">{{courier.ordersInfo.length}}</span></div>
-            <div class="olab-amount" *ngIf="selectedTab == 1 && g_process != 0">Заказов на вкладке: <span class="amount-labl">{{g_process}}</span></div>
-            <div class="olab-amount" *ngIf="selectedTab == 2 && g_done != 0">Заказов на вкладке: <div class="amount-labl">{{g_done}}</div></div>
-            <div class="olab-amount" *ngIf="selectedTab == 3 && g_fail != 0">Заказов на вкладке: <div class="amount-labl">{{g_fail}}</div>
+        <div class="orders-lable" *ngIf="auth.routingModeAuto !== 'true'" >
+            <div class="all-amount olab-amount">
+                Всего заказов:
+                <span class="amount-labl">
+                    {{courier.sortOrders.all}}
+                </span>
+            </div>
+            <div class="olab-amount" *ngIf="courier.sortOrders.g_process != 0">Заказов на вкладке: <span class="amount-labl">{{courier.sortOrders.g_process}}</span></div>
+            <div class="olab-amount" *ngIf="courier.sortOrders.g_done != 0">Заказов на вкладке: <div class="amount-labl">{{courier.sortOrders.g_done}}</div></div>
+            <div class="olab-amount" *ngIf="courier.sortOrders.g_fail != 0">Заказов на вкладке: <div class="amount-labl">{{courier.sortOrders.g_fail}}</div>
             </div>
             <div class="olab-empty" *ngIf=" (selectedTab == 1 && g_process == 0) ||
                                             (selectedTab == 2 && g_done == 0) ||
                                             (selectedTab == 3 && g_fail == 0)"><span class="center-title">Нет заказов</span></div>
+        </div>
+        <div class="orders-lable" *ngIf="auth.routingModeAuto == 'true'">
+            <ion-chip color="primary" mode="md" outline="true">
+                <ion-label>Всего заказов {{courier.sortOrders.all}}</ion-label>
+            </ion-chip>
+            <ion-chip color="danger" mode="md" outline="true" *ngIf="courier.sortOrders.g_fail != 0">
+                <ion-label>Отменено {{courier.sortOrders.g_fail}}</ion-label>
+            </ion-chip>
+            <ion-chip color="success" mode="md" outline="true" *ngIf="courier.sortOrders.g_done != 0">
+                <ion-label>Доставлено {{courier.sortOrders.g_done}}</ion-label>
+            </ion-chip>
+            <ion-chip color="secondary" mode="md" outline="true" *ngIf="courier.sortOrders.g_process != 0">
+                <ion-label>Осталось {{courier.sortOrders.g_process}}</ion-label>
+            </ion-chip>
         </div>
     </div>
     <div class='checking'>

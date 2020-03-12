@@ -10,11 +10,14 @@ const routes: Routes = [
   { path: 'order/:id', loadChildren: () => import('./pages/order/order.module').then(m => m.OrderPageModule), canActivate: [AuthGuard] },
   { path: 'map', loadChildren: () => import('./pages/map/map.module').then(m => m.MapPageModule), canActivate: [AuthGuard] },
   { path: 'balance', loadChildren: () => import('./pages/balance/balance.module').then(m => m.BalancePageModule), canActivate: [AuthGuard] },
-  { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestPageModule) },
+
+
+
   { path: 'settings', loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule) },
   { path: 'draw', loadChildren: () => import('./pages/draw/draw.module').then(m => m.DrawPageModule) },
   { path: 'map/:order', redirectTo: 'map' },
-  { path: '**', redirectTo: 'balance', pathMatch: 'full' }
+  { path: '**', redirectTo: 'balance', pathMatch: 'full' },
+  { path: 'test', loadChildren: () => import('./pages/courier/courier.module').then(m => m.CourierPageModule) },
 ];
 
 @NgModule({

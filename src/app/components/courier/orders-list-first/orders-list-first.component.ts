@@ -1,14 +1,16 @@
-import { Component, OnInit, ViewChild, EventEmitter, Input, Output, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Input, Output, ViewChildren, QueryList, OnChanges } from '@angular/core';
 import { OTTabPipePipe } from '../../../pipes/o-t-tab-pipe.pipe';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CourierService } from '../../../services/courier.service';
+import { AuthService } from '../../../services/auth.service';
+
 @Component({
   selector: 'app-orders-list-first',
   templateUrl: './orders-list-first.component.html',
   styleUrls: ['./orders-list-first.component.scss'],
   providers: [OTTabPipePipe]
 })
-export class OrdersListFirstComponent implements OnInit {
+export class OrdersListFirstComponent implements OnInit, OnChanges {
   // @Input()
   public orders_c;
   @Input()
@@ -25,10 +27,32 @@ export class OrdersListFirstComponent implements OnInit {
   Drop_L: CdkDropList;
 
 
-  constructor(public courier: CourierService) { }
+  constructor(
+    public courier: CourierService,
+    public auth: AuthService
+  ) { }
 
+  ngOnChanges() {
+    console.log('sys::ngOnChanges исходный массив заказов в компоненте: ', this.orders_c);
+    if (this.auth.routingModeAuto == 'true' && this.orders_c) {
+      this.orders_c = this.orders_c
+        .filter(order => order.status_id == 1);
+      this.orders_c.splice(1)
+    }
+    console.log('sys:: orders-list', this.orders_c);
+
+  }
   ngOnInit() {
     this.orders_c = this.courier.ordersInfo;
+    console.log('sys:: исходный массив заказов в компоненте: ', this.orders_c);
+    if (this.auth.routingModeAuto == 'true' && this.orders_c) {
+      this.orders_c = this.orders_c
+        .filter(order => order.status_id == '1');
+      this.orders_c.splice(1)
+
+    }
+    console.log('sys:: orders-list', this.orders_c);
+
   }
 
   ngAfterViewChecked() {

@@ -19,7 +19,7 @@ export class AuthService {
   public stop$: Subject<any> = new Subject(); // останаливает все подписки;
   barcodeScannerOptions: BarcodeScannerOptions;
   public checkState: string = undefined; //Состояние чекнутости на складе
-
+  public routingModeAuto;
   constructor(
     private bScan: BarcodeScanner,
     private http: HttpClient,
@@ -43,6 +43,8 @@ export class AuthService {
     if (!this.getScanMode()) {
       this.setScanMode('camera');
     }
+
+    this.routingModeAuto = this.getRoutingMode();
   }
 
   ngOnInit() {
@@ -259,7 +261,7 @@ export class AuthService {
   setRoutingMode(auto) {
     localStorage.setItem('auto', auto);
   }
-  getRoutingMode() {
+  public getRoutingMode() {
     return localStorage.getItem('auto');
   }
 

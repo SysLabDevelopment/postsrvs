@@ -10,13 +10,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class StateService {
 
-  public testData: any = [{ name: "test1" }, { name: "test2" }, { name: "test3" }];
   // переменные состояний
 
   //GLOBAL
   public login_state: BehaviorSubject<any> = new BehaviorSubject('not_login');
   public stop$: Subject<any> = new Subject(); // останаливает все подписки;
-
+  public
   /* Режим работы с маршрутом
       auto    - маршрут с бека
       manual  - курьер рисует сам
@@ -212,6 +211,8 @@ export class StateService {
     return this.http.get('https://geocode-maps.yandex.ru/1.x/?apikey=4949ca72-35d9-48b0-892d-72d307850c87&format=json&geocode=' + adress)
 
   }
+
+
 
 
 }
