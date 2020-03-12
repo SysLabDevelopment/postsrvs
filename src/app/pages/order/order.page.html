@@ -185,7 +185,7 @@
 
               <div class="sc-s-wrp">
                   <button class="sc-submit"
-                      (click) ="sendPayCall()"
+                      (click) ="doneOrder()"
                       *ngIf="selectedStatus"
                       [ngClass] = "{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6,
                                     'c_t_u_del'  : selectedStatus == 4}"

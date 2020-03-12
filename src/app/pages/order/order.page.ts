@@ -90,7 +90,7 @@ export class OrderPage implements OnInit {
   public show_email: boolean = false;
   public callWindow: boolean = false;
   public drawimage: boolean = false;
-  public drawNeedle: boolean = false;
+  public drawNeedle: boolean = true;
   public imageToShow = null;
   coords: Array<any>;
 
@@ -660,6 +660,18 @@ export class OrderPage implements OnInit {
   }
 
   pickedUpOrder() {
+
+  }
+
+  public doneOrder() {
+    this.drawBtn(this.drawNeedle);
+    let drawedImg = localStorage.getItem('drawImg');
+    if (this.drawNeedle && drawedImg) {
+      this.drawBtn(this.drawNeedle)
+    } else {
+      this.sendPayCall();
+    }
+
 
   }
 }
