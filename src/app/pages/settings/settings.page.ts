@@ -4,7 +4,6 @@ import { StateService } from '../../services/state.service';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
-
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',

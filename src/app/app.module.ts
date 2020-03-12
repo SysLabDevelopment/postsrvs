@@ -25,7 +25,7 @@ import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { CashoutFailOComponent } from './components/balance/cashout-fail-o/cashout-fail-o.component';
 import { CashoutWComponent } from './components/balance/cashout-w/cashout-w.component';
-
+import { AppVersion } from '@ionic-native/app-version/ngx';
 
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
@@ -47,6 +47,7 @@ import { CashoutWComponent } from './components/balance/cashout-w/cashout-w.comp
     CallNumber,
     AndroidFullScreen,
     ScreenOrientation,
+    AppVersion,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

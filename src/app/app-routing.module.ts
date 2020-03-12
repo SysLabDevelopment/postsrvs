@@ -12,12 +12,16 @@ const routes: Routes = [
   { path: 'balance', loadChildren: () => import('./pages/balance/balance.module').then(m => m.BalancePageModule), canActivate: [AuthGuard] },
 
 
-
   { path: 'settings', loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule) },
   { path: 'draw', loadChildren: () => import('./pages/draw/draw.module').then(m => m.DrawPageModule) },
   { path: 'map/:order', redirectTo: 'map' },
-  { path: '**', redirectTo: 'balance', pathMatch: 'full' },
+
   { path: 'test', loadChildren: () => import('./pages/courier/courier.module').then(m => m.CourierPageModule) },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule), pathMatch: 'full'
+  },
+  { path: '**', redirectTo: 'balance', pathMatch: 'full' }
 ];
 
 @NgModule({

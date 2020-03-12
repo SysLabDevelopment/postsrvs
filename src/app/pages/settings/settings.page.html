@@ -58,6 +58,17 @@
           <ion-label position="floating">Перевозчик</ion-label>
           <ion-input [(ngModel)]="cl" type="text" mode="md"></ion-input>
         </ion-item>
+        <ion-item-divider>
+          <ion-label></ion-label>
+        </ion-item-divider>
+        <ion-item [routerLink]="['/about']">
+          <ion-icon name="information-circle-outline" slot="start">
+          </ion-icon>
+          <ion-label>О приложении</ion-label>
+          <ion-nav animated="true"  swipeGesture="true"></ion-nav>
+        </ion-item>
+
+
       </div>
       <div class="sv">
         <div class="sv-btn" *ngIf="!pswdView" (click)="saveSetings()">Сохранить</div>
