@@ -420,11 +420,11 @@ export class MapService {
     localStorage.removeItem('needOrder');
   }
 
-  pointsRender(orders = this.state$.orders_data) {
+  public pointsRender(orders = this.state$.orders_data) {
     console.log('sys::pointsRender');
     let self = this;
     let cnt: number = 0;
-
+    let map = self.state$.l_map;
     ymaps.ready().then(() => {
       self.state$.l_map.geoObjects.removeAll();
       orders.forEach(order => {
@@ -439,7 +439,11 @@ export class MapService {
               `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
           });
 
-          self.state$.l_map.geoObjects.add(placemark);
+          map.geoObjects.add(placemark);
+          map.setBounds(map.geoObjects.getBounds(), {
+            checkZoomRange: true,
+            zoomMargin: 35
+          });
           if (localStorage.getItem('auto') == 'true') {
             orders = [];
           }
