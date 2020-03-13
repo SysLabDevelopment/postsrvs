@@ -14,12 +14,15 @@ import { AlertController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class AuthService {
+
   public user: boolean = false;
   public auth_state: BehaviorSubject<any> = new BehaviorSubject('not_login');
   public stop$: Subject<any> = new Subject(); // останаливает все подписки;
   barcodeScannerOptions: BarcodeScannerOptions;
   public checkState: string = undefined; //Состояние чекнутости на складе
   public routingModeAuto;
+  public version: string = undefined; // версия приложения
+
   constructor(
     private bScan: BarcodeScanner,
     private http: HttpClient,
@@ -28,7 +31,8 @@ export class AuthService {
     private router: Router,
     private state$: StateService,
     private map: MapService,
-    private alert: AlertController
+    private alert: AlertController,
+
   ) {
 
     this.barcodeScannerOptions = {
@@ -45,6 +49,8 @@ export class AuthService {
     }
 
     this.routingModeAuto = this.getRoutingMode();
+
+
   }
 
   ngOnInit() {
@@ -56,6 +62,7 @@ export class AuthService {
     var data = {
 
       'action': 'checkAuth',
+      'appVersion': this.version
     }
 
     return this.sendPost(url, data);
