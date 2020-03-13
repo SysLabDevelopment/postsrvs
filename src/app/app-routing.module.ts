@@ -16,11 +16,12 @@ const routes: Routes = [
   { path: 'draw', loadChildren: () => import('./pages/draw/draw.module').then(m => m.DrawPageModule) },
   { path: 'map/:order', redirectTo: 'map' },
 
-  { path: 'test', loadChildren: () => import('./pages/courier/courier.module').then(m => m.CourierPageModule) },
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule), pathMatch: 'full'
   },
+  { path: 'test', redirectTo: 'balance' },
+
   { path: '**', redirectTo: 'balance', pathMatch: 'full' }
 ];
 
