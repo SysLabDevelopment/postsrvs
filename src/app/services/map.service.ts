@@ -428,7 +428,7 @@ export class MapService {
     ymaps.ready().then(() => {
       self.state$.l_map.geoObjects.removeAll();
       orders.forEach(order => {
-        if (order.status_id == '1') {
+        if (Number(order.status_id) == 1) {
           console.log('sys::pointsRender order', order);
           let placemark = new ymaps.Placemark([order.lt, order.lg], {
             // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.

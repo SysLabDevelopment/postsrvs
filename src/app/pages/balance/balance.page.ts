@@ -17,6 +17,7 @@ import {
 } from '@angular/animations';
 
 import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
+import { MapService } from '../../services/map.service';
 
 @Component({
   selector: 'app-balance',
@@ -96,7 +97,8 @@ export class BalancePage implements OnInit {
     private alert: AlertController,
     private camera: Camera,
     private AP: AndroidPermissions,
-    private fs: AndroidFullScreen
+    private fs: AndroidFullScreen,
+    private map: MapService
   ) {
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     if (this.info == null) {
@@ -158,6 +160,9 @@ export class BalancePage implements OnInit {
         this.courier.getOrders();
       }
       this.state$.filial = data.filial;
+      if (Boolean(auto)) {
+        this.map.pointsRender(data.res_more)
+      }
     });
   }
 

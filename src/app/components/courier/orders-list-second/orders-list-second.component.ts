@@ -31,7 +31,7 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
 
   ngOnChanges() {
     console.log('sys::ngOnChanges исходный массив заказов в компоненте: ', this.orders_c);
-    if (this.auth.routingModeAuto == 'true' && this.orders_c) {
+    if (this.auth.routingModeAuto == true && this.orders_c) {
       this.orders_c = this.orders_c
         .filter(order => order.status_id == 1);
       this.orders_c.splice(1)
@@ -41,7 +41,7 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     console.log('sys:: исходный массив заказов в компоненте: ', this.orders_c);
-    if (this.auth.routingModeAuto == 'true' && this.orders_c) {
+    if (this.auth.routingModeAuto == true && this.orders_c) {
       this.orders_c = this.orders_c
         .filter(order => order.status_id == '1');
       this.orders_c.splice(1)

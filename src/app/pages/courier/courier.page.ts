@@ -303,7 +303,7 @@ export class CourierPage implements OnInit {
   }
 
   public startRoute(start = true, stop = false) {
-    var self = this;
+    let self = this;
     this.auth.checkAuth().subscribe((data) => {
       if (data.success == 'true') {
         self.sendStartRoute(data.sync_id, start, stop);
@@ -317,8 +317,8 @@ export class CourierPage implements OnInit {
 
 
   public sendStartRoute(cid, start, stop) {
-    var url = "geo/route_start.php";
-    var data = {
+    const url = "geo/route_start.php";
+    let data = {
       'cid': cid,
       'lt': this.state$.position.getValue().lt,
       'lg': this.state$.position.getValue().lg
@@ -329,7 +329,7 @@ export class CourierPage implements OnInit {
     if (stop) {
       data['stop'] = '1';
     }
-    var self = this;
+    let self = this;
     this.auth.sendPost(url, data).subscribe((data) => {
       if (data.success == true) {
         self.btn_go = true;
