@@ -161,6 +161,8 @@ export class CourierService {
                 self.state$.orders_data = data.orders;
                 if (this.auth.getDefaultRouteBuilding() !== 'true') {
                   self.map.pointsRender();
+                } else {
+                  this.map.initPoints();
                 }
                 self.state$.state.next('orders_init');
                 this.state$.confirmed = true;

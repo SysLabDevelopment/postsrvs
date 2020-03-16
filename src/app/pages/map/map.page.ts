@@ -149,6 +149,9 @@ export class MapPage implements OnInit {
         this.map_s.pointsRender();
       }
     })
+    this.state$.way.subscribe((orders) => {
+      this.map_s.initPoints();
+    })
   }
 
   allOrders() {

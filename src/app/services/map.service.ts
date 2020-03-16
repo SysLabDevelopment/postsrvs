@@ -39,9 +39,6 @@ export class MapService {
   }
 
 
-  ngOnInit() {
-
-  }
 
   ngOnDestroy() {
 
@@ -157,7 +154,7 @@ export class MapService {
 
   public initPoints() {
     console.log('sys::initPoints()');
-    var self = this;
+    let self = this;
     let orders: any;
     orders = this.state$.way.getValue();
     if (this.state$.way.getValue() !== null) {
@@ -169,13 +166,14 @@ export class MapService {
       console.log('sys::initPoints orders', orders);
       for (var i = 0; i < orders.length; i++) {
         if (i_j == 9) break;
-        if (orders[i].status == 1) {
+        if (Number(orders[i].status) == 1) {
           i_j++;
           n_points.push(orders[i]);
         }
       }
 
       self.state$.points.next(n_points);
+      this.buildWay();
     }
 
     if (this.state$.point_check.getValue() == "not_init") {
@@ -183,12 +181,12 @@ export class MapService {
       this.state$.way.pipe(takeUntil(this.state$.stop$)).subscribe((orders) => {
 
         if (orders) {
-          var n_points = new Array();
-          var j = 0;
+          let n_points = new Array();
+          let j = 0;
 
-          for (var i = 0; i < orders.length; i++) {
+          for (let i = 0; i < orders.length; i++) {
             if (j == 9) break;
-            if (orders[i].status == 1) {
+            if (Number(orders[i].status) == 1) {
               j++;
               n_points.push(orders[i]);
             }
@@ -261,9 +259,10 @@ export class MapService {
 
   public buildWay() {
     console.log('sys::buildWay()');
-    var self = this;
+    console.log('sys::this.state$.route_state.getValue()', this.state$.route_state.getValue());
+    let self = this;
 
-    if (this.state$.points.getValue() != null && this.state$.position.getValue() != null && this.state$.route_state.getValue() != 'init_process') {
+    if (this.state$.points.getValue() != null && this.state$.position.getValue() != null) {
       this.state$.route_state.next('init_process');
 
       let route_orders = self.state$.points.getValue();
@@ -271,9 +270,10 @@ export class MapService {
       let pos_points = [this.state$.position.getValue().lt, this.state$.position.getValue().lg];
 
       if (localStorage.getItem('auto') == 'true') {
-        route_orders = [route_orders[0]];
+        route_orders = route_orders.filter(order => order.status_id == 1);
+        route_orders.splice(1)
       }
-      for (var i = 0; i < route_orders.length; i++) {
+      for (let i = 0; i < route_orders.length; i++) {
         r_points.push([route_orders[i].lat, route_orders[i].lng]);
       }
 
@@ -282,7 +282,7 @@ export class MapService {
       self.state$.linkPoints.next(r_points);
 
       ymaps.ready().then(() => {
-
+        console.log('sys:: r_points:', r_points);
         self.state$.l_route = new ymaps.multiRouter.MultiRoute({
           referencePoints:
             r_points
@@ -296,13 +296,17 @@ export class MapService {
           boundsAutoApply: true,
         });
         console.log('sys:: Отрисовка маршрута');
+        self.state$.l_map.geoObjects.removeAll();
         self.state$.l_map.geoObjects.add(self.state$.l_route);
-
+        self.state$.l_map.setBounds(self.state$.l_map.geoObjects.getBounds(), {
+          checkZoomRange: true,
+          zoomMargin: 35
+        });
         self.state$.route_state.next('init_done');
         let points = self.state$.l_route.getWayPoints();
         self.state$.l_route.model.events.once("requestsuccess", function () {
-          for (let i = 0; i < r_points.length; i++) {
-            let cnt = i + 1;
+          for (let i = 1; i < r_points.length; i++) {
+            let cnt = i;
             let order = self.state$.orders_data[i];
             let addr = order.client_address;
             if (order.datetime_to !== null) {

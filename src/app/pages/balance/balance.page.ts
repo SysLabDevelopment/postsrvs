@@ -160,7 +160,7 @@ export class BalancePage implements OnInit {
         this.courier.getOrders();
       }
       this.state$.filial = data.filial;
-      if (Boolean(auto)) {
+      if (auto == '1') {
         this.map.pointsRender(data.res_more)
       }
     });
