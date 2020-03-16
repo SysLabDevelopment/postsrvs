@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule), pathMatch: 'full'
   },
-  { path: 'test', redirectTo: 'settings' },
+  { path: 'test', redirectTo: 'courier' },
 
   { path: '**', redirectTo: 'balance', pathMatch: 'full' }
 ];

@@ -204,6 +204,7 @@ export class CourierPage implements OnInit {
 
 
   public initContent() {
+    this.loader = true;
     var self = this;
     this.orders = this.state$.orders_data;
     let ordersInfo = this.courier.ordersInfo;

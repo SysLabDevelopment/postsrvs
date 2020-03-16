@@ -83,11 +83,11 @@ export class LoginPage implements OnInit {
     private appVersion: AppVersion
 
   ) {
-    var self = this;
+    let self = this;
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     //проверяет авторизован ли пользователь на сервере
 
-    this.plt.ready().then(() => { }).then(() => {
+    this.plt.ready().then(() => {
       this.appVersion.getVersionNumber().then((resp) => {
         this.auth.version = resp;
         this.auth.checkAuth().subscribe((data: any) => {

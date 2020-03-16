@@ -44,3 +44,29 @@
 .filial {
   font-size: 0.6em;
 }
+
+.shirm {
+  position: fixed;
+  top: 60px;
+  left: 0px;
+  right: 0px;
+  bottom: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: RGBA(0, 0, 0, 0.1);
+  z-index: 99999999;
+}
+
+.shirm i {
+  position: relative;
+  margin: auto;
+  font-size: 43px;
+  color: #2b637e;
+}
