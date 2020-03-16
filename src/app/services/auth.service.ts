@@ -248,7 +248,7 @@ export class AuthService {
   }
 
   setGuessMode(guessMode) {
-    localStorage.setItem('guessMode', guessMode);
+    guessMode && localStorage.setItem('guessMode', guessMode);
   }
   getGuessMode() {
     return localStorage.getItem('guessMode');
@@ -256,7 +256,7 @@ export class AuthService {
 
   //Сохранение режима построения маршрута по умолчанию
   setDefaultRouteBuilding(defaultRouteBuilding) {
-    localStorage.setItem('defaultRouteBuilding', defaultRouteBuilding);
+    defaultRouteBuilding && localStorage.setItem('defaultRouteBuilding', defaultRouteBuilding);
   }
 
   getDefaultRouteBuilding() {

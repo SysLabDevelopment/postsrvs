@@ -21,7 +21,7 @@ export class SettingsPage implements OnInit {
   public scanModes: any = [];
   public scanMode: string = '';
   public newScanMode: string = '';
-  public guessMode = this.auth.getGuessMode(); //Режим приема заказов по штрихкоду
+  public guessMode: boolean; //Режим приема заказов по штрихкоду
   public defaultRouteBuilding: boolean = false; //Режим построения маршрута по умолчанию
   public auto = this.auth.getRoutingMode();//Тип построения маршрута авто/магистраль
   public cl: string = '';
@@ -46,6 +46,7 @@ export class SettingsPage implements OnInit {
     console.log('sys:: settings Boolean(this.auth.getDefaultRouteBuilding())', Boolean(this.auth.getDefaultRouteBuilding()));
     this.defaultRouteBuilding = Boolean(this.auth.getDefaultRouteBuilding());
     this.cl = this.settings.get('cl');
+    this.guessMode = Boolean(this.auth.getGuessMode());
   }
 
   public initModes() {

@@ -8,30 +8,28 @@
   <div class="settings">
       <div class="mode-block">
           <ion-list>
-            <ion-radio-group (ionChange)="modeChange($event)">
+            <ion-radio-group (ionChange)="modeChange($event)" value="{{activeMode}}">
               <ion-list-header>
                 <ion-label>Режим работы приложения</ion-label>
               </ion-list-header>
               <ion-item
-                *ngFor="let mode of modes"
-                (ionSelect)="itemsSelect($event)">
+                *ngFor="let mode of modes">
                 <ion-label>{{mode.val}}</ion-label>
-                <ion-radio slot="start" name="{{mode.value}}" value = "{{mode.value}}" checked="{{mode.isChecked}}"></ion-radio>
+                <ion-radio slot="start" value="{{mode.value}}"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
         </div>
         <div class="mode-block">
           <ion-list>
-            <ion-radio-group (ionChange)="scanChange($event)">
+            <ion-radio-group (ionChange)="scanChange($event)" value="{{scanMode}}">
               <ion-list-header>
                 <ion-label>Режим сканирования штрих-кода</ion-label>
               </ion-list-header>
               <ion-item
-                *ngFor="let mode of scanModes"
-                (ionSelect)="itemsSelect($event)">
+                *ngFor="let mode of scanModes">
                 <ion-label>{{mode.val}}</ion-label>
-                <ion-radio slot="start" name="{{mode.value}}" value = "{{mode.value}}" checked="{{mode.isChecked}}"></ion-radio>
+                <ion-radio slot="start" value = "{{mode.value}}"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
