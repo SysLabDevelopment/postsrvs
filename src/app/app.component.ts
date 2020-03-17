@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Route, Router } from '@angular/router';
 import { NavService } from './services/nav.service';
 import { CourierService } from './services/courier.service';
+import { AuthService } from './services/auth.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -19,7 +21,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private nav_s: NavService,
     private router: Router,
-    public courier: CourierService
+    public courier: CourierService,
+    public auth: AuthService
   ) {
     this.initializeApp();
   }

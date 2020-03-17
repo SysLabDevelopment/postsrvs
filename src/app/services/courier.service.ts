@@ -215,8 +215,9 @@ export class CourierService {
   */
   public getWay() {
     console.log('sys::getWay()');
-    let mode = this.auth.getRoutingMode();
-    if (mode) {
+    let routingMode = this.auth.getRoutingMode();
+    let mode: string;
+    if (routingMode) {
       mode = '1';
     } else {
       mode = '0'

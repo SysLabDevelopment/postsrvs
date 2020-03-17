@@ -263,11 +263,11 @@ export class AuthService {
     return localStorage.getItem('defaultRouteBuilding');
   }
   setRoutingMode(auto) {
-    localStorage.setItem('auto', auto);
+    auto && localStorage.setItem('auto', auto + '');
     this.routingModeAuto = auto;
   }
   public getRoutingMode() {
-    return localStorage.getItem('auto');
+    return (localStorage.getItem('auto') == 'true' ? true : false);
   }
 
   public check(mode: string) {
