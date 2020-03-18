@@ -275,8 +275,9 @@ export class CourierService {
       ids = [];
     }
 
-    let auto = this.auth.getRoutingMode();
-    if (auto) {
+    let routingAuto = this.auth.getRoutingMode();
+    let auto: string;
+    if (routingAuto) {
       auto = '1'
     } else {
       auto = '0'

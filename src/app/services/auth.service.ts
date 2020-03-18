@@ -19,7 +19,7 @@ export class AuthService {
   public auth_state: BehaviorSubject<any> = new BehaviorSubject('not_login');
   public stop$: Subject<any> = new Subject(); // останаливает все подписки;
   barcodeScannerOptions: BarcodeScannerOptions;
-  public checkState: string = undefined; //Состояние чекнутости на складе
+  public checkState: string = 'checkedOut'; //Состояние чекнутости на складе
   public routingModeAuto: boolean;
   public version: string = undefined; // версия приложения
 
@@ -86,8 +86,6 @@ export class AuthService {
     data['uuid'] = this.getUuid();
     const httpOptions = {
       headers: new HttpHeaders({
-        'access-control-allow-headers': '*',
-        'Access-Control-Allow-Origin': '*',
         'Content-type': 'application/json'
       })
     };
