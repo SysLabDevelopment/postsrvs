@@ -77,14 +77,14 @@
             </ion-chip>
         </div>
     </div>
-    <!-- <div class='checking'>
+    <div class='checking'>
         <ion-button (click)="auth.check('In')" expand="block" fill="outline" shape="round" *ngIf="auth.checkState == undefined">
             Приехал на склад
         </ion-button>
         <ion-button (click)="auth.check('Out')" expand="block" fill="outline" shape="round" *ngIf="auth.checkState == 'checkedIn'">
             Уехал со склада
         </ion-button>
-    </div> -->
+    </div>
     <div class="start-route" *ngIf="ordersInit && state$.orders_data != [] && state$.orders_data !== null && auth.checkState == 'checkedOut'">
         <button class="satrt-r-btn" *ngIf = "!btn_go && !this.state$.manual_route && auth.routingModeAuto" (click) ="startRoute()">Начать маршрут</button>
         <button class="satrt-r-btn sr-stop" *ngIf = "btn_go && !this.state$.manual_route"  (click) ="stopRoute()">Остановить маршрут</button>
