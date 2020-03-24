@@ -1,0 +1,94 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "call-number": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "com-darryncampbell-cordova-plugin-intent": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-androidx": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-fullscreen": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-mauron85-background-geolocation": {
+      "GOOGLE_PLAY_SERVICES_VERSION": "11+",
+      "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+      "ICON": "@mipmap/icon",
+      "SMALL_ICON": "@mipmap/icon",
+      "ACCOUNT_NAME": "@string/app_name",
+      "ACCOUNT_LABEL": "@string/app_name",
+      "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+      "CONTENT_AUTHORITY": "$PACKAGE_NAME",
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-uniquedeviceid": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova.plugins.diagnostic": {
+      "ANDROID_SUPPORT_VERSION": "28.+",
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "postsrvs.w"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "postsrvs.w"
+    }
+  }
+}

@@ -61,6 +61,9 @@
                         <div class="b-item">{{info.ordersFail}}</div>
 
                     </div>
+
+            <ion-img [src]="'data:image/jpg;base64,'+info.qr"></ion-img>
+
         </cdk-virtual-scroll-viewport>
         <div class="lg-b-wrp">
             <button *ngIf="(info != null) && !cashCheck " class="logout-btn" (click)="cashOut()">Сдать средства</button>
@@ -82,7 +85,6 @@
       <div class="shirm" *ngIf="loader">
         <i class="fas fa-spinner fa-spin"></i>
     </div>
-    <!-- <div class="confirm-shirm" [@openClose]="confirmWindow ? 'open' : 'closed' " *ngIf="info != null && !cashCheck" > -->
     <div class="confirm-shirm"   *ngIf="info != null && !cashCheck && confirmWindow" >
         <div class="confirm" *ngIf="!openBtn && !failsOrder  " >
             <div class="close-btn" (click) ="cashOut()"><i class="far fa-times-circle"></i></div>
@@ -112,7 +114,6 @@
             <div class="cf-btn of-btn" [ngClass]= "{ 'not'  : !failsOrderNotFull}" (click)="fo_answer(false)"><span *ngIf="!failsOrderNotFull">Нет</span> <span *ngIf="failsOrderNotFull">Сдать</span></div>
             </div>
         </div>
-        <!-- <div class="photo-btn" [@openBtn]="openBtn ? 'open' : 'closed' " (click) = "getPhoto()">Сфотографировать пломбу</div> -->
         <div class="photo-btn" *ngIf="openBtn" (click) = "getPhoto()">Сфотографировать пломбу</div>
     </div>
     <app-review *ngIf="review_w" (close_E)="writeReview()" (send_E)="sendReview($event)"></app-review>

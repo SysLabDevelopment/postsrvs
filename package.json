@@ -52,6 +52,8 @@
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-android-permissions": "1.0.2",
+    "cordova-plugin-androidx": "^1.0.2",
+    "cordova-plugin-androidx-adapter": "^1.1.0",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-fullscreen": "^1.2.0",
@@ -152,7 +154,9 @@
       "cordova-plugin-fullscreen": {},
       "cordova-plugin-screen-orientation": {},
       "cordova.plugins.diagnostic": {},
-      "cordova-plugin-app-version": {}
+      "cordova-plugin-app-version": {},
+      "cordova-plugin-androidx": {},
+      "cordova-plugin-androidx-adapter": {}
     },
     "platforms": [
       "android",
