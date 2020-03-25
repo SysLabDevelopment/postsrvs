@@ -11,7 +11,7 @@ import { SettingsService } from '../../services/settings.service';
 })
 export class SettingsPage implements OnInit {
   public modes: any[] = [];
-  public activeMode: String = 'auto';
+  public activeMode: String = 'manual_wo';
   public pswdInp = '';
   public pswdError: boolean = false;
   public pswdView: boolean = true;
