@@ -38,7 +38,7 @@
         </app-orders-list-first>
 
         <app-orders-list-second
-                                [orders_c]="orders"
+                                [orders]="orders"
                                 [selectedTab]="selectedTab"
                                 [confirm_cond]="subBtnCond"
                                 *ngIf="!(this.state$.manual_route && selectedTab == 1) && auth.getGuessMode() !== 'true' "

@@ -2,9 +2,10 @@
 
 .order-list {
     border-radius: 3px;
-    height: 90%;
     overflow: hidden;
     margin-top: 10px;
+    min-height: 85%;
+    height: auto;
 }
 
 .ol-col {

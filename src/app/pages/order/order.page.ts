@@ -373,7 +373,7 @@ export class OrderPage implements OnInit {
   }
 
   public submitChange() {
-    var self = this;
+    let self = this;
 
     switch (this.selectedStatus) {
       case 4:

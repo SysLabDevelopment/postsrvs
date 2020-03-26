@@ -270,6 +270,7 @@ export class AuthService {
 
   public check(mode: string) {
     this.bScan.scan().then((scanData) => {
+      console.log('sys:: auth.check() данные qr-кода: ', scanData);
       let url = 'https://postsrvs.ru/admin/ajax/wh.php';
       let data = {
         'cId': this.getUserId(),

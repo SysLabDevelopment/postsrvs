@@ -42,9 +42,10 @@
 
 .order-list {
   border-radius: 3px;
-  height: 90%;
   overflow: hidden;
   margin-top: 10px;
+  min-height: 85%;
+  height: auto;
 }
 
 .ol-col {
@@ -294,6 +295,7 @@ ion-item {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  min-height: 10vw;
 }
 
 .satrt-r-btn {

@@ -12,13 +12,22 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class OrdersListSecondComponent implements OnChanges, OnInit {
   @Input()
-  public orders_c;
+  public orders;
   @Input()
   public selectedTab;
   @Input()
   public confirm_cond;
   @Output()
   orderSelected_E = new EventEmitter<any>();
+
+
+  public orders_c: Array<any>;
+
+  private tabs: object = {
+    1: 1,
+    2: 5 || 6,
+    3: 4
+  };
 
   constructor(
     public courier: CourierService,
@@ -30,23 +39,22 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges() {
-    console.log('sys::ngOnChanges исходный массив заказов в компоненте: ', this.orders_c);
-    if (this.auth.routingModeAuto == true && this.orders_c) {
-      this.orders_c = this.orders_c
-        .filter(order => order.status_id == 1);
-      this.orders_c.splice(1)
-    }
-    console.log('sys:: orders-list', this.orders_c);
+    this.tabFilterOrders();
   }
 
   ngOnInit() {
-    console.log('sys:: исходный массив заказов в компоненте: ', this.orders_c);
-    if (this.auth.routingModeAuto == true && this.orders_c) {
-      this.orders_c = this.orders_c
-        .filter(order => order.status_id == '1');
-      this.orders_c.splice(1)
+    this.orders;
+    console.log('sys:: исходный массив заказов в компоненте: ', this.orders);
+  }
+
+  private tabFilterOrders(tab = this.selectedTab) {
+    this.orders_c = this.orders?.filter(
+      order => order.status_id == this.tabs[tab]
+    );
+    if (this.auth.routingModeAuto == true && tab == 1) {
+      this.orders_c?.splice(1)
     }
-    console.log('sys:: orders-list', this.orders_c);
+
   }
 
 }
