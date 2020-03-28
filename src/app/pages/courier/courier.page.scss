@@ -38,6 +38,7 @@
   height: 100%;
   -ms-grid-rows: 90% 10%;
   grid-template-rows: 90% 10%;
+  display: grid;
 }
 
 .order-list {
@@ -329,7 +330,6 @@ ion-item {
   -webkit-box-shadow: 0 -2px 2px 0.1px #c7c7c7;
   box-shadow: 0 -2px 2px 0.1px #c7c7c7;
   padding: 5px 0;
-  max-height: 10%;
 }
 
 .done-time {
@@ -526,7 +526,7 @@ ion-item {
 
 .m_wrp {
   -ms-grid-rows: 60px 50px auto 0px 40px;
-  grid-template-rows: 60px 50px auto 0px 40px;
+  height: 100vh;
 }
 
 .scanWindow {
@@ -585,4 +585,10 @@ ion-item {
   align-items: center;
   font-size: 36px;
   z-index: 999;
+}
+
+.ios {
+  .m_wrp {
+    height: 100vh;
+  }
 }

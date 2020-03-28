@@ -84,11 +84,18 @@ export class LoginPage implements OnInit {
 
   ) {
     let self = this;
-    this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
+
     //проверяет авторизован ли пользователь на сервере
 
-    this.plt.ready().then(() => {
-      this.appVersion.getVersionNumber().then((resp) => {
+    this.plt.ready().then((readySource) => {
+      console.log('sys:: платформа готова:', readySource);
+      if (readySource == 'android') {
+        this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
+      } else if (readySource == 'cordova') {
+        this.auth.isDebug = true;
+      }
+
+      self.appVersion.getVersionNumber().then((resp) => {
         this.auth.version = resp;
         this.auth.checkAuth().subscribe((data: any) => {
           if (data.success == 'true') {
@@ -99,7 +106,7 @@ export class LoginPage implements OnInit {
             self.disLogin = false;
           }
         })
-      });
+      })
     })
   }
 

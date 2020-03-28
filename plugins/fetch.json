@@ -81,7 +81,9 @@
       "ACCOUNT_NAME": "@string/app_name",
       "ACCOUNT_LABEL": "@string/app_name",
       "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
-      "CONTENT_AUTHORITY": "$PACKAGE_NAME"
+      "CONTENT_AUTHORITY": "$PACKAGE_NAME",
+      "ALWAYS_USAGE_DESCRIPTION": "This app always requires location tracking",
+      "MOTION_USAGE_DESCRIPTION": "This app requires motion detection"
     }
   },
   "cordova-plugin-uniquedeviceid": {
@@ -158,16 +160,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova.plugins.diagnostic": {
-    "source": {
-      "type": "registry",
-      "id": "cordova.plugins.diagnostic@^5.0.1"
-    },
-    "is_top_level": true,
-    "variables": {
-      "ANDROID_SUPPORT_VERSION": "28.+"
-    }
-  },
   "cordova-plugin-app-version": {
     "source": {
       "type": "registry",
@@ -198,6 +190,14 @@
       "id": "es6-promise-plugin@^4.1.0"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "cordova.plugins.diagnostic": {
+    "source": {
+      "type": "registry",
+      "id": "cordova.plugins.diagnostic@5.0.1"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }

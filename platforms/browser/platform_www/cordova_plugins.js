@@ -216,10 +216,10 @@ module.exports.metadata =
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-fullscreen": "1.1.0",
     "cordova-plugin-screen-orientation": "3.0.2",
-    "cordova.plugins.diagnostic": "5.0.1",
     "cordova-plugin-app-version": "0.1.9",
     "cordova-plugin-androidx": "1.0.2",
-    "cordova-plugin-androidx-adapter": "1.1.0"
+    "cordova-plugin-androidx-adapter": "1.1.0",
+    "cordova.plugins.diagnostic": "5.0.1"
 }
 // BOTTOM OF METADATA
 });

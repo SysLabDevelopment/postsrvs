@@ -22,6 +22,7 @@ export class AuthService {
   public checkState: string = undefined; //Состояние чекнутости на складе
   public routingModeAuto: boolean;
   public version: string = undefined; // версия приложения
+  public isDebug: boolean = false; //Нужна в случае хардкодной отладки нативных функций
 
   constructor(
     private bScan: BarcodeScanner,
@@ -41,7 +42,6 @@ export class AuthService {
     };
 
     if (!this.getMode()) {
-      console.log('setMode');
       this.setMode('manual_wo');
     }
     if (!this.getScanMode()) {
@@ -83,7 +83,7 @@ export class AuthService {
   public sendPost(url, data) {
     const host = "https://postsrvs.ru/mobile/";
     url = host + url;
-    data['uuid'] = this.getUuid();
+    data['uuid'] = (this.isDebug ? '6b356755575fce31' : this.getUuid());
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'

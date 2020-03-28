@@ -34,7 +34,7 @@
     "@ionic-native/camera": "^5.22.0",
     "@ionic-native/core": "^5.22.0",
     "@ionic-native/device": "^5.22.0",
-    "@ionic-native/diagnostic": "^5.22.0",
+    "@ionic-native/diagnostic": "^5.23.0",
     "@ionic-native/geolocation": "^5.22.0",
     "@ionic-native/in-app-browser": "^5.22.0",
     "@ionic-native/screen-orientation": "^5.22.0",
@@ -153,10 +153,12 @@
       "cordova-plugin-vibration": {},
       "cordova-plugin-fullscreen": {},
       "cordova-plugin-screen-orientation": {},
-      "cordova.plugins.diagnostic": {},
       "cordova-plugin-app-version": {},
       "cordova-plugin-androidx": {},
-      "cordova-plugin-androidx-adapter": {}
+      "cordova-plugin-androidx-adapter": {},
+      "cordova.plugins.diagnostic": {
+        "ANDROID_SUPPORT_VERSION": "28.+"
+      }
     },
     "platforms": [
       "android",

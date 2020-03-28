@@ -80,9 +80,6 @@
     "cordova-plugin-screen-orientation": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova.plugins.diagnostic": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
@@ -90,6 +87,9 @@
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova.plugins.diagnostic": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
@@ -309,9 +309,9 @@
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-fullscreen": "1.1.0",
     "cordova-plugin-screen-orientation": "3.0.2",
-    "cordova.plugins.diagnostic": "5.0.1",
     "cordova-plugin-app-version": "0.1.9",
     "cordova-plugin-androidx": "1.0.2",
-    "cordova-plugin-androidx-adapter": "1.1.0"
+    "cordova-plugin-androidx-adapter": "1.1.0",
+    "cordova.plugins.diagnostic": "5.0.1"
   }
 }

@@ -202,23 +202,6 @@ export class MapService {
   public initGeo() {
 
     var self = this;
-    // this.AP.checkPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION).then((res) => {
-    //   if (res.hasPermission){
-    //
-    //     self.geo.getCurrentPosition().then((pos) => {
-
-    //       if (pos){
-    //         var pre = self.state$.position.getValue();
-    //         var position =  {'lt' : pos.coords.latitude, 'lg' : pos.coords.longitude};
-    //         self.state$.position.next(position);
-    //         if (pre == null ){
-    //           self.state$.init_params_state.next('init_geo_done');
-    //         }
-    //       }
-    //
-    //     });
-    //   }
-    // });
 
     //отслеживаем изменение позиции и перестраиваем маршрут
     if (this.state$.geo_check.getValue() == "not_init") {
@@ -231,9 +214,7 @@ export class MapService {
           console.log('Невозможно получить координаты!', error);
         });
         self.dg.isLocationAvailable().then((res) => {
-
           if (res) {
-
             self.state$.unsetNotification('geo');
             self.geo.getCurrentPosition().then((pos) => {
 
@@ -250,6 +231,8 @@ export class MapService {
           } else {
             self.state$.setNotification('geo', 'Необходимо включить геолокацию!');
           }
+        }).catch((error) => {
+          console.error('sys:: Проверка доступности гео упало с ошибкой!', error)
         })
       });
       this.state$.geo_check.next('init_done');
