@@ -10,6 +10,7 @@ import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk
 import { OTTabPipePipe } from '../../pipes/o-t-tab-pipe.pipe';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-courier',
@@ -40,6 +41,7 @@ export class CourierPage implements OnInit {
   public scanInput;
   public scan_process = false;
   public find_order: boolean = false;
+  public checkState: string = (this.settings.checkout ? this.auth.checkState : 'checkedOut');
 
   constructor(public courier: CourierService,
     private router: Router,
@@ -47,6 +49,7 @@ export class CourierPage implements OnInit {
     public auth: AuthService,
     private bs: BarcodeScanner,
     private vbr: Vibration,
+    private settings: SettingsService
   ) {
     let self = this;
 
@@ -85,7 +88,9 @@ export class CourierPage implements OnInit {
 
   ngAfterViewChecked() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   public scanInputStart() {
     let self = this;

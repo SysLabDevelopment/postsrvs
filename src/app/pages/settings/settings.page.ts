@@ -25,6 +25,7 @@ export class SettingsPage implements OnInit {
   public defaultRouteBuilding: boolean = false; //Режим построения маршрута по умолчанию
   public auto = this.auth.getRoutingMode();//Тип построения маршрута авто/магистраль
   public cl: string = '';
+  public checkout: boolean = this.settings.checkout;
 
   constructor(
     private router: Router,
@@ -102,5 +103,6 @@ export class SettingsPage implements OnInit {
     this.auth.setRoutingMode(this.auto);
     this.state.state.next('init');
     this.settings.set('cl', this.cl);
+    this.settings.set('checkout', this.checkout);
   }
 }

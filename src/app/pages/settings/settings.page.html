@@ -56,6 +56,10 @@
           <ion-label position="floating">Перевозчик</ion-label>
           <ion-input [(ngModel)]="cl" type="text" mode="md"></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label>Чекаут на складе</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="checkout"></ion-checkbox>
+        </ion-item>
         <ion-item-divider>
           <ion-label></ion-label>
         </ion-item-divider>

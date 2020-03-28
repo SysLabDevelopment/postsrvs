@@ -8,6 +8,8 @@ import { Injectable } from '@angular/core';
 })
 export class SettingsService {
 
+  public checkout: boolean = localStorage.checkout;
+
   constructor() { }
 
   //Записывает настройку в локалстораж
