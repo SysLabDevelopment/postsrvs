@@ -11,7 +11,7 @@ import { SettingsService } from '../../services/settings.service';
 })
 export class SettingsPage implements OnInit {
   public modes: any[] = [];
-  public activeMode: String = 'manual_wo';
+  public activeMode: String = (this.settings.val.mode ? this.settings.val.mode : 'manual_wo');
   public pswdInp = '';
   public pswdError: boolean = false;
   public pswdView: boolean = true;
@@ -48,6 +48,7 @@ export class SettingsPage implements OnInit {
     this.defaultRouteBuilding = Boolean(this.auth.getDefaultRouteBuilding());
     this.cl = this.settings.get('cl');
     this.guessMode = Boolean(this.auth.getGuessMode());
+
   }
 
   public initModes() {
@@ -95,8 +96,8 @@ export class SettingsPage implements OnInit {
     } else {
       this.courier.changeRouteMode('auto');
     }
-    this.auth.setScanMode(this.newScanMode);
-    this.auth.setMode(this.newMode);
+    this.auth.setScanMode(this.scanMode);
+    this.auth.setMode(this.activeMode);
     this.auth.showError(10);
     this.auth.setGuessMode(this.guessMode);
     this.auth.setDefaultRouteBuilding(this.defaultRouteBuilding);

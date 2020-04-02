@@ -8,7 +8,7 @@
   <div class="settings">
       <div class="mode-block">
           <ion-list>
-            <ion-radio-group (ionChange)="modeChange($event)" value="{{activeMode}}">
+            <ion-radio-group [(ngModel)]="activeMode" (ionChange)="modeChange($event)" value="{{activeMode}}">
               <ion-list-header>
                 <ion-label>Режим работы приложения</ion-label>
               </ion-list-header>
@@ -22,7 +22,7 @@
         </div>
         <div class="mode-block">
           <ion-list>
-            <ion-radio-group (ionChange)="scanChange($event)" value="{{scanMode}}">
+            <ion-radio-group [(ngModel)]="scanMode" (ionChange)="scanChange($event)" value="{{scanMode}}">
               <ion-list-header>
                 <ion-label>Режим сканирования штрих-кода</ion-label>
               </ion-list-header>
