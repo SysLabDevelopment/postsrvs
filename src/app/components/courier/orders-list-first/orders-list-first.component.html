@@ -1,5 +1,5 @@
 <div class="order-list">
-  <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)"  itemSize="50" style="height:100%; width: 100%" >
+  <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)"  itemSize="50" style="height:100%; width: 100%; min-height: 100vw;" >
     <div *ngFor="let order of orders_c  | oTTabPipe : selectedTab"
                       class="ol-item"
                       [ngClass]="{  'non-confirmed' : order.confirm == '0' && confirm_cond,
