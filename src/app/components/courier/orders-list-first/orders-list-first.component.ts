@@ -23,7 +23,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   orderSelected_E = new EventEmitter<any>();
   @ViewChildren(CdkDrag)
   DragItems: QueryList<CdkDrag>;
-  @ViewChild(CdkDropList)
+  @ViewChild(CdkDropList, { static: false })
   Drop_L: CdkDropList;
 
 
@@ -43,13 +43,10 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
 
   }
   ngOnInit() {
-    this.orders_c = this.courier.ordersInfo;
+    this.orders_c = this.courier.ordersInfo.filter(order => order.status_id == 1);
     console.log('sys:: исходный массив заказов в компоненте: ', this.orders_c);
     if (this.auth.routingModeAuto == true && this.orders_c) {
-      this.orders_c = this.orders_c
-        .filter(order => order.status_id == '1');
       this.orders_c.splice(1)
-
     }
     console.log('sys:: orders-list', this.orders_c);
 
@@ -62,7 +59,10 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
     this.Drop_L.autoScrollDisabled = false;
     this.DragItems.changes.subscribe((r) => {
       self.DragItems.forEach(DragItem => {
-        DragItem.dragStartDelay = 100000;
+        DragItem.dragStartDelay = {
+          touch: 500,
+          mouse: 100
+        }
 
       })
     });
@@ -80,5 +80,6 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
 
     moveItemInArray(this.orders_c, event.previousIndex, event.currentIndex);
     this.ordersChange_E.emit(this.orders_c);
+    console.log(this.orders_c);
   }
 }
