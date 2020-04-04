@@ -41,7 +41,6 @@ export class CourierPage implements OnInit {
   public scanInput;
   public scan_process = false;
   public find_order: boolean = false;
-  public checkState: string = (this.settings.checkout ? this.auth.checkState : 'checkedOut');
 
   constructor(public courier: CourierService,
     private router: Router,
@@ -89,7 +88,9 @@ export class CourierPage implements OnInit {
   ngAfterViewChecked() { }
 
   ngOnInit() {
-
+    if (!this.settings.checkout) {
+      this.auth.checkState = 'checkedOut'
+    }
   }
 
   public scanInputStart() {
