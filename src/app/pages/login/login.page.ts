@@ -91,8 +91,6 @@ export class LoginPage implements OnInit {
       console.log('sys:: платформа готова:', readySource);
       if (readySource == 'android') {
         this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
-      } else if (readySource == 'cordova') {
-        this.auth.isDebug = true;
       }
 
       self.appVersion.getVersionNumber().then((resp) => {
