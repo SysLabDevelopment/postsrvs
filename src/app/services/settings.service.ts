@@ -14,13 +14,19 @@ export class SettingsService {
   public scanMode: string;
   public defaultRouteBuilding: boolean;
   public routingModeAuto: boolean;
-  public rules = {
-    appMode: "",
-    scanMode: "",
-    autoStartRoute: "",
-    typeRoute: "",
-    storeCheckMode: ""
-  };
+  public rules: {
+    appMode: string,
+    scanMode: string
+    autoStartRoute: string
+    typeRoute: string
+    storeCheckMode: any
+  } = {
+      appMode: "",
+      scanMode: "",
+      autoStartRoute: "",
+      typeRoute: "",
+      storeCheckMode: ""
+    };
   public checkout: boolean;
 
   constructor(

@@ -43,7 +43,7 @@ export class AuthService {
     };
 
     if (!this.getMode()) {
-      this.setMode('manual_wo');
+      this.setMode('hand');
     }
     if (!this.getScanMode()) {
       this.setScanMode('camera');

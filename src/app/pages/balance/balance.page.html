@@ -1,5 +1,7 @@
 <ion-content>
-        <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">{{state$.notificationStr}}</span>
+        <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">
+            {{state$.notificationStr}}
+        </span>
       <div class="o-title" (click)='p_btn()'>
             <span class="ct">Мои заказы</span>
             <ion-text color="dark" class='filial' *ngIf="info">

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'balance', loadChildren: () => import('./pages/balance/balance.module').then(m => m.BalancePageModule), canActivate: [AuthGuard] },
 
 
-  { path: 'settings', loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsPageModule) },
+  { path: 'settings', redirectTo: 'about' },
   { path: 'draw', loadChildren: () => import('./pages/draw/draw.module').then(m => m.DrawPageModule) },
   { path: 'map/:order', redirectTo: 'map' },
 

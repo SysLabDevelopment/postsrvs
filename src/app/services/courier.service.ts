@@ -230,7 +230,7 @@ export class CourierService {
       'auto': mode
     }
     let app_mode = this.auth.getMode();
-    if ((app_mode == 'manual' || app_mode == 'manual_wo') || this.state$.manual_route) {
+    if ((app_mode == 'manual' || app_mode == 'hand') || this.state$.manual_route) {
       data['mode'] = "manual";
     } else {
       data['mode'] = "auto";

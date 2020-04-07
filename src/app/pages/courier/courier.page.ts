@@ -79,7 +79,7 @@ export class CourierPage implements OnInit {
       case 'manual':
         if (!this.state$.confirmed) this.subBtnCond = true;;
         break;
-      case 'manual_wo':
+      case 'hand':
         this.subBtnCond = false;
         break;
     }
@@ -88,7 +88,7 @@ export class CourierPage implements OnInit {
   ngAfterViewChecked() { }
 
   ngOnInit() {
-    this.settings.checkout = Boolean(this.settings.rules.storeCheckMode);
+    this.settings.checkout = !!(this.settings.rules.storeCheckMode - 0);
     if (!this.settings.checkout) {
       this.auth.checkState = 'checkedOut'
     }

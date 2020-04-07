@@ -11,7 +11,7 @@ import { SettingsService } from '../../services/settings.service';
 })
 export class SettingsPage implements OnInit {
   public modes: any[] = [];
-  public activeMode: String = (this.settings.val.mode ? this.settings.val.mode : 'manual_wo');
+  public activeMode: String = (this.settings.val.mode ? this.settings.val.mode : 'hand');
   public pswdInp = '';
   public pswdError: boolean = false;
   public pswdView: boolean = true;
@@ -58,7 +58,7 @@ export class SettingsPage implements OnInit {
       { val: 'Авто', value: 'auto', isChecked: this.activeMode == 'auto' ? true : false },
       { val: 'Авто(без приема заказов)', value: 'auto_wo', isChecked: this.activeMode == 'auto_wo' ? true : false },
       { val: 'Ручной режим(с приемом заказов)', value: 'manual', isChecked: this.activeMode == 'manual' ? true : false },
-      { val: 'Ручной режим(без приема заказов)', value: 'manual_wo', isChecked: this.activeMode == 'manual_wo' ? true : false },
+      { val: 'Ручной режим(без приема заказов)', value: 'hand', isChecked: this.activeMode == 'hand' ? true : false },
     ]
     this.scanModes = [
       { val: 'Камера', value: 'camera', isChecked: this.scanMode == 'camera' ? true : false },
@@ -91,7 +91,7 @@ export class SettingsPage implements OnInit {
   }
 
   public saveSetings() {
-    if (this.newMode == 'manual' || this.newMode == 'manual_wo') {
+    if (this.newMode == 'manual' || this.newMode == 'hand') {
       this.courier.changeRouteMode('manual');
     } else {
       this.courier.changeRouteMode('auto');

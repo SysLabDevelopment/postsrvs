@@ -145,7 +145,7 @@ export class MapPage implements OnInit {
       this.map_s.pointsRender()
     }
     this.state$.map_state.subscribe((state) => {
-      if ((state == 'map_init') && !this.auth.getDefaultRouteBuilding()) {
+      if ((state == 'map_init') && (this.auth.getDefaultRouteBuilding() !== '1')) {
         this.map_s.pointsRender();
       }
     })
