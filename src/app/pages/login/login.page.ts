@@ -8,18 +8,16 @@ import { StateService } from '../../services/state.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { CourierService } from '../../services/courier.service';
 import { AppVersion } from '@ionic-native/app-version/ngx';
-
 import {
   trigger,
   state,
   style,
   animate,
   transition,
-  // ...
 } from '@angular/animations';
 import { catchError, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-login',
@@ -80,8 +78,8 @@ export class LoginPage implements OnInit {
     public state$: StateService,
     private AP: AndroidPermissions,
     public courier: CourierService,
-    private appVersion: AppVersion
-
+    private appVersion: AppVersion,
+    public settings: SettingsService
   ) {
     let self = this;
 
@@ -92,12 +90,12 @@ export class LoginPage implements OnInit {
       if (readySource == 'android') {
         this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
       }
-
       self.appVersion.getVersionNumber().then((resp) => {
         this.auth.version = resp;
         this.auth.checkAuth().subscribe((data: any) => {
           if (data.success == 'true') {
             this.auth.setUser(data.sync_id);
+            this.settings.getSettings(data.sync_id);
             self.router.navigate(['balance']);
             self.auth.initLogin();
           } else {
@@ -135,6 +133,7 @@ export class LoginPage implements OnInit {
       self.auth.login(a_data).subscribe((data: any) => {
         if (data.success == "true") {
           this.auth.setUser(data.sync_id);
+          this.settings.getSettings(data.sync_id);
           self.router.navigate(['balance']);
           self.auth.initLogin();
         } else {

@@ -145,7 +145,7 @@ export class CourierService {
         console.log('sys:: state', JSON.stringify(state));
         switch (state) {
           case 'init':
-            if (this.auth.getDefaultRouteBuilding() == 'true') {
+            if (this.auth.getDefaultRouteBuilding() == '1') {
               console.log('sys:: дефолтное построение маршрута ', this.auth.getDefaultRouteBuilding());
               self.getWay();
             } else {
@@ -159,7 +159,7 @@ export class CourierService {
               if ((data.success == 'true') && (data.reason !== 'нет заказов')) {
                 self.state$.orders.next(data.orders);
                 self.state$.orders_data = data.orders;
-                if (this.auth.getDefaultRouteBuilding() !== 'true') {
+                if (this.auth.getDefaultRouteBuilding() !== '1') {
                   self.map.pointsRender();
                 } else {
                   this.map.initPoints();
@@ -217,7 +217,7 @@ export class CourierService {
     console.log('sys::getWay()');
     let routingMode = this.auth.getRoutingMode();
     let mode: string;
-    if (routingMode) {
+    if (routingMode !== 'standart') {
       mode = '1';
     } else {
       mode = '0'
@@ -277,7 +277,7 @@ export class CourierService {
 
     let routingAuto = this.auth.getRoutingMode();
     let auto: string;
-    if (routingAuto) {
+    if (routingAuto !== 'standart') {
       auto = '1'
     } else {
       auto = '0'

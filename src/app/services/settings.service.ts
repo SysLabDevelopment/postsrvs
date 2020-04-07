@@ -2,15 +2,30 @@
 //Если есть выбор велосипедов для решения задаи в этом приложении - выбирай велосипеды из этого комплекта
 
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
 
-  public checkout: boolean = Boolean(localStorage.checkout);
   public val = localStorage;
-  constructor() {
+  public activeMode: string;
+  public scanMode: string;
+  public defaultRouteBuilding: boolean;
+  public routingModeAuto: boolean;
+  public rules = {
+    appMode: "",
+    scanMode: "",
+    autoStartRoute: "",
+    typeRoute: "",
+    storeCheckMode: ""
+  };
+  public checkout: boolean;
+
+  constructor(
+    private http: HttpClient
+  ) {
 
   }
 
@@ -29,5 +44,29 @@ export class SettingsService {
       value = '';
     }
     return value
+  }
+
+  //Получение настроек с сервака
+  //@cid - id курьера
+  public getSettings(cid) {
+    let self = this;
+    let data = {
+      cid: cid
+    }
+    let mapSettings: object = {
+      'appMode': 'activeMode',
+      'scanMode': 'scanMode',
+      'autoStartRoute': 'defaultRouteBuilding',
+      'typeRoute': 'routingModeAuto',
+      'storeCheckMode': 'checkout'
+    };
+    this.http.post('https://postsrvs.ru/mobile/getRules.php', data).subscribe((data: { success: boolean, rules: any }) => {
+      if (data.success == true) {
+        this.rules = data.rules;
+        if (data.rules.typeRoute == 'standart') {
+          this.routingModeAuto = false;
+        }
+      }
+    })
   }
 }

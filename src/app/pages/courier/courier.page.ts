@@ -70,10 +70,10 @@ export class CourierPage implements OnInit {
   public initConditions() {
     let app_mode = this.auth.getMode();
     switch (app_mode) {
-      case 'auto':
+      case 'fullAuto':
         if (!this.state$.confirmed) this.subBtnCond = true;;
         break;
-      case 'auto_wo':
+      case 'auto':
         this.subBtnCond = false;
         break;
       case 'manual':
@@ -88,6 +88,7 @@ export class CourierPage implements OnInit {
   ngAfterViewChecked() { }
 
   ngOnInit() {
+    this.settings.checkout = Boolean(this.settings.rules.storeCheckMode);
     if (!this.settings.checkout) {
       this.auth.checkState = 'checkedOut'
     }

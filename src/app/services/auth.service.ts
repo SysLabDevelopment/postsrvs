@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { StateService } from './state.service';
 import { MapService } from './map.service';
 import { AlertController } from '@ionic/angular';
+import { SettingsService } from './settings.service';
 
 
 @Injectable({
@@ -33,7 +34,7 @@ export class AuthService {
     private state$: StateService,
     private map: MapService,
     private alert: AlertController,
-
+    public settings: SettingsService
   ) {
 
     this.barcodeScannerOptions = {
@@ -48,7 +49,7 @@ export class AuthService {
       this.setScanMode('camera');
     }
 
-    this.routingModeAuto = Boolean(this.getRoutingMode());
+    this.routingModeAuto = (this.getRoutingMode() == 'standart' ? false : true);
 
 
   }
@@ -70,7 +71,7 @@ export class AuthService {
   }
 
   public getMode(): String {
-    return localStorage.getItem('mode');
+    return this.settings.rules.appMode;
   }
 
   public setScanMode(mode) {
@@ -78,7 +79,7 @@ export class AuthService {
   }
   //меняет способ сканирования
   public getScanMode(): string {
-    return localStorage.getItem('scan_mode');
+    return this.settings.rules.scanMode;
   }
   public sendPost(url, data) {
     const host = "https://postsrvs.ru/mobile/";
@@ -258,14 +259,14 @@ export class AuthService {
   }
 
   getDefaultRouteBuilding() {
-    return localStorage.getItem('defaultRouteBuilding');
+    return this.settings.rules.autoStartRoute;
   }
   setRoutingMode(auto) {
     auto && localStorage.setItem('auto', auto + '');
     this.routingModeAuto = auto;
   }
   public getRoutingMode() {
-    return (localStorage.getItem('auto') == 'true' ? true : false);
+    return this.settings.rules.typeRoute;
   }
 
   public check(mode: string) {
