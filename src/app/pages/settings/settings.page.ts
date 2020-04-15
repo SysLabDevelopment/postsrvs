@@ -57,7 +57,7 @@ export class SettingsPage implements OnInit {
     this.modes = [
       { val: 'Авто', value: 'auto', isChecked: this.activeMode == 'auto' ? true : false },
       { val: 'Авто(без приема заказов)', value: 'auto_wo', isChecked: this.activeMode == 'auto_wo' ? true : false },
-      { val: 'Ручной режим(с приемом заказов)', value: 'manual', isChecked: this.activeMode == 'manual' ? true : false },
+      { val: 'Ручной режим(с приемом заказов)', value: 'fullHand', isChecked: this.activeMode == 'fullHand' ? true : false },
       { val: 'Ручной режим(без приема заказов)', value: 'hand', isChecked: this.activeMode == 'hand' ? true : false },
     ]
     this.scanModes = [
@@ -91,8 +91,8 @@ export class SettingsPage implements OnInit {
   }
 
   public saveSetings() {
-    if (this.newMode == 'manual' || this.newMode == 'hand') {
-      this.courier.changeRouteMode('manual');
+    if (this.newMode == 'fullHand' || this.newMode == 'hand') {
+      this.courier.changeRouteMode('fullHand');
     } else {
       this.courier.changeRouteMode('auto');
     }

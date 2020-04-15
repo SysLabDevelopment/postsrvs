@@ -81,7 +81,7 @@ export class CourierService {
 
       let data = { 'action': 'changeRouteMode', 'routeId': this.state$.way.getValue()[0].route };
 
-      if (mode == 'auto' || mode == 'manual') {
+      if (mode == 'auto' || mode == 'fullHand') {
         data['mode'] = mode;
       } else {
         this.auth.showError(5);
@@ -91,7 +91,7 @@ export class CourierService {
       let self = this;
       this.auth.sendPost(url, data).subscribe((resp) => {
         if (resp.success == 'true') {
-          self.state$.manual_route = resp.mode == 'manual' ? true : false;
+          self.state$.manual_route = resp.mode == 'fullHand' ? true : false;
           self.state$.updateWayInfo.next();
         } else {
           self.auth.showError(5);
@@ -230,7 +230,7 @@ export class CourierService {
       'auto': mode
     }
     let app_mode = this.auth.getMode();
-    if ((app_mode == 'manual' || app_mode == 'hand') || this.state$.manual_route) {
+    if ((app_mode == 'fullHand' || app_mode == 'hand') || this.state$.manual_route) {
       data['mode'] = "manual";
     } else {
       data['mode'] = "auto";
@@ -256,11 +256,7 @@ export class CourierService {
 
   public getOrders(): Observable<any> {
     const url = "orders";
-
     let ids = [];
-
-
-
     let way = this.ordersInfo;
     this.ordersShortData.subscribe((data) => {
       way = data;

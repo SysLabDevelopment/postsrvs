@@ -1,6 +1,6 @@
 <div class="order-list">
   <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)"  itemSize="50" style="height:100%; width: 100%; min-height: 100vw;" >
-    <div *ngFor="let order of orders_c"
+    <div *ngFor="let order of orders_c | async "
       class="ol-item"
       [ngClass]="{  'non-confirmed' : order.confirm == '0' && confirm_cond,
                     'overdue'       : order.overdue == '1'|| order.required == true}"

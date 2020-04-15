@@ -110,6 +110,8 @@ export class LoginPage implements OnInit {
     let today = new Date();
     if (localStorage.getItem('checkedDate') == today.toLocaleDateString()) {
       this.courier.checkedOnWork = true;
+    } else {
+      localStorage.check = undefined;
     }
     if (!this.auth.getUserId()) {
       this.courier.checkedOnWork = true;
@@ -123,7 +125,6 @@ export class LoginPage implements OnInit {
 
     this.auth.scanData().then((data) => {
       let id = data.text.slice(0, -4);
-      console.log('cid', id);
       localStorage.setItem('cId', id);
       let a_data = {
         'action': 'auth',

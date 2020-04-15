@@ -1,6 +1,6 @@
 <ion-content>
         <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
-        <span class="manual_lable" [ngClass]="{  'm_lbl' : auth.getMode() == 'manual' || auth.getMode() == 'hand'}" *ngIf="state$.manual_route && selectedTab == 1">Для сортировки зажмите заказ и перетащите</span>
+        <span class="manual_lable" [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}" *ngIf="state$.manual_route && selectedTab == 1">Для сортировки зажмите заказ и перетащите</span>
 
         <span class="find-order-btn" (click)="findOrder()">
             <i class="fas fa-search"></i>
@@ -11,7 +11,7 @@
         <span class="submit-order-btn" *ngIf="subBtnCond" (click)="submitOrder()">
             <i class="fas fa-box-open"></i>
         </span>
-<div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'manual' || auth.getMode() == 'hand'}" >
+<div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}" >
     <div class="c-title">
         <span class="ct">Мои заказы</span>
         <ion-text color="dark" class='filial'>

@@ -76,7 +76,7 @@ export class CourierPage implements OnInit {
       case 'auto':
         this.subBtnCond = false;
         break;
-      case 'manual':
+      case 'fullHand':
         if (!this.state$.confirmed) this.subBtnCond = true;;
         break;
       case 'hand':
@@ -91,7 +91,10 @@ export class CourierPage implements OnInit {
     this.settings.checkout = !!(this.settings.rules.storeCheckMode - 0);
     if (!this.settings.checkout) {
       this.auth.checkState = 'checkedOut'
+    } else {
+      this.auth.checkState = 'checked' + localStorage.check
     }
+
   }
 
   public scanInputStart() {
@@ -204,7 +207,7 @@ export class CourierPage implements OnInit {
     if (this.state$.manual_route) {
       this.courier.changeRouteMode('auto');
     } else {
-      this.courier.changeRouteMode('manual');
+      this.courier.changeRouteMode('fullHand');
     }
     this.vbr.vibrate(300);
   }

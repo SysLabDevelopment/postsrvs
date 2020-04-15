@@ -82,7 +82,11 @@ export class AuthService {
     return this.settings.rules.scanMode;
   }
   public sendPost(url, data) {
-    const host = "https://postsrvs.ru/mobile/";
+    let host = "https://postsrvs.ru/mobile/";
+    if (url == 'orders' || url == 'auth') {
+      host = "https://mobile.postsrvs.ru/mobile/"
+    }
+
     url = host + url;
     data['uuid'] = (this.isDebug ? '6b356755575fce31' : this.getUuid());
     const httpOptions = {
@@ -286,6 +290,7 @@ export class AuthService {
       this.http.post(url, data, { headers: headers }).subscribe((data: any) => {
         if (data.success == true) {
           this.checkState = 'checked' + mode;
+          localStorage.check = mode;
         }
       })
     })
