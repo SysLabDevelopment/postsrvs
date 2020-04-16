@@ -4,8 +4,10 @@ import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk
 import { CourierService } from '../../../services/courier.service';
 import { AuthService } from '../../../services/auth.service';
 import { SysService } from '../../../services/sys.service';
+import { SettingsService } from '../../../services/settings.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-orders-list-first',
   templateUrl: './orders-list-first.component.html',
@@ -29,27 +31,26 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   @ViewChild(CdkDropList, { static: false })
   Drop_L: CdkDropList;
   private orders;
-  public slicer: number = undefined;
+  public slicer: number = this.howSlice();
+  private ordersIds;
 
   constructor(
     public courier: CourierService,
     public auth: AuthService,
-    private sys: SysService
+    private sys: SysService,
+    private settings: SettingsService
   ) {
-    this.orders_c = this.sys.getOrders(
-      this.courier.ordersInfo
-        .filter(item => item.status_id == 1)
-        .map(item => item = item.id)
-    ).pipe(map(response => response.orders.slice(this.slicer)));
-
+    this.prepareOrdersList(this.courier.ordersInfo);
   }
 
   ngOnChanges() {
 
   }
   ngOnInit() {
-    // this.orders_c.subscribe((data: Array<any>) => this.orders = data);
-    this.slicer = this.howSlice();
+
+
+    this.orders_c.subscribe((data: Array<any>) => this.orders = data);
+    console.log('sys:: исходный список заказов', this.orders_c)
   }
 
   ngAfterViewChecked() {
@@ -78,8 +79,17 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
 
     moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
     this.ordersChange_E.emit(this.orders);
-    console.log(this.orders);
+    console.log('sys:: массив заказов после перетаскивания: ', this.orders);
+    this.prepareOrdersList(this.orders);
   }
 
-  public howSlice(): number { return (this.auth.routingModeAuto ? 1 : 0) }
+  public howSlice(): number {
+    return (this.settings.rules.typeRoute == 'standart' ? 0 : 1)
+  }
+
+  public prepareOrdersList(orders: Array<any>) {
+    this.orders_c = this.sys.getOrders(orders
+      .filter(item => item.status_id == 1)
+      .map(item => item = item.id)).pipe(map(response => response.orders.slice(this.slicer)));
+  }
 }

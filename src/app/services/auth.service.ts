@@ -267,7 +267,6 @@ export class AuthService {
   }
   setRoutingMode(auto) {
     auto && localStorage.setItem('auto', auto + '');
-    this.routingModeAuto = auto;
   }
   public getRoutingMode() {
     return this.settings.rules.typeRoute;

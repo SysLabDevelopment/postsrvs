@@ -191,7 +191,7 @@ export class CourierPage implements OnInit {
     this.orders = orders;
     let way: any[] = new Array();
     orders.forEach(order => {
-      if (order.status_id == 1) {
+      if (Number(order.status_id) == 1) {
         way.push(order.id);
       }
     });

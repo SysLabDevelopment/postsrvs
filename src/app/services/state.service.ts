@@ -15,7 +15,6 @@ export class StateService {
   //GLOBAL
   public login_state: BehaviorSubject<any> = new BehaviorSubject('not_login');
   public stop$: Subject<any> = new Subject(); // останаливает все подписки;
-  public
   /* Режим работы с маршрутом
       auto    - маршрут с бека
       manual  - курьер рисует сам

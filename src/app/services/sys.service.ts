@@ -8,6 +8,7 @@ import { Device } from '@ionic-native/device/ngx';
   providedIn: 'root'
 })
 export class SysService {
+  public ordersIds: Array<string>;
 
 
   constructor(

@@ -15,7 +15,7 @@ import { SettingsService } from './services/settings.service';
 })
 export class AppComponent {
   public nav: any = 0;
-  public routingModeAuto: boolean = true;
+  public routingModeAuto: boolean;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
