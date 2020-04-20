@@ -78,7 +78,7 @@
         </div>
     </div>
     <div class='checking' *ngIf="auth.checkState !== 'checkedOut'" >
-        <ion-button (click)="auth.check('In')" expand="block" fill="outline" shape="round" *ngIf="auth.checkState == undefined">
+        <ion-button (click)="auth.check('In')" expand="block" fill="outline" shape="round" *ngIf="auth.checkState == 'checkedundefined'">
             Приехал на склад
         </ion-button>
         <ion-button (click)="auth.check('Out')" expand="block" fill="outline" shape="round" *ngIf="auth.checkState == 'checkedIn'">
