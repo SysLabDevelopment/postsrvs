@@ -3,6 +3,7 @@ import { OTTabPipePipe } from '../../../pipes/o-t-tab-pipe.pipe';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CourierService } from '../../../services/courier.service';
 import { AuthService } from '../../../services/auth.service';
+import { SettingsService } from '../../../services/settings.service';
 
 @Component({
   selector: 'app-orders-list-second',
@@ -31,7 +32,8 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
 
   constructor(
     public courier: CourierService,
-    public auth: AuthService
+    public auth: AuthService,
+    private settings: SettingsService
   ) { }
 
   public selectOrder(id) {
@@ -51,7 +53,7 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
     this.orders_c = this.orders?.filter(
       order => order.status_id == this.tabs[tab]
     );
-    if (this.auth.routingModeAuto == true && tab == 1) {
+    if (this.settings.rules.typeRoute !== 'standart' && tab == 1) {
       this.orders_c?.splice(1)
     }
 
