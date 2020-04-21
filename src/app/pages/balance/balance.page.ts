@@ -175,7 +175,6 @@ export class BalancePage implements OnInit {
 
     if (this.out_process) {
       this.out_counter++;
-      console.log('outprocess_true', this.out_counter);
       if (this.out_counter == 2) {
         this.logout();
       }
@@ -186,6 +185,7 @@ export class BalancePage implements OnInit {
   }
 
   public logout() {
+    localStorage.clear();
     var url = 'orders';
     var data = { 'action': 'logout' }
 
