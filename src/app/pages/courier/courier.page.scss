@@ -37,7 +37,7 @@
   color: #3c3c3c;
   height: 100%;
   -ms-grid-rows: 90% 10%;
-  grid-template-rows: 90% 10%;
+  grid-template-rows: auto min-content;
   display: grid;
 }
 
@@ -330,6 +330,7 @@ ion-item {
   -webkit-box-shadow: 0 -2px 2px 0.1px #c7c7c7;
   box-shadow: 0 -2px 2px 0.1px #c7c7c7;
   padding: 5px 0;
+  flex-wrap: wrap;
 }
 
 .done-time {
@@ -591,4 +592,8 @@ ion-item {
   .m_wrp {
     height: 100vh;
   }
+}
+
+ion-chip {
+  white-space: nowrap;
 }

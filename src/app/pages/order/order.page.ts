@@ -118,7 +118,8 @@ export class OrderPage implements OnInit {
     this.state$.getCoordinates(this.address).subscribe((data: any) => {
       this.coords = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
       console.log('sys:: Данные заказа', this.order)
-    })
+    });
+    this.courier.initStatuses();
   }
 
   ngAfterViewChecked() {

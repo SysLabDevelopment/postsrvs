@@ -134,9 +134,7 @@ export class CourierService {
     });
 
     //Костыль для мгновенного отображения листина в обход ожидания статусов по апи
-    const statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
-    self.state$.statuses.next(statuses);
-    self.state$.s_state.next('status_init');
+    this.initStatuses();
 
 
 
@@ -458,5 +456,10 @@ export class CourierService {
       g_fail: g_fail,
       all: all
     }
+  }
+  public initStatuses() {
+    const statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
+    this.state$.statuses.next(statuses);
+    this.state$.s_state.next('status_init');
   }
 }
