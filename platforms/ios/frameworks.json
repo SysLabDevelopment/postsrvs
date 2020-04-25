@@ -1,10 +1,8 @@
 {
     "ImageIO.framework": 1,
-    "CoreLocation.framework": 4,
-    "AVFoundation.framework": 3,
+    "CoreLocation.framework": 3,
+    "AVFoundation.framework": 2,
     "WebKit.framework": 1,
-    "SystemConfiguration.framework": 1,
-    "AudioToolbox.framework": 3,
-    "libsqlite3.dylib": 1,
+    "AudioToolbox.framework": 2,
     "Security.framework": 1
 }

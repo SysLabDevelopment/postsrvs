@@ -46,11 +46,6 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-mauron85-background-geolocation": {
-      "ALWAYS_USAGE_DESCRIPTION": "This app always requires location tracking",
-      "MOTION_USAGE_DESCRIPTION": "This app requires motion detection",
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
     "cordova-plugin-screen-orientation": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },

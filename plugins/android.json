@@ -48,17 +48,6 @@
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
       "PACKAGE_NAME": "postsrvs.w"
     },
-    "cordova-plugin-mauron85-background-geolocation": {
-      "GOOGLE_PLAY_SERVICES_VERSION": "11+",
-      "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
-      "ICON": "@mipmap/icon",
-      "SMALL_ICON": "@mipmap/icon",
-      "ACCOUNT_NAME": "@string/app_name",
-      "ACCOUNT_LABEL": "@string/app_name",
-      "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
-      "CONTENT_AUTHORITY": "$PACKAGE_NAME",
-      "PACKAGE_NAME": "postsrvs.w"
-    },
     "cordova-plugin-screen-orientation": {
       "PACKAGE_NAME": "postsrvs.w"
     },

@@ -65,19 +65,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/BackgroundGeolocation.js",
-        "id": "cordova-plugin-mauron85-background-geolocation.BackgroundGeolocation",
-        "pluginId": "cordova-plugin-mauron85-background-geolocation",
-        "clobbers": [
-            "BackgroundGeolocation"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/radio.js",
-        "id": "cordova-plugin-mauron85-background-geolocation.radio",
-        "pluginId": "cordova-plugin-mauron85-background-geolocation"
-    },
-    {
         "file": "plugins/cordova-plugin-uniquedeviceid/www/uniqueid.js",
         "id": "cordova-plugin-uniquedeviceid.UniqueDeviceID",
         "pluginId": "cordova-plugin-uniquedeviceid",
@@ -206,7 +193,6 @@ module.exports.metadata =
     "cordova-plugin-ionic-webview": "4.1.3",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-geolocation": "4.0.2",
-    "cordova-plugin-mauron85-background-geolocation": "3.0.1",
     "cordova-plugin-uniquedeviceid": "1.3.2",
     "com-darryncampbell-cordova-plugin-intent": "2.0.0",
     "cordova-plugin-inappbrowser": "3.2.0",

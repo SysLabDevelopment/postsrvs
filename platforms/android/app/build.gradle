@@ -98,7 +98,6 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-plugin-mauron85-background-geolocation/w-dependencies.gradle"
 apply from: "../phonegap-plugin-barcodescanner/w-barcodescanner.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
@@ -298,7 +297,6 @@ dependencies {
     implementation "androidx.core:core:1.1.0"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "androidx.annotation:annotation:1.0.0"
-    implementation "com.google.android.gms:play-services-location:11+"
     implementation "androidx.appcompat:appcompat:1.0.0"
     // SUB-PROJECT DEPENDENCIES END
 }
