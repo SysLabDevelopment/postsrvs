@@ -116,7 +116,9 @@ export class LoginPage implements OnInit {
     if (!this.auth.getUserId()) {
       this.courier.checkedOnWork = true;
     }
-
+    if (localStorage.debug == 'true') {
+      this.auth.isDebug = true;
+    }
 
   }
 

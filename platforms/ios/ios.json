@@ -18,13 +18,13 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 23
+              "count": 24
             }
           ],
           "NSCameraUsageDescription": [
             {
               "xml": "<string>You need scan barcodes and take photos</string>",
-              "count": 23
+              "count": 24
             }
           ],
           "NSLocationAlwaysUsageDescription": [
