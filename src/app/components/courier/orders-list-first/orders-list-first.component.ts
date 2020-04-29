@@ -33,6 +33,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   private orders;
   public slicer: number = this.howSlice();
   private ordersIds;
+  public isSkeleton: boolean = true;
 
   constructor(
     public courier: CourierService,
@@ -49,7 +50,10 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   ngOnInit() {
 
 
-    this.orders_c.subscribe((data: Array<any>) => this.orders = data);
+    this.orders_c.subscribe((data: Array<any>) => {
+      this.orders = data;
+
+    });
     console.log('sys:: исходный список заказов', this.orders_c)
   }
 

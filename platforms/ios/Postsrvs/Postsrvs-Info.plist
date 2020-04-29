@@ -30,7 +30,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>You need scan barcodes and take photos</string>
+	<string>Вам нужно будет сканировать штрих-коды и делать фото</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -57,6 +57,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We use your location for full functionality of certain app features.</string>
+	<string>Мы используем Ваши гео-данные для рассчета маршрута доставки и оторажения Вашей позиции на карте</string>
 </dict>
 </plist>

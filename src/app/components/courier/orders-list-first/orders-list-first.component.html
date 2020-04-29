@@ -27,5 +27,25 @@
               </div>
           </div>
       </div>
+
+      <div *ngIf="!orders_c" >
+        <div>
+          <div class="oc-left-row c_number">
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            <span class="order-company">
+               <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </span>
+          </div>
+          <div class="oc-left-row c_address">
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </div>
+        </div>
+        <div class="ol-col oc-right">
+          <div class="c-status status_none">
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </div>
+        </div>
+      </div>
+
   </cdk-virtual-scroll-viewport>
   </div>
