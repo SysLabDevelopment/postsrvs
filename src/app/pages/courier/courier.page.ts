@@ -11,6 +11,7 @@ import { OTTabPipePipe } from '../../pipes/o-t-tab-pipe.pipe';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { SettingsService } from '../../services/settings.service';
+import { SysService } from '../../services/sys.service';
 
 @Component({
   selector: 'app-courier',
@@ -41,6 +42,7 @@ export class CourierPage implements OnInit {
   public scanInput;
   public scan_process = false;
   public find_order: boolean = false;
+  public isWorkEnded: boolean = false;
 
   constructor(public courier: CourierService,
     private router: Router,
@@ -48,7 +50,8 @@ export class CourierPage implements OnInit {
     public auth: AuthService,
     private bs: BarcodeScanner,
     private vbr: Vibration,
-    private settings: SettingsService
+    private settings: SettingsService,
+    private sys: SysService
   ) {
     let self = this;
 
@@ -395,5 +398,19 @@ export class CourierPage implements OnInit {
     });
   }
 
+  //Завершение рабочего дня курьера
+  public endWork() {
+    this.courier.endWork().subscribe((data: { success: boolean }) => {
+      if (data.success) {
+        this.isWorkEnded = true;
+        this.sys.presentToast('Рабочий день завершен',
+          'success')
+      }
+    },
+      error => {
+        this.sys.presentToast('Ошибка: ' + error.message, 'danger')
+      })
+
+  }
 
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Device } from '@ionic-native/device/ngx';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class SysService {
 
   constructor(
     private http: HttpClient,
-    private device: Device
+    private device: Device,
+    public toastController: ToastController
   ) {
   }
 
@@ -33,6 +35,17 @@ export class SysService {
     }
 
     return this.http.post(url, data, httpOptions)
+  }
+
+  //Тост
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: color,
+      position: 'middle'
+    });
+    toast.present();
   }
 
 }

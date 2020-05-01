@@ -462,4 +462,19 @@ export class CourierService {
     this.state$.statuses.next(statuses);
     this.state$.s_state.next('status_init');
   }
+
+  //Завершение рабочего дня курьера
+  public endWork() {
+    const url = 'https://postsrvs.ru/admin/ajax/end_work.php';
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-type': 'application/json'
+    });
+    let data = {
+      "token": "l;sdfjkhglsoapl[",
+      "cId": this.auth.getUserId()
+    }
+
+    return this.http.post(url, data, { headers: headers })
+  }
 }
