@@ -3,6 +3,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SysService } from '../services/sys.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,8 @@ export class SettingsService {
   public checkout: boolean;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    public sys: SysService
   ) {
 
   }
@@ -66,7 +68,8 @@ export class SettingsService {
       'typeRoute': 'routingModeAuto',
       'storeCheckMode': 'checkout'
     };
-    this.http.post('https://postsrvs.ru/mobile/getRules.php', data).subscribe((data: { success: boolean, rules: any }) => {
+    const url = this.sys.proxy + 'https://postsrvs.ru/mobile/getRules.php';
+    this.http.post(url, data).subscribe((data: { success: boolean, rules: any }) => {
       if (data.success == true) {
         this.rules = data.rules;
         if (data.rules.typeRoute == 'standart') {

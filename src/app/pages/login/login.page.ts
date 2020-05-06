@@ -18,6 +18,7 @@ import {
 import { catchError, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { SettingsService } from '../../services/settings.service';
+import { SysService } from '../../services/sys.service';
 
 @Component({
   selector: 'app-login',
@@ -79,7 +80,8 @@ export class LoginPage implements OnInit {
     private AP: AndroidPermissions,
     public courier: CourierService,
     private appVersion: AppVersion,
-    public settings: SettingsService
+    public settings: SettingsService,
+    public sys: SysService
   ) {
     let self = this;
 
@@ -168,7 +170,7 @@ export class LoginPage implements OnInit {
   }
 
   public sendPhone() {
-    const url = "https://mok.flexcore.ru/client/registerP/";
+    const url = this.sys.proxy + "https://mok.flexcore.ru/client/registerP/";
     const data = "action=registerP&phone=8" + this.phone + "&type=courier";
     var self = this;
     this.sendPost(url, data).subscribe((res: any) => {
@@ -203,7 +205,7 @@ export class LoginPage implements OnInit {
   }
 
   public enterCode() {
-    var url = "https://mok.flexcore.ru/courier/authP/";
+    const url = this.sys.proxy + "https://mok.flexcore.ru/courier/authP/";
     var data = "action=authP&phone=8" + this.phone + "&code=" + this.code + "&type=courier";
 
     var self = this;

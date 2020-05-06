@@ -9,6 +9,7 @@ import { StateService } from './state.service';
 import { MapService } from './map.service';
 import { AlertController } from '@ionic/angular';
 import { SettingsService } from './settings.service';
+import { SysService } from '../services/sys.service';
 
 
 @Injectable({
@@ -34,7 +35,8 @@ export class AuthService {
     private state$: StateService,
     private map: MapService,
     private alert: AlertController,
-    public settings: SettingsService
+    public settings: SettingsService,
+    public sys: SysService
   ) {
 
     this.barcodeScannerOptions = {
@@ -82,9 +84,9 @@ export class AuthService {
     return this.settings.rules.scanMode;
   }
   public sendPost(url, data) {
-    let host = "https://postsrvs.ru/mobile/";
+    let host = this.sys.proxy + "https://postsrvs.ru/mobile/";
     if (url == 'orders' || url == 'auth') {
-      host = "https://mobile.postsrvs.ru/mobile/"
+      host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/"
     }
 
     url = host + url;
@@ -275,7 +277,7 @@ export class AuthService {
   public check(mode: string) {
     this.bScan.scan().then((scanData) => {
       console.log('sys:: auth.check() данные qr-кода: ', scanData);
-      let url = 'https://postsrvs.ru/admin/ajax/wh.php';
+      let url = this.sys.proxy + 'https://postsrvs.ru/admin/ajax/wh.php';
       let data = {
         'cId': this.getUserId(),
         'token': "l;sdfjkhglsoapl[",

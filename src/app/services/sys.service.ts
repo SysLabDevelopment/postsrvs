@@ -10,7 +10,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class SysService {
   public ordersIds: Array<string>;
-
+  public proxy: string = 'https://cors-anywhere.herokuapp.com/';
 
   constructor(
     private http: HttpClient,
@@ -21,7 +21,7 @@ export class SysService {
 
   //Получение списка заказов по idшникам
   public getOrders(ids: Array<string>): Observable<any> {
-    const url = "https://mobile.postsrvs.ru/mobile/orders";
+    const url = this.proxy + "https://mobile.postsrvs.ru/mobile/orders";
     let data = {
       'uuid': this.device.uuid,
       'action': 'getOrders',

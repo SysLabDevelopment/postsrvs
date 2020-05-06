@@ -19,6 +19,7 @@ import {
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MapService } from '../../services/map.service';
+import { SysService } from '../../services/sys.service';
 
 
 @Component({
@@ -103,7 +104,8 @@ export class OrderPage implements OnInit {
     private plt: Platform,
     private http: HttpClient,
     private iab: InAppBrowser,
-    private CL: CallNumber
+    private CL: CallNumber,
+    public sys: SysService
   ) {
     this.orderId = this.route.snapshot.paramMap.get('id');
 
@@ -490,7 +492,7 @@ export class OrderPage implements OnInit {
     let goods = this.order.goods;
     let quants = this.g_quants;
     let amount = Math.round(this.order_sum * 100) / 100;
-    let callback_url = 'https://postsrvs.ru/mobile/pay_callback.php';
+    let callback_url = this.sys.proxy + 'https://postsrvs.ru/mobile/pay_callback.php';
     let description = '';
     let products = [];
 

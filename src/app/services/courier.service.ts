@@ -10,6 +10,7 @@ import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-sca
 import { OrderPage } from '../pages/order/order.page';
 import { MapService } from '../services/map.service';
 import { SettingsService } from './settings.service';
+import { SysService } from '../services/sys.service';
 
 declare var ymaps: any;
 @Injectable({
@@ -28,7 +29,8 @@ export class CourierService {
     private auth: AuthService,
     private bs: BarcodeScanner,
     private map: MapService,
-    private settings: SettingsService
+    private settings: SettingsService,
+    public sys: SysService
   ) {
     this.barcodeScannerOptions = {
       showTorchButton: true,
@@ -295,7 +297,7 @@ export class CourierService {
 
   public getBalance(sync_id) {
     let CL = this.settings.get('cl');
-    let url = "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=1' + '&CL=' + CL;
+    let url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=1' + '&CL=' + CL;
 
     return this.http.get(url);
   }
@@ -411,7 +413,7 @@ export class CourierService {
   }
 
   public check_to_work() {
-    let url = 'https://postsrvs.ru/admin/ajax/check_to_work.php';
+    let url = this.sys.proxy + 'https://postsrvs.ru/admin/ajax/check_to_work.php';
     let data = {
       cId: this.auth.getUserId(),
       token: "l;sdfjkhglsoapl[",
@@ -465,7 +467,7 @@ export class CourierService {
 
   //Завершение рабочего дня курьера
   public endWork() {
-    const url = 'https://postsrvs.ru/admin/ajax/end_work.php';
+    const url = this.sys.proxy + 'https://postsrvs.ru/admin/ajax/end_work.php';
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Content-type': 'application/json'

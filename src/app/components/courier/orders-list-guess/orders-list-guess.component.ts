@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SysService } from '../../../services/sys.service';
 
 @Component({
   selector: 'app-orders-list-guess',
@@ -14,7 +15,8 @@ export class OrdersListGuessComponent implements OnInit {
   public orders: Array<any>;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    public sys: SysService
   ) { }
 
   ngOnInit() {
@@ -24,7 +26,7 @@ export class OrdersListGuessComponent implements OnInit {
   public segmentChanged(event) {
     let shopId = event.detail.value;
     console.log(shopId);
-    const url = 'https://pdata.flexcore.ru/data/';
+    const url = this.sys.proxy + 'https://pdata.flexcore.ru/data/';
     let data = {
       'tok': '#def@wfF1',
       'shopId': shopId
