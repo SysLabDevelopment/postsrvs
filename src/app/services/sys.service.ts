@@ -10,7 +10,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class SysService {
   public ordersIds: Array<string>;
-  public proxy: string = 'https://cors-anywhere.herokuapp.com/';
+  public proxy: string = 'http://mobile.postsrvs.ru:8080/';
 
   constructor(
     private http: HttpClient,

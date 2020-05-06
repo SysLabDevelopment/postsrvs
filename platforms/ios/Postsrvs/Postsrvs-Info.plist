@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.7.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.7.0</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -35,10 +35,12 @@
 	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Мы используем Ваши гео-данные для рассчета маршрута доставки и оторажения Вашей позиции на карте</string>
 	<key>NSMainNibFile</key>
-	<string/>
+	<string></string>
 	<key>NSMainNibFile~ipad</key>
-	<string/>
+	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>CDVLaunchScreen</string>
 	<key>UIRequiresFullScreen</key>
@@ -56,7 +58,5 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Мы используем Ваши гео-данные для рассчета маршрута доставки и оторажения Вашей позиции на карте</string>
 </dict>
 </plist>

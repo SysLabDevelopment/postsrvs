@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
@@ -26,6 +26,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { CashoutFailOComponent } from './components/balance/cashout-fail-o/cashout-fail-o.component';
 import { CashoutWComponent } from './components/balance/cashout-w/cashout-w.component';
 import { AppVersion } from '@ionic-native/app-version/ngx';
+import { HttpErrorInterceptor } from './interceptors/http.interceptor';
 
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
@@ -48,7 +49,12 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
     AndroidFullScreen,
     ScreenOrientation,
     AppVersion,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
