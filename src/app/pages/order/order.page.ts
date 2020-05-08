@@ -667,9 +667,9 @@ export class OrderPage implements OnInit {
   }
 
   public doneOrder() {
-    this.drawBtn(this.drawNeedle);
-    let drawedImg = localStorage.getItem('drawImg');
-    if (this.drawNeedle && drawedImg) {
+
+    let drawedImg = localStorage.drawImg;
+    if (this.drawNeedle && !drawedImg) {
       this.drawBtn(this.drawNeedle)
     } else {
       this.sendPayCall();

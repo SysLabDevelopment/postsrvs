@@ -297,7 +297,7 @@ export class CourierService {
 
   public getBalance(sync_id) {
     let CL = this.settings.get('cl');
-    let url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=1' + '&CL=' + CL;
+    let url = "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=1' + '&CL=' + CL;
 
     return this.http.get(url);
   }
