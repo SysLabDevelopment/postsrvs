@@ -93,7 +93,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
 
   public prepareOrdersList(orders: Array<any>) {
     this.orders_c = this.sys.getOrders(orders
-      .filter(item => item.status_id == 1)
+      .filter(item => Number(item.status_id) == 1)
       .map(item => item = item.id)).pipe(map(response => response.orders.slice(this.slicer)));
   }
 }

@@ -11,6 +11,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <preference name="android-usesCleartextTraffic" value="true" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
@@ -21,6 +22,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
     <platform name="android">
+        <allow-navigation href="*" />
         <resource-file src="/resources/icon.png" target="app/src/main/res/mipmap/icon.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />
