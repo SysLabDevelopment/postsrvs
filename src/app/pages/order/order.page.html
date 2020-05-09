@@ -200,7 +200,10 @@
             <div class="sh-icons">
               <i class="fas fa-spinner fa-spin"></i>
             </div>
-            <div class="await-check">Ожидание чека...</div>
+            <div class="await-check">
+              <h2>Заказ завершен,</h2>
+              идет ожидание чека, Вы можете вернуться к заказу позже из списка заказов, если показывать чек не нужно прямо сейчас
+            </div>
         </div>
         <div class="sc-s-wrp" *ngIf = "barcode_flag">
           <qrcode class="qr" [qrdata]="barcode" [size]="256" [level]="'M'"></qrcode>

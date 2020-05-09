@@ -6,6 +6,7 @@ import { StateService } from '../services/state.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { Router } from '@angular/router';
+import { SettingsService } from './settings.service';
 
 declare var ymaps: any;
 
@@ -18,7 +19,13 @@ export class MapService {
   private local_stop$: Subject<any> = new Subject();
   public oneOrder = false;
 
-  constructor(public router: Router, private geo: Geolocation, private state$: StateService, private AP: AndroidPermissions, private dg: Diagnostic,
+  constructor
+    (public router: Router,
+      private geo: Geolocation,
+      private state$: StateService,
+      private AP: AndroidPermissions,
+      private dg: Diagnostic,
+      private settings: SettingsService,
   ) {
 
     var self = this;
@@ -164,7 +171,7 @@ export class MapService {
 
       var i_j = 0;
       console.log('sys::initPoints orders', orders);
-      for (var i = 0; i < orders.length; i++) {
+      for (let i = 0; i < orders.length; i++) {
         if (i_j == 9) break;
         if (Number(orders[i].status) == 1) {
           i_j++;
@@ -252,8 +259,8 @@ export class MapService {
       let r_points = new Array();
       let pos_points = [this.state$.position.getValue().lt, this.state$.position.getValue().lg];
 
-      if (localStorage.getItem('auto') == 'true') {
-        route_orders = route_orders.filter(order => order.status_id == 1);
+      if (this.settings.rules.typeRoute !== 'standart') {
+        route_orders = route_orders.filter(order => order.status == "1");
         route_orders.splice(1)
       }
       for (let i = 0; i < route_orders.length; i++) {
@@ -281,39 +288,41 @@ export class MapService {
         console.log('sys:: Отрисовка маршрута');
         self.state$.l_map.geoObjects.removeAll();
         self.state$.l_map.geoObjects.add(self.state$.l_route);
-        self.state$.l_map.setBounds(self.state$.l_map.geoObjects.getBounds(), {
-          checkZoomRange: true,
-          zoomMargin: 35
-        });
+        // self.state$.l_map.setBounds(self.state$.l_map.geoObjects.getBounds(), {
+        //   checkZoomRange: true,
+        //   zoomMargin: 35
+        // });
         self.state$.route_state.next('init_done');
         let points = self.state$.l_route.getWayPoints();
         self.state$.l_route.model.events.once("requestsuccess", function () {
-          for (let i = 1; i < r_points.length; i++) {
-            let cnt = i;
-            let order = self.state$.orders_data[i];
-            let addr = order.client_address;
-            if (order.datetime_to !== null) {
-              order.datetime_to = 'до ' + order.datetime_to
-            } else {
-              order.datetime_to = ''
+          if (self.state$.orders_data !== null) {
+            for (let i = 1; i < r_points.length; i++) {
+              let cnt = i;
+              let order = self.state$.orders_data[i - 1];
+              let addr = order.client_address;
+              if (order.datetime_to !== null) {
+                order.datetime_to = 'до ' + order.datetime_to
+              } else {
+                order.datetime_to = ''
+              }
+              let yandexWayPoint = self.state$.l_route.getWayPoints().get(i);
+              console.log('sys:: Данные заказа в балун ', order);
+              ymaps.geoObject.addon.balloon.get(yandexWayPoint);
+              yandexWayPoint.options.set({
+                preset: "islands#blueStretchyIcon",
+                order: order,
+                addr: order.client_address,
+                iconContentLayout: ymaps.templateLayoutFactory.createClass(
+                  '<span style="color: red;">' + cnt + '</span>'
+                ),
+                balloonContentLayout: ymaps.templateLayoutFactory.createClass(
+                  '<b>Заказ ' + order.id + '</b><br/>' +
+                  addr + '<hr/>' +
+                  'Доставка:<br/>c ' + order.datetime_from + '<br/>' + order.datetime_to + '<br/>' +
+                  `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;padding: 5px;'>Детали</button><br/>`,
+                )
+              });
             }
-            let yandexWayPoint = self.state$.l_route.getWayPoints().get(i);
-            console.log('sys:: Данные заказа в балун ', order);
-            ymaps.geoObject.addon.balloon.get(yandexWayPoint);
-            yandexWayPoint.options.set({
-              preset: "islands#blueStretchyIcon",
-              order: order,
-              addr: order.client_address,
-              iconContentLayout: ymaps.templateLayoutFactory.createClass(
-                '<span style="color: red;">' + cnt + '</span>'
-              ),
-              balloonContentLayout: ymaps.templateLayoutFactory.createClass(
-                '<b>Заказ ' + order.id + '</b><br/>' +
-                addr + '<hr/>' +
-                'Доставка:<br/>c ' + order.datetime_from + '<br/>' + order.datetime_to + '<br/>' +
-                `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
-              )
-            });
           }
         });
       });
