@@ -18,7 +18,7 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 33
+              "count": 34
             }
           ],
           "NSCameraUsageDescription": [
@@ -28,7 +28,7 @@
             },
             {
               "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 7
+              "count": 8
             }
           ],
           "NSLocationAlwaysUsageDescription": [
