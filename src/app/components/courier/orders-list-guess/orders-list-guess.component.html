@@ -9,3 +9,8 @@
     <ion-label>Золотой вавилон</ion-label>
   </ion-segment-button>
 </ion-segment>
+<ion-list>
+  <ion-item *ngFor="let order of orders | async" >
+    <ion-label>Awesome Label</ion-label>
+  </ion-item>
+</ion-list>

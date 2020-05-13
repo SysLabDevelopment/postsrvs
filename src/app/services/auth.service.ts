@@ -253,10 +253,10 @@ export class AuthService {
   }
 
   setGuessMode(guessMode) {
-    guessMode && localStorage.setItem('guessMode', guessMode);
+    this.settings.rules.gess = guessMode;
   }
   getGuessMode() {
-    return localStorage.getItem('guessMode');
+    return Boolean(Number(this.settings.rules.gess));
   }
 
   //Сохранение режима построения маршрута по умолчанию

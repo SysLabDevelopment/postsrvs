@@ -5,7 +5,7 @@
         <span class="find-order-btn" (click)="findOrder()">
             <i class="fas fa-search"></i>
         </span>
-        <span *ngIf="auth.getGuessMode() == 'true'" class='guess-button'>
+        <span *ngIf="auth.getGuessMode()" class='guess-button'>
             <i>G</i>
         </span>
         <span class="submit-order-btn" *ngIf="subBtnCond" (click)="submitOrder()">
@@ -22,20 +22,20 @@
                 </ion-text>
         </div>
 
-        <app-orders-list-guess *ngIf="auth.getGuessMode() == 'true'">
+        <app-orders-list-guess *ngIf="auth.getGuessMode()">
         </app-orders-list-guess>
 
-        <div class="o-tab-wrp" *ngIf="ordersInit && auth.getGuessMode() !== 'true'">
+        <div class="o-tab-wrp" *ngIf="ordersInit && !auth.getGuessMode()">
                 <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 1}" (click)="tabSelect(1)">В работе</div>
                 <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 2}"(click)="tabSelect(2)">Доставлено</div>
                 <div class="o-tab" [ngClass] = "{'tab_active' : selectedTab == 3}"(click)="tabSelect(3)">Не доставлено</div>
         </div>
-        <div class="c-body" *ngIf="ordersInit && auth.getGuessMode() !== 'true'">
+        <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
 
             <app-orders-list-first
                                     [selectedTab]="selectedTab"
                                     [confirm_cond]="subBtnCond"
-                                    *ngIf="selectedTab == 1 && this.state$.manual_route && auth.getGuessMode() !== 'true' && orders"
+                                    *ngIf="selectedTab == 1 && this.state$.manual_route && !auth.getGuessMode() && orders"
                                     (ordersChange_E)="ordersListChanged($event)"
                                     (orderSelected_E)="selectOrder($event)">
             </app-orders-list-first>
@@ -44,7 +44,7 @@
                                     [orders]="orders"
                                     [selectedTab]="selectedTab"
                                     [confirm_cond]="subBtnCond"
-                                    *ngIf="!(this.state$.manual_route && selectedTab == 1) && auth.getGuessMode() !== 'true' "
+                                    *ngIf="!(this.state$.manual_route && selectedTab == 1) && !auth.getGuessMode()"
                                     (orderSelected_E)="selectOrder($event)">
             </app-orders-list-second>
 

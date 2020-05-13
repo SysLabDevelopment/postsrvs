@@ -54,7 +54,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
       this.orders = data;
 
     });
-    console.log('sys:: исходный список заказов', this.orders_c)
+    console.log('sys:: исходный список заказов', this.orders)
   }
 
   ngAfterViewChecked() {
@@ -92,8 +92,11 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   }
 
   public prepareOrdersList(orders: Array<any>) {
+
     this.orders_c = this.sys.getOrders(orders
       .filter(item => Number(item.status_id) == 1)
-      .map(item => item = item.id)).pipe(map(response => response.orders.slice(this.slicer)));
+      .map(item => item = item.id))
+      .pipe(map(response => response.orders.slice(this.slicer)));
   }
 }
+

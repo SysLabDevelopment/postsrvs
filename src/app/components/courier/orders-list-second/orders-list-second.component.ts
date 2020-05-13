@@ -50,9 +50,16 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
   }
 
   private tabFilterOrders(tab = this.selectedTab) {
-    this.orders_c = this.orders?.filter(
-      order => order.status_id == this.tabs[tab]
-    );
+    if (tab == 2) {
+      this.orders_c = this.orders?.filter(
+        order => order.status_id == 5 || order.status_id == 6
+      )
+    } else {
+      this.orders_c = this.orders?.filter(
+        order => order.status_id == this.tabs[tab]
+      )
+    }
+
     if (this.settings.rules.typeRoute !== 'standart' && tab == 1) {
       this.orders_c?.splice(1)
     }
