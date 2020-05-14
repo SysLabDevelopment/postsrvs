@@ -7,6 +7,8 @@ import { SysService } from '../../../services/sys.service';
 import { SettingsService } from '../../../services/settings.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { StateService } from '../../../services/state.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-orders-list-first',
@@ -39,8 +41,13 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
     public courier: CourierService,
     public auth: AuthService,
     private sys: SysService,
-    private settings: SettingsService
+    private settings: SettingsService,
+    public state: StateService
   ) {
+    let ord: Observable<any[]> = this.state.orders.asObservable();
+    this.orders_c = ord.pipe(
+      map(orders => orders && orders.filter(order => Number(order.status_id) == 1).slice(this.slicer))
+    );
     this.prepareOrdersList(this.courier.ordersInfo);
   }
 
@@ -93,10 +100,14 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
 
   public prepareOrdersList(orders: Array<any>) {
 
-    this.orders_c = this.sys.getOrders(orders
-      .filter(item => Number(item.status_id) == 1)
-      .map(item => item = item.id))
-      .pipe(map(response => response.orders.slice(this.slicer)));
+    this.orders_c.pipe(
+      map(orders => orders.filter(order => Number(order.status_id) == 1).slice(this.slicer))
+    );
+
+    // this.orders_c = this.sys.getOrders(orders
+    //   .filter(item => Number(item.status_id) == 1)
+    //   .map(item => item = item.id))
+    //   .pipe(map(response => response.orders.slice(this.slicer)));
   }
 }
 

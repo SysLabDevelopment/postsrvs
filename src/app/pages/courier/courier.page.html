@@ -35,7 +35,7 @@
             <app-orders-list-first
                                     [selectedTab]="selectedTab"
                                     [confirm_cond]="subBtnCond"
-                                    *ngIf="selectedTab == 1 && this.state$.manual_route && !auth.getGuessMode() && orders"
+                                    *ngIf="selectedTab == 1 && this.state$.manual_route && !auth.getGuessMode()"
                                     (ordersChange_E)="ordersListChanged($event)"
                                     (orderSelected_E)="selectOrder($event)">
             </app-orders-list-first>
