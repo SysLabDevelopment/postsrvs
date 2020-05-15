@@ -342,11 +342,13 @@ export class OrderPage implements OnInit {
   }
 
   public selectStatus(id) {
-    console.log('select_status', id);
     this.selectedStatus = id;
     if (id == 4 || id == 5) {
       this.setQuants();
       this.getSum();
+    }
+    if (id == 4) {
+      this.drawNeedle = false;
     }
   }
 
