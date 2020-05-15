@@ -156,9 +156,8 @@ export class BalancePage implements OnInit {
       this.courier.ordersInfo = data.res_more;
       this.courier.count_orders(data.res_more);
       this.courier.ordersShortData.next(data.res_more);
-      if (this.state$.orders.getValue() == null) {
-        // this.courier.getOrders();
-      }
+      this.state$.orders.next(data.res_more);
+
       this.state$.filial = data.filial;
       if (auto == '1') {
         this.map.pointsRender(data.res_more)

@@ -277,7 +277,6 @@ export class OrderPage implements OnInit {
       var quant = { amount: good.kol_vo, price: good.Price };
       this.g_quants[code] = quant;
     }
-    console.log('set_quants', this.g_quants);
   }
 
   public changeQuant(code, action) {
