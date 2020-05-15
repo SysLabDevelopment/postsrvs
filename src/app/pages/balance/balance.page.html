@@ -10,7 +10,7 @@
             <i class="fas fa-cogs" (click)="navToSettings()"></i>
     </div>
       <div class="o-body" *ngIf="info">
-        <cdk-virtual-scroll-viewport  style="height: 79%;" itemSize="auto" >
+        <cdk-virtual-scroll-viewport  style="height: 100%;" itemSize="auto" >
                 <div class="b-row">
                     <div class="b-item b-title">Имя курьера</div>
                     <div class="b-item">{{info.name}}</div>
@@ -65,24 +65,25 @@
                     </div>
 
             <ion-img [src]="'data:image/jpg;base64,'+info.qr"></ion-img>
-
-        </cdk-virtual-scroll-viewport>
-        <div class="lg-b-wrp">
-            <button *ngIf="(info != null) && !cashCheck " class="logout-btn" (click)="cashOut()">Сдать средства</button>
-            <div class="check-labl" *ngIf="cashCheck">
-                    <div class="cl-body">
-                            <div class="cl-row">
-                                <div class="cl-r__title">Средств сдано:</div>
-                                <div class="cl-r_text">{{cashCheckData.sum}}р.</div>
+            <div class="lg-b-wrp">
+                <button *ngIf="(info != null) && !cashCheck " class="logout-btn" (click)="cashOut()">Сдать средства</button>
+                <div class="check-labl" *ngIf="cashCheck">
+                        <div class="cl-body">
+                                <div class="cl-row">
+                                    <div class="cl-r__title">Средств сдано:</div>
+                                    <div class="cl-r_text">{{cashCheckData.sum}}р.</div>
+                                </div>
+                                <div class="cl-row comment">
+                                        <div class="cl-r__title">Комментарий:</div>
+                                        <div class="cl-r_text" *ngIf="cashCheckData.comment != null && cashCheckData.comment != ''">{{cashCheckData.comment}}</div>
+                                </div>
                             </div>
-                            <div class="cl-row comment">
-                                    <div class="cl-r__title">Комментарий:</div>
-                                    <div class="cl-r_text" *ngIf="cashCheckData.comment != null && cashCheckData.comment != ''">{{cashCheckData.comment}}</div>
-                            </div>
-                        </div>
+                </div>
+                <button  class="logout-btn review_btn " (click)="writeReview()">Отзыв о приложении</button>
+                <button  class="logout-btn review_btn " >График работы</button>
             </div>
-            <button  class="logout-btn review_btn " (click)="writeReview()">Отзыв о приложении</button>
-        </div>
+        </cdk-virtual-scroll-viewport>
+
       </div>
       <div class="shirm" *ngIf="loader">
         <i class="fas fa-spinner fa-spin"></i>

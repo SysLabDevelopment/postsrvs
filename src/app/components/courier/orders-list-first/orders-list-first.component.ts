@@ -104,10 +104,6 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
       map(orders => orders.filter(order => Number(order.status_id) == 1).slice(this.slicer))
     );
 
-    // this.orders_c = this.sys.getOrders(orders
-    //   .filter(item => Number(item.status_id) == 1)
-    //   .map(item => item = item.id))
-    //   .pipe(map(response => response.orders.slice(this.slicer)));
   }
 }
 
