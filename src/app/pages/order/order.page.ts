@@ -117,10 +117,6 @@ export class OrderPage implements OnInit {
   }
 
   ngOnInit() {
-    this.state$.getCoordinates(this.address).subscribe((data: any) => {
-      this.coords = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
-      console.log('sys:: Данные заказа', this.order)
-    });
     this.courier.initStatuses();
   }
 
@@ -216,7 +212,7 @@ export class OrderPage implements OnInit {
         this.podrazd = this.order.Podrazd;
         this.statuses = this.state$.statuses_data;
         this.reasons = this.state$.reasons;
-
+        this.coords = [this.order.lt, this.order.lg];
         this.setQuants();
         this.getSum();
         this.ifPaid();
@@ -247,6 +243,7 @@ export class OrderPage implements OnInit {
       this.podrazd = this.order.Podrazd;
       this.statuses = this.state$.statuses_data;
       this.reasons = this.state$.reasons;
+      this.coords = [this.order.lt, this.order.lg];
 
       this.setQuants();
       this.getSum();
@@ -339,11 +336,6 @@ export class OrderPage implements OnInit {
     if (!this.changeWindow) {
       this.changeWindow = true;
     }
-    // var url = 'orders';
-    // var data = {'action' : 'changedStatus' , 'sync_id' : '1111', 'status' : '1' , 'comment' : 'сделал, начальник'};
-    // this.courier.sendPost(url, data).subscribe((data:any) => {
-    //   console.log('change_data', data);
-    // });
   }
 
   public close_window() {
@@ -649,11 +641,7 @@ export class OrderPage implements OnInit {
     }
   }
   intentStart() {
-    this.state$.getCoordinates(this.address).subscribe((data: any) => {
-      this.coords = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
-      console.log('sys:: Координаты заказа', this.coords);
-      this.state$.intentStart(this.coords);
-    })
+    this.state$.intentStart(this.coords);
   }
 
   onMap() {
