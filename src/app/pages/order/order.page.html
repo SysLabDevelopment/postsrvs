@@ -20,7 +20,11 @@
             </div>
         </div>
         <div class="adress-row o-row">
-          <div class="ar-title o-t">Адрес:</div>
+          <div class="ar-title o-t">Адрес отправителя:</div>
+          <div class="ar-adress">{{order.company_address}}</div>
+        </div>
+        <div class="adress-row o-row">
+          <div class="ar-title o-t">Адрес получателя:</div>
           <div class="ar-adress">{{address}}</div>
         </div>
         <div class="o-row poruch-row podrazd" *ngIf="order.company">
