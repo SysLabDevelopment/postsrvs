@@ -18,6 +18,8 @@ import {
 
 import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
 import { MapService } from '../../services/map.service';
+import { SettingsService } from '../../services/settings.service';
+import { SysService } from '../../services/sys.service';
 
 @Component({
   selector: 'app-balance',
@@ -89,6 +91,13 @@ export class BalancePage implements OnInit {
   public failsOrderNotFull: boolean = false;
   public failOrdersCount: Number = 0;
   public fo_comment: String = ""; //комментарий к частичной сдаче заказов
+  public schedule = Boolean(this.settings.rules.schedule);
+  public isShowSchedule: boolean = false;
+  public isGoToWork: boolean = false;
+  public isStopWork: boolean = false;
+  public workDates: Array<any> = [];
+  public nonWorkDates: Array<any> = [];
+  public notWorkRules = {};
 
   constructor(private courier: CourierService,
     private auth: AuthService,
@@ -98,7 +107,9 @@ export class BalancePage implements OnInit {
     private camera: Camera,
     private AP: AndroidPermissions,
     private fs: AndroidFullScreen,
-    private map: MapService
+    private map: MapService,
+    public settings: SettingsService,
+    public sys: SysService
   ) {
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     if (this.info == null) {
@@ -121,7 +132,10 @@ export class BalancePage implements OnInit {
     this.setFs();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.schedule = Boolean(this.settings.rules.schedule);
+
+  }
 
   ngOnDestroy() {
     this.local_stop$.next();
@@ -370,5 +384,53 @@ export class BalancePage implements OnInit {
   }
   public check_to_work() {
 
+  }
+
+  public showSchedule() {
+    this.isShowSchedule = true;
+  }
+  public goToWork() {
+    this.sys.goToWork(this.workDates).subscribe((data: { success: boolean }) => {
+      console.log('sys:: gotoWork resp', data);
+      if (data.success) {
+        this.sys.presentToast('Рабочие часы записаны', 'success');
+        this.isGoToWork = false;
+      }
+
+    });
+  }
+
+  public showWorkScheduler() {
+    this.isGoToWork = true;
+  }
+  public stopWork() {
+    this.sys.stopWork(this.nonWorkDates).subscribe((data: { success: boolean }) => {
+      console.log('sys:: stopWork resp', data);
+      if (data.success) {
+        this.sys.presentToast('Нерабочие дни записаны', 'success');
+        this.isStopWork = false;
+      }
+
+    });
+  }
+
+  public addWorkDate(workDate) {
+    workDate = workDate.el.value.replace('T', ' ').substr('', 19);
+    this.workDates.push(workDate);
+  }
+
+  public showStopWorkScheduler() {
+    this.isStopWork = true;
+    this.sys.getNotWorkRules().subscribe((data) => {
+      this.notWorkRules = data;
+    })
+  }
+
+  public addNonWorkDate(date) {
+    let dateObj = {
+      date: date.value.substr('', 10),
+      reason: 0
+    }
+    this.nonWorkDates.push(dateObj)
   }
 }

@@ -48,4 +48,55 @@ export class SysService {
     toast.present();
   }
 
+  public goToWork(dates: Array<any>) {
+    const url = this.proxy + "https://mobile.postsrvs.ru/sheduleData.php";
+    let data = {
+      "type": "goToWork",
+      "dates": dates,
+      "courieriId": localStorage.user,
+      "uuid": this.device.uuid
+    }
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+      })
+    }
+    return this.http.post(url, data, httpOptions)
+  }
+
+  public getNotWorkRules() {
+    const url = this.proxy + "https://mobile.postsrvs.ru/sheduleData.php";
+    let data = {
+      "type": "rules",
+      "courieriId": localStorage.user,
+      "uuid": this.device.uuid
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+      })
+    }
+    return this.http.post(url, data, httpOptions)
+
+  }
+
+  //Отправка данных о нерабочих днях и причинах
+  public stopWork(dates) {
+    const url = this.proxy + "https://mobile.postsrvs.ru/sheduleData.php";
+    let data = {
+      "type": "stopWork",
+      "dates": dates,
+      "courieriId": localStorage.user,
+      "uuid": this.device.uuid
+    }
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+      })
+    }
+    return this.http.post(url, data, httpOptions)
+
+  }
 }

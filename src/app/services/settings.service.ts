@@ -21,14 +21,16 @@ export class SettingsService {
     autoStartRoute: string
     typeRoute: string
     storeCheckMode: any,
-    gess: number
+    gess: number,
+    schedule: number
   } = {
       appMode: "",
       scanMode: "",
       autoStartRoute: "",
       typeRoute: "",
       storeCheckMode: "",
-      gess: undefined
+      gess: undefined,
+      schedule: undefined
     };
   public checkout: boolean;
 
