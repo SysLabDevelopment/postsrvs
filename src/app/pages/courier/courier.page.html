@@ -8,12 +8,14 @@
         <span *ngIf="auth.getGuessMode()" class='guess-button'>
             <i>G</i>
         </span>
+        <div class='headbar-right-buttons'>
         <span class="submit-order-btn" *ngIf="subBtnCond" (click)="submitOrder()">
             <ion-icon name="logo-dropbox"></ion-icon>
         </span>
         <span class="submit-order-btn" *ngIf="courier.sortOrders.g_process == 0 && !isWorkEnded" (click)="endWork()">
             <ion-icon name="shield-checkmark"></ion-icon>
         </span>
+        </div>
     <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}" >
         <div class="c-title">
             <span class="ct">Мои заказы</span>

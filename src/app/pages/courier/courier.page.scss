@@ -502,9 +502,6 @@ ion-item {
 }
 
 .submit-order-btn {
-  position: fixed;
-  right: 0;
-  top: 0;
   height: 60px;
   width: 60px;
   color: #fff;
@@ -596,4 +593,12 @@ ion-item {
 
 ion-chip {
   white-space: nowrap;
+}
+
+.headbar-right-buttons {
+  position: fixed;
+  right: 0;
+  z-index: 999999;
+  top: 0;
+  display: flex;
 }
