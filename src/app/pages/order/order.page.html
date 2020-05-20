@@ -5,7 +5,7 @@
     </div>
       <div class="o-title">
         <span class="order-n"><span class="shopTake" *ngIf="order.SMACode">Забор &nbsp; </span> {{clientId}}</span>
-        <span class="menu-icon" (click) = "navBack()"><i class="fas fa-angle-left"></i></span>
+        <span class="menu-icon" (click) = "navBack()"><ion-icon name="arrow-back-circle-outline"></ion-icon></span>
       </div>
       <div class="o-body" *ngIf="pageInit">
         <div class="status-row o-row" [ngClass]="{ st_process : status_id == 1,
@@ -14,9 +14,6 @@
             ">
             <div class="sr-title o-t">Статус:</div>
             <div class="sr-status" >{{getStatus()}}
-              <!-- <button class="change_status" (click)="changeStatus()">
-                  <i class="far fa-edit"></i>
-              </button>  -->
             </div>
         </div>
         <div class="adress-row o-row">
@@ -47,7 +44,10 @@
             </div>
             <div class="cr-row ">
                 <div class="cr-phone-title">Телефон</div>
-                <div class="cr-phone" (click)="phoneClick('init')">Позвонить клиенту<i class="fas fa-phone"></i></div>
+                <div class="cr-phone" (click)="phoneClick('init')">
+                  Позвонить клиенту
+                  <ion-icon name="call"></ion-icon>
+                </div>
             </div>
           </div>
          <div class="time-row o-row">
@@ -137,9 +137,13 @@
                             <div class="gr-item" [ngClass]="{'st_fail': (g_quants[good.Code]['amount'] == 0)}">
                                 <div class="gr-col gr-name">{{good.Name}}</div>
                                 <div class="gr-col gr-quant">
-                                  <div class="m-btn" (click)="changeQuant(good.Code,'minus')"><i class="fas fa-minus"></i></div>
+                                  <div class="m-btn" (click)="changeQuant(good.Code,'minus')">
+                                    <ion-icon name="remove-circle-outline"></ion-icon>
+                                  </div>
                                   {{g_quants[good.Code]['amount']}}
-                                  <div class="p-btn" (click)="changeQuant(good.Code,'plus')"><i class="fas fa-plus"></i></div>
+                                  <div class="p-btn" (click)="changeQuant(good.Code,'plus')">
+                                    <ion-icon name="add-circle-outline"></ion-icon>
+                                  </div>
                                 </div>
                                 <div class="gr-col gr-price">{{good.Price}}р.</div>
                               </div>
@@ -202,7 +206,7 @@
         </div>
         <div class="code-loader" *ngIf="hide_status && !barcode_flag" >
             <div class="sh-icons">
-              <i class="fas fa-spinner fa-spin"></i>
+              <ion-spinner name="circles"></ion-spinner>
             </div>
             <div class="await-check">
               <h2>Заказ завершен,</h2>
@@ -231,7 +235,7 @@
     </div>
     <div class="call-window" *ngIf="callWindow">
       <div class="cw-body">
-        <i (click)="phoneClick('init')" class="far fa-times-circle"></i>
+        <ion-icon name="close-outline" (click)="phoneClick('init')"></ion-icon>
           <button class="cw_phone" (click)="phoneClick('phone')">Позвонить со своего телефона</button>
           <button class="cw_operator" (click)="phoneClick('operator')">Позвонить через оператора</button>
       </div>

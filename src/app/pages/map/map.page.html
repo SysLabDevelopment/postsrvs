@@ -7,21 +7,11 @@
       </button>
       Маршрут
       <span class="subtitle" >Показаны первые 10 заказов</span>
-    </div>  
+    </div>
     <div class="c-body">
       <div id="map" style="height:100%;width:100%"></div>
     </div>
     <button [disabled]="dislink" class="toNav" (click)="intentStart()" >Открыть в навигаторе</button>
-   
-  </div>
 
-  <div id="shirm" *ngIf='loader'>
-    <div class="sh-wrp">
-      <div class="sh-title"></div>
-      <div class="sh-icons">
-        <i class="fas fa-spinner fa-spin"></i>
-        <i class="fas fa-city"></i>
-      </div>
-    </div>   
   </div>
 </ion-content>

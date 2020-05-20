@@ -7,7 +7,8 @@
             <ion-text color="dark" class='filial' *ngIf="info">
                 {{info.filial}}
             </ion-text>
-            <i class="fas fa-cogs" (click)="navToSettings()"></i>
+            <ion-icon name="cog-sharp" (click)="navToSettings()" class='cogs'></ion-icon>
+
     </div>
       <div class="o-body" *ngIf="info">
         <cdk-virtual-scroll-viewport  style="height: 100%;" itemSize="auto" >
@@ -139,11 +140,13 @@
 
       </div>
       <div class="shirm" *ngIf="loader">
-        <i class="fas fa-spinner fa-spin"></i>
+        <ion-spinner name="lines-small"></ion-spinner>
     </div>
     <div class="confirm-shirm"   *ngIf="info != null && !cashCheck && confirmWindow" >
         <div class="confirm" *ngIf="!openBtn && !failsOrder  " >
-            <div class="close-btn" (click) ="cashOut()"><i class="far fa-times-circle"></i></div>
+            <div class="close-btn" (click) ="cashOut()">
+                <ion-icon name="close-circle-sharp"></ion-icon>
+            </div>
             <div class="cf-qwe">Вы сдаете <span class="cf-num">{{info.sumNal}}</span> р. Верно? </div>
             <div class="cf-comment">
                 <div class="cf-comment-title">Комментарий</div>
@@ -156,7 +159,9 @@
             </div>
         </div>
         <div class="confirm of-confirm" *ngIf="failsOrder && !openBtn" >
-            <div class="close-btn" (click) ="cashOut()"><i class="far fa-times-circle"></i></div>
+            <div class="close-btn" (click) ="cashOut()">
+                <ion-icon name="close-circle-sharp"></ion-icon>
+            </div>
             <div class="cf-qwe of-qwe" *ngIf="!failsOrderNotFull" ><span>Вы сдаете на склад</span> <span class="cf-num">{{info.ordersFail}}</span> <span>заказов, верно?</span></div>
             <div class="cf-comment of-comment" *ngIf="failsOrderNotFull">
                 <div class="cf-comment-title of-title">Укажите, сколько заказов вы сдаете</div>

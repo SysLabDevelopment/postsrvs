@@ -3,13 +3,13 @@
         <span class="manual_lable" [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}" *ngIf="state$.manual_route && selectedTab == 1">Для сортировки зажмите заказ и перетащите</span>
 
         <span class="find-order-btn" (click)="findOrder()">
-            <i class="fas fa-search"></i>
+            <ion-icon name="search-sharp"></ion-icon>
         </span>
         <span *ngIf="auth.getGuessMode()" class='guess-button'>
             <i>G</i>
         </span>
         <span class="submit-order-btn" *ngIf="subBtnCond" (click)="submitOrder()">
-            <i class="fas fa-box-open"></i>
+            <ion-icon name="logo-dropbox"></ion-icon>
         </span>
         <span class="submit-order-btn" *ngIf="courier.sortOrders.g_process == 0 && !isWorkEnded" (click)="endWork()">
             <ion-icon name="shield-checkmark"></ion-icon>
@@ -106,6 +106,6 @@
     </div>
 
 <div class="shirm" *ngIf="loader">
-    <i class="fas fa-spinner fa-spin"></i>
+    <ion-spinner name="lines-small"></ion-spinner>
 </div>
 </ion-content>
