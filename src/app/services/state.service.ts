@@ -172,6 +172,7 @@ export class StateService {
 
     //courier
     this.orders.next(null);
+    this.orders_data = null;
     this.statuses.next(null);
     this.way.next(null);
     this.reasons = null;

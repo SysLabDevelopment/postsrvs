@@ -217,23 +217,17 @@ export class CourierPage implements OnInit {
 
 
   public initContent() {
-    this.loader = true;
     var self = this;
-    this.orders = this.state$.orders_data;
-    let ordersInfo = this.courier.ordersInfo;
-    console.log('sys::initСontent orders', this.orders);
-    this.statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
-    console.log('sys::initСontent statuses', JSON.stringify(this.statuses));
-    if (ordersInfo == null) {
-      this.loader = true;
-      setTimeout(function () {
-        self.initContent();
-      }, 500);
-      return false;
-    }
-    this.loader = false;
-    this.ordersInit = true;
-    self.count_orders();
+    this.state$.orders.subscribe(() => {
+
+
+      this.orders = this.state$.orders_data;
+      console.log('sys::initСontent orders', this.orders);
+      this.statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
+
+      this.ordersInit = true;
+      self.count_orders();
+    })
   }
 
 

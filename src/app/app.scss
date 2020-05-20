@@ -47,10 +47,10 @@
 
 .shirm {
   position: fixed;
-  top: 60px;
-  left: 0px;
-  right: 0px;
-  bottom: 40px;
+  top: 40vh;
+  left: 40vw;
+  right: 40vw;
+  bottom: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,7 +60,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background: RGBA(0, 0, 0, 0.1);
+  background: RGBA(0, 0, 0, 0.0);
   z-index: 99999999;
 }
 

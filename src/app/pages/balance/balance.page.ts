@@ -199,10 +199,10 @@ export class BalancePage implements OnInit {
 
   public logout() {
     localStorage.clear();
-    var url = 'orders';
-    var data = { 'action': 'logout' }
+    const url = 'orders';
+    const data = { 'action': 'logout' }
 
-    var self = this;
+    let self = this;
     this.auth.sendPost(url, data).subscribe((data: any) => {
       if (data.success == 'true') {
         self.auth.logout();

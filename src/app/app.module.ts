@@ -27,11 +27,13 @@ import { CashoutFailOComponent } from './components/balance/cashout-fail-o/casho
 import { CashoutWComponent } from './components/balance/cashout-w/cashout-w.component';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { HttpErrorInterceptor } from './interceptors/http.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
   entryComponents: [],
-  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, NgxMaskModule.forRoot(), ScrollingModule],
+  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, NgxMaskModule.forRoot(), ScrollingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     BarcodeScanner,
