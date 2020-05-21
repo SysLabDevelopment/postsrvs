@@ -1,55 +1,69 @@
 <div class="order-list">
-  <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)"  itemSize="50" style="height:100%; width: 100%; min-height: 100vw;" >
-    <div *ngFor="let order of orders_c | async "
+  <cdk-virtual-scroll-viewport
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    itemSize="50"
+    style="height: 100%; width: 100%; min-height: 100vw;"
+  >
+    <div
+      *ngFor="let order of orders_c | async"
       class="ol-item"
-      [ngClass]="{  'non-confirmed' : order.confirm == '0' && confirm_cond,
-                    'overdue'       : order.overdue == '1'|| order.required == true}"
-      (click) = "selectOrder(order.id)" cdkDrag [cdkDragStartDelay]="500"
+      [ngClass]="{
+        'non-confirmed': order.confirm == '0' && confirm_cond,
+        overdue: order.overdue == '1' || order.required == true
+      }"
+      (click)="selectOrder(order.id)"
+      cdkDrag
+      [cdkDragStartDelay]="500"
     >
-          <div class="ol-col oc-left">
-            <div class="oc-left-row c_number">
-              {{order.client_id}}
-              <span class="order-company" *ngIf="order.company">
-                ({{order.company}})
-              </span>
-            </div>
-            <div class="oc-left-row c_address">{{order.client_address}}</div>
-          </div>
-          <div class="ol-col oc-right">
-              <div *ngIf="order.status_id == 1" class="c-status"
-               [ngClass]="{   'status_done' : order.client_status_id == 1,
-                              'status_wait' : order.client_status_id == 2,
-                              'status_fail' : order.client_status_id == 3,
-                              'status_none' : order.client_status_id == 8,
-                              'cl-status-voice' : order.client_status_id == 4 }"
-              >
-                {{order.client_status}}
-              </div>
-              <div class="done-time" *ngIf="order.status_id != 1">
-                  <div class="done-title">Время</div>
-                  <div class="done-body">{{order.date}}</div>
-              </div>
-          </div>
-      </div>
-
-      <div *ngIf="!orders_c" >
-        <div>
-          <div class="oc-left-row c_number">
-            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-            <span class="order-company">
-               <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-            </span>
-          </div>
-          <div class="oc-left-row c_address">
-            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-          </div>
+      <div class="ol-col oc-left">
+        <div class="oc-left-row c_number">
+          {{ order.client_id }}
+          <span class="order-company" *ngIf="order.company"> ({{ order.company }}) </span>
         </div>
-        <div class="ol-col oc-right">
-          <div class="c-status status_none">
-            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-          </div>
+        <div class="oc-left-row c_address">
+          {{ order.client_address }}
+        </div>
+        <div>{{ order.client_fio }}</div>
+      </div>
+      <div class="ol-col oc-right">
+        <div
+          *ngIf="order.status_id == 1"
+          class="c-status"
+          [ngClass]="{
+            status_done: order.client_status_id == 1,
+            status_wait: order.client_status_id == 2,
+            status_fail: order.client_status_id == 3,
+            status_none: order.client_status_id == 8,
+            'cl-status-voice': order.client_status_id == 4
+          }"
+        >
+          {{ order.client_status }}
+        </div>
+        <div class="done-time" *ngIf="order.status_id != 1">
+          <div class="done-title">Время</div>
+          <div class="done-body">{{ order.date }}</div>
         </div>
       </div>
+    </div>
 
+    <div *ngIf="!orders_c">
+      <div>
+        <div class="oc-left-row c_number">
+          <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+          <span class="order-company">
+            <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+          </span>
+        </div>
+        <div class="oc-left-row c_address">
+          <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+        </div>
+      </div>
+      <div class="ol-col oc-right">
+        <div class="c-status status_none">
+          <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+        </div>
+      </div>
+    </div>
   </cdk-virtual-scroll-viewport>
-  </div>
+</div>
