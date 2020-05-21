@@ -25,6 +25,7 @@ export class AuthService {
   public routingModeAuto: boolean;
   public version: string = undefined; // версия приложения
   public isDebug: boolean = false; //Нужна в случае хардкодной отладки нативных функций
+  public userId: string;
 
   constructor(
     private bScan: BarcodeScanner,
@@ -130,6 +131,7 @@ export class AuthService {
   public setUser(id) {
     localStorage.setItem('user', id);
     this.user = true;
+    this.userId = id;
   }
 
   public getUserId() {

@@ -118,11 +118,11 @@ export class BalancePage implements OnInit {
       this.loader = true;
     }
     this.state$.map_state.next('init');
-    var self = this;
+    let self = this;
     self.updateInfo();
     self.initCashout();
     if (!this.state$.balance_check) {
-      this.state$.interval_2s.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+      this.state$.interval_30.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
         self.updateInfo();
         self.initCashout();
       });
@@ -134,7 +134,16 @@ export class BalancePage implements OnInit {
 
   ngOnInit() {
     this.schedule = Boolean(this.settings.rules.schedule);
-
+    this.courier.getBalance(this.auth.userId, 1).subscribe((data: any) => {
+      this.courier.ordersInfo = data.res_more;
+      this.courier.count_orders(data.res_more);
+      this.courier.ordersShortData.next(data.res_more);
+      this.state$.orders.next(data.res_more);
+      let auto = this.settings.rules.typeRoute;
+      if (auto !== 'standart') {
+        this.map.pointsRender(data.res_more)
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -165,17 +174,8 @@ export class BalancePage implements OnInit {
       self.info = data;
       self.pageInit = true;
       self.loader = false;
-      let auto = localStorage.getItem('auto');
-
-      this.courier.ordersInfo = data.res_more;
-      this.courier.count_orders(data.res_more);
-      this.courier.ordersShortData.next(data.res_more);
-      this.state$.orders.next(data.res_more);
-
       this.state$.filial = data.filial;
-      if (auto == '1') {
-        this.map.pointsRender(data.res_more)
-      }
+
     });
   }
 

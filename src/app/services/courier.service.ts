@@ -22,6 +22,7 @@ export class CourierService {
   public ordersShortData: Subject<any> = new Subject();
   public checkedOnWork: boolean = false;
   public sortOrders;
+
   constructor(private http: HttpClient,
     private router: Router,
     private plt: Platform,
@@ -295,9 +296,13 @@ export class CourierService {
     return this.auth.sendPost(url, data);
   }
 
-  public getBalance(sync_id) {
+  //Запрос основных данных курьера
+  //@sync_id - ид курьера
+  //@more - флаг необходимости доп данных (краткая инфа о заказах для листинга)
+  //@CL - код филлиала
+  public getBalance(sync_id, more = 0) {
     let CL = this.settings.get('cl');
-    let url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=1' + '&CL=' + CL;
+    let url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=' + CL;
 
     return this.http.get(url);
   }
