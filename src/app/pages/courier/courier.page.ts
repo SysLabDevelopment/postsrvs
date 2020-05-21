@@ -97,7 +97,9 @@ export class CourierPage implements OnInit {
     } else {
       this.auth.checkState = 'checked' + localStorage.check
     }
-
+    if (this.settings.rules.appMode == 'fullHand') {
+      this.state$.manual_route = true
+    }
   }
 
   public scanInputStart() {
