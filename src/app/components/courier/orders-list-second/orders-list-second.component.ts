@@ -30,6 +30,7 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
     2: 5 || 6,
     3: 4
   };
+  public searchString: string = '';
 
   constructor(
     public courier: CourierService,
@@ -69,6 +70,16 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
       this.orders_c?.splice(1)
     }
 
+    this.orders_c = this.orders_c?.filter(
+      order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase())
+    )
+
   }
+
+  public onSearchChange(event) {
+    let substring = event.target.value;
+    this.tabFilterOrders();
+  }
+
 
 }

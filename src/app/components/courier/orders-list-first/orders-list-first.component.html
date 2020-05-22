@@ -66,4 +66,12 @@
       </div>
     </div>
   </cdk-virtual-scroll-viewport>
+  <ion-searchbar
+    placeholder="Фильтр"
+    inputmode="text"
+    (ionChange)="onSearchChange($event)"
+    [debounce]="250"
+    [(ngModel)]="searchString"
+    animated
+  ></ion-searchbar>
 </div>

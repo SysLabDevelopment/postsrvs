@@ -36,7 +36,8 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   public slicer: number = this.howSlice();
   private ordersIds;
   public isSkeleton: boolean = true;
-
+  public searchString: string = '';
+  private ord: Observable<any[]>;
   constructor(
     public courier: CourierService,
     public auth: AuthService,
@@ -44,11 +45,8 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
     private settings: SettingsService,
     public state: StateService
   ) {
-    let ord: Observable<any[]> = this.state.orders.asObservable();
-    this.orders_c = ord.pipe(
-      map(orders => orders && orders.filter(order => Number(order.status_id) == 1).slice(this.slicer))
-    );
-    this.prepareOrdersList(this.courier.ordersInfo);
+    this.ord = this.state.orders.asObservable();
+    this.prepareOrdersList();
   }
 
   ngOnChanges() {
@@ -91,19 +89,25 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
     moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
     this.ordersChange_E.emit(this.orders);
     console.log('sys:: массив заказов после перетаскивания: ', this.orders);
-    this.prepareOrdersList(this.orders);
+    // this.prepareOrdersList(this.orders);
   }
 
   public howSlice(): number {
     return (this.settings.rules.typeRoute == 'standart' ? 0 : 1)
   }
 
-  public prepareOrdersList(orders: Array<any>) {
+  public prepareOrdersList() {
 
-    this.orders_c.pipe(
-      map(orders => orders.filter(order => Number(order.status_id) == 1).slice(this.slicer))
+    this.orders_c = this.ord.pipe(
+      map(orders => orders && orders.filter(order => Number(order.status_id) == 1).filter(
+        order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase())
+      ).slice(this.slicer))
     );
-
   }
+
+  public onSearchChange(event) {
+    this.prepareOrdersList()
+  }
+
 }
 

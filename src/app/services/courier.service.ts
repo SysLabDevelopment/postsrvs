@@ -363,8 +363,8 @@ export class CourierService {
    */
   public findOrder(code) {
     let self = this;
-    var url = 'orders';
-    var data = {
+    const url = 'orders';
+    let data = {
       'action': 'findOrder',
       'code': code
     }

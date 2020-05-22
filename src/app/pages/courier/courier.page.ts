@@ -97,7 +97,7 @@ export class CourierPage implements OnInit {
     } else {
       this.auth.checkState = 'checked' + localStorage.check
     }
-    if (this.settings.rules.appMode == 'fullHand') {
+    if (this.settings.rules.appMode == 'hand') {
       this.state$.manual_route = true
     }
   }
@@ -373,7 +373,7 @@ export class CourierPage implements OnInit {
   }
 
   public findOrder() {
-    var self = this;
+    let self = this;
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
       this.find_order = true;
