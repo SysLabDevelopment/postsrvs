@@ -128,9 +128,7 @@ export class OrderPage implements OnInit {
   }
 
   public sendPost(url, data) {
-    console.log('SEND_POST_CALL');
 
-    console.log('REQUEST_DATA', data);
     data = JSON.stringify(data);
 
     return this.http.post(url, data);
@@ -146,21 +144,25 @@ export class OrderPage implements OnInit {
   }
 
   public parsePhone(phone) {
-    const regex = /(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/g;
-    const str = String(phone);
-    let result = regex.exec(str);
-    let tel = result[0];
-    if (tel != null) {
-      if (tel[0] == '+') {
-        tel = '8' + tel.slice(2);
-      }
-      return tel;
+    // const regex = /(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/g;
+    // const str = String(phone);
+    // let result = regex.exec(str);
+    // let tel = result[0];
+    // if (tel != null) {
+    //   if (tel[0] == '+') {
+    //     tel = '8' + tel.slice(2);
+    //   }
+    //   return tel;
+    // }
+    // return false;
+    phone = phone.replace(/\D+/g, '');
+    if (phone.length == 7 || phone.length == 10) {
+      phone = '8' + phone;
     }
-    return false;
+    return phone;
   }
 
   public phoneClick(action) {
-    console.log('phoneClick', action);
     let orderPhone = this.parsePhone(this.phone);
     let courierPhone = this.parsePhone(this.order.courier_phone);
 
@@ -169,7 +171,7 @@ export class OrderPage implements OnInit {
         this.callWindow = !this.callWindow;
         break;
       case 'phone':
-        this.CL.callNumber(String(orderPhone), true).then(() => { });
+        this.CL.callNumber(String(orderPhone), false).then(() => { });
         this.callWindow = false;
         break;
       case 'operator':
