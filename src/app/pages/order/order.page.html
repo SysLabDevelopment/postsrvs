@@ -156,7 +156,7 @@
           <details *ngIf="selectedStatus">
             <summary>Дополнительно</summary>
 
-            <div class="sc-comment-block" *ngIf="selectedStatus == 5">
+            <div class="sc-comment-block" *ngIf="selectedStatus == 5 || selectedStatus == 4">
               <div class="sc-r-title">Комментарий:</div>
               <textarea [(ngModel)]="commentText" cols="30" rows="3" class="sc-comment"></textarea>
             </div>
