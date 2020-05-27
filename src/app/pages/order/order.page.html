@@ -1,244 +1,283 @@
 <ion-content>
-  <div class="o-wrp" *ngIf="order" >
+  <div class="o-wrp" *ngIf="order">
     <div class="o-balance">
-        <!-- {{balance}} -->
+      <!-- {{balance}} -->
     </div>
-      <div class="o-title">
-        <span class="order-n"><span class="shopTake" *ngIf="order.SMACode">Забор &nbsp; </span> {{clientId}}</span>
-        <span class="menu-icon" (click) = "navBack()"><ion-icon name="arrow-back-circle-outline"></ion-icon></span>
-      </div>
-      <div class="o-body" *ngIf="pageInit">
-        <div class="status-row o-row" [ngClass]="{ st_process : status_id == 1,
+    <div class="o-title">
+      <span class="order-n"><span class="shopTake" *ngIf="order.SMACode">Забор &nbsp; </span> {{clientId}}</span>
+      <span class="menu-icon" (click)="navBack()"><ion-icon name="arrow-back-circle-outline"></ion-icon></span>
+    </div>
+    <div class="o-body" *ngIf="pageInit">
+      <div
+        class="status-row o-row"
+        [ngClass]="{ st_process : status_id == 1,
           st_done : status_id == 5 || status_id == 6 ,
           st_fail : status_id == 4}
-            ">
-            <div class="sr-title o-t">Статус:</div>
-            <div class="sr-status" >{{getStatus()}}
-            </div>
+            "
+      >
+        <div class="sr-title o-t">Статус:</div>
+        <div class="sr-status">{{getStatus()}}</div>
+      </div>
+      <div class="adress-row o-row">
+        <div class="ar-title o-t">Адрес отправителя:</div>
+        <div class="ar-adress">{{order.company_address}}</div>
+      </div>
+      <div class="adress-row o-row">
+        <div class="ar-title o-t">Адрес получателя:</div>
+        <div class="ar-adress">{{address}}</div>
+      </div>
+      <div class="o-row poruch-row podrazd" *ngIf="order.company">
+        <span class="vp-title o-t">Компания</span>
+        <span class="pp office-body">{{order.company}}</span>
+      </div>
+      <div class="o-row poruch-row podrazd" *ngIf="podrazd">
+        <span class="vp-title o-t">Отдел</span>
+        <span class="pp office-body">{{podrazd}}</span>
+      </div>
+      <div class="sum-row o-row">
+        <div class="sum-title o-t">Сумма с клиента:</div>
+        <div class="sum-body">{{order.rur}}р.</div>
+      </div>
+      <div class="contacts-row o-row">
+        <div class="cr-title o-t">Контакты клиента:</div>
+        <div class="cr-row">
+          <div class="cr-name-title">Имя</div>
+          <div class="cr-name">{{name}}</div>
         </div>
-        <div class="adress-row o-row">
-          <div class="ar-title o-t">Адрес отправителя:</div>
-          <div class="ar-adress">{{order.company_address}}</div>
-        </div>
-        <div class="adress-row o-row">
-          <div class="ar-title o-t">Адрес получателя:</div>
-          <div class="ar-adress">{{address}}</div>
-        </div>
-        <div class="o-row poruch-row podrazd" *ngIf="order.company">
-          <span class="vp-title o-t">Компания</span>
-          <span class="pp office-body">{{order.company}}</span>
-        </div>
-        <div class="o-row poruch-row podrazd" *ngIf="podrazd">
-            <span class="vp-title o-t">Отдел</span>
-            <span class="pp office-body">{{podrazd}}</span>
-        </div>
-        <div class="sum-row o-row">
-          <div class="sum-title o-t">Сумма с клиента:</div>
-          <div class="sum-body">{{order.rur}}р.</div>
-        </div>
-        <div class="contacts-row o-row">
-            <div class="cr-title o-t">Контакты клиента:</div>
-            <div class="cr-row">
-              <div class="cr-name-title">Имя</div>
-              <div class="cr-name">{{name}}</div>
-            </div>
-            <div class="cr-row ">
-                <div class="cr-phone-title">Телефон</div>
-                <div class="cr-phone" (click)="phoneClick('init')">
-                  Позвонить клиенту
-                  <ion-icon name="call"></ion-icon>
-                </div>
-            </div>
+        <div class="cr-row">
+          <div class="cr-phone-title">Телефон</div>
+          <div class="cr-phone" (click)="phoneClick('init')">
+            Позвонить клиенту
+            <ion-icon name="call"></ion-icon>
           </div>
-         <div class="time-row o-row">
-            <div class="tr-title o-t">Время доставки:</div>
-            <div class="tr-row">
-              <div class="tr-from-title">После</div>
-              <div class="cr-from">{{timeFrom}}</div>
-            </div>
-            <div class="tr-row">
-                <div class="tr-to-title">До</div>
-                <div class="tr-to">{{timeTo}}</div>
-            </div>
-         </div>
-         <div class="o-row amount-row">
-            <span class="a-title o-t">Количество / Вес</span>
-             <p class="ap sum-body">{{amount}}шт. / {{mass}}кг.</p>
-          </div>
-         <div class="o-row vlog-row">
-           <span class="vp-title o-t">Комментарий к вложению</span>
-            <p class="vp message-body">{{vlog}}</p>
-         </div>
-         <div class="o-row poruch-row">
-              <span class="vp-title o-t">Комментарий к заказу</span>
-              <p class="pp message-body">{{poruch}}</p>
-         </div>
-         <div class="state-row o-row">
-            <div class="state-title o-t"><img src="../../../assets/bender.png" class="robot-icon"> <span class="st-status-text">Робот прозвон:</span>
-            </div>
-            <div class="st_state" [ngClass]="{  'status_done' : client_status_id == 1,
+        </div>
+      </div>
+      <div class="time-row o-row">
+        <div class="tr-title o-t">Время доставки:</div>
+        <div class="tr-row">
+          <div class="tr-from-title">После</div>
+          <div class="cr-from">{{timeFrom}}</div>
+        </div>
+        <div class="tr-row">
+          <div class="tr-to-title">До</div>
+          <div class="tr-to">{{timeTo}}</div>
+        </div>
+      </div>
+      <div class="o-row amount-row">
+        <span class="a-title o-t">Количество / Вес</span>
+        <p class="ap sum-body">{{amount}}шт. / {{mass}}кг.</p>
+      </div>
+      <div class="o-row vlog-row">
+        <span class="vp-title o-t">Комментарий к вложению</span>
+        <p class="vp message-body">{{vlog}}</p>
+      </div>
+      <div class="o-row poruch-row">
+        <span class="vp-title o-t">Комментарий к заказу</span>
+        <p class="pp message-body">{{poruch}}</p>
+      </div>
+      <div class="state-row o-row">
+        <div class="state-title o-t">
+          <img src="../../../assets/bender.png" class="robot-icon" /> <span class="st-status-text">Робот прозвон:</span>
+        </div>
+        <div
+          class="st_state"
+          [ngClass]="{  'status_done' : client_status_id == 1,
                                                 'status_wait' : client_status_id == 2,
                                                 'status_fail' : client_status_id == 3,
                                                 'status_none' : client_status_id == 8,
-                                                'cl-status-voice' : client_status_id == 4 }">{{client_status}}</div>
-            <div class="st_dt">{{client_status_dt}}</div>
-            <button class="sc-submit voice-comment" *ngIf = "client_status_id == 4" (click) ="voiceLink()">Прослушать</button>
-         </div>
-         <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
-          <div class="sc-statuses" >
-              <div class="sc-status" [ngClass] = "{'status_active' : selectedStatus == status.id}" *ngFor="let status of (statuses | partFilter:order.partial)" (click) = "selectStatus(status.id)" >{{status.status}}</div>
+                                                'cl-status-voice' : client_status_id == 4 }"
+        >
+          {{client_status}}
+        </div>
+        <div class="st_dt">{{client_status_dt}}</div>
+        <button class="sc-submit voice-comment" *ngIf="client_status_id == 4" (click)="voiceLink()">Прослушать</button>
+      </div>
+
+      <!-- Кнопки завершения заказа -->
+      <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
+        <div class="sc-statuses">
+          <div
+            class="sc-status"
+            [ngClass]="{'status_active' : selectedStatus == status.id}"
+            *ngFor="let status of (statuses | partFilter:order.partial)"
+            (click)="selectStatus(status.id)"
+          >
+            {{status.status}}
           </div>
-          <div class="sc-reasons">
-              <div class="sc-resons-block" *ngIf="selectedStatus == 4 ">
-                <div class="sc-r-title">Причина:</div>
-                    <div class="sc-reason" [ngClass] = "{'status_active' : selectedReason == reason.id}" *ngFor="let reason of reasons" (click) = "selectReason(reason.id)"> {{reason.reason}}</div>
-              </div>
+        </div>
+        <div class="sc-reasons">
+          <div class="sc-resons-block" *ngIf="selectedStatus == 4 ">
+            <div class="sc-r-title">Причина:</div>
+            <div
+              class="sc-reason"
+              [ngClass]="{'status_active' : selectedReason == reason.id}"
+              *ngFor="let reason of reasons"
+              (click)="selectReason(reason.id)"
+            >
+              {{reason.reason}}
+            </div>
+          </div>
 
-              <!-- Блок подписи -->
-              <div class="draw" *ngIf="selectedStatus == 5 || selectedStatus == 6">
-                <div class="asc-row">
-                  <div class="title">Требуется ли подпись клиента?</div>
-                  <div class="draw-btns">
-                    <button class=" drawBtn " [ngClass] = "{'draw_btn_active'   : drawNeedle}" (click)="drawBtn(true)">Да</button>
-                    <button class=" drawBtn " [ngClass] = "{'draw_btn_active'   : !drawNeedle}" (click)="drawBtn(false)">Нет</button>
+          <!-- Блок подписи -->
+          <div class="draw" *ngIf="selectedStatus == 5 || selectedStatus == 6">
+            <div class="asc-row">
+              <div class="title">Требуется ли подпись клиента?</div>
+              <div class="draw-btns">
+                <button class="drawBtn" [ngClass]="{'draw_btn_active'   : drawNeedle}" (click)="drawBtn(true)">
+                  Да
+                </button>
+                <button class="drawBtn" [ngClass]="{'draw_btn_active'   : !drawNeedle}" (click)="drawBtn(false)">
+                  Нет
+                </button>
+              </div>
+            </div>
+            <img [src]="imageToShow" alt="" *ngIf="imageToShow && drawNeedle" style="height: 200px;" />
+            <button *ngIf="drawNeedle" class="drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
+          </div>
+          <div class="sc-payment" *ngIf="selectedStatus == 5 || selectedStatus == 6">
+            <div class="sc-payment__title">Оплата</div>
+            <div class="dc-payment__wrp">
+              <div
+                class="sc-payment-item"
+                [ngClass]="{'payment_active' : selectedPayment == 1}"
+                (click)="selectPayment('1')"
+              >
+                Наличными
+              </div>
+              <div
+                class="sc-payment-item"
+                [ngClass]="{'payment_active' : selectedPayment == 2}"
+                (click)="selectPayment('2')"
+              >
+                Картой
+              </div>
+            </div>
+          </div>
+          <details *ngIf="selectedStatus">
+            <summary>Дополнительно</summary>
+
+            <div class="sc-comment-block" *ngIf="selectedStatus == 5">
+              <div class="sc-r-title">Комментарий:</div>
+              <textarea [(ngModel)]="commentText" cols="30" rows="3" class="sc-comment"></textarea>
+            </div>
+
+            <div class="sc-goods-block" *ngIf="selectedStatus == 6 ">
+              <div class="goods-row o-row">
+                <div class="gr-title o-t">Товары в заказе</div>
+
+                <div class="gr-goods-list">
+                  <div class="gr-head">
+                    <div class="gr-col">Название</div>
+                    <div class="gr-col">Кол-во</div>
+                    <div class="gr-col">Цена</div>
                   </div>
-                </div>
-                <img [src]="imageToShow"
-                      alt=""
-                      *ngIf="imageToShow && drawNeedle"
-                      style="height : 200px;">
-                <button *ngIf = "drawNeedle" class=" drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
-              </div>
-              <div class="sc-payment" *ngIf = "selectedStatus == 5 || selectedStatus == 6" >
-                  <div class="sc-payment__title">Оплата</div>
-                  <div class="dc-payment__wrp">
-                      <div class="sc-payment-item" [ngClass] = "{'payment_active' : selectedPayment == 1}"  (click) = "selectPayment('1')" >Наличными</div>
-                      <div class="sc-payment-item" [ngClass] = "{'payment_active' : selectedPayment == 2}"  (click) = "selectPayment('2')" >Картой</div>
-                  </div>
-                </div>
-              <details *ngIf="selectedStatus">
-                <summary>Дополнительно</summary>
-
-              <div class="sc-comment-block" *ngIf="selectedStatus == 5">
-                  <div class="sc-r-title">Комментарий:</div>
-                  <textarea [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>
-              </div>
-
-              <div class="sc-goods-block" *ngIf="selectedStatus == 6 ">
-                  <div class="goods-row o-row">
-                      <div class="gr-title o-t">Товары в заказе</div>
-
-                      <div class="gr-goods-list">
-                        <div class="gr-head">
-                          <div class="gr-col">Название</div>
-                          <div class="gr-col">Кол-во</div>
-                          <div class="gr-col">Цена</div>
+                  <div *ngFor="let good of goods">
+                    <div class="gr-item" [ngClass]="{'st_fail': (g_quants[good.Code]['amount'] == 0)}">
+                      <div class="gr-col gr-name">{{good.Name}}</div>
+                      <div class="gr-col gr-quant">
+                        <div class="m-btn" (click)="changeQuant(good.Code,'minus')">
+                          <ion-icon name="remove-circle-outline"></ion-icon>
                         </div>
-                        <div *ngFor="let good of goods">
-                            <div class="gr-item" [ngClass]="{'st_fail': (g_quants[good.Code]['amount'] == 0)}">
-                                <div class="gr-col gr-name">{{good.Name}}</div>
-                                <div class="gr-col gr-quant">
-                                  <div class="m-btn" (click)="changeQuant(good.Code,'minus')">
-                                    <ion-icon name="remove-circle-outline"></ion-icon>
-                                  </div>
-                                  {{g_quants[good.Code]['amount']}}
-                                  <div class="p-btn" (click)="changeQuant(good.Code,'plus')">
-                                    <ion-icon name="add-circle-outline"></ion-icon>
-                                  </div>
-                                </div>
-                                <div class="gr-col gr-price">{{good.Price}}р.</div>
-                              </div>
+                        {{g_quants[good.Code]['amount']}}
+                        <div class="p-btn" (click)="changeQuant(good.Code,'plus')">
+                          <ion-icon name="add-circle-outline"></ion-icon>
                         </div>
                       </div>
-                  </div>
-              </div>
-              <div class="goods-row o-row" *ngIf="selectedStatus == 5 ">
-                  <div class="gr-title o-t">Товары в заказе</div>
-
-                  <div class="gr-goods-list">
-                    <div class="gr-head">
-                      <div class="gr-col">Название</div>
-                      <div class="gr-col">Кол-во</div>
-                      <div class="gr-col">Цена</div>
-                    </div>
-                    <div *ngFor="let good of goods">
-                        <div class="gr-item" [ngClass]="{'st_fail': good.kol_vo == 0}" >
-                            <div class="gr-col gr-name">{{good.Name}}</div>
-                            <div class="gr-col gr-quant">
-                             {{good.kol_vo}}
-                            </div>
-                            <div class="gr-col gr-price">{{good.Price}}р.</div>
-                          </div>
+                      <div class="gr-col gr-price">{{good.Price}}р.</div>
                     </div>
                   </div>
-              </div>
-              <div class="sc-payment-block o-row" *ngIf="pay_access && (selectedStatus == 5 || selectedStatus == 6)  ">
-                <div class="pb-email" *ngIf="show_email">
-                  <div class="pb-email__title">Email клиента</div>
-                  <input type="email" class="pb-email__input" [(ngModel)] = "email_input" (input) = "emailChange()">
-                  <span class="email-error" *ngIf="email_error">Заполните поле</span>
                 </div>
-                <div class="pb-phone">
-                  <div class="pb-phone__title" *ngIf="showPhone">Телефон клиента</div>
-                    <input *ngIf="showPhone" type="tel" class="pb-phone__input" [(ngModel)] = "phone_input">
-                </div>
-                <button class="show-phone" (click) ="enterPhone()">Прочее</button>
               </div>
-              </details>
-              <div class="dt-picker" *ngIf="selectedReason == 8">
-                <ion-item>
-                  <ion-label position="floating">MM/DD/YYYY</ion-label>
-                  <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" value="2002-09-23T15:03:46.789"></ion-datetime>
-                </ion-item>
-              </div>
+            </div>
+            <div class="goods-row o-row" *ngIf="selectedStatus == 5 ">
+              <div class="gr-title o-t">Товары в заказе</div>
 
-              <div class="sc-s-wrp">
-                  <button class="sc-submit"
-                      (click) ="doneOrder()"
-                      *ngIf="selectedStatus"
-                      [ngClass] = "{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6,
+              <div class="gr-goods-list">
+                <div class="gr-head">
+                  <div class="gr-col">Название</div>
+                  <div class="gr-col">Кол-во</div>
+                  <div class="gr-col">Цена</div>
+                </div>
+                <div *ngFor="let good of goods">
+                  <div class="gr-item" [ngClass]="{'st_fail': good.kol_vo == 0}">
+                    <div class="gr-col gr-name">{{good.Name}}</div>
+                    <div class="gr-col gr-quant">
+                      {{good.kol_vo}}
+                    </div>
+                    <div class="gr-col gr-price">{{good.Price}}р.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sc-payment-block o-row" *ngIf="pay_access && (selectedStatus == 5 || selectedStatus == 6)  ">
+              <div class="pb-email" *ngIf="show_email">
+                <div class="pb-email__title">Email клиента</div>
+                <input type="email" class="pb-email__input" [(ngModel)]="email_input" (input)="emailChange()" />
+                <span class="email-error" *ngIf="email_error">Заполните поле</span>
+              </div>
+              <div class="pb-phone">
+                <div class="pb-phone__title" *ngIf="showPhone">Телефон клиента</div>
+                <input *ngIf="showPhone" type="tel" class="pb-phone__input" [(ngModel)]="phone_input" />
+              </div>
+              <button class="show-phone" (click)="enterPhone()">Прочее</button>
+            </div>
+          </details>
+          <div class="dt-picker" *ngIf="selectedReason == 8">
+            <ion-item>
+              <ion-label position="floating">MM/DD/YYYY</ion-label>
+              <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" value="2002-09-23T15:03:46.789"></ion-datetime>
+            </ion-item>
+          </div>
+
+          <div class="sc-s-wrp">
+            <button
+              class="sc-submit"
+              (click)="doneOrder()"
+              *ngIf="selectedStatus"
+              [ngClass]="{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6,
                                     'c_t_u_del'  : selectedStatus == 4}"
-                      >
-                      <span *ngIf="selectedStatus == 5 || selectedStatus == 6" class="l_btn_del">Доставлено</span>
-                      <span *ngIf="selectedStatus == 4" class="l_btn_u_del">Завершить заказ</span>
-                    </button>
-              </div>
+            >
+              <span *ngIf="selectedStatus == 5 || selectedStatus == 6" class="l_btn_del">Доставлено</span>
+              <span *ngIf="selectedStatus == 4" class="l_btn_u_del">Завершить заказ</span>
+            </button>
           </div>
         </div>
-        <div class="code-loader" *ngIf="hide_status && !barcode_flag" >
-            <div class="sh-icons">
-              <ion-spinner name="circles"></ion-spinner>
-            </div>
-            <div class="await-check">
-              <h2>Заказ завершен,</h2>
-              идет ожидание чека, Вы можете вернуться к заказу позже из списка заказов, если показывать чек не нужно прямо сейчас
-            </div>
+      </div>
+      <div class="code-loader" *ngIf="hide_status && !barcode_flag">
+        <div class="sh-icons">
+          <ion-spinner name="circles"></ion-spinner>
         </div>
-        <div class="sc-s-wrp" *ngIf = "barcode_flag">
-          <qrcode class="qr" [qrdata]="barcode" [size]="256" [level]="'M'"></qrcode>
-          <button class="sc-submit show-check" *ngIf = "barcode_flag" (click) ="showCheck()">Показать чек</button>
+        <div class="await-check">
+          <h2>Заказ завершен,</h2>
+          идет ожидание чека, Вы можете вернуться к заказу позже из списка заказов, если показывать чек не нужно прямо
+          сейчас
         </div>
-        <div class="sc-s-wrp" >
-          <button class="sc-submit show-check to-list" (click) ="navBack()">
-            К списку заказов
-          </button>
-          <ion-button (click)="intentStart()" *ngIf="coords">
-            Открыть в навигаторе
-          </ion-button>
-          <ion-button (click)="onMap()" *ngIf="coords">
-            Показать на карте
-          </ion-button>
-          <!-- <ion-button (click)="pickedUpOrder()">
+      </div>
+      <div class="sc-s-wrp" *ngIf="barcode_flag">
+        <qrcode class="qr" [qrdata]="barcode" [size]="256" [level]="'M'"></qrcode>
+        <button class="sc-submit show-check" *ngIf="barcode_flag" (click)="showCheck()">Показать чек</button>
+      </div>
+      <div class="sc-s-wrp">
+        <button class="sc-submit show-check to-list" (click)="navBack()">
+          К списку заказов
+        </button>
+        <ion-button (click)="intentStart()" *ngIf="coords">
+          Открыть в навигаторе
+        </ion-button>
+        <ion-button (click)="onMap()" *ngIf="coords">
+          Показать на карте
+        </ion-button>
+        <!-- <ion-button (click)="pickedUpOrder()">
             Забрал заказ
           </ion-button> -->
-        </div>
       </div>
     </div>
-    <div class="call-window" *ngIf="callWindow">
-      <div class="cw-body">
-        <ion-icon name="close-outline" (click)="phoneClick('init')"></ion-icon>
-          <button class="cw_phone" (click)="phoneClick('phone')">Позвонить со своего телефона</button>
-          <button class="cw_operator" (click)="phoneClick('operator')">Позвонить через оператора</button>
-      </div>
+  </div>
+  <div class="call-window" *ngIf="callWindow">
+    <div class="cw-body">
+      <ion-icon name="close-outline" (click)="phoneClick('init')"></ion-icon>
+      <button class="cw_phone" (click)="phoneClick('phone')">Позвонить со своего телефона</button>
+      <button class="cw_operator" (click)="phoneClick('operator')">Позвонить через оператора</button>
+    </div>
   </div>
 </ion-content>

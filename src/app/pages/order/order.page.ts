@@ -144,20 +144,12 @@ export class OrderPage implements OnInit {
   }
 
   public parsePhone(phone) {
-    // const regex = /(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/g;
-    // const str = String(phone);
-    // let result = regex.exec(str);
-    // let tel = result[0];
-    // if (tel != null) {
-    //   if (tel[0] == '+') {
-    //     tel = '8' + tel.slice(2);
-    //   }
-    //   return tel;
-    // }
-    // return false;
     phone = phone.replace(/\D+/g, '');
     if (phone.length == 7 || phone.length == 10) {
       phone = '8' + phone;
+    }
+    if (phone[0] !== '8') {
+      phone = '8' + phone.slice(1)
     }
     return phone;
   }
