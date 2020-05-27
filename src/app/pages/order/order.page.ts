@@ -49,7 +49,7 @@ import { SysService } from '../../services/sys.service';
 export class OrderPage implements OnInit {
   public orderId: string = null;
   public clientId: string = null;
-  public status_id: string = null;
+  public status_id: number = null;
   public status: string = null;
   public goods: any = null;
   public address: any = null;
@@ -94,6 +94,8 @@ export class OrderPage implements OnInit {
   public drawNeedle: boolean = true;
   public imageToShow = null;
   coords: Array<any>;
+  public orderPhones: Array<string> = [];
+  public selectedPhone: string;
 
   constructor(private map: MapService,
     private router: Router,
@@ -143,19 +145,35 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public parsePhone(phone) {
+  public parsePhone(phone): Array<string> {
+    let phones: Array<string> = [];
     phone = phone.replace(/\D+/g, '');
+
+
+    while (phone.length > 0) {
+      phone = this.normalizePhoneNumber(phone);
+      phones.push(phone.slice('', 11));
+      phone = phone.slice(11);
+    }
+
+    return phones;
+  }
+
+  private normalizePhoneNumber(phone): string {
+    if (phone[0] !== '8') {
+      phone = '8' + phone;
+    }
     if (phone.length == 7 || phone.length == 10) {
       phone = '8' + phone;
     }
-    if (phone[0] !== '8') {
+    if (phone[0] !== '8' && phone.length == 11) {
       phone = '8' + phone.slice(1)
     }
     return phone;
   }
 
   public phoneClick(action) {
-    let orderPhone = this.parsePhone(this.phone);
+    this.orderPhones = this.parsePhone(this.phone);
     let courierPhone = this.parsePhone(this.order.courier_phone);
 
     switch (action) {
@@ -163,15 +181,15 @@ export class OrderPage implements OnInit {
         this.callWindow = !this.callWindow;
         break;
       case 'phone':
-        this.CL.callNumber(String(orderPhone), false).then(() => { });
+        this.CL.callNumber(this.selectedPhone, false).then(() => { });
         this.callWindow = false;
         break;
       case 'operator':
-        if (orderPhone && courierPhone) {
+        if (this.selectedPhone && courierPhone) {
           let url = 'orders';
           let data = {
             action: 'send_phone',
-            client_number: orderPhone,
+            client_number: this.selectedPhone,
             cur_number: courierPhone
           };
           this.auth.sendPost(url, data).subscribe(resp => {
@@ -194,7 +212,7 @@ export class OrderPage implements OnInit {
       this.timeTo = this.order.datetime_to;
       this.phone = this.order.client_phone;
       this.status = this.order.status_text;
-      this.status_id = this.order.status_id;
+      this.status_id = Number(this.order.status_id);
       this.clientId = this.order.client_id;
       this.client_status = this.order.client_status;
       this.client_status_dt = this.order.client_status_dt;

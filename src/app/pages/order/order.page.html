@@ -276,6 +276,17 @@
   <div class="call-window" *ngIf="callWindow">
     <div class="cw-body">
       <ion-icon name="close-outline" (click)="phoneClick('init')"></ion-icon>
+      <ion-list>
+        <ion-radio-group name="selectedPhone" [(ngModel)]="selectedPhone">
+          <ion-list-header>
+            <ion-label>Выберите номер</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let phone of orderPhones">
+            <ion-label>{{phone}}</ion-label>
+            <ion-radio value="{{phone}}"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
       <button class="cw_phone" (click)="phoneClick('phone')">Позвонить со своего телефона</button>
       <button class="cw_operator" (click)="phoneClick('operator')">Позвонить через оператора</button>
     </div>
