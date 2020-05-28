@@ -38,10 +38,11 @@ export class SysService {
   }
 
   //Тост
-  async presentToast(message: string, color: string) {
+  async presentToast(message: string, color: string, header: string = '') {
     const toast = await this.toastController.create({
+      header: header,
       message: message,
-      duration: 2000,
+      duration: 3000,
       color: color,
       position: 'middle'
     });

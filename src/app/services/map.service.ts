@@ -149,7 +149,9 @@ export class MapService {
         zoom: 12
       }, {
         // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
-        boundsAutoApply: true
+        boundsAutoApply: true,
+        //Расположение контрола масштабирования
+        zoomControlPosition: { right: 10, top: 100, bottom: 'auto' }
       });
 
       self.state$.map_state.next('map_init');

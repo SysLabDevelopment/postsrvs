@@ -196,7 +196,7 @@ export class StateService {
     console.log('sys:: coordinates', coordinates);
     const options = {
       action: this.wi.ACTION_VIEW,
-      url: 'yandexnavi://build_route_on_map?lat_to=' + coordinates[1] + '&lon_to=' + coordinates[0],
+      url: 'yandexnavi://build_route_on_map?lat_to=' + coordinates[0] + '&lon_to=' + coordinates[1],
       package: 'ru.yandex.yandexnavi'
     }
 

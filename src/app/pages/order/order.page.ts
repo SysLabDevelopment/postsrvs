@@ -412,8 +412,8 @@ export class OrderPage implements OnInit {
             this.g_quants,
             this.selectedPayment
           )
-          .subscribe((data: any) => {
-            if (data.success == 'true') {
+          .subscribe((data: any | null) => {
+            if (data?.success == 'true') {
               self.changeWindow = false;
               self.state$.state.next('init');
               self.selectedPayment = '1';
@@ -424,6 +424,9 @@ export class OrderPage implements OnInit {
               }
               self.initOrder();
               self.state$.updateWayInfo.next('0');
+            }
+            if (typeof (data)) {
+              this.sys.presentToast('Нет товаров в заказе', 'danger', 'Частичная доставка невозможна')
             }
             localStorage.removeItem('drawImg');
           });
