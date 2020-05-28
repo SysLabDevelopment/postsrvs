@@ -4,8 +4,10 @@
       <!-- {{balance}} -->
     </div>
     <div class="o-title">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
       <span class="order-n"><span class="shopTake" *ngIf="order.SMACode">Забор &nbsp; </span> {{clientId}}</span>
-      <span class="menu-icon" (click)="navBack()"><ion-icon name="arrow-back-circle-outline"></ion-icon></span>
     </div>
     <div class="o-body" *ngIf="pageInit">
       <div
