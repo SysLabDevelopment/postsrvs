@@ -1,5 +1,4 @@
 import { Component, OnInit, OnChanges, EventEmitter, Input, Output, ViewChildren, QueryList } from '@angular/core';
-import { OTTabPipePipe } from '../../../pipes/o-t-tab-pipe.pipe';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CourierService } from '../../../services/courier.service';
 import { AuthService } from '../../../services/auth.service';
@@ -10,7 +9,7 @@ import { StateService } from '../../../services/state.service';
   selector: 'app-orders-list-second',
   templateUrl: './orders-list-second.component.html',
   styleUrls: ['./orders-list-second.component.scss'],
-  providers: [OTTabPipePipe]
+  providers: []
 })
 export class OrdersListSecondComponent implements OnChanges, OnInit {
   @Input()

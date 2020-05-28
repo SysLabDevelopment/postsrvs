@@ -8,7 +8,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CourierPage } from './courier.page';
 import { OrdersListFirstComponent } from '../../components/courier/orders-list-first/orders-list-first.component';
 import { OrdersListSecondComponent } from '../../components/courier/orders-list-second/orders-list-second.component';
-import { OTTabPipePipe } from '../../pipes/o-t-tab-pipe.pipe';
 import { OrdersListGuessComponent } from '../../components/courier/orders-list-guess/orders-list-guess.component';
 
 const routes: Routes = [
@@ -27,6 +26,6 @@ const routes: Routes = [
     ScrollingModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CourierPage, OrdersListFirstComponent, OTTabPipePipe, OrdersListSecondComponent, OrdersListGuessComponent]
+  declarations: [CourierPage, OrdersListFirstComponent, OrdersListSecondComponent, OrdersListGuessComponent]
 })
 export class CourierPageModule { }

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, EventEmitter, Input, Output, ViewChildren, QueryList, OnChanges } from '@angular/core';
-import { OTTabPipePipe } from '../../../pipes/o-t-tab-pipe.pipe';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CourierService } from '../../../services/courier.service';
 import { AuthService } from '../../../services/auth.service';
@@ -14,7 +13,7 @@ import { filter } from 'rxjs/operators';
   selector: 'app-orders-list-first',
   templateUrl: './orders-list-first.component.html',
   styleUrls: ['./orders-list-first.component.scss'],
-  providers: [OTTabPipePipe]
+  providers: []
 })
 
 export class OrdersListFirstComponent implements OnInit, OnChanges {

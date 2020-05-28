@@ -289,12 +289,6 @@ export class CourierService {
     return this.auth.sendPost(url, data);
   }
 
-  public getStatuses(): Observable<any> {
-    var url = "orders";
-    var data = { 'action': 'getStatuses' };
-
-    return this.auth.sendPost(url, data);
-  }
 
   //Запрос основных данных курьера
   //@sync_id - ид курьера

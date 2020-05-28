@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { QRCodeModule } from 'angularx-qrcode';
 import { IonicModule } from '@ionic/angular';
-import { StatusesPipe } from '../../pipes/statuses.pipe';
 import { OrderPage } from './order.page';
 
 const routes: Routes = [
@@ -22,6 +21,6 @@ const routes: Routes = [
     QRCodeModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [OrderPage, StatusesPipe]
+  declarations: [OrderPage]
 })
-export class OrderPageModule {}
+export class OrderPageModule { }

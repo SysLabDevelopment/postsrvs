@@ -20,7 +20,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MapService } from '../../services/map.service';
 import { SysService } from '../../services/sys.service';
-
+import { Statuses } from '../../interfaces/statuses';
 
 @Component({
   selector: 'app-order',
@@ -59,7 +59,8 @@ export class OrderPage implements OnInit {
   public timeTo: string = null;
   public phone: string = null;
   public pageInit: boolean = true;
-  public statuses: any = null;
+  public statuses: Statuses[] = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
+  ;
   public reasons: any = null;
   public commentText: any = null;
   public g_quants: any = {};
@@ -221,7 +222,6 @@ export class OrderPage implements OnInit {
       this.poruch = this.order.poruch;
       (this.mass = this.order.mass), (this.amount = this.order.amount);
       this.podrazd = this.order.Podrazd;
-      this.statuses = this.state$.statuses_data;
       this.reasons = this.state$.reasons;
       this.coords = [this.order.lt, this.order.lg];
       this.setQuants();

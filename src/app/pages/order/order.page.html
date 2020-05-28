@@ -1,14 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{clientId}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="o-wrp" *ngIf="order">
     <div class="o-balance">
       <!-- {{balance}} -->
     </div>
-    <div class="o-title">
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <span class="order-n"><span class="shopTake" *ngIf="order.SMACode">Забор &nbsp; </span> {{clientId}}</span>
-    </div>
+    <span class="shopTake" *ngIf="order.SMACode">
+      Забор &nbsp;
+    </span>
     <div class="o-body" *ngIf="pageInit">
       <div
         class="status-row o-row"
@@ -101,10 +107,38 @@
           <div
             class="sc-status"
             [ngClass]="{'status_active' : selectedStatus == status.id}"
-            *ngFor="let status of (statuses | partFilter:order.partial)"
+            *ngFor="let status of statuses"
             (click)="selectStatus(status.id)"
           >
             {{status.status}}
+          </div>
+        </div>
+        <div class="sc-goods-block" *ngIf="selectedStatus == 6 ">
+          <div class="goods-row o-row">
+            <div class="gr-title o-t">Товары в заказе</div>
+
+            <div class="gr-goods-list">
+              <div class="gr-head">
+                <div class="gr-col">Название</div>
+                <div class="gr-col">Кол-во</div>
+                <div class="gr-col">Цена</div>
+              </div>
+              <div *ngFor="let good of goods">
+                <div class="gr-item" [ngClass]="{'st_fail': (g_quants[good.Code]['amount'] == 0)}">
+                  <div class="gr-col gr-name">{{good.Name}}</div>
+                  <div class="gr-col gr-quant">
+                    <div class="m-btn" (click)="changeQuant(good.Code,'minus')">
+                      <ion-icon name="remove-circle-outline"></ion-icon>
+                    </div>
+                    {{g_quants[good.Code]['amount']}}
+                    <div class="p-btn" (click)="changeQuant(good.Code,'plus')">
+                      <ion-icon name="add-circle-outline"></ion-icon>
+                    </div>
+                  </div>
+                  <div class="gr-col gr-price">{{good.Price}}р.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="sc-reasons">
@@ -155,34 +189,7 @@
               </div>
             </div>
           </div>
-          <div class="sc-goods-block" *ngIf="selectedStatus == 6 ">
-            <div class="goods-row o-row">
-              <div class="gr-title o-t">Товары в заказе</div>
 
-              <div class="gr-goods-list">
-                <div class="gr-head">
-                  <div class="gr-col">Название</div>
-                  <div class="gr-col">Кол-во</div>
-                  <div class="gr-col">Цена</div>
-                </div>
-                <div *ngFor="let good of goods">
-                  <div class="gr-item" [ngClass]="{'st_fail': (g_quants[good.Code]['amount'] == 0)}">
-                    <div class="gr-col gr-name">{{good.Name}}</div>
-                    <div class="gr-col gr-quant">
-                      <div class="m-btn" (click)="changeQuant(good.Code,'minus')">
-                        <ion-icon name="remove-circle-outline"></ion-icon>
-                      </div>
-                      {{g_quants[good.Code]['amount']}}
-                      <div class="p-btn" (click)="changeQuant(good.Code,'plus')">
-                        <ion-icon name="add-circle-outline"></ion-icon>
-                      </div>
-                    </div>
-                    <div class="gr-col gr-price">{{good.Price}}р.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="sc-payment-block o-row" *ngIf="pay_access && (selectedStatus == 5 || selectedStatus == 6)  ">
             <div class="pb-email" *ngIf="show_email">
               <div class="pb-email__title">Email клиента</div>
@@ -195,7 +202,7 @@
             </div>
             <button class="show-phone" (click)="enterPhone()">Прочее</button>
           </div>
-          <details *ngIf="selectedStatus !== 6">
+          <details *ngIf="selectedStatus && selectedStatus !== 6">
             <summary>Дополнительно</summary>
 
             <div class="sc-comment-block" *ngIf="selectedStatus == 5 || selectedStatus == 4">

@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
-import { OTTabPipePipe } from '../../pipes/o-t-tab-pipe.pipe';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { SettingsService } from '../../services/settings.service';
