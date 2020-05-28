@@ -208,7 +208,6 @@ export class OrderPage implements OnInit {
       this.order = data.orders[0];
       this.goods = this.order.goods;
       this.address = this.order.client_address;
-      this.name = this.order.client_name;
       this.timeFrom = this.order.datetime_from;
       this.timeTo = this.order.datetime_to;
       this.phone = this.order.client_phone;

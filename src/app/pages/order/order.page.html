@@ -49,8 +49,10 @@
       <div class="contacts-row o-row">
         <div class="cr-title o-t">Контакты клиента:</div>
         <div class="cr-row">
-          <div class="cr-name-title">Имя</div>
-          <div class="cr-name">{{name}}</div>
+          <div class="cr-name-title" *ngIf="order.client_fio"><b>Имя</b></div>
+          <div class="cr-name">{{order.client_fio}}</div>
+          <div class="cr-name-title" *ngIf="order.client_name"><b>Компания</b></div>
+          <div class="cr-name">{{order.client_name}}</div>
         </div>
         <div class="cr-row">
           <div class="cr-phone-title">Телефон</div>

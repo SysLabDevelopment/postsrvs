@@ -145,13 +145,15 @@ export class MapService {
     ymaps.ready().then(() => {
       self.state$.l_map = new ymaps.Map('map', {
         center: [55.75222, 37.61556],
-        controls: ['zoomControl'],
+        controls: ['zoomControl', 'geolocationControl'],
         zoom: 12
       }, {
         // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
         boundsAutoApply: true,
         //Расположение контрола масштабирования
-        zoomControlPosition: { right: 10, top: 100, bottom: 'auto' }
+        zoomControlPosition: { right: 10, top: 100, bottom: 'auto' },
+        //Расположение кнопки поиска себя на карте
+        geolocationControlPosition: { right: 10, bottom: 200, top: 'auto' }
       });
 
       self.state$.map_state.next('map_init');
@@ -290,10 +292,6 @@ export class MapService {
         console.log('sys:: Отрисовка маршрута');
         self.state$.l_map.geoObjects.removeAll();
         self.state$.l_map.geoObjects.add(self.state$.l_route);
-        // self.state$.l_map.setBounds(self.state$.l_map.geoObjects.getBounds(), {
-        //   checkZoomRange: true,
-        //   zoomMargin: 35
-        // });
         self.state$.route_state.next('init_done');
         let points = self.state$.l_route.getWayPoints();
         self.state$.l_route.model.events.once("requestsuccess", function () {
@@ -434,6 +432,8 @@ export class MapService {
             balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
               order.client_address + '<hr/>' +
               'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
+              `<b>Компания:</b> ` + order.client_name +
+              `<br/><b>Клиент:</b> ` + order.client_fio +
               `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
           });
 
