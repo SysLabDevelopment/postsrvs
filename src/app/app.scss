@@ -79,3 +79,9 @@ app-orders-list-guess {
   font-family: "Roboto";
   src: url('../Roboto.ttf');
 }
+
+ion-toolbar {
+  --background: #2b637e;
+  color: white;
+  text-align: center;
+}

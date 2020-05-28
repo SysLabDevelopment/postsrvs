@@ -1,5 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="start" name="search-sharp"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="auth.getGuessMode()">
+        <i>G</i>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Мои заказы</ion-title>
+    <ion-title size="small" color="dark">{{state$.filial}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button *ngIf="subBtnCond" (click)="submitOrder()">
+        <ion-icon name="logo-dropbox"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="courier.sortOrders.g_process == 0 && !isWorkEnded" (click)="endWork()">
+        <ion-icon name="shield-checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
   <span
     class="manual_lable"
     [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}"
@@ -7,28 +29,7 @@
     >Для сортировки зажмите заказ и перетащите</span
   >
 
-  <span class="find-order-btn" (click)="findOrder()">
-    <ion-icon name="search-sharp"></ion-icon>
-  </span>
-  <span *ngIf="auth.getGuessMode()" class="guess-button">
-    <i>G</i>
-  </span>
-  <div class="headbar-right-buttons">
-    <span class="submit-order-btn" *ngIf="subBtnCond" (click)="submitOrder()">
-      <ion-icon name="logo-dropbox"></ion-icon>
-    </span>
-    <span class="submit-order-btn" *ngIf="courier.sortOrders.g_process == 0 && !isWorkEnded" (click)="endWork()">
-      <ion-icon name="shield-checkmark"></ion-icon>
-    </span>
-  </div>
   <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
-    <div class="c-title">
-      <span class="ct">Мои заказы</span>
-      <ion-text color="dark" class="filial">
-        {{state$.filial}}
-      </ion-text>
-    </div>
-
     <app-orders-list-guess *ngIf="auth.getGuessMode()"> </app-orders-list-guess>
 
     <div class="o-tab-wrp" *ngIf="ordersInit && !auth.getGuessMode()">

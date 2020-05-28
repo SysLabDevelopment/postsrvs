@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule), pathMatch: 'full'
   },
-  { path: 'test', redirectTo: 'courier' },
+  { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestPageModule) },
 
   { path: '**', redirectTo: 'balance', pathMatch: 'full' }
 ];
