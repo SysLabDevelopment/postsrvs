@@ -296,15 +296,15 @@
   </div>
   <div class="call-window" *ngIf="callWindow">
     <div class="cw-body">
-      <ion-icon name="close-outline" (click)="phoneClick('init')"></ion-icon>
-      <ion-list>
+      <ion-icon name="close-outline" (click)="phoneClick('init')" size="large"></ion-icon>
+      <ion-list *ngIf="orderPhones.length > 1">
         <ion-radio-group name="selectedPhone" [(ngModel)]="selectedPhone">
           <ion-list-header>
             <ion-label>Выберите номер</ion-label>
           </ion-list-header>
           <ion-item *ngFor="let phone of orderPhones">
-            <ion-label>{{phone}}</ion-label>
             <ion-radio value="{{phone}}"></ion-radio>
+            <ion-label>{{phone}}</ion-label>
           </ion-item>
         </ion-radio-group>
       </ion-list>

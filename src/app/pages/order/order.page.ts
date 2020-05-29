@@ -158,7 +158,7 @@ export class OrderPage implements OnInit {
     phone = phone.replace(/\D+/g, '');
 
 
-    while (phone.length > 0) {
+    while (phone.length > 7) {
       phone = this.normalizePhoneNumber(phone);
       phones.push(phone.slice('', 11));
       phone = phone.slice(11);
@@ -168,7 +168,7 @@ export class OrderPage implements OnInit {
   }
 
   private normalizePhoneNumber(phone): string {
-    if (phone[0] !== '8') {
+    if (phone[0] !== '8' && phone.length !== 11) {
       phone = '8' + phone;
     }
     if (phone.length == 7 || phone.length == 10) {
@@ -182,7 +182,11 @@ export class OrderPage implements OnInit {
 
   public phoneClick(action) {
     this.orderPhones = this.parsePhone(this.phone);
-    let courierPhone = this.parsePhone(this.order.courier_phone);
+    let courierPhone = this.parsePhone(this.order.courier_phone)[0];
+
+    if (this.orderPhones.length == 1) {
+      this.selectedPhone = this.orderPhones[0]
+    }
 
     switch (action) {
       case 'init':
