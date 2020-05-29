@@ -16,7 +16,6 @@ import {
   transition
 } from '@angular/animations';
 
-import { AndroidFullScreen } from '@ionic-native/android-full-screen/ngx'
 import { MapService } from '../../services/map.service';
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
@@ -106,7 +105,6 @@ export class BalancePage implements OnInit {
     private alert: AlertController,
     private camera: Camera,
     private AP: AndroidPermissions,
-    private fs: AndroidFullScreen,
     private map: MapService,
     public settings: SettingsService,
     public sys: SysService
@@ -129,7 +127,6 @@ export class BalancePage implements OnInit {
     }
 
     this.initCashout();
-    this.setFs();
   }
 
   ngOnInit() {
@@ -150,12 +147,6 @@ export class BalancePage implements OnInit {
     this.local_stop$.next();
   }
 
-  public setFs() {
-    let self = this;
-    this.fs.isImmersiveModeSupported()
-      .then(() => { console.log('fs_support'); self.fs.immersiveMode() })
-      .catch((error: any) => console.log(error));
-  }
 
   public updateInfo() {
     var self = this;

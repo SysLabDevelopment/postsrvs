@@ -73,14 +73,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-fullscreen.AndroidFullScreen",
-      "file": "plugins/cordova-plugin-fullscreen/www/AndroidFullScreen.js",
-      "pluginId": "cordova-plugin-fullscreen",
-      "clobbers": [
-        "AndroidFullScreen"
-      ]
-    },
-    {
       "id": "cordova-plugin-geolocation.Coordinates",
       "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
       "pluginId": "cordova-plugin-geolocation",
@@ -225,7 +217,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-app-version": "0.1.9",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-fullscreen": "1.1.0",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-inappbrowser": "3.2.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",

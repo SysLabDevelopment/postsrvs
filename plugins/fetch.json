@@ -125,14 +125,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-fullscreen": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-fullscreen@^1.2.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-screen-orientation": {
     "source": {
       "type": "registry",

@@ -32,9 +32,6 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "postsrvs.w"
     },
-    "cordova-plugin-fullscreen": {
-      "PACKAGE_NAME": "postsrvs.w"
-    },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "postsrvs.w"
     },

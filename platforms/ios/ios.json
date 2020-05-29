@@ -18,7 +18,7 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 53
+              "count": 54
             }
           ],
           "NSCameraUsageDescription": [
@@ -28,7 +28,7 @@
             },
             {
               "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 27
+              "count": 28
             }
           ],
           "NSLocationAlwaysUsageDescription": [
@@ -177,9 +177,6 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-fullscreen": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
@@ -292,14 +289,6 @@
       "pluginId": "cordova-plugin-device",
       "clobbers": [
         "device"
-      ]
-    },
-    {
-      "id": "cordova-plugin-fullscreen.AndroidFullScreen",
-      "file": "plugins/cordova-plugin-fullscreen/www/AndroidFullScreen.js",
-      "pluginId": "cordova-plugin-fullscreen",
-      "clobbers": [
-        "AndroidFullScreen"
       ]
     },
     {
@@ -447,7 +436,6 @@
     "cordova-plugin-app-version": "0.1.9",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-fullscreen": "1.1.0",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-inappbrowser": "3.2.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",

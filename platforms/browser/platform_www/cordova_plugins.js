@@ -158,14 +158,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-fullscreen/www/AndroidFullScreen.js",
-        "id": "cordova-plugin-fullscreen.AndroidFullScreen",
-        "pluginId": "cordova-plugin-fullscreen",
-        "clobbers": [
-            "AndroidFullScreen"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
         "id": "cordova-plugin-screen-orientation.screenorientation",
         "pluginId": "cordova-plugin-screen-orientation",
@@ -200,7 +192,6 @@ module.exports.metadata =
     "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-vibration": "3.1.1",
-    "cordova-plugin-fullscreen": "1.1.0",
     "cordova-plugin-screen-orientation": "3.0.2",
     "cordova-plugin-app-version": "0.1.9",
     "cordova-plugin-androidx": "1.0.2",
