@@ -97,6 +97,7 @@ export class OrderPage implements OnInit {
   coords: Array<any>;
   public orderPhones: Array<string> = [];
   public selectedPhone: string;
+  public note: string;
 
   constructor(private map: MapService,
     private router: Router,
@@ -647,5 +648,9 @@ export class OrderPage implements OnInit {
     }
 
 
+  }
+
+  public saveNote() {
+    localStorage.setItem(this.orderId, this.note)
   }
 }

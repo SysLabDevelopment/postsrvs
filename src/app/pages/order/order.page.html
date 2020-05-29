@@ -281,6 +281,12 @@
         <!-- <ion-button (click)="pickedUpOrder()">
             Забрал заказ
           </ion-button> -->
+        <ion-item>
+          <ion-textarea placeholder="Ваша заметка о заказе" [(ngModel)]="note"></ion-textarea>
+        </ion-item>
+        <ion-button (click)="saveNote()">
+          <ion-icon slot="icon-only" name="save"></ion-icon>
+        </ion-button>
       </div>
     </div>
   </div>

@@ -300,6 +300,7 @@ export class MapService {
               let cnt = i;
               let order = self.state$.orders_data[i - 1];
               let addr = order.client_address;
+              let note = localStorage.getItem(order.id);
               if (order.datetime_to !== null) {
                 order.datetime_to = 'до ' + order.datetime_to
               } else {
@@ -319,7 +320,7 @@ export class MapService {
                   '<b>Заказ ' + order.id + '</b><br/>' +
                   addr + '<hr/>' +
                   'Доставка:<br/>c ' + order.datetime_from + '<br/>' + order.datetime_to + '<br/>' +
-                  `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;padding: 5px;'>Детали</button><br/>`,
+                  `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;padding: 5px;'>Детали</button><br/> <br><br>` + note,
                 )
               });
             }
@@ -426,6 +427,7 @@ export class MapService {
       orders.forEach(order => {
         if (Number(order.status_id) == 1) {
           console.log('sys::pointsRender order', order);
+          let note = localStorage.getItem(order.id);
           let placemark = new ymaps.Placemark([order.lt, order.lg], {
             // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
             balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
@@ -434,7 +436,7 @@ export class MapService {
               'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
               `<b>Компания:</b> ` + order.client_name +
               `<br/><b>Клиент:</b> ` + order.client_fio +
-              `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button>`,
+              `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button><br/><br/>` + note,
           });
 
           map.geoObjects.add(placemark);
