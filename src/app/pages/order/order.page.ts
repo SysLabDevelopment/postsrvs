@@ -21,6 +21,7 @@ import { Subject } from 'rxjs';
 import { MapService } from '../../services/map.service';
 import { SysService } from '../../services/sys.service';
 import { Statuses } from '../../interfaces/statuses';
+import { Reason } from '../../interfaces/reason';
 
 @Component({
   selector: 'app-order',
@@ -61,7 +62,8 @@ export class OrderPage implements OnInit {
   public pageInit: boolean = true;
   public statuses: Statuses[] = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
   ;
-  public reasons: any = null;
+  public reasons: Reason[] = [{ "id": 1, "reason": "Не удалось Дозвониться!" }, { "id": 2, "reason": "Отказ, при созвоне с клиентом" }, { "id": 3, "reason": "Отказ от доставки без объяснения причины" }, { "id": 4, "reason": "Ошибка оформления ИМ" }, { "id": 5, "reason": "Получатель передумал" }, { "id": 6, "reason": "Товар не подошел/не понравился" }, { "id": 7, "reason": "Финансовые трудности у получателя" }, { "id": 8, "reason": "Перенос даты доставки получателем." }, { "id": 10, "reason": "Не успел" }, { "id": 11, "reason": "Переехали/нев.Адрес" }]
+    ;
   public commentText: any = null;
   public g_quants: any = {};
   public changeWindow: boolean = false;
@@ -98,6 +100,8 @@ export class OrderPage implements OnInit {
   public orderPhones: Array<string> = [];
   public selectedPhone: string;
   public note: string;
+  public today = new Date();
+  public tomorrow = new Date();
 
   constructor(private map: MapService,
     private router: Router,
@@ -122,6 +126,8 @@ export class OrderPage implements OnInit {
 
   ngOnInit() {
     this.courier.initStatuses();
+    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
+
   }
 
   ngAfterViewChecked() {
@@ -222,7 +228,6 @@ export class OrderPage implements OnInit {
       this.poruch = this.order.poruch;
       (this.mass = this.order.mass), (this.amount = this.order.amount);
       this.podrazd = this.order.Podrazd;
-      this.reasons = this.state$.reasons;
       this.coords = [this.order.lt, this.order.lg];
       this.setQuants();
       this.getSum();

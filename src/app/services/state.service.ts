@@ -61,7 +61,6 @@ export class StateService {
   public statuses: BehaviorSubject<any> = new BehaviorSubject(null);
   public way: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  public reasons: any = null;
 
   public o_status: BehaviorSubject<any> = new BehaviorSubject(null);
   public state: BehaviorSubject<any> = new BehaviorSubject(null);
@@ -96,7 +95,6 @@ export class StateService {
   public updateWayInfo: Subject<any> = new Subject();
   // DATA
   public orders_data = null;
-  public reasons_data = null;
   public statuses_data = null;
   //NOTIFICATIONS
   public notifications = [];
@@ -175,7 +173,6 @@ export class StateService {
     this.orders_data = null;
     this.statuses.next(null);
     this.way.next(null);
-    this.reasons = null;
 
     this.o_status.next(null);
     this.state.next(null);

@@ -129,12 +129,7 @@ export class CourierService {
     }
 
     //Запускаем инициализацию
-    this.getReasons().subscribe((data: any) => {
-      if (data.success == 'true') {
-        self.state$.reasons = data.reasons;
 
-      }
-    });
 
     //Костыль для мгновенного отображения листина в обход ожидания статусов по апи
     this.initStatuses();
@@ -299,13 +294,6 @@ export class CourierService {
     let url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=' + CL;
 
     return this.http.get(url);
-  }
-
-  public getReasons() {
-    var url = "orders";
-    var data = { 'action': 'getReasons' };
-
-    return this.auth.sendPost(url, data);
   }
 
   public getStatus(order) {

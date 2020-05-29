@@ -236,7 +236,11 @@
           <div class="dt-picker" *ngIf="selectedReason == 8">
             <ion-item>
               <ion-label position="floating">MM/DD/YYYY</ion-label>
-              <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" value="2002-09-23T15:03:46.789"></ion-datetime>
+              <ion-datetime
+                displayFormat="MM/DD/YYYY"
+                min="{{today.toISOString()}}"
+                value="{{tomorrow.toISOString()}}"
+              ></ion-datetime>
             </ion-item>
           </div>
 
