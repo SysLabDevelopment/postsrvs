@@ -575,7 +575,7 @@ export class OrderPage implements OnInit {
   }
 
   public showCheck() {
-    const browser = this.iab.create(this.barcode_url);
+    const browser = this.iab.create(this.barcode_url, '_blank');
   }
 
   public voiceLink() {

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="54" id="postsrvs.w" version="0.13.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="55" id="postsrvs.w" version="0.14.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ps@psvs.com" href="http://psvs.com/">Psvs Team</author>
@@ -120,4 +120,5 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <plugin name="cordova-plugin-android-permissions" spec="^1.0.2" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.2.2" />
 </widget>
