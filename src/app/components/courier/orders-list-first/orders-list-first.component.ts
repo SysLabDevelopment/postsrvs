@@ -37,6 +37,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   public isSkeleton: boolean = true;
   public searchString: string = '';
   private ord: Observable<any[]>;
+
   constructor(
     public courier: CourierService,
     public auth: AuthService,
@@ -86,9 +87,8 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   drop(event: CdkDragDrop<any[]>) {
 
     moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
-    this.ordersChange_E.emit(this.orders);
+    this.state.orders.next(this.orders);
     console.log('sys:: массив заказов после перетаскивания: ', this.orders);
-    // this.prepareOrdersList(this.orders);
   }
 
   public howSlice(): number {
