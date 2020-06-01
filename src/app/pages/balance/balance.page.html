@@ -1,182 +1,178 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon name="cog-sharp" (click)="navToSettings()" class="cogs"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title (click)="p_btn()">Мои заказы</ion-title>
+    <ion-title size="small" color="dark">{{state$.filial}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-        <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">
-            {{state$.notificationStr}}
-        </span>
-      <div class="o-title" (click)='p_btn()'>
-            <span class="ct">Мои заказы</span>
-            <ion-text color="dark" class='filial' *ngIf="info">
-                {{info.filial}}
-            </ion-text>
-            <ion-icon name="cog-sharp" (click)="navToSettings()" class='cogs'></ion-icon>
-
-    </div>
-      <div class="o-body" *ngIf="info">
-        <cdk-virtual-scroll-viewport  style="height: 100%;" itemSize="auto" >
-                <div class="b-row">
-                    <div class="b-item b-title">Имя курьера</div>
-                    <div class="b-item">{{info.name}}</div>
-                </div>
-                <div class="b-row">
-
-                        <div class="b-item b-title">Общая сумма</div>
-                        <div class="b-item">{{info.sumAll}}р</div>
-
-                </div>
-                    <div class="b-row">
-
-                        <div class="b-item b-title">Оплачено по карте</div>
-                        <div class="b-item">{{info.sumCard}}р</div>
-
-                    </div>
-                    <div class="b-row">
-
-                        <div class="b-item b-title">Оплачено наличными</div>
-                        <div class="b-item">{{info.sumNal}}р</div>
-
-                    </div>
-                    <div class="b-row">
-
-                        <div class="b-item b-title">Всего заказов</div>
-                        <div class="b-item">{{info.ordersAll}}</div>
-
-                    </div>
-                    <div class="b-row">
-
-                        <div class="b-item b-title">Заказов выполнено</div>
-                        <div class="b-item">{{info.ordersDone}}</div>
-
-                    </div>
-                    <div class="b-row">
-
-                        <div class="b-item b-title">Частично доставлено</div>
-                        <div class="b-item">{{info.ordersSomeDone}}</div>
-
-                    </div>
-                    <div class="b-row">
-
-                        <div class="b-item b-title">Заказов в работе</div>
-                        <div class="b-item">{{info.ordersInWork}}</div>
-
-                    </div>
-                    <div class="b-row">
-
-                        <div class="b-item b-title">Заказов отменено</div>
-                        <div class="b-item">{{info.ordersFail}}</div>
-
-                    </div>
-
-            <ion-img [src]="'data:image/jpg;base64,'+info.qr"></ion-img>
-            <div class="lg-b-wrp">
-                <button *ngIf="(info != null) && !cashCheck " class="logout-btn" (click)="cashOut()">Сдать средства</button>
-                <div class="check-labl" *ngIf="cashCheck">
-                        <div class="cl-body">
-                                <div class="cl-row">
-                                    <div class="cl-r__title">Средств сдано:</div>
-                                    <div class="cl-r_text">{{cashCheckData.sum}}р.</div>
-                                </div>
-                                <div class="cl-row comment">
-                                        <div class="cl-r__title">Комментарий:</div>
-                                        <div class="cl-r_text" *ngIf="cashCheckData.comment != null && cashCheckData.comment != ''">{{cashCheckData.comment}}</div>
-                                </div>
-                            </div>
-                </div>
-                <button  class="logout-btn review_btn " (click)="writeReview()">Отзыв о приложении</button>
-                <div *ngIf="isGoToWork">
-                    <ul *ngFor="let date of workDates"  >
-                        <li>{{date}}</li>
-                    </ul>
-                <ion-item>
-                    <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder='DD.MM.YYYY HH:mm'></ion-datetime><br>
-                    <ion-button (click)="addWorkDate(workDate)" expand="block" fill="outline" shape="round">
-                       Добавить
-                    </ion-button>
-                    <ion-button (click)="goToWork()" expand="block" fill="outline" shape="round">
-                        Подтвердить
-                    </ion-button>
-                </ion-item>
-                </div>
-                <div *ngIf="isStopWork">
-                    <ul *ngFor="let date of nonWorkDates"  >
-                        <li>{{date.date}}
-                            <ion-select multiple="false" placeholder="Причина"
-                            [(ngModel)]="date.reason">
-                                <ion-select-option value="1" >
-                                    {{notWorkRules["1"]}}
-                                </ion-select-option>
-                                 <ion-select-option value="2" >
-                                    {{notWorkRules["2"]}}
-                                </ion-select-option>
-                                 <ion-select-option value="3" >
-                                    {{notWorkRules["3"]}}
-                                </ion-select-option>
-                                 <ion-select-option value="4" >
-                                    {{notWorkRules["4"]}}
-                                </ion-select-option>
-                            </ion-select>
-                       </li>
-                    </ul>
-                <ion-item  >
-                    <ion-datetime display-format="DD.MM.YYYY" placeholder='DD.MM.YYYY' #nonWorkDate></ion-datetime>
-                     <ion-button (click)="addNonWorkDate(nonWorkDate)" expand="block" fill="outline" shape="round">
-                         Добавить
-                    </ion-button>
-                    <ion-button (click)="stopWork()" expand="block" fill="outline" shape="round">
-                        Подтвердить
-                    </ion-button>
-                </ion-item>
-                </div>
-                <ion-item *ngIf="isShowSchedule" >
-                    <ion-button (click)="showWorkScheduler()" expand="block" fill="outline" shape="round">
-                        Выхожу
-                    </ion-button>
-                    <ion-button (click)="showStopWorkScheduler()" expand="block" fill="outline" shape="round">
-                        Не выхожу
-                    </ion-button>
-                </ion-item>
-                <button  class="logout-btn review_btn " *ngIf="settings.rules.schedule" (click)="showSchedule()" >График работы</button>
-
-            </div>
-        </cdk-virtual-scroll-viewport>
-
+  <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">
+    {{state$.notificationStr}}
+  </span>
+  <div class="o-body" *ngIf="info">
+    <cdk-virtual-scroll-viewport style="height: 100%;" itemSize="auto">
+      <div class="b-row">
+        <div class="b-item b-title">Имя курьера</div>
+        <div class="b-item">{{info.name}}</div>
       </div>
-      <div class="shirm" *ngIf="loader">
-        <ion-spinner name="lines-small"></ion-spinner>
-    </div>
-    <div class="confirm-shirm"   *ngIf="info != null && !cashCheck && confirmWindow" >
-        <div class="confirm" *ngIf="!openBtn && !failsOrder  " >
-            <div class="close-btn" (click) ="cashOut()">
-                <ion-icon name="close-circle-sharp"></ion-icon>
-            </div>
-            <div class="cf-qwe">Вы сдаете <span class="cf-num">{{info.sumNal}}</span> р. Верно? </div>
-            <div class="cf-comment">
-                <div class="cf-comment-title">Комментарий</div>
-                <textarea (input)="commentInput()" [(ngModel)] = "commentText" cols="30" rows="3" class="sc-comment"></textarea>
-                <span class="comment-er" *ngIf="commentError">Необходимо оставить комментарий</span>
-            </div>
-            <div class="cf-btns">
-            <div class="cf-btn ok" (click)="answer(true)">Да</div>
-            <div class="cf-btn not" (click)="answer(false)">Нет</div>
-            </div>
-        </div>
-        <div class="confirm of-confirm" *ngIf="failsOrder && !openBtn" >
-            <div class="close-btn" (click) ="cashOut()">
-                <ion-icon name="close-circle-sharp"></ion-icon>
-            </div>
-            <div class="cf-qwe of-qwe" *ngIf="!failsOrderNotFull" ><span>Вы сдаете на склад</span> <span class="cf-num">{{info.ordersFail}}</span> <span>заказов, верно?</span></div>
-            <div class="cf-comment of-comment" *ngIf="failsOrderNotFull">
-                <div class="cf-comment-title of-title">Укажите, сколько заказов вы сдаете</div>
-                <input (input)="commentInput()" [(ngModel)] = "failOrdersCount" class="sc-comment of-number" type="number">
-                <div class="cf-comment-title">Комментарий</div>
-                <textarea (input)="commentInput()" [(ngModel)] = "fo_comment" cols="30" rows="3" class="sc-comment"></textarea>
-                <span class="comment-er" *ngIf="commentError">Необходимо оставить комментарий и кол-во заказов</span>
-            </div>
-            <div class="cf-btns of-btns">
-            <div class="cf-btn of-btn ok" (click)="fo_answer(true)">   <span *ngIf="!failsOrderNotFull">Да</span> <span *ngIf="failsOrderNotFull">Назад</span>  </div>
-            <div class="cf-btn of-btn" [ngClass]= "{ 'not'  : !failsOrderNotFull}" (click)="fo_answer(false)"><span *ngIf="!failsOrderNotFull">Нет</span> <span *ngIf="failsOrderNotFull">Сдать</span></div>
-            </div>
-        </div>
-        <div class="photo-btn" *ngIf="openBtn" (click) = "getPhoto()">Сфотографировать пломбу</div>
-    </div>
-    <app-review *ngIf="review_w" (close_E)="writeReview()" (send_E)="sendReview($event)"></app-review>
+      <div class="b-row">
+        <div class="b-item b-title">Общая сумма</div>
+        <div class="b-item">{{info.sumAll}}р</div>
+      </div>
+      <div class="b-row">
+        <div class="b-item b-title">Оплачено по карте</div>
+        <div class="b-item">{{info.sumCard}}р</div>
+      </div>
+      <div class="b-row">
+        <div class="b-item b-title">Оплачено наличными</div>
+        <div class="b-item">{{info.sumNal}}р</div>
+      </div>
+      <div class="b-row">
+        <div class="b-item b-title">Всего заказов</div>
+        <div class="b-item">{{info.ordersAll}}</div>
+      </div>
+      <div class="b-row">
+        <div class="b-item b-title">Заказов выполнено</div>
+        <div class="b-item">{{info.ordersDone}}</div>
+      </div>
+      <div class="b-row">
+        <div class="b-item b-title">Частично доставлено</div>
+        <div class="b-item">{{info.ordersSomeDone}}</div>
+      </div>
+      <div class="b-row">
+        <div class="b-item b-title">Заказов в работе</div>
+        <div class="b-item">{{info.ordersInWork}}</div>
+      </div>
+      <div class="b-row">
+        <div class="b-item b-title">Заказов отменено</div>
+        <div class="b-item">{{info.ordersFail}}</div>
+      </div>
 
+      <ion-img [src]="'data:image/jpg;base64,'+info.qr"></ion-img>
+      <div class="lg-b-wrp">
+        <button *ngIf="(info != null) && !cashCheck " class="logout-btn" (click)="cashOut()">Сдать средства</button>
+        <div class="check-labl" *ngIf="cashCheck">
+          <div class="cl-body">
+            <div class="cl-row">
+              <div class="cl-r__title">Средств сдано:</div>
+              <div class="cl-r_text">{{cashCheckData.sum}}р.</div>
+            </div>
+            <div class="cl-row comment">
+              <div class="cl-r__title">Комментарий:</div>
+              <div class="cl-r_text" *ngIf="cashCheckData.comment != null && cashCheckData.comment != ''">
+                {{cashCheckData.comment}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="logout-btn review_btn" (click)="writeReview()">Отзыв о приложении</button>
+        <div *ngIf="isGoToWork">
+          <ul *ngFor="let date of workDates">
+            <li>{{date}}</li>
+          </ul>
+          <ion-item>
+            <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder="DD.MM.YYYY HH:mm"></ion-datetime
+            ><br />
+            <ion-button (click)="addWorkDate(workDate)" expand="block" fill="outline" shape="round">
+              Добавить
+            </ion-button>
+            <ion-button (click)="goToWork()" expand="block" fill="outline" shape="round">
+              Подтвердить
+            </ion-button>
+          </ion-item>
+        </div>
+        <div *ngIf="isStopWork">
+          <ul *ngFor="let date of nonWorkDates">
+            <li>
+              {{date.date}}
+              <ion-select multiple="false" placeholder="Причина" [(ngModel)]="date.reason">
+                <ion-select-option value="1">
+                  {{notWorkRules["1"]}}
+                </ion-select-option>
+                <ion-select-option value="2">
+                  {{notWorkRules["2"]}}
+                </ion-select-option>
+                <ion-select-option value="3">
+                  {{notWorkRules["3"]}}
+                </ion-select-option>
+                <ion-select-option value="4">
+                  {{notWorkRules["4"]}}
+                </ion-select-option>
+              </ion-select>
+            </li>
+          </ul>
+          <ion-item>
+            <ion-datetime display-format="DD.MM.YYYY" placeholder="DD.MM.YYYY" #nonWorkDate></ion-datetime>
+            <ion-button (click)="addNonWorkDate(nonWorkDate)" expand="block" fill="outline" shape="round">
+              Добавить
+            </ion-button>
+            <ion-button (click)="stopWork()" expand="block" fill="outline" shape="round">
+              Подтвердить
+            </ion-button>
+          </ion-item>
+        </div>
+        <ion-item *ngIf="isShowSchedule">
+          <ion-button (click)="showWorkScheduler()" expand="block" fill="outline" shape="round">
+            Выхожу
+          </ion-button>
+          <ion-button (click)="showStopWorkScheduler()" expand="block" fill="outline" shape="round">
+            Не выхожу
+          </ion-button>
+        </ion-item>
+        <button class="logout-btn review_btn" *ngIf="settings.rules.schedule" (click)="showSchedule()">
+          График работы
+        </button>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <div class="shirm" *ngIf="loader">
+    <ion-spinner name="lines-small"></ion-spinner>
+  </div>
+  <div class="confirm-shirm" *ngIf="info != null && !cashCheck && confirmWindow">
+    <div class="confirm" *ngIf="!openBtn && !failsOrder  ">
+      <div class="close-btn" (click)="cashOut()">
+        <ion-icon name="close-circle-sharp"></ion-icon>
+      </div>
+      <div class="cf-qwe">Вы сдаете <span class="cf-num">{{info.sumNal}}</span> р. Верно?</div>
+      <div class="cf-comment">
+        <div class="cf-comment-title">Комментарий</div>
+        <textarea (input)="commentInput()" [(ngModel)]="commentText" cols="30" rows="3" class="sc-comment"></textarea>
+        <span class="comment-er" *ngIf="commentError">Необходимо оставить комментарий</span>
+      </div>
+      <div class="cf-btns">
+        <div class="cf-btn ok" (click)="answer(true)">Да</div>
+        <div class="cf-btn not" (click)="answer(false)">Нет</div>
+      </div>
+    </div>
+    <div class="confirm of-confirm" *ngIf="failsOrder && !openBtn">
+      <div class="close-btn" (click)="cashOut()">
+        <ion-icon name="close-circle-sharp"></ion-icon>
+      </div>
+      <div class="cf-qwe of-qwe" *ngIf="!failsOrderNotFull">
+        <span>Вы сдаете на склад</span> <span class="cf-num">{{info.ordersFail}}</span> <span>заказов, верно?</span>
+      </div>
+      <div class="cf-comment of-comment" *ngIf="failsOrderNotFull">
+        <div class="cf-comment-title of-title">Укажите, сколько заказов вы сдаете</div>
+        <input (input)="commentInput()" [(ngModel)]="failOrdersCount" class="sc-comment of-number" type="number" />
+        <div class="cf-comment-title">Комментарий</div>
+        <textarea (input)="commentInput()" [(ngModel)]="fo_comment" cols="30" rows="3" class="sc-comment"></textarea>
+        <span class="comment-er" *ngIf="commentError">Необходимо оставить комментарий и кол-во заказов</span>
+      </div>
+      <div class="cf-btns of-btns">
+        <div class="cf-btn of-btn ok" (click)="fo_answer(true)">
+          <span *ngIf="!failsOrderNotFull">Да</span> <span *ngIf="failsOrderNotFull">Назад</span>
+        </div>
+        <div class="cf-btn of-btn" [ngClass]="{ 'not'  : !failsOrderNotFull}" (click)="fo_answer(false)">
+          <span *ngIf="!failsOrderNotFull">Нет</span> <span *ngIf="failsOrderNotFull">Сдать</span>
+        </div>
+      </div>
+    </div>
+    <div class="photo-btn" *ngIf="openBtn" (click)="getPhoto()">Сфотографировать пломбу</div>
+  </div>
+  <app-review *ngIf="review_w" (close_E)="writeReview()" (send_E)="sendReview($event)"></app-review>
 </ion-content>
