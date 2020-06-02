@@ -70,7 +70,8 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
     }
 
     this.orders_c = this.orders_c?.filter(
-      order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase())
+      order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
+        order.client_id.toLowerCase().includes(this.searchString.toLowerCase())
     )
 
   }

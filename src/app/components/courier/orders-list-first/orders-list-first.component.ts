@@ -99,7 +99,8 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
 
     this.orders_c = this.ord.pipe(
       map(orders => orders && orders.filter(order => Number(order.status_id) == 1).filter(
-        order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase())
+        order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
+          order.client_id.toLowerCase().includes(this.searchString.toLowerCase())
       ).slice(this.slicer))
     );
   }

@@ -344,7 +344,6 @@ export class CourierService {
    * @param code //штрих-код
    */
   public findOrder(code) {
-    let self = this;
     const url = 'orders';
     let data = {
       'action': 'findOrder',
