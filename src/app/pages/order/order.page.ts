@@ -445,14 +445,13 @@ export class OrderPage implements OnInit {
 
   public getSum() {
     if (this.order) {
-      var price: number = 0;
+      let price: number = 0;
       let quants = this.g_quants;
       for (let code in quants) {
         price += quants[code]['price'] * quants[code]['amount'];
       }
 
-      this.order_sum = price;
-      console.log('changet_price');
+      this.order.rur = price;
     }
   }
 
