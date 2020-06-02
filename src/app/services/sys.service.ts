@@ -44,7 +44,7 @@ export class SysService {
       message: message,
       duration: 3000,
       color: color,
-      position: 'middle'
+      position: 'bottom'
     });
     toast.present();
   }
