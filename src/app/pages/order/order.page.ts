@@ -261,9 +261,10 @@ export class OrderPage implements OnInit {
     var goods = this.order.goods;
 
     for (var i = 0; i < goods.length; i++) {
-      var good = goods[i];
-      var code = good.Code;
-      var quant = { amount: good.kol_vo, price: good.Price };
+      let good = goods[i];
+      let code = good.Code;
+      let count = (good.final_kol_vo ? good.final_kol_vo : good.kol_vo);
+      let quant = { amount: good.kol_vo, price: good.Price };
       this.g_quants[code] = quant;
     }
   }
@@ -433,8 +434,7 @@ export class OrderPage implements OnInit {
               }
               self.initOrder();
               self.state$.updateWayInfo.next('0');
-            }
-            if (typeof (data)) {
+            } else {
               this.sys.presentToast('Нет товаров в заказе', 'danger', 'Частичная доставка невозможна')
             }
             localStorage.removeItem('drawImg');
