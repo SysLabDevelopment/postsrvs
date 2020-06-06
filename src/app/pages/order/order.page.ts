@@ -127,7 +127,7 @@ export class OrderPage implements OnInit {
   ngOnInit() {
     this.courier.initStatuses();
     this.tomorrow.setDate(this.tomorrow.getDate() + 1);
-
+    this.note = localStorage.getItem(this.orderId);
   }
 
   ngAfterViewChecked() {
