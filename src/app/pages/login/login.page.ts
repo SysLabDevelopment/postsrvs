@@ -109,12 +109,11 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    let today = new Date();
-    if (localStorage.getItem('checkedDate') == today.toLocaleDateString()) {
-      this.courier.checkedOnWork = true;
-    } else {
-      localStorage.check = undefined;
-    }
+    this.isCheckedToWork().subscribe((data: { success: boolean, checked: boolean }) => {
+      if (data.checked) {
+        this.courier.checkedOnWork = true
+      }
+    })
     if (!this.auth.getUserId()) {
       this.courier.checkedOnWork = true;
     }
@@ -124,6 +123,17 @@ export class LoginPage implements OnInit {
 
   }
 
+  public isCheckedToWork() {
+    const url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php';
+    let data = {
+      "token": "l;sdfjkhglsoapl[",
+      "cId": localStorage.userId
+    }
+    const headers = {
+      'Content-type': 'application/json'
+    }
+    return this.http.post(url, data, { headers: headers });
+  }
   public scanAuth() {
     let self = this;
 

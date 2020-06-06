@@ -395,7 +395,7 @@ export class MapService {
           const multiRoute = new ymaps.multiRouter.MultiRoute({
             referencePoints: [
               currentGeo,
-              [coords[1], coords[0]]
+              [coords[0], coords[1]]
             ],
             params: {
               mapStateAutoApply: true

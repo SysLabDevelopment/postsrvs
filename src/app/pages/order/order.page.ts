@@ -234,7 +234,6 @@ export class OrderPage implements OnInit {
       this.podrazd = this.order.Podrazd;
       this.coords = [this.order.lt, this.order.lg];
       this.setQuants();
-      this.getSum();
       this.ifPaid();
       this.getBalnce();
       this.getPayData();
