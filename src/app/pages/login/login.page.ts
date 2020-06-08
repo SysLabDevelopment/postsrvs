@@ -242,6 +242,8 @@ export class LoginPage implements OnInit {
     this.auth.login(a_data).subscribe((data: any) => {
 
       if (data.success == "true") {
+        this.auth.setUser(data.sync_id);
+        this.settings.getSettings(data.sync_id);
         self.router.navigate(['balance']);
         self.auth.initLogin();
       } else {
