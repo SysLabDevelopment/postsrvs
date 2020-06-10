@@ -22,6 +22,7 @@ import { MapService } from '../../services/map.service';
 import { SysService } from '../../services/sys.service';
 import { Statuses } from '../../interfaces/statuses';
 import { Reason } from '../../interfaces/reason';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-order',
@@ -113,7 +114,8 @@ export class OrderPage implements OnInit {
     private http: HttpClient,
     private iab: InAppBrowser,
     private CL: CallNumber,
-    public sys: SysService
+    public sys: SysService,
+    public settings: SettingsService
   ) {
     this.orderId = this.route.snapshot.paramMap.get('id');
 

@@ -343,8 +343,20 @@
           </ion-item>
         </ion-radio-group>
       </ion-list>
-      <button class="cw_phone" (click)="phoneClick('phone')">Позвонить со своего телефона</button>
-      <button class="cw_operator" (click)="phoneClick('operator')">Позвонить через оператора</button>
+      <button
+        class="cw_phone"
+        (click)="phoneClick('phone')"
+        *ngIf="settings.rules.phoneMode == 'robotPhone' || settings.rules.phoneMode == 'phone' "
+      >
+        Позвонить со своего телефона
+      </button>
+      <button
+        class="cw_operator"
+        (click)="phoneClick('operator')"
+        *ngIf="settings.rules.phoneMode == 'robotPhone' || settings.rules.phoneMode == 'robot' "
+      >
+        Позвонить через ip-шлюз
+      </button>
     </div>
   </div>
 </ion-content>

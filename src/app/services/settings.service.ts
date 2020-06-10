@@ -4,6 +4,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SysService } from '../services/sys.service';
+import { Rules } from '../interfaces/rules';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +16,16 @@ export class SettingsService {
   public scanMode: string;
   public defaultRouteBuilding: boolean;
   public routingModeAuto: boolean;
-  public rules: {
-    appMode: string,
-    scanMode: string
-    autoStartRoute: string
-    typeRoute: string
-    storeCheckMode: any,
-    gess: number,
-    schedule: number
-  } = {
-      appMode: "",
-      scanMode: "",
-      autoStartRoute: "",
-      typeRoute: "",
-      storeCheckMode: "",
-      gess: undefined,
-      schedule: undefined
-    };
+  public rules: Rules = {
+    appMode: "",
+    scanMode: "",
+    autoStartRoute: "",
+    typeRoute: "",
+    storeCheckMode: "",
+    gess: undefined,
+    schedule: undefined,
+    phoneMode: ''
+  };
   public checkout: boolean;
 
   constructor(
