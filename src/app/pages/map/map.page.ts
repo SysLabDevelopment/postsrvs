@@ -7,7 +7,8 @@ import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { takeLast, takeUntil, take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-declare var ymaps: any;
+import { SysService } from '../../services/sys.service';
+
 
 @Component({
   selector: 'app-map',
@@ -26,12 +27,16 @@ export class MapPage implements OnInit {
   public local_stop$: Subject<any> = new Subject();
 
   constructor(
-    private route: ActivatedRoute, private geo: Geolocation, public state$: StateService, public map_s: MapService, private wi: WebIntent,
-    private auth: AuthService
+    private route: ActivatedRoute,
+    private geo: Geolocation,
+    public state$: StateService,
+    public map_s: MapService,
+    private wi: WebIntent,
+    private auth: AuthService,
+    private sys: SysService
   ) {
 
     var self = this;
-    // this.map_s.buildWay();
     this.map_s.buildMap();
     console.log('sys::buildMap');
     this.state$.map_state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
@@ -57,16 +62,6 @@ export class MapPage implements OnInit {
       self.dislink = self.state$.disLink;
     });
 
-    // if (this.state$.route_state.getValue() == 'init_done'){
-    //   this.map_s.initMap();
-    //   this.state$.map_event.next('reInit');
-    //   this.initLink();
-    //   console.log('map_page_var_1');
-    // } else {
-    //   var self = this;
-
-
-    //   console.log('map_page_var_2');
     this.state$.route_state.pipe(takeUntil(this.state$.$stop)).subscribe((state) => {
       if (state == 'init_done') {
         self.initLink();
@@ -84,9 +79,7 @@ export class MapPage implements OnInit {
       url: this.state$.link,
       package: 'ru.yandex.yandexnavi'
     }
-
     this.wi.startActivity(options).then((data) => {
-      console.log('wi_success', data);
     });
   }
 
@@ -94,9 +87,7 @@ export class MapPage implements OnInit {
 
     var self = this;
     if (!this.state$.link_init) {
-      console.log('link_start_subscribe');
       this.state$.linkPoints.subscribe((points) => {
-        console.log('link_points_subscribe', points);
         if (points != 'not_init' || points.length < 2) {
           self.state$.disLink = false;
           let link = "yandexnavi://build_route_on_map?";
@@ -110,12 +101,8 @@ export class MapPage implements OnInit {
               l_head = "lat_to=" + points[i][0] + "&lon_to=" + points[i][1];
             }
           }
-
           link += l_head + l_body;
-
-          console.log('link_points', points);
-          console.log('link_str', link);
-          self.state$.link = link;
+          self.state$.link = link + '&client=241';
         } else {
           self.state$.disLink = true;
         }

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Device } from '@ionic-native/device/ngx';
 import { ToastController } from '@ionic/angular';
+import { Response } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root'
@@ -98,6 +99,15 @@ export class SysService {
       })
     }
     return this.http.post(url, data, httpOptions)
+
+  }
+
+  //Возвращает сигнатуру, кодированную ключем яндекс.навигатора
+  //@lat - широта
+  //@lon - долгота
+  public getYandexnaviSignature(lat: number, lon: number): Observable<Response> {
+    const url = `${this.proxy}https://areg-p.flexcore.ru/admin/accessKeySignature/index.php?LAT=${lat}&LON=${lon}`;
+    return this.http.get<Response>(url);
 
   }
 }

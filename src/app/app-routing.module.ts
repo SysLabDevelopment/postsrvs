@@ -17,7 +17,7 @@ const routes: Routes = [
 
   {
     path: 'about',
-    loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule), pathMatch: 'full'
+    loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule)
   },
   { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestPageModule) },
 

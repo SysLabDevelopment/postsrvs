@@ -20,7 +20,7 @@ export class CourierService {
   barcodeScannerOptions: BarcodeScannerOptions;
   public ordersInfo: any;
   public ordersShortData: Subject<any> = new Subject();
-  public checkedOnWork: boolean = false;
+  public checkedOnWork: boolean = true;
   public sortOrders;
 
   constructor(private http: HttpClient,

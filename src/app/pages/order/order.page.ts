@@ -633,7 +633,8 @@ export class OrderPage implements OnInit {
       this.show_email = true;
     }
   }
-  intentStart() {
+
+  public intentStart() {
     this.state$.intentStart(this.coords);
   }
 

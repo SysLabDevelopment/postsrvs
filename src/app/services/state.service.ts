@@ -3,6 +3,8 @@ import { Subject, Observable, interval, BehaviorSubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SysService } from './sys.service';
+import { Response } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root'
@@ -106,7 +108,11 @@ export class StateService {
   };
 
 
-  constructor(private wi: WebIntent, private http: HttpClient) {
+  constructor(
+    private wi: WebIntent,
+    private http: HttpClient,
+    private sys: SysService
+  ) {
     var self = this;
     /* Подписываемся на все сабжекты поставляющие данные и запоминаем в переменных
         для отрисовки на страницах (дабы убрать подписки со страниц)
@@ -193,13 +199,16 @@ export class StateService {
     console.log('sys:: coordinates', coordinates);
     const options = {
       action: this.wi.ACTION_VIEW,
-      url: 'yandexnavi://build_route_on_map?lat_to=' + coordinates[0] + '&lon_to=' + coordinates[1],
+      url: 'yandexnavi://build_route_on_map?lat_to=' + coordinates[0] + '&lon_to=' + coordinates[1] + '&client=241',
       package: 'ru.yandex.yandexnavi'
     }
-
-    this.wi.startActivity(options).then((data) => {
-      console.log('wi_success', data);
-    });
+    this.sys.getYandexnaviSignature(coordinates[0], coordinates[1]).subscribe((resp: Response) => {
+      const signature = resp.signature;
+      options.url += `&signature=${signature}`;
+      this.wi.startActivity(options).then((data) => {
+        console.log('sys:: yandexnavi запущен', data);
+      });
+    })
   }
 
   //adress - строка с адресом
