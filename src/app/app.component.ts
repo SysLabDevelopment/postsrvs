@@ -28,6 +28,7 @@ export class AppComponent {
     public settings: SettingsService
   ) {
     this.initializeApp();
+
   }
 
   initializeApp() {

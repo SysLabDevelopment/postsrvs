@@ -79,10 +79,10 @@
               "ngswConfigPath": "ngsw-config.json"
             },
             "wired":{
-
               "fileReplacements":[
                   {
-
+                    "replace":"src/app/pages/login/login.page.html",
+                    "with":"src/app/wired/login.page.html"
                 }
               ]
 

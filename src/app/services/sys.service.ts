@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { Device } from '@ionic-native/device/ngx';
 import { ToastController } from '@ionic/angular';
 import { Response } from '../interfaces/response';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +17,10 @@ export class SysService {
     private device: Device,
     public toastController: ToastController
   ) {
+
+
+
+
   }
 
   //Получение списка заказов по idшникам
@@ -109,5 +112,17 @@ export class SysService {
     const url = `${this.proxy}https://areg-p.flexcore.ru/admin/accessKeySignature/index.php?LAT=${lat}&LON=${lon}`;
     return this.http.get<Response>(url);
 
+  }
+
+  async SW() {
+    const registration = await navigator.serviceWorker.ready;
+
+    try {
+      await registration.sync.register('syncer').then(() => {
+        console.log();
+      })
+    } catch {
+      console.log('Periodic Sync could not be registered!');
+    }
   }
 }
