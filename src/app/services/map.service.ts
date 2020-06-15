@@ -18,7 +18,7 @@ export class MapService {
 
   private local_stop$: Subject<any> = new Subject();
   public oneOrder = false;
-
+  public objectManager: any;
   constructor
     (public router: Router,
       private geo: Geolocation,
@@ -147,14 +147,25 @@ export class MapService {
         center: [55.75222, 37.61556],
         controls: ['zoomControl', 'geolocationControl'],
         zoom: 12
-      }, {
-        // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
-        boundsAutoApply: true,
-        //Расположение контрола масштабирования
-        zoomControlPosition: { right: 10, top: 100, bottom: 'auto' },
-        //Расположение кнопки поиска себя на карте
-        geolocationControlPosition: { right: 10, bottom: 200, top: 'auto' }
-      });
+      },
+        {
+          // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
+          boundsAutoApply: true,
+          //Расположение контрола масштабирования
+          zoomControlPosition: { right: 10, top: 100, bottom: 'auto' },
+          //Расположение кнопки поиска себя на карте
+          geolocationControlPosition: { right: 10, bottom: 200, top: 'auto' }
+        }),
+        this.objectManager = new ymaps.ObjectManager({
+          // Чтобы метки начали кластеризоваться, выставляем опцию.
+          clusterize: true,
+          // ObjectManager принимает те же опции, что и кластеризатор.
+          gridSize: 32,
+          clusterDisableClickZoom: true
+        });
+      this.objectManager.objects.options.set('preset', 'islands#greenDotIcon');
+      this.objectManager.clusters.options.set('preset', 'islands#greenClusterIcons');
+      self.state$.l_map.geoObjects.add(this.objectManager);
 
       self.state$.map_state.next('map_init');
 
@@ -427,19 +438,39 @@ export class MapService {
       orders.forEach(order => {
         if (Number(order.status_id) == 1) {
           console.log('sys::pointsRender order', order);
-          let note = localStorage.getItem(order.id);
-          let placemark = new ymaps.Placemark([order.lt, order.lg], {
-            // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
-            balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
-            balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
-              order.client_address + '<hr/>' +
-              'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
-              `<b>Компания:</b> ` + order.client_name +
-              `<br/><b>Клиент:</b> ` + order.client_fio +
-              `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button><br/><br/>` + note,
+          let note = (localStorage.getItem(order.id) ? localStorage.getItem(order.id) : '');
+          cnt++;
+          this.objectManager.add({
+            type: 'Feature',
+            id: order.id,
+            geometry: {
+              type: 'Point',
+              coordinates: [order.lt, order.lg]
+            },
+            properties: {
+              balloonContentHeader: '<span style="color: red;">' + cnt + '</span>',
+              balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
+                order.client_address + '<hr/>' +
+                'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
+                `<b>Компания:</b> ` + order.client_name +
+                `<br/><b>Клиент:</b> ` + order.client_fio +
+                `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;padding:10px'>Детали</button><br/><br/>` + note,
+            }
           });
+          map.geoObjects.add(this.objectManager);
 
-          map.geoObjects.add(placemark);
+          // let placemark = new ymaps.Placemark([order.lt, order.lg], {
+          //   // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+          //   balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
+          //   balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
+          //     order.client_address + '<hr/>' +
+          //     'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
+          //     `<b>Компания:</b> ` + order.client_name +
+          //     `<br/><b>Клиент:</b> ` + order.client_fio +
+          //     `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button><br/><br/>` + note,
+          // });
+
+          // map.geoObjects.add(placemark);
           map.setBounds(map.geoObjects.getBounds(), {
             checkZoomRange: true,
             zoomMargin: 35

@@ -378,7 +378,7 @@ export class BalancePage implements OnInit {
   }
 
   public showSchedule() {
-    this.isShowSchedule = true;
+    this.router.navigate(['schedule']);
   }
   public goToWork() {
     this.sys.goToWork(this.workDates).subscribe((data: { success: boolean }) => {
