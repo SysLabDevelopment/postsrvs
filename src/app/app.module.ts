@@ -21,7 +21,6 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { CashoutFailOComponent } from './components/balance/cashout-fail-o/cashout-fail-o.component';
 import { CashoutWComponent } from './components/balance/cashout-w/cashout-w.component';
 import { AppVersion } from '@ionic-native/app-version/ngx';
@@ -47,7 +46,6 @@ import { environment } from '../environments/environment';
     Diagnostic,
     Camera,
     CallNumber,
-    ScreenOrientation,
     AppVersion,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
@@ -7,12 +7,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { StateService } from '../../services/state.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { CourierService } from '../../services/courier.service';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 import { trigger, state, style, animate, transition, } from '@angular/animations';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-var LoginPage = /** @class */ (function () {
-    function LoginPage(auth, router, alert, plt, http, state$, AP) {
-        var _this = this;
+import { SettingsService } from '../../services/settings.service';
+import { SysService } from '../../services/sys.service';
+let LoginPage = class LoginPage {
+    constructor(auth, router, alert, plt, http, state$, AP, courier, appVersion, settings, sys) {
         this.auth = auth;
         this.router = router;
         this.alert = alert;
@@ -20,6 +23,10 @@ var LoginPage = /** @class */ (function () {
         this.http = http;
         this.state$ = state$;
         this.AP = AP;
+        this.courier = courier;
+        this.appVersion = appVersion;
+        this.settings = settings;
+        this.sys = sys;
         this.disLogin = true;
         this.pl_window = false;
         this.error_phone = false;
@@ -30,37 +37,66 @@ var LoginPage = /** @class */ (function () {
         this.resend_dis = false;
         this.dis_timer = null;
         this.$stopTimer = new Subject();
-        var self = this;
-        this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
+        let self = this;
         //проверяет авторизован ли пользователь на сервере
-        this.plt.ready().then(function () {
-            _this.auth.checkAuth().subscribe(function (data) {
-                console.log('check_auth_data', data);
-                if (data.success == 'true') {
-                    self.router.navigate(['balance']);
-                    self.auth.initLogin();
-                }
-                else {
-                    self.disLogin = false;
-                }
+        this.plt.ready().then((readySource) => {
+            console.log('sys:: платформа готова:', readySource);
+            if (readySource == 'android') {
+                this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
+            }
+            self.appVersion.getVersionNumber().then((resp) => {
+                this.auth.version = resp;
+                this.auth.checkAuth().subscribe((data) => {
+                    if (data.success == 'true') {
+                        this.auth.setUser(data.sync_id);
+                        this.settings.getSettings(data.sync_id);
+                        self.router.navigate(['balance']);
+                        self.auth.initLogin();
+                    }
+                    else {
+                        self.disLogin = false;
+                    }
+                });
             });
         });
     }
-    LoginPage.prototype.ngOnInit = function () { };
-    LoginPage.prototype.scanAuth = function () {
-        var self = this;
-        this.auth.scanData().then(function (data) {
-            console.log('data', data);
-            var id = data.text.slice(0, -4);
-            console.log('cid', id);
+    ngOnInit() {
+        this.isCheckedToWork().subscribe((data) => {
+            if (data.checked) {
+                this.courier.checkedOnWork = true;
+            }
+        });
+        if (!this.auth.getUserId()) {
+            this.courier.checkedOnWork = true;
+        }
+        if (localStorage.debug == 'true') {
+            this.auth.isDebug = true;
+        }
+    }
+    isCheckedToWork() {
+        const url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php';
+        let data = {
+            "token": "l;sdfjkhglsoapl[",
+            "cId": localStorage.userId
+        };
+        const headers = {
+            'Content-type': 'application/json'
+        };
+        return this.http.post(url, data, { headers: headers });
+    }
+    scanAuth() {
+        let self = this;
+        this.auth.scanData().then((data) => {
+            let id = data.text.slice(0, -4);
             localStorage.setItem('cId', id);
-            var a_data = { 'action': 'auth',
+            let a_data = {
+                'action': 'auth',
                 'barcode': data.text,
             };
-            console.log('request_auth_data', a_data);
-            self.auth.login(a_data).subscribe(function (data) {
-                console.log('authResponse', data);
+            self.auth.login(a_data).subscribe((data) => {
                 if (data.success == "true") {
+                    this.auth.setUser(data.sync_id);
+                    this.settings.getSettings(data.sync_id);
                     self.router.navigate(['balance']);
                     self.auth.initLogin();
                 }
@@ -69,14 +105,13 @@ var LoginPage = /** @class */ (function () {
                 }
             });
         });
-    };
-    LoginPage.prototype.phoneAuth = function () {
+    }
+    phoneAuth() {
         if (!this.auth_step) {
             this.pl_window = !this.pl_window;
         }
-    };
-    LoginPage.prototype.enterPhone = function () {
-        console.log('PHONE_DATA,', this.phone, this.phone.length);
+    }
+    enterPhone() {
         if (this.phone && this.phone.length > 9) {
             this.loader = true;
             this.sendPhone();
@@ -84,50 +119,47 @@ var LoginPage = /** @class */ (function () {
         else {
             this.error_phone = true;
         }
-    };
-    LoginPage.prototype.changePhone = function () {
+    }
+    changePhone() {
         this.error_phone = false;
-    };
-    LoginPage.prototype.sendPhone = function () {
-        var _this = this;
-        var url = "https://mok.flexcore.ru/client/registerP/";
-        var data = "action=registerP&phone=8" + this.phone + "&type=courier";
+    }
+    sendPhone() {
+        const url = this.sys.proxy + "https://mok.flexcore.ru/client/registerP/";
+        const data = "action=registerP&phone=8" + this.phone + "&type=courier";
         var self = this;
-        this.sendPost(url, data).subscribe(function (res) {
-            console.log('sendPhone', res);
-            _this.state$.unsetNotification('internet');
+        this.sendPost(url, data).subscribe((res) => {
+            this.state$.unsetNotification('internet');
             if (res.success == 'true') {
                 self.authStep();
             }
             else {
-                _this.showLoginError(4);
+                this.showLoginError(4);
             }
-        }, function (err) {
-            console.log('auth_error', err);
-            _this.showLoginError(3);
-            _this.state$.setNotification('internet', 'Проверьте интернет соединение!');
+        }, (err) => {
+            this.showLoginError(3);
         });
         this.startTimer();
-    };
-    LoginPage.prototype.sendPost = function (url, data) {
+    }
+    sendPost(url, data) {
         console.log('send_data', data);
-        var httpOptions = {
+        const httpOptions = {
             headers: new HttpHeaders({
                 'Access-Control-Allow-Origin': '*',
-                'Content-type': 'application/x-www-form-urlencoded'
+                'Content-type': 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Headers': '*'
             })
         };
         return this.http.post(url, data, httpOptions);
-    };
-    LoginPage.prototype.authStep = function () {
+    }
+    authStep() {
         this.auth_step = true;
         this.loader = false;
-    };
-    LoginPage.prototype.enterCode = function () {
-        var url = "https://mok.flexcore.ru/courier/authP/";
+    }
+    enterCode() {
+        const url = this.sys.proxy + "https://mok.flexcore.ru/courier/authP/";
         var data = "action=authP&phone=8" + this.phone + "&code=" + this.code + "&type=courier";
         var self = this;
-        this.sendPost(url, data).subscribe(function (res) {
+        this.sendPost(url, data).subscribe((res) => {
             console.log('sendCode', res);
             if (res.success == 'true') {
                 self.login(res.user);
@@ -136,17 +168,19 @@ var LoginPage = /** @class */ (function () {
                 self.error_phone = true;
             }
         });
-    };
-    LoginPage.prototype.login = function (courier) {
-        var base = "33dbcda2db5311e39760309e88d17f08," + courier;
+    }
+    login(courier) {
+        let base = "33dbcda2db5311e39760309e88d17f08," + courier;
         localStorage.setItem('cId', courier);
         var self = this;
-        var a_data = { 'action': 'auth',
+        let a_data = {
+            'action': 'auth',
             'barcode': base,
         };
-        this.auth.login(a_data).subscribe(function (data) {
-            console.log('authResponse', data);
+        this.auth.login(a_data).subscribe((data) => {
             if (data.success == "true") {
+                this.auth.setUser(data.sync_id);
+                this.settings.getSettings(data.sync_id);
                 self.router.navigate(['balance']);
                 self.auth.initLogin();
             }
@@ -154,8 +188,8 @@ var LoginPage = /** @class */ (function () {
                 self.auth.showError(1);
             }
         });
-    };
-    LoginPage.prototype.showLoginError = function (err_n) {
+    }
+    showLoginError(err_n) {
         switch (err_n) {
             case 3:
                 this.loader = false;
@@ -170,15 +204,15 @@ var LoginPage = /** @class */ (function () {
                 this.auth.showError(err_n);
                 break;
         }
-    };
-    LoginPage.prototype.startTimer = function () {
+    }
+    startTimer() {
         if (this.resend_dis) {
             return false;
         }
         this.resend_dis = true;
         this.dis_timer = 30;
         var self = this;
-        this.state$.interval_1ss.pipe(takeUntil(this.$stopTimer)).subscribe(function () {
+        this.state$.interval_1ss.pipe(takeUntil(this.$stopTimer)).subscribe(() => {
             self.dis_timer--;
             if (self.dis_timer == 0) {
                 self.dis_timer = null;
@@ -186,62 +220,65 @@ var LoginPage = /** @class */ (function () {
                 self.resend_dis = false;
             }
         });
-    };
-    LoginPage.prototype.reEnterPhone = function () {
+    }
+    reEnterPhone() {
         if (this.resend_dis) {
             return false;
         }
         this.sendPhone();
-    };
-    LoginPage.prototype.changeCode = function () { };
-    LoginPage = tslib_1.__decorate([
-        Component({
-            selector: 'app-login',
-            templateUrl: './login.page.html',
-            styleUrls: ['./login.page.scss'],
-            animations: [
-                trigger('openClose', [
-                    // ...
-                    state('open', style({
-                        height: '264px',
-                    })),
-                    state('closed', style({
-                        height: '50px',
-                    })),
-                    transition('open => closed', [
-                        animate('0.5s')
-                    ]),
-                    transition('closed => open', [
-                        animate('0.5s')
-                    ]),
+    }
+    changeCode() { }
+};
+LoginPage = __decorate([
+    Component({
+        selector: 'app-login',
+        templateUrl: './login.page.html',
+        styleUrls: ['./login.page.scss'],
+        animations: [
+            trigger('openClose', [
+                // ...
+                state('open', style({
+                    height: '264px',
+                })),
+                state('closed', style({
+                    height: '50px',
+                })),
+                transition('open => closed', [
+                    animate('0.5s')
                 ]),
-                trigger('openClose1', [
-                    // ...
-                    state('open', style({
-                        height: '50px',
-                    })),
-                    state('closed', style({
-                        height: '0px',
-                        display: 'none'
-                    })),
-                    transition('open => closed', [
-                        animate('0.5s')
-                    ]),
-                    transition('closed => open', [
-                        animate('0.5s')
-                    ]),
-                ])
-            ]
-        }),
-        tslib_1.__metadata("design:paramtypes", [AuthService,
-            Router,
-            AlertController,
-            Platform,
-            HttpClient,
-            StateService,
-            AndroidPermissions])
-    ], LoginPage);
-    return LoginPage;
-}());
+                transition('closed => open', [
+                    animate('0.5s')
+                ]),
+            ]),
+            trigger('openClose1', [
+                // ...
+                state('open', style({
+                    height: '50px',
+                })),
+                state('closed', style({
+                    height: '0px',
+                    display: 'none'
+                })),
+                transition('open => closed', [
+                    animate('0.5s')
+                ]),
+                transition('closed => open', [
+                    animate('0.5s')
+                ]),
+            ])
+        ]
+    }),
+    __metadata("design:paramtypes", [AuthService,
+        Router,
+        AlertController,
+        Platform,
+        HttpClient,
+        StateService,
+        AndroidPermissions,
+        CourierService,
+        AppVersion,
+        SettingsService,
+        SysService])
+], LoginPage);
 export { LoginPage };
 //# sourceMappingURL=login.page.js.map

@@ -1,17 +1,16 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-var NavService = /** @class */ (function () {
-    function NavService() {
+let NavService = class NavService {
+    constructor() {
         this.tabNav = new BehaviorSubject(0);
     }
-    NavService = tslib_1.__decorate([
-        Injectable({
-            providedIn: 'root'
-        }),
-        tslib_1.__metadata("design:paramtypes", [])
-    ], NavService);
-    return NavService;
-}());
+};
+NavService = __decorate([
+    Injectable({
+        providedIn: 'root'
+    }),
+    __metadata("design:paramtypes", [])
+], NavService);
 export { NavService };
 //# sourceMappingURL=nav.service.js.map

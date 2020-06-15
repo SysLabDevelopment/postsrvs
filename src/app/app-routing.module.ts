@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestPageModule) },
 
-  { path: '**', redirectTo: 'balance', pathMatch: 'full' }
+  { path: '**', redirectTo: 'balance', pathMatch: 'full' },
 ];
 
 @NgModule({

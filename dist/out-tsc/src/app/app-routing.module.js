@@ -1,29 +1,33 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-var routes = [
+const routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [AuthGuard] },
-    { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [AuthGuard] },
-    { path: 'courier', loadChildren: './pages/courier/courier.module#CourierPageModule', canActivate: [AuthGuard] },
-    { path: 'order/:id', loadChildren: './pages/order/order.module#OrderPageModule', canActivate: [AuthGuard] },
-    { path: 'map', loadChildren: './pages/map/map.module#MapPageModule', canActivate: [AuthGuard] },
-    { path: 'balance', loadChildren: './pages/balance/balance.module#BalancePageModule', canActivate: [AuthGuard] },
-    { path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
+    { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule), canActivate: [AuthGuard] },
+    { path: 'courier', loadChildren: () => import('./pages/courier/courier.module').then(m => m.CourierPageModule), canActivate: [AuthGuard] },
+    { path: 'order/:id', loadChildren: () => import('./pages/order/order.module').then(m => m.OrderPageModule), canActivate: [AuthGuard], pathMatch: 'full' },
+    { path: 'map', loadChildren: () => import('./pages/map/map.module').then(m => m.MapPageModule), canActivate: [AuthGuard] },
+    { path: 'balance', loadChildren: () => import('./pages/balance/balance.module').then(m => m.BalancePageModule), canActivate: [AuthGuard] },
+    { path: 'settings', redirectTo: 'about' },
+    { path: 'draw', loadChildren: () => import('./pages/draw/draw.module').then(m => m.DrawPageModule) },
+    { path: 'map/:order', redirectTo: 'map' },
+    {
+        path: 'about',
+        loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule)
+    },
+    { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestPageModule) },
+    { path: '**', redirectTo: 'balance', pathMatch: 'full' },
 ];
-var AppRoutingModule = /** @class */ (function () {
-    function AppRoutingModule() {
-    }
-    AppRoutingModule = tslib_1.__decorate([
-        NgModule({
-            imports: [
-                RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-            ],
-            exports: [RouterModule]
-        })
-    ], AppRoutingModule);
-    return AppRoutingModule;
-}());
+let AppRoutingModule = class AppRoutingModule {
+};
+AppRoutingModule = __decorate([
+    NgModule({
+        imports: [
+            RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+        ],
+        exports: [RouterModule]
+    })
+], AppRoutingModule);
 export { AppRoutingModule };
 //# sourceMappingURL=app-routing.module.js.map

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __awaiter, __decorate, __metadata } from "tslib";
 import { Injectable } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 import { StateService } from './state.service';
 import { MapService } from './map.service';
 import { AlertController } from '@ionic/angular';
-var AuthService = /** @class */ (function () {
-    function AuthService(bScan, http, device, plt, router, state$, map, alert) {
+import { SettingsService } from './settings.service';
+import { SysService } from '../services/sys.service';
+let AuthService = class AuthService {
+    constructor(bScan, http, device, plt, router, state$, map, alert, settings, sys) {
         this.bScan = bScan;
         this.http = http;
         this.device = device;
@@ -19,38 +21,66 @@ var AuthService = /** @class */ (function () {
         this.state$ = state$;
         this.map = map;
         this.alert = alert;
+        this.settings = settings;
+        this.sys = sys;
         this.user = false;
         this.auth_state = new BehaviorSubject('not_login');
         this.stop$ = new Subject(); // останаливает все подписки;
+        this.checkState = undefined; //Состояние чекнутости на складе
+        this.version = undefined; // версия приложения
+        this.isDebug = false; //Нужна в случае хардкодной отладки нативных функций
         this.barcodeScannerOptions = {
             showTorchButton: true,
             showFlipCameraButton: true
         };
+        if (!this.getMode()) {
+            this.setMode('hand');
+        }
+        if (!this.getScanMode()) {
+            this.setScanMode('camera');
+        }
+        this.routingModeAuto = (this.getRoutingMode() == 'standart' ? false : true);
     }
-    AuthService.prototype.ngOnInit = function () {
-    };
-    AuthService.prototype.checkAuth = function () {
+    checkAuth() {
         var url = 'orders';
         var data = {
             'action': 'checkAuth',
+            'appVersion': this.version
         };
         return this.sendPost(url, data);
-    };
-    AuthService.prototype.sendPost = function (url, data) {
-        var _this = this;
-        var host = "https://postsrvs.ru/mobile/";
+    }
+    setMode(mode) {
+        localStorage.setItem('mode', mode);
+    }
+    getMode() {
+        return this.settings.rules.appMode;
+    }
+    setScanMode(mode) {
+        localStorage.setItem('scan_mode', mode);
+    }
+    //меняет способ сканирования
+    getScanMode() {
+        return this.settings.rules.scanMode;
+    }
+    sendPost(url, data) {
+        let host = this.sys.proxy + "https://postsrvs.ru/mobile/";
+        if (url == 'orders' || url == 'auth') {
+            host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/";
+        }
         url = host + url;
-        data['uuid'] = this.getUuid();
-        data = JSON.stringify(data);
-        var httpOptions = { headers: new HttpHeaders({}) };
-        console.log('AUTH.SendPOst() data', data);
-        var self = this;
-        var resp = new Subject();
-        this.plt.ready().then(function () {
-            self.http.post(url, data, httpOptions).subscribe(function (data) {
-                console.log('AUTH.SendPOst() RESPONSE', data);
-                _this.state$.unsetNotification('internet');
+        data['uuid'] = (this.isDebug ? '6b356755575fce31' : this.getUuid());
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-type': 'application/json'
+            })
+        };
+        let self = this;
+        let resp = new Subject();
+        this.plt.ready().then(() => {
+            self.http.post(url, data, httpOptions).subscribe((data) => {
+                this.state$.unsetNotification('internet');
                 if (data) {
+                    console.log('sys:: data == true, data.success', data.success);
                     if (data.success == 'false' && data.reason == "not_auth") {
                         self.logout();
                     }
@@ -61,179 +91,182 @@ var AuthService = /** @class */ (function () {
                 else {
                     resp.next(data);
                 }
-            }, function (err) {
-                console.error('An error occurred:', err);
+            }, (err) => {
                 if (err.error instanceof Error) {
-                    // A client-side or network error occurred. Handle it accordingly.
-                    _this.state$.setNotification('internet', 'Проверьте интернет соединение!');
+                    this.state$.setNotification('internet', 'Ошибка ответа сервера! Обратитесь к разработчикам.');
                 }
             });
         });
         return resp;
-    };
-    AuthService.prototype.getUuid = function () {
-        //return '4191a54e85f2d5f6';
+    }
+    getUuid() {
+        // return 'c446ca560c6e0383';
         return this.device.uuid;
-    };
-    AuthService.prototype.setUser = function (id) {
+    }
+    setUser(id) {
         localStorage.setItem('user', id);
         this.user = true;
-    };
-    AuthService.prototype.getUserId = function () {
+        this.userId = id;
+    }
+    getUserId() {
         return localStorage.getItem('user');
-    };
-    AuthService.prototype.scanData = function () {
+    }
+    scanData() {
         return this.bScan.scan();
-    };
-    AuthService.prototype.login = function (code) {
+    }
+    login(code) {
         return this.sendPost('auth', code);
-    };
-    AuthService.prototype.initLogin = function () {
+    }
+    initLogin() {
         this.state$.g_state.next('login');
         this.state$.map_state.next('init');
-    };
-    AuthService.prototype.logout = function () {
+    }
+    logout() {
         this.state$.logout();
         this.router.navigate(['login']);
         this.state$.g_state.next('unLogin');
-    };
-    AuthService.prototype.showError = function (err) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var _a, alert_1, alert2, alert3, alert4, alert5, alert6, alert7, alert8, alert9;
-            return tslib_1.__generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = err;
-                        switch (_a) {
-                            case 1: return [3 /*break*/, 1];
-                            case 2: return [3 /*break*/, 4];
-                            case 3: return [3 /*break*/, 7];
-                            case 4: return [3 /*break*/, 10];
-                            case 5: return [3 /*break*/, 13];
-                            case 6: return [3 /*break*/, 16];
-                            case 7: return [3 /*break*/, 19];
-                            case 8: return [3 /*break*/, 22];
-                            case 9: return [3 /*break*/, 25];
-                        }
-                        return [3 /*break*/, 28];
-                    case 1: return [4 /*yield*/, this.alert.create({
-                            header: 'Ошибка',
-                            message: 'Ошибка авторизации, повторите попытку позже.',
-                            buttons: ['OK']
-                        })];
-                    case 2:
-                        alert_1 = _b.sent();
-                        return [4 /*yield*/, alert_1.present()];
-                    case 3:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 4: return [4 /*yield*/, this.alert.create({
-                            header: 'Ошибка',
-                            message: 'Заказ не найден.',
-                            buttons: ['OK']
-                        })];
-                    case 5:
-                        alert2 = _b.sent();
-                        return [4 /*yield*/, alert2.present()];
-                    case 6:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 7: return [4 /*yield*/, this.alert.create({
-                            header: 'Ошибка',
-                            message: 'Ошибка отправки запроса, повторите попытку позже.',
-                            buttons: ['OK']
-                        })];
-                    case 8:
-                        alert3 = _b.sent();
-                        return [4 /*yield*/, alert3.present()];
-                    case 9:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 10: return [4 /*yield*/, this.alert.create({
-                            header: 'Ошибка',
-                            message: 'Телефон не зарегистрирован.',
-                            buttons: ['OK']
-                        })];
-                    case 11:
-                        alert4 = _b.sent();
-                        return [4 /*yield*/, alert4.present()];
-                    case 12:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 13: return [4 /*yield*/, this.alert.create({
-                            header: 'Ошибка',
-                            message: 'Не удалось сменить режим маршрута.',
-                            buttons: ['OK']
-                        })];
-                    case 14:
-                        alert5 = _b.sent();
-                        return [4 /*yield*/, alert5.present()];
-                    case 15:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 16: return [4 /*yield*/, this.alert.create({
-                            header: 'Ошибка',
-                            message: 'Не удалось подтвердить заказ.',
-                            buttons: ['OK']
-                        })];
-                    case 17:
-                        alert6 = _b.sent();
-                        return [4 /*yield*/, alert6.present()];
-                    case 18:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 19: return [4 /*yield*/, this.alert.create({
-                            header: 'Спасибо!',
-                            message: 'Отзыв успешно отправлен.',
-                            buttons: ['OK']
-                        })];
-                    case 20:
-                        alert7 = _b.sent();
-                        return [4 /*yield*/, alert7.present()];
-                    case 21:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 22: return [4 /*yield*/, this.alert.create({
-                            header: 'Ошибка',
-                            message: 'Не удалось отправить отзыв.',
-                            buttons: ['OK']
-                        })];
-                    case 23:
-                        alert8 = _b.sent();
-                        return [4 /*yield*/, alert8.present()];
-                    case 24:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 25: return [4 /*yield*/, this.alert.create({
-                            header: 'Звонок клиенту',
-                            message: 'Запрос обрабатывается, вам сейчас позвонят.',
-                            buttons: ['OK']
-                        })];
-                    case 26:
-                        alert9 = _b.sent();
-                        return [4 /*yield*/, alert9.present()];
-                    case 27:
-                        _b.sent();
-                        return [3 /*break*/, 28];
-                    case 28: return [2 /*return*/];
+    }
+    showError(err) {
+        return __awaiter(this, void 0, void 0, function* () {
+            switch (err) {
+                case 1:
+                    const alert = yield this.alert.create({
+                        header: 'Ошибка',
+                        message: 'Ошибка авторизации, повторите попытку позже.',
+                        buttons: ['OK']
+                    });
+                    yield alert.present();
+                    break;
+                case 2:
+                    const alert2 = yield this.alert.create({
+                        header: 'Ошибка',
+                        message: 'Заказ не найден.',
+                        buttons: ['OK']
+                    });
+                    yield alert2.present();
+                    break;
+                case 3:
+                    const alert3 = yield this.alert.create({
+                        header: 'Ошибка',
+                        message: 'Ошибка отправки запроса, повторите попытку позже.',
+                        buttons: ['OK']
+                    });
+                    yield alert3.present();
+                    break;
+                case 4:
+                    const alert4 = yield this.alert.create({
+                        header: 'Ошибка',
+                        message: 'Телефон не зарегистрирован.',
+                        buttons: ['OK']
+                    });
+                    yield alert4.present();
+                    break;
+                case 5:
+                    const alert5 = yield this.alert.create({
+                        header: 'Ошибка',
+                        message: 'Не удалось сменить режим маршрута.',
+                        buttons: ['OK']
+                    });
+                    yield alert5.present();
+                    break;
+                case 6:
+                    const alert6 = yield this.alert.create({
+                        header: 'Ошибка',
+                        message: 'Не удалось подтвердить заказ.',
+                        buttons: ['OK']
+                    });
+                    yield alert6.present();
+                    break;
+                case 7:
+                    const alert7 = yield this.alert.create({
+                        header: 'Спасибо!',
+                        message: 'Отзыв успешно отправлен.',
+                        buttons: ['OK']
+                    });
+                    yield alert7.present();
+                    break;
+                case 8:
+                    const alert8 = yield this.alert.create({
+                        header: 'Ошибка',
+                        message: 'Не удалось отправить отзыв.',
+                        buttons: ['OK']
+                    });
+                    yield alert8.present();
+                    break;
+                case 9:
+                    const alert9 = yield this.alert.create({
+                        header: 'Звонок клиенту',
+                        message: 'Запрос обрабатывается, вам сейчас позвонят.',
+                        buttons: ['OK']
+                    });
+                    yield alert9.present();
+                    break;
+                case 10:
+                    const alert10 = yield this.alert.create({
+                        header: 'Настройки сохранены!',
+                        buttons: ['OK']
+                    });
+                    yield alert10.present();
+                    break;
+            }
+        });
+    }
+    setGuessMode(guessMode) {
+        this.settings.rules.gess = guessMode;
+    }
+    getGuessMode() {
+        return Boolean(Number(this.settings.rules.gess));
+    }
+    //Сохранение режима построения маршрута по умолчанию
+    setDefaultRouteBuilding(defaultRouteBuilding) {
+        defaultRouteBuilding && localStorage.setItem('defaultRouteBuilding', defaultRouteBuilding);
+    }
+    getDefaultRouteBuilding() {
+        return this.settings.rules.autoStartRoute;
+    }
+    setRoutingMode(auto) {
+        auto && localStorage.setItem('auto', auto + '');
+    }
+    getRoutingMode() {
+        return this.settings.rules.typeRoute;
+    }
+    check(mode) {
+        this.bScan.scan().then((scanData) => {
+            console.log('sys:: auth.check() данные qr-кода: ', scanData);
+            let url = this.sys.proxy + 'https://postsrvs.ru/admin/ajax/wh.php';
+            let data = {
+                'cId': this.getUserId(),
+                'token': "l;sdfjkhglsoapl[",
+                'qr': scanData.text,
+                'mode': 'check' + mode
+            };
+            const headers = new HttpHeaders({
+                'Access-Control-Allow-Origin': '*',
+                'Content-type': 'application/json'
+            });
+            this.http.post(url, data, { headers: headers }).subscribe((data) => {
+                if (data.success == true) {
+                    this.checkState = 'checked' + mode;
+                    localStorage.check = mode;
                 }
             });
         });
-    };
-    AuthService = tslib_1.__decorate([
-        Injectable({
-            providedIn: 'root'
-        }),
-        tslib_1.__metadata("design:paramtypes", [BarcodeScanner,
-            HttpClient,
-            Device,
-            Platform,
-            Router,
-            StateService,
-            MapService,
-            AlertController])
-    ], AuthService);
-    return AuthService;
-}());
+    }
+};
+AuthService = __decorate([
+    Injectable({
+        providedIn: 'root'
+    }),
+    __metadata("design:paramtypes", [BarcodeScanner,
+        HttpClient,
+        Device,
+        Platform,
+        Router,
+        StateService,
+        MapService,
+        AlertController,
+        SettingsService,
+        SysService])
+], AuthService);
 export { AuthService };
 //# sourceMappingURL=auth.service.js.map

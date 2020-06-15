@@ -8,6 +8,7 @@ import { NavService } from './services/nav.service';
 import { CourierService } from './services/courier.service';
 import { AuthService } from './services/auth.service';
 import { SettingsService } from './services/settings.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',

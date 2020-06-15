@@ -78,6 +78,15 @@
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
             },
+            "wired":{
+
+              "fileReplacements":[
+                  {
+
+                }
+              ]
+
+            },
             "ci": {
               "budgets": [
                 {

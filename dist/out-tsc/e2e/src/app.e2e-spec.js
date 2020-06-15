@@ -1,10 +1,10 @@
 import { AppPage } from './app.po';
-describe('new App', function () {
-    var page;
-    beforeEach(function () {
+describe('new App', () => {
+    let page;
+    beforeEach(() => {
         page = new AppPage();
     });
-    it('should be blank', function () {
+    it('should be blank', () => {
         page.navigateTo();
         expect(page.getParagraphText()).toContain('The world is your oyster.');
     });

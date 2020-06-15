@@ -1,14 +1,13 @@
-var _this = this;
-import * as tslib_1 from "tslib";
+import { __awaiter } from "tslib";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
-describe('AppComponent', function () {
-    var statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
-    beforeEach(async(function () {
+describe('AppComponent', () => {
+    let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+    beforeEach(async(() => {
         statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
         splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
         platformReadySpy = Promise.resolve();
@@ -23,26 +22,18 @@ describe('AppComponent', function () {
             ],
         }).compileComponents();
     }));
-    it('should create the app', function () {
-        var fixture = TestBed.createComponent(AppComponent);
-        var app = fixture.debugElement.componentInstance;
+    it('should create the app', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     });
-    it('should initialize the app', function () { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-        return tslib_1.__generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    TestBed.createComponent(AppComponent);
-                    expect(platformSpy.ready).toHaveBeenCalled();
-                    return [4 /*yield*/, platformReadySpy];
-                case 1:
-                    _a.sent();
-                    expect(statusBarSpy.styleDefault).toHaveBeenCalled();
-                    expect(splashScreenSpy.hide).toHaveBeenCalled();
-                    return [2 /*return*/];
-            }
-        });
-    }); });
+    it('should initialize the app', () => __awaiter(void 0, void 0, void 0, function* () {
+        TestBed.createComponent(AppComponent);
+        expect(platformSpy.ready).toHaveBeenCalled();
+        yield platformReadySpy;
+        expect(statusBarSpy.styleDefault).toHaveBeenCalled();
+        expect(splashScreenSpy.hide).toHaveBeenCalled();
+    }));
     // TODO: add more tests!
 });
 //# sourceMappingURL=app.component.spec.js.map

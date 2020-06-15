@@ -18,18 +18,22 @@ import { SysService } from '../../services/sys.service';
 export class MapPage implements OnInit {
 
   // public route:any;
+  // tslint:disable-next-line: no-inferrable-types
   public loader: boolean = false;
   // public points = null;
   // public position = null;
   // public init_geo = false;
+  // tslint:disable-next-line: variable-name
   public page_map;
   public dislink: boolean = this.state$.disLink;
+  // tslint:disable-next-line: variable-name
   public local_stop$: Subject<any> = new Subject();
 
   constructor(
     private route: ActivatedRoute,
     private geo: Geolocation,
     public state$: StateService,
+    // tslint:disable-next-line: variable-name
     public map_s: MapService,
     private wi: WebIntent,
     private auth: AuthService,
@@ -127,12 +131,15 @@ export class MapPage implements OnInit {
       }
     });
     if (
-      this.state$.map_state.getValue() == 'map_init' && this.auth.getDefaultRouteBuilding() !== '1'
+      this.state$.map_state.getValue() == 'map_init' && this.auth.getDefaultRouteBuilding() !== '1' && !this.map_s.oneOrder
     ) {
       this.map_s.pointsRender()
     }
+    if (this.map_s.oneOrder) {
+      this.map_s.showOrder(this.state$.coords);
+    }
     this.state$.map_state.subscribe((state) => {
-      if ((state == 'map_init') && (this.auth.getDefaultRouteBuilding() !== '1')) {
+      if ((state == 'map_init') && (this.auth.getDefaultRouteBuilding() !== '1') && !this.map_s.oneOrder) {
         this.map_s.pointsRender();
       }
     })

@@ -1,18 +1,16 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import { Component } from '@angular/core';
-var CashoutWComponent = /** @class */ (function () {
-    function CashoutWComponent() {
-    }
-    CashoutWComponent.prototype.ngOnInit = function () { };
-    CashoutWComponent = tslib_1.__decorate([
-        Component({
-            selector: 'app-cashout-w',
-            templateUrl: './cashout-w.component.html',
-            styleUrls: ['./cashout-w.component.scss'],
-        }),
-        tslib_1.__metadata("design:paramtypes", [])
-    ], CashoutWComponent);
-    return CashoutWComponent;
-}());
+let CashoutWComponent = class CashoutWComponent {
+    constructor() { }
+    ngOnInit() { }
+};
+CashoutWComponent = __decorate([
+    Component({
+        selector: 'app-cashout-w',
+        templateUrl: './cashout-w.component.html',
+        styleUrls: ['./cashout-w.component.scss'],
+    }),
+    __metadata("design:paramtypes", [])
+], CashoutWComponent);
 export { CashoutWComponent };
 //# sourceMappingURL=cashout-w.component.js.map

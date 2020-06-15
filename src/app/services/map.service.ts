@@ -388,10 +388,10 @@ export class MapService {
           const currentGeo = [pos.coords.latitude, pos.coords.longitude];
           console.log('sys:: currentGeo', currentGeo);
           console.log('sys:: coords', coords);
-          /**
-          * Создаем мультимаршрут.
-          * @see https://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/multiRouter.MultiRoute.xml
-          */
+
+          // Создаем мультимаршрут.
+          // @see https://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/multiRouter.MultiRoute.xml
+
           const multiRoute = new ymaps.multiRouter.MultiRoute({
             referencePoints: [
               currentGeo,

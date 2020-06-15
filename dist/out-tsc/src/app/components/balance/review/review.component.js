@@ -1,35 +1,34 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import { Component, Output, EventEmitter } from '@angular/core';
-var ReviewComponent = /** @class */ (function () {
-    function ReviewComponent() {
+let ReviewComponent = class ReviewComponent {
+    constructor() {
         this.close_E = new EventEmitter();
         this.send_E = new EventEmitter();
         this.r_text = null;
     }
-    ReviewComponent.prototype.ngOnInit = function () { };
-    ReviewComponent.prototype.close = function () {
+    ngOnInit() { }
+    close() {
         this.close_E.emit();
-    };
-    ReviewComponent.prototype.send = function () {
+    }
+    send() {
         this.send_E.emit(this.r_text);
-    };
-    tslib_1.__decorate([
-        Output(),
-        tslib_1.__metadata("design:type", Object)
-    ], ReviewComponent.prototype, "close_E", void 0);
-    tslib_1.__decorate([
-        Output(),
-        tslib_1.__metadata("design:type", Object)
-    ], ReviewComponent.prototype, "send_E", void 0);
-    ReviewComponent = tslib_1.__decorate([
-        Component({
-            selector: 'app-review',
-            templateUrl: './review.component.html',
-            styleUrls: ['./review.component.scss'],
-        }),
-        tslib_1.__metadata("design:paramtypes", [])
-    ], ReviewComponent);
-    return ReviewComponent;
-}());
+    }
+};
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], ReviewComponent.prototype, "close_E", void 0);
+__decorate([
+    Output(),
+    __metadata("design:type", Object)
+], ReviewComponent.prototype, "send_E", void 0);
+ReviewComponent = __decorate([
+    Component({
+        selector: 'app-review',
+        templateUrl: './review.component.html',
+        styleUrls: ['./review.component.scss'],
+    }),
+    __metadata("design:paramtypes", [])
+], ReviewComponent);
 export { ReviewComponent };
 //# sourceMappingURL=review.component.js.map

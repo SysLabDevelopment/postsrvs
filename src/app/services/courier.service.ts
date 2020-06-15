@@ -155,7 +155,7 @@ export class CourierService {
               if ((data.success == 'true') && (data.reason !== 'нет заказов')) {
                 self.state$.orders.next(data.orders);
                 self.state$.orders_data = data.orders;
-                if (this.auth.getDefaultRouteBuilding() !== '1') {
+                if (this.auth.getDefaultRouteBuilding() !== '1' && !this.map.oneOrder) {
                   self.map.pointsRender();
                 } else {
                   this.map.initPoints();
