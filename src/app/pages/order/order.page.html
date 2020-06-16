@@ -37,6 +37,32 @@
       <div class="o-row poruch-row podrazd" *ngIf="order.company">
         <span class="vp-title o-t">Компания</span>
         <span class="pp office-body">{{order.company}}</span>
+        <ion-card id="company-card">
+          <ion-item class="ion-activated" *ngIf="order.Cname">
+            <ion-label>
+              <h3>Ответственное лицо</h3>
+              {{order.Cname}}
+            </ion-label>
+          </ion-item>
+          <ion-item class="ion-activated" *ngIf="order.Cadress">
+            <ion-label>
+              <h3>Адрес</h3>
+              {{order.Cadress}}
+            </ion-label>
+          </ion-item>
+          <ion-item class="ion-activated" *ngIf="order.Cphone">
+            <ion-label>
+              <h3>Основной телефон</h3>
+              {{order.Cphone}}
+            </ion-label>
+          </ion-item>
+          <ion-item class="ion-activated" *ngIf="order.Cphone_s">
+            <ion-label>
+              <h3>Дополнительный телефон</h3>
+              {{order.Cphone_s}}
+            </ion-label>
+          </ion-item>
+        </ion-card>
       </div>
       <div class="o-row poruch-row podrazd" *ngIf="podrazd">
         <span class="vp-title o-t">Отдел</span>
