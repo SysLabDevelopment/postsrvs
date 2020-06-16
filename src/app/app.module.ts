@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +27,10 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 import { HttpErrorInterceptor } from './interceptors/http.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
@@ -52,7 +56,8 @@ import { environment } from '../environments/environment';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true
-    }
+    },
+    { provide: LOCALE_ID, useFactory: () => 'ru'}
   ],
   bootstrap: [AppComponent]
 })

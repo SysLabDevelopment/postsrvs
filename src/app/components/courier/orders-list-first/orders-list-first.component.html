@@ -27,8 +27,8 @@
         <div>{{ order.client_fio }}</div>
       </div>
       <div class="ol-col oc-right">
-        <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'shortTime' }} </span>
-        <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'shortTime' }}</span>
+        <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'H:mm':'ru' }} </span>
+        <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'H2:mm':'ru' }}</span>
         <div class="done-time" *ngIf="order.status_id != 1">
           <div class="done-title">Время</div>
           <div class="done-body">{{ order.date }}</div>

@@ -9,6 +9,10 @@ import { CourierPage } from './courier.page';
 import { OrdersListFirstComponent } from '../../components/courier/orders-list-first/orders-list-first.component';
 import { OrdersListSecondComponent } from '../../components/courier/orders-list-second/orders-list-second.component';
 import { OrdersListGuessComponent } from '../../components/courier/orders-list-guess/orders-list-guess.component';
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+registerLocaleData(localeRu, 'ru');
 
 const routes: Routes = [
   {
@@ -26,6 +30,9 @@ const routes: Routes = [
     ScrollingModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CourierPage, OrdersListFirstComponent, OrdersListSecondComponent, OrdersListGuessComponent]
+  declarations: [CourierPage, OrdersListFirstComponent, OrdersListSecondComponent, OrdersListGuessComponent],
+  providers: [
+    { provide: LOCALE_ID, useFactory: () => 'ru' }
+  ]
 })
 export class CourierPageModule { }
