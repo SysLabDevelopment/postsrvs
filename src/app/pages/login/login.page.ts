@@ -15,10 +15,11 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { catchError, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
+import { WiredButton,WiredInput,WiredSpinner } from "wired-elements";
 
 @Component({
   selector: 'app-login',

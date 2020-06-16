@@ -24,7 +24,7 @@
         <div class="oc-left-row c_address">
           {{ order.client_address }}
         </div>
-        <div>{{ order.client_fio }}</div>
+        <div class='fio'>{{ order.client_fio }}</div>
       </div>
       <div class="ol-col oc-right">
         <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'H:mm':'ru' }} </span>

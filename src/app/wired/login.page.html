@@ -1,3 +1,61 @@
 <ion-content>
-  aldsnglkans;kgn;ksdlngn! это wired!
+  <div class="notification" *ngIf="state$.notificationStr && state$.notificationStr != ''">
+    {{state$.notificationStr}}
+  </div>
+  <div class="lg-wrp">
+    <div class="lg-btn">
+      <wired-button elevation=2 class="lg-login" [@openClose1]="auth_step ? 'closed' : 'open'" (click)="scanAuth()">
+        Войти по QR-коду
+      </wired-button>
+      <wired-button
+        class="lg-login login-phone"
+        [ngClass]="{'btn-open' : pl_window}"
+        [@openClose]="pl_window ? 'open' : 'closed'"
+      >
+        <div class="btn-wrp">
+          <div class="btn-title" (click)="phoneAuth()">Войти по номеру телефона</div>
+          <div class="btn-body phone-b" *ngIf="!auth_step">
+            <div class="bi-title">Введите номер</div>
+            <div class="bi-inp">
+              <span class="error-phone" *ngIf="error_phone">Введите корректный телефон</span>
+              <wired-input
+                type="tel"
+                prefix="+7 "
+                mask="(000) 000 00 00"
+                class="phone-inp"
+                [showMaskTyped]="true"
+                [(ngModel)]="phone"
+                (input)="changePhone()"
+              />
+              <wired-button elevation=2 class="enter-phone" (click)="enterPhone()">Отправить</wired-button>
+            </div>
+            <div class="sh-icons" *ngIf="loader">
+              <wired-spinner spinning></wired-spinner>
+            </div>
+          </div>
+          <div class="btn-body code-b" *ngIf="auth_step">
+            <div class="bi-title">Введите код</div>
+            <div class="bi-inp">
+              <span class="error-phone" *ngIf="error_phone">Неверный код</span>
+              <wired-input
+                type="tel"
+                mask="00-00"
+                class="phone-inp"
+                [showMaskTyped]="true"
+                [(ngModel)]="code"
+                (input)="changePhone()"
+              />
+              <wired-button class="enter-phone" (click)="enterCode()">Отправить</wired-button>
+              <wired-button class="enter-phone" [ngClass]="{'btn-resend' : resend_dis}" (click)="reEnterPhone()">
+                Отправить повторно {{dis_timer}}
+              </wired-button>
+            </div>
+            <div class="sh-icons" *ngIf="loader">
+              <wired-spinner spinning></wired-spinner>
+            </div>
+          </div>
+        </div>
+      </wired-button>
+    </div>
+  </div>
 </ion-content>
