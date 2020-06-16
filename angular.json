@@ -81,8 +81,8 @@
             "wired":{
               "fileReplacements":[
                   {
-                    "replace":"src/app/pages/login/login.page.html",
-                    "with":"src/app/wired/login.page.html"
+                    "replace":"src/app/app.component.html",
+                    "with":"src/app/wired/app.component.html"
                 }
               ]
 

@@ -1,0 +1,17 @@
+<ion-app>
+  <ion-router-outlet id="content1"></ion-router-outlet>
+  <div id="bottom-menu" *ngIf="nav != 0">
+    <div class="bm-item" (click)="navTo(1)" [ngClass]="{ active: nav == 1 }">
+      <wierd-icon-button>account_circle</wierd-icon-button>
+    </div>
+    <div *ngIf="!settings.routingModeAuto" class="bm-item" (click)="navTo(2)" [ngClass]="{ active: nav == 2 }">
+      <wired-icon-button>explore</wired-icon-button>
+    </div>
+    <div class="bm-item" (click)="navTo(3)" [ngClass]="{ active: nav == 3 }">
+      <wired-icon-button>list</wired-icon-button>
+    </div>
+  </div>
+  <wired-button elevation="2" class="check_to_work" (click)="courier.check_to_work()" *ngIf="!courier.checkedOnWork">
+    Еду на работу
+  </wired-button>
+</ion-app>

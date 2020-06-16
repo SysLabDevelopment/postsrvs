@@ -33,7 +33,6 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   Drop_L: CdkDropList;
   private orders;
   public slicer: number = this.howSlice();
-  private ordersIds;
   public isSkeleton: boolean = true;
   public searchString: string = '';
   private ord: Observable<any[]>;
@@ -92,7 +91,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   }
 
   public howSlice(): number {
-    return (this.settings.rules.typeRoute == 'standart' ? 0 : 1)
+    return (this.settings.rules.typeRoute === 'standart' ? 0 : 1)
   }
 
   public prepareOrdersList() {

@@ -29,19 +29,6 @@
       <div class="ol-col oc-right">
         <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'shortTime' }} </span>
         <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'shortTime' }}</span>
-        <div
-          *ngIf="order.status_id == 1"
-          class="c-status"
-          [ngClass]="{
-            status_done: order.client_status_id == 1,
-            status_wait: order.client_status_id == 2,
-            status_fail: order.client_status_id == 3,
-            status_none: order.client_status_id == 8,
-            'cl-status-voice': order.client_status_id == 4
-          }"
-        >
-          {{ order.client_status }}
-        </div>
         <div class="done-time" *ngIf="order.status_id != 1">
           <div class="done-title">Время</div>
           <div class="done-body">{{ order.date }}</div>
