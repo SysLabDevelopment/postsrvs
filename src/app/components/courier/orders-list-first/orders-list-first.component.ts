@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, EventEmitter, Input, Output, ViewChildren, QueryList, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Input, Output, ViewChildren, QueryList, OnChanges, OnDestroy } from '@angular/core';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CourierService } from '../../../services/courier.service';
 import { AuthService } from '../../../services/auth.service';
@@ -17,7 +17,7 @@ import { LOCALE_ID } from '@angular/core';
   providers: []
 })
 
-export class OrdersListFirstComponent implements OnInit, OnChanges {
+export class OrdersListFirstComponent implements OnInit, OnChanges, OnDestroy {
   // @Input()
   public orders_c: Observable<any>;
   @Input()
@@ -108,6 +108,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges {
   public onSearchChange(event) {
     this.prepareOrdersList()
   }
-
+  ngOnDestroy(){
+  }
 }
 
