@@ -195,7 +195,7 @@ export class CourierService {
     if (!this.state$.check_state) {
 
 
-      this.state$.interval_1m.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+      this.state$.interval_3.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
 
         self.state$.load_lvl.next(0);
         self.state$.state.next('init');

@@ -59,7 +59,7 @@ export class MapPage implements OnInit {
       }
     })
 
-    this.state$.interval_1m.pipe(takeUntil(this.local_stop$)).subscribe(() => {
+    this.state$.interval_2s.pipe(takeUntil(this.local_stop$)).subscribe(() => {
       console.log('sys:: Перерисовка маршрута');
       self.map_s.changeWay();
       self.initLink();

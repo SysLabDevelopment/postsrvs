@@ -19,7 +19,7 @@ import {
 import { MapService } from '../../services/map.service';
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
-
+import { WiredIconButton } from 'wired-elements';
 @Component({
   selector: 'app-balance',
   templateUrl: './balance.page.html',

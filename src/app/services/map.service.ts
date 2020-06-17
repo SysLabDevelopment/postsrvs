@@ -228,7 +228,7 @@ export class MapService {
     //отслеживаем изменение позиции и перестраиваем маршрут
     if (this.state$.geo_check.getValue() == "not_init") {
 
-      this.state$.interval_3.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
+      this.state$.interval_2s.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
         this.geo.getCurrentPosition().then((resp) => {
           console.log('sys:: Координаты lt', resp.coords.latitude);
           console.log('sys:: Координаты lg', resp.coords.longitude);
