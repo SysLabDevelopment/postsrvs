@@ -103,6 +103,7 @@ export class OrderPage implements OnInit {
   public note: string;
   public today = new Date();
   public tomorrow = new Date();
+  public new_plan_date: string; //Дата переноса заказа
 
   constructor(private map: MapService,
     private router: Router,
@@ -365,12 +366,17 @@ export class OrderPage implements OnInit {
     switch (this.selectedStatus) {
       case 4:
         if (this.selectedReason != null) {
+          let new_plan_date = new Date(this.new_plan_date);
+          
           this.courier
             .changeStatus(
               this.selectedStatus,
               this.order.id,
               undefined,
-              this.selectedReason
+              this.selectedReason,
+              null,
+              null,
+              new_plan_date.toLocaleDateString()
             )
             .subscribe((data: any) => {
               if (data.success == 'true') {

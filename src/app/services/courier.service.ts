@@ -314,7 +314,7 @@ export class CourierService {
   }
 
 
-  public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '') {
+  public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date='') {
     var url = 'orders';
     var draw = localStorage.getItem('drawImg');
     var data = {
@@ -324,7 +324,8 @@ export class CourierService {
       'comment': comment,
       'reason': reason,
       'goods': goods,
-      'payment': payment
+      'payment': payment,
+      'new_plam_date': new_plan_date
     };
     if (draw) data['sign'] = draw;
 

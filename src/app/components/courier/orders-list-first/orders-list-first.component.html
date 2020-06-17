@@ -6,7 +6,7 @@
     style="height: 100%; width: 100%; min-height: 50vh;"
   >
     <div
-      *ngFor="let order of orders_c | async ; trackBy order.id"
+      *ngFor="let order of orders_c | async "
       class="ol-item"
       [ngClass]="{
         'non-confirmed': order.confirm == '0' && confirm_cond,
