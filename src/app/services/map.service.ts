@@ -378,12 +378,6 @@ export class MapService {
     }
   }
 
-  public setRoute() {
-    //  var self = this;
-    //  ymaps.ready().then(() => {
-    //   self.state$.l_route.setBounds(self.state$.l_route.geoObjects.getBounds());
-    //  });
-  }
 
   public getLink() {
 

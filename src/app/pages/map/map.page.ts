@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { MapService } from '../../services/map.service';
 import { StateService } from '../../services/state.service';
@@ -17,23 +16,14 @@ import { SysService } from '../../services/sys.service';
 })
 export class MapPage implements OnInit {
 
-  // public route:any;
-  // tslint:disable-next-line: no-inferrable-types
   public loader: boolean = false;
-  // public points = null;
-  // public position = null;
-  // public init_geo = false;
-  // tslint:disable-next-line: variable-name
   public page_map;
   public dislink: boolean = this.state$.disLink;
-  // tslint:disable-next-line: variable-name
   public local_stop$: Subject<any> = new Subject();
 
   constructor(
     private route: ActivatedRoute,
-    private geo: Geolocation,
     public state$: StateService,
-    // tslint:disable-next-line: variable-name
     public map_s: MapService,
     private wi: WebIntent,
     private auth: AuthService,
