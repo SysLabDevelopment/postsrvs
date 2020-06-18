@@ -1,0 +1,43 @@
+<div class="order-list">
+  <cdk-virtual-scroll-viewport itemSize="30" style="height: 100%; width: 100%; min-height: 100vw;" *ngIf="orders_c">
+    <div
+      *ngFor="let order of orders_c"
+      class="ol-item"
+      [ngClass]="{
+        'non-confirmed': order.confirm == 0 && confirm_cond,
+        overdue: order.overdue == 1 || order.required == true
+      }"
+      (click)="selectOrder(order.id)"
+    >
+      <div class="ol-col oc-left">
+        <div class="oc-left-row c_number">
+          <span class="show-t" *ngIf="order.SMACode != NULL">Забор &nbsp;</span>{{ order.client_id }}
+          <span class="order-company" *ngIf="order.company">({{ order.company }})</span>
+        </div>
+        <div class="oc-left-row c_address">
+          {{ order.client_address }}
+        </div>
+        <div class='fio'>{{ order.client_fio }}</div>
+      </div>
+      <div class="ol-col oc-right">
+        <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'shortTime' }} </span>
+        <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'shortTime' }}</span>
+        <div class="done-time" *ngIf="order.status_id != 1">
+          <div class="done-title">Время</div>
+          <div class="done-body">{{ order.date }}</div>
+        </div>
+      </div>
+    </div>
+  </cdk-virtual-scroll-viewport>
+  <ion-searchbar
+    placeholder="Фильтр"
+    inputmode="text"
+    (ionChange)="onSearchChange($event)"
+    [debounce]="250"
+    [(ngModel)]="searchString"
+    animated
+  ></ion-searchbar>
+</div>
+<div class="shirm" *ngIf="!orders_c">
+  <ion-spinner name="lines-small"></ion-spinner>
+</div>

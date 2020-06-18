@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <wired-button  (click)="findOrder()">
+        <ion-icon slot="start" name="search-sharp"></ion-icon>
+      </wired-button >
+      <wired-button  *ngIf="auth.getGuessMode()">
+        <i>G</i>
+      </wired-button >
+    </ion-buttons>
+    <ion-title>Мои заказы</ion-title>
+    <ion-title size="small" color="dark">{{state$.filial}}</ion-title>
+    <ion-buttons slot="primary">
+      <wired-button  *ngIf="subBtnCond" (click)="submitOrder()">
+        <ion-icon name="logo-dropbox"></ion-icon>
+      </wired-button >
+      <wired-button  *ngIf="courier.sortOrders.g_process == 0 && !isWorkEnded" (click)="endWork()">
+        <ion-icon name="shield-checkmark"></ion-icon>
+      </wired-button >
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <span
+    class="manual_lable"
+    [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}"
+    *ngIf="state$.manual_route && selectedTab == 1"
+    >Для сортировки зажмите заказ и перетащите</span
+  >
+
+  <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
+    <app-orders-list-guess *ngIf="auth.getGuessMode()"> </app-orders-list-guess>
+
+    <div class="o-tab-wrp" *ngIf="ordersInit && !auth.getGuessMode()">
+      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 1}" (click)="tabSelect(1)">В работе</div>
+      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 2}" (click)="tabSelect(2)">Доставлено</div>
+      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 3}" (click)="tabSelect(3)">Не доставлено</div>
+    </div>
+    <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
+      <app-orders-list-first
+        [selectedTab]="selectedTab"
+        [confirm_cond]="subBtnCond"
+        *ngIf="selectedTab == 1 && this.state$.manual_route && !auth.getGuessMode()"
+        (ordersChange_E)="ordersListChanged($event)"
+        (orderSelected_E)="selectOrder($event)"
+      >
+      </app-orders-list-first>
+
+      <app-orders-list-second
+        [orders]="orders"
+        [selectedTab]="selectedTab"
+        [confirm_cond]="subBtnCond"
+        *ngIf="!(this.state$.manual_route && selectedTab == 1) && !auth.getGuessMode()"
+        (orderSelected_E)="selectOrder($event)"
+      >
+      </app-orders-list-second>
+
+      <div class="orders-lable" *ngIf="!auth.routingModeAuto">
+        <div class="all-amount olab-amount">
+          Всего заказов:
+          <span class="amount-labl">
+            {{courier.sortOrders.all}}
+          </span>
+        </div>
+        <div class="olab-amount" *ngIf="courier.sortOrders.g_process != 0">
+          Заказов на вкладке: <span class="amount-labl">{{courier.sortOrders.g_process}}</span>
+        </div>
+        <div class="olab-amount" *ngIf="courier.sortOrders.g_done != 0">
+          Заказов на вкладке:
+          <div class="amount-labl">{{courier.sortOrders.g_done}}</div>
+        </div>
+        <div class="olab-amount" *ngIf="courier.sortOrders.g_fail != 0">
+          Заказов на вкладке:
+          <div class="amount-labl">{{courier.sortOrders.g_fail}}</div>
+        </div>
+        <div
+          class="olab-empty"
+          *ngIf=" (selectedTab == 1 && g_process == 0) ||
+                                                (selectedTab == 2 && g_done == 0) ||
+                                                (selectedTab == 3 && g_fail == 0)"
+        >
+          <span class="center-title">Нет заказов</span>
+        </div>
+      </div>
+      <div class="orders-lable" *ngIf="auth.routingModeAuto">
+        <ion-chip color="primary" mode="md" outline="true">
+          <ion-label>Всего заказов {{courier.sortOrders.all}}</ion-label>
+        </ion-chip>
+        <ion-chip color="danger" mode="md" outline="true" *ngIf="courier.sortOrders.g_fail != 0">
+          <ion-label>Отменено {{courier.sortOrders.g_fail}}</ion-label>
+        </ion-chip>
+        <ion-chip color="success" mode="md" outline="true" *ngIf="courier.sortOrders.g_done != 0">
+          <ion-label>Доставлено {{courier.sortOrders.g_done}}</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary" mode="md" outline="true" *ngIf="courier.sortOrders.g_process != 0">
+          <ion-label>Осталось {{courier.sortOrders.g_process}}</ion-label>
+        </ion-chip>
+      </div>
+    </div>
+    <div class="checking" *ngIf="auth.checkState !== 'checkedOut'">
+      <wired-button 
+        (click)="auth.check('In')"
+        expand="block"
+        fill="outline"
+        shape="round"
+        *ngIf="auth.checkState == 'checkedundefined'"
+      >
+        Приехал на склад
+      </wired-button >
+      <wired-button 
+        (click)="auth.check('Out')"
+        expand="block"
+        fill="outline"
+        shape="round"
+        *ngIf="auth.checkState == 'checkedIn'"
+      >
+        Уехал со склада
+      </wired-button >
+    </div>
+    <div
+      class="start-route"
+      *ngIf="ordersInit && state$.orders_data != [] && state$.orders_data !== null && auth.checkState == 'checkedOut'"
+    >
+      <wired-button 
+        class="satrt-r-btn"
+        *ngIf="!btn_go && !this.state$.manual_route && auth.routingModeAuto"
+        (click)="startRoute()"
+      >
+        Начать маршрут
+      </wired-button >
+      <wired-button  class="satrt-r-btn sr-stop" *ngIf="btn_go && !this.state$.manual_route" (click)="stopRoute()">
+        Остановить маршрут
+      </wired-button >
+      <wired-button 
+        class="satrt-r-btn find-o-btn"
+        *ngIf="auth.getMode() == 'auto' || auth.getMode() == 'auto_wo'"
+        [ngClass]="{  'manual_btn' : this.state$.manual_route}"
+        (click)="manualRoute()"
+      >
+        <span *ngIf="this.state$.manual_route">Автоматический режим</span>
+        <span *ngIf="!this.state$.manual_route">Ручной режим</span>
+      </wired-button >
+    </div>
+    <div class="scanWindow" *ngIf="scanView">
+      <div class="sw-wrp">
+        <div class="sw-title">Просканируйте штрихкод</div>
+        <input #sInput class="ionInp" (change)="scanInputChange()" [(ngModel)]="scanInput" autofocus />
+      </div>
+    </div>
+  </div>
+
+  <div class="shirm" *ngIf="loader">
+    <ion-spinner name="lines-small"></ion-spinner>
+  </div>
+</ion-content>

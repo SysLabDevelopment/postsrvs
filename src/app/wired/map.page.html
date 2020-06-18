@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Маршрут</ion-title>
+    <ion-title size="small" color="dark">
+      Показаны первые 10 заказов
+    </ion-title>
+    <ion-title size="small">
+      <wired-button  (click)="allOrders()" *ngIf="map_s.oneOrder" class="display-content" color="primary">
+        Все заказы
+      </wired-button >
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr != ''">{{state$.notificationStr}}</span>
+
+  <div class="c-wrp">
+    <div class="c-body">
+      <div id="map" style="height: 100%; width: 100%;"></div>
+    </div>
+  </div>
+</ion-content>

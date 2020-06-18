@@ -172,5 +172,32 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-googlemaps": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
+    },
+    "is_top_level": true,
+    "variables": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
+    }
+  },
+  "cordova-androidx-build": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-androidx-build"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "com.googlemaps.ios": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }

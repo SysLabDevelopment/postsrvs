@@ -70,10 +70,16 @@
     "cordova.plugins.diagnostic": {
       "ANDROID_SUPPORT_VERSION": "28.+",
       "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "postsrvs.w"
     }
   },
   "dependent_plugins": {
     "es6-promise-plugin": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-androidx-build": {
       "PACKAGE_NAME": "postsrvs.w"
     }
   }

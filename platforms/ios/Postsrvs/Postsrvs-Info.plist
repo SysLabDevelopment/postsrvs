@@ -34,7 +34,7 @@
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
+	<string>This app wants to get your location always, even this app runs in background.</string>
 	<key>NSMainNibFile</key>
 	<string/>
 	<key>NSMainNibFile~ipad</key>
@@ -57,6 +57,24 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Мы используем Ваши гео-данные для рассчета маршрута доставки и оторажения Вашей позиции на карте</string>
+	<string>This app wants to get your location while this app runs only.</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

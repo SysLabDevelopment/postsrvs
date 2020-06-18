@@ -1,0 +1,16 @@
+<ion-segment scrollable (ionChange)='segmentChanged($event)'>
+  <ion-segment-button value="1">
+    <ion-label>Автозаводская</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="2">
+    <ion-label>Кировоградская</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="3">
+    <ion-label>Золотой вавилон</ion-label>
+  </ion-segment-button>
+</ion-segment>
+<ion-list>
+  <ion-item *ngFor="let order of orders | async" >
+    <ion-label>Awesome Label</ion-label>
+  </ion-item>
+</ion-list>

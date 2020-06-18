@@ -99,6 +99,9 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../phonegap-plugin-barcodescanner/w-barcodescanner.gradle"
+apply from: "../cordova-androidx-build/w-cordova-androidx-build.gradle"
+apply from: "../cordova-plugin-googlemaps/w-tbxml-android.gradle"
+apply from: "../cordova-plugin-googlemaps/w-pgm-custom.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()

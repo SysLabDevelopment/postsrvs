@@ -53,7 +53,7 @@
 
       <ion-img [src]="'data:image/jpg;base64,'+info.qr"></ion-img>
       <div class="lg-b-wrp">
-        <button *ngIf="(info != null) && !cashCheck " class="logout-btn" (click)="cashOut()">Сдать средства</button>
+        <wired-button  *ngIf="(info != null) && !cashCheck " class="logout-btn" (click)="cashOut()">Сдать средства</wired-button >
         <div class="check-labl" *ngIf="cashCheck">
           <div class="cl-body">
             <div class="cl-row">
@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-        <button class="logout-btn review_btn" (click)="writeReview()">Отзыв о приложении</button>
+        <wired-button  class="logout-btn review_btn" (click)="writeReview()">Отзыв о приложении</wired-button >
         <div *ngIf="isGoToWork">
           <ul *ngFor="let date of workDates">
             <li>{{date}}</li>
@@ -76,12 +76,12 @@
           <ion-item>
             <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder="DD.MM.YYYY HH:mm"></ion-datetime
             ><br />
-            <ion-button (click)="addWorkDate(workDate)" expand="block" fill="outline" shape="round">
+            <wired-button  (click)="addWorkDate(workDate)" expand="block" fill="outline" shape="round">
               Добавить
-            </ion-button>
-            <ion-button (click)="goToWork()" expand="block" fill="outline" shape="round">
+            </wired-button >
+            <wired-button  (click)="goToWork()" expand="block" fill="outline" shape="round">
               Подтвердить
-            </ion-button>
+            </wired-button >
           </ion-item>
         </div>
         <div *ngIf="isStopWork">
@@ -106,25 +106,25 @@
           </ul>
           <ion-item>
             <ion-datetime display-format="DD.MM.YYYY" placeholder="DD.MM.YYYY" #nonWorkDate></ion-datetime>
-            <ion-button (click)="addNonWorkDate(nonWorkDate)" expand="block" fill="outline" shape="round">
+            <wired-button  (click)="addNonWorkDate(nonWorkDate)" expand="block" fill="outline" shape="round">
               Добавить
-            </ion-button>
-            <ion-button (click)="stopWork()" expand="block" fill="outline" shape="round">
+            </wired-button >
+            <wired-button  (click)="stopWork()" expand="block" fill="outline" shape="round">
               Подтвердить
-            </ion-button>
+            </wired-button >
           </ion-item>
         </div>
         <ion-item *ngIf="isShowSchedule">
-          <ion-button (click)="showWorkScheduler()" expand="block" fill="outline" shape="round">
+          <wired-button  (click)="showWorkScheduler()" expand="block" fill="outline" shape="round">
             Выхожу
-          </ion-button>
-          <ion-button (click)="showStopWorkScheduler()" expand="block" fill="outline" shape="round">
+          </wired-button >
+          <wired-button  (click)="showStopWorkScheduler()" expand="block" fill="outline" shape="round">
             Не выхожу
-          </ion-button>
+          </wired-button >
         </ion-item>
-        <button class="logout-btn review_btn" *ngIf="settings.rules.schedule" (click)="showSchedule()">
+        <wired-button  class="logout-btn review_btn" *ngIf="settings.rules.schedule" (click)="showSchedule()">
           График работы
-        </button>
+        </wired-button >
       </div>
     </cdk-virtual-scroll-viewport>
   </div>
