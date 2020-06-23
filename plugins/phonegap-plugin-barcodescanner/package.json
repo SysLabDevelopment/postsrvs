@@ -1,31 +1,30 @@
 {
-  "_from": "phonegap-plugin-barcodescanner@8.1.0",
+  "_from": "phonegap-plugin-barcodescanner@^8.1.0",
   "_id": "phonegap-plugin-barcodescanner@8.1.0",
   "_inBundle": false,
   "_integrity": "sha512-WQCDCoH9EQ9WEn2bce+B95jbNJduilAn2Vtske8KfcYAeGu7bdFqRD7zGCLCQao62VwoEwlX0cUvbQ/am12Jwg==",
   "_location": "/phonegap-plugin-barcodescanner",
   "_phantomChildren": {
-    "glob": "7.1.6",
-    "interpret": "1.2.0",
+    "glob": "7.1.2",
+    "interpret": "1.4.0",
     "rechoir": "0.6.2"
   },
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "phonegap-plugin-barcodescanner@8.1.0",
+    "raw": "phonegap-plugin-barcodescanner@^8.1.0",
     "name": "phonegap-plugin-barcodescanner",
     "escapedName": "phonegap-plugin-barcodescanner",
-    "rawSpec": "8.1.0",
+    "rawSpec": "^8.1.0",
     "saveSpec": null,
-    "fetchSpec": "8.1.0"
+    "fetchSpec": "^8.1.0"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/phonegap-plugin-barcodescanner/-/phonegap-plugin-barcodescanner-8.1.0.tgz",
   "_shasum": "e0d53e4e850699205e915a4b91c2f202d31f8311",
-  "_spec": "phonegap-plugin-barcodescanner@8.1.0",
+  "_spec": "phonegap-plugin-barcodescanner@^8.1.0",
   "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Adobe PhoneGap Team"

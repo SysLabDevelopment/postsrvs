@@ -1,28 +1,27 @@
 {
-  "_from": "cordova-androidx-build",
-  "_id": "cordova-androidx-build@1.0.3",
+  "_from": "cordova-androidx-build@^1.0.4",
+  "_id": "cordova-androidx-build@1.0.4",
   "_inBundle": false,
-  "_integrity": "sha512-xs857n5Sru5BSDZrnVKVt1LnARCebYLgLfZBA285LvdCv7U5u/mx+IEyKaPFqEaAm9jwCWsK5TYgZIJYCYeflQ==",
+  "_integrity": "sha512-ZC+NHOA4WPI8qV+YyvBba/XokF169tpc9X08fbov6zNXwczeA0w+9lqq+E5Nyp+hX4OX/r8p3q1MSPPYLDa8tA==",
   "_location": "/cordova-androidx-build",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-androidx-build",
+    "raw": "cordova-androidx-build@^1.0.4",
     "name": "cordova-androidx-build",
     "escapedName": "cordova-androidx-build",
-    "rawSpec": "",
+    "rawSpec": "^1.0.4",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^1.0.4"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-androidx-build/-/cordova-androidx-build-1.0.3.tgz",
-  "_shasum": "e2f9f1d505e2951d72cd1b15dcdc58b22b63398a",
-  "_spec": "cordova-androidx-build",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_resolved": "https://registry.npmjs.org/cordova-androidx-build/-/cordova-androidx-build-1.0.4.tgz",
+  "_shasum": "caaf2bf59dcc82f4d12b4c384e1deafce6ba3ca4",
+  "_spec": "cordova-androidx-build@^1.0.4",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Masashi Katsumata"
   },
@@ -49,5 +48,5 @@
     "type": "git",
     "url": "git+https://github.com/wf9a5m75/cordova-androidx-build.git"
   },
-  "version": "1.0.3"
+  "version": "1.0.4"
 }

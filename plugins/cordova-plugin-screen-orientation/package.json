@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-screen-orientation/-/cordova-plugin-screen-orientation-3.0.2.tgz",
   "_shasum": "81290a933cfe84d35482cfcb251c931cc7b71931",
   "_spec": "cordova-plugin-screen-orientation@^3.0.2",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Apache Software Foundation"
   },

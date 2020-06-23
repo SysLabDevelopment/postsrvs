@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-androidx/-/cordova-plugin-androidx-1.0.2.tgz",
   "_shasum": "a48d3fabf20beb4273171fdece0b524362b2643f",
   "_spec": "cordova-plugin-androidx@^1.0.2",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Dave Alden"
   },

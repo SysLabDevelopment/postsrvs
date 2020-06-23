@@ -139,4 +139,5 @@
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <plugin name="cordova-plugin-androidx" spec="^1.0.2" />
     <plugin name="cordova.plugins.diagnostic" spec="~5.0.1" />
+    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
 </widget>

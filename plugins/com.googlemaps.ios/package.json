@@ -7,8 +7,8 @@
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk",
-    "rawSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk",
+    "raw": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
+    "rawSpec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
     "saveSpec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
     "fetchSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
     "gitCommittish": null
@@ -18,8 +18,8 @@
     "/"
   ],
   "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git#f0827aa78f3830b23c2f2f530e0e9c096b3e54b9",
-  "_spec": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_spec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Masashi Katsumata, Hirbod Mirjavadi"
   },

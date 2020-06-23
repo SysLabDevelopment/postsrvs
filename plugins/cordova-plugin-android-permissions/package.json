@@ -1,27 +1,27 @@
 {
-  "_from": "cordova-plugin-android-permissions@1.0.2",
+  "_from": "cordova-plugin-android-permissions@^1.0.2",
   "_id": "cordova-plugin-android-permissions@1.0.2",
   "_inBundle": false,
   "_integrity": "sha512-Eb7Cf3lk9RydSYqmUzBAEVTT/EU+opV2yvyqkgZZAB/RVfHxsla/1wzHq0PBwAFjHIrxBAGZrOpJFVKc1SxtuA==",
   "_location": "/cordova-plugin-android-permissions",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-android-permissions@1.0.2",
+    "raw": "cordova-plugin-android-permissions@^1.0.2",
     "name": "cordova-plugin-android-permissions",
     "escapedName": "cordova-plugin-android-permissions",
-    "rawSpec": "1.0.2",
+    "rawSpec": "^1.0.2",
     "saveSpec": null,
-    "fetchSpec": "1.0.2"
+    "fetchSpec": "^1.0.2"
   },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-android-permissions/-/cordova-plugin-android-permissions-1.0.2.tgz",
   "_shasum": "e26556ff11a560dffa33a5915d27fe9d44b3c248",
-  "_spec": "cordova-plugin-android-permissions@1.0.2",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_spec": "cordova-plugin-android-permissions@^1.0.2",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Jason Yang"
   },

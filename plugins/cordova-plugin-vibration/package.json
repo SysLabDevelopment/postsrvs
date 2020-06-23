@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-vibration/-/cordova-plugin-vibration-3.1.1.tgz",
   "_shasum": "38fcdd9a7675cfb44d86339c1b2cb129017e9e00",
   "_spec": "cordova-plugin-vibration@^3.1.1",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Apache Software Foundation"
   },

@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-camera/-/cordova-plugin-camera-4.1.0.tgz",
   "_shasum": "6474a3e080c4662aa00fd7425705d301c693ddc0",
   "_spec": "cordova-plugin-camera@4.1.0",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Apache Software Foundation"
   },

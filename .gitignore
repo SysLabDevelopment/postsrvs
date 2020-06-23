@@ -24,7 +24,7 @@ node_modules/
 tmp/
 temp/
 $RECYCLE.BIN/
-
+platforms/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate

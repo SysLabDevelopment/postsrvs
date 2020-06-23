@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-inappbrowser/-/cordova-plugin-inappbrowser-3.2.0.tgz",
   "_shasum": "8615e1510dcf796875b420416331b768fee28d86",
   "_spec": "cordova-plugin-inappbrowser@3.2.0",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Apache Software Foundation"
   },
