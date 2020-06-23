@@ -1,4 +1,4 @@
-import { NgModule,LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +29,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -51,13 +52,14 @@ registerLocaleData(localeRu, 'ru');
     Camera,
     CallNumber,
     AppVersion,
+    GoogleMaps,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true
     },
-    { provide: LOCALE_ID, useFactory: () => 'ru'}
+    { provide: LOCALE_ID, useFactory: () => 'ru' }
   ],
   bootstrap: [AppComponent]
 })

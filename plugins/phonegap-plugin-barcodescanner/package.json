@@ -20,12 +20,13 @@
     "fetchSpec": "8.1.0"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/phonegap-plugin-barcodescanner/-/phonegap-plugin-barcodescanner-8.1.0.tgz",
   "_shasum": "e0d53e4e850699205e915a4b91c2f202d31f8311",
   "_spec": "phonegap-plugin-barcodescanner@8.1.0",
-  "_where": "/Users/timkovik/Documents/Repositories/Ionic/postsrvs",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Adobe PhoneGap Team"
   },

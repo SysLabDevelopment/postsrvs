@@ -1,14 +1,4 @@
 {
-  "phonegap-plugin-barcodescanner": {
-    "source": {
-      "type": "registry",
-      "id": "phonegap-plugin-barcodescanner@8.1.0"
-    },
-    "is_top_level": true,
-    "variables": {
-      "ANDROID_SUPPORT_V4_VERSION": "27.+"
-    }
-  },
   "cordova-plugin-whitelist": {
     "source": {
       "type": "registry",
@@ -149,14 +139,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-androidx-adapter": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-androidx-adapter@^1.1.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "es6-promise-plugin": {
     "source": {
       "type": "registry",
@@ -179,10 +161,7 @@
       "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
     },
     "is_top_level": true,
-    "variables": {
-      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
-      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
-    }
+    "variables": {}
   },
   "cordova-androidx-build": {
     "source": {
@@ -198,6 +177,14 @@
       "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "phonegap-plugin-barcodescanner": {
+    "source": {
+      "type": "registry",
+      "id": "phonegap-plugin-barcodescanner@8.1.0"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }

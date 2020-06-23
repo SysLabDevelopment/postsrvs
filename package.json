@@ -31,7 +31,7 @@
     "@capacitor/ios": "^1.5.1",
     "@ionic-native/android-permissions": "^5.22.0",
     "@ionic-native/app-version": "^5.22.0",
-    "@ionic-native/barcode-scanner": "^5.22.0",
+    "@ionic-native/barcode-scanner": "^5.26.0",
     "@ionic-native/call-number": "^5.22.0",
     "@ionic-native/camera": "^5.22.0",
     "@ionic-native/core": "^5.26.0",
@@ -50,12 +50,12 @@
     "angularx-qrcode": "^2.1.0",
     "call-number": "1.0.1",
     "com-darryncampbell-cordova-plugin-intent": "2.0.0",
-    "cordova-android": "8.1.0",
-    "cordova-androidx-build": "^1.0.3",
+    "cordova-android": "^8.1.0",
+    "cordova-androidx-build": "^1.0.4",
+    "cordova-browser": "6.0.0",
     "cordova-ios": "^5.1.1",
-    "cordova-plugin-android-permissions": "1.0.2",
+    "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-androidx": "^1.0.2",
-    "cordova-plugin-androidx-adapter": "^1.1.0",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-geolocation": "4.0.2",
@@ -71,7 +71,7 @@
     "mx.ferreyra.callnumber": "0.0.2",
     "ngx-mask": "^8.1.7",
     "paulstelzer-ionic-angular-toolkit": "^2.0.0",
-    "phonegap-plugin-barcodescanner": "8.1.0",
+    "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "^6.5.4",
     "sharp": "^0.25.1",
     "tslib": "^1.10.0",
@@ -100,6 +100,8 @@
     "@types/jest": "^25.1.4",
     "@types/jssha": "^2.0.0",
     "@types/node": "^13.13.12",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
     "babel-jest": "^25.1.0",
     "codelyzer": "^5.1.2",
     "cordova-plugin-device": "^2.0.3",
@@ -108,6 +110,9 @@
     "cordova-plugin-splashscreen": "^5.0.3",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-whitelist": "^1.3.4",
+    "eslint": "^7.3.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-angular": "^4.0.1",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "jest": "^25.5.4",
@@ -126,9 +131,6 @@
   "description": "Логистическая платформа",
   "cordova": {
     "plugins": {
-      "phonegap-plugin-barcodescanner": {
-        "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
@@ -149,13 +151,12 @@
       "cordova-plugin-screen-orientation": {},
       "cordova-plugin-app-version": {},
       "cordova-plugin-androidx": {},
-      "cordova-plugin-androidx-adapter": {},
       "cordova.plugins.diagnostic": {
         "ANDROID_SUPPORT_VERSION": "28.+"
       },
-      "cordova-plugin-googlemaps": {
-        "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
-        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
+      "cordova-plugin-googlemaps": {},
+      "phonegap-plugin-barcodescanner": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
       }
     },
     "platforms": [

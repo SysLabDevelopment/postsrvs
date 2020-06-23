@@ -1,0 +1,24 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "tslint.json",
+        "angular",
+        "plugin:angular/johnpapa"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        // "@typescript-eslint",
+        "angular"
+    ],
+    "rules": {
+        "no-unused-vars": "off"
+    },
+    "root": true
+}

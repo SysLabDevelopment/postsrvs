@@ -7,7 +7,15 @@ import { takeLast, takeUntil, take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { SysService } from '../../services/sys.service';
-
+import { Platform, ToastController } from '@ionic/angular';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  Marker,
+  GoogleMapsAnimation,
+  MyLocation
+} from '@ionic-native/google-maps';
 
 @Component({
   selector: 'app-map',
@@ -15,6 +23,8 @@ import { SysService } from '../../services/sys.service';
   styleUrls: ['./map.page.scss'],
 })
 export class MapPage implements OnInit {
+  map: GoogleMap;
+  address: string;
 
   public loader: boolean = false;
   public page_map;
@@ -27,129 +37,80 @@ export class MapPage implements OnInit {
     public map_s: MapService,
     private wi: WebIntent,
     private auth: AuthService,
-    private sys: SysService
+    private sys: SysService,
+    private platform: Platform,
+    public toastCtrl: ToastController
   ) {
 
-    var self = this;
-    this.map_s.buildMap();
-    console.log('sys::buildMap');
-    this.state$.map_state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
-      if (state == 'map_init') {
-        self.map_s.buildWay();
-
-      }
-    });
-
-
-
-    this.state$.route_state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
-      if (state == 'init_done') {
-        console.log('map_page_route_init');
-        self.initLink();
-      }
-    })
-
-    this.state$.interval_2s.pipe(takeUntil(this.local_stop$)).subscribe(() => {
-      console.log('sys:: Перерисовка маршрута');
-      self.map_s.changeWay();
-      self.initLink();
-      self.dislink = self.state$.disLink;
-    });
-
-    this.state$.route_state.pipe(takeUntil(this.state$.$stop)).subscribe((state) => {
-      if (state == 'init_done') {
-        self.initLink();
-
-      }
-    })
-
   }
 
-
-
-  public intentStart() {
-    const options = {
-      action: this.wi.ACTION_VIEW,
-      url: this.state$.link,
-      package: 'ru.yandex.yandexnavi'
-    }
-    this.wi.startActivity(options).then((data) => {
-    });
-  }
-
-  public initLink() {
-
-    var self = this;
-    if (!this.state$.link_init) {
-      this.state$.linkPoints.subscribe((points) => {
-        if (points != 'not_init' || points.length < 2) {
-          self.state$.disLink = false;
-          let link = "yandexnavi://build_route_on_map?";
-          let l_body = "";
-          let l_head = "";
-
-          for (let i = 0; i < points.length; i++) {
-            if (i != points.length - 1) {
-              l_body = l_body + "&lat_via_" + i + "=" + points[i][0] + "&lon_via_" + i + "=" + points[i][1];
-            } else {
-              l_head = "lat_to=" + points[i][0] + "&lon_to=" + points[i][1];
-            }
-          }
-          link += l_head + l_body;
-          self.state$.link = link + '&client=241';
-        } else {
-          self.state$.disLink = true;
-        }
-      });
-      this.state$.link_init = true;
-    }
-  }
-
-  ngOnDestroy() {
-    this.local_stop$.next();
-  }
   ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
-      if (this.map_s.oneOrder) {
-        this.map_s.showOrder(this.state$.coords);
-      }
-      if (params.get('order')) {
-        console.log('sys:: координаты', this.state$.coords);
-        console.log('sys:: параметры url ', params.get('order'));
-        this.map_s.oneOrder = true;
-
-      }
+    this.platform.ready();
+    this.loadMap();
+  }
+  loadMap() {
+    this.map = GoogleMaps.create('map_canvas', {
+      // camera: {
+      //   target: {
+      //     lat: 43.0741704,
+      //     lng: -89.3809802
+      //   },
+      //   zoom: 18,
+      //   tilt: 30
+      // }
     });
-    if (
-      this.state$.map_state.getValue() == 'map_init' && this.auth.getDefaultRouteBuilding() !== '1' && !this.map_s.oneOrder
-    ) {
-      this.map_s.pointsRender()
-    }
-    if (this.map_s.oneOrder) {
-      this.map_s.showOrder(this.state$.coords);
-    }
-    this.state$.map_state.subscribe((state) => {
-      if ((state == 'map_init') && (this.auth.getDefaultRouteBuilding() !== '1') && !this.map_s.oneOrder) {
-        this.map_s.pointsRender();
-      }
+    this.goToMyLocation();
+
+  };
+
+  goToMyLocation() {
+    this.map.clear();
+
+    // Get the location of you
+    this.map.getMyLocation().then((location: MyLocation) => {
+      console.log(JSON.stringify(location, null, 2));
+
+      // Move the map camera to the location with animation
+      this.map.animateCamera({
+        target: location.latLng,
+        zoom: 17,
+        duration: 5000
+      });
+
+      //add a marker
+      let marker: Marker = this.map.addMarkerSync({
+        title: '@ionic-native/google-maps plugin!',
+        snippet: 'This plugin is awesome!',
+        position: location.latLng,
+        animation: GoogleMapsAnimation.BOUNCE
+      });
+
+      //show the infoWindow
+      marker.showInfoWindow();
+
+      //If clicked it, display the alert
+      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+        this.showToast('clicked!');
+      });
+
+      this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+        (data) => {
+          console.log("Click MAP", data);
+        }
+      );
     })
-    this.state$.way.subscribe((orders) => {
-      this.map_s.initPoints();
-    })
+      .catch(err => {
+        //this.loading.dismiss();
+        this.showToast(err.error_message);
+      });
+  }
+  async showToast(message: string) {
+    let toast = await this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: 'middle'
+    });
+    toast.present();
   }
 
-  allOrders() {
-    console.log('sys::allOrders()');
-    this.map_s.oneOrder = false;
-    this.map_s.buildWay();
-  }
-
-  ngAfterViewInit() {
-    this.state$.interval_1ss.pipe(takeUntil(this.local_stop$)).subscribe(() => {
-      let orderId = localStorage.getItem('needOrder');
-      if (orderId) {
-        this.map_s.orderDetails(orderId)
-      }
-    })
-  }
 }

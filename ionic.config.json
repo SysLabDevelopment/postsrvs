@@ -1,8 +1,11 @@
 {
   "name": "Postsrvs",
   "integrations": {
-    "cordova": {},
-    "capacitor": {}
+    "cordova": {
+      "android": "8.1.0",
+      "ios": "5.1.1",
+      "browser": "6.0.0"
+    }
   },
   "type": "angular"
 }

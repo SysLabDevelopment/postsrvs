@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Route, Router } from '@angular/router';
-import { NavService } from './services/nav.service';
-import { CourierService } from './services/courier.service';
-import { AuthService } from './services/auth.service';
-import { SettingsService } from './services/settings.service';
-import { environment } from '../environments/environment';
-import { WiredIconButton, WiredButton } from 'wired-elements';
-
+import {Platform} from '@ionic/angular';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {Route, Router} from '@angular/router';
+import {NavService} from './services/nav.service';
+import {CourierService} from './services/courier.service';
+import {AuthService} from './services/auth.service';
+import {SettingsService} from './services/settings.service';
+import {environment} from '../environments/environment';
+import {WiredIconButton, WiredButton} from 'wired-elements';
+import {Environment} from '@ionic-native/google-maps';
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
 })
 export class AppComponent {
   public nav: any = 0;
@@ -26,10 +26,9 @@ export class AppComponent {
     private router: Router,
     public courier: CourierService,
     public auth: AuthService,
-    public settings: SettingsService
+    public settings: SettingsService,
   ) {
     this.initializeApp();
-
   }
 
   initializeApp() {
@@ -37,13 +36,20 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       if (this.settings.rules.typeRoute == 'standart') {
-        this.routingModeAuto = false
+        this.routingModeAuto = false;
       }
+      Environment.setEnv({
+        // api key for server
+        'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164',
+
+        // api key for local development
+        'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164',
+      });
     });
-    var self = this;
+    const self = this;
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
-    })
+    });
   }
 
   public navTo(index) {
@@ -62,5 +68,4 @@ export class AppComponent {
         break;
     }
   }
-
 }

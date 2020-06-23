@@ -19,9 +19,6 @@
     "cordova-plugin-androidx": {
       "PACKAGE_NAME": "postsrvs.w"
     },
-    "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "postsrvs.w"
-    },
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "postsrvs.w"
     },
@@ -63,15 +60,15 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "postsrvs.w"
     },
-    "phonegap-plugin-barcodescanner": {
-      "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "postsrvs.w"
-    },
     "cordova.plugins.diagnostic": {
       "ANDROID_SUPPORT_VERSION": "28.+",
       "PACKAGE_NAME": "postsrvs.w"
     },
     "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "postsrvs.w"
     }
   },
