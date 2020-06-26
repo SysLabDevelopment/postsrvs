@@ -10,6 +10,7 @@ import { SettingsService } from './settings.service';
 
 declare var ymaps: any;
 
+// TODO: Add Angular decorator.
 @Injectable({
   providedIn: 'root'
 })

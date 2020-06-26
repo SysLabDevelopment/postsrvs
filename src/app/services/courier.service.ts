@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Directive } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { StateService } from '../services/state.service';
@@ -12,6 +12,7 @@ import { SettingsService } from './settings.service';
 import { SysService } from '../services/sys.service';
 
 declare var ymaps: any;
+@Directive()
 @Injectable({
   providedIn: 'root'
 })
