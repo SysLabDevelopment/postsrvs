@@ -6,7 +6,6 @@ import { Device } from '@ionic-native/device/ngx';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { StateService } from './state.service';
-import { MapService } from './map.service';
 import { AlertController } from '@ionic/angular';
 import { SettingsService } from './settings.service';
 import { SysService } from '../services/sys.service';
@@ -34,7 +33,6 @@ export class AuthService {
     private plt: Platform,
     private router: Router,
     private state$: StateService,
-    private map: MapService,
     private alert: AlertController,
     public settings: SettingsService,
     public sys: SysService
@@ -59,11 +57,11 @@ export class AuthService {
 
 
   public checkAuth() {
-    var url = 'orders';
-    var data = {
+    const url = 'orders';
+    let data = {
 
       'action': 'checkAuth',
-      'appVersion': this.version
+      'appVersion': this.version || ''
     }
 
     return this.sendPost(url, data);

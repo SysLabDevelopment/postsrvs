@@ -114,15 +114,18 @@ export class SysService {
 
   }
 
-  async SW() {
-    const registration = await navigator.serviceWorker.ready;
-
-    try {
-      await registration.sync.register('syncer').then(() => {
-        console.log();
-      })
-    } catch {
-      console.log('Periodic Sync could not be registered!');
+  public checkAuth() {
+    const url = `${this.proxy}https://postsrvs.ru/mobile/orders`;
+    let data = {
+      "action": "checkAuth",
+      "uuid": this.device.uuid
     }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+      })
+    };
+    return this.http.post(url, data, httpOptions)
   }
+
 }

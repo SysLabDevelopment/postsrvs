@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'order/:id', loadChildren: () => import('./pages/order/order.module').then(m => m.OrderPageModule), canActivate: [AuthGuard], pathMatch: 'full' },
   { path: 'map', loadChildren: () => import('./pages/map/map.module').then(m => m.MapPageModule), canActivate: [AuthGuard] },
   { path: 'balance', loadChildren: () => import('./pages/balance/balance.module').then(m => m.BalancePageModule), canActivate: [AuthGuard] },
-  { path: 'schedule', loadChildren: () => import('./pages/schedule/schedule.module').then(m => m.SchedulePageModule), canActivate: [AuthGuard] },
+  { path: 'schedule', loadChildren: () => import('./pages/schedule/schedule.module').then(m => m.SchedulePageModule) },
 
 
   { path: 'settings', redirectTo: 'about' },
@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule)
-    , canActivate: [AuthGuard]
   },
   { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestPageModule) },
 

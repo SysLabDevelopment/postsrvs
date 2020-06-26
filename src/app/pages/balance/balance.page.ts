@@ -16,7 +16,6 @@ import {
   transition
 } from '@angular/animations';
 
-import { MapService } from '../../services/map.service';
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
 import { WiredIconButton } from 'wired-elements';
@@ -105,7 +104,6 @@ export class BalancePage implements OnInit {
     private alert: AlertController,
     private camera: Camera,
     private AP: AndroidPermissions,
-    private map: MapService,
     public settings: SettingsService,
     public sys: SysService
   ) {
@@ -136,10 +134,6 @@ export class BalancePage implements OnInit {
       this.courier.count_orders(data.res_more);
       this.courier.ordersShortData.next(data.res_more);
       this.state$.orders.next(data.res_more);
-      let auto = this.settings.rules.typeRoute;
-      if (auto !== 'standart') {
-        this.map.pointsRender(data.res_more)
-      }
     });
   }
 

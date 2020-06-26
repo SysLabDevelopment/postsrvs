@@ -8,7 +8,6 @@ import { Platform } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { OrderPage } from '../pages/order/order.page';
-import { MapService } from '../services/map.service';
 import { SettingsService } from './settings.service';
 import { SysService } from '../services/sys.service';
 
@@ -29,7 +28,6 @@ export class CourierService {
     private state$: StateService,
     private auth: AuthService,
     private bs: BarcodeScanner,
-    private map: MapService,
     private settings: SettingsService,
     public sys: SysService
   ) {
@@ -155,11 +153,6 @@ export class CourierService {
               if ((data.success == 'true') && (data.reason !== 'нет заказов')) {
                 self.state$.orders.next(data.orders);
                 self.state$.orders_data = data.orders;
-                if (this.auth.getDefaultRouteBuilding() !== '1' && !this.map.oneOrder) {
-                  self.map.pointsRender();
-                } else {
-                  this.map.initPoints();
-                }
                 self.state$.state.next('orders_init');
                 this.state$.confirmed = true;
                 data.orders.forEach(order => {
@@ -314,7 +307,7 @@ export class CourierService {
   }
 
 
-  public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date='') {
+  public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date = '') {
     var url = 'orders';
     var draw = localStorage.getItem('drawImg');
     var data = {
@@ -325,7 +318,7 @@ export class CourierService {
       'reason': reason,
       'goods': goods,
       'payment': payment,
-      'new_plam_date': new_plan_date
+      'new_plan_date': new_plan_date
     };
     if (draw) data['sign'] = draw;
 

@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 //Отдельный сервис для лучших реализаций функционала
 //Если есть выбор велосипедов для решения задаи в этом приложении - выбирай велосипеды из этого комплекта
 
@@ -5,7 +6,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SysService } from '../services/sys.service';
 import { Rules } from '../interfaces/rules';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +27,7 @@ export class SettingsService {
     phoneMode: ''
   };
   public checkout: boolean;
-
+  public state = new Subject();
   constructor(
     private http: HttpClient,
     public sys: SysService
@@ -70,6 +70,7 @@ export class SettingsService {
     this.http.post(url, data).subscribe((data: { success: boolean, rules: any }) => {
       if (data.success == true) {
         this.rules = data.rules;
+        this.state.next('hasRules');
         if (data.rules.typeRoute == 'standart') {
           this.routingModeAuto = false;
         }

@@ -179,7 +179,7 @@
   "com.googlemaps.ios": {
     "source": {
       "type": "registry",
-      "id": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git"
+      "id": "cordova-plugin-googlemaps-sdk@3.8.0"
     },
     "is_top_level": true,
     "variables": {}

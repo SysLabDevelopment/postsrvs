@@ -44,8 +44,7 @@
                 "input": "src/app/app.scss"
               }
             ],
-            "scripts": [],
-            "es5BrowserSupport": false
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -78,14 +77,13 @@
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
             },
-            "wired":{
-              "fileReplacements":[
-                  {
-                    "replace":"src/app/app.component.html",
-                    "with":"src/app/wired/app.component.html"
+            "wired": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app/app.component.html",
+                  "with": "src/app/wired/app.component.html"
                 }
               ]
-
             },
             "ci": {
               "budgets": [

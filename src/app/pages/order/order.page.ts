@@ -18,7 +18,6 @@ import {
 } from '@angular/animations';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { MapService } from '../../services/map.service';
 import { SysService } from '../../services/sys.service';
 import { Statuses } from '../../interfaces/statuses';
 import { Reason } from '../../interfaces/reason';
@@ -105,7 +104,7 @@ export class OrderPage implements OnInit {
   public tomorrow = new Date();
   public new_plan_date: string; //Дата переноса заказа
 
-  constructor(private map: MapService,
+  constructor(
     private router: Router,
     private route: ActivatedRoute,
     private courier: CourierService,
@@ -367,7 +366,7 @@ export class OrderPage implements OnInit {
       case 4:
         if (this.selectedReason != null) {
           let new_plan_date = new Date(this.new_plan_date);
-          
+
           this.courier
             .changeStatus(
               this.selectedStatus,
@@ -646,7 +645,6 @@ export class OrderPage implements OnInit {
 
   onMap() {
     this.state$.coords = this.coords;
-    this.map.oneOrder = true;
     this.router.navigate(['map/order']);
   }
 

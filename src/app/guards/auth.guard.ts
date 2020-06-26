@@ -16,10 +16,6 @@ export class AuthGuard implements CanActivate {
   constructor(
     private nav_s: NavService,
     private state: StateService,
-    private router: Router,
-    private auth: AuthService,
-    private platform: Platform,
-    private appVersion: AppVersion
   ) {
 
   }
@@ -35,6 +31,7 @@ export class AuthGuard implements CanActivate {
         break;
       case 'map':
         this.nav_s.tabNav.next(2);
+
         break;
       case 'balance':
         this.nav_s.tabNav.next(1);
