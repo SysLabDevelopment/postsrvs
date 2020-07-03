@@ -19,13 +19,18 @@ import {
   MarkerClusterOptions,
   MarkerOptions,
   HtmlInfoWindow,
-  GoogleMapsAnimation
+  GoogleMapsAnimation,
+  MarkerCluster,
+  MarkerLabel,
+  MarkerClusterIcon
 } from '@ionic-native/google-maps';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { NavService } from '../../services/nav.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -42,7 +47,10 @@ export class MapPage implements OnInit {
   public out_process: boolean = false;
   public out_counter = 0;
   htmlInfoWindow = new HtmlInfoWindow();
-
+  public local_stop$: Subject<any> = new Subject();
+  markers: Array<MarkerOptions>;
+  icons = [];
+  data = [];
 
   constructor(
     public state$: StateService,
@@ -98,21 +106,21 @@ export class MapPage implements OnInit {
   ngAfterViewInit() {
     console.log('sys:: map view init');
     this.loadMap();
-
     this.platform.ready().then(() => {
       this.appVersion.getVersionNumber().then((resp) => {
         this.version = resp;
       });
-
       this.initContent();
-
-
-
-
       LocationService.getMyLocation().then((myLocation: MyLocation) => {
         this.coords = { 'lt': myLocation.latLng.lat, 'lg': myLocation.latLng.lng }
       })
     });
+    this.state$.interval_1ss.pipe(takeUntil(this.local_stop$)).subscribe(() => {
+      let orderId = localStorage.getItem('needOrder');
+      if (orderId) {
+        this.sysMap.orderDetails(orderId)
+      }
+    })
   }
 
 
@@ -168,124 +176,8 @@ export class MapPage implements OnInit {
   }
 
   private drawData(autoStartRoute: string) {
-    this.sys.checkAuth().subscribe((resp: any) => {
-      if (resp.success == 'false') {
-        this.auth.logout()
-      }
-    })
-    this.orders?.forEach((order) => {
-      let htmlInfoWindow = new HtmlInfoWindow();
-
-      let note = (localStorage.getItem(order.id) ? localStorage.getItem(order.id) : '');
-      let from = order.datetime_from || '';
-
-      let frame: HTMLElement = document.createElement('div');
-      frame.innerHTML = `
-        <style type="text/css">
-.flip-container h3 {
-	font-size: 20px;
-  margin: auto;
-}
-.flip-container img {
-	width: 160px;
-  height: auto;
-}
-/* entire container, keeps perspective */
-.flip-container {
-  -webkit-perspective: 1000;
-  -moz-perspective: 1000;
-  -o-perspective: 1000;
-  perspective: 1000;
-}
-/* flip the pane when hovered */
-.flip-container.hover .flipper {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  -ms-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
-
-.flip-container, .front, .back {
-  width: 170px;
-  height: 200px;
-}
-
-/* flip speed goes here */
-.flipper {
-  transform-style: preserve-3d;
-  -moz-transform: perspective(1000px);
-  -moz-transform-style: preserve-3d;
-  -webkit-transition: 0.6s;
-  -moz-transition: 0.6s;
-  -o-transition: 0.6s;
-  -ms-transition: 0.6s;
-  transition: 0.6s;
-
-  position: relative;
-}
-
-/* hide back of pane during swap */
-.front, .back {
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
-  background-color: white;
-
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -o-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-/* front pane, placed above back */
-.front {
-  z-index: 2;
-  -webkit-transform: rotateY(0deg);
-  -moz-transform: rotateY(0deg);
-  -o-transform: rotateY(0deg);
-  -ms-transform: rotateY(0deg);
-  transform: rotateY(0deg);
-}
-
-/* back, initially hidden pane */
-.back {
-  -webkit-transform: rotateY(-180deg);
-  -moz-transform: rotateY(-180deg);
-  -o-transform: rotateY(-180deg);
-  -ms-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
-}
-</style>
-                <div id="flip-container">
-        <b>Заказ ${order.id}</b><br/>
-        Доставка:<br/> c  ${from} <br/>  ${(order.datetime_to ? order.datetime_to : '')} <br/>
-        <b>Компания:</b> ${order.client_name}
-        <br/><b>Клиент:</b>  ${order.client_fio}
-        <button onClick='localStorage.setItem("needOrder",${order.id})' style='width: 100%;background-color: #ffdb4d;padding:10px'>Детали</button>${note}
-                </div>`;
-      htmlInfoWindow.setContent(frame, {
-        'width': '170px',
-      });
-
-      const marker: Marker = this.map.addMarkerSync({
-        'position': { lat: order.lt, lng: order.lg },
-        'draggable': false,
-        'disableAutoPan': true,
-        'animation': GoogleMapsAnimation.DROP
-      });
-
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-        htmlInfoWindow.open(marker);
-      });
-
-    })
+    this.addCluster(this.dummyData());
+    return false;
   }
 
   public p_btn() {
@@ -307,6 +199,7 @@ export class MapPage implements OnInit {
   }
 
   public logout() {
+    this.map.clear();
     localStorage.clear();
     const url = 'orders';
     const data = { 'action': 'logout' }
@@ -346,9 +239,55 @@ export class MapPage implements OnInit {
     })
   }
 
-  initHtmlInfoWindow(order) {
+  addCluster(data) {
+
+
+    let labelOptions: MarkerLabel = {
+      bold: true,
+      fontSize: 15,
+      color: "white",
+      italic: true
+    };
+    let clusterIcons: MarkerClusterIcon[] = [
+      { min: 2, max: 100, url: "assets/small.png", anchor: { x: 16, y: 16 }, label: labelOptions },
+      { min: 100, url: "assets/large.png", anchor: { x: 16, y: 16 }, label: labelOptions },
+    ];
+
+    let options: MarkerClusterOptions = {
+      markers: this.dummyData(),
+      icons: clusterIcons,
+      boundsDraw: true,
+      maxZoomLevel: 15
+    };
+    let cluster: MarkerCluster = this.map.addMarkerClusterSync(options);
+    // this.map.addMarkerCluster(options).then((markerCluster: MarkerCluster) => {
+
+    //   console.log('sys:: markerCluster: ', markerCluster)
+    // });
   }
 
+  dummyData() {
+    return [
+      {
+        "position": {
+          "lat": 55,
+          "lng": 37
+        },
+        "name": "Starbucks - HI - Aiea  03641",
+        "address": "Aiea Shopping Center_99-115\nAiea Heights Drive #125_Aiea, Hawaii 96701",
+        "icon": "blue"
+      },
+      {
+        "position": {
+          "lat": 55,
+          "lng": 37
+        },
+        "name": "Starbucks - HI - Aiea  03642",
+        "address": "Pearlridge Center_98-125\nKaonohi Street_Aiea, Hawaii 96701",
+        "icon": "blue"
+      },
 
+    ];
+  }
 
 }

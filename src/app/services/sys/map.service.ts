@@ -9,7 +9,7 @@ import {
   GoogleMapOptions, Environment
 } from '@ionic-native/google-maps';
 import { Platform } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +21,8 @@ export class MapService {
     private http: HttpClient,
     private geo: Geolocation,
     private device: Device,
-    private platform: Platform
+    private platform: Platform,
+    private router: Router
   ) { }
 
   public getWay(coords: { lt: number, lg: number }): Observable<any> {
@@ -124,4 +125,11 @@ export class MapService {
     });
     this.map.clear();
   }
+
+  orderDetails(orderId) {
+    console.log('sys:: переход на страницу заказа ', orderId);
+    this.router.navigate(['/order', orderId]);
+    localStorage.removeItem('needOrder');
+  }
+
 }
