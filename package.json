@@ -15,13 +15,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^10.0.0",
-    "@angular/cdk": "^9.1.2",
+    "@angular/cdk": "^10.0.0",
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
     "@angular/forms": "^10.0.0",
-    "@angular/http": "^7.2.16",
     "@angular/localize": "^10.0.0",
-    "@angular/material": "^9.1.2",
+    "@angular/material": "^10.0.0",
     "@angular/platform-browser": "^10.0.0",
     "@angular/platform-browser-dynamic": "^10.0.0",
     "@angular/router": "^10.0.0",
@@ -48,7 +47,6 @@
     "@ionic-native/web-intent": "^5.26.0",
     "@ionic/angular": "^5.0.5",
     "angular": "^1.8.0",
-    "angularx-qrcode": "^2.1.0",
     "call-number": "1.0.1",
     "com-darryncampbell-cordova-plugin-intent": "2.0.0",
     "cordova-android": "^8.1.0",
@@ -127,7 +125,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.6.2",
     "tslint": "~6.1.0",
-    "typescript": "3.9.5"
+    "typescript": "^3.9.5"
   },
   "description": "Логистическая платформа",
   "cordova": {

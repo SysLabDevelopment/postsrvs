@@ -5,12 +5,13 @@
         <ion-icon name="cog-sharp" (click)="navToSettings()"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title (click)="p_btn()">Мои заказы</ion-title>
+    <ion-title>Мои заказы</ion-title>
     <ion-title size="small" color="dark">{{state$.filial}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
   <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">
     {{state$.notificationStr}}
   </span>
@@ -76,8 +77,8 @@
             <li>{{date}}</li>
           </ul>
           <ion-item>
-            <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder="DD.MM.YYYY HH:mm"></ion-datetime
-            ><br />
+            <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder="DD.MM.YYYY HH:mm"></ion-datetime>
+            <br />
             <ion-button (click)="addWorkDate(workDate)" expand="block" fill="outline" shape="round">
               Добавить
             </ion-button>

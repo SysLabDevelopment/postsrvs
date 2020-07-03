@@ -37,12 +37,14 @@ export class AuthGuard implements CanActivate {
         this.nav_s.tabNav.next(1);
         break;
       case 'login':
-        if (this.state.g_state.getValue() == 'login') {
-          return false;
-        }
-
-      default:
         this.nav_s.tabNav.next(0);
+        let authState = this.state.g_state.getValue();
+        console.log('sys:: состояние аутентификации: ', authState);
+        // if (authState == 'login') {
+        //   return false;
+        // }
+        break;
+      default:
         break;
     }
     return true;

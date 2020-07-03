@@ -74,8 +74,6 @@ import { WiredIconButton } from 'wired-elements';
 export class BalancePage implements OnInit {
   public info = null;
   public pageInit: boolean = false;
-  public out_process: boolean = false;
-  public out_counter = 0;
   public loader = true;
   public local_stop$: Subject<any> = new Subject();
   public confirmWindow: boolean = false;
@@ -164,36 +162,6 @@ export class BalancePage implements OnInit {
     });
   }
 
-  public p_btn() {
-    setTimeout(() => {
-      this.out_counter = 0;
-      this.out_process = false;
-      console.log('outprocess_die');
-    }, 1000);
-
-    if (this.out_process) {
-      this.out_counter++;
-      if (this.out_counter == 2) {
-        this.logout();
-      }
-    } else {
-      console.log('outprocess_false');
-      this.out_process = true;
-    }
-  }
-
-  public logout() {
-    localStorage.clear();
-    const url = 'orders';
-    const data = { 'action': 'logout' }
-
-    let self = this;
-    this.auth.sendPost(url, data).subscribe((data: any) => {
-      if (data.success == 'true') {
-        self.auth.logout();
-      }
-    })
-  }
 
   public cashOut() {
     console.log('sys::cashOut()');
@@ -417,5 +385,8 @@ export class BalancePage implements OnInit {
       reason: 0
     }
     this.nonWorkDates.push(dateObj)
+  }
+  navToMap() {
+    this.router.navigate(['map'])
   }
 }

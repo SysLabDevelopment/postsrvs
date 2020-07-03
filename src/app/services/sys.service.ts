@@ -1,6 +1,6 @@
 // Здравый код, растущий рядом с какахами
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Device } from '@ionic-native/device/ngx';
 import { ToastController } from '@ionic/angular';
@@ -30,6 +30,9 @@ export class SysService {
       'uuid': this.device.uuid,
       'action': 'getOrders',
       'orders_id': ids
+    }
+    if (localStorage.debug == 'true') {
+      data['uuid'] = '6b356755575fce31';
     }
 
     const httpOptions = {
@@ -114,16 +117,23 @@ export class SysService {
 
   }
 
-  public checkAuth() {
+  //Проверка на авторизованность
+  //@appVersion - версия приложения
+  public checkAuth(appVersion = '') {
     const url = `${this.proxy}https://postsrvs.ru/mobile/orders`;
     let data = {
       "action": "checkAuth",
-      "uuid": this.device.uuid
+      "uuid": this.device.uuid,
+      'appVersion': appVersion
     }
+    if (localStorage.debug == 'true') {
+      data['uuid'] = '6b356755575fce31';
+    }
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
-      })
+      }),
     };
     return this.http.post(url, data, httpOptions)
   }

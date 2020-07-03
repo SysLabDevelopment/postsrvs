@@ -454,18 +454,6 @@ export class MapService {
           });
           map.geoObjects.add(this.objectManager);
 
-          // let placemark = new ymaps.Placemark([order.lt, order.lg], {
-          //   // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
-          //   balloonContentHeader: '<span style="color: red;">' + cnt + 1 + '</span>',
-          //   balloonContentBody: '<b>Заказ ' + order.id + '</b><br/>' +
-          //     order.client_address + '<hr/>' +
-          //     'Доставка:<br/>c ' + order.datetime_from + '<br/>' + (order.datetime_to ? order.datetime_to : '') + '<br/>' +
-          //     `<b>Компания:</b> ` + order.client_name +
-          //     `<br/><b>Клиент:</b> ` + order.client_fio +
-          //     `<button onClick='localStorage.setItem("needOrder",` + order.id + `)' style='width: 100%;background-color: #ffdb4d;'>Детали</button><br/><br/>` + note,
-          // });
-
-          // map.geoObjects.add(placemark);
           map.setBounds(map.geoObjects.getBounds(), {
             checkZoomRange: true,
             zoomMargin: 35

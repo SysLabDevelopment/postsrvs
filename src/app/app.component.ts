@@ -1,22 +1,22 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {Platform} from '@ionic/angular';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
-import {Route, Router} from '@angular/router';
-import {NavService} from './services/nav.service';
-import {CourierService} from './services/courier.service';
-import {AuthService} from './services/auth.service';
-import {SettingsService} from './services/settings.service';
-import {environment} from '../environments/environment';
-import {WiredIconButton, WiredButton} from 'wired-elements';
-import {Environment} from '@ionic-native/google-maps';
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Route, Router } from '@angular/router';
+import { NavService } from './services/nav.service';
+import { CourierService } from './services/courier.service';
+import { AuthService } from './services/auth.service';
+import { SettingsService } from './services/settings.service';
+import { environment } from '../environments/environment';
+import { WiredIconButton, WiredButton } from 'wired-elements';
+import { Environment } from '@ionic-native/google-maps';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
-  public nav: any = 0;
+  public nav: any = 2;
   public routingModeAuto: boolean;
   constructor(
     private platform: Platform,
@@ -63,8 +63,8 @@ export class AppComponent {
       case 3:
         this.router.navigate(['courier']);
         break;
-      case 4:
-        // this.router.navigate(['history']);
+      case 0:
+        this.router.navigate(['login']);
         break;
     }
   }

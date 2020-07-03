@@ -9,7 +9,7 @@ import { StateService } from './state.service';
 import { AlertController } from '@ionic/angular';
 import { SettingsService } from './settings.service';
 import { SysService } from '../services/sys.service';
-
+import { NavService } from '../services/nav.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +31,12 @@ export class AuthService {
     private http: HttpClient,
     private device: Device,
     private plt: Platform,
-    private router: Router,
+    public router: Router,
     private state$: StateService,
     private alert: AlertController,
     public settings: SettingsService,
-    public sys: SysService
+    public sys: SysService,
+    private nav_s: NavService,
   ) {
 
     this.barcodeScannerOptions = {
@@ -153,6 +154,7 @@ export class AuthService {
 
     this.state$.logout();
     this.router.navigate(['login']);
+    this.nav_s.tabNav.next(0);
     this.state$.g_state.next('unLogin');
 
   }

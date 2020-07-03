@@ -14,7 +14,6 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { QRCodeModule } from 'angularx-qrcode';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { NgxMaskModule } from 'ngx-mask';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
@@ -36,7 +35,16 @@ registerLocaleData(localeRu, 'ru');
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
   entryComponents: [],
-  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, NgxMaskModule.forRoot(), ScrollingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    NgxMaskModule.forRoot(),
+    ScrollingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+  ],
   providers: [
     StatusBar,
     BarcodeScanner,
@@ -44,7 +52,6 @@ registerLocaleData(localeRu, 'ru');
     Geolocation,
     Device,
     WebIntent,
-    QRCodeModule,
     Vibration,
     InAppBrowser,
     AndroidPermissions,

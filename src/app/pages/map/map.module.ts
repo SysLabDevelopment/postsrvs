@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-
+import { GoogleMaps } from '@ionic-native/google-maps';
 import { MapPage } from './map.page';
 
 const routes: Routes = [
@@ -21,6 +20,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MapPage]
+  providers: [GoogleMaps],
+  declarations: [MapPage],
+  bootstrap: []
 })
-export class MapPageModule {}
+export class MapPageModule { }

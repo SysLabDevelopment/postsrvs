@@ -60,7 +60,7 @@ export class CourierService {
       }
     })
 
-    var check_state$ = this.state$.init_params_state.subscribe((state) => {
+    this.state$.init_params_state.subscribe((state) => {
       if (state == 'init_geo_done') {
 
         self.initOrders();
@@ -319,7 +319,7 @@ export class CourierService {
       'reason': reason,
       'goods': goods,
       'payment': payment,
-      'new_plan_date': new_plan_date
+      'new_plam_date': new_plan_date
     };
     if (draw) data['sign'] = draw;
 

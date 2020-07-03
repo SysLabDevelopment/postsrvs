@@ -19,7 +19,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
-import { WiredButton,WiredInput,WiredSpinner } from "wired-elements";
+import { WiredButton, WiredInput, WiredSpinner } from "wired-elements";
 
 @Component({
   selector: 'app-login',
@@ -61,7 +61,6 @@ import { WiredButton,WiredInput,WiredSpinner } from "wired-elements";
 })
 export class LoginPage implements OnInit {
 
-  public disLogin: boolean = true;
   public pl_window: boolean = false;
   public error_phone: boolean = false;
   public phone = '';
@@ -99,13 +98,13 @@ export class LoginPage implements OnInit {
           if (data.success == 'true') {
             this.auth.setUser(data.sync_id);
             this.settings.getSettings(data.sync_id);
-            self.router.navigate(['balance']);
+            self.router.navigate(['map']);
             self.auth.initLogin();
           } else {
-            self.disLogin = false;
           }
         })
       })
+
     })
   }
 
@@ -148,10 +147,11 @@ export class LoginPage implements OnInit {
       };
       self.auth.login(a_data).subscribe((data: any) => {
         if (data.success == "true") {
+          self.auth.initLogin();
           this.auth.setUser(data.sync_id);
           this.settings.getSettings(data.sync_id);
-          self.router.navigate(['balance']);
-          self.auth.initLogin();
+          self.router.navigate(['map']);
+
         } else {
           self.auth.showError(1);
         }
@@ -245,7 +245,7 @@ export class LoginPage implements OnInit {
       if (data.success == "true") {
         this.auth.setUser(data.sync_id);
         this.settings.getSettings(data.sync_id);
-        self.router.navigate(['balance']);
+        self.router.navigate(['map']);
         self.auth.initLogin();
       } else {
         self.auth.showError(1);
