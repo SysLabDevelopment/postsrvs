@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
-        "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/appcompat-1.1.0.aar/d91441f5b6986cdb82acfc7acb960b9f/res/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
         "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/layout_abc_screen_simple_overlay_action_mode.xml.flat",
         "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/appcompat-1.1.0.aar/d91441f5b6986cdb82acfc7acb960b9f/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
+        "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/appcompat-1.1.0.aar/d91441f5b6986cdb82acfc7acb960b9f/res/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",

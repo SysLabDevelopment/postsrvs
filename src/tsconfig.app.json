@@ -2,7 +2,8 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": []
+    "types": [],
+    "sourceMap": true
   },
   "files": [
     "main.ts",
@@ -10,6 +11,7 @@
   ],
   "include": [
     "src/**/*.d.ts",
-    "zone-flags.ts"
+    "zone-flags.ts",
+    "assets/**/*.png"
   ]
 }
