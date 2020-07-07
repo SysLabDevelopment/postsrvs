@@ -81,6 +81,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+
 public class PluginMap extends MyPlugin implements OnMarkerClickListener,
     OnInfoWindowClickListener, OnMapClickListener, OnMapLongClickListener,
     OnMarkerDragListener, GoogleMap.OnMapLoadedCallback,
@@ -98,7 +99,6 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
   private String mapId;
   private boolean isVisible = true;
   private boolean isClickable = true;
-  private boolean clickableIcons = true;
   private final String TAG = mapId;
   private String mapDivId;
   public Map<String, PluginEntry> plugins = new ConcurrentHashMap<String, PluginEntry>();
@@ -388,19 +388,6 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
 
                 }
 
-                if (preferences.has("restriction")) {
-                  JSONObject restriction = preferences.getJSONObject("restriction");
-                  LatLng sw = new LatLng(restriction.getDouble("south"), restriction.getDouble("west"));
-                  LatLng ne = new LatLng(restriction.getDouble("north"), restriction.getDouble("east"));
-                  LatLngBounds bounds = new LatLngBounds(sw, ne);
-
-                  map.setLatLngBoundsForCameraTarget(bounds);
-
-                  map.setMinZoomPreference((float)restriction.getDouble("minZoom"));
-                  map.setMaxZoomPreference((float)restriction.getDouble("maxZoom"));
-
-                }
-
                 if (preferences.has("zoom")) {
                   JSONObject zoom = preferences.getJSONObject("zoom");
                   if (zoom.has("minZoom")) {
@@ -412,15 +399,16 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
                 }
 
 
-                if (preferences.has("clickableIcons")) {
-                  clickableIcons = preferences.getBoolean("clickableIcons");
+                if (preferences.has("gestureBounds")) {
+                  Object target = preferences.get("gestureBounds");
+                  @SuppressWarnings("rawtypes")
+                  Class targetClass = target.getClass();
+                  if ("org.json.JSONArray".equals(targetClass.getName())) {
+                    JSONArray points = preferences.getJSONArray("gestureBounds");
+                    LatLngBounds bounds = PluginUtil.JSONArray2LatLngBounds(points);
+                    map.setLatLngBoundsForCameraTarget(bounds);
+                  }
                 }
-
-
-                if (preferences.has("building")) {
-                  map.setBuildingsEnabled(preferences.getBoolean("building"));
-                }
-
               }
 
               // Set event listener
@@ -702,11 +690,11 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
   public void resizeMap(JSONArray args, final CallbackContext callbackContext) throws JSONException {
     if (mapCtrl.mPluginLayout == null || mapDivId == null) {
       //Log.d("PluginMap", "---> resizeMap / mPluginLayout = null");
+      callbackContext.success();
       if (initCameraBounds != null) {
         mainHandler.postDelayed(new Runnable() {
           @Override
           public void run() {
-            callbackContext.success();
           }
         }, 100);
       }
@@ -738,8 +726,8 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
       public void run() {
 
         if(mapCtrl.mPluginLayout == null || mapDivId == null) {
-          callbackContext.success();
-          return;
+            callbackContext.success();
+            return;
         }
 
         RectF drawRect = mapCtrl.mPluginLayout.HTMLNodeRectFs.get(mapDivId);
@@ -761,12 +749,7 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
           params.topMargin = y;
           mapView.setLayoutParams(params);
 
-          mainHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-              callbackContext.success();
-            }
-          }, 500);
+          callbackContext.success();
         }
       }
     });
@@ -1294,7 +1277,7 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
                 e.printStackTrace();
               }
               if (results.cameraBounds != null) {
-                fitBounds(results.cameraBounds, (int)(results.cameraPadding * density));
+                fitBounds(results.cameraBounds, (int)(results.cameraPadding / density));
               }
             }
 
@@ -1339,58 +1322,28 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
               }
 
               if (preferences.has("zoom")) {
-                if (!"null".equals(preferences.getString("zoom"))) {
-                  JSONObject zoom = preferences.getJSONObject("zoom");
-                  if (zoom.has("minZoom")) {
-                    map.setMinZoomPreference((float) zoom.getDouble("minZoom"));
-                  }
-                  if (zoom.has("maxZoom")) {
-                    map.setMaxZoomPreference((float) zoom.getDouble("maxZoom"));
-                  }
-                } else {
-                  map.setMinZoomPreference(2);
-                  map.setMaxZoomPreference(23);
+                JSONObject zoom = preferences.getJSONObject("zoom");
+                if (zoom.has("minZoom")) {
+                  map.setMinZoomPreference((float)zoom.getDouble("minZoom"));
+                }
+                if (zoom.has("maxZoom")) {
+                  map.setMaxZoomPreference((float)zoom.getDouble("maxZoom"));
                 }
               }
 
-              if (preferences.has("building")) {
-                map.setBuildingsEnabled(preferences.getBoolean("building"));
-              }
 
-              if (preferences.has("clickableIcons")) {
-                clickableIcons = preferences.getBoolean("clickableIcons");
-              }
-
-              if (preferences.has("restriction")) {
-                if (!"null".equals(preferences.getString("restriction"))) {
-
-                  JSONObject restriction = preferences.getJSONObject("restriction");
-                  LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                  builder.include(new LatLng(restriction.getDouble("south"), restriction.getDouble("west")));
-                  builder.include(new LatLng(restriction.getDouble("north"), restriction.getDouble("east")));
-                  map.setLatLngBoundsForCameraTarget(builder.build());
-
-                  map.setMaxZoomPreference((float)restriction.getDouble("maxZoom"));
-                  map.setMinZoomPreference((float)restriction.getDouble("minZoom"));
-                } else {
-
-                  if (preferences.has("zoom") && !"null".equals(preferences.getString("zoom"))) {
-                    JSONObject zoom = preferences.getJSONObject("zoom");
-                    if (zoom.has("minZoom")) {
-                      map.setMinZoomPreference((float) zoom.getDouble("minZoom"));
-                    } else {
-                      map.setMinZoomPreference(2);
-                    }
-                    if (zoom.has("maxZoom")) {
-                      map.setMaxZoomPreference((float) zoom.getDouble("maxZoom"));
-                    } else {
-                      map.setMaxZoomPreference(23);
-                    }
+              if (preferences.has("gestureBounds")) {
+                Object target = preferences.get("gestureBounds");
+                @SuppressWarnings("rawtypes")
+                Class targetClass = target.getClass();
+                if ("org.json.JSONArray".equals(targetClass.getName())) {
+                  JSONArray points = preferences.getJSONArray("gestureBounds");
+                  if (points.length() > 0) {
+                    LatLngBounds bounds = PluginUtil.JSONArray2LatLngBounds(points);
+                    map.setLatLngBoundsForCameraTarget(bounds);
                   } else {
-                    map.setMinZoomPreference(2);
-                    map.setMaxZoomPreference(23);
+                    map.setLatLngBoundsForCameraTarget(null);
                   }
-                  map.setLatLngBoundsForCameraTarget(null);
                 }
               }
 
@@ -2980,11 +2933,6 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
   }
   @Override
   public void onPoiClick(PointOfInterest pointOfInterest) {
-    if (!this.clickableIcons) {
-      this.onMapClick(pointOfInterest.latLng);
-      return;
-    }
-
     String js = String.format(Locale.ENGLISH, "javascript:if('%s' in plugin.google.maps){plugin.google.maps['%s']({evtName: '%s', callback:'_onMapEvent', args:['%s', \"%s\", new plugin.google.maps.LatLng(%f, %f)]});}",
     mapId, mapId, "poi_click", pointOfInterest.placeId, pointOfInterest.name, pointOfInterest.latLng.latitude, pointOfInterest.latLng.longitude);
     jsCallback(js);
@@ -3129,19 +3077,17 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
                   hitArea.x = (int)(polyline.getWidth() * density);
                   hitArea.y = hitArea.x;
                   double threshold = calculateDistance(
-                          projection.fromScreenLocation(origin),
-                          projection.fromScreenLocation(hitArea));
-                  LatLng polyTouchPoint = isPointOnTheGeodesicLine(points, point, threshold);
-                  if (polyTouchPoint != null) {
-                    touchPoint = polyTouchPoint;
+                    projection.fromScreenLocation(origin),
+                    projection.fromScreenLocation(hitArea));
+                  touchPoint = isPointOnTheGeodesicLine(points, point, threshold);
+                  if (touchPoint != null) {
                     hitOverlay = polyline;
                     maxZIndex = zIndex;
                     continue;
                   }
                 } else {
-                  LatLng polyTouchPoint = isPointOnTheLine(points, point);
-                  if (polyTouchPoint != null) {
-                    touchPoint = polyTouchPoint;
+                  touchPoint = isPointOnTheLine(points, point);
+                  if (touchPoint != null) {
                     hitOverlay = polyline;
                     maxZIndex = zIndex;
                     continue;

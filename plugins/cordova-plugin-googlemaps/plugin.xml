@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-googlemaps" version="2.8.0-20200701-2202" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-googlemaps" version="2.7.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
   <name>cordova-plugin-googlemaps</name>
   <js-module name="Promise" src="www/Promise.js" />
   <js-module name="BaseClass" src="www/BaseClass.js">
@@ -60,15 +60,6 @@
     <runs/>
   </js-module>
   <js-module name="LocationService" src="www/LocationService.js">
-    <runs/>
-  </js-module>
-  <js-module name="ElevationService" src="www/ElevationService.js">
-    <runs/>
-  </js-module>
-  <js-module name="DirectionsService" src="www/DirectionsService.js">
-    <runs/>
-  </js-module>
-  <js-module name="DirectionsRenderer" src="www/DirectionsRenderer.js">
     <runs/>
   </js-module>
   <js-module name="Map" src="www/Map.js">
@@ -191,12 +182,6 @@
       <feature name="PluginGeocoder">
         <param name="android-package" value="plugin.google.maps.PluginGeocoder"/>
       </feature>
-      <feature name="PluginElevationService">
-        <param name="android-package" value="plugin.google.maps.PluginElevationService"/>
-      </feature>
-      <feature name="PluginDirectionsService">
-        <param name="android-package" value="plugin.google.maps.PluginDirectionsService"/>
-      </feature>
       <feature name="PluginLocationService">
         <param name="android-package" value="plugin.google.maps.PluginLocationService"/>
       </feature>
@@ -211,8 +196,6 @@
       </feature>
     </config-file>
 
-    <source-file src="src/android/plugin/google/maps/AsyncGetJsonWithURL.java" target-dir="src/plugin/google/maps"/>
-    <source-file src="src/android/plugin/google/maps/AsyncHttpGetInterface.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/AsyncLoadImage.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/AsyncLoadImageInterface.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginEnvironment.java" target-dir="src/plugin/google/maps"/>
@@ -223,8 +206,6 @@
     <source-file src="src/android/plugin/google/maps/MyPluginInterface.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginCircle.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginGeocoder.java" target-dir="src/plugin/google/maps"/>
-    <source-file src="src/android/plugin/google/maps/PluginElevationService.java" target-dir="src/plugin/google/maps"/>
-    <source-file src="src/android/plugin/google/maps/PluginDirectionsService.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginLocationService.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginGroundOverlay.java" target-dir="src/plugin/google/maps"/>
     <source-file src="src/android/plugin/google/maps/PluginKmlOverlay.java" target-dir="src/plugin/google/maps"/>
@@ -301,9 +282,6 @@
     <resource-file src="src/android/res/values-da/pgm_strings.xml" target="res/values-da/pgm_strings.xml"/>
     <!-- localized messages for Vietnamese -->
     <resource-file src="src/android/res/values-vi/pgm_strings.xml" target="res/values-vi/pgm_strings.xml"/>
-
-    <dependency id="cordova-androidx-build"  />
-
   </platform>
 
   <!-- ios -->
@@ -337,12 +315,6 @@
       </feature>
       <feature name="PluginLocationService">
         <param name="ios-package" value="PluginLocationService"/>
-      </feature>
-      <feature name="PluginElevationService">
-        <param name="ios-package" value="PluginElevationService"/>
-      </feature>
-      <feature name="PluginDirectionsService">
-        <param name="ios-package" value="PluginDirectionsService"/>
       </feature>
       <feature name="PluginMap">
         <param name="ios-package" value="PluginMap"/>
@@ -384,10 +356,6 @@
     <source-file src="src/ios/GoogleMaps/PluginGeocoder.m"/>
     <header-file src="src/ios/GoogleMaps/PluginLocationService.h"/>
     <source-file src="src/ios/GoogleMaps/PluginLocationService.m"/>
-    <header-file src="src/ios/GoogleMaps/PluginElevationService.h"/>
-    <source-file src="src/ios/GoogleMaps/PluginElevationService.m"/>
-    <header-file src="src/ios/GoogleMaps/PluginDirectionsService.h"/>
-    <source-file src="src/ios/GoogleMaps/PluginDirectionsService.m"/>
     <header-file src="src/ios/GoogleMaps/PluginEnvironment.h"/>
     <source-file src="src/ios/GoogleMaps/PluginEnvironment.m"/>
     <header-file src="src/ios/GoogleMaps/CordovaGoogleMaps.h"/>
@@ -546,12 +514,6 @@
       <runs/>
     </js-module>
     <js-module name="PluginLocationService" src="src/browser/PluginLocationService.js">
-      <runs/>
-    </js-module>
-    <js-module name="PluginElevationService" src="src/browser/PluginElevationService.js">
-      <runs/>
-    </js-module>
-    <js-module name="PluginDirectionsService" src="src/browser/PluginDirectionsService.js">
       <runs/>
     </js-module>
     <js-module name="PluginGeocoder" src="src/browser/PluginGeocoder.js">

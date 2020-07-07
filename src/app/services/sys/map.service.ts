@@ -29,8 +29,8 @@ export class MapService {
     const url = 'http://mobile.postsrvs.ru:8080/https://postsrvs.ru/mobile/orders';
     let data = {
       'action': 'getWay',
-      'lt': coords.lt,
-      'lg': coords.lg,
+      'lt': coords?.lt,
+      'lg': coords?.lg,
       'auto': 0,
       'mode': 'auto',
       'uuid': this.device.uuid

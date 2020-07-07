@@ -58,10 +58,6 @@
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 
     [GMSServices provideAPIKey:APIKey];
-    
-    NSUserDefaults *myDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"cordova.plugin.googlemaps"];
-    [myDefaults setObject:APIKey forKey:@"GOOGLE_MAPS_API_KEY"];
-    [myDefaults synchronize];
   }];
 
   //-------------------------------

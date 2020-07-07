@@ -276,7 +276,7 @@
 
   [self.mapCtrl.plugins removeAllObjects];
 
-  if (command != (id)[NSNull null]) {
+  if (command != nil) {
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
@@ -589,7 +589,7 @@
           if (self.isRemoved) {
             return;
           }
-          if (cameraBounds != (id)[NSNull null]){
+          if (cameraBounds != nil){
 
             GMSCameraPosition *cameraPosition2 = [GMSCameraPosition cameraWithLatitude:self.mapCtrl.map.camera.target.latitude
                                                                              longitude:self.mapCtrl.map.camera.target.longitude
@@ -614,7 +614,7 @@
     if ([action  isEqual: @"moveCamera"]) {
       [self.mapCtrl.map setCamera:cameraPosition];
 
-      if (cameraBounds != (id)[NSNull null]){
+      if (cameraBounds != nil){
         double delayInSeconds = 0.5;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -661,7 +661,7 @@
 
     NSString *markerId = [command.arguments objectAtIndex:0];
     GMSMarker *marker = [self.mapCtrl.objects objectForKey:markerId];
-    if (marker != (id)[NSNull null]) {
+    if (marker != nil) {
       self.mapCtrl.map.selectedMarker = marker;
       self.mapCtrl.activeMarker = marker;
     }
@@ -749,13 +749,13 @@
 - (void)_setOptions:(NSDictionary *)initOptions requestMethod:(NSString *)requestMethod command:(CDVInvokedUrlCommand *)command {
 
   [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    NSLog(@"options=%@", initOptions);
+
     BOOL isEnabled = NO;
     //controls
     NSDictionary *controls = [initOptions objectForKey:@"controls"];
     if (controls) {
       //compass
-      if ([controls valueForKey:@"compass"] != (id)[NSNull null]) {
+      if ([controls valueForKey:@"compass"] != nil) {
         isEnabled = [[controls valueForKey:@"compass"] boolValue];
         if (isEnabled == true) {
           self.mapCtrl.map.settings.compassButton = YES;
@@ -764,7 +764,7 @@
         }
       }
       //myLocationButton
-      if ([controls valueForKey:@"myLocationButton"] != (id)[NSNull null]) {
+      if ([controls valueForKey:@"myLocationButton"] != nil) {
         isEnabled = [[controls valueForKey:@"myLocationButton"] boolValue];
         if (isEnabled == true) {
           self.mapCtrl.map.settings.myLocationButton = YES;
@@ -773,7 +773,7 @@
         }
       }
       //myLocation
-      if ([controls valueForKey:@"myLocation"] != (id)[NSNull null]) {
+      if ([controls valueForKey:@"myLocation"] != nil) {
         isEnabled = [[controls valueForKey:@"myLocation"] boolValue];
         if (isEnabled == true) {
           self.mapCtrl.map.myLocationEnabled = YES;
@@ -782,7 +782,7 @@
         }
       }
       //indoorPicker
-      if ([controls valueForKey:@"indoorPicker"] != (id)[NSNull null]) {
+      if ([controls valueForKey:@"indoorPicker"] != nil) {
         isEnabled = [[controls valueForKey:@"indoorPicker"] boolValue];
         if (isEnabled == true) {
           self.mapCtrl.map.settings.indoorPicker = YES;
@@ -798,22 +798,22 @@
     NSDictionary *gestures = [initOptions objectForKey:@"gestures"];
     if (gestures) {
       //rotate
-      if ([gestures valueForKey:@"rotate"] != (id)[NSNull null]) {
+      if ([gestures valueForKey:@"rotate"] != nil) {
         isEnabled = [[gestures valueForKey:@"rotate"] boolValue];
         self.mapCtrl.map.settings.rotateGestures = isEnabled;
       }
       //scroll
-      if ([gestures valueForKey:@"scroll"] != (id)[NSNull null]) {
+      if ([gestures valueForKey:@"scroll"] != nil) {
         isEnabled = [[gestures valueForKey:@"scroll"] boolValue];
         self.mapCtrl.map.settings.scrollGestures = isEnabled;
       }
       //tilt
-      if ([gestures valueForKey:@"tilt"] != (id)[NSNull null]) {
+      if ([gestures valueForKey:@"tilt"] != nil) {
         isEnabled = [[gestures valueForKey:@"tilt"] boolValue];
         self.mapCtrl.map.settings.tiltGestures = isEnabled;
       }
       //zoom
-      if ([gestures valueForKey:@"zoom"] != (id)[NSNull null]) {
+      if ([gestures valueForKey:@"zoom"] != nil) {
         isEnabled = [[gestures valueForKey:@"zoom"] boolValue];
         self.mapCtrl.map.settings.zoomGestures = isEnabled;
       }
@@ -822,19 +822,19 @@
     NSDictionary *preferences = [initOptions objectForKey:@"preferences"];
     if (preferences) {
       //padding
-      if ([preferences valueForKey:@"padding"] != (id)[NSNull null]) {
+      if ([preferences valueForKey:@"padding"] != nil) {
         NSDictionary *padding = [preferences valueForKey:@"padding"];
         UIEdgeInsets current = self.mapCtrl.map.padding;
-        if ([padding objectForKey:@"left"] != (id)[NSNull null]) {
+        if ([padding objectForKey:@"left"] != nil) {
           current.left = [[padding objectForKey:@"left"] floatValue];
         }
-        if ([padding objectForKey:@"top"] != (id)[NSNull null]) {
+        if ([padding objectForKey:@"top"] != nil) {
           current.top = [[padding objectForKey:@"top"] floatValue];
         }
-        if ([padding objectForKey:@"bottom"] != (id)[NSNull null]) {
+        if ([padding objectForKey:@"bottom"] != nil) {
           current.bottom = [[padding objectForKey:@"bottom"] floatValue];
         }
-        if ([padding objectForKey:@"right"] != (id)[NSNull null]) {
+        if ([padding objectForKey:@"right"] != nil) {
           current.right = [[padding objectForKey:@"right"] floatValue];
         }
 
@@ -842,32 +842,35 @@
         [self.mapCtrl.map setPadding:newPadding];
       }
       //zoom
-      if ([preferences valueForKey:@"zoom"] != (id)[NSNull null]) {
+      if ([preferences valueForKey:@"zoom"] != nil) {
         NSDictionary *zoom = [preferences valueForKey:@"zoom"];
         float minZoom = self.mapCtrl.map.minZoom;
         float maxZoom = self.mapCtrl.map.maxZoom;
-        if ([zoom objectForKey:@"minZoom"] != (id)[NSNull null]) {
+        if ([zoom objectForKey:@"minZoom"] != nil) {
           minZoom = [[zoom objectForKey:@"minZoom"] doubleValue];
         }
-        if ([zoom objectForKey:@"maxZoom"] != (id)[NSNull null]) {
+        if ([zoom objectForKey:@"maxZoom"] != nil) {
           maxZoom = [[zoom objectForKey:@"maxZoom"] doubleValue];
         }
 
         [self.mapCtrl.map setMinZoom:minZoom maxZoom:maxZoom];
       }
 
-      // restriction
-      NSDictionary *restriction = [preferences valueForKey:@"restriction"];
-      if (restriction == (id)[NSNull null]) {
-        [self _setCameraRestriction:nil];
-      } else {
-        NSDictionary *restriction = [preferences objectForKey:@"restriction"];
-        [self _setCameraRestriction:restriction];
-      }
+      // gestureBounds
+      if ([preferences valueForKey:@"gestureBounds"] != nil) {
+        NSDictionary *latLng = nil;
+        double latitude, longitude;
+        int i = 0;
+        NSArray *latLngList = [preferences objectForKey:@"gestureBounds"];
+        GMSMutablePath *path = [GMSMutablePath path];
+        for (i = 0; i < [latLngList count]; i++) {
+          latLng = [latLngList objectAtIndex:i];
+          latitude = [[latLng valueForKey:@"lat"] doubleValue];
+          longitude = [[latLng valueForKey:@"lng"] doubleValue];
+          [path addLatitude:latitude longitude:longitude];
+        }
 
-      // building
-      if ([preferences valueForKey:@"building"] != nil) {
-        self.mapCtrl.map.buildingsEnabled = [[preferences valueForKey:@"building"] boolValue];
+        [self.mapCtrl.map setCameraTargetBounds:[[GMSCoordinateBounds alloc] initWithPath:path]];
       }
     }
 
@@ -876,7 +879,7 @@
     if (styles) {
       NSError *error;
       GMSMapStyle *mapStyle = [GMSMapStyle styleWithJSONString:styles error:&error];
-      if (mapStyle != (id)[NSNull null]) {
+      if (mapStyle != nil) {
         self.mapCtrl.map.mapStyle = mapStyle;
         self.mapCtrl.map.mapType = kGMSTypeNormal;
       } else {
@@ -926,31 +929,6 @@
   }];
 
 };
-- (void)_setCameraRestriction:(NSDictionary *)params {
-
-  if (params == (id)[NSNull null] || params == nil) {
-    self.mapCtrl.map.cameraTargetBounds = nil;
-    double minZoom = 0;
-    double maxZoom = 23;
-    [self.mapCtrl.map setMinZoom:minZoom maxZoom:maxZoom];
-
-  } else {
-
-    GMSMutablePath *path = [GMSMutablePath path];
-    [path
-      addCoordinate: CLLocationCoordinate2DMake([[params objectForKey:@"south"] doubleValue], [[params objectForKey:@"west"] doubleValue])];
-    [path
-      addCoordinate: CLLocationCoordinate2DMake([[params objectForKey:@"north"] doubleValue], [[params objectForKey:@"east"] doubleValue])];
-
-    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithPath:path];
-    self.mapCtrl.map.cameraTargetBounds = bounds;
-
-    double minZoom = [[params objectForKey:@"minZoom"] doubleValue];
-    double maxZoom = [[params objectForKey:@"maxZoom"] doubleValue];
-    [self.mapCtrl.map setMinZoom:minZoom maxZoom:maxZoom];
-  }
-}
-
 
 - (void)setOptions:(CDVInvokedUrlCommand *)command {
   [self.mapCtrl.executeQueue addOperationWithBlock:^{
@@ -983,7 +961,7 @@
 - (void)getFocusedBuilding:(CDVInvokedUrlCommand*)command {
   [[NSOperationQueue mainQueue] addOperationWithBlock:^{
     GMSIndoorBuilding *building = self.mapCtrl.map.indoorDisplay.activeBuilding;
-    if (building != (id)[NSNull null] || [building.levels count] == 0) {
+    if (building != nil || [building.levels count] == 0) {
       CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
       [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
       return;

@@ -157,22 +157,6 @@
       "ANDROID_SUPPORT_VERSION": "28.+"
     }
   },
-  "cordova-androidx-build": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-androidx-build"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "com.googlemaps.ios": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-googlemaps-sdk@3.8.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "phonegap-plugin-barcodescanner": {
     "source": {
       "type": "registry",
@@ -183,10 +167,29 @@
       "ANDROID_SUPPORT_V4_VERSION": "27.+"
     }
   },
+  "com.googlemaps.ios": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googlemaps-sdk@^3.8.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
   "cordova-plugin-googlemaps": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
+      "id": "cordova-plugin-googlemaps@^2.7.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
+    }
+  },
+  "cordova-plugin-androidx-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-androidx-adapter@^1.1.1"
     },
     "is_top_level": true,
     "variables": {}

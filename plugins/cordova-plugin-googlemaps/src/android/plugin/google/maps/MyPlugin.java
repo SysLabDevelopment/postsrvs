@@ -28,7 +28,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
 public class MyPlugin extends CordovaPlugin implements MyPluginInterface {
   public MyPlugin self = null;
   public final Map<String, Method> methods = new ConcurrentHashMap<String, Method>();

@@ -36,6 +36,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 public class PluginLocationService extends CordovaPlugin {
   private Activity activity;
   private final String TAG = "PluginLocationService";

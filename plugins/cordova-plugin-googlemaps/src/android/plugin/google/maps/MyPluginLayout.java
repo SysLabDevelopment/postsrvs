@@ -365,13 +365,12 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
           int childCnt = scrollFrameLayout.getChildCount();
           View view;
           int index = childCnt;
-//          for (int i = childCnt - 1; i >= 0; i--) {
-          for (int i = 0; i < childCnt; i++) {
+          for (int i = childCnt - 1; i >= 0; i--) {
             view = scrollFrameLayout.getChildAt(i);
             if (view.getTag() == null) {
               continue;
             }
-            if (Integer.parseInt(view.getTag() + "") > depth) {
+            if (Integer.parseInt(view.getTag() + "") < depth) {
               index = i;
               break;
             }

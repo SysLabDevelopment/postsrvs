@@ -11,7 +11,6 @@
   ],
   "include": [
     "src/**/*.d.ts",
-    "zone-flags.ts",
-    "assets/**/*.png"
+    "zone-flags.ts"
   ]
 }
