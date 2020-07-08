@@ -297,18 +297,12 @@ export class MapPage implements OnInit {
       markers: markeredOrders,
       icons: [
         {
-          min: 2,
-          max: 9,
-          url: "./assets/markercluster/small.png",
+          min: 4,
+          url: "./assets/markercluster/pipka.png",
           label: {
-            color: "white"
-          }
-        },
-        {
-          min: 10,
-          url: "./assets/markercluster/large.png",
-          label: {
-            color: "white"
+            color: "black",
+            bold: true,
+            fontSize: 16
           }
         }
       ]
@@ -319,7 +313,8 @@ export class MapPage implements OnInit {
       let marker: Marker = params[1];
       htmlInfoWindow.setContent(marker.get("info"), {
         'width': '300px',
-        'height': '200px'
+        'height': '200px',
+        'overflow': 'scroll'
       });
 
 
