@@ -314,7 +314,6 @@ export class MapPage implements OnInit {
       htmlInfoWindow.setContent(marker.get("info"), {
         'width': '300px',
         'height': '200px',
-        'overflow': 'scroll'
       });
 
 
@@ -331,98 +330,90 @@ export class MapPage implements OnInit {
     let tabsContent = '';
     let note = (localStorage.getItem(order.id) ? localStorage.getItem(order.id) : '');
     let from = order.datetime_from || '';
-
+    let checked = 'checked';
+    let controls = '';
+    let labels = '';
+    let selectors = '';
+    let margin = 0;
+    let selectors1 = '';
+    let count = 1;
+    let selectors2 = '';
+    let comma = ',';
     sameGeoOrders.forEach((order) => {
+      if (sameGeoOrders.length == count) {
+        comma = ''
+      }
+      controls += `<input ${checked} type="radio" name="slider" id="slide${order.id}" class="set" />`;
+      checked = '';
       tabsContent += `
-          <li>
-            <input type="radio" name="tabs" id="tab-${order.id}" checked>
-            <label for="tab-${order.id}">${order.id}</label>
-            <div class="tab-content">
-              <b>Заказ ${order.id}</b>
-              <br/>
-              Доставка:
-              <br/> c  ${from} 
-              <br/>  ${(order.datetime_to ? order.datetime_to : '')} 
-              <br/>
-              <b>Компания:</b> ${order.client_name}
-              <br/><b>Клиент:</b>  ${order.client_fio}
-              <button onClick='localStorage.setItem("needOrder",${order.id})' style='width: 100%;background-color: #ffdb4d;padding:10px'>Детали</button>${note}
-            </div>
-          </li>
-             
+<div class="slide">
+<b>Заказ ${order.id}</b>
+<br/>
+Доставка:
+<br/> c  ${from} 
+<br/>  ${(order.datetime_to ? order.datetime_to : '')} 
+<br/>
+<b>Компания:</b> ${order.client_name}
+<br/><b>Клиент:</b>  ${order.client_fio}
+<button onClick='localStorage.setItem("needOrder",${order.id})' style='width: 100%;background-color: #ffdb4d;padding:10px'>Детали</button>${note}
+</div>
      `;
+
+      labels += `<label for="slide${order.id}"></label>`;
+      selectors += `#slide${order.id}:checked ~ .mask .overflow { margin-left:${margin}%; } `;
+      margin -= 100;
+      selectors1 += `#slide${order.id}:checked ~ #controls label:nth-child(${(count + 1)})${comma} `;
+      selectors2 += `#slide${order.id}:checked ~ #controls label:nth-child(${count - 1})${comma} `;
+      count++;
+
     })
 
     let frame: HTMLElement = document.createElement('div');
     frame.innerHTML = `
-          <style>
-            .tabs {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	position: relative;
-      display: flex;
-    flex-direction: column;
-}
-.tabs:after {
-	content: "";
-	clear: both;
-	display: block;
-	height: 240px;
-}
-.tabs li {
-	float: left;
-  display:flex;
-}
-.tabs li > input {
-	display: none;
-}
-.tabs li > label {
-	display: inline-block;
-	
-	height: 30px;
-	line-height: 30px;
-	padding: 5px 20px;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-.tabs li:last-child > label {
-	border-right-width: 1px;
-}
-.tabs .tab-content {
-	display: none;
-	position: absolute;
-	left: 105px;
-  top:0;
-	padding: 5px;
-	border: 1px solid #999;
-  overflow-y: auto;
-  width:200px;
+<style>
 
-	-moz-transition: opacity .5s ease-in-out;
-	-webkit-transition: opacity .5s ease-in-out;
-	transition: opacity .5s ease-in-out;
+input.set { display:none; }
+${selectors}
+#slides { 
+  margin:0;
+   position:relative; 
+width:80%;
+height:200px;
+background:#2b637e;
 }
-
-/* Functional */
-
-.tabs li > input:checked + label {
-	background-color: #999;
+#slides .mask { 
+  width:90%;
+  overflow:hidden;
+  margin:auto;
+  height: 200px;
+  }
+#slides .overflow {
+   width:${sameGeoOrders.length * 100}%;
+    -webkit-transform:translateZ(0); -webkit-transition:all 0.5s ease-out; -moz-transition:all 0.5s ease-out; -o-transition:all 0.5s ease-out; transition:all 0.5s ease-out; }
+#slides .slide {
+  width:${(1 / sameGeoOrders.length) * 100}%;
+  height:200px;
+  float:left;
+  background:#fff;
 }
-.tabs li > input:checked ~ .tab-content {
-	display: block;
+#controls { width:100%;
 }
-        </style>
-       
-
-<ul class="tabs">
-  
-  ${tabsContent}
-
-</ul>
+#controls label { display:none; width:5%; height:60px; opacity:0.3; position:absolute; top:50%; margin-top:-30px; cursor:pointer; background:#000; }
+#controls label:hover { opacity:0.8; }
+${selectors1} { right:0; display:block; }
+${selectors2} { left:0; display:block; }
+</style>
+<div id="slides">
+  ${controls}
+    <div class="mask">    
+      <div class="overflow">
+        ${tabsContent}
+      </div>    
+    </div>
+    <div id="controls" onclick=""> 
+      ${labels}
+    </div>
+</div>
 
 `;
 
