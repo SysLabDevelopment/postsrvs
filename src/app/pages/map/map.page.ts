@@ -132,12 +132,17 @@ export class MapPage implements OnInit {
     let options: GoogleMapOptions = {
       'preferences': {
         'building': false,
-        'clickableIcons': true
+        'clickableIcons': true,
+        'padding': {
+          bottom: 10
+        }
       },
       controls: {
         'myLocation': true,
         'myLocationButton': true,
-        'zoom': true
+        'zoom': true,
+        'compass': false,
+        'indoorPicker': true
       },
       'camera': {
         'target': {
@@ -203,7 +208,7 @@ export class MapPage implements OnInit {
     let markeredOrders = [];
     orders.forEach((order) => {
 
-
+      let info = this.createInfoContent(order);
       this.existsGeos.push([order.lt, order.lg]);
       markeredOrders.push(
         {
@@ -212,7 +217,7 @@ export class MapPage implements OnInit {
             "lng": order.lg
           },
           "name": order.id,
-          "info": this.createInfoContent(order),
+          "info": info,
           "icon": "assets/markercluster/marker.png"
         },
       );
@@ -294,16 +299,21 @@ export class MapPage implements OnInit {
 
   addCluster(markeredOrders) {
     let markerCluster: MarkerCluster = this.map.addMarkerClusterSync({
+      maxZoomLevel: 14,
       markers: markeredOrders,
+      boundsDraw: false,
       icons: [
         {
-          min: 4,
+          min: 2,
           url: "./assets/markercluster/pipka.png",
           label: {
             color: "black",
             bold: true,
             fontSize: 16
-          }
+          },
+          anchor: { x: 16, y: 16 },
+
+
         }
       ]
     });
@@ -312,8 +322,12 @@ export class MapPage implements OnInit {
 
       let marker: Marker = params[1];
       htmlInfoWindow.setContent(marker.get("info"), {
-        'width': '300px',
-        'height': '200px',
+        'width': '280px',
+        'height': '170px',
+        'background': '#FFFFFF',
+        'border-radius': '4px',
+        'display': 'flex',
+        'justify-content': 'space-around'
       });
 
 
@@ -330,90 +344,58 @@ export class MapPage implements OnInit {
     let tabsContent = '';
     let note = (localStorage.getItem(order.id) ? localStorage.getItem(order.id) : '');
     let from = order.datetime_from || '';
-    let checked = 'checked';
-    let controls = '';
-    let labels = '';
-    let selectors = '';
-    let margin = 0;
-    let selectors1 = '';
-    let count = 1;
-    let selectors2 = '';
-    let comma = ',';
+    let arrows = (sameGeoOrders.length > 1 ? `<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>` : '');
     sameGeoOrders.forEach((order) => {
-      if (sameGeoOrders.length == count) {
-        comma = ''
-      }
-      controls += `<input ${checked} type="radio" name="slider" id="slide${order.id}" class="set" />`;
-      checked = '';
       tabsContent += `
-<div class="slide">
-<b>Заказ ${order.id}</b>
+      <ion-slide class='slide'>
+      <div style='width: 100%;text-align: start;padding: 0 20px; margin-left: 20px;'>
+<span class='order-id'>${order.id}</span>
+<hr style="background: #D6CFCF;"/>
+<span class='prop'>Дата доставки:</span> c  <span class='val'>${from}</span> До: <span class='val'> ${(order.datetime_to ? order.datetime_to : '')} </span>
+<br/><span class='prop'>Имя:</span>  <span class='val'>${order.client_fio}</span>
+<br/><span class='prop'>Компания:</span> ${order.client_name}
 <br/>
-Доставка:
-<br/> c  ${from} 
-<br/>  ${(order.datetime_to ? order.datetime_to : '')} 
-<br/>
-<b>Компания:</b> ${order.client_name}
-<br/><b>Клиент:</b>  ${order.client_fio}
-<button onClick='localStorage.setItem("needOrder",${order.id})' style='width: 100%;background-color: #ffdb4d;padding:10px'>Детали</button>${note}
+<button onClick='localStorage.setItem("needOrder",${order.id})' style='margin-top: 10px; width: 100%;;padding:10px;background: #2E627E;
+border-radius: 4px; color:white;font-weight: 500;
+font-size: 12px;
+line-height: 14px;'>Детали</button>${note}
 </div>
+${arrows}
+</ion-slide>
      `;
-
-      labels += `<label for="slide${order.id}"></label>`;
-      selectors += `#slide${order.id}:checked ~ .mask .overflow { margin-left:${margin}%; } `;
-      margin -= 100;
-      selectors1 += `#slide${order.id}:checked ~ #controls label:nth-child(${(count + 1)})${comma} `;
-      selectors2 += `#slide${order.id}:checked ~ #controls label:nth-child(${count - 1})${comma} `;
-      count++;
-
     })
 
-    let frame: HTMLElement = document.createElement('div');
+    let frame: HTMLElement = document.createElement('ion-slides');
+
     frame.innerHTML = `
 <style>
-
-input.set { display:none; }
-${selectors}
-#slides { 
-  margin:0;
-   position:relative; 
-width:80%;
-height:200px;
-background:#2b637e;
-}
-#slides .mask { 
-  width:90%;
-  overflow:hidden;
-  margin:auto;
-  height: 200px;
+  .order-id{
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #2B637E;
   }
-#slides .overflow {
-   width:${sameGeoOrders.length * 100}%;
-    -webkit-transform:translateZ(0); -webkit-transition:all 0.5s ease-out; -moz-transition:all 0.5s ease-out; -o-transition:all 0.5s ease-out; transition:all 0.5s ease-out; }
-#slides .slide {
-  width:${(1 / sameGeoOrders.length) * 100}%;
-  height:200px;
-  float:left;
-  background:#fff;
-}
-#controls { width:100%;
-}
-#controls label { display:none; width:5%; height:60px; opacity:0.3; position:absolute; top:50%; margin-top:-30px; cursor:pointer; background:#000; }
-#controls label:hover { opacity:0.8; }
-${selectors1} { right:0; display:block; }
-${selectors2} { left:0; display:block; }
+  .prop{
+    color:#717171;
+    font-size: 13px;
+    line-height: 15px;
+  }
+  .val{
+    color: #333333;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+  }
+
+  .slide{
+    padding: 10px;
+    width: 100%;
+  }
 </style>
-<div id="slides">
-  ${controls}
-    <div class="mask">    
-      <div class="overflow">
-        ${tabsContent}
-      </div>    
-    </div>
-    <div id="controls" onclick=""> 
-      ${labels}
-    </div>
-</div>
+${tabsContent}
 
 `;
 

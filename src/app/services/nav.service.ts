@@ -6,6 +6,5 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavService {
   public tabNav = new BehaviorSubject(0);
-
   constructor() { }
 }

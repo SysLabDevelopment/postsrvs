@@ -19,6 +19,8 @@ import {
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
 import { WiredIconButton } from 'wired-elements';
+import { MapService } from './../../services/sys/map.service';
+
 @Component({
   selector: 'app-balance',
   templateUrl: './balance.page.html',
@@ -103,7 +105,8 @@ export class BalancePage implements OnInit {
     private camera: Camera,
     private AP: AndroidPermissions,
     public settings: SettingsService,
-    public sys: SysService
+    public sys: SysService,
+    private sysMap: MapService
   ) {
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     if (this.info == null) {
@@ -333,7 +336,7 @@ export class BalancePage implements OnInit {
   }
 
   public navToSettings() {
-    this.router.navigate(['settings']);
+    this.sysMap.navigate(['/about']);
   }
   public check_to_work() {
 

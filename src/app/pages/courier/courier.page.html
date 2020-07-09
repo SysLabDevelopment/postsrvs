@@ -22,12 +22,8 @@
 </ion-header>
 
 <ion-content>
-  <span
-    class="manual_lable"
-    [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}"
-    *ngIf="state$.manual_route && selectedTab == 1"
-    >Для сортировки зажмите заказ и перетащите</span
-  >
+  <span class="manual_lable" [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}"
+    *ngIf="state$.manual_route && selectedTab == 1">Для сортировки зажмите заказ и перетащите</span>
 
   <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
     <app-orders-list-guess *ngIf="auth.getGuessMode()"> </app-orders-list-guess>
@@ -38,22 +34,14 @@
       <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 3}" (click)="tabSelect(3)">Не доставлено</div>
     </div>
     <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
-      <app-orders-list-first
-        [selectedTab]="selectedTab"
-        [confirm_cond]="subBtnCond"
+      <app-orders-list-first [selectedTab]="selectedTab" [confirm_cond]="subBtnCond"
         *ngIf="selectedTab == 1 && this.state$.manual_route && !auth.getGuessMode()"
-        (ordersChange_E)="ordersListChanged($event)"
-        (orderSelected_E)="selectOrder($event)"
-      >
+        (ordersChange_E)="ordersListChanged($event)" (orderSelected_E)="selectOrder($event)">
       </app-orders-list-first>
 
-      <app-orders-list-second
-        [orders]="orders"
-        [selectedTab]="selectedTab"
-        [confirm_cond]="subBtnCond"
+      <app-orders-list-second [orders]="orders" [selectedTab]="selectedTab" [confirm_cond]="subBtnCond"
         *ngIf="!(this.state$.manual_route && selectedTab == 1) && !auth.getGuessMode()"
-        (orderSelected_E)="selectOrder($event)"
-      >
+        (orderSelected_E)="selectOrder($event)">
       </app-orders-list-second>
 
       <div class="orders-lable" *ngIf="!auth.routingModeAuto">
@@ -74,12 +62,9 @@
           Заказов на вкладке:
           <div class="amount-labl">{{courier.sortOrders.g_fail}}</div>
         </div>
-        <div
-          class="olab-empty"
-          *ngIf=" (selectedTab == 1 && g_process == 0) ||
+        <div class="olab-empty" *ngIf=" (selectedTab == 1 && g_process == 0) ||
                                                 (selectedTab == 2 && g_done == 0) ||
-                                                (selectedTab == 3 && g_fail == 0)"
-        >
+                                                (selectedTab == 3 && g_fail == 0)">
           <span class="center-title">Нет заказов</span>
         </div>
       </div>
@@ -99,45 +84,26 @@
       </div>
     </div>
     <div class="checking" *ngIf="auth.checkState !== 'checkedOut'">
-      <ion-button
-        (click)="auth.check('In')"
-        expand="block"
-        fill="outline"
-        shape="round"
-        *ngIf="auth.checkState == 'checkedundefined'"
-      >
+      <ion-button (click)="auth.check('In')" expand="block" fill="solid" shape="round"
+        *ngIf="auth.checkState == 'checkedundefined'">
         Приехал на склад
       </ion-button>
-      <ion-button
-        (click)="auth.check('Out')"
-        expand="block"
-        fill="outline"
-        shape="round"
-        *ngIf="auth.checkState == 'checkedIn'"
-      >
+      <ion-button (click)="auth.check('Out')" expand="block" fill="solid" shape="round"
+        *ngIf="auth.checkState == 'checkedIn'">
         Уехал со склада
       </ion-button>
     </div>
-    <div
-      class="start-route"
-      *ngIf="ordersInit && state$.orders_data != [] && state$.orders_data !== null && auth.checkState == 'checkedOut'"
-    >
-      <button
-        class="satrt-r-btn"
-        *ngIf="!btn_go && !this.state$.manual_route && auth.routingModeAuto"
-        (click)="startRoute()"
-      >
+    <div class="start-route"
+      *ngIf="ordersInit && state$.orders_data != [] && state$.orders_data !== null && auth.checkState == 'checkedOut'">
+      <button class="satrt-r-btn" *ngIf="!btn_go && !this.state$.manual_route && auth.routingModeAuto"
+        (click)="startRoute()">
         Начать маршрут
       </button>
       <button class="satrt-r-btn sr-stop" *ngIf="btn_go && !this.state$.manual_route" (click)="stopRoute()">
         Остановить маршрут
       </button>
-      <button
-        class="satrt-r-btn find-o-btn"
-        *ngIf="auth.getMode() == 'auto' || auth.getMode() == 'auto_wo'"
-        [ngClass]="{  'manual_btn' : this.state$.manual_route}"
-        (click)="manualRoute()"
-      >
+      <button class="satrt-r-btn find-o-btn" *ngIf="auth.getMode() == 'auto' || auth.getMode() == 'auto_wo'"
+        [ngClass]="{  'manual_btn' : this.state$.manual_route}" (click)="manualRoute()">
         <span *ngIf="this.state$.manual_route">Автоматический режим</span>
         <span *ngIf="!this.state$.manual_route">Ручной режим</span>
       </button>

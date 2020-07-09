@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'schedule', loadChildren: () => import('./pages/schedule/schedule.module').then(m => m.SchedulePageModule) },
   { path: 'settings', redirectTo: 'about' },
   { path: 'draw', loadChildren: () => import('./pages/draw/draw.module').then(m => m.DrawPageModule) },
-  // { path: 'map/:order', redirectTo: 'map', pathMatch: 'full' },
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule)

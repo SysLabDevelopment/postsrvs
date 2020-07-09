@@ -132,4 +132,8 @@ export class MapService {
     localStorage.removeItem('needOrder');
   }
 
+  public navigate(page: any) {
+    this.router.navigate(page)
+
+  }
 }
