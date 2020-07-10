@@ -1,24 +1,28 @@
 {
-    "env": {
-        "browser": true,
-        "es2020": true
-    },
-    "extends": [
-        "tslint.json",
-        "angular",
-        "plugin:angular/johnpapa"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 11,
-        "sourceType": "module"
-    },
-    "plugins": [
-        // "@typescript-eslint",
-        "angular"
-    ],
-    "rules": {
-        "no-unused-vars": "off"
-    },
-    "root": true
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "es6": true
+  },
+  "extends": [
+    "tslint.json",
+    "angular",
+    "plugin:angular/johnpapa",
+    "airbnb-base",
+    "plugin:unicorn/recommended",
+    "plugin:prettier/recommended",
+    "prettier",
+    "prettier/unicorn"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["angular", "prettier", "unicorn"],
+  "rules": {
+    "no-unused-vars": "off",
+    "unicorn/prevent-abbreviations": "off"
+  },
+  "root": true
 }
