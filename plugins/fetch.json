@@ -193,5 +193,21 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-app-update": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-app-update"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-appversion": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-appversion@1.0.0"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="postsrvs.w"
     android:hardwareAccelerated="true"
-    android:versionCode="64"
-    android:versionName="1.0.0" >
+    android:versionCode="66"
+    android:versionName="1.2.0" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -47,6 +47,8 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
     <uses-feature android:name="android.hardware.location" />
+
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -115,6 +117,16 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+        <provider
+            android:name="com.vaenow.appupdate.android.GenericFileProvider"
+            android:authorities="postsrvs.w.appupdate.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/appupdate_paths" />
+        </provider>
 
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"

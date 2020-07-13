@@ -34,6 +34,7 @@
     "@google/markerwithlabel": "^1.2.12",
     "@googlemaps/markermanager": "0.0.6",
     "@ionic-native/android-permissions": "^5.22.0",
+    "@ionic-native/app-update": "^5.27.0",
     "@ionic-native/app-version": "^5.22.0",
     "@ionic-native/barcode-scanner": "^5.26.0",
     "@ionic-native/call-number": "^5.22.0",
@@ -60,7 +61,9 @@
     "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-androidx": "^1.0.2",
     "cordova-plugin-androidx-adapter": "^1.1.1",
+    "cordova-plugin-app-update": "^2.0.2",
     "cordova-plugin-app-version": "^0.1.9",
+    "cordova-plugin-appversion": "^1.0.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "^2.7.1",
@@ -73,7 +76,7 @@
     "core-js": "^3.6.4",
     "es6-promise-plugin": "^4.2.2",
     "mx.ferreyra.callnumber": "0.0.2",
-    "ngx-mask": "^8.1.7",
+    "ngx-mask": "^9.1.2",
     "paulstelzer-ionic-angular-toolkit": "^2.0.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "^6.5.4",
@@ -164,7 +167,8 @@
       "cordova-plugin-googlemaps-sdk": {},
       "com.googlemaps.ios": {},
       "cordova-plugin-googlemaps": {},
-      "cordova-plugin-androidx-adapter": {}
+      "cordova-plugin-androidx-adapter": {},
+      "cordova-plugin-app-update": {}
     },
     "platforms": [
       "android",

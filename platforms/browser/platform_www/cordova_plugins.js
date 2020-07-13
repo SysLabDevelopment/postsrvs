@@ -485,6 +485,22 @@ module.exports = [
         "id": "cordova-plugin-googlemaps.PluginEnvironment",
         "pluginId": "cordova-plugin-googlemaps",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-appversion/www/app-version.js",
+        "id": "cordova-plugin-appversion.RareloopAppVersion",
+        "pluginId": "cordova-plugin-appversion",
+        "clobbers": [
+            "AppVersion"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-app-update/www/AppUpdate.js",
+        "id": "cordova-plugin-app-update.AppUpdate",
+        "pluginId": "cordova-plugin-app-update",
+        "clobbers": [
+            "AppUpdate"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -511,7 +527,9 @@ module.exports.metadata =
     "phonegap-plugin-barcodescanner": "8.1.0",
     "com.googlemaps.ios": "3.8.0",
     "cordova-plugin-googlemaps": "2.7.1",
-    "cordova-plugin-androidx-adapter": "1.1.1"
+    "cordova-plugin-androidx-adapter": "1.1.1",
+    "cordova-plugin-appversion": "1.0.0",
+    "cordova-plugin-app-update": "2.0.2"
 }
 // BOTTOM OF METADATA
 });

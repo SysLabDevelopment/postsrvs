@@ -72,7 +72,14 @@
     },
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-app-update": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-appversion": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    }
+  }
 }
