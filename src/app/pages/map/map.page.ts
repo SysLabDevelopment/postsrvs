@@ -30,6 +30,7 @@ import {
   MarkerClusterIcon,
   CameraPosition,
   GoogleMapsEvent,
+  BaseArrayClass,
 } from "@ionic-native/google-maps";
 import { Router } from "@angular/router";
 import { filter } from "rxjs/operators";
@@ -38,6 +39,8 @@ import { AppVersion } from "@ionic-native/app-version/ngx";
 import { NavService } from "../../services/nav.service";
 import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
+import { PopoverController } from "@ionic/angular";
+import { OrderComponent } from "../../components/order/order.component";
 @Component({
   selector: "app-map",
   templateUrl: "./map.page.html",
@@ -76,7 +79,8 @@ export class MapPage implements OnInit {
     private appVersion: AppVersion,
     private nav: NavService,
     public googleMaps: GoogleMaps,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public popoverController: PopoverController
   ) {
     this.courier.ordersShortData.subscribe((data: Array<any>) => {
       this.orders = data;
@@ -105,6 +109,10 @@ export class MapPage implements OnInit {
       if (state == "login") {
         this.initContent();
       }
+    });
+    this.sysMap.infoUpdated.subscribe(() => {
+      this.map.clear();
+      this.drawData();
     });
   }
 
@@ -221,7 +229,7 @@ export class MapPage implements OnInit {
     return markeredOrders;
   }
 
-  private drawData(autoStartRoute: string) {
+  private drawData(autoStartRoute: string = "0") {
     if (this.map !== undefined) {
       if (autoStartRoute == "0") {
         this.addCluster(this.markeredOrders(this.orders));
@@ -430,5 +438,15 @@ ${arrows}
     }
     frame.appendChild(slides);
     return frame;
+  }
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: OrderComponent,
+      cssClass: "my-custom-class",
+      event: ev,
+      translucent: true,
+    });
+    return await popover.present();
   }
 }
