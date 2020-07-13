@@ -14,7 +14,7 @@
       <ion-button *ngIf="subBtnCond" (click)="submitOrder()">
         <ion-icon name="logo-dropbox"></ion-icon>
       </ion-button>
-      <ion-button *ngIf="courier.sortOrders.g_process == 0 && !isWorkEnded" (click)="endWork()">
+      <ion-button *ngIf="courier.sortOrders?.g_process == 0 && !isWorkEnded" (click)="endWork()">
         <ion-icon name="shield-checkmark"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -22,6 +22,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="bubbles"
+      refreshingText="Обновление...">
+    </ion-refresher-content>
+  </ion-refresher>
   <span class="manual_lable" [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}"
     *ngIf="state$.manual_route && selectedTab == 1">Для сортировки зажмите заказ и перетащите</span>
 
@@ -29,9 +34,15 @@
     <app-orders-list-guess *ngIf="auth.getGuessMode()"> </app-orders-list-guess>
 
     <div class="o-tab-wrp" *ngIf="ordersInit && !auth.getGuessMode()">
-      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 1}" (click)="tabSelect(1)">В работе</div>
-      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 2}" (click)="tabSelect(2)">Доставлено</div>
-      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 3}" (click)="tabSelect(3)">Не доставлено</div>
+      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 1}" (click)="tabSelect(1)">
+        В работе
+      </div>
+      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 2}" (click)="tabSelect(2)">
+        Доставлено
+      </div>
+      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 3}" (click)="tabSelect(3)">
+        Не доставлено
+      </div>
     </div>
     <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
       <app-orders-list-first [selectedTab]="selectedTab" [confirm_cond]="subBtnCond"
@@ -51,8 +62,9 @@
             {{courier.sortOrders.all}}
           </span>
         </div>
-        <div class="olab-amount" *ngIf="courier.sortOrders.g_process != 0">
-          Заказов на вкладке: <span class="amount-labl">{{courier.sortOrders.g_process}}</span>
+        <div class="olab-amount" *ngIf="courier.sortOrders?.g_process != 0">
+          Заказов на вкладке:
+          <span class="amount-labl">{{courier.sortOrders?.g_process}}</span>
         </div>
         <div class="olab-amount" *ngIf="courier.sortOrders.g_done != 0">
           Заказов на вкладке:
@@ -79,7 +91,7 @@
           <ion-label>Доставлено {{courier.sortOrders.g_done}}</ion-label>
         </ion-chip>
         <ion-chip color="secondary" mode="md" outline="true" *ngIf="courier.sortOrders.g_process != 0">
-          <ion-label>Осталось {{courier.sortOrders.g_process}}</ion-label>
+          <ion-label>Осталось {{courier.sortOrders?.g_process}}</ion-label>
         </ion-chip>
       </div>
     </div>

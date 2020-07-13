@@ -22,6 +22,6 @@ const routes: Routes = [
   ],
   providers: [GoogleMaps],
   declarations: [MapPage],
-  bootstrap: [MapPage]
+  bootstrap: []
 })
 export class MapPageModule { }

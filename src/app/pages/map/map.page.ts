@@ -124,6 +124,7 @@ export class MapPage implements OnInit {
     console.log("sys:: map view init");
     this.loadMap();
     this.platform.ready().then(() => {
+      
       this.appVersion.getVersionNumber().then((resp) => {
         this.version = resp;
       });
@@ -223,7 +224,7 @@ export class MapPage implements OnInit {
         },
         name: order.id,
         info: info,
-        icon: "assets/markercluster/marker.png",
+        icon: "assets/marker.png",
       });
     });
     return markeredOrders;

@@ -31,6 +31,7 @@ import localeRu from "@angular/common/locales/ru";
 import { GoogleMaps } from "@ionic-native/google-maps";
 import { AppUpdate } from "@ionic-native/app-update/ngx";
 registerLocaleData(localeRu, "ru");
+import { IonicStorageModule } from "@ionic/storage";
 
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
@@ -46,6 +47,7 @@ registerLocaleData(localeRu, "ru");
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
     }),
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,

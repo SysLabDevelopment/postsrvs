@@ -31,14 +31,18 @@ export class AppComponent {
     private appUpdate: AppUpdate
   ) {
     this.initializeApp();
-    const updateUrl = "https://nextgen.postsrvs.ru/admin/update.xml";
-    this.appUpdate.checkAppUpdate(updateUrl).then(() => {
-      console.log("Awesome Update available!");
+    console.log(this.platform.platforms());
+    if(this.platform.is("android")){
+      const updateUrl = "https://nextgen.postsrvs.ru/admin/update.xml";
+      this.appUpdate.checkAppUpdate(updateUrl).then(() => {
+      console.log(" Update available!");
     });
+    }
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+     
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       if (this.settings.rules.typeRoute == "standart") {
@@ -51,12 +55,12 @@ export class AppComponent {
         // api key for local development
         API_KEY_FOR_BROWSER_DEBUG: "AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164",
       });
+       
     });
     const self = this;
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
     });
-    console.info("Сложная фича добавлена!");
   }
 
   public navTo(index) {

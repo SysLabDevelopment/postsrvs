@@ -11,7 +11,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
-
+import {DataService} from '../../services/sys/data.service';
 @Component({
   selector: 'app-courier',
   templateUrl: './courier.page.html',
@@ -50,7 +50,8 @@ export class CourierPage implements OnInit {
     private bs: BarcodeScanner,
     private vbr: Vibration,
     private settings: SettingsService,
-    private sys: SysService
+    private sys: SysService,
+    private data: DataService
   ) {
     let self = this;
 
@@ -407,5 +408,8 @@ export class CourierPage implements OnInit {
       })
 
   }
+doRefresh(event){
+    this.data.getApiData().add(event.target.complete());
 
+  }
 }

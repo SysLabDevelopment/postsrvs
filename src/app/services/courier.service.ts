@@ -18,10 +18,15 @@ declare var ymaps: any;
 })
 export class CourierService {
   barcodeScannerOptions: BarcodeScannerOptions;
-  public ordersInfo: any;
+  public ordersInfo: Array<any> = [];
   public ordersShortData: Subject<any> = new Subject();
   public checkedOnWork: boolean = true;
-  public sortOrders;
+  public sortOrders = {
+      "g_done": 0,
+      "g_process": 0,
+      "g_fail": 0,
+      "all": 0
+    };
 
   constructor(private http: HttpClient,
     private router: Router,

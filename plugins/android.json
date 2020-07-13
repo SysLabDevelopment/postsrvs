@@ -78,6 +78,9 @@
     },
     "cordova-plugin-app-update": {
       "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "postsrvs.w"
     }
   },
   "dependent_plugins": {

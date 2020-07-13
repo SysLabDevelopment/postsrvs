@@ -8,8 +8,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StateService } from '../../../services/state.service';
 import { LOCALE_ID } from '@angular/core';
-
-
+import {DataService} from '../../../services/sys/data.service';
 @Component({
   selector: 'app-orders-list-first',
   templateUrl: './orders-list-first.component.html',
@@ -43,9 +42,10 @@ export class OrdersListFirstComponent implements OnInit, OnChanges, OnDestroy {
     public auth: AuthService,
     private sys: SysService,
     private settings: SettingsService,
-    public state: StateService
+    public state: StateService,
+    private data: DataService
   ) {
-    this.ord = this.state.orders.asObservable();
+    this.ord = this.data.orders.asObservable();
     this.prepareOrdersList();
   }
 
@@ -59,7 +59,8 @@ export class OrdersListFirstComponent implements OnInit, OnChanges, OnDestroy {
       this.orders = data;
 
     });
-    console.log('sys:: исходный список заказов', this.orders)
+    console.log('sys:: исходный список заказов', this.orders);
+    this.data.getInitialData();
   }
 
   ngAfterViewChecked() {
@@ -110,5 +111,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges, OnDestroy {
   }
   ngOnDestroy(){
   }
+
+  
 }
 
