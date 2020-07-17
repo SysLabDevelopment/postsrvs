@@ -23,8 +23,8 @@
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="bubbles"
-      refreshingText="Обновление...">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Потяните, чтобы обновить"
+      refreshingSpinner="bubbles" refreshingText="Обновление...">
     </ion-refresher-content>
   </ion-refresher>
   <span class="manual_lable" [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}"

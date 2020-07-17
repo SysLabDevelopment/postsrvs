@@ -60,7 +60,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges, OnDestroy {
 
     });
     console.log('sys:: исходный список заказов', this.orders);
-    this.data.getInitialData();
+    
   }
 
   ngAfterViewChecked() {
@@ -88,7 +88,7 @@ export class OrdersListFirstComponent implements OnInit, OnChanges, OnDestroy {
   drop(event: CdkDragDrop<any[]>) {
 
     moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
-    this.state.orders.next(this.orders);
+    this.data.orders.next(this.orders);
     console.log('sys:: массив заказов после перетаскивания: ', this.orders);
   }
 

@@ -41,6 +41,8 @@ import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { PopoverController } from "@ionic/angular";
 import { OrderComponent } from "../../components/order/order.component";
+import {DataService} from "../../services/sys/data.service";
+import { Storage } from "@ionic/storage";
 @Component({
   selector: "app-map",
   templateUrl: "./map.page.html",
@@ -59,7 +61,6 @@ export class MapPage implements OnInit {
   public local_stop$: Subject<any> = new Subject();
   markers: Array<MarkerOptions>;
   icons = [];
-  data = [];
   existsGeos = [];
   sliderOptions = {
     navigation: {
@@ -80,7 +81,9 @@ export class MapPage implements OnInit {
     private nav: NavService,
     public googleMaps: GoogleMaps,
     public navCtrl: NavController,
-    public popoverController: PopoverController
+    public popoverController: PopoverController,
+    private data: DataService,
+    private storage: Storage
   ) {
     this.courier.ordersShortData.subscribe((data: Array<any>) => {
       this.orders = data;
@@ -278,6 +281,7 @@ export class MapPage implements OnInit {
         this.settings.getSettings(res.sync_id);
         this.auth.setUser(res.sync_id);
         this.courier.getBalance(res.sync_id, 1).subscribe((data: any) => {
+
           this.courier.ordersInfo = data.res_more;
           this.courier.count_orders(data.res_more);
           this.orders = data.res_more;
@@ -286,6 +290,8 @@ export class MapPage implements OnInit {
             .pipe(filter((ids) => ids.length > 0))
             .subscribe((ids: Array<any>) => {
               this.getOrders(ids).subscribe((res: Response) => {
+                this.data.orders.next(res.orders);
+                this.storage.set('orders', res.orders)
                 this.orders = res.orders;
                 if (
                   this.settings.rules.appMode.toLowerCase().includes("auto")

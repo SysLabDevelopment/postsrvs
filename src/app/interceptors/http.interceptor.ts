@@ -24,7 +24,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         event => {},
         error => {
           if (error instanceof HttpErrorResponse) {
-            this.sys.presentToast('Ошибка сети (или сервера)', 'warning');
+            // this.sys.presentToast('Ошибка сети (или сервера)', 'warning');
           }
         }
       ),

@@ -57,6 +57,9 @@ export class DataService {
     })
   }
   public getOrders(ids: Array<string>){
-
+    this.sys.getOrders(ids).subscribe((resp:Response)=>{
+        this.orders.next(resp.orders);
+        this.storage.set('orders', resp.orders)
+      })
   }
 }
