@@ -23,7 +23,10 @@
     <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
+    <preference name="Hostname" value="localhost" />
+    <preference name="Scheme" value="http" />
     <platform name="android">
+        <plugin name="cordova-plugin-app-update" spec="2.0.2" />
         <allow-navigation href="*" />
         <resource-file src="/resources/icon.png" target="app/src/main/res/mipmap/icon.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">

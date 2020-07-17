@@ -1092,12 +1092,12 @@
         "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.0.aar/30d6b34607c4842b511b46201231e644/res/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.0.1.aar/303c7bbbd61339310b66948e74be719a/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
-    },
-    {
         "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/layout_app_picker_list_item.xml.flat",
         "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-barcodescanner-release-2.1.5.aar/7e63052b21fa38e65c9aa5386e132bd5/res/layout/app_picker_list_item.xml"
+    },
+    {
+        "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.0.1.aar/303c7bbbd61339310b66948e74be719a/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",

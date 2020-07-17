@@ -5,26 +5,28 @@ import { Observable } from 'rxjs';
 import { Device } from '@ionic-native/device/ngx';
 import { ToastController } from '@ionic/angular';
 import { Response } from '../interfaces/response';
+import { Order } from '../interfaces/order';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SysService {
   public ordersIds: Array<string>;
   public proxy: string = 'http://mobile.postsrvs.ru:8080/';
-
+  public orders:Array<Order>
   constructor(
     private http: HttpClient,
     private device: Device,
-    public toastController: ToastController
+    public toastController: ToastController,
   ) {
-
 
 
 
   }
 
   //Получение списка заказов по idшникам
-  public getOrders(ids: Array<string>): Observable<any> {
+  public getOrders(ids: Array<string>): Observable<Response> {
+    
     const url = this.proxy + "https://mobile.postsrvs.ru/mobile/orders";
     let data = {
       'uuid': this.device.uuid,
@@ -120,7 +122,7 @@ export class SysService {
   //Проверка на авторизованность
   //@appVersion - версия приложения
   public checkAuth(appVersion = '') {
-    const url = `${this.proxy}https://postsrvs.ru/mobile/orders`;
+    const url = `${this.proxy}https://mobile.postsrvs.ru/mobile/orders`;
     let data = {
       "action": "checkAuth",
       "uuid": this.device.uuid,

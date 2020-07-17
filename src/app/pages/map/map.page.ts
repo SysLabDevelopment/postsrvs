@@ -214,7 +214,7 @@ export class MapPage implements OnInit {
   //Подготовка массива заказов к отрисовке в виду не рабочести markerCluster
   markeredOrders(orders: Array<any>) {
     let markeredOrders = [];
-    orders.forEach((order) => {
+    orders?.forEach((order) => {
       let info = this.createInfoContent(order);
       this.existsGeos.push([order.lt, order.lg]);
       markeredOrders.push({
@@ -223,8 +223,8 @@ export class MapPage implements OnInit {
           lng: order.lg,
         },
         name: order.id,
-        info: info,
-        icon: "assets/marker.png",
+        info: info
+        
       });
     });
     return markeredOrders;
@@ -273,7 +273,7 @@ export class MapPage implements OnInit {
   }
 
   initContent() {
-    this.sys.checkAuth(this.version).subscribe((res: any) => {
+    this.sys.checkAuth(this.version).subscribe((res: Response) => {
       if (res.sync_id !== undefined) {
         this.settings.getSettings(res.sync_id);
         this.auth.setUser(res.sync_id);

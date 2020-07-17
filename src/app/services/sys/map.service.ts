@@ -30,7 +30,7 @@ export class MapService {
 
   public getWay(coords: { lt: number; lg: number }): Observable<any> {
     const url =
-      "http://mobile.postsrvs.ru:8080/https://postsrvs.ru/mobile/orders";
+      "http://mobile.postsrvs.ru:8080/https://mobile.postsrvs.ru/mobile/orders";
     let data = {
       action: "getWay",
       lt: coords?.lt,

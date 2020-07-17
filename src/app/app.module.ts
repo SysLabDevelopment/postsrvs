@@ -24,14 +24,14 @@ import { CashoutFailOComponent } from "./components/balance/cashout-fail-o/casho
 import { CashoutWComponent } from "./components/balance/cashout-w/cashout-w.component";
 import { AppVersion } from "@ionic-native/app-version/ngx";
 import { HttpErrorInterceptor } from "./interceptors/http.interceptor";
-import { ServiceWorkerModule } from "@angular/service-worker";
-import { environment } from "../environments/environment";
 import { registerLocaleData } from "@angular/common";
 import localeRu from "@angular/common/locales/ru";
 import { GoogleMaps } from "@ionic-native/google-maps";
 import { AppUpdate } from "@ionic-native/app-update/ngx";
 registerLocaleData(localeRu, "ru");
 import { IonicStorageModule } from "@ionic/storage";
+import { CacheModule } from "ionic-cache";
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
@@ -44,10 +44,8 @@ import { IonicStorageModule } from "@ionic/storage";
     AppRoutingModule,
     NgxMaskModule.forRoot(),
     ScrollingModule,
-    ServiceWorkerModule.register("ngsw-worker.js", {
-      enabled: environment.production,
-    }),
     IonicStorageModule.forRoot(),
+    CacheModule.forRoot({keyPrefix:'offlineData'})
   ],
   providers: [
     StatusBar,
@@ -65,6 +63,7 @@ import { IonicStorageModule } from "@ionic/storage";
     AppVersion,
     GoogleMaps,
     AppUpdate,
+    Network,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,3 +1,4 @@
+import { DataService } from './../../../services/sys/data.service';
 import { Component, OnInit, OnChanges, EventEmitter, Input, Output, ViewChildren, QueryList } from '@angular/core';
 import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { CourierService } from '../../../services/courier.service';
@@ -35,7 +36,8 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
     public courier: CourierService,
     public auth: AuthService,
     private settings: SettingsService,
-    private state: StateService
+    private state: StateService,
+    private data: DataService
   ) { }
 
   public selectOrder(id) {
@@ -47,11 +49,12 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
   }
 
   ngOnInit() {
-    this.state.orders.asObservable().subscribe((orders) => {
+    this.data.orders.subscribe((orders) => {
       this.orders = orders;
     });
     this.orders;
     console.log('sys:: исходный массив заказов в компоненте: ', this.orders);
+    
   }
 
   private tabFilterOrders(tab = this.selectedTab) {

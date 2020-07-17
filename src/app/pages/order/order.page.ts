@@ -1,3 +1,4 @@
+import { DataService } from './../../services/sys/data.service';
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { CourierService } from "../../services/courier.service";
@@ -7,7 +8,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Platform } from "@ionic/angular";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { CallNumber } from "@ionic-native/call-number/ngx";
-
+import { Storage } from "@ionic/storage";
+import { CacheService } from "ionic-cache";
 import {
   trigger,
   state,
@@ -16,34 +18,33 @@ import {
   transition,
   // ...
 } from "@angular/animations";
-import { takeUntil } from "rxjs/operators";
+import { takeUntil, filter, map } from "rxjs/operators";
 import { Subject } from "rxjs";
 import { SysService } from "../../services/sys.service";
 import { Statuses } from "../../interfaces/statuses";
 import { Reason } from "../../interfaces/reason";
 import { SettingsService } from "../../services/settings.service";
 import { MapService } from "../../services/sys/map.service";
+import { Order } from 'src/app/interfaces/order';
+import { Network } from '@ionic-native/network/ngx';
 @Component({
   selector: "app-order",
   animations: [
-    trigger("openClose", [
+    trigger('openClose', [
       // ...
-      state(
-        "open",
-        style({
-          display: "block",
-        })
-      ),
-      state(
-        "closed",
-        style({
-          display: "none",
-        })
-      ),
-      transition("open => closed", [animate("1s")]),
-      transition("closed => open", [animate("0.5s")]),
-    ]),
-  ],
+      state('open', style({
+        height: '264px', 
+      })),
+      state('closed', style({
+        height: '70px',
+      })),
+      transition('open => closed', [
+        animate('0.5s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+    ])],
   templateUrl: "./order.page.html",
   styleUrls: ["./order.page.scss"],
 })
@@ -116,20 +117,23 @@ export class OrderPage implements OnInit {
   public today = new Date();
   public tomorrow = new Date();
   public new_plan_date: string; //Дата переноса заказа
-
+  public openCompany = false;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private courier: CourierService,
     private state$: StateService,
     private auth: AuthService,
-    private plt: Platform,
     private http: HttpClient,
     private iab: InAppBrowser,
     private CL: CallNumber,
     public sys: SysService,
     public settings: SettingsService,
-    private sysMap: MapService
+    private sysMap: MapService,
+    private data: DataService,
+    private storage : Storage,
+    private cache: CacheService,
+    private network: Network
   ) {
     this.orderId = this.route.snapshot.paramMap.get("id");
 
@@ -229,8 +233,10 @@ export class OrderPage implements OnInit {
   }
 
   public initOrder() {
-    this.sys.getOrders([this.orderId]).subscribe((data) => {
-      this.order = data.orders[0];
+    this.storage.get('orders').then((orders:Array<Order>)=>{
+      console.log('Список заказов из стоража', orders);})
+    this.storage.get('orders').then((orders) => {
+      this.order = orders?.filter((order)=>{return order.id.toString() == this.orderId})[0];
       this.goods = this.order.goods;
       this.address = this.order.client_address;
       this.timeFrom = this.order.datetime_from;
@@ -357,10 +363,31 @@ export class OrderPage implements OnInit {
     console.log("select_reason", id);
     this.selectedReason = id;
   }
-
-  public sendPayCall() {
+  public sendPayCall(order:Order = this.order, status = this.selectedStatus) {
+    if(this.network.type == 'none'){
+      this.cache.getItem('syncRequests').then((syncRequests:Array<any>)=>{
+        order.quants = this.g_quants;
+        order.email_input = this.email_input;
+        order.phone_input = this.phone_input;
+        order = {...order, ...{selectedPayment: this.selectedPayment}, ...{selectedReason: this.selectedReason}, ...{new_plan_date: this.new_plan_date}, ...{commentText:this.commentText}};
+        syncRequests && syncRequests.push({order,status });
+        this.cache.saveItem('syncRequests',syncRequests,'delayedCalls').then(()=>{
+          console.log(`sys:: Отложено изменение статуса на ${status} для заказа ${order.client_id}`);
+          this.storage.get('orders').then((orders)=>{
+            orders?.map((order)=>{
+              if(order.id.toString() == this.order.id){
+                order.status_id = status;
+                this.storage.set('orders', orders);
+                this.data.orders.next(orders);
+              }
+            });
+          })
+          this.router.navigate(['courier']);
+        })
+      })
+    }else{
     if (
-      (this.selectedStatus == 5 || this.selectedStatus == 6) &&
+      (status == 5 || status == 6) &&
       this.pay_access
     ) {
       this.sendPay();
@@ -368,10 +395,19 @@ export class OrderPage implements OnInit {
       this.submitChange();
     }
   }
+  }
 
   public submitChange() {
     let self = this;
-
+    this.storage.get('orders').then((orders)=>{
+      orders?.map((order)=>{
+        if(order.id.toString() == this.order.id){
+          order.status_id = this.selectedStatus;
+          this.storage.set('orders', orders);
+          this.data.orders.next(orders);
+        }
+      });
+    })
     switch (this.selectedStatus) {
       case 4:
         if (this.selectedReason != null) {
@@ -492,13 +528,10 @@ export class OrderPage implements OnInit {
   }
 
   public sendPay() {
-    let order = this.order;
     let goods = this.order.goods;
     let quants = this.g_quants;
-    let amount = Math.round(this.order_sum * 100) / 100;
     let callback_url =
-      this.sys.proxy + "https://postsrvs.ru/mobile/pay_callback.php";
-    let description = "";
+      this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
     let products = [];
 
     for (let code in quants) {
@@ -557,10 +590,11 @@ export class OrderPage implements OnInit {
 
   //Получаем api key & login
   public getPayData() {
-    var url = "pay_order";
-    var data = { action: "getData", orderId: this.clientId };
-    var self = this;
-
+  
+    let url = "pay_order";
+    let data = { action: "getData", orderId: this.clientId };
+    let self = this;
+  if(navigator.onLine){
     this.auth.sendPost(url, data).subscribe((res: any) => {
       console.log("GET_PAY_DATA", res);
       if (res.success == "true") {
@@ -570,6 +604,9 @@ export class OrderPage implements OnInit {
         self.pay_access = false;
       }
     });
+  }else{
+    self.pay_access = false;
+  }
   }
 
   public send_api_data(api_data) {
@@ -586,11 +623,27 @@ export class OrderPage implements OnInit {
       orderData: api_data,
       orderId: this.order.id,
     };
+    if(navigator.onLine){
     this.auth.sendPost(url, data).subscribe((res: any) => {
       self.submitChange();
       self.checkPayment();
       self.hide_status = true;
     });
+  }else{
+    let requests = [];
+    this.cache.getItem('requests').then((req)=>{
+      if(req !==undefined){
+        requests = req;
+      }
+        requests.push({url:url, data:data});
+        this.cache.saveItem('requests',requests);
+      
+       self.submitChange();
+      self.checkPayment();
+      self.hide_status = true;
+    })
+   
+  }
   }
 
   public showCheck() {
@@ -662,8 +715,6 @@ export class OrderPage implements OnInit {
     this.router.navigate(["map/order"]);
   }
 
-  pickedUpOrder() {}
-
   public doneOrder() {
     let drawedImg = localStorage.drawImg;
     if (this.drawNeedle && !drawedImg) {
@@ -676,5 +727,9 @@ export class OrderPage implements OnInit {
   public saveNote() {
     localStorage.setItem(this.orderId, this.note);
     this.sysMap.infoUpdated.next();
+  }
+
+  public tapBlock(){
+    this.openCompany = !this.openCompany;
   }
 }

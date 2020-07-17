@@ -25,7 +25,8 @@ export class AuthService {
   public version: string = undefined; // версия приложения
   public isDebug: boolean = false; //Нужна в случае хардкодной отладки нативных функций
   public userId: string;
-
+  public pay_access:boolean;
+  public pay_access_data:any;
   constructor(
     private bScan: BarcodeScanner,
     private http: HttpClient,
@@ -84,10 +85,9 @@ export class AuthService {
     return this.settings.rules.scanMode;
   }
   public sendPost(url, data) {
-    let host = this.sys.proxy + "https://postsrvs.ru/mobile/";
-    if (url == 'orders' || url == 'auth') {
-      host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/"
-    }
+  
+    let  host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/"
+    
 
     url = host + url;
     data['uuid'] = (this.isDebug ? '6b356755575fce31' : this.getUuid());
@@ -279,7 +279,7 @@ export class AuthService {
   public check(mode: string) {
     this.bScan.scan().then((scanData) => {
       console.log('sys:: auth.check() данные qr-кода: ', scanData);
-      let url = this.sys.proxy + 'https://postsrvs.ru/admin/ajax/wh.php';
+      let url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/wh.php';
       let data = {
         'cId': this.getUserId(),
         'token': "l;sdfjkhglsoapl[",
@@ -298,4 +298,7 @@ export class AuthService {
       })
     })
   }
+
+
+
 }

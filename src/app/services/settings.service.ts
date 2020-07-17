@@ -66,7 +66,7 @@ export class SettingsService {
       'typeRoute': 'routingModeAuto',
       'storeCheckMode': 'checkout'
     };
-    const url = this.sys.proxy + 'https://postsrvs.ru/mobile/getRules.php';
+    const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/getRules.php';
     this.http.post(url, data).subscribe((data: { success: boolean, rules: any }) => {
       if (data.success == true) {
         this.rules = data.rules;

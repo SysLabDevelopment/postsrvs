@@ -10,19 +10,15 @@
 <ion-content>
   <div class="o-wrp" *ngIf="order">
     <div class="o-balance">
-      <!-- {{balance}} -->
     </div>
     <span class="shopTake" *ngIf="order.SMACode">
       Забор &nbsp;
     </span>
     <div class="o-body" *ngIf="pageInit">
-      <div
-        class="status-row o-row"
-        [ngClass]="{ st_process : status_id == 1,
+      <div class="status-row o-row" [ngClass]="{ st_process : status_id == 1,
           st_done : status_id == 5 || status_id == 6 ,
           st_fail : status_id == 4}
-            "
-      >
+            ">
         <div class="sr-title o-t">Статус:</div>
         <div class="sr-status">{{getStatus()}}</div>
       </div>
@@ -34,7 +30,8 @@
         <div class="ar-title o-t">Адрес получателя:</div>
         <div class="ar-adress">{{address}}</div>
       </div>
-      <div class="o-row poruch-row podrazd" *ngIf="order.company">
+      <div class="o-row poruch-row podrazd" *ngIf="order.company" [@openClose]="openCompany ? 'open' : 'closed'"
+        (click)="tapBlock()">
         <span class="vp-title o-t">Компания</span>
         <span class="pp office-body">{{order.company}}</span>
         <ion-card id="company-card">
@@ -115,14 +112,11 @@
         <div class="state-title o-t">
           <img src="../../../assets/bender.png" class="robot-icon" /> <span class="st-status-text">Робот прозвон:</span>
         </div>
-        <div
-          class="st_state"
-          [ngClass]="{  'status_done' : client_status_id == 1,
+        <div class="st_state" [ngClass]="{  'status_done' : client_status_id == 1,
                                                 'status_wait' : client_status_id == 2,
                                                 'status_fail' : client_status_id == 3,
                                                 'status_none' : client_status_id == 8,
-                                                'cl-status-voice' : client_status_id == 4 }"
-        >
+                                                'cl-status-voice' : client_status_id == 4 }">
           {{client_status}}
         </div>
         <div class="st_dt">{{client_status_dt}}</div>
@@ -139,13 +133,10 @@
               <div class="gr-col">Цена</div>
             </div>
             <div *ngFor="let good of goods">
-              <div
-                class="gr-item"
-                [ngClass]="{
+              <div class="gr-item" [ngClass]="{
                   'st_fail': (g_quants[good.Code]['amount'] == 0),
                   'st_done': (order.status_id == 6 && g_quants[good.Code]['amount'] > 0 )
-                }"
-              >
+                }">
                 <div class="gr-col gr-name">{{good.Name}}</div>
                 <div class="gr-col gr-quant">
                   {{g_quants[good.Code]['amount']}}
@@ -160,12 +151,8 @@
       <!-- Кнопки завершения заказа -->
       <div class="sc-row o-row" *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
         <div class="sc-statuses">
-          <div
-            class="sc-status"
-            [ngClass]="{'status_active' : selectedStatus == status.id}"
-            *ngFor="let status of statuses"
-            (click)="selectStatus(status.id)"
-          >
+          <div class="sc-status" [ngClass]="{'status_active' : selectedStatus == status.id}"
+            *ngFor="let status of statuses" (click)="selectStatus(status.id)">
             {{status.status}}
           </div>
         </div>
@@ -180,13 +167,10 @@
                 <div class="gr-col">Цена</div>
               </div>
               <div *ngFor="let good of goods">
-                <div
-                  class="gr-item"
-                  [ngClass]="{
+                <div class="gr-item" [ngClass]="{
                   'st_fail': (g_quants[good.Code]['amount'] == 0),
                   'st_done': (order.status_id == 6 && g_quants[good.Code]['amount'] > 0 )
-                }"
-                >
+                }">
                   <div class="gr-col gr-name">{{good.Name}}</div>
                   <div class="gr-col gr-quant">
                     <div class="m-btn" (click)="changeQuant(good.Code,'minus')">
@@ -207,12 +191,8 @@
         <div class="sc-reasons">
           <div class="sc-resons-block" *ngIf="selectedStatus == 4 ">
             <div class="sc-r-title">Причина:</div>
-            <div
-              class="sc-reason"
-              [ngClass]="{'status_active' : selectedReason == reason.id}"
-              *ngFor="let reason of reasons"
-              (click)="selectReason(reason.id)"
-            >
+            <div class="sc-reason" [ngClass]="{'status_active' : selectedReason == reason.id}"
+              *ngFor="let reason of reasons" (click)="selectReason(reason.id)">
               {{reason.reason}}
             </div>
           </div>
@@ -236,18 +216,12 @@
           <div class="sc-payment" *ngIf="selectedStatus == 5 || selectedStatus == 6">
             <div class="sc-payment__title">Оплата</div>
             <div class="dc-payment__wrp">
-              <div
-                class="sc-payment-item"
-                [ngClass]="{'payment_active' : selectedPayment == 1}"
-                (click)="selectPayment('1')"
-              >
+              <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == 1}"
+                (click)="selectPayment('1')">
                 Наличными
               </div>
-              <div
-                class="sc-payment-item"
-                [ngClass]="{'payment_active' : selectedPayment == 2}"
-                (click)="selectPayment('2')"
-              >
+              <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == 2}"
+                (click)="selectPayment('2')">
                 Картой
               </div>
             </div>
@@ -297,23 +271,14 @@
           <div class="dt-picker" *ngIf="selectedReason == 8">
             <ion-item>
               <ion-label position="floating">MM/DD/YYYY</ion-label>
-              <ion-datetime
-                displayFormat="DD/MM/YYYY"
-                min="{{today.toISOString()}}"
-                value="{{tomorrow.toISOString()}}"
-                [(ngModel)]='new_plan_date'
-              ></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY" min="{{today.toISOString()}}" value="{{tomorrow.toISOString()}}"
+                [(ngModel)]='new_plan_date'></ion-datetime>
             </ion-item>
           </div>
 
           <div class="sc-s-wrp">
-            <button
-              class="sc-submit"
-              (click)="doneOrder()"
-              *ngIf="selectedStatus"
-              [ngClass]="{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6,
-                                    'c_t_u_del'  : selectedStatus == 4}"
-            >
+            <button class="sc-submit" (click)="doneOrder()" *ngIf="selectedStatus" [ngClass]="{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6,
+                                    'c_t_u_del'  : selectedStatus == 4}">
               <span *ngIf="selectedStatus == 5 || selectedStatus == 6" class="l_btn_del">Доставлено</span>
               <span *ngIf="selectedStatus == 4" class="l_btn_u_del">Завершить заказ</span>
             </button>
@@ -367,18 +332,12 @@
           </ion-item>
         </ion-radio-group>
       </ion-list>
-      <button
-        class="cw_phone"
-        (click)="phoneClick('phone')"
-        *ngIf="settings.rules.phoneMode == 'robotPhone' || settings.rules.phoneMode == 'phone' "
-      >
+      <button class="cw_phone" (click)="phoneClick('phone')"
+        *ngIf="settings.rules.phoneMode == 'robotPhone' || settings.rules.phoneMode == 'phone' ">
         Позвонить со своего телефона
       </button>
-      <button
-        class="cw_operator"
-        (click)="phoneClick('operator')"
-        *ngIf="settings.rules.phoneMode == 'robotPhone' || settings.rules.phoneMode == 'robot' "
-      >
+      <button class="cw_operator" (click)="phoneClick('operator')"
+        *ngIf="settings.rules.phoneMode == 'robotPhone' || settings.rules.phoneMode == 'robot' ">
         Позвонить через ip-шлюз
       </button>
     </div>

@@ -81,6 +81,9 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "postsrvs.w"
     }
   },
   "dependent_plugins": {

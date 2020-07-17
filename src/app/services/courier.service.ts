@@ -2,7 +2,7 @@ import { Injectable, Directive } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { StateService } from '../services/state.service';
-import { forkJoin, interval, BehaviorSubject, Subject, Observable } from 'rxjs';
+import { forkJoin, interval, BehaviorSubject, Subject, Observable, from } from 'rxjs';
 import { takeUntil, merge, take } from 'rxjs/operators';
 import { Platform } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
@@ -10,6 +10,8 @@ import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-sca
 import { OrderPage } from '../pages/order/order.page';
 import { SettingsService } from './settings.service';
 import { SysService } from '../services/sys.service';
+import { CacheService } from "ionic-cache";
+import { Storage } from "@ionic/storage";
 
 declare var ymaps: any;
 @Directive()
@@ -35,7 +37,9 @@ export class CourierService {
     private auth: AuthService,
     private bs: BarcodeScanner,
     private settings: SettingsService,
-    public sys: SysService
+    public sys: SysService,
+    private cache: CacheService,
+    private storage: Storage,
   ) {
     this.barcodeScannerOptions = {
       showTorchButton: true,
@@ -327,8 +331,21 @@ export class CourierService {
       'new_plam_date': new_plan_date
     };
     if (draw) data['sign'] = draw;
-
-    return this.auth.sendPost(url, data);
+    
+    if(navigator.onLine){
+      return this.auth.sendPost(url, data);
+    }else{
+      let requests = [];
+      this.cache.getItem('requests').then((req)=>{
+        if(req !==undefined){
+          requests = req;
+        }
+          requests.push({url:url, data:data});
+          this.cache.saveItem('requests',requests);
+      });
+      return from([{success:'true'}])
+    }
+      
   }
 
   public logout() {
@@ -399,7 +416,7 @@ export class CourierService {
   }
 
   public check_to_work() {
-    let url = this.sys.proxy + 'https://postsrvs.ru/admin/ajax/check_to_work.php';
+    let url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/check_to_work.php';
     let data = {
       cId: this.auth.getUserId(),
       token: "l;sdfjkhglsoapl[",
@@ -453,7 +470,7 @@ export class CourierService {
 
   //Завершение рабочего дня курьера
   public endWork() {
-    const url = this.sys.proxy + 'https://postsrvs.ru/admin/ajax/end_work.php';
+    const url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/end_work.php';
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Content-type': 'application/json'

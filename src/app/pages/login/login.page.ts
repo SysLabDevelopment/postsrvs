@@ -29,7 +29,7 @@ import { WiredButton, WiredInput, WiredSpinner } from "wired-elements";
     trigger('openClose', [
       // ...
       state('open', style({
-        height: '264px',
+        height: '264px', 
       })),
       state('closed', style({
         height: '50px',
