@@ -1,4 +1,6 @@
 <div class="order-list">
+  <ion-searchbar placeholder="Фильтр" inputmode="text" (ionChange)="onSearchChange($event)" [debounce]="250"
+    [(ngModel)]="searchString" animated></ion-searchbar>
   <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="50"
     style="height: 100%; width: 100%; min-height: 50vh;">
     <div *ngFor="let order of orders_c | async " class="ol-item" [ngClass]="{
@@ -44,6 +46,5 @@
       </div>
     </div>
   </cdk-virtual-scroll-viewport>
-  <ion-searchbar placeholder="Фильтр" inputmode="text" (ionChange)="onSearchChange($event)" [debounce]="250"
-    [(ngModel)]="searchString" animated></ion-searchbar>
+
 </div>
