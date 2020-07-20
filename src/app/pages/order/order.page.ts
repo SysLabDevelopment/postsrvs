@@ -373,19 +373,12 @@ export class OrderPage implements OnInit {
         syncRequests && syncRequests.push({order,status });
         this.cache.saveItem('syncRequests',syncRequests,'delayedCalls').then(()=>{
           console.log(`sys:: Отложено изменение статуса на ${status} для заказа ${order.client_id}`);
-          this.storage.get('orders').then((orders)=>{
-            orders?.map((order)=>{
-              if(order.id.toString() == this.order.id){
-                order.status_id = status;
-                this.storage.set('orders', orders);
-                this.data.orders.next(orders);
-              }
-            });
-          })
+          this.localModifyOrders();
           this.router.navigate(['courier']);
         })
       })
     }else{
+      this.localModifyOrders();
     if (
       (status == 5 || status == 6) &&
       this.pay_access
@@ -731,5 +724,17 @@ export class OrderPage implements OnInit {
 
   public tapBlock(){
     this.openCompany = !this.openCompany;
+  }
+
+  public localModifyOrders(){
+    this.storage.get('orders').then((orders)=>{
+            orders?.map((order)=>{
+              if(order.id.toString() == this.order.id){
+                order.status_id = status;
+                this.storage.set('orders', orders);
+                this.data.orders.next(orders);
+              }
+            });
+          })
   }
 }

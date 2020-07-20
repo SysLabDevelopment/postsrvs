@@ -80,7 +80,7 @@ export class CourierPage implements OnInit {
         this.subBtnCond = false;
         break;
       case 'fullHand':
-        if (!this.state$.confirmed) this.subBtnCond = true;;
+        if (!this.state$.confirmed) this.subBtnCond = true;
         break;
       case 'hand':
         this.subBtnCond = false;
@@ -100,6 +100,9 @@ export class CourierPage implements OnInit {
     if (this.settings.rules.appMode == 'hand') {
       this.state$.manual_route = true
     }
+    this.data.orders.subscribe((orders)=>{
+      this.courier.count_orders(orders)
+    })
   }
 
   public scanInputStart() {
@@ -286,13 +289,13 @@ export class CourierPage implements OnInit {
     return false;
   }
 
-  public count_orders() {
+  public count_orders(orders = this.courier.ordersInfo) {
     let g_done = 0;
     let g_process = 0;
     let g_fail = 0;
 
-    for (let i = 0; i < this.courier.ordersInfo.length; i++) {
-      switch (String(this.courier.ordersInfo[i].status_id)) {
+    for (let i = 0; i < orders.length; i++) {
+      switch (String(orders[i].status_id)) {
         case '4':
           g_fail++;
           break;

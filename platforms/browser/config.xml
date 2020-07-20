@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="66" id="postsrvs.w" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="68" id="postsrvs.w" version="1.4.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ps@psvs.com" href="http://psvs.com/">Psvs Team</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -11,7 +11,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-navigation href="http://localhost:8100" sessionid="ea0a639c" />
     <preference name="android-usesCleartextTraffic" value="true" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
@@ -24,4 +23,6 @@
     <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
+    <preference name="Hostname" value="localhost" />
+    <preference name="Scheme" value="http" />
 </widget>
