@@ -4,7 +4,7 @@
             "outputFile": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-el/values-el.xml",
             "map": [
                 {
-                    "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.0.1.aar/303c7bbbd61339310b66948e74be719a/res/values-el/values.xml",
+                    "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/bee6e872ae06fa0ce0b03b16c1d4f4ab/res/values-el/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.0.1.aar/b121f8629b9070afbbd6f9a215338a46/res/values-el/values.xml",
+                    "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/cb935962e8f2a965a6f00912bf1c8b93/res/values-el/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

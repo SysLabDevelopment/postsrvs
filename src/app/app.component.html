@@ -4,10 +4,10 @@
   </ion-router-outlet>
   <div id="bottom-menu" *ngIf="nav == 2">
     <div class="bm-item" [ngClass]="{active:nav == 1}" (click)="navTo(1)">
-      <ion-icon name="person-circle"></ion-icon>
+      <i-feather name="user"></i-feather>
     </div>
     <div class="bm-item" [ngClass]="{active:nav == 3}" (click)="navTo(3)">
-      <ion-icon name="list-circle"></ion-icon>
+      <i-feather name="list"></i-feather>
     </div>
   </div>
   <div id="bottom-menu" *ngIf="!(nav == 2) && !(nav == 0)">

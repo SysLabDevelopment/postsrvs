@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-17.0.0.aar/cb935962e8f2a965a6f00912bf1c8b93/res/values-fi/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "208",
+                        "endOffsets": "455"
+                    },
+                    "to": {
+                        "startLines": "62",
+                        "startColumns": "4",
+                        "startOffsets": "5452",
+                        "endColumns": "208",
+                        "endOffsets": "5656"
+                    }
+                },
+                {
                     "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.0.aar/30d6b34607c4842b511b46201231e644/res/values-fi/values-fi.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
@@ -38,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.0.1.aar/303c7bbbd61339310b66948e74be719a/res/values-fi/values.xml",
+                    "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/play-services-base-17.0.0.aar/bee6e872ae06fa0ce0b03b16c1d4f4ab/res/values-fi/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -52,23 +69,6 @@
                         "startOffsets": "4301,4414,4599,4732,4840,5042,5170,5316,5661,5861,5969,6149,6277,6484,6653,6749,6849",
                         "endColumns": "112,184,132,107,201,127,145,135,199,107,179,127,206,168,95,99,111",
                         "endOffsets": "4409,4594,4727,4835,5037,5165,5311,5447,5856,5964,6144,6272,6479,6648,6744,6844,6956"
-                    }
-                },
-                {
-                    "source": "/Users/timkovik/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.0.1.aar/b121f8629b9070afbbd6f9a215338a46/res/values-fi/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "208",
-                        "endOffsets": "455"
-                    },
-                    "to": {
-                        "startLines": "62",
-                        "startColumns": "4",
-                        "startOffsets": "5452",
-                        "endColumns": "208",
-                        "endOffsets": "5656"
                     }
                 },
                 {

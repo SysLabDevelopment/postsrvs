@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="findOrder()">
-        <ion-icon slot="start" name="search-sharp"></ion-icon>
+        <i-feather name="search" slot='start'></i-feather>
       </ion-button>
       <ion-button *ngIf="auth.getGuessMode()">
         <i>G</i>
@@ -12,10 +12,10 @@
     <ion-title size="small" color="dark">{{state$.filial}}</ion-title>
     <ion-buttons slot="primary">
       <ion-button *ngIf="subBtnCond" (click)="submitOrder()">
-        <ion-icon name="logo-dropbox"></ion-icon>
+        <i-feather name="box"></i-feather>
       </ion-button>
       <ion-button *ngIf="courier.sortOrders?.g_process == 0 && !isWorkEnded" (click)="endWork()">
-        <ion-icon name="shield-checkmark"></ion-icon>
+        <i-feather name="check-square"></i-feather>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

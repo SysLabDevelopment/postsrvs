@@ -84,6 +84,11 @@
     },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-firebase-mlvision": {
+      "FIREBASE_MLVISION_VERSION": "24.+",
+      "FIREBASE_MLVISION_BARCODE_MODEL": "16.+",
+      "PACKAGE_NAME": "postsrvs.w"
     }
   },
   "dependent_plugins": {

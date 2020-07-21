@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button>
-        <ion-icon name="cog-sharp" (click)="navToSettings()"></ion-icon>
+        <i-feather name="settings" (click)="navToSettings()"></i-feather>
       </ion-button>
     </ion-buttons>
     <ion-title>Мои заказы</ion-title>
@@ -137,7 +137,7 @@
   <div class="confirm-shirm" *ngIf="info != null && !cashCheck && confirmWindow">
     <div class="confirm" *ngIf="!openBtn && !failsOrder  ">
       <div class="close-btn" (click)="cashOut()">
-        <ion-icon name="close-circle-sharp"></ion-icon>
+        <i-feather name="x-circle"></i-feather>
       </div>
       <div class="cf-qwe">Вы сдаете <span class="cf-num">{{info.sumNal}}</span> р. Верно?</div>
       <div class="cf-comment">
@@ -152,7 +152,7 @@
     </div>
     <div class="confirm of-confirm" *ngIf="failsOrder && !openBtn">
       <div class="close-btn" (click)="cashOut()">
-        <ion-icon name="close-circle-sharp"></ion-icon>
+        <i-feather name="x-octagon"></i-feather>
       </div>
       <div class="cf-qwe of-qwe" *ngIf="!failsOrderNotFull">
         <span>Вы сдаете на склад</span> <span class="cf-num">{{info.ordersFail}}</span> <span>заказов, верно?</span>

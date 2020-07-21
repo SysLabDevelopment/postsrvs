@@ -32,11 +32,13 @@ registerLocaleData(localeRu, "ru");
 import { IonicStorageModule } from "@ionic/storage";
 import { CacheModule } from "ionic-cache";
 import { Network } from '@ionic-native/network/ngx';
-
+import { FirebaseVision } from '@ionic-native/firebase-vision/ngx';
+import {IconsModule} from './icons/icons.module';
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
   entryComponents: [],
   imports: [
+    IconsModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -64,6 +66,7 @@ import { Network } from '@ionic-native/network/ngx';
     GoogleMaps,
     AppUpdate,
     Network,
+    FirebaseVision,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,

@@ -42,6 +42,7 @@
     "@ionic-native/core": "^5.27.0",
     "@ionic-native/device": "^5.22.0",
     "@ionic-native/diagnostic": "^5.23.0",
+    "@ionic-native/firebase-vision": "^5.27.0",
     "@ionic-native/geolocation": "^5.22.0",
     "@ionic-native/google-maps": "^5.5.0",
     "@ionic-native/in-app-browser": "^5.22.0",
@@ -54,12 +55,14 @@
     "@ionic/angular": "^5.2.3",
     "@ionic/storage": "^2.2.0",
     "angular": "^1.8.0",
+    "angular-feather": "^6.0.10",
     "call-number": "1.0.1",
     "com-darryncampbell-cordova-plugin-intent": "2.0.0",
     "cordova-android": "^8.1.0",
     "cordova-androidx-build": "^1.0.4",
     "cordova-browser": "6.0.0",
     "cordova-ios": "^5.1.1",
+    "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-androidx": "^1.0.2",
     "cordova-plugin-androidx-adapter": "^1.1.1",
@@ -67,6 +70,7 @@
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-appversion": "^1.0.0",
     "cordova-plugin-camera": "4.1.0",
+    "cordova-plugin-firebase-mlvision": "^0.2.3",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "^2.7.1",
     "cordova-plugin-googlemaps-sdk": "3.8.0",
@@ -79,6 +83,7 @@
     "cordova.plugins.diagnostic": "^5.0.1",
     "core-js": "^3.6.4",
     "es6-promise-plugin": "^4.2.2",
+    "feather-icons": "^4.28.0",
     "ionic-cache": "^5.2.0",
     "mx.ferreyra.callnumber": "0.0.2",
     "ngx-mask": "^9.1.2",
@@ -174,7 +179,11 @@
       "cordova-plugin-googlemaps": {},
       "cordova-plugin-androidx-adapter": {},
       "cordova-plugin-app-update": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-firebase-mlvision": {
+        "FIREBASE_MLVISION_VERSION": "24.+",
+        "FIREBASE_MLVISION_BARCODE_MODEL": "16.+"
+      }
     },
     "platforms": [
       "android",

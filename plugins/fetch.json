@@ -225,5 +225,24 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-firebase-mlvision": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-firebase-mlvision"
+    },
+    "is_top_level": true,
+    "variables": {
+      "FIREBASE_MLVISION_VERSION": "24.+",
+      "FIREBASE_MLVISION_BARCODE_MODEL": "16.+"
+    }
+  },
+  "cordova-plugin-add-swift-support": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-add-swift-support@2.0.2"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }

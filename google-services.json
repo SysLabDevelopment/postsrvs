@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "341711898125",
+    "firebase_url": "https://postsrvs.firebaseio.com",
+    "project_id": "postsrvs",
+    "storage_bucket": "postsrvs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341711898125:android:d54e7be4123eb86da5b744",
+        "android_client_info": {
+          "package_name": "postsrvs.w"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341711898125-69onib0tvr2ramum82asd83ojdj7qtpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqSMx1lDupPb3VieMUmPITIwtykJr0UY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341711898125-69onib0tvr2ramum82asd83ojdj7qtpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

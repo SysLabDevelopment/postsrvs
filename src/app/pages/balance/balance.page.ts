@@ -18,7 +18,6 @@ import {
 
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
-import { WiredIconButton } from 'wired-elements';
 import { MapService } from './../../services/sys/map.service';
 
 @Component({

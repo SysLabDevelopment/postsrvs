@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-firebase-mlvision" version="0.2.3" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>FirebaseVision</name>
+
+    <js-module name="FirebaseVisionPlugin" src="www/firebase-vision.js">
+        <clobbers target="FirebaseVisionPlugin" />
+    </js-module>
+    <platform name="ios">
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="FirebaseVisionPlugin">
+                <param name="ios-package" value="FirebaseVisionPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/FirebaseVisionPlugin.swift" />
+        <source-file src="src/ios/FirebaseExtensions.swift" />
+
+        <podspec>
+            <config>
+                <source url="https://cdn.cocoapods.org/"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="Firebase/MLVisionTextModel"/>
+                <pod name="Firebase/MLVisionBarcodeModel"/>
+            </pods>
+        </podspec>
+    </platform>
+
+    <platform name="android">
+        <dependency id="cordova-plugin-androidx" version="^1.0.2" />
+        <dependency id="cordova-plugin-androidx-adapter" version="^1.1.0" />
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FirebaseVisionPlugin">
+                <param name="android-package" value="by.alon22.cordova.firebase.FirebaseVisionPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data
+                android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+                android:value="ocr,barcode" />
+        </config-file>
+
+        <source-file src="src/android/FirebaseVisionPlugin.java" target-dir="by/alon22/cordova/firebase"/>
+        <source-file src="src/android/FirebaseUtils.java" target-dir="by/alon22/cordova/firebase"/>
+
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+
+        <preference name="FIREBASE_MLVISION_VERSION" default="24.+"/>
+        <preference name="FIREBASE_MLVISION_BARCODE_MODEL" default="16.+"/>
+
+        <framework src="com.google.firebase:firebase-ml-vision:$FIREBASE_MLVISION_VERSION" />
+        <framework src="com.google.firebase:firebase-ml-vision-barcode-model:$FIREBASE_MLVISION_BARCODE_MODEL" />
+
+    </platform>
+</plugin>

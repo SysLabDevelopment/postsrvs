@@ -6,7 +6,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { IonicModule } from '@ionic/angular';
 import { ReviewComponent } from '../../components/balance/review/review.component';
 import { BalancePage } from './balance.page';
-
+import {IconsModule} from '../../icons/icons.module'
 const routes: Routes = [
   {
     path: '',
@@ -16,6 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    IconsModule,
     CommonModule,
     FormsModule,
     IonicModule,

@@ -12,6 +12,8 @@ import { OrdersListGuessComponent } from '../../components/courier/orders-list-g
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import {IconsModule} from '../../icons/icons.module'
+
 registerLocaleData(localeRu, 'ru');
 
 const routes: Routes = [
@@ -23,6 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    IconsModule,
     CommonModule,
     FormsModule,
     DragDropModule,

@@ -133,7 +133,7 @@ export class OrderPage implements OnInit {
     private data: DataService,
     private storage : Storage,
     private cache: CacheService,
-    private network: Network
+    private network: Network,
   ) {
     this.orderId = this.route.snapshot.paramMap.get("id");
 
@@ -365,6 +365,7 @@ export class OrderPage implements OnInit {
   }
   public sendPayCall(order:Order = this.order, status = this.selectedStatus) {
     if(this.network.type == 'none'){
+      //Если оффлайн
       this.cache.getItem('syncRequests').then((syncRequests:Array<any>)=>{
         order.quants = this.g_quants;
         order.email_input = this.email_input;
@@ -378,6 +379,7 @@ export class OrderPage implements OnInit {
         })
       })
     }else{
+      //Если онлайн
       this.localModifyOrders();
     if (
       (status == 5 || status == 6) &&
@@ -709,6 +711,9 @@ export class OrderPage implements OnInit {
   }
 
   public doneOrder() {
+    if(this.selectedPayment == '2'){
+      this.sys.checkPhoto();
+    }
     let drawedImg = localStorage.drawImg;
     if (this.drawNeedle && !drawedImg) {
       this.drawBtn(this.drawNeedle);

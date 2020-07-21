@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="68" id="postsrvs.w" version="1.4.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="70" id="postsrvs.w" version="1.5.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ps@psvs.com" href="http://psvs.com/">Psvs Team</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -26,6 +26,7 @@
     <preference name="Hostname" value="localhost" />
     <preference name="Scheme" value="http" />
     <platform name="android">
+        <resource-file src="google-services.json" target="app/google-services.json" />
         <plugin name="cordova-plugin-app-update" spec="2.0.2" />
         <allow-navigation href="*" />
         <resource-file src="/resources/icon.png" target="app/src/main/res/mipmap/icon.png" />
@@ -148,5 +149,4 @@
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.8.0" />
     <plugin name="cordova-plugin-googlemaps-sdk" />
-    <allow-navigation href="http://localhost:8100" sessionid="5368ce40" />
 </widget>

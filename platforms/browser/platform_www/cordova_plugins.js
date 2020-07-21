@@ -509,6 +509,14 @@ module.exports = [
         "clobbers": [
             "SQLitePlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-firebase-mlvision/www/firebase-vision.js",
+        "id": "cordova-plugin-firebase-mlvision.FirebaseVisionPlugin",
+        "pluginId": "cordova-plugin-firebase-mlvision",
+        "clobbers": [
+            "FirebaseVisionPlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -538,7 +546,8 @@ module.exports.metadata =
     "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-app-update": "2.0.2",
-    "cordova-sqlite-storage": "5.0.0"
+    "cordova-sqlite-storage": "5.0.0",
+    "cordova-plugin-firebase-mlvision": "0.2.3"
 }
 // BOTTOM OF METADATA
 });

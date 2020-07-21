@@ -9,7 +9,6 @@ import { CourierService } from "./services/courier.service";
 import { AuthService } from "./services/auth.service";
 import { SettingsService } from "./services/settings.service";
 import { environment } from "../environments/environment";
-import { WiredIconButton, WiredButton } from "wired-elements";
 import { Environment } from "@ionic-native/google-maps";
 import { AppUpdate } from "@ionic-native/app-update/ngx";
 import { CacheService } from "ionic-cache";
@@ -39,7 +38,7 @@ export class AppComponent {
     this.initializeApp();
     console.log(this.platform.platforms());
   
-      const updateUrl = "https://nextgen.postsrvs.ru/admin/update.xml";
+      const updateUrl = "https://nextgen.postsrvs.ru/updateApk/update.xml";
       this.appUpdate.checkAppUpdate(updateUrl).then(() => {
       console.log(" Update available!");
     });

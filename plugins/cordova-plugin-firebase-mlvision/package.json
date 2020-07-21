@@ -1,0 +1,58 @@
+{
+  "_from": "cordova-plugin-firebase-mlvision",
+  "_id": "cordova-plugin-firebase-mlvision@0.2.3",
+  "_inBundle": false,
+  "_integrity": "sha512-cduKiJZlKfVXWVnK6owdMY+gYAeJLWOIXAGze6LsiD1vZm+s/mDIlqjbxUz3ZRjPxN0YCN6rZbf3yR8cJMj6NA==",
+  "_location": "/cordova-plugin-firebase-mlvision",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-firebase-mlvision",
+    "name": "cordova-plugin-firebase-mlvision",
+    "escapedName": "cordova-plugin-firebase-mlvision",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase-mlvision/-/cordova-plugin-firebase-mlvision-0.2.3.tgz",
+  "_shasum": "40d6c16bb54235e5fbdd38a638ad53287e3ab15d",
+  "_spec": "cordova-plugin-firebase-mlvision",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "author": {
+    "name": "Rubén Alonso"
+  },
+  "bugs": {
+    "url": "https://github.com/alon22/cordova-plugin-firebase-mlvision/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-firebase-mlvision",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "cordova-plugin-firebase-vision ========================",
+  "homepage": "https://github.com/alon22/cordova-plugin-firebase-mlvision#README",
+  "keywords": [
+    "firebase",
+    "mlkit",
+    "ocr",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-firebase-mlvision",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alon22/cordova-plugin-firebase-mlvision.git"
+  },
+  "version": "0.2.3"
+}

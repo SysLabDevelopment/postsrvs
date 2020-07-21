@@ -6,6 +6,8 @@ import { Device } from '@ionic-native/device/ngx';
 import { ToastController } from '@ionic/angular';
 import { Response } from '../interfaces/response';
 import { Order } from '../interfaces/order';
+import { FirebaseVision } from '@ionic-native/firebase-vision/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +20,9 @@ export class SysService {
     private http: HttpClient,
     private device: Device,
     public toastController: ToastController,
+    private firebaseVision: FirebaseVision,
+    private camera: Camera
   ) {
-
-
-
   }
 
   //Получение списка заказов по idшникам
@@ -140,4 +141,15 @@ export class SysService {
     return this.http.post(url, data, httpOptions)
   }
 
+  public checkPhoto(){
+    const options: CameraOptions = {
+      "saveToPhotoAlbum": true
+    }
+    this.camera.getPicture(options).then((FILE_URI)=>{
+      this.firebaseVision.onDeviceTextRecognizer(FILE_URI).then((text)=>{
+        console.log('sys:: Текст с чека :', text)
+      })
+    })
+    
+  }
 }

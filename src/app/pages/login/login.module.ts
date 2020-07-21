@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import {NgxMaskModule} from 'ngx-mask'
 import { IonicModule } from '@ionic/angular';
+import {IconsModule} from '../../icons/icons.module'
 
 import { LoginPage } from './login.page';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    IconsModule,
     CommonModule,
     FormsModule,
     IonicModule,

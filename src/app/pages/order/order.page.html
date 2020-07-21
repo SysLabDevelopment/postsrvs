@@ -81,7 +81,7 @@
           <div class="cr-phone-title">Телефон</div>
           <div class="cr-phone" (click)="phoneClick('init')">
             Позвонить клиенту
-            <ion-icon name="call"></ion-icon>
+            <i-feather name="phone-call"></i-feather>
           </div>
         </div>
       </div>
@@ -174,11 +174,11 @@
                   <div class="gr-col gr-name">{{good.Name}}</div>
                   <div class="gr-col gr-quant">
                     <div class="m-btn" (click)="changeQuant(good.Code,'minus')">
-                      <ion-icon name="remove-circle-outline" size=""></ion-icon>
+                      <i-feather name="minus-circle"></i-feather>
                     </div>
                     {{g_quants[good.Code]['amount']}}
                     <div class="p-btn" (click)="changeQuant(good.Code,'plus')">
-                      <ion-icon name="add-circle-outline"></ion-icon>
+                      <i-feather name="plus-circle"></i-feather>
                     </div>
                   </div>
                   <div class="gr-col gr-price">{{good.Price}}р.</div>
@@ -313,14 +313,14 @@
           <ion-textarea placeholder="Ваша заметка о заказе" [(ngModel)]="note"></ion-textarea>
         </ion-item>
         <ion-button (click)="saveNote()">
-          <ion-icon slot="icon-only" name="save"></ion-icon>
+          <i-feather name="save"></i-feather>
         </ion-button>
       </div>
     </div>
   </div>
   <div class="call-window" *ngIf="callWindow">
     <div class="cw-body">
-      <ion-icon name="close-outline" (click)="phoneClick('init')" size="large"></ion-icon>
+      <i-feather name="x-square" (click)="phoneClick('init')" size="large"></i-feather>
       <ion-list *ngIf="orderPhones.length > 1">
         <ion-radio-group name="selectedPhone" [(ngModel)]="selectedPhone">
           <ion-list-header>
