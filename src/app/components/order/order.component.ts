@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-order',
@@ -7,8 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  constructor() { }
+  @Input() public content:string;
+  constructor() { 
+    console.log('sys:: content: ',this.content);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+     document.querySelector('#content').innerHTML = this.content;
+    let options = {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    };
+    let slides = document.querySelector('ion-slides');
+    slides.options = options;
+   
+  }
 
 }

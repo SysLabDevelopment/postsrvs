@@ -1,0 +1,7 @@
+ion-popover {
+  --width: max-content;
+}
+.popover .popover-content {
+  --width: 90vw;
+  --min-width: max-content;
+}

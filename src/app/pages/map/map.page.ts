@@ -325,31 +325,10 @@ export class MapPage implements OnInit {
         },
       ],
     });
-    markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((params) => {
+    markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(async (params) => {
       let marker: Marker = params[1];
-      let htmlInfoWindow = new HtmlInfoWindow();
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-        htmlInfoWindow.setContent(marker.get("info"), {
-          background: "transparent",
-          "border-radius": "4px",
-          width: "300px",
-          "max-height": "250px",
-        });
-        htmlInfoWindow.on(GoogleMapsEvent.INFO_CLOSE).subscribe(() => {
-          htmlInfoWindow.off(GoogleMapsEvent.INFO_CLOSE);
-          console.log("sys:: htmlinfowindow.ONclose ", htmlInfoWindow);
-          htmlInfoWindow.open(marker);
-          htmlInfoWindow.setContent("");
-
-          htmlInfoWindow.one("content_changed").then(() => {
-            if (htmlInfoWindow.get("content") == "") {
-              htmlInfoWindow.close();
-            }
-          });
-        });
-
-        htmlInfoWindow.open(marker);
-      });
+      let popover = await this.popover(GoogleMapsEvent.MARKER_CLICK, marker.get('info'));
+      popover.present();
     });
   }
 
@@ -447,13 +426,17 @@ ${arrows}
     return frame;
   }
 
-  async presentPopover(ev: any) {
+  async popover(ev: any, content:any) {
+    content = content.innerHTML;
     const popover = await this.popoverController.create({
       component: OrderComponent,
-      cssClass: "my-custom-class",
       event: ev,
       translucent: true,
+      componentProps: {
+        'content':content
+      },
+      cssClass:'popover'
     });
-    return await popover.present();
+    return popover
   }
 }

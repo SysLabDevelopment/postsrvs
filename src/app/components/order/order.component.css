@@ -1,0 +1,24 @@
+.order-id {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #2b637e;
+}
+.prop {
+  color: #717171;
+  font-size: 13px;
+  line-height: 15px;
+}
+.val {
+  color: #333333;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+}
+
+.slide {
+  padding: 10px;
+  width: 100%;
+}
