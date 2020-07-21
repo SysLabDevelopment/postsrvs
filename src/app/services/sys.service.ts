@@ -34,10 +34,10 @@ export class SysService {
     await worker.load();
     await worker.loadLanguage('rus');
     await worker.initialize('rus');
-    const data = await worker.recognize(base64Image);
-    console.log('sys:: распознанные данные с чека: ', data);
+    const {data:{text}} = await worker.recognize(base64Image);
+    console.log('sys:: распознанные данные с чека: ', text);
     await worker.terminate();
-    return data;
+    return text;
   }
   //Получение списка заказов по idшникам
   public getOrders(ids: Array<string>): Observable<Response> {
@@ -158,7 +158,7 @@ export class SysService {
   public checkPhoto(){
     const options: CameraOptions = {
       saveToPhotoAlbum: true,
-      quality: 50,
+      quality: 25,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE

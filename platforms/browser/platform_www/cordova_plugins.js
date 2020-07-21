@@ -29,20 +29,6 @@ module.exports = [
         "runs": true
     },
     {
-        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-        "id": "cordova-plugin-splashscreen.SplashScreen",
-        "pluginId": "cordova-plugin-splashscreen",
-        "clobbers": [
-            "navigator.splashscreen"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-splashscreen/src/browser/SplashScreenProxy.js",
-        "id": "cordova-plugin-splashscreen.SplashScreenProxy",
-        "pluginId": "cordova-plugin-splashscreen",
-        "runs": true
-    },
-    {
         "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
         "id": "cordova-plugin-ionic-webview.IonicWebView",
         "pluginId": "cordova-plugin-ionic-webview",
@@ -517,6 +503,20 @@ module.exports = [
         "clobbers": [
             "FirebaseVisionPlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-splashscreen/src/browser/SplashScreenProxy.js",
+        "id": "cordova-plugin-splashscreen.SplashScreenProxy",
+        "pluginId": "cordova-plugin-splashscreen",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
+        "pluginId": "cordova-plugin-splashscreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -525,7 +525,6 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.4",
     "cordova-plugin-statusbar": "2.4.3",
     "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-geolocation": "4.0.2",
@@ -547,7 +546,8 @@ module.exports.metadata =
     "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-app-update": "2.0.2",
     "cordova-sqlite-storage": "5.0.0",
-    "cordova-plugin-firebase-mlvision": "0.2.3"
+    "cordova-plugin-firebase-mlvision": "0.2.3",
+    "cordova-plugin-splashscreen": "6.0.0"
 }
 // BOTTOM OF METADATA
 });

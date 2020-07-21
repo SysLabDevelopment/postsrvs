@@ -23,14 +23,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-splashscreen": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-splashscreen@^5.0.3"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-ionic-webview": {
     "source": {
       "type": "registry",
@@ -243,6 +235,14 @@
       "id": "cordova-plugin-add-swift-support@2.0.2"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-splashscreen": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-splashscreen@6.0.0"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }
