@@ -13,7 +13,7 @@ import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
-
+import com.google.firebase.ml.vision.text.FirebaseVisionCloudTextRecognizerOptions;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
@@ -42,10 +42,6 @@ public class FirebaseVisionPlugin extends CordovaPlugin {
             @Override
             public void run() {
                 FirebaseApp.initializeApp(applicationContext);
-                FirebaseVisionCloudDocumentRecognizerOptions options =
-        new FirebaseVisionCloudDocumentRecognizerOptions.Builder()
-                .setLanguageHints(Arrays.asList("ru"))
-                .build();
                 firebaseVision = FirebaseVision.getInstance();
             }
         });
@@ -70,7 +66,9 @@ public class FirebaseVisionPlugin extends CordovaPlugin {
             try {
                 Uri uri = Uri.parse(message);
                 FirebaseVisionImage image = FirebaseVisionImage.fromFilePath(applicationContext, uri);
-                FirebaseVisionTextRecognizer recognizer = firebaseVision.getOnDeviceTextRecognizer();
+                FirebaseVisionCloudTextRecognizerOptions options = new FirebaseVisionCloudTextRecognizerOptions.Builder().setLanguageHints(Arrays.asList("ru")).build();
+
+                FirebaseVisionTextRecognizer recognizer = firebaseVision.getCloudTextRecognizer(options);
                 recognizer.processImage(image)
                         .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                             @Override

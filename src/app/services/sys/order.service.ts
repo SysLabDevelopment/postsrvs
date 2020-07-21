@@ -104,6 +104,7 @@ public submitChange(order:Order, status:number) {
         }
         break;
       case 5:
+        this.sys.doOCR(order.check).then((recognizedData)=>{
         let text = order.commentText ? order.commentText : "";
         this.courier
           .changeStatus(
@@ -112,12 +113,17 @@ public submitChange(order:Order, status:number) {
             text,
             undefined,
             undefined,
-            order.selectedPayment
+            order.selectedPayment,
+            '',
+            order.check,
+            recognizedData
           )
           .subscribe((data: any) => {
           });
+          })
         break;
       case 6:
+        this.sys.doOCR(order.check).then((recognizedData)=>{
         this.courier
           .changeStatus(
             String(status),
@@ -125,10 +131,14 @@ public submitChange(order:Order, status:number) {
             undefined,
             undefined,
             order.quants,
-            order.selectedPayment
+            order.selectedPayment,
+            '',
+            order.check,
+            recognizedData
           )
           .subscribe((data: any | null) => {
           });
+          })
         break;
     }
   }

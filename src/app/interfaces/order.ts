@@ -11,4 +11,5 @@ export interface Order {
     new_plan_date?: string,
     commentText?:string,
     status_id:number,
+    check?:string
 }

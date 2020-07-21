@@ -27,6 +27,7 @@ import { SettingsService } from "../../services/settings.service";
 import { MapService } from "../../services/sys/map.service";
 import { Order } from 'src/app/interfaces/order';
 import { Network } from '@ionic-native/network/ngx';
+import {OrderService} from '../../services/sys/order.service';
 @Component({
   selector: "app-order",
   animations: [
@@ -118,6 +119,7 @@ export class OrderPage implements OnInit {
   public tomorrow = new Date();
   public new_plan_date: string; //Дата переноса заказа
   public openCompany = false;
+  public checkBase64Image:string;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -134,6 +136,7 @@ export class OrderPage implements OnInit {
     private storage : Storage,
     private cache: CacheService,
     private network: Network,
+    private orderService: OrderService
   ) {
     this.orderId = this.route.snapshot.paramMap.get("id");
 
@@ -360,17 +363,13 @@ export class OrderPage implements OnInit {
   }
 
   public selectReason(id) {
-    console.log("select_reason", id);
     this.selectedReason = id;
   }
   public sendPayCall(order:Order = this.order, status = this.selectedStatus) {
     if(this.network.type == 'none'){
       //Если оффлайн
       this.cache.getItem('syncRequests').then((syncRequests:Array<any>)=>{
-        order.quants = this.g_quants;
-        order.email_input = this.email_input;
-        order.phone_input = this.phone_input;
-        order = {...order, ...{selectedPayment: this.selectedPayment}, ...{selectedReason: this.selectedReason}, ...{new_plan_date: this.new_plan_date}, ...{commentText:this.commentText}};
+        order = {...{phone_input:this.phone_input}, ...{email_input:this.email_input},...{quants: this.g_quants}, ...order, ...{selectedPayment: this.selectedPayment}, ...{selectedReason: this.selectedReason}, ...{new_plan_date: this.new_plan_date}, ...{commentText:this.commentText},...{check:this.checkBase64Image}};
         syncRequests && syncRequests.push({order,status });
         this.cache.saveItem('syncRequests',syncRequests,'delayedCalls').then(()=>{
           console.log(`sys:: Отложено изменение статуса на ${status} для заказа ${order.client_id}`);
@@ -378,18 +377,13 @@ export class OrderPage implements OnInit {
           this.router.navigate(['courier']);
         })
       })
-    }else{
-      //Если онлайн
-      this.localModifyOrders();
-    if (
-      (status == 5 || status == 6) &&
-      this.pay_access
-    ) {
-      this.sendPay();
-    } else {
-      this.submitChange();
+      }else{
+        //Если онлайн
+        this.localModifyOrders();
+        order = {...{phone_input:this.phone_input}, ...{email_input:this.email_input},...{quants: this.g_quants}, ...order, ...{selectedPayment: this.selectedPayment}, ...{selectedReason: this.selectedReason}, ...{new_plan_date: this.new_plan_date}, ...{commentText:this.commentText},...{check:this.checkBase64Image}};
+        this.orderService.sendDelayedCall(order, status);
+        this.router.navigate(['courier']);
     }
-  }
   }
 
   public submitChange() {
@@ -433,7 +427,8 @@ export class OrderPage implements OnInit {
         }
         break;
       case 5:
-        var text = this.commentText ? this.commentText : "";
+        this.sys.doOCR(this.checkBase64Image).then((recognizedData)=>{
+        let text = this.commentText ? this.commentText : "";
         this.courier
           .changeStatus(
             this.selectedStatus,
@@ -441,7 +436,10 @@ export class OrderPage implements OnInit {
             text,
             undefined,
             undefined,
-            this.selectedPayment
+            this.selectedPayment,
+            '',
+            this.checkBase64Image,
+            recognizedData
           )
           .subscribe((data: any) => {
             if (data.success == "true") {
@@ -458,8 +456,10 @@ export class OrderPage implements OnInit {
             }
             localStorage.removeItem("drawImg");
           });
+          })
         break;
       case 6:
+        this.sys.doOCR(this.checkBase64Image).then((recognizedData)=>{
         this.courier
           .changeStatus(
             this.selectedStatus,
@@ -467,7 +467,10 @@ export class OrderPage implements OnInit {
             undefined,
             undefined,
             this.g_quants,
-            this.selectedPayment
+            this.selectedPayment,
+            '',
+            this.checkBase64Image,
+            recognizedData
           )
           .subscribe((data: any | null) => {
             if (data?.success == "true") {
@@ -490,6 +493,7 @@ export class OrderPage implements OnInit {
             }
             localStorage.removeItem("drawImg");
           });
+        })
         break;
     }
   }
@@ -605,8 +609,8 @@ export class OrderPage implements OnInit {
   }
 
   public send_api_data(api_data) {
-    var url = "pay_order";
-    var self = this;
+    let url = "pay_order";
+    let self = this;
     this.order.rur = 0;
 
     api_data.purchase.products.forEach((product) => {
@@ -711,14 +715,19 @@ export class OrderPage implements OnInit {
   }
 
   public doneOrder() {
-    if(this.selectedPayment == '2'){
-      this.sys.checkPhoto();
-    }
     let drawedImg = localStorage.drawImg;
+    
+    
     if (this.drawNeedle && !drawedImg) {
       this.drawBtn(this.drawNeedle);
     } else {
-      this.sendPayCall();
+      if(this.selectedPayment == '2'){
+      this.sys.checkPhoto().then((imageData)=>{
+        this.checkBase64Image = 'data:image/jpeg;base64,' + imageData;
+        this.sendPayCall();
+      });
+    }
+      
     }
   }
 

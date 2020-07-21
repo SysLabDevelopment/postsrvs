@@ -8,6 +8,7 @@ import { Response } from '../interfaces/response';
 import { Order } from '../interfaces/order';
 import { FirebaseVision } from '@ionic-native/firebase-vision/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { createWorker } from 'tesseract.js';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +17,28 @@ export class SysService {
   public ordersIds: Array<string>;
   public proxy: string = 'http://mobile.postsrvs.ru:8080/';
   public orders:Array<Order>
+
   constructor(
     private http: HttpClient,
     private device: Device,
     public toastController: ToastController,
-    private firebaseVision: FirebaseVision,
     private camera: Camera
   ) {
+    
   }
-
+    //Распознавание текста
+   async doOCR(base64Image: string) {
+    const worker = createWorker({
+      logger: m => console.log(m),
+    });
+    await worker.load();
+    await worker.loadLanguage('rus');
+    await worker.initialize('rus');
+    const data = await worker.recognize(base64Image);
+    console.log('sys:: распознанные данные с чека: ', data);
+    await worker.terminate();
+    return data;
+  }
   //Получение списка заказов по idшникам
   public getOrders(ids: Array<string>): Observable<Response> {
     
@@ -143,13 +157,13 @@ export class SysService {
 
   public checkPhoto(){
     const options: CameraOptions = {
-      "saveToPhotoAlbum": true
+      saveToPhotoAlbum: true,
+      quality: 50,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
     }
-    this.camera.getPicture(options).then((FILE_URI)=>{
-      this.firebaseVision.onDeviceTextRecognizer(FILE_URI).then((text)=>{
-        console.log('sys:: Текст с чека :', text)
-      })
-    })
+    return this.camera.getPicture(options)
     
   }
 }
