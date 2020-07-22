@@ -110,7 +110,8 @@
       </div>
       <div class="state-row o-row">
         <div class="state-title o-t">
-          <img src="../../../assets/bender.png" class="robot-icon" /> <span class="st-status-text">Робот прозвон:</span>
+          <img src="../../../assets/bender.png" class="robot-icon" alt="Робот" /> <span class="st-status-text">Робот
+            прозвон:</span>
         </div>
         <div class="st_state" [ngClass]="{  'status_done' : client_status_id == 1,
                                                 'status_wait' : client_status_id == 2,
@@ -210,7 +211,7 @@
                 </button>
               </div>
             </div>
-            <img [src]="imageToShow" alt="" *ngIf="imageToShow && drawNeedle" style="height: 200px;" />
+            <img [src]="imageToShow" alt="Подпись" *ngIf="imageToShow && drawNeedle" style="height: 200px;" />
             <button *ngIf="drawNeedle" class="drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
           </div>
           <div class="sc-payment" *ngIf="selectedStatus == 5 || selectedStatus == 6">
