@@ -85,6 +85,8 @@ export class OrderService {
 
 public submitChange(order:Order, status:number) {
     let self = this;
+    let noSkip = true;
+
     switch (status) {
       case 4:
         if (order.selectedReason != null) {
@@ -104,7 +106,11 @@ public submitChange(order:Order, status:number) {
         }
         break;
       case 5:
-        this.sys.doOCR(order.check).then((recognizedData)=>{
+        if(order.selectedPayment !== '2'){
+          noSkip = false
+        }
+
+        this.sys.doOCR(order.check, noSkip).then((recognizedData)=>{
         let text = order.commentText ? order.commentText : "";
         this.courier
           .changeStatus(
@@ -123,7 +129,12 @@ public submitChange(order:Order, status:number) {
           })
         break;
       case 6:
-        this.sys.doOCR(order.check).then((recognizedData)=>{
+        if(order.selectedPayment !== '2'){
+          noSkip = false
+        }
+
+
+        this.sys.doOCR(order.check, noSkip).then((recognizedData)=>{
         this.courier
           .changeStatus(
             String(status),

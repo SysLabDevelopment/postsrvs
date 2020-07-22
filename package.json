@@ -89,6 +89,7 @@
     "ngx-mask": "^9.1.2",
     "paulstelzer-ionic-angular-toolkit": "^2.0.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
+    "rollup": "^2.22.2",
     "rxjs": "^6.5.4",
     "sharp": "^0.25.1",
     "tesseract.js": "^2.1.1",
