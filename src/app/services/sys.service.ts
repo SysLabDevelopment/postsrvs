@@ -27,7 +27,8 @@ export class SysService {
     
   }
     //Распознавание текста
-   async doOCR(base64Image: string) {
+   async doOCR(base64Image: string, noSkip = true) {
+     if(noSkip){
     const worker = createWorker({
       logger: m => console.log(m),
     });
@@ -38,6 +39,11 @@ export class SysService {
     console.log('sys:: распознанные данные с чека: ', text);
     await worker.terminate();
     return text;
+     }else{
+       return ''
+     }
+    
+    
   }
   //Получение списка заказов по idшникам
   public getOrders(ids: Array<string>): Observable<Response> {

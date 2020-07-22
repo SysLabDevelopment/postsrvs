@@ -40,11 +40,8 @@ export class AppComponent {
     this.initializeApp();
     console.log(this.platform.platforms());
   
-      const updateUrl = "https://nextgen.postsrvs.ru/updateApk/update.xml";
-      this.appUpdate.checkAppUpdate(updateUrl).then(() => {
-      console.log(" Update available!");
       
-    });
+      
     cache.setDefaultTTL(60*60*24);
      cache.itemExists('syncRequests').then((exist)=>{
         if(!exist){
@@ -69,6 +66,10 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      const updateUrl = "https://nextgen.postsrvs.ru/updateApk/update.xml";
+      this.appUpdate.checkAppUpdate(updateUrl).then(() => {
+      console.log(" Update available!");
+    });
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       if (this.settings.rules.typeRoute == "standart") {

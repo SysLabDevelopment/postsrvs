@@ -397,6 +397,7 @@ export class OrderPage implements OnInit {
         }
       });
     })
+     let noSkip = true;
     switch (this.selectedStatus) {
       case 4:
         if (this.selectedReason != null) {
@@ -427,7 +428,10 @@ export class OrderPage implements OnInit {
         }
         break;
       case 5:
-        this.sys.doOCR(this.checkBase64Image).then((recognizedData)=>{
+        if(this.selectedPayment !== '2'){
+          noSkip = false
+        }
+        this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData)=>{
         let text = this.commentText ? this.commentText : "";
         this.courier
           .changeStatus(
@@ -459,7 +463,11 @@ export class OrderPage implements OnInit {
           })
         break;
       case 6:
-        this.sys.doOCR(this.checkBase64Image).then((recognizedData)=>{
+       
+        if(this.selectedPayment !== '2'){
+          noSkip = false
+        }
+        this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData)=>{
         this.courier
           .changeStatus(
             this.selectedStatus,

@@ -33,6 +33,7 @@ import { CacheModule } from "ionic-cache";
 import { Network } from '@ionic-native/network/ngx';
 import { FirebaseVision } from '@ionic-native/firebase-vision/ngx';
 import {IconsModule} from './icons/icons.module';
+// import {AppVersion} from 'cordova-plugin-appversion'
 
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
