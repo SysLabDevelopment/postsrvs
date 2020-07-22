@@ -716,17 +716,17 @@ export class OrderPage implements OnInit {
 
   public doneOrder() {
     let drawedImg = localStorage.drawImg;
-    
-    
     if (this.drawNeedle && !drawedImg) {
       this.drawBtn(this.drawNeedle);
     } else {
       if(this.selectedPayment == '2'){
-      this.sys.checkPhoto().then((imageData)=>{
-        this.checkBase64Image = 'data:image/jpeg;base64,' + imageData;
+        this.sys.checkPhoto().then((imageData)=>{
+          this.checkBase64Image = 'data:image/jpeg;base64,' + imageData;
+          this.sendPayCall();
+        });
+      }else{
         this.sendPayCall();
-      });
-    }
+      }
       
     }
   }
