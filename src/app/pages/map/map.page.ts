@@ -35,7 +35,6 @@ import {
 import { Router } from "@angular/router";
 import { filter } from "rxjs/operators";
 import { AuthService } from "../../services/auth.service";
-import { AppVersion } from "@ionic-native/app-version/ngx";
 import { NavService } from "../../services/nav.service";
 import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
@@ -43,6 +42,8 @@ import { PopoverController } from "@ionic/angular";
 import { OrderComponent } from "../../components/order/order.component";
 import {DataService} from "../../services/sys/data.service";
 import { Storage } from "@ionic/storage";
+
+declare var AppVersion:{version:string};
 @Component({
   selector: "app-map",
   templateUrl: "./map.page.html",
@@ -54,7 +55,6 @@ export class MapPage implements OnInit {
   coords: { lt: number; lg: number };
   userId: string = localStorage.user;
   public isMapPreparing: boolean = false;
-  version: string;
   myLocation: MyLocation;
   public out_process: boolean = false;
   public out_counter = 0;
@@ -68,6 +68,8 @@ export class MapPage implements OnInit {
       prevEl: ".swiper-button-prev",
     },
   };
+
+  
   constructor(
     public state$: StateService,
     public platform: Platform,
@@ -77,7 +79,6 @@ export class MapPage implements OnInit {
     private sys: SysService,
     private sysMap: MapService,
     private auth: AuthService,
-    private appVersion: AppVersion,
     private nav: NavService,
     public googleMaps: GoogleMaps,
     public navCtrl: NavController,
@@ -127,10 +128,6 @@ export class MapPage implements OnInit {
     console.log("sys:: map view init");
     this.loadMap();
     this.platform.ready().then(() => {
-      
-      this.appVersion.getVersionNumber().then((resp) => {
-        this.version = resp;
-      });
       this.initContent();
       LocationService.getMyLocation().then((myLocation: MyLocation) => {
         this.coords = { lt: myLocation.latLng.lat, lg: myLocation.latLng.lng };
@@ -176,7 +173,7 @@ export class MapPage implements OnInit {
       },
     };
     this.map = await this.sysMap.attachMap("map", options);
-    this.sys.checkAuth(this.version).subscribe((res: Response) => {
+    this.sys.checkAuth(AppVersion.version).subscribe((res: Response) => {
       if (res.success == "false") {
         this.logout();
       }
@@ -276,7 +273,7 @@ export class MapPage implements OnInit {
   }
 
   initContent() {
-    this.sys.checkAuth(this.version).subscribe((res: Response) => {
+    this.sys.checkAuth(AppVersion.version).subscribe((res: Response) => {
       if (res.sync_id !== undefined) {
         this.settings.getSettings(res.sync_id);
         this.auth.setUser(res.sync_id);

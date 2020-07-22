@@ -50,9 +50,6 @@
     "cordova-plugin-screen-orientation": {
       "PACKAGE_NAME": "postsrvs.w"
     },
-    "cordova-plugin-app-version": {
-      "PACKAGE_NAME": "postsrvs.w"
-    },
     "cordova-plugin-androidx": {
       "PACKAGE_NAME": "postsrvs.w"
     },

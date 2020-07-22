@@ -3,8 +3,8 @@
     package="postsrvs.w"
     android:hardwareAccelerated="true"
     android:targetSandboxVersion="2"
-    android:versionCode="71"
-    android:versionName="1.5.3" >
+    android:versionCode="72"
+    android:versionName="1.6.3" >
 
     <uses-sdk
         android:minSdkVersion="19"

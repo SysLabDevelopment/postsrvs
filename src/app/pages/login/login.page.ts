@@ -7,7 +7,6 @@ import { AuthService } from '../../services/auth.service';
 import { StateService } from '../../services/state.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { CourierService } from '../../services/courier.service';
-import { AppVersion } from '@ionic-native/app-version/ngx';
 import {
   trigger,
   state,
@@ -19,7 +18,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
-import { WiredButton, WiredInput, WiredSpinner } from "wired-elements";
+declare var AppVersion:{version:string, build:number};
 
 @Component({
   selector: 'app-login',
@@ -79,7 +78,6 @@ export class LoginPage implements OnInit {
     public state$: StateService,
     private AP: AndroidPermissions,
     public courier: CourierService,
-    private appVersion: AppVersion,
     public settings: SettingsService,
     public sys: SysService
   ) {
@@ -92,8 +90,7 @@ export class LoginPage implements OnInit {
       if (readySource == 'android') {
         this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
       }
-      self.appVersion.getVersionNumber().then((resp) => {
-        this.auth.version = resp;
+        this.auth.version = AppVersion.version;
         this.auth.checkAuth().subscribe((data: any) => {
           if (data.success == 'true') {
             this.auth.setUser(data.sync_id);
@@ -103,7 +100,6 @@ export class LoginPage implements OnInit {
           } else {
           }
         })
-      })
 
     })
   }

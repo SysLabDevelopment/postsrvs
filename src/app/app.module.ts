@@ -22,7 +22,6 @@ import { Camera } from "@ionic-native/camera/ngx";
 import { Vibration } from "@ionic-native/vibration/ngx";
 import { CashoutFailOComponent } from "./components/balance/cashout-fail-o/cashout-fail-o.component";
 import { CashoutWComponent } from "./components/balance/cashout-w/cashout-w.component";
-import { AppVersion } from "@ionic-native/app-version/ngx";
 import { HttpErrorInterceptor } from "./interceptors/http.interceptor";
 import { registerLocaleData } from "@angular/common";
 import localeRu from "@angular/common/locales/ru";
@@ -34,6 +33,7 @@ import { CacheModule } from "ionic-cache";
 import { Network } from '@ionic-native/network/ngx';
 import { FirebaseVision } from '@ionic-native/firebase-vision/ngx';
 import {IconsModule} from './icons/icons.module';
+
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
   entryComponents: [],
@@ -62,7 +62,6 @@ import {IconsModule} from './icons/icons.module';
     Diagnostic,
     Camera,
     CallNumber,
-    AppVersion,
     GoogleMaps,
     AppUpdate,
     Network,

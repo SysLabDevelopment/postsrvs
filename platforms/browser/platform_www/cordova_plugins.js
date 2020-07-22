@@ -138,14 +138,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-app-version/www/AppVersionPlugin.js",
-        "id": "cordova-plugin-app-version.AppVersionPlugin",
-        "pluginId": "cordova-plugin-app-version",
-        "clobbers": [
-            "cordova.getAppVersion"
-        ]
-    },
-    {
         "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
         "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
         "pluginId": "phonegap-plugin-barcodescanner",
@@ -536,7 +528,6 @@ module.exports.metadata =
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-screen-orientation": "3.0.2",
-    "cordova-plugin-app-version": "0.1.9",
     "cordova-plugin-androidx": "1.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
     "phonegap-plugin-barcodescanner": "8.1.0",

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { AppVersion } from '@ionic-native/app-version/ngx';
+declare var AppVersion:{version:string, build:number};
 
 @Component({
   selector: 'app-about',
@@ -13,15 +13,13 @@ export class AboutPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private appVersion: AppVersion
   ) { }
 
   ngOnInit() {
-    this.params = this.route.snapshot.params;
-    this.app.name = this.appVersion.getAppName();
-    this.app.packageName = this.appVersion.getPackageName();
-    this.app.versionCode = this.appVersion.getVersionCode();
-    this.app.versionNumber = this.appVersion.getVersionNumber();
+  }
+  ngAfterViewInit() {
+    this.app.versionCode = AppVersion.build;
+    this.app.versionNumber = AppVersion.version;
   }
 
 }

@@ -14,6 +14,8 @@ import { AppUpdate } from "@ionic-native/app-update/ngx";
 import { CacheService } from "ionic-cache";
 import { Network } from '@ionic-native/network/ngx';
 import {OrderService } from './services/sys/order.service';
+
+declare var AppVersion:{version:string};
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
@@ -41,6 +43,7 @@ export class AppComponent {
       const updateUrl = "https://nextgen.postsrvs.ru/updateApk/update.xml";
       this.appUpdate.checkAppUpdate(updateUrl).then(() => {
       console.log(" Update available!");
+      
     });
     cache.setDefaultTTL(60*60*24);
      cache.itemExists('syncRequests').then((exist)=>{
