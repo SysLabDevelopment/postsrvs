@@ -6,7 +6,6 @@ import { Device } from '@ionic-native/device/ngx';
 import { ToastController } from '@ionic/angular';
 import { Response } from '../interfaces/response';
 import { Order } from '../interfaces/order';
-import { FirebaseVision } from '@ionic-native/firebase-vision/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { createWorker } from 'tesseract.js';
 

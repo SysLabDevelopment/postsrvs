@@ -6,10 +6,7 @@ import { CourierService } from "./../../services/courier.service";
 import { SettingsService } from "./../../services/settings.service";
 import {
   Component,
-  OnInit,
-  ViewChild,
-  ElementRef,
-  OnChanges,
+  OnInit
 } from "@angular/core";
 import { StateService } from "../../services/state.service";
 import { Platform, NavController } from "@ionic/angular";

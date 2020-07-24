@@ -92,7 +92,6 @@ export class BalancePage implements OnInit {
   public isShowSchedule: boolean = false;
   public isGoToWork: boolean = false;
   public isStopWork: boolean = false;
-  public workDates: Array<any> = [];
   public nonWorkDates: Array<any> = [];
   public notWorkRules = {};
 
@@ -345,7 +344,7 @@ export class BalancePage implements OnInit {
     this.router.navigate(['schedule']);
   }
   public goToWork() {
-    this.sys.goToWork(this.workDates).subscribe((data: { success: boolean }) => {
+    this.sys.goToWork([]).subscribe((data: { success: boolean }) => {
       console.log('sys:: gotoWork resp', data);
       if (data.success) {
         this.sys.presentToast('Рабочие часы записаны', 'success');
@@ -369,10 +368,6 @@ export class BalancePage implements OnInit {
     });
   }
 
-  public addWorkDate(workDate) {
-    workDate = workDate.el.value.replace('T', ' ').substr('', 19);
-    this.workDates.push(workDate);
-  }
 
   public showStopWorkScheduler() {
     this.isStopWork = true;

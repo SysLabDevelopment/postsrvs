@@ -1,0 +1,54 @@
+.schedule-area {
+  height: 50%;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.working {
+  background: rgba(13, 182, 20, 0.05);
+  border-bottom: 1px solid #686868;
+}
+
+.non-working {
+  background: rgba(255, 0, 77, 0.05);
+}
+
+.descr {
+  font-size: 14px;
+  line-height: 16px;
+  color: #686868;
+}
+
+ion-item {
+  margin-top: 20px;
+  width: 80%;
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-top: 3px;
+  --inner-padding-bottom: 3px;
+}
+
+ion-datetime {
+  border: 1px solid #686868;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-right: 25px;
+  background: white;
+  width: -webkit-fill-available;
+}
+
+ion-button {
+  height: 100%;
+  --background: #2b637e;
+}
+
+ion-list.md {
+  background: transparent;
+}
+
+ion-list-header {
+  padding-left: 0;
+  font-size: 14px;
+  line-height: 16px;
+}

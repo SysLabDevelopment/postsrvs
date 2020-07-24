@@ -489,14 +489,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-firebase-mlvision/www/firebase-vision.js",
-        "id": "cordova-plugin-firebase-mlvision.FirebaseVisionPlugin",
-        "pluginId": "cordova-plugin-firebase-mlvision",
-        "clobbers": [
-            "FirebaseVisionPlugin"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-splashscreen/src/browser/SplashScreenProxy.js",
         "id": "cordova-plugin-splashscreen.SplashScreenProxy",
         "pluginId": "cordova-plugin-splashscreen",
@@ -537,7 +529,6 @@ module.exports.metadata =
     "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-app-update": "2.0.2",
     "cordova-sqlite-storage": "5.0.0",
-    "cordova-plugin-firebase-mlvision": "0.2.3",
     "cordova-plugin-splashscreen": "6.0.0"
 }
 // BOTTOM OF METADATA

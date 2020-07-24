@@ -73,15 +73,7 @@
         </div>
         <button class="logout-btn review_btn" (click)="writeReview()">Отзыв о приложении</button>
         <div *ngIf="isGoToWork">
-          <ul *ngFor="let date of workDates">
-            <li>{{date}}</li>
-          </ul>
           <ion-item>
-            <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder="DD.MM.YYYY HH:mm"></ion-datetime>
-            <br />
-            <ion-button (click)="addWorkDate(workDate)" expand="block" fill="outline" shape="round">
-              Добавить
-            </ion-button>
             <ion-button (click)="goToWork()" expand="block" fill="outline" shape="round">
               Подтвердить
             </ion-button>

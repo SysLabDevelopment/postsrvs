@@ -1072,17 +1072,10 @@ string contents_location
 string contents_phone
 string contents_sms
 string contents_text
-string default_web_client_id
 string download_complete
 string download_complete_neu_btn
 string download_complete_pos_btn
 string download_complete_title
-string firebase_database_url
-string gcm_defaultSenderId
-string google_api_key
-string google_app_id
-string google_crash_reporting_api_key
-string google_storage_bucket
 string history_clear_one_history_text
 string history_clear_text
 string history_email_title
@@ -1181,7 +1174,6 @@ string preferences_search_country
 string preferences_supplemental_summary
 string preferences_supplemental_title
 string preferences_vibrate_title
-string project_id
 string result_address_book
 string result_calendar
 string result_email_address

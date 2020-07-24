@@ -66,10 +66,6 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      const updateUrl = "https://nextgen.postsrvs.ru/updateApk/update.xml";
-      this.appUpdate.checkAppUpdate(updateUrl).then(() => {
-      console.log(" Update available!");
-    });
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       if (this.settings.rules.typeRoute == "standart") {

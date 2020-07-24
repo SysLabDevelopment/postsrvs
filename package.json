@@ -69,7 +69,6 @@
     "cordova-plugin-app-update": "^2.0.2",
     "cordova-plugin-appversion": "^1.0.0",
     "cordova-plugin-camera": "4.1.0",
-    "cordova-plugin-firebase-mlvision": "^0.2.3",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "^2.7.1",
     "cordova-plugin-googlemaps-sdk": "3.8.0",
@@ -82,6 +81,10 @@
     "cordova-sqlite-storage": "^5.0.0",
     "cordova.plugins.diagnostic": "^5.0.1",
     "core-js": "^3.6.4",
+    "dijit": "github:dojo/dijit",
+    "dojo": "github:dojo/dojo",
+    "dojo-util": "github:dojo/util",
+    "dojox": "github:dojo/dojox",
     "es6-promise-plugin": "^4.2.2",
     "feather-icons": "^4.28.0",
     "ionic-cache": "^5.2.0",
@@ -179,10 +182,6 @@
       "cordova-plugin-androidx-adapter": {},
       "cordova-plugin-app-update": {},
       "cordova-sqlite-storage": {},
-      "cordova-plugin-firebase-mlvision": {
-        "FIREBASE_MLVISION_VERSION": "24.+",
-        "FIREBASE_MLVISION_BARCODE_MODEL": "16.+"
-      },
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-appversion": {}
     },

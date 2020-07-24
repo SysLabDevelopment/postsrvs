@@ -1,7 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>schedule</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>График работы</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+<div class="schedule-area working">
+  <h4>Добавить рабочие дни</h4>
+  <ion-text class="descr">Выберите даты, в которые вы хотите выйти на работу</ion-text>
+  <ion-item lines="none">
+    <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder="DD.MM.YYYY HH:mm"></ion-datetime>
+    <ion-button size="default" fill="solid" (click)="addWorkDate(workDate)">
+  <ion-icon name="checkmark-outline"></ion-icon>
+</ion-button>
+</ion-item>
+<ion-list>
+  <ion-list-header>
+  <ion-label>Выбранные рабочие дни:</ion-label>
+</ion-list-header>
+<ul *ngFor="let date of workDates">
+              <li>{{date}}</li>
+            </ul>
+</ion-list>
+
+</div>
+<div class='schedule-area non-working'>
+    <h4>Добавить НЕрабочие дни</h4>
+  <ion-text class="descr">
+    Выберите даты, в которые вы не можете выйти на работу и укажите причину
+  </ion-text>
+  <ion-item lines="none">
+    <ion-datetime display-format="DD.MM.YYYY" placeholder="DD.MM.YYYY" #nonWorkDate></ion-datetime>
+    <ion-button size="default" fill="solid" >
+  <ion-icon name="checkmark-outline"></ion-icon>
+  </ion-button>
+  </ion-item>
+  <ion-list>
+    <ion-list-header>
+    <ion-label>Выбранные НЕрабочие дни:</ion-label>
+  </ion-list-header>
+            
+
+  </ion-list>
+
+</div>
+</ion-content>

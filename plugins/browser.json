@@ -73,9 +73,6 @@
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-firebase-mlvision": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }

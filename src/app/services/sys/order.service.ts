@@ -102,6 +102,8 @@ public submitChange(order:Order, status:number) {
               new_plan_date.toLocaleDateString()
             )
             .subscribe((data: any) => {
+              localStorage.removeItem("drawImg");
+
             });
         }
         break;
@@ -125,6 +127,7 @@ public submitChange(order:Order, status:number) {
             recognizedData
           )
           .subscribe((data: any) => {
+            localStorage.removeItem("drawImg");
           });
           })
         break;
@@ -148,6 +151,7 @@ public submitChange(order:Order, status:number) {
             recognizedData
           )
           .subscribe((data: any | null) => {
+            localStorage.removeItem("drawImg");
           });
           })
         break;
