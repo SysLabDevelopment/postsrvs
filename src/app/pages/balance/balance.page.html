@@ -72,51 +72,6 @@
           </div>
         </div>
         <button class="logout-btn review_btn" (click)="writeReview()">Отзыв о приложении</button>
-        <div *ngIf="isGoToWork">
-          <ion-item>
-            <ion-button (click)="goToWork()" expand="block" fill="outline" shape="round">
-              Подтвердить
-            </ion-button>
-          </ion-item>
-        </div>
-        <div *ngIf="isStopWork">
-          <ul *ngFor="let date of nonWorkDates">
-            <li>
-              {{date.date}}
-              <ion-select multiple="false" placeholder="Причина" [(ngModel)]="date.reason">
-                <ion-select-option value="1">
-                  {{notWorkRules["1"]}}
-                </ion-select-option>
-                <ion-select-option value="2">
-                  {{notWorkRules["2"]}}
-                </ion-select-option>
-                <ion-select-option value="3">
-                  {{notWorkRules["3"]}}
-                </ion-select-option>
-                <ion-select-option value="4">
-                  {{notWorkRules["4"]}}
-                </ion-select-option>
-              </ion-select>
-            </li>
-          </ul>
-          <ion-item>
-            <ion-datetime display-format="DD.MM.YYYY" placeholder="DD.MM.YYYY" #nonWorkDate></ion-datetime>
-            <ion-button (click)="addNonWorkDate(nonWorkDate)" expand="block" fill="outline" shape="round">
-              Добавить
-            </ion-button>
-            <ion-button (click)="stopWork()" expand="block" fill="outline" shape="round">
-              Подтвердить
-            </ion-button>
-          </ion-item>
-        </div>
-        <ion-item *ngIf="isShowSchedule">
-          <ion-button (click)="showWorkScheduler()" expand="block" fill="outline" shape="round">
-            Выхожу
-          </ion-button>
-          <ion-button (click)="showStopWorkScheduler()" expand="block" fill="outline" shape="round">
-            Не выхожу
-          </ion-button>
-        </ion-item>
         <button class="logout-btn review_btn" *ngIf="settings.rules.schedule" (click)="showSchedule()">
           График работы
         </button>

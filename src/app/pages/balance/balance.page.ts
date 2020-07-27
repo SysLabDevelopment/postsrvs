@@ -336,53 +336,11 @@ export class BalancePage implements OnInit {
   public navToSettings() {
     this.sysMap.navigate(['/about']);
   }
-  public check_to_work() {
-
-  }
 
   public showSchedule() {
     this.router.navigate(['schedule']);
   }
-  public goToWork() {
-    this.sys.goToWork([]).subscribe((data: { success: boolean }) => {
-      console.log('sys:: gotoWork resp', data);
-      if (data.success) {
-        this.sys.presentToast('Рабочие часы записаны', 'success');
-        this.isGoToWork = false;
-      }
 
-    });
-  }
-
-  public showWorkScheduler() {
-    this.isGoToWork = true;
-  }
-  public stopWork() {
-    this.sys.stopWork(this.nonWorkDates).subscribe((data: { success: boolean }) => {
-      console.log('sys:: stopWork resp', data);
-      if (data.success) {
-        this.sys.presentToast('Нерабочие дни записаны', 'success');
-        this.isStopWork = false;
-      }
-
-    });
-  }
-
-
-  public showStopWorkScheduler() {
-    this.isStopWork = true;
-    this.sys.getNotWorkRules().subscribe((data) => {
-      this.notWorkRules = data;
-    })
-  }
-
-  public addNonWorkDate(date) {
-    let dateObj = {
-      date: date.value.substr('', 10),
-      reason: 0
-    }
-    this.nonWorkDates.push(dateObj)
-  }
   navToMap() {
     this.router.navigate(['map'])
   }

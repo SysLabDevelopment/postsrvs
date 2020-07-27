@@ -365,23 +365,23 @@ export class OrderPage implements OnInit {
   public selectReason(id) {
     this.selectedReason = id;
   }
-  public sendPayCall(order:Order = this.order, status = this.selectedStatus) {
+  public sendPayCall(order:Order = this.order, newStatus = this.selectedStatus as number) {
     if(this.network.type == 'none'){
       //Если оффлайн
       this.cache.getItem('syncRequests').then((syncRequests:Array<any>)=>{
         order = {...{phone_input:this.phone_input}, ...{email_input:this.email_input},...{quants: this.g_quants}, ...order, ...{selectedPayment: this.selectedPayment}, ...{selectedReason: this.selectedReason}, ...{new_plan_date: this.new_plan_date}, ...{commentText:this.commentText},...{check:this.checkBase64Image}};
-        syncRequests && syncRequests.push({order,status });
+        syncRequests && syncRequests.push({order,newStatus });
         this.cache.saveItem('syncRequests',syncRequests,'delayedCalls').then(()=>{
-          console.log(`sys:: Отложено изменение статуса на ${status} для заказа ${order.client_id}`);
-          this.localModifyOrders();
+          console.log(`sys:: Отложено изменение статуса на ${newStatus} для заказа ${order.client_id}`);
+          this.localModifyOrders(newStatus);
           this.router.navigate(['courier']);
         })
       })
       }else{
         //Если онлайн
-        this.localModifyOrders();
+        this.localModifyOrders(newStatus);
         order = {...{phone_input:this.phone_input}, ...{email_input:this.email_input},...{quants: this.g_quants}, ...order, ...{selectedPayment: this.selectedPayment}, ...{selectedReason: this.selectedReason}, ...{new_plan_date: this.new_plan_date}, ...{commentText:this.commentText},...{check:this.checkBase64Image}};
-        this.orderService.sendDelayedCall(order, status);
+        this.orderService.sendDelayedCall(order, newStatus);
         this.router.navigate(['courier']);
     }
   }
@@ -748,11 +748,11 @@ export class OrderPage implements OnInit {
     this.openCompany = !this.openCompany;
   }
 
-  public localModifyOrders(){
+  public localModifyOrders(newStatus:number){
     this.storage.get('orders').then((orders)=>{
-            orders?.map((order)=>{
+            orders?.map((order:Order)=>{
               if(order.id.toString() == this.order.id){
-                order.status_id = status;
+                order.status_id = newStatus;
                 this.storage.set('orders', orders);
                 this.data.orders.next(orders);
               }

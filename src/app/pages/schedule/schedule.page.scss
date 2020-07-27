@@ -1,5 +1,5 @@
 .schedule-area {
-  height: 50%;
+  min-height: 50%;
   padding-top: 10px;
   padding-left: 15px;
   padding-right: 15px;
@@ -8,6 +8,7 @@
 .working {
   background: rgba(13, 182, 20, 0.05);
   border-bottom: 1px solid #686868;
+  padding-top: 30px;
 }
 
 .non-working {
@@ -39,8 +40,11 @@ ion-datetime {
 }
 
 ion-button {
-  height: 100%;
   --background: #2b637e;
+}
+
+.confirm {
+  height: 100%;
 }
 
 ion-list.md {
@@ -51,4 +55,26 @@ ion-list-header {
   padding-left: 0;
   font-size: 14px;
   line-height: 16px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
+  font-size: 14px;
+  color: #686868;
+}
+ion-text.del {
+  margin-left: 60px;
+  font-size: 14px;
+  a {
+    text-decoration: underline;
+    color: #686868;
+  }
+}
+.working ul:nth-child(odd) {
+  background: rgba(13, 182, 20, 0.2);
+}
+ion-content {
+  bottom: 30px;
 }

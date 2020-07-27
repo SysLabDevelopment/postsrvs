@@ -51,6 +51,7 @@ export class OrdersListSecondComponent implements OnChanges, OnInit {
   ngOnInit() {
     this.data.orders.subscribe((orders) => {
       this.orders = orders;
+      this.tabFilterOrders();
     });
     this.orders;
     console.log('sys:: исходный массив заказов в компоненте: ', this.orders);
