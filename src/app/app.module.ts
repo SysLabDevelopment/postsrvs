@@ -26,15 +26,14 @@ import { HttpErrorInterceptor } from "./interceptors/http.interceptor";
 import { registerLocaleData } from "@angular/common";
 import localeRu from "@angular/common/locales/ru";
 import { GoogleMaps } from "@ionic-native/google-maps";
-import { AppUpdate } from "@ionic-native/app-update/ngx";
 registerLocaleData(localeRu, "ru");
 import { IonicStorageModule } from "@ionic/storage";
 import { CacheModule } from "ionic-cache";
 import { Network } from '@ionic-native/network/ngx';
 import {IconsModule} from './icons/icons.module';
-
+import {HelpComponent} from './components/help/help.component';
 @NgModule({
-  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent],
+  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent,HelpComponent],
   entryComponents: [],
   imports: [
     IconsModule,
@@ -62,7 +61,6 @@ import {IconsModule} from './icons/icons.module';
     Camera,
     CallNumber,
     GoogleMaps,
-    AppUpdate,
     Network,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {

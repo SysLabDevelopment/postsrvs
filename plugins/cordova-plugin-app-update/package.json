@@ -1,27 +1,27 @@
 {
-  "_from": "cordova-plugin-app-update",
+  "_from": "cordova-plugin-app-update@2.0.2",
   "_id": "cordova-plugin-app-update@2.0.2",
   "_inBundle": false,
   "_integrity": "sha512-JQLTdkFZ9nViV0WS7VD4WYKPj7WItDhxj/cwHW28+T1enYuISBKjMW6wm+X9wNd40oOY58KrH040sv0fIPvUTA==",
   "_location": "/cordova-plugin-app-update",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-app-update",
+    "raw": "cordova-plugin-app-update@2.0.2",
     "name": "cordova-plugin-app-update",
     "escapedName": "cordova-plugin-app-update",
-    "rawSpec": "",
+    "rawSpec": "2.0.2",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "2.0.2"
   },
   "_requiredBy": [
-    "#USER",
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-app-update/-/cordova-plugin-app-update-2.0.2.tgz",
   "_shasum": "9a1ed9c890273901601f63c7d1ef572697c7e981",
-  "_spec": "cordova-plugin-app-update",
+  "_spec": "cordova-plugin-app-update@2.0.2",
   "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "vaenow"

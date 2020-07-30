@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class='toolbar'>
     <ion-buttons slot="start">
       <ion-button (click)="findOrder()">
         <i-feather name="search" slot='start'></i-feather>
@@ -17,6 +17,9 @@
       <ion-button *ngIf="courier.sortOrders?.g_process == 0 && !isWorkEnded" (click)="endWork()">
         <i-feather name="check-square"></i-feather>
       </ion-button>
+      <ion-button (click)="showHelp($event)">
+        <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -27,84 +30,70 @@
       refreshingSpinner="bubbles" refreshingText="Обновление...">
     </ion-refresher-content>
   </ion-refresher>
-  <span class="manual_lable" [ngClass]="{  'm_lbl' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}"
-    *ngIf="state$.manual_route && selectedTab == 1">Для сортировки зажмите заказ и перетащите</span>
 
   <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
-    <app-orders-list-guess *ngIf="auth.getGuessMode()"> </app-orders-list-guess>
-
-    <div class="o-tab-wrp" *ngIf="ordersInit && !auth.getGuessMode()">
-      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 1}" (click)="tabSelect(1)">
-        В работе
-      </div>
-      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 2}" (click)="tabSelect(2)">
-        Доставлено
-      </div>
-      <div class="o-tab" [ngClass]="{'tab_active' : selectedTab == 3}" (click)="tabSelect(3)">
-        Не доставлено
-      </div>
-    </div>
+    <ion-segment (ionChange)="segmentChanged($event)" value='friends' style="height: 45px">
+      <ion-segment-button value="friends">
+        <ion-label>В работе</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="enemies">
+        <ion-label>Доставлено</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="enemies3">
+        <ion-label>Не доставлено</ion-label>
+      </ion-segment-button>
+    </ion-segment>
     <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
-      <app-orders-list-first [selectedTab]="selectedTab" [confirm_cond]="subBtnCond"
-        *ngIf="selectedTab == 1 && this.state$.manual_route && !auth.getGuessMode()"
-        (ordersChange_E)="ordersListChanged($event)" (orderSelected_E)="selectOrder($event)">
-      </app-orders-list-first>
+      <ion-searchbar placeholder="Поиск по заказам" inputmode="text" (ionChange)="onSearchChange($event)"
+        [debounce]="250" [(ngModel)]="searchString" animated></ion-searchbar>
 
-      <app-orders-list-second [orders]="orders" [selectedTab]="selectedTab" [confirm_cond]="subBtnCond"
-        *ngIf="!(this.state$.manual_route && selectedTab == 1) && !auth.getGuessMode()"
-        (orderSelected_E)="selectOrder($event)">
-      </app-orders-list-second>
+      <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
 
-      <div class="orders-lable" *ngIf="!auth.routingModeAuto">
-        <div class="all-amount olab-amount">
-          Всего заказов:
-          <span class="amount-labl">
-            {{courier.sortOrders.all}}
-          </span>
-        </div>
-        <div class="olab-amount" *ngIf="courier.sortOrders?.g_process != 0">
-          Заказов на вкладке:
-          <span class="amount-labl">{{courier.sortOrders?.g_process}}</span>
-        </div>
-        <div class="olab-amount" *ngIf="courier.sortOrders.g_done != 0">
-          Заказов на вкладке:
-          <div class="amount-labl">{{courier.sortOrders.g_done}}</div>
-        </div>
-        <div class="olab-amount" *ngIf="courier.sortOrders.g_fail != 0">
-          Заказов на вкладке:
-          <div class="amount-labl">{{courier.sortOrders.g_fail}}</div>
-        </div>
-        <div class="olab-empty" *ngIf=" (selectedTab == 1 && g_process == 0) ||
-                                                (selectedTab == 2 && g_done == 0) ||
-                                                (selectedTab == 3 && g_fail == 0)">
-          <span class="center-title">Нет заказов</span>
-        </div>
-      </div>
-      <div class="orders-lable" *ngIf="auth.routingModeAuto">
-        <ion-chip color="primary" mode="md" outline="true">
-          <ion-label>Всего заказов {{courier.sortOrders.all}}</ion-label>
-        </ion-chip>
-        <ion-chip color="danger" mode="md" outline="true" *ngIf="courier.sortOrders.g_fail != 0">
-          <ion-label>Отменено {{courier.sortOrders.g_fail}}</ion-label>
-        </ion-chip>
-        <ion-chip color="success" mode="md" outline="true" *ngIf="courier.sortOrders.g_done != 0">
-          <ion-label>Доставлено {{courier.sortOrders.g_done}}</ion-label>
-        </ion-chip>
-        <ion-chip color="secondary" mode="md" outline="true" *ngIf="courier.sortOrders.g_process != 0">
-          <ion-label>Осталось {{courier.sortOrders?.g_process}}</ion-label>
-        </ion-chip>
-      </div>
+        <ion-item *ngFor="let order of orders_c | async" [ngClass]="{
+         overdue: order.overdue == '1' || order.required == true
+        }">
+          <ion-reorder>
+            <ion-label [@openClose]="order.show ? 'open' : 'closed'">
+
+              <div class='title'>
+                <span>
+                  <span class='client-id'> {{order.client_id}}</span>
+                  <span> ({{order.company}})</span>
+                </span>
+                <span class='client-id'>
+                  <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'H:mm':'ru' }} </span>
+                  <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'H:mm':'ru' }}</span>
+                </span>
+              </div>
+              <div class='addr'>{{order.client_address}}</div>
+              <div class='name'>{{order.client_fio}}</div>
+              <div class='actions' *ngIf='order.show'>
+                <ion-button fill="solid" size='default'>
+                  <ion-icon slot="start" src='../../../assets/mdi-light_note-plus.svg'></ion-icon>
+                  Заметки
+                </ion-button>
+                <ion-button fill="solid" size='default'>
+                  <ion-icon slot="start" name="location-outline"></ion-icon>
+                  Маршрут
+                </ion-button>
+                <ion-button fill="solid" size='default'>
+                  <ion-icon slot="start" name="call-outline"></ion-icon>
+                  Позвонить
+                </ion-button>
+              </div>
+            </ion-label>
+          </ion-reorder>
+          <ion-reorder slot="start">
+            <ion-icon name="ellipsis-vertical"></ion-icon>
+          </ion-reorder>
+          <div class="actions-button" (click)="order.show = !order.show">
+            <ion-icon src='../../../assets/actions-arrows.svg' [ngClass]="{turned: order.show == true }"></ion-icon>
+          </div>
+        </ion-item>
+
+      </ion-reorder-group>
     </div>
-    <div class="checking" *ngIf="auth.checkState !== 'checkedOut'">
-      <ion-button (click)="auth.check('In')" expand="block" fill="solid" shape="round"
-        *ngIf="auth.checkState == 'checkedundefined'">
-        Приехал на склад
-      </ion-button>
-      <ion-button (click)="auth.check('Out')" expand="block" fill="solid" shape="round"
-        *ngIf="auth.checkState == 'checkedIn'">
-        Уехал со склада
-      </ion-button>
-    </div>
+
     <div class="start-route"
       *ngIf="ordersInit && state$.orders_data != [] && state$.orders_data !== null && auth.checkState == 'checkedOut'">
       <button class="satrt-r-btn" *ngIf="!btn_go && !this.state$.manual_route && auth.routingModeAuto"

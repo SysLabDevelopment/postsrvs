@@ -1,19 +1,19 @@
 {
-  "_from": "cordova-plugin-appversion@1.0.0",
+  "_from": "cordova-plugin-appversion",
   "_id": "cordova-plugin-appversion@1.0.0",
   "_inBundle": false,
   "_integrity": "sha1-tgo5E+R1k1+QCJMLRpclwmOUKJE=",
   "_location": "/cordova-plugin-appversion",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "tag",
     "registry": true,
-    "raw": "cordova-plugin-appversion@1.0.0",
+    "raw": "cordova-plugin-appversion",
     "name": "cordova-plugin-appversion",
     "escapedName": "cordova-plugin-appversion",
-    "rawSpec": "1.0.0",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "1.0.0"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#USER",
@@ -21,7 +21,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-appversion/-/cordova-plugin-appversion-1.0.0.tgz",
   "_shasum": "b60a3913e475935f9008930b469725c263942891",
-  "_spec": "cordova-plugin-appversion@1.0.0",
+  "_spec": "cordova-plugin-appversion",
   "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Rareloop",

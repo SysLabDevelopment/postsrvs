@@ -66,7 +66,6 @@
     "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-androidx": "^1.0.2",
     "cordova-plugin-androidx-adapter": "^1.1.1",
-    "cordova-plugin-app-update": "^2.0.2",
     "cordova-plugin-appversion": "^1.0.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-geolocation": "4.0.2",
@@ -147,7 +146,8 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.6.2",
     "tslint": "~6.1.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "cordova-plugin-app-update": "2.0.2"
   },
   "description": "Логистическая платформа",
   "cordova": {
@@ -180,10 +180,10 @@
       "com.googlemaps.ios": {},
       "cordova-plugin-googlemaps": {},
       "cordova-plugin-androidx-adapter": {},
-      "cordova-plugin-app-update": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-appversion": {}
+      "cordova-plugin-appversion": {},
+      "cordova-plugin-app-update": {}
     },
     "platforms": [
       "android",

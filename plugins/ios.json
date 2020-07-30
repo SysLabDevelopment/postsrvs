@@ -69,19 +69,18 @@
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-app-update": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    }
-  },
-  "dependent_plugins": {
+    },
     "cordova-plugin-appversion": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-app-update": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
-  }
+  },
+  "dependent_plugins": {}
 }

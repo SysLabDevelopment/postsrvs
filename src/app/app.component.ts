@@ -10,7 +10,6 @@ import { AuthService } from "./services/auth.service";
 import { SettingsService } from "./services/settings.service";
 import { environment } from "../environments/environment";
 import { Environment } from "@ionic-native/google-maps";
-import { AppUpdate } from "@ionic-native/app-update/ngx";
 import { CacheService } from "ionic-cache";
 import { Network } from '@ionic-native/network/ngx';
 import {OrderService } from './services/sys/order.service';
@@ -32,7 +31,6 @@ export class AppComponent {
     public courier: CourierService,
     public auth: AuthService,
     public settings: SettingsService,
-    private appUpdate: AppUpdate,
     cache: CacheService,
     private network: Network,
     private order: OrderService

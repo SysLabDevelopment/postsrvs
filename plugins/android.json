@@ -70,9 +70,6 @@
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "postsrvs.w"
     },
-    "cordova-plugin-app-update": {
-      "PACKAGE_NAME": "postsrvs.w"
-    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "postsrvs.w"
     },
@@ -81,13 +78,16 @@
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-appversion": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
+    "cordova-plugin-app-update": {
+      "PACKAGE_NAME": "postsrvs.w"
     }
   },
   "dependent_plugins": {
     "es6-promise-plugin": {
-      "PACKAGE_NAME": "postsrvs.w"
-    },
-    "cordova-plugin-appversion": {
       "PACKAGE_NAME": "postsrvs.w"
     }
   }

@@ -1,25 +1,50 @@
 import { Component, OnInit, Injectable, ViewChildren, ViewChild, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import { CourierService } from '../../services/courier.service';
 import { Router } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, map } from 'rxjs/operators';
 import { StateService } from '../../services/state.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
-import { moveItemInArray, CdkDragDrop, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { SettingsService } from '../../services/settings.service';
 import { SysService } from '../../services/sys.service';
 import {DataService} from '../../services/sys/data.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
+import { PopoverController } from "@ionic/angular";
+import { HelpComponent } from '../../components/help/help.component';
+import { IonReorderGroup } from '@ionic/angular';
 @Component({
   selector: 'app-courier',
   templateUrl: './courier.page.html',
   styleUrls: ['./courier.page.scss'],
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        height: '105px',
+      })),
+      state('closed', style({
+        height: '70px',
+      })),
+      transition('open => closed', [
+        animate('0.5s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+    ])
+  ]
 })
 export class CourierPage implements OnInit {
-  @ViewChildren(CdkDrag) DragItems: QueryList<CdkDrag>;
-  @ViewChild(CdkDropList) Drop_L: CdkDropList;
+   @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
   @ViewChild('sInput') public sInput: ElementRef;
 
   public orders: any = null;
@@ -42,6 +67,11 @@ export class CourierPage implements OnInit {
   public scan_process = false;
   public find_order: boolean = false;
   public isWorkEnded: boolean = false;
+  public searchString = '';
+  private ord: Observable<any[]>;
+  public orders_c: Observable<any>;
+  public slicer: number = this.howSlice();
+
 
   constructor(public courier: CourierService,
     private router: Router,
@@ -51,7 +81,9 @@ export class CourierPage implements OnInit {
     private vbr: Vibration,
     private settings: SettingsService,
     private sys: SysService,
-    private data: DataService
+    private data: DataService,
+    public popoverController: PopoverController,
+
   ) {
     let self = this;
 
@@ -68,6 +100,9 @@ export class CourierPage implements OnInit {
       }
     })
     this.initConditions();
+    this.ord = this.data.orders.asObservable();
+    this.prepareOrdersList();
+
   }
 
   public initConditions() {
@@ -415,4 +450,55 @@ doRefresh(event){
     this.data.getApiData().add(event.target.complete());
 
   }
+
+  public segmentChanged(event){
+
+  }
+
+  public onSearchChange(event){
+
+
+  }
+    public prepareOrdersList() {
+
+      this.orders_c = this.ord.pipe(
+        map(
+          orders => orders && orders.filter(order => Number(order.status_id) == 1)
+            .filter(
+              order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
+                order.client_id.toLowerCase().includes(this.searchString.toLowerCase())
+            )
+            .slice(this.slicer)
+        ),
+        map(
+          (orders) => { orders.forEach((order) => { order.show = false }); return orders}
+        )
+      );
+
+  }
+  public howSlice(): number {
+    return (this.settings.rules.typeRoute === 'standart' ? 0 : 1)
+  }
+
+public doReorder(ev: any) {
+    console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
+    ev.detail.complete();
+  }
+
+  async popover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: HelpComponent,
+      event: ev,
+      translucent: true,
+      cssClass:'help'
+    });
+    return popover
+  }
+
+  async showHelp(ev) {
+    let popover = await this.popover(ev);
+      popover.present();
+
+  }
+
 }

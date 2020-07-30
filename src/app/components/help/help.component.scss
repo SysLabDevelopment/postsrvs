@@ -1,0 +1,19 @@
+.body {
+  padding: 8px 10px 10px 13px;
+  .title {
+    color: #2b637e;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  ion-item {
+    --padding-start: 0;
+    ion-icon {
+      margin: 0 5px 0 0;
+      font-size: 3em;
+    }
+    ion-label {
+      font-size: 12px;
+      white-space: normal;
+    }
+  }
+}
