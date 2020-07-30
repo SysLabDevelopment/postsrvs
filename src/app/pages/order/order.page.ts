@@ -34,7 +34,7 @@ import {OrderService} from '../../services/sys/order.service';
     trigger('openClose', [
       // ...
       state('open', style({
-        height: '264px', 
+        height: '264px',
       })),
       state('closed', style({
         height: '70px',
@@ -189,7 +189,7 @@ export class OrderPage implements OnInit {
   }
 
   private normalizePhoneNumber(phone): string {
-    if (phone[0] !== "8" && phone.length !== 11) {
+    if (phone[0] !== "8" && phone[0] !== "7"&& phone.length !== 11) {
       phone = "8" + phone;
     }
     if (phone.length == 7 || phone.length == 10) {
@@ -463,7 +463,7 @@ export class OrderPage implements OnInit {
           })
         break;
       case 6:
-       
+
         if(this.selectedPayment !== '2'){
           noSkip = false
         }
@@ -597,7 +597,7 @@ export class OrderPage implements OnInit {
 
   //Получаем api key & login
   public getPayData() {
-  
+
     let url = "pay_order";
     let data = { action: "getData", orderId: this.clientId };
     let self = this;
@@ -644,12 +644,12 @@ export class OrderPage implements OnInit {
       }
         requests.push({url:url, data:data});
         this.cache.saveItem('requests',requests);
-      
+
        self.submitChange();
       self.checkPayment();
       self.hide_status = true;
     })
-   
+
   }
   }
 
@@ -735,7 +735,7 @@ export class OrderPage implements OnInit {
       }else{
         this.sendPayCall();
       }
-      
+
     }
   }
 

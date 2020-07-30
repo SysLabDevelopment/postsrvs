@@ -29,10 +29,10 @@ import { IonReorderGroup } from '@ionic/angular';
     trigger('openClose', [
       // ...
       state('open', style({
-        height: '105px',
+        height: '125px',
       })),
       state('closed', style({
-        height: '70px',
+        height: '80px',
       })),
       transition('open => closed', [
         animate('0.5s')
@@ -276,28 +276,6 @@ export class CourierPage implements OnInit {
   }
 
   public selectOrder(id) {
-    if (this.orders == null) {
-      this.courier.getOrders().subscribe((data) => {
-        this.orders = data.orders;
-        for (var i = 0; i < this.orders.length; i++) {
-          if (this.orders[i].id == id) {
-            if (this.orders[i].confirm == '0' && this.subBtnCond) {
-              return false;
-            }
-          }
-        }
-      })
-    } else {
-
-
-      for (var i = 0; i < this.orders.length; i++) {
-        if (this.orders[i].id == id) {
-          if (this.orders[i].confirm == '0' && this.subBtnCond) {
-            return false;
-          }
-        }
-      }
-    }
     this.router.navigate(['/order', id]);
   }
 

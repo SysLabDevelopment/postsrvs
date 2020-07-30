@@ -47,11 +47,11 @@
       <ion-searchbar placeholder="Поиск по заказам" inputmode="text" (ionChange)="onSearchChange($event)"
         [debounce]="250" [(ngModel)]="searchString" animated></ion-searchbar>
 
-      <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+      <ion-reorder-group (ionItemReorder)="doReorder()" disabled="false">
 
         <ion-item *ngFor="let order of orders_c | async" [ngClass]="{
          overdue: order.overdue == '1' || order.required == true
-        }">
+        }" (click)="selectOrder(order.id)">
           <ion-reorder>
             <ion-label [@openClose]="order.show ? 'open' : 'closed'">
 
