@@ -33,13 +33,13 @@
 
   <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
     <ion-segment (ionChange)="segmentChanged($event)" value='friends' style="height: 45px">
-      <ion-segment-button value="friends">
+      <ion-segment-button value="1">
         <ion-label>В работе</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="enemies">
+      <ion-segment-button value="4">
         <ion-label>Доставлено</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="enemies3">
+      <ion-segment-button value="6">
         <ion-label>Не доставлено</ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -72,7 +72,7 @@
                 <ion-icon slot="start" src='../../../assets/mdi-light_note-plus.svg'></ion-icon>
                 Заметки
               </ion-button>
-              <ion-button fill="solid" size='default' (click)="showRoute(order.lt,order.lg)">
+              <ion-button fill="solid" size='default' (click)="showRoute(order); $event.stopPropagation()">
                 <ion-icon slot="start" name="location-outline"></ion-icon>
                 Маршрут
               </ion-button>

@@ -446,19 +446,23 @@ doRefresh(event){
 
   }
 
-  public segmentChanged(event){
-
+  public segmentChanged(event) {
+    let ids = [Number(event.target.value)];
+    if (event.target.value == '5') {
+      ids.push(6)
+    }
+    this.prepareOrdersList(ids)
   }
 
   public onSearchChange(event){
 
 
   }
-    public prepareOrdersList() {
+    public prepareOrdersList(ids = [1]) {
 
       this.orders_c = this.ord.pipe(
         map(
-          orders => orders && orders.filter(order => Number(order.status_id) == 1)
+          orders => orders && orders.filter(order => ids.includes(Number(order.status_id)))
             .filter(
               order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
                 order.client_id.toLowerCase().includes(this.searchString.toLowerCase())
@@ -491,14 +495,8 @@ doRefresh(event){
 
   }
 
-  public showRoute(lt: number, lg: number) {
-    const meta = {
-      label: 'showRouteToOrder',
-      lt,
-      lg
-    };
-    this.map.infoUpdated.next(meta);
-    this.router.navigate(['map']);
+  public showRoute(order) {
+    this.map.showRoute(order)
   }
 
   public  drop(event: CdkDragDrop<any[]>) {
