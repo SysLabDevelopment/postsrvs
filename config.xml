@@ -3,7 +3,7 @@
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ps@psvs.com" href="http://psvs.com/">Psvs Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://localhost:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -137,4 +137,5 @@
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-appversion" spec="1.0.0" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.8.0" />
+    <allow-navigation href="http://localhost:8100" sessionid="855e7208" />
 </widget>

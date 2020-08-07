@@ -47,51 +47,50 @@
       <ion-searchbar placeholder="Поиск по заказам" inputmode="text" (ionChange)="onSearchChange($event)"
         [debounce]="250" [(ngModel)]="searchString" animated></ion-searchbar>
 
-      <ion-reorder-group (ionItemReorder)="doReorder()" disabled="false">
-
+      <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="50"
+        style="height: 100%; width: 100%; min-height: 50vh;">
         <ion-item *ngFor="let order of orders_c | async" [ngClass]="{
          overdue: order.overdue == '1' || order.required == true
-        }" (click)="selectOrder(order.id)">
-          <ion-reorder>
-            <ion-label [@openClose]="order.show ? 'open' : 'closed'">
+        }" (click)="selectOrder(order.id)" cdkDrag [cdkDragStartDelay]="500">
 
-              <div class='title'>
-                <span>
-                  <span class='client-id'> {{order.client_id}}</span>
-                  <span> ({{order.company}})</span>
-                </span>
-                <span class='client-id'>
-                  <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'H:mm':'ru' }} </span>
-                  <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'H:mm':'ru' }}</span>
-                </span>
-              </div>
-              <div class='addr'>{{order.client_address}}</div>
-              <div class='name'>{{order.client_fio}}</div>
-              <div class='actions' *ngIf='order.show'>
-                <ion-button fill="solid" size='default'>
-                  <ion-icon slot="start" src='../../../assets/mdi-light_note-plus.svg'></ion-icon>
-                  Заметки
-                </ion-button>
-                <ion-button fill="solid" size='default' (click)="showRoute(order.lt,order.lg)">
-                  <ion-icon slot="start" name="location-outline"></ion-icon>
-                  Маршрут
-                </ion-button>
-                <ion-button fill="solid" size='default'>
-                  <ion-icon slot="start" name="call-outline"></ion-icon>
-                  Позвонить
-                </ion-button>
-              </div>
-            </ion-label>
-          </ion-reorder>
-          <ion-reorder slot="start">
-            <ion-icon name="ellipsis-vertical"></ion-icon>
-          </ion-reorder>
-          <div class="actions-button" (click)="order.show = !order.show">
+          <ion-label [@openClose]="order.show ? 'open' : 'closed'">
+
+            <div class='title'>
+              <span>
+                <span class='client-id'> {{order.client_id}}</span>
+                <span> ({{order.company}})</span>
+              </span>
+              <span class='client-id'>
+                <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'H:mm':'ru' }} </span>
+                <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'H:mm':'ru' }}</span>
+              </span>
+            </div>
+            <div class='addr'>{{order.client_address}}</div>
+            <div class='name'>{{order.client_fio}}</div>
+            <div class='actions' *ngIf='order.show'>
+              <ion-button fill="solid" size='default'>
+                <ion-icon slot="start" src='../../../assets/mdi-light_note-plus.svg'></ion-icon>
+                Заметки
+              </ion-button>
+              <ion-button fill="solid" size='default' (click)="showRoute(order.lt,order.lg)">
+                <ion-icon slot="start" name="location-outline"></ion-icon>
+                Маршрут
+              </ion-button>
+              <ion-button fill="solid" size='default'>
+                <ion-icon slot="start" name="call-outline"></ion-icon>
+                Позвонить
+              </ion-button>
+            </div>
+          </ion-label>
+
+
+          <ion-icon name="ellipsis-vertical" slot='start'></ion-icon>
+
+          <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()">
             <ion-icon src='../../../assets/actions-arrows.svg' [ngClass]="{turned: order.show == true }"></ion-icon>
           </div>
         </ion-item>
-
-      </ion-reorder-group>
+      </cdk-virtual-scroll-viewport>
     </div>
 
     <div class="start-route"

@@ -1,27 +1,28 @@
-import { Component, OnInit, Injectable, ViewChildren, ViewChild, QueryList, ElementRef, Renderer2 } from '@angular/core';
-import { CourierService } from '../../services/courier.service';
-import { Router } from '@angular/router';
-import { takeUntil, map } from 'rxjs/operators';
-import { StateService } from '../../services/state.service';
-import { Subject, Observable } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
-import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
-import { Vibration } from '@ionic-native/vibration/ngx';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { SettingsService } from '../../services/settings.service';
-import { SysService } from '../../services/sys.service';
-import {DataService} from '../../services/sys/data.service';
 import {
-  trigger,
+  animate,
   state,
   style,
-  animate,
   transition,
+  trigger
 } from '@angular/animations';
-import { PopoverController } from "@ionic/angular";
-import { HelpComponent } from '../../components/help/help.component';
-import { IonReorderGroup } from '@ionic/angular';
+import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
+import { IonReorderGroup, PopoverController } from "@ionic/angular";
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 import { MapService } from 'src/app/services/sys/map.service';
+import { HelpComponent } from '../../components/help/help.component';
+import { AuthService } from '../../services/auth.service';
+import { CourierService } from '../../services/courier.service';
+import { SettingsService } from '../../services/settings.service';
+import { StateService } from '../../services/state.service';
+import { SysService } from '../../services/sys.service';
+import { DataService } from '../../services/sys/data.service';
+
+
 @Component({
   selector: 'app-courier',
   templateUrl: './courier.page.html',
@@ -47,6 +48,10 @@ import { MapService } from 'src/app/services/sys/map.service';
 export class CourierPage implements OnInit {
    @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
   @ViewChild('sInput') public sInput: ElementRef;
+    @ViewChild(CdkDropList, { static: false })
+  Drop_L: CdkDropList;
+    @ViewChildren(CdkDrag)
+  DragItems: QueryList<CdkDrag>;
 
   public orders: any = null;
   public statuses: any = null;
@@ -124,7 +129,18 @@ export class CourierPage implements OnInit {
     }
   }
 
-  ngAfterViewChecked() { }
+  ngAfterViewChecked() {
+        this.Drop_L.autoScrollDisabled = false;
+    this.DragItems.changes.subscribe((r) => {
+      this.DragItems.forEach(DragItem => {
+        DragItem.dragStartDelay = {
+          touch: 500,
+          mouse: 100
+        }
+
+      })
+    });
+   }
 
   ngOnInit() {
     this.settings.checkout = !!(this.settings.rules.storeCheckMode - 0);
@@ -450,18 +466,13 @@ doRefresh(event){
             .slice(this.slicer)
         ),
         map(
-          (orders) => { orders.forEach((order) => { order.show = false }); return orders}
+          (orders) => { orders.forEach((order) => { order.show = false }); this.orders = orders; return orders}
         )
       );
 
   }
   public howSlice(): number {
     return (this.settings.rules.typeRoute === 'standart' ? 0 : 1)
-  }
-
-public doReorder(ev: any) {
-    console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
-    ev.detail.complete();
   }
 
   async popover(ev: any) {
@@ -489,5 +500,13 @@ public doReorder(ev: any) {
     this.map.infoUpdated.next(meta);
     this.router.navigate(['map']);
   }
+
+  public  drop(event: CdkDragDrop<any[]>) {
+
+    moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
+    this.data.orders.next(this.orders);
+    console.log('sys:: массив заказов после перетаскивания: ', this.orders);
+  }
+
 
 }
