@@ -1,44 +1,38 @@
-import { Observable } from "rxjs";
-import { MapService } from "./../../services/sys/map.service";
-import { Response } from "./../../interfaces/response";
-import { SysService } from "./../../services/sys.service";
-import { CourierService } from "./../../services/courier.service";
-import { SettingsService } from "./../../services/settings.service";
 import {
   Component,
   OnInit
 } from "@angular/core";
-import { StateService } from "../../services/state.service";
-import { Platform, NavController } from "@ionic/angular";
-import {
-  GoogleMaps,
-  LatLng,
-  GoogleMapOptions,
-  GoogleMap,
-  LocationService,
-  MyLocation,
-  Marker,
-  MarkerClusterOptions,
-  MarkerOptions,
-  HtmlInfoWindow,
-  GoogleMapsAnimation,
-  MarkerCluster,
-  MarkerLabel,
-  MarkerClusterIcon,
-  CameraPosition,
-  GoogleMapsEvent,
-  BaseArrayClass,
-} from "@ionic-native/google-maps";
 import { Router } from "@angular/router";
-import { filter } from "rxjs/operators";
+import {
+  DirectionsRenderer,
+  DirectionsResult,
+  DirectionsService,
+  GoogleMap,
+  GoogleMapOptions,
+  GoogleMapsEvent,
+  ILatLng,
+  ILatLngBounds,
+  LocationService,
+  Marker,
+  MarkerCluster,
+  MarkerOptions,
+  MyLocation
+} from "@ionic-native/google-maps";
+import { NavController, Platform, PopoverController } from "@ionic/angular";
+import { Storage } from "@ionic/storage";
+import { Observable, Subject } from "rxjs";
+import { filter, takeUntil } from "rxjs/operators";
+import { OrderComponent } from "../../components/order/order.component";
+import { Meta } from '../../interfaces/meta';
 import { AuthService } from "../../services/auth.service";
 import { NavService } from "../../services/nav.service";
-import { takeUntil } from "rxjs/operators";
-import { Subject } from "rxjs";
-import { PopoverController } from "@ionic/angular";
-import { OrderComponent } from "../../components/order/order.component";
-import {DataService} from "../../services/sys/data.service";
-import { Storage } from "@ionic/storage";
+import { StateService } from "../../services/state.service";
+import { DataService } from "../../services/sys/data.service";
+import { Response } from "./../../interfaces/response";
+import { CourierService } from "./../../services/courier.service";
+import { SettingsService } from "./../../services/settings.service";
+import { SysService } from "./../../services/sys.service";
+import { MapService } from "./../../services/sys/map.service";
 
 declare var AppVersion:{version:string};
 @Component({
@@ -66,7 +60,14 @@ export class MapPage implements OnInit {
     },
   };
 
-  
+  renderer: DirectionsRenderer = null;
+  private origin: ILatLng =  {
+          lat: 55.755826,
+          lng: 37.6173,
+        };
+  bounds: ILatLngBounds;
+  private routeToOrder = false;
+  public destination: ILatLng;
   constructor(
     public state$: StateService,
     public platform: Platform,
@@ -77,7 +78,6 @@ export class MapPage implements OnInit {
     private sysMap: MapService,
     private auth: AuthService,
     private nav: NavService,
-    public googleMaps: GoogleMaps,
     public navCtrl: NavController,
     public popoverController: PopoverController,
     private data: DataService,
@@ -111,10 +111,16 @@ export class MapPage implements OnInit {
         this.initContent();
       }
     });
-    this.sysMap.infoUpdated.subscribe(() => {
+    this.sysMap.infoUpdated.subscribe((data: Meta) => {
+      let customData: any;
+      if (data.label == 'showRouteToOrder') {
+        this.routeToOrder = true;
+        customData = data;
+      }
       this.map.clear();
-      this.drawData();
+      this.drawData(null, customData);
     });
+
   }
 
   ngOnDestroy() {
@@ -159,10 +165,7 @@ export class MapPage implements OnInit {
         indoorPicker: true,
       },
       camera: {
-        target: {
-          lat: 55.755826,
-          lng: 37.6173,
-        },
+        target: this.origin,
         zoom: 10,
       },
       gestures: {
@@ -221,19 +224,22 @@ export class MapPage implements OnInit {
         },
         name: order.id,
         info: info
-        
+
       });
     });
     return markeredOrders;
   }
 
-  private drawData(autoStartRoute: string = "0") {
+  private drawData(autoStartRoute: string = "0", customData = null) {
     if (this.map !== undefined) {
-      if (autoStartRoute == "0") {
+      if (this.routeToOrder) {
+            this.requestDirection(customData.order.lt, customData.order.lg);
+          this.addCluster(this.markeredOrders([customData.order]));
+      }
+      else if (autoStartRoute == "0") {
         this.addCluster(this.markeredOrders(this.orders));
         return false;
       }
-    } else {
     }
   }
 
@@ -433,4 +439,60 @@ ${arrows}
     });
     return popover
   }
+
+  private requestDirection(lat: number, lng:number) {
+    this.destination = {lat, lng};
+
+    DirectionsService.route({
+      'origin': this.origin,
+      'destination': this.destination,
+      'travelMode': "DRIVING"
+    }).then((result: DirectionsResult) => {
+      console.log(JSON.stringify(result, null, 2));
+      this.bounds = result.routes[0].bounds;
+      if (!this.renderer) {
+        this.renderer = this.map.addDirectionsRendererSync({
+          'directions': result,
+          'panel': 'guide',
+         'polylineOptions':{
+           'points':
+             [
+               this.origin,
+               this.destination
+             ]
+        },
+          'markerOptions': {
+            visible: false
+          }
+        });
+        this.renderer.on(GoogleMapsEvent.DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
+      } else {
+      //   let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
+      //   result.routes[0].overview_polyline
+      // );
+      //     this.map.addPolyline({
+      //       points: decodedPoints,
+      //       'color': '#4a4a4a',
+      //       width: 4,
+      //       geodesic: false
+      //     });
+        this.map.addMarkerSync({ position: this.destination });
+        this.renderer.setDirections(result);
+      }
+    });
+  }
+  onDirectionChanged() {
+    let directions: DirectionsResult = this.renderer.getDirections();
+    this.origin = directions.routes[0].legs[0].start_location;
+    this.destination = directions.routes[0].legs[0].end_location;
+    this.bounds = directions.routes[0].bounds;
+  }
+   onSplitterDragEnd() {
+    this.map.animateCamera({
+      'target': this.bounds,
+      'duration': 500
+    });
+
+  }
+
 }

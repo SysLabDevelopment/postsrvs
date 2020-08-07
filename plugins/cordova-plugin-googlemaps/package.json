@@ -1,26 +1,24 @@
 {
-  "_from": "cordova-plugin-googlemaps@^2.7.1",
-  "_id": "cordova-plugin-googlemaps@2.7.1",
+  "_from": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
+  "_id": "cordova-plugin-googlemaps@2.8.0-20200709-2008",
   "_inBundle": false,
-  "_integrity": "sha512-CPqLTc+Pmf/8sL4+lJazQR0ESNTSLaHIp+37yLe49dRg+qF3KNvtGX/l01SoJilgAwDkZjFNtOORhHlzlbmEdA==",
+  "_integrity": "",
   "_location": "/cordova-plugin-googlemaps",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "cordova-plugin-googlemaps@^2.7.1",
-    "name": "cordova-plugin-googlemaps",
-    "escapedName": "cordova-plugin-googlemaps",
-    "rawSpec": "^2.7.1",
-    "saveSpec": null,
-    "fetchSpec": "^2.7.1"
+    "type": "git",
+    "raw": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
+    "rawSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
+    "saveSpec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
+    "fetchSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
+    "gitCommittish": "multiple_maps"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-googlemaps/-/cordova-plugin-googlemaps-2.7.1.tgz",
-  "_shasum": "8af5f721852144ff95c301f90a8bfb1e5e1218d2",
-  "_spec": "cordova-plugin-googlemaps@^2.7.1",
+  "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#9598dc43619bc0d715bfeee65ea0d0751e0e22b7",
+  "_spec": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
   "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Masashi Katsumata, Hirbod Mirjavadi"
@@ -88,5 +86,5 @@
     "test": "jest && npm run eslint",
     "test:watch": "jest --watch"
   },
-  "version": "2.7.1"
+  "version": "2.8.0-20200709-2008"
 }

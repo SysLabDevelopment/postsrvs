@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { GoogleMaps, Polygon } from '@ionic-native/google-maps';
 import { MapPage } from './map.page';
-
+import { AngularSplitModule } from 'angular-split';
 const routes: Routes = [
   {
     path: '',
@@ -15,6 +15,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    AngularSplitModule.forRoot(),
     CommonModule,
     FormsModule,
     IonicModule,

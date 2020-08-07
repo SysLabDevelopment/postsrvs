@@ -1,18 +1,18 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Geolocation, GeolocationOptions } from "@ionic-native/geolocation/ngx";
+import { Router } from "@angular/router";
 import { Device } from "@ionic-native/device/ngx";
-import { Response } from "./../../interfaces/response";
-import { Observable, Subject } from "rxjs";
+import { Geolocation } from "@ionic-native/geolocation/ngx";
 import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  Environment,
+  Environment, GoogleMap,
+
+  GoogleMapOptions, GoogleMaps,
+
+  GoogleMapsEvent
 } from "@ionic-native/google-maps";
 import { Platform } from "@ionic/angular";
-import { Router } from "@angular/router";
+import { Observable, Subject } from "rxjs";
+import { Order } from 'src/app/interfaces/order';
 @Injectable({
   providedIn: "root",
 })
@@ -139,5 +139,14 @@ export class MapService {
 
   public navigate(page: any) {
     this.router.navigate(page);
+  }
+
+ public showRoute(order:Order) {
+    const meta = {
+      label: 'showRouteToOrder',
+      order
+    };
+    this.infoUpdated.next(meta);
+    this.router.navigate(['map']);
   }
 }

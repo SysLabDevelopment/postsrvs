@@ -1,6 +1,6 @@
 {
   "_from": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
-  "_id": "cordova-plugin-googlemaps-sdk@3.8.0",
+  "_id": "cordova-plugin-googlemaps-sdk@3.9.0",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/cordova-plugin-googlemaps-sdk",
@@ -14,10 +14,10 @@
     "gitCommittish": null
   },
   "_requiredBy": [
-    "#USER",
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
-  "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git#f0827aa78f3830b23c2f2f530e0e9c096b3e54b9",
+  "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git#f16676a612b1bf50fb482d2dd0ad9109daabc2b1",
   "_spec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
   "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
@@ -41,5 +41,5 @@
     "type": "git",
     "url": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git"
   },
-  "version": "3.8.0"
+  "version": "3.9.0"
 }

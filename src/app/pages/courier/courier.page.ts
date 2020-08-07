@@ -21,6 +21,7 @@ import {
 import { PopoverController } from "@ionic/angular";
 import { HelpComponent } from '../../components/help/help.component';
 import { IonReorderGroup } from '@ionic/angular';
+import { MapService } from 'src/app/services/sys/map.service';
 @Component({
   selector: 'app-courier',
   templateUrl: './courier.page.html',
@@ -83,7 +84,7 @@ export class CourierPage implements OnInit {
     private sys: SysService,
     private data: DataService,
     public popoverController: PopoverController,
-
+    private map: MapService
   ) {
     let self = this;
 
@@ -477,6 +478,16 @@ public doReorder(ev: any) {
     let popover = await this.popover(ev);
       popover.present();
 
+  }
+
+  public showRoute(lt: number, lg: number) {
+    const meta = {
+      label: 'showRouteToOrder',
+      lt,
+      lg
+    };
+    this.map.infoUpdated.next(meta);
+    this.router.navigate(['map']);
   }
 
 }

@@ -1,33 +1,30 @@
-import { DataService } from './../../services/sys/data.service';
+import {
+  animate, state,
+  style,
+
+  transition, trigger
+} from "@angular/animations";
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute, ParamMap } from "@angular/router";
-import { CourierService } from "../../services/courier.service";
-import { StateService } from "../../services/state.service";
-import { AuthService } from "../../services/auth.service";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Platform } from "@ionic/angular";
-import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
+import { ActivatedRoute, Router } from "@angular/router";
 import { CallNumber } from "@ionic-native/call-number/ngx";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
+import { Network } from '@ionic-native/network/ngx';
 import { Storage } from "@ionic/storage";
 import { CacheService } from "ionic-cache";
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from "@angular/animations";
-import { takeUntil, filter, map } from "rxjs/operators";
 import { Subject } from "rxjs";
-import { SysService } from "../../services/sys.service";
-import { Statuses } from "../../interfaces/statuses";
-import { Reason } from "../../interfaces/reason";
-import { SettingsService } from "../../services/settings.service";
-import { MapService } from "../../services/sys/map.service";
+import { takeUntil } from "rxjs/operators";
 import { Order } from 'src/app/interfaces/order';
-import { Network } from '@ionic-native/network/ngx';
-import {OrderService} from '../../services/sys/order.service';
+import { Reason } from "../../interfaces/reason";
+import { Statuses } from "../../interfaces/statuses";
+import { AuthService } from "../../services/auth.service";
+import { CourierService } from "../../services/courier.service";
+import { SettingsService } from "../../services/settings.service";
+import { StateService } from "../../services/state.service";
+import { SysService } from "../../services/sys.service";
+import { MapService } from "../../services/sys/map.service";
+import { OrderService } from '../../services/sys/order.service';
+import { DataService } from './../../services/sys/data.service';
 @Component({
   selector: "app-order",
   animations: [
@@ -136,7 +133,7 @@ export class OrderPage implements OnInit {
     private storage : Storage,
     private cache: CacheService,
     private network: Network,
-    private orderService: OrderService
+    private orderService: OrderService,
   ) {
     this.orderId = this.route.snapshot.paramMap.get("id");
 
@@ -718,8 +715,8 @@ export class OrderPage implements OnInit {
   }
 
   onMap() {
-    this.state$.coords = this.coords;
-    this.router.navigate(["map/order"]);
+    this.sysMap.showRoute(this.order);
+
   }
 
   public doneOrder() {

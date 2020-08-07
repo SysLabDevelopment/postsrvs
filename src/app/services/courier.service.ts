@@ -6,7 +6,6 @@ import { forkJoin, interval, BehaviorSubject, Subject, Observable, from } from '
 import { takeUntil, merge, take } from 'rxjs/operators';
 import { Platform } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
-import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { OrderPage } from '../pages/order/order.page';
 import { SettingsService } from './settings.service';
 import { SysService } from '../services/sys.service';
@@ -19,7 +18,6 @@ declare var ymaps: any;
   providedIn: 'root'
 })
 export class CourierService {
-  barcodeScannerOptions: BarcodeScannerOptions;
   public ordersInfo: Array<any> = [];
   public ordersShortData: Subject<any> = new Subject();
   public checkedOnWork: boolean = true;
@@ -35,16 +33,10 @@ export class CourierService {
     private plt: Platform,
     private state$: StateService,
     private auth: AuthService,
-    private bs: BarcodeScanner,
     private settings: SettingsService,
     public sys: SysService,
     private cache: CacheService,
-    private storage: Storage,
   ) {
-    this.barcodeScannerOptions = {
-      showTorchButton: true,
-      showFlipCameraButton: true
-    };
     //при выходе из приложения возвращаем начальное состояние
     var self = this;
     this.state$.interval_1ss.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
@@ -333,7 +325,7 @@ export class CourierService {
       'recognizedCheckData': recognizedCheckData
     };
     if (draw) data['sign'] = draw;
-    
+
     if(navigator.onLine){
       return this.auth.sendPost(url, data);
     }else{
@@ -347,7 +339,7 @@ export class CourierService {
       });
       return from([{success:'true'}])
     }
-      
+
   }
 
   public logout() {

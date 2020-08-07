@@ -5,3 +5,9 @@ ion-popover {
   --width: 90vw;
   --min-width: max-content;
 }
+#map,
+#guide {
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+}
