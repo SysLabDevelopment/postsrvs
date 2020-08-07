@@ -66,7 +66,7 @@ export class MapPage implements OnInit {
           lng: 37.6173,
         };
   bounds: ILatLngBounds;
-  private routeToOrder = false;
+  public routeToOrder = false;
   public destination: ILatLng;
   constructor(
     public state$: StateService,
@@ -230,16 +230,20 @@ export class MapPage implements OnInit {
     return markeredOrders;
   }
 
-  private drawData(autoStartRoute: string = "0", customData = null) {
+  public drawData(autoStartRoute: string = "0", customData = null) {
     if (this.map !== undefined) {
-      if (this.routeToOrder) {
+      this.map.clear();
+      if (this.routeToOrder && customData) {
             this.requestDirection(customData.order.lt, customData.order.lg);
           this.addCluster(this.markeredOrders([customData.order]));
-      }
-      else if (autoStartRoute == "0") {
+      } else {
+        this.routeToOrder = false;
+        if (autoStartRoute == "0") {
         this.addCluster(this.markeredOrders(this.orders));
         return false;
       }
+      }
+
     }
   }
 
