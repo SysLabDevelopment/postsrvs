@@ -137,5 +137,5 @@
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-appversion" spec="1.0.0" />
     <plugin name="cordova-plugin-googlemaps" spec="^2.8.0" />
-    <allow-navigation href="http://localhost:8100" sessionid="855e7208" />
+    <allow-navigation href="http://localhost:8100" sessionid="63b8279b" />
 </widget>

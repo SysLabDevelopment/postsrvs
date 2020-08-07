@@ -7,7 +7,9 @@ import {
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from "@ionic-native/call-number/ngx";
+import { Device } from '@ionic-native/device/ngx';
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { Network } from '@ionic-native/network/ngx';
 import { Storage } from "@ionic/storage";
@@ -134,6 +136,10 @@ export class OrderPage implements OnInit {
     private cache: CacheService,
     private network: Network,
     private orderService: OrderService,
+    private bs: BarcodeScanner,
+            private device: Device,
+
+
   ) {
     this.orderId = this.route.snapshot.paramMap.get("id");
 
@@ -312,6 +318,8 @@ export class OrderPage implements OnInit {
       } else {
         this.g_quants[code]["amount"] = n_q;
       }
+    } else if(action == 'delete'){
+      this.g_quants[code]["amount"] = 0;
     }
     this.getSum();
   }
@@ -755,5 +763,21 @@ export class OrderPage implements OnInit {
               }
             });
           })
+  }
+
+  public scanReturned() {
+    this.bs.scan().then((data) => {
+      const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/orders';
+      let data1 = {
+        "orderId": this.orderId,
+        "box_barcode": data.text,
+        "action": "get_box",
+        "uuid": this.device.uuid
+      };
+      this.http.post(url, data1).subscribe(res => {
+        console.log(`sys:: ответ скана возврата: ${res}`);
+        this.changeQuant(res[0], 'delete')
+      })
+    })
   }
 }

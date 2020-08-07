@@ -59,7 +59,6 @@ export class MapPage implements OnInit {
       prevEl: ".swiper-button-prev",
     },
   };
-
   renderer: DirectionsRenderer = null;
   private origin: ILatLng =  {
           lat: 55.755826,
@@ -68,6 +67,7 @@ export class MapPage implements OnInit {
   bounds: ILatLngBounds;
   public routeToOrder = false;
   public destination: ILatLng;
+  public currentOrder = '';
   constructor(
     public state$: StateService,
     public platform: Platform,
@@ -115,6 +115,7 @@ export class MapPage implements OnInit {
       let customData: any;
       if (data.label == 'showRouteToOrder') {
         this.routeToOrder = true;
+        this.currentOrder = String(data.order.client_id);
         customData = data;
       }
       this.map.clear();

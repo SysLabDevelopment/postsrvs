@@ -1,13 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
-import {BehaviorSubject} from "rxjs";
-import {Order} from '../../interfaces/order';
-import {CourierService} from '../../services/courier.service';
-import {AuthService} from '../../services/auth.service';
-import {Response} from '../../interfaces/response';
-import {SysService} from '../../services/sys.service';
-import { Network } from '@ionic-native/network/ngx';
-import { CacheService } from 'ionic-cache';
+import { BehaviorSubject } from "rxjs";
+import { Order } from '../../interfaces/order';
+import { Response } from '../../interfaces/response';
+import { AuthService } from '../../services/auth.service';
+import { CourierService } from '../../services/courier.service';
+import { SysService } from '../../services/sys.service';
 
 @Injectable({
   providedIn: "root",
@@ -16,21 +14,20 @@ import { CacheService } from 'ionic-cache';
 export class DataService {
 
   public orders:BehaviorSubject<Array<Order>> = new BehaviorSubject([])
-  
+
   constructor(
     private storage: Storage,
     private courier: CourierService,
     private auth: AuthService,
     private sys: SysService,
-    private network: Network,
-    private cache: CacheService,
-
-    
     ) {
       storage.ready().then((localforage)=>{
         this.getInitialData();
+        this.orders.subscribe((orders: Order[]) => {
+          this.storage.set('orders',orders);
+        })
     });
-    
+
   }
 
  public getInitialData(){
@@ -38,12 +35,11 @@ export class DataService {
       this.storage.keys().then((keys)=>console.log('записи в стораже: ', keys));
       this.storage.get('orders').then((orders:Array<Order>)=>{
       console.log('Список заказов из стоража', orders);
-      this.getApiData();
     }).catch((error)=>{
       console.log(error)
     })
     })
-    
+
   }
 
   public getApiData(){
