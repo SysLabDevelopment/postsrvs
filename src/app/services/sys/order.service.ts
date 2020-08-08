@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Order } from '../../interfaces/order';
-import {AuthService} from '../../services/auth.service';
 import { Storage } from "@ionic/storage";
-import {SysService} from '../sys.service';
-import {CourierService} from '../courier.service';
+import { Order } from '../../interfaces/order';
+import { AuthService } from '../../services/auth.service';
+import { CourierService } from '../courier.service';
+import { SysService } from '../sys.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +29,7 @@ export class OrderService {
           this.sendPay(order);
         } else {
           this.submitChange(order, status);
-        } 
+        }
       }
     });
    }
@@ -84,9 +84,7 @@ export class OrderService {
    }
 
 public submitChange(order:Order, status:number) {
-    let self = this;
-    let noSkip = true;
-
+    let noSkip = false;
     switch (status) {
       case 4:
         if (order.selectedReason != null) {
@@ -103,7 +101,6 @@ public submitChange(order:Order, status:number) {
             )
             .subscribe((data: any) => {
               localStorage.removeItem("drawImg");
-
             });
         }
         break;
@@ -111,7 +108,6 @@ public submitChange(order:Order, status:number) {
         if(order.selectedPayment !== '2'){
           noSkip = false
         }
-
         this.sys.doOCR(order.check, noSkip).then((recognizedData)=>{
         let text = order.commentText ? order.commentText : "";
         this.courier
@@ -135,8 +131,6 @@ public submitChange(order:Order, status:number) {
         if(order.selectedPayment !== '2'){
           noSkip = false
         }
-
-
         this.sys.doOCR(order.check, noSkip).then((recognizedData)=>{
         this.courier
           .changeStatus(
