@@ -13,6 +13,9 @@
     "com-darryncampbell-cordova-plugin-intent": {
       "PACKAGE_NAME": "postsrvs.w"
     },
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "postsrvs.w"
+    },
     "cordova-plugin-android-permissions": {
       "PACKAGE_NAME": "postsrvs.w"
     },
@@ -76,18 +79,15 @@
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "postsrvs.w"
     },
-    "com.googlemaps.ios": {
-      "PACKAGE_NAME": "postsrvs.w"
-    },
     "cordova-plugin-googlemaps": {
       "PACKAGE_NAME": "postsrvs.w"
     }
   },
   "dependent_plugins": {
-    "es6-promise-plugin": {
+    "cordova-androidx-build": {
       "PACKAGE_NAME": "postsrvs.w"
     },
-    "cordova-androidx-build": {
+    "es6-promise-plugin": {
       "PACKAGE_NAME": "postsrvs.w"
     }
   }

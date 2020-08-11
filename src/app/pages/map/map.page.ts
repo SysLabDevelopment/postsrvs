@@ -5,10 +5,11 @@ import {
 import { Router } from "@angular/router";
 import {
   DirectionsRenderer,
-  DirectionsResult,
-  DirectionsService,
+
+
   GoogleMap,
   GoogleMapOptions,
+  GoogleMaps,
   GoogleMapsEvent,
   ILatLng,
   ILatLngBounds,
@@ -81,7 +82,8 @@ export class MapPage implements OnInit {
     public navCtrl: NavController,
     public popoverController: PopoverController,
     private data: DataService,
-    private storage: Storage
+    private storage: Storage,
+    private googleMaps: GoogleMaps
   ) {
     this.courier.ordersShortData.subscribe((data: Array<any>) => {
       this.orders = data;
@@ -125,7 +127,6 @@ export class MapPage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.sysMap.detachMap();
   }
 
   ngAfterViewInit() {
@@ -153,7 +154,6 @@ export class MapPage implements OnInit {
     let options: GoogleMapOptions = {
       preferences: {
         building: false,
-        clickableIcons: true,
         padding: {
           bottom: 10,
         },
@@ -162,11 +162,13 @@ export class MapPage implements OnInit {
         myLocation: true,
         myLocationButton: true,
         zoom: true,
-        compass: false,
-        indoorPicker: true,
+        compass: false
       },
       camera: {
-        target: this.origin,
+        target: {
+          lat: this.origin.lat,
+          lng: this.origin.lng
+        },
         zoom: 10,
       },
       gestures: {
@@ -181,10 +183,6 @@ export class MapPage implements OnInit {
     });
 
     this.drawData(this.settings.rules.autoStartRoute);
-
-    this.map.on(GoogleMapsEvent.POI_CLICK).subscribe((params: any[]) => {
-      console.log(params);
-    });
 
     LocationService.getMyLocation().then((myLocation: MyLocation) => {
       this.myLocation = myLocation;
@@ -448,55 +446,55 @@ ${arrows}
   private requestDirection(lat: number, lng:number) {
     this.destination = {lat, lng};
 
-    DirectionsService.route({
-      'origin': this.origin,
-      'destination': this.destination,
-      'travelMode': "DRIVING"
-    }).then((result: DirectionsResult) => {
-      console.log(JSON.stringify(result, null, 2));
-      this.bounds = result.routes[0].bounds;
-      if (!this.renderer) {
-        this.renderer = this.map.addDirectionsRendererSync({
-          'directions': result,
-          'panel': 'guide',
-         'polylineOptions':{
-           'points':
-             [
-               this.origin,
-               this.destination
-             ]
-        },
-          'markerOptions': {
-            visible: false
-          }
-        });
-        this.renderer.on(GoogleMapsEvent.DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
-      } else {
-      //   let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
-      //   result.routes[0].overview_polyline
-      // );
-      //     this.map.addPolyline({
-      //       points: decodedPoints,
-      //       'color': '#4a4a4a',
-      //       width: 4,
-      //       geodesic: false
-      //     });
-        this.map.addMarkerSync({ position: this.destination });
-        this.renderer.setDirections(result);
-      }
-    });
+    // DirectionsService.route({
+    //   'origin': this.origin,
+    //   'destination': this.destination,
+    //   'travelMode': TravelModeId.DRIVING
+    // }).then((result: DirectionsResult) => {
+    //   console.log(JSON.stringify(result));
+    //   this.bounds = result.routes[0].bounds;
+    //   if (!this.renderer) {
+    //     this.renderer = this.map.addDirectionsRendererSync({
+    //       'directions': result,
+    //       'panel': 'guide',
+    //      'polylineOptions':{
+    //        'points':
+    //          [
+    //            this.origin,
+    //            this.destination
+    //          ]
+    //     },
+    //       'markerOptions': {
+    //         visible: false
+    //       }
+    //     });
+    //     this.renderer.on(GoogleMapsEvent.DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
+    //   } else {
+    //   //   let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
+    //   //   result.routes[0].overview_polyline
+    //   // );
+    //   //     this.map.addPolyline({
+    //   //       points: decodedPoints,
+    //   //       'color': '#4a4a4a',
+    //   //       width: 4,
+    //   //       geodesic: false
+    //   //     });
+    //     this.map.addMarkerSync({ position: this.destination });
+    //     this.renderer.setDirections(result);
+    //   }
+    // });
   }
-  onDirectionChanged() {
-    let directions: DirectionsResult = this.renderer.getDirections();
-    this.origin = directions.routes[0].legs[0].start_location;
-    this.destination = directions.routes[0].legs[0].end_location;
-    this.bounds = directions.routes[0].bounds;
-  }
+  // onDirectionChanged() {
+  //   const directions: DirectionsResult = this.renderer.getDirections();
+  //   this.origin = directions.routes[0].legs[0].start_location;
+  //   this.destination = directions.routes[0].legs[0].end_location;
+  //   this.bounds = directions.routes[0].bounds;
+  // }
    onSplitterDragEnd() {
-    this.map.animateCamera({
-      'target': this.bounds,
-      'duration': 500
-    });
+  //   this.map.animateCamera({
+  //     'target': this.bounds,
+  //     'duration': 500
+  //   });
 
   }
 

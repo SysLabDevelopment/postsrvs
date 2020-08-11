@@ -4,5 +4,16 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.watcherExclude": {
+			"**/.git/subtree-cache/**": false,
+			"**/.hg/store/**": false,
+			"**/node_modules/**": false
+		},
+		"search.exclude": {
+			"**/node_modules": false
+		},
+		"search.quickOpen.includeHistory": false,
+		"search.useIgnoreFiles": false
+	}
 }

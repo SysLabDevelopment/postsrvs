@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
-import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { Device } from '@ionic-native/device/ngx';
-import { Platform } from '@ionic/angular';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { StateService } from './state.service';
-import { AlertController } from '@ionic/angular';
-import { SettingsService } from './settings.service';
-import { SysService } from '../services/sys.service';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { Device } from '@ionic-native/device/ngx';
+import { AlertController, Platform } from '@ionic/angular';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { NavService } from '../services/nav.service';
+import { SysService } from '../services/sys.service';
+import { SettingsService } from './settings.service';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -85,9 +84,9 @@ export class AuthService {
     return this.settings.rules.scanMode;
   }
   public sendPost(url, data) {
-  
+
     let  host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/"
-    
+
 
     url = host + url;
     data['uuid'] = (this.isDebug ? '6b356755575fce31' : this.getUuid());
