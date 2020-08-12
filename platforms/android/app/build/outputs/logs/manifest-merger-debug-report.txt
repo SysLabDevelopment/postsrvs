@@ -1,44 +1,44 @@
 -- Merging decision tree log ---
 provider#com.darryncampbell.cordova.plugin.intent.CordovaPluginIntentFileProvider
-INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:15:9-17:20
+INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:9-18:20
 	android:grantUriPermissions
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:15:133-167
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:133-167
 	android:authorities
 		INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:15:19-107
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:19-107
 	android:exported
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:15:108-132
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:108-132
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:15:168-255
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:168-255
 provider#com.vaenow.appupdate.android.GenericFileProvider
-INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:18:9-20:20
-	android:grantUriPermissions
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:18:102-136
-	android:authorities
-		INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:18:19-76
-	android:exported
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:18:77-101
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:18:137-200
-provider#org.apache.cordova.camera.FileProvider
 INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:9-23:20
 	android:grantUriPermissions
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:92-126
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:102-136
 	android:authorities
 		INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:19-66
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:19-76
 	android:exported
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:67-91
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:77-101
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:127-180
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:137-200
+provider#org.apache.cordova.camera.FileProvider
+INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:9-26:20
+	android:grantUriPermissions
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:92-126
+	android:authorities
+		INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:19-66
+	android:exported
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:67-91
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:127-180
 meta-data#com.google.android.geo.API_KEY
-INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:26:9-115
+INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:27:9-115
 	android:value
 		INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:26:66-112
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:27:66-112
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:26:20-65
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:27:20-65
 manifest
 ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-48:12
 INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-48:12
@@ -46,47 +46,47 @@ INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/
 INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-48:12
 MERGED from [:barcodescanner-release-2.1.5:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/04ac7fdc510ab8377ba81c9aa7d3df19/jetified-barcodescanner-release-2.1.5/AndroidManifest.xml:2:1-14:12
 MERGED from [:tbxml-android:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0767faf94de59bb38b270853493ff3c1/jetified-tbxml-android/AndroidManifest.xml:2:1-11:12
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:2:1-22:12
-MERGED from [androidx.multidex:multidex:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/37bf896af0d29697bdf622ab9fc40715/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:2:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.3.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5ad09de3e4d5c5539b148a035e9e8468/appcompat-1.3.0-alpha01/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d7e8c53f4bf5df7d908d6865771c07d2/jetified-play-services-location-16.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.2] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/29126d69931fa16e7427a5d1a39880e7/jetified-play-services-tasks-17.0.2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5763c3167ebb192c280f6e69d502f32e/jetified-play-services-stats-17.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4fd9737022fea80893479ddd330bcd24/jetified-play-services-places-placereport-16.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7a70b860cfc79903cc3d8abcf941ad9e/jetified-play-services-basement-17.2.1/AndroidManifest.xml:17:1-28:12
 MERGED from [:CordovaLib] /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:1-27:12
-MERGED from [com.google.android.gms:play-services-location:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d3b5ec1de43b521649534d14edbe1316/jetified-play-services-location-15.0.1/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:17:1-29:12
-MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0bd1592668d97e5d9b37092ccc8d5ed5/jetified-play-services-tasks-15.0.1/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0d3c6dd19f1652d2e29312ae018a323d/jetified-play-services-places-placereport-15.0.1/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d244dd020e8caf777f5ed327fe3646a6/jetified-play-services-basement-15.0.1/AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/dbd7f3404e398769a436df133f9c22a0/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.material:material:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1a2231abea6c5c0eeac9ba2bee431bb2/material-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5a88197cc409e98036d796508dba5496/appcompat-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/80ba63a8187d9117e06ffe922b8d1e09/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.media:media:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c105360245f769c088976d97fc5a6ce/media-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.fragment:fragment:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/91da5248c1ab9082b2647158b4c6fb12/fragment-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d45fea0da1c7be88ded5bb06d95a9f9d/vectordrawable-animated-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/a209c57a6cb19bd04ce6b598e5f52e3c/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/66900f8665a5e3bb0f6544d025716eca/jetified-appcompat-resources-1.3.0-alpha01/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/862d618c4a74a92713659a4de235cf27/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/76797c4c057edbfa73c24afedd30b782/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1749a0ce7607ce6aca7c0788718bbbda/vectordrawable-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.transition:transition:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1b7f359adbfbd40184c2dbbf91f6411f/transition-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4ebe54eb21a46b11de1c8b6a98382879/loader-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4316c9e9e14dde16bd0af0cff2b7f84d/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2ded99d3d5abd0dc2e952828ff38685a/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/ff593eb994a251d8dac437ca978af2af/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/76797c4c057edbfa73c24afedd30b782/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c105360245f769c088976d97fc5a6ce/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4316c9e9e14dde16bd0af0cff2b7f84d/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4ebe54eb21a46b11de1c8b6a98382879/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7dd23e79f189a19093ca0c53867bf175/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/bce435b8126b1f73b3c08665a9892128/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/c9ffb37adbc364f7f2414ce4a481eb9b/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2ded99d3d5abd0dc2e952828ff38685a/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c61fe4d7cb61834524be14a3e240790/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/9da2b99caf4161acc264c5b7c456ef74/customview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e75985f4058d660aa5c80167b45ff8ca/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e490a983018a8fe5e052ac1e6757d8cf/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/AndroidManifest.xml:17:1-26:12
-MERGED from [com.android.volley:volley:1.1.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b8e59ec9059ce189e8a5ab0b504e44bc/jetified-volley-1.1.1/AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4bc99f1b2ad8f2d66d51613c3a2c62b6/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e6bb7e01f8e83b7b07e98d45a8a1ae6f/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.core:core:1.4.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b1b6377af2b4edad4f41a353a618a489/core-1.4.0-alpha01/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/bbc9e02901b00dc5016df21c7d21b0fe/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0-alpha03] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5ce46c515cb932b6f3f0b93c52010f7d/lifecycle-runtime-2.3.0-alpha03/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0-alpha03] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f46eec1cc9f4719a79753191acbbb372/lifecycle-viewmodel-2.3.0-alpha03/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/30c21b481f465ad73f2599077eb10718/jetified-savedstate-1.1.0-alpha01/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e6bb7e01f8e83b7b07e98d45a8a1ae6f/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b194165e6cb6e3bf344f1f61ed4fa83f/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/367a660fa20cb00ec09dd86cb4f5513d/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2095fef3b3cb6004da604f438865388a/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8008323a081a55c8d30e79b17b1f2566/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/ae74097148c08bdff7bea4d1d637dc7b/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1be9dbcc62c36236b61cf6fa2fd00fc3/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b5f94b08bd83bda043bbd50468125e86/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/717503a52f9edadde65d4582b0de6ed5/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b194165e6cb6e3bf344f1f61ed4fa83f/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/367a660fa20cb00ec09dd86cb4f5513d/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2095fef3b3cb6004da604f438865388a/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b8939781ced048a1fb4e2d944fa2aae9/lifecycle-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
 INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-48:12
 INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-48:12
 INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-48:12
@@ -120,192 +120,198 @@ ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app
 		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:3:106-131
 	android:anyDensity
 		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:3:23-48
+uses-permission#android.permission.INTERNET
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:4:5-67
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:9:3-64
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:9:3-64
+MERGED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:4:22-64
 application
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:4:5-29:19
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:5-30:19
 MERGED from [:barcodescanner-release-2.1.5:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/04ac7fdc510ab8377ba81c9aa7d3df19/jetified-barcodescanner-release-2.1.5/AndroidManifest.xml:11:5-12:19
 MERGED from [:barcodescanner-release-2.1.5:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/04ac7fdc510ab8377ba81c9aa7d3df19/jetified-barcodescanner-release-2.1.5/AndroidManifest.xml:11:5-12:19
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:18:3-21:17
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:18:3-21:17
-MERGED from [com.google.android.gms:play-services-location:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d3b5ec1de43b521649534d14edbe1316/jetified-play-services-location-15.0.1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-location:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d3b5ec1de43b521649534d14edbe1316/jetified-play-services-location-15.0.1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0bd1592668d97e5d9b37092ccc8d5ed5/jetified-play-services-tasks-15.0.1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0bd1592668d97e5d9b37092ccc8d5ed5/jetified-play-services-tasks-15.0.1/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0d3c6dd19f1652d2e29312ae018a323d/jetified-play-services-places-placereport-15.0.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0d3c6dd19f1652d2e29312ae018a323d/jetified-play-services-places-placereport-15.0.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d244dd020e8caf777f5ed327fe3646a6/jetified-play-services-basement-15.0.1/AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d244dd020e8caf777f5ed327fe3646a6/jetified-play-services-basement-15.0.1/AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.android.material:material:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1a2231abea6c5c0eeac9ba2bee431bb2/material-1.0.0/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1a2231abea6c5c0eeac9ba2bee431bb2/material-1.0.0/AndroidManifest.xml:22:5-20
-MERGED from [androidx.core:core:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/AndroidManifest.xml:24:5-89
-MERGED from [com.android.volley:volley:1.1.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b8e59ec9059ce189e8a5ab0b504e44bc/jetified-volley-1.1.1/AndroidManifest.xml:9:5-20
-MERGED from [com.android.volley:volley:1.1.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b8e59ec9059ce189e8a5ab0b504e44bc/jetified-volley-1.1.1/AndroidManifest.xml:9:5-20
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:18:3-21:17
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:18:3-21:17
+MERGED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d7e8c53f4bf5df7d908d6865771c07d2/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d7e8c53f4bf5df7d908d6865771c07d2/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.2] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/29126d69931fa16e7427a5d1a39880e7/jetified-play-services-tasks-17.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.2] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/29126d69931fa16e7427a5d1a39880e7/jetified-play-services-tasks-17.0.2/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5763c3167ebb192c280f6e69d502f32e/jetified-play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5763c3167ebb192c280f6e69d502f32e/jetified-play-services-stats-17.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4fd9737022fea80893479ddd330bcd24/jetified-play-services-places-placereport-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4fd9737022fea80893479ddd330bcd24/jetified-play-services-places-placereport-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7a70b860cfc79903cc3d8abcf941ad9e/jetified-play-services-basement-17.2.1/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7a70b860cfc79903cc3d8abcf941ad9e/jetified-play-services-basement-17.2.1/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.4.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b1b6377af2b4edad4f41a353a618a489/core-1.4.0-alpha01/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.4.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b1b6377af2b4edad4f41a353a618a489/core-1.4.0-alpha01/AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e6bb7e01f8e83b7b07e98d45a8a1ae6f/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e6bb7e01f8e83b7b07e98d45a8a1ae6f/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.4.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b1b6377af2b4edad4f41a353a618a489/core-1.4.0-alpha01/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:4:121-147
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:121-147
 	android:label
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:4:88-120
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:88-120
 	android:hardwareAccelerated
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:4:18-52
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:18-52
 	android:icon
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:4:53-87
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:53-87
 activity#postsrvs.w.MainActivity
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:9-14:20
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:9-15:20
 	android:label
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:136-173
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:136-173
 	android:launchMode
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:174-204
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:174-204
 	android:windowSoftInputMode
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:296-338
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:296-338
 	android:configChanges
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:19-135
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:19-135
 	android:theme
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:233-295
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:233-295
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:5:205-232
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:205-232
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:13-9:29
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:7:13-10:29
 	android:label
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:6:28-65
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:7:28-65
 action#android.intent.action.MAIN
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:7:17-69
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:8:17-69
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:7:25-66
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:8:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:8:17-77
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:9:17-77
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:8:27-74
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:9:27-74
 intent-filter#action:name:com.darryncampbell.cordova.plugin.intent.ACTION+category:name:android.intent.category.DEFAULT
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:10:13-13:29
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:11:13-14:29
 action#com.darryncampbell.cordova.plugin.intent.ACTION
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:11:17-90
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:12:17-90
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:11:25-87
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:12:25-87
 category#android.intent.category.DEFAULT
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:12:17-76
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:13:17-76
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:12:27-73
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:13:27-73
 activity#com.google.zxing.client.android.CaptureActivity
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:9-311
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:19:9-311
 	android:clearTaskOnLaunch
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:19-51
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:19:19-51
 	android:windowSoftInputMode
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:261-308
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:19:261-308
 	android:exported
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:114-138
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:19:114-138
 	android:configChanges
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:52-113
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:19:52-113
 	android:theme
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:202-260
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:19:202-260
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:139-201
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:19:139-201
 activity#com.google.zxing.client.android.encode.EncodeActivity
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:25:9-112
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:20:9-112
 	android:label
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:25:19-40
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:20:19-40
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:25:41-109
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:20:41-109
 meta-data#com.google.android.gms.version
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:27:9-122
-MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d244dd020e8caf777f5ed327fe3646a6/jetified-play-services-basement-15.0.1/AndroidManifest.xml:23:9-25:69
-MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d244dd020e8caf777f5ed327fe3646a6/jetified-play-services-basement-15.0.1/AndroidManifest.xml:23:9-25:69
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:28:9-122
+MERGED from [com.google.android.gms:play-services-basement:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7a70b860cfc79903cc3d8abcf941ad9e/jetified-play-services-basement-17.2.1/AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7a70b860cfc79903cc3d8abcf941ad9e/jetified-play-services-basement-17.2.1/AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:27:66-119
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:28:66-119
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:27:20-65
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:28:20-65
 uses-library#org.apache.http.legacy
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:28:9-88
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:20:7-86
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:20:7-86
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:29:9-88
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:20:7-86
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:20:7-86
 	android:required
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:28:61-85
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:29:61-85
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:28:23-60
-uses-permission#android.permission.CALL_PHONE
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:30:5-69
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:30:22-66
-uses-feature#android.hardware.telephony
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:31:5-88
-	android:required
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:31:61-85
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:31:19-60
-uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:32:5-80
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:32:22-77
-uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:33:5-83
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:33:22-80
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:34:5-81
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:34:22-78
-uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:35:5-84
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:35:22-81
-uses-permission#android.permission.READ_PHONE_STATE
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:36:5-75
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:36:22-72
-uses-permission#android.permission.VIBRATE
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:37:5-66
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:37:22-63
-uses-permission#android.permission.CAMERA
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:38:5-65
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:38:22-62
-uses-permission#android.permission.FLASHLIGHT
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:39:5-69
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:39:22-66
-uses-feature#android.hardware.camera
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:40:5-84
-	android:required
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:40:58-81
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:40:19-57
-uses-permission#android.permission.INTERNET
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:41:5-67
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:9:3-64
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:9:3-64
-	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:41:22-64
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:29:23-60
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:42:5-81
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:12:3-78
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:12:3-78
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:31:5-81
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:12:3-78
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:12:3-78
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:42:22-78
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:31:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:43:5-79
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:13:3-76
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:13:3-76
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:32:5-79
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:13:3-76
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:13:3-76
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:43:22-76
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:32:22-76
 uses-feature#android.hardware.location.gps
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:44:5-66
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:33:5-66
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:44:19-63
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:33:19-63
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:34:5-75
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:34:22-72
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:35:5-80
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:35:22-77
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:36:5-83
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:36:22-80
+uses-permission#android.permission.CALL_PHONE
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:37:5-69
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:37:22-66
+uses-feature#android.hardware.telephony
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:38:5-88
+	android:required
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:38:61-85
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:38:19-60
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:39:5-66
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:39:22-63
+uses-permission#android.permission.CAMERA
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:40:5-65
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:40:22-62
+uses-permission#android.permission.FLASHLIGHT
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:41:5-69
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:41:22-66
+uses-feature#android.hardware.camera
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:42:5-84
+	android:required
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:42:58-81
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:42:19-57
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:43:5-81
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:43:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:44:5-84
+	android:name
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:44:22-81
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:45:5-79
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:10:3-76
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:10:3-76
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:10:3-76
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:10:3-76
 	android:name
 		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:45:22-76
 uses-feature#0x00020000
 ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:46:5-78
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:15:3-17:30
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:15:3-17:30
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:15:3-17:30
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:15:3-17:30
 	android:glEsVersion
 		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:46:19-51
 	android:required
@@ -322,52 +328,54 @@ MERGED from [:barcodescanner-release-2.1.5:] /Users/timkovik/.gradle/caches/tran
 MERGED from [:barcodescanner-release-2.1.5:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/04ac7fdc510ab8377ba81c9aa7d3df19/jetified-barcodescanner-release-2.1.5/AndroidManifest.xml:7:5-9:41
 MERGED from [:tbxml-android:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0767faf94de59bb38b270853493ff3c1/jetified-tbxml-android/AndroidManifest.xml:7:5-9:41
 MERGED from [:tbxml-android:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0767faf94de59bb38b270853493ff3c1/jetified-tbxml-android/AndroidManifest.xml:7:5-9:41
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:6:3-8:36
-MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/cdf1a4fd7635ce264761a4cea4d8c781/jetified-maps-3.1.0-beta/AndroidManifest.xml:6:3-8:36
-MERGED from [androidx.multidex:multidex:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/37bf896af0d29697bdf622ab9fc40715/multidex-2.0.0/AndroidManifest.xml:20:5-43
-MERGED from [androidx.multidex:multidex:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/37bf896af0d29697bdf622ab9fc40715/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:6:3-8:36
+MERGED from [:maps-sdk-3.0.0-beta:] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7ca8cad928a86434a65db984def525f8/jetified-maps-sdk-3.0.0-beta/AndroidManifest.xml:6:3-8:36
+MERGED from [androidx.appcompat:appcompat:1.3.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5ad09de3e4d5c5539b148a035e9e8468/appcompat-1.3.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.3.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5ad09de3e4d5c5539b148a035e9e8468/appcompat-1.3.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d7e8c53f4bf5df7d908d6865771c07d2/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d7e8c53f4bf5df7d908d6865771c07d2/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.2] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/29126d69931fa16e7427a5d1a39880e7/jetified-play-services-tasks-17.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.2] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/29126d69931fa16e7427a5d1a39880e7/jetified-play-services-tasks-17.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5763c3167ebb192c280f6e69d502f32e/jetified-play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5763c3167ebb192c280f6e69d502f32e/jetified-play-services-stats-17.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4fd9737022fea80893479ddd330bcd24/jetified-play-services-places-placereport-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4fd9737022fea80893479ddd330bcd24/jetified-play-services-places-placereport-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7a70b860cfc79903cc3d8abcf941ad9e/jetified-play-services-basement-17.2.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7a70b860cfc79903cc3d8abcf941ad9e/jetified-play-services-basement-17.2.1/AndroidManifest.xml:20:5-44
 MERGED from [:CordovaLib] /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:5-44
 MERGED from [:CordovaLib] /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:5-44
-MERGED from [com.google.android.gms:play-services-location:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d3b5ec1de43b521649534d14edbe1316/jetified-play-services-location-15.0.1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-location:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d3b5ec1de43b521649534d14edbe1316/jetified-play-services-location-15.0.1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0bd1592668d97e5d9b37092ccc8d5ed5/jetified-play-services-tasks-15.0.1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0bd1592668d97e5d9b37092ccc8d5ed5/jetified-play-services-tasks-15.0.1/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0d3c6dd19f1652d2e29312ae018a323d/jetified-play-services-places-placereport-15.0.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0d3c6dd19f1652d2e29312ae018a323d/jetified-play-services-places-placereport-15.0.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d244dd020e8caf777f5ed327fe3646a6/jetified-play-services-basement-15.0.1/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d244dd020e8caf777f5ed327fe3646a6/jetified-play-services-basement-15.0.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/dbd7f3404e398769a436df133f9c22a0/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/dbd7f3404e398769a436df133f9c22a0/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1a2231abea6c5c0eeac9ba2bee431bb2/material-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1a2231abea6c5c0eeac9ba2bee431bb2/material-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5a88197cc409e98036d796508dba5496/appcompat-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.appcompat:appcompat:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5a88197cc409e98036d796508dba5496/appcompat-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/80ba63a8187d9117e06ffe922b8d1e09/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/80ba63a8187d9117e06ffe922b8d1e09/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.media:media:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c105360245f769c088976d97fc5a6ce/media-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.media:media:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c105360245f769c088976d97fc5a6ce/media-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/91da5248c1ab9082b2647158b4c6fb12/fragment-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/91da5248c1ab9082b2647158b4c6fb12/fragment-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d45fea0da1c7be88ded5bb06d95a9f9d/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/d45fea0da1c7be88ded5bb06d95a9f9d/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/a209c57a6cb19bd04ce6b598e5f52e3c/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/a209c57a6cb19bd04ce6b598e5f52e3c/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/66900f8665a5e3bb0f6544d025716eca/jetified-appcompat-resources-1.3.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/66900f8665a5e3bb0f6544d025716eca/jetified-appcompat-resources-1.3.0-alpha01/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/862d618c4a74a92713659a4de235cf27/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/862d618c4a74a92713659a4de235cf27/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/76797c4c057edbfa73c24afedd30b782/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/76797c4c057edbfa73c24afedd30b782/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1749a0ce7607ce6aca7c0788718bbbda/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1749a0ce7607ce6aca7c0788718bbbda/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1b7f359adbfbd40184c2dbbf91f6411f/transition-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1b7f359adbfbd40184c2dbbf91f6411f/transition-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4ebe54eb21a46b11de1c8b6a98382879/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4ebe54eb21a46b11de1c8b6a98382879/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4316c9e9e14dde16bd0af0cff2b7f84d/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4316c9e9e14dde16bd0af0cff2b7f84d/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2ded99d3d5abd0dc2e952828ff38685a/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2ded99d3d5abd0dc2e952828ff38685a/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/ff593eb994a251d8dac437ca978af2af/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/ff593eb994a251d8dac437ca978af2af/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/76797c4c057edbfa73c24afedd30b782/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/76797c4c057edbfa73c24afedd30b782/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c105360245f769c088976d97fc5a6ce/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c105360245f769c088976d97fc5a6ce/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4316c9e9e14dde16bd0af0cff2b7f84d/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4316c9e9e14dde16bd0af0cff2b7f84d/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4ebe54eb21a46b11de1c8b6a98382879/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4ebe54eb21a46b11de1c8b6a98382879/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7dd23e79f189a19093ca0c53867bf175/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7dd23e79f189a19093ca0c53867bf175/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/bce435b8126b1f73b3c08665a9892128/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/bce435b8126b1f73b3c08665a9892128/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/c9ffb37adbc364f7f2414ce4a481eb9b/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/c9ffb37adbc364f7f2414ce4a481eb9b/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2ded99d3d5abd0dc2e952828ff38685a/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2ded99d3d5abd0dc2e952828ff38685a/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c61fe4d7cb61834524be14a3e240790/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6c61fe4d7cb61834524be14a3e240790/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/9da2b99caf4161acc264c5b7c456ef74/customview-1.0.0/AndroidManifest.xml:20:5-44
@@ -376,16 +384,24 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/timkov
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e75985f4058d660aa5c80167b45ff8ca/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e490a983018a8fe5e052ac1e6757d8cf/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e490a983018a8fe5e052ac1e6757d8cf/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.android.volley:volley:1.1.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b8e59ec9059ce189e8a5ab0b504e44bc/jetified-volley-1.1.1/AndroidManifest.xml:7:5-43
-MERGED from [com.android.volley:volley:1.1.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b8e59ec9059ce189e8a5ab0b504e44bc/jetified-volley-1.1.1/AndroidManifest.xml:7:5-43
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4bc99f1b2ad8f2d66d51613c3a2c62b6/cardview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/4bc99f1b2ad8f2d66d51613c3a2c62b6/cardview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e6bb7e01f8e83b7b07e98d45a8a1ae6f/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e6bb7e01f8e83b7b07e98d45a8a1ae6f/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.4.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b1b6377af2b4edad4f41a353a618a489/core-1.4.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.4.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b1b6377af2b4edad4f41a353a618a489/core-1.4.0-alpha01/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/bbc9e02901b00dc5016df21c7d21b0fe/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/bbc9e02901b00dc5016df21c7d21b0fe/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0-alpha03] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5ce46c515cb932b6f3f0b93c52010f7d/lifecycle-runtime-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0-alpha03] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/5ce46c515cb932b6f3f0b93c52010f7d/lifecycle-runtime-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0-alpha03] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f46eec1cc9f4719a79753191acbbb372/lifecycle-viewmodel-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0-alpha03] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f46eec1cc9f4719a79753191acbbb372/lifecycle-viewmodel-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/30c21b481f465ad73f2599077eb10718/jetified-savedstate-1.1.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0-alpha01] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/30c21b481f465ad73f2599077eb10718/jetified-savedstate-1.1.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e6bb7e01f8e83b7b07e98d45a8a1ae6f/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/e6bb7e01f8e83b7b07e98d45a8a1ae6f/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b194165e6cb6e3bf344f1f61ed4fa83f/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b194165e6cb6e3bf344f1f61ed4fa83f/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/367a660fa20cb00ec09dd86cb4f5513d/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/367a660fa20cb00ec09dd86cb4f5513d/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2095fef3b3cb6004da604f438865388a/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2095fef3b3cb6004da604f438865388a/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8008323a081a55c8d30e79b17b1f2566/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8008323a081a55c8d30e79b17b1f2566/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/ae74097148c08bdff7bea4d1d637dc7b/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
@@ -394,16 +410,6 @@ MERGED from [androidx.print:print:1.0.0] /Users/timkovik/.gradle/caches/transfor
 MERGED from [androidx.print:print:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/1be9dbcc62c36236b61cf6fa2fd00fc3/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b5f94b08bd83bda043bbd50468125e86/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b5f94b08bd83bda043bbd50468125e86/interpolator-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/717503a52f9edadde65d4582b0de6ed5/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/717503a52f9edadde65d4582b0de6ed5/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b194165e6cb6e3bf344f1f61ed4fa83f/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b194165e6cb6e3bf344f1f61ed4fa83f/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/367a660fa20cb00ec09dd86cb4f5513d/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/367a660fa20cb00ec09dd86cb4f5513d/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2095fef3b3cb6004da604f438865388a/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/2095fef3b3cb6004da604f438865388a/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b8939781ced048a1fb4e2d944fa2aae9/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/b8939781ced048a1fb4e2d944fa2aae9/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
 INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
@@ -415,16 +421,22 @@ INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/
 		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:13-116
+ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:17:13-116
 	android:resource
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:75-113
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:17:75-113
 	android:name
-		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:24-74
+		ADDED from /Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:17:24-74
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:23:5-82
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:5-82
+MERGED from [com.google.android.gms:play-services-iid:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/f5b32e68227c5d9026e8c5d4dc279210/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:5-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-gcm:17.0.0] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8ce2eaca06188753dc8ca331607bd484/jetified-play-services-gcm-17.0.0/AndroidManifest.xml:23:22-79
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:23:9-26:75
+ADDED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:23:9-26:75
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:25:13-37
+		ADDED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:25:13-37
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:26:13-72
+		ADDED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:26:13-72
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:15.0.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7827feb06fdd602516e4e247123b2a15/jetified-play-services-base-15.0.1/AndroidManifest.xml:24:13-79
+		ADDED from [com.google.android.gms:play-services-base:17.2.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/8cdf27a7a90cefada38a8de903baa92f/jetified-play-services-base-17.2.1/AndroidManifest.xml:24:13-79
