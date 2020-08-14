@@ -121,8 +121,7 @@
     "codelyzer": "^6.0.0",
     "cordova-android": "^9.0.0",
     "cordova-plugin-device": "^2.0.3",
-    "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
-    "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
+    "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^5.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
@@ -173,7 +172,6 @@
       "phonegap-plugin-barcodescanner": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
-      "cordova-plugin-googlemaps-sdk": {},
       "com.googlemaps.ios": {},
       "cordova-plugin-androidx-adapter": {},
       "cordova-sqlite-storage": {},

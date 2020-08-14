@@ -30,7 +30,6 @@
   NSArray *subviews = [self subviews];
   int viewCnt = (int)[subviews count];
   int index = viewCnt;
-  depth += viewCnt;
 
   NSArray *sortedArray;
   sortedArray = [subviews sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
@@ -41,9 +40,8 @@
 
 
   for (int i = 0; i < sortedArray.count; i++) {
-    ((UIView *)[sortedArray objectAtIndex:i]).tag = i;
-    
-    if (i > depth) {
+    NSInteger tag = ((UIView *)[sortedArray objectAtIndex:i]).tag;
+    if (tag > depth) {
       index = i;
       break;
     }

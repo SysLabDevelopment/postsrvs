@@ -1,24 +1,24 @@
 {
-  "_from": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
-  "_id": "cordova-plugin-googlemaps@2.8.0-20200709-2008",
+  "_from": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
+  "_id": "cordova-plugin-googlemaps@2.8.0-20200701-2202",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/cordova-plugin-googlemaps",
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
-    "rawSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
-    "saveSpec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
+    "raw": "https://github.com/mapsplugin/cordova-plugin-googlemaps#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
+    "rawSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
+    "saveSpec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
     "fetchSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
-    "gitCommittish": "multiple_maps"
+    "gitCommittish": "2616d16b0e09e0c02d9a47099b0d82467a65ca4d"
   },
   "_requiredBy": [
     "#DEV:/",
     "#USER"
   ],
-  "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#9598dc43619bc0d715bfeee65ea0d0751e0e22b7",
-  "_spec": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
+  "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
+  "_spec": "https://github.com/mapsplugin/cordova-plugin-googlemaps#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
   "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Masashi Katsumata, Hirbod Mirjavadi"
@@ -86,5 +86,5 @@
     "test": "jest && npm run eslint",
     "test:watch": "jest --watch"
   },
-  "version": "2.8.0-20200709-2008"
+  "version": "2.8.0-20200701-2202"
 }

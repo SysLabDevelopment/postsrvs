@@ -553,13 +553,12 @@ module.exports.metadata =
     "cordova-plugin-androidx": "1.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
-    "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-sqlite-storage": "5.0.1",
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-app-update": "2.0.2",
-    "com.googlemaps.ios": "3.9.0",
-    "cordova-plugin-googlemaps": "2.8.0-20200709-2008"
+    "cordova-plugin-androidx-adapter": "1.1.1",
+    "cordova-plugin-googlemaps": "2.8.0-20200701-2202"
 }
 // BOTTOM OF METADATA
 });

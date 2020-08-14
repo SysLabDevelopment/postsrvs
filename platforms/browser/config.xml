@@ -11,6 +11,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="http://localhost:8100" sessionid="855e7208" />
     <preference name="WKWebViewOnly" value="true" />
     <preference name="android-usesCleartextTraffic" value="true" />
     <preference name="ScrollEnabled" value="false" />

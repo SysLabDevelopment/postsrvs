@@ -58,9 +58,6 @@
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
@@ -73,7 +70,7 @@
     "cordova-plugin-app-update": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "com.googlemaps.ios": {
+    "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-googlemaps": {

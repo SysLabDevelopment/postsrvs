@@ -151,14 +151,6 @@
       "ANDROID_SUPPORT_V4_VERSION": "27.+"
     }
   },
-  "cordova-plugin-androidx-adapter": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-androidx-adapter@^1.1.1"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-sqlite-storage": {
     "source": {
       "type": "registry",
@@ -202,7 +194,15 @@
   "com.googlemaps.ios": {
     "source": {
       "type": "registry",
-      "id": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git"
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-androidx-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-androidx-adapter@^1.1.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -210,7 +210,7 @@
   "cordova-plugin-googlemaps": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#2616d16b0e09e0c02d9a47099b0d82467a65ca4d"
     },
     "is_top_level": true,
     "variables": {}
