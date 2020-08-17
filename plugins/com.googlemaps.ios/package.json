@@ -14,6 +14,7 @@
     "gitCommittish": null
   },
   "_requiredBy": [
+    "#DEV:/",
     "#USER"
   ],
   "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git#f16676a612b1bf50fb482d2dd0ad9109daabc2b1",

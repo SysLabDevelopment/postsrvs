@@ -34,7 +34,7 @@ import { SettingsService } from "./../../services/settings.service";
 import { SysService } from "./../../services/sys.service";
 import { MapService } from "./../../services/sys/map.service";
 
-declare var AppVersion:{version:string};
+declare var AppVersion: { version: string };
 @Component({
   selector: "app-map",
   templateUrl: "./map.page.html",
@@ -59,15 +59,15 @@ export class MapPage implements OnInit {
       prevEl: ".swiper-button-prev",
     },
   };
-
   renderer: DirectionsRenderer = null;
-  private origin: ILatLng =  {
-          lat: 55.755826,
-          lng: 37.6173,
-        };
+  private origin: ILatLng = {
+    lat: 55.755826,
+    lng: 37.6173,
+  };
   bounds: ILatLngBounds;
-  private routeToOrder = false;
+  public routeToOrder = false;
   public destination: ILatLng;
+  public currentOrder = '';
   constructor(
     public state$: StateService,
     public platform: Platform,
@@ -115,6 +115,7 @@ export class MapPage implements OnInit {
       let customData: any;
       if (data.label == 'showRouteToOrder') {
         this.routeToOrder = true;
+        this.currentOrder = String(data.order.client_id);
         customData = data;
       }
       this.map.clear();
@@ -230,16 +231,20 @@ export class MapPage implements OnInit {
     return markeredOrders;
   }
 
-  private drawData(autoStartRoute: string = "0", customData = null) {
+  public drawData(autoStartRoute: string = "0", customData = null) {
     if (this.map !== undefined) {
-      if (this.routeToOrder) {
-            this.requestDirection(customData.order.lt, customData.order.lg);
-          this.addCluster(this.markeredOrders([customData.order]));
+      this.map.clear();
+      if (this.routeToOrder && customData) {
+        this.requestDirection(customData.order.lt, customData.order.lg);
+        this.addCluster(this.markeredOrders([customData.order]));
+      } else {
+        this.routeToOrder = false;
+        if (autoStartRoute == "0") {
+          this.addCluster(this.markeredOrders(this.orders));
+          return false;
+        }
       }
-      else if (autoStartRoute == "0") {
-        this.addCluster(this.markeredOrders(this.orders));
-        return false;
-      }
+
     }
   }
 
@@ -352,21 +357,16 @@ export class MapPage implements OnInit {
       <div style='width: 100%;text-align: start;margin: 0 30px;'>
 <span class='order-id'>${order.client_id}</span>
 <hr style="background: #D6CFCF;"/>
-<span class='prop'>Дата доставки: c</span>  <span class='val'>${
-        order.datetime_from?.slice(11, 16) || ""
-      }</span> <span class='prop'>До:</span> <span class='val'> ${
-        order.datetime_to ? order.datetime_to?.slice(11, 16) : ""
-      } </span>
-<br/><span class='prop'>Имя:</span>  <span class='val'>${
-        order.client_fio
-      }</span>
-<br/><span class='prop'>Компания:</span><span class='val'> ${
-        order.client_name
-      }</span>
+<span class='prop'>Дата доставки: c</span>  <span class='val'>${order.datetime_from?.slice(11, 16) || ""
+        }</span> <span class='prop'>До:</span> <span class='val'> ${order.datetime_to ? order.datetime_to?.slice(11, 16) : ""
+        } </span>
+<br/><span class='prop'>Имя:</span>  <span class='val'>${order.client_fio
+        }</span>
+<br/><span class='prop'>Компания:</span><span class='val'> ${order.client_name
+        }</span>
 <br/>
-<button onClick='localStorage.setItem("needOrder",${
-        order.id
-      })' style='margin-top: 10px; width: 100%;;padding:10px;background: #2E627E;
+<button onClick='localStorage.setItem("needOrder",${order.id
+        })' style='margin-top: 10px; width: 100%;;padding:10px;background: #2E627E;
 border-radius: 4px; color:white;font-weight: 500;
 font-size: 12px;
 line-height: 14px;'>Детали</button>${note}
@@ -426,22 +426,22 @@ ${arrows}
     return frame;
   }
 
-  async popover(ev: any, content:any) {
+  async popover(ev: any, content: any) {
     content = content.innerHTML;
     const popover = await this.popoverController.create({
       component: OrderComponent,
       event: ev,
       translucent: true,
       componentProps: {
-        'content':content
+        'content': content
       },
-      cssClass:'popover'
+      cssClass: 'popover'
     });
     return popover
   }
 
-  private requestDirection(lat: number, lng:number) {
-    this.destination = {lat, lng};
+  private requestDirection(lat: number, lng: number) {
+    this.destination = { lat, lng };
 
     DirectionsService.route({
       'origin': this.origin,
@@ -454,28 +454,28 @@ ${arrows}
         this.renderer = this.map.addDirectionsRendererSync({
           'directions': result,
           'panel': 'guide',
-         'polylineOptions':{
-           'points':
-             [
-               this.origin,
-               this.destination
-             ]
-        },
+          'polylineOptions': {
+            'points':
+              [
+                this.origin,
+                this.destination
+              ]
+          },
           'markerOptions': {
             visible: false
           }
         });
         this.renderer.on(GoogleMapsEvent.DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
       } else {
-      //   let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
-      //   result.routes[0].overview_polyline
-      // );
-      //     this.map.addPolyline({
-      //       points: decodedPoints,
-      //       'color': '#4a4a4a',
-      //       width: 4,
-      //       geodesic: false
-      //     });
+        //   let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
+        //   result.routes[0].overview_polyline
+        // );
+        //     this.map.addPolyline({
+        //       points: decodedPoints,
+        //       'color': '#4a4a4a',
+        //       width: 4,
+        //       geodesic: false
+        //     });
         this.map.addMarkerSync({ position: this.destination });
         this.renderer.setDirections(result);
       }
@@ -487,7 +487,7 @@ ${arrows}
     this.destination = directions.routes[0].legs[0].end_location;
     this.bounds = directions.routes[0].bounds;
   }
-   onSplitterDragEnd() {
+  onSplitterDragEnd() {
     this.map.animateCamera({
       'target': this.bounds,
       'duration': 500

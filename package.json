@@ -33,7 +33,6 @@
     "@google/markerwithlabel": "^1.2.12",
     "@googlemaps/markermanager": "0.0.6",
     "@ionic-native/android-permissions": "^5.22.0",
-    "@ionic-native/app-update": "5.27.0",
     "@ionic-native/app-version": "^5.22.0",
     "@ionic-native/barcode-scanner": "^5.26.0",
     "@ionic-native/call-number": "^5.22.0",
@@ -121,7 +120,8 @@
     "codelyzer": "^6.0.0",
     "cordova-android": "^9.0.0",
     "cordova-plugin-device": "^2.0.3",
-    "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
+    "cordova-plugin-googlemaps": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
+    "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^5.0.0",
     "cordova-plugin-statusbar": "^2.4.3",
@@ -177,7 +177,6 @@
       "cordova-sqlite-storage": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-appversion": {},
-      "cordova-plugin-app-update": {},
       "cordova-plugin-googlemaps": {
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."

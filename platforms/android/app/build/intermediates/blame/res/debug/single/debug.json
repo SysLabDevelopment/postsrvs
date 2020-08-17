@@ -12,10 +12,6 @@
         "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/layout_appupdate_progress.xml.flat",
-        "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/layout/appupdate_progress.xml"
-    },
-    {
         "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_provider_paths.xml.flat",
         "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/xml/provider_paths.xml"
     },
@@ -126,10 +122,6 @@
     {
         "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable_dummy_my_location_button.png.flat",
         "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable/dummy_my_location_button.png"
-    },
-    {
-        "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_appupdate_paths.xml.flat",
-        "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/xml/appupdate_paths.xml"
     },
     {
         "merged": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_network_security_config.xml.flat",

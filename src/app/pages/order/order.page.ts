@@ -7,7 +7,9 @@ import {
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from "@ionic-native/call-number/ngx";
+import { Device } from '@ionic-native/device/ngx';
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { Network } from '@ionic-native/network/ngx';
 import { Storage } from "@ionic/storage";
@@ -116,7 +118,7 @@ export class OrderPage implements OnInit {
   public tomorrow = new Date();
   public new_plan_date: string; //Дата переноса заказа
   public openCompany = false;
-  public checkBase64Image:string;
+  public checkBase64Image: string;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -130,10 +132,14 @@ export class OrderPage implements OnInit {
     public settings: SettingsService,
     private sysMap: MapService,
     private data: DataService,
-    private storage : Storage,
+    private storage: Storage,
     private cache: CacheService,
     private network: Network,
     private orderService: OrderService,
+    private bs: BarcodeScanner,
+    private device: Device,
+
+
   ) {
     this.orderId = this.route.snapshot.paramMap.get("id");
 
@@ -186,7 +192,7 @@ export class OrderPage implements OnInit {
   }
 
   private normalizePhoneNumber(phone): string {
-    if (phone[0] !== "8" && phone[0] !== "7"&& phone.length !== 11) {
+    if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
       phone = "8" + phone;
     }
     if (phone.length == 7 || phone.length == 10) {
@@ -211,7 +217,7 @@ export class OrderPage implements OnInit {
         this.callWindow = !this.callWindow;
         break;
       case "phone":
-        this.CL.callNumber(this.selectedPhone, false).then(() => {});
+        this.CL.callNumber(this.selectedPhone, false).then(() => { });
         this.callWindow = false;
         break;
       case "operator":
@@ -233,10 +239,11 @@ export class OrderPage implements OnInit {
   }
 
   public initOrder() {
-    this.storage.get('orders').then((orders:Array<Order>)=>{
-      console.log('Список заказов из стоража', orders);})
+    this.storage.get('orders').then((orders: Array<Order>) => {
+      console.log('Список заказов из стоража', orders);
+    })
     this.storage.get('orders').then((orders) => {
-      this.order = orders?.filter((order)=>{return order.id.toString() == this.orderId})[0];
+      this.order = orders?.filter((order) => { return order.id.toString() == this.orderId })[0];
       this.goods = this.order.goods;
       this.address = this.order.client_address;
       this.timeFrom = this.order.datetime_from;
@@ -312,6 +319,8 @@ export class OrderPage implements OnInit {
       } else {
         this.g_quants[code]["amount"] = n_q;
       }
+    } else if (action == 'delete') {
+      this.g_quants[code]["amount"] = 0;
     }
     this.getSum();
   }
@@ -336,7 +345,7 @@ export class OrderPage implements OnInit {
     return this.courier.getStatus(this.order);
   }
 
-  public getBalnce() {}
+  public getBalnce() { }
 
   public changeStatus() {
     if (!this.changeWindow) {
@@ -362,39 +371,39 @@ export class OrderPage implements OnInit {
   public selectReason(id) {
     this.selectedReason = id;
   }
-  public sendPayCall(order:Order = this.order, newStatus = this.selectedStatus as number) {
-    if(this.network.type == 'none'){
+  public sendPayCall(order: Order = this.order, newStatus = this.selectedStatus as number) {
+    if (this.network.type == 'none') {
       //Если оффлайн
-      this.cache.getItem('syncRequests').then((syncRequests:Array<any>)=>{
-        order = {...{phone_input:this.phone_input}, ...{email_input:this.email_input},...{quants: this.g_quants}, ...order, ...{selectedPayment: this.selectedPayment}, ...{selectedReason: this.selectedReason}, ...{new_plan_date: this.new_plan_date}, ...{commentText:this.commentText},...{check:this.checkBase64Image}};
-        syncRequests && syncRequests.push({order,newStatus });
-        this.cache.saveItem('syncRequests',syncRequests,'delayedCalls').then(()=>{
+      this.cache.getItem('syncRequests').then((syncRequests: Array<any>) => {
+        order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image } };
+        syncRequests && syncRequests.push({ order, newStatus });
+        this.cache.saveItem('syncRequests', syncRequests, 'delayedCalls').then(() => {
           console.log(`sys:: Отложено изменение статуса на ${newStatus} для заказа ${order.client_id}`);
           this.localModifyOrders(newStatus);
           this.router.navigate(['courier']);
         })
       })
-      }else{
-        //Если онлайн
-        this.localModifyOrders(newStatus);
-        order = {...{phone_input:this.phone_input}, ...{email_input:this.email_input},...{quants: this.g_quants}, ...order, ...{selectedPayment: this.selectedPayment}, ...{selectedReason: this.selectedReason}, ...{new_plan_date: this.new_plan_date}, ...{commentText:this.commentText},...{check:this.checkBase64Image}};
-        this.orderService.sendDelayedCall(order, newStatus);
-        this.router.navigate(['courier']);
+    } else {
+      //Если онлайн
+      this.localModifyOrders(newStatus);
+      order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image } };
+      this.orderService.sendDelayedCall(order, newStatus);
+      this.router.navigate(['courier']);
     }
   }
 
   public submitChange() {
     let self = this;
-    this.storage.get('orders').then((orders)=>{
-      orders?.map((order)=>{
-        if(order.id.toString() == this.order.id){
+    this.storage.get('orders').then((orders) => {
+      orders?.map((order) => {
+        if (order.id.toString() == this.order.id) {
           order.status_id = this.selectedStatus;
           this.storage.set('orders', orders);
           this.data.orders.next(orders);
         }
       });
     })
-     let noSkip = true;
+    let noSkip = true;
     switch (this.selectedStatus) {
       case 4:
         if (this.selectedReason != null) {
@@ -425,79 +434,79 @@ export class OrderPage implements OnInit {
         }
         break;
       case 5:
-        if(this.selectedPayment !== '2'){
+        if (this.selectedPayment !== '2') {
           noSkip = false
         }
-        this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData)=>{
-        let text = this.commentText ? this.commentText : "";
-        this.courier
-          .changeStatus(
-            this.selectedStatus,
-            this.order.id,
-            text,
-            undefined,
-            undefined,
-            this.selectedPayment,
-            '',
-            this.checkBase64Image,
-            recognizedData
-          )
-          .subscribe((data: any) => {
-            if (data.success == "true") {
-              self.changeWindow = false;
-              self.state$.state.next("init");
-              self.selectedPayment = "1";
-              self.selectedReason = null;
-              self.selectedStatus = null;
-              if (!self.pay_access) {
-                self.router.navigate(["courier"]);
+        this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData) => {
+          let text = this.commentText ? this.commentText : "";
+          this.courier
+            .changeStatus(
+              this.selectedStatus,
+              this.order.id,
+              text,
+              undefined,
+              undefined,
+              this.selectedPayment,
+              '',
+              this.checkBase64Image,
+              recognizedData
+            )
+            .subscribe((data: any) => {
+              if (data.success == "true") {
+                self.changeWindow = false;
+                self.state$.state.next("init");
+                self.selectedPayment = "1";
+                self.selectedReason = null;
+                self.selectedStatus = null;
+                if (!self.pay_access) {
+                  self.router.navigate(["courier"]);
+                }
+                self.initOrder();
+                self.state$.updateWayInfo.next("0");
               }
-              self.initOrder();
-              self.state$.updateWayInfo.next("0");
-            }
-            localStorage.removeItem("drawImg");
-          });
-          })
+              localStorage.removeItem("drawImg");
+            });
+        })
         break;
       case 6:
 
-        if(this.selectedPayment !== '2'){
+        if (this.selectedPayment !== '2') {
           noSkip = false
         }
-        this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData)=>{
-        this.courier
-          .changeStatus(
-            this.selectedStatus,
-            this.order.id,
-            undefined,
-            undefined,
-            this.g_quants,
-            this.selectedPayment,
-            '',
-            this.checkBase64Image,
-            recognizedData
-          )
-          .subscribe((data: any | null) => {
-            if (data?.success == "true") {
-              self.changeWindow = false;
-              self.state$.state.next("init");
-              self.selectedPayment = "1";
-              self.selectedReason = null;
-              self.selectedStatus = null;
-              if (!self.pay_access) {
-                self.router.navigate(["courier"]);
+        this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData) => {
+          this.courier
+            .changeStatus(
+              this.selectedStatus,
+              this.order.id,
+              undefined,
+              undefined,
+              this.g_quants,
+              this.selectedPayment,
+              '',
+              this.checkBase64Image,
+              recognizedData
+            )
+            .subscribe((data: any | null) => {
+              if (data?.success == "true") {
+                self.changeWindow = false;
+                self.state$.state.next("init");
+                self.selectedPayment = "1";
+                self.selectedReason = null;
+                self.selectedStatus = null;
+                if (!self.pay_access) {
+                  self.router.navigate(["courier"]);
+                }
+                self.initOrder();
+                self.state$.updateWayInfo.next("0");
+              } else {
+                this.sys.presentToast(
+                  "Нет товаров в заказе",
+                  "danger",
+                  "Частичная доставка невозможна"
+                );
               }
-              self.initOrder();
-              self.state$.updateWayInfo.next("0");
-            } else {
-              this.sys.presentToast(
-                "Нет товаров в заказе",
-                "danger",
-                "Частичная доставка невозможна"
-              );
-            }
-            localStorage.removeItem("drawImg");
-          });
+              localStorage.removeItem("drawImg");
+            });
         })
         break;
     }
@@ -598,19 +607,19 @@ export class OrderPage implements OnInit {
     let url = "pay_order";
     let data = { action: "getData", orderId: this.clientId };
     let self = this;
-  if(navigator.onLine){
-    this.auth.sendPost(url, data).subscribe((res: any) => {
-      console.log("GET_PAY_DATA", res);
-      if (res.success == "true") {
-        self.pay_access = true;
-        self.pay_access_data = res;
-      } else {
-        self.pay_access = false;
-      }
-    });
-  }else{
-    self.pay_access = false;
-  }
+    if (navigator.onLine) {
+      this.auth.sendPost(url, data).subscribe((res: any) => {
+        console.log("GET_PAY_DATA", res);
+        if (res.success == "true") {
+          self.pay_access = true;
+          self.pay_access_data = res;
+        } else {
+          self.pay_access = false;
+        }
+      });
+    } else {
+      self.pay_access = false;
+    }
   }
 
   public send_api_data(api_data) {
@@ -627,27 +636,27 @@ export class OrderPage implements OnInit {
       orderData: api_data,
       orderId: this.order.id,
     };
-    if(navigator.onLine){
-    this.auth.sendPost(url, data).subscribe((res: any) => {
-      self.submitChange();
-      self.checkPayment();
-      self.hide_status = true;
-    });
-  }else{
-    let requests = [];
-    this.cache.getItem('requests').then((req)=>{
-      if(req !==undefined){
-        requests = req;
-      }
-        requests.push({url:url, data:data});
-        this.cache.saveItem('requests',requests);
+    if (navigator.onLine) {
+      this.auth.sendPost(url, data).subscribe((res: any) => {
+        self.submitChange();
+        self.checkPayment();
+        self.hide_status = true;
+      });
+    } else {
+      let requests = [];
+      this.cache.getItem('requests').then((req) => {
+        if (req !== undefined) {
+          requests = req;
+        }
+        requests.push({ url: url, data: data });
+        this.cache.saveItem('requests', requests);
 
-       self.submitChange();
-      self.checkPayment();
-      self.hide_status = true;
-    })
+        self.submitChange();
+        self.checkPayment();
+        self.hide_status = true;
+      })
 
-  }
+    }
   }
 
   public showCheck() {
@@ -724,12 +733,12 @@ export class OrderPage implements OnInit {
     if (this.drawNeedle && !drawedImg) {
       this.drawBtn(this.drawNeedle);
     } else {
-      if(this.selectedPayment == '2'){
-        this.sys.checkPhoto().then((imageData)=>{
+      if (this.selectedPayment == '2') {
+        this.sys.checkPhoto().then((imageData) => {
           this.checkBase64Image = 'data:image/jpeg;base64,' + imageData;
           this.sendPayCall();
         });
-      }else{
+      } else {
         this.sendPayCall();
       }
 
@@ -741,19 +750,35 @@ export class OrderPage implements OnInit {
     this.sysMap.infoUpdated.next();
   }
 
-  public tapBlock(){
+  public tapBlock() {
     this.openCompany = !this.openCompany;
   }
 
-  public localModifyOrders(newStatus:number){
-    this.storage.get('orders').then((orders)=>{
-            orders?.map((order:Order)=>{
-              if(order.id.toString() == this.order.id){
-                order.status_id = newStatus;
-                this.storage.set('orders', orders);
-                this.data.orders.next(orders);
-              }
-            });
-          })
+  public localModifyOrders(newStatus: number) {
+    this.storage.get('orders').then((orders) => {
+      orders?.map((order: Order) => {
+        if (order.id.toString() == this.order.id) {
+          order.status_id = newStatus;
+          this.storage.set('orders', orders);
+          this.data.orders.next(orders);
+        }
+      });
+    })
+  }
+
+  public scanReturned() {
+    this.bs.scan().then((data) => {
+      const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/orders';
+      let data1 = {
+        "orderId": this.orderId,
+        "box_barcode": data.text,
+        "action": "get_box",
+        "uuid": this.device.uuid
+      };
+      this.http.post(url, data1).subscribe(res => {
+        console.log(`sys:: ответ скана возврата: ${res}`);
+        this.changeQuant(res[0], 'delete')
+      })
+    })
   }
 }

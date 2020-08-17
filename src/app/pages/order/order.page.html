@@ -189,6 +189,10 @@
             </div>
           </div>
         </div>
+        <ion-button (click)="scanReturned()" expand="block" fill="solid" shape="round"
+          *ngIf="selectedStatus == 6 ||order.status_id == 6">
+          Сканировать возврат
+        </ion-button>
         <div class="sc-reasons">
           <div class="sc-resons-block" *ngIf="selectedStatus == 4 ">
             <div class="sc-r-title">Причина:</div>

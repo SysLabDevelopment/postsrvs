@@ -175,10 +175,18 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-app-update": {
+  "com.googlemaps.ios": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-app-update"
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-androidx-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-androidx-adapter@^1.1.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -191,26 +199,10 @@
     "is_top_level": false,
     "variables": {}
   },
-  "com.googlemaps.ios": {
-    "source": {
-      "type": "registry",
-      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-plugin-androidx-adapter": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-androidx-adapter@^1.1.1"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-googlemaps": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#2616d16b0e09e0c02d9a47099b0d82467a65ca4d"
+      "id": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d"
     },
     "is_top_level": true,
     "variables": {}

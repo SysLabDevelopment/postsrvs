@@ -6,6 +6,6 @@
     </trust-anchors>
 </base-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain>localhost</domain>
+        <domain includeSubdomains="true">localhost</domain>
     </domain-config>
 </network-security-config>
