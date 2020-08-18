@@ -8,7 +8,7 @@ import {
   DirectionsResult,
   DirectionsService,
   GoogleMap,
-  GoogleMapOptions,
+  GoogleMapOptions, GoogleMaps,
   GoogleMapsEvent,
   ILatLng,
   ILatLngBounds,
@@ -467,17 +467,17 @@ ${arrows}
         });
         this.renderer.on(GoogleMapsEvent.DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
       } else {
-        //   let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
-        //   result.routes[0].overview_polyline
-        // );
-        //     this.map.addPolyline({
-        //       points: decodedPoints,
-        //       'color': '#4a4a4a',
-        //       width: 4,
-        //       geodesic: false
-        //     });
+        let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
+          result.routes[0].overview_polyline
+        );
+        this.map.addPolyline({
+          points: decodedPoints,
+          'color': '#4a4a4a',
+          width: 4,
+          geodesic: false
+        });
         this.map.addMarkerSync({ position: this.destination });
-        this.renderer.setDirections(result);
+        // this.renderer.setDirections(result);
       }
     });
   }

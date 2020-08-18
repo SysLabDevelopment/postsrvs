@@ -46,11 +46,11 @@ import { DataService } from '../../services/sys/data.service';
   ]
 })
 export class CourierPage implements OnInit {
-   @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
+  @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
   @ViewChild('sInput') public sInput: ElementRef;
-    @ViewChild(CdkDropList, { static: false })
+  @ViewChild(CdkDropList, { static: false })
   Drop_L: CdkDropList;
-    @ViewChildren(CdkDrag)
+  @ViewChildren(CdkDrag)
   DragItems: QueryList<CdkDrag>;
 
   public orders: any = null;
@@ -130,7 +130,7 @@ export class CourierPage implements OnInit {
   }
 
   ngAfterViewChecked() {
-        this.Drop_L.autoScrollDisabled = false;
+    this.Drop_L.autoScrollDisabled = false;
     this.DragItems.changes.subscribe((r) => {
       this.DragItems.forEach(DragItem => {
         DragItem.dragStartDelay = {
@@ -140,7 +140,7 @@ export class CourierPage implements OnInit {
 
       })
     });
-   }
+  }
 
   ngOnInit() {
     this.settings.checkout = !!(this.settings.rules.storeCheckMode - 0);
@@ -152,7 +152,7 @@ export class CourierPage implements OnInit {
     if (this.settings.rules.appMode == 'hand') {
       this.state$.manual_route = true
     }
-    this.data.orders.subscribe((orders)=>{
+    this.data.orders.subscribe((orders) => {
       this.courier.count_orders(orders)
     })
   }
@@ -441,57 +441,57 @@ export class CourierPage implements OnInit {
       })
 
   }
-doRefresh(event){
+  doRefresh(event) {
     this.data.getApiData().add(event.target.complete());
 
   }
 
   public segmentChanged(event) {
     let ids = [Number(event.target.value)];
-    if (event.target.value == '5') {
+    if (event.target.value == '4') {
       ids.push(6)
     }
     this.prepareOrdersList(ids)
   }
 
-  public onSearchChange(event){
+  public onSearchChange(event) {
 
 
   }
-    public prepareOrdersList(ids = [1]) {
+  public prepareOrdersList(ids = [1]) {
 
-      this.orders_c = this.ord.pipe(
-        map(
-          orders => orders && orders.filter(order => ids.includes(Number(order.status_id)))
-            .filter(
-              order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
-                order.client_id.toLowerCase().includes(this.searchString.toLowerCase())
-            )
-            .slice(this.slicer)
-        ),
-        map(
-          (orders) => { orders.forEach((order) => { order.show = false }); this.orders = orders; return orders}
-        )
-      );
+    this.orders_c = this.ord.pipe(
+      map(
+        orders => orders && orders.filter(order => ids.includes(Number(order.status_id)))
+          .filter(
+            order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
+              order.client_id.toLowerCase().includes(this.searchString.toLowerCase())
+          )
+          .slice(this.slicer)
+      ),
+      map(
+        (orders) => { orders.forEach((order) => { order.show = false }); this.orders = orders; return orders }
+      )
+    );
 
   }
   public howSlice(): number {
     return (this.settings.rules.typeRoute === 'standart' ? 0 : 1)
   }
 
-  async popover(ev: any) {
+  async popoverHelp(ev: any) {
     const popover = await this.popoverController.create({
       component: HelpComponent,
       event: ev,
       translucent: true,
-      cssClass:'help'
+      cssClass: 'help'
     });
     return popover
   }
 
   async showHelp(ev) {
-    let popover = await this.popover(ev);
-      popover.present();
+    let popover = await this.popoverHelp(ev);
+    popover.present();
 
   }
 
@@ -499,12 +499,27 @@ doRefresh(event){
     this.map.showRoute(order)
   }
 
-  public  drop(event: CdkDragDrop<any[]>) {
+  public drop(event: CdkDragDrop<any[]>) {
 
     moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
     this.data.orders.next(this.orders);
     console.log('sys:: массив заказов после перетаскивания: ', this.orders);
   }
 
+  async popoverNote(ev: any) {
+    const popover = await this.popoverController.create({
+      component: HelpComponent,
+      event: ev,
+      translucent: true,
+      cssClass: 'help'
+    });
+    return popover
+  }
+
+  async note(ev) {
+    let popover = await this.popoverNote(ev);
+    popover.present();
+
+  }
 
 }
