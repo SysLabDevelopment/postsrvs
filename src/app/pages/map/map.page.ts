@@ -300,8 +300,8 @@ export class MapPage implements OnInit {
             .pipe(filter((ids) => ids.length > 0))
             .subscribe((ids: Array<any>) => {
               this.getOrders(ids).subscribe((res: Response) => {
-                this.data.orders.next(res.orders);
-                this.storage.set('orders', res.orders)
+                // this.data.orders.next(res.orders);
+                // this.storage.set('orders', res.orders)
                 this.orders = res.orders;
                 if (
                   this.settings.rules.appMode.toLowerCase().includes("auto")

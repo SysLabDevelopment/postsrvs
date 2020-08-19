@@ -13,7 +13,7 @@ import { SysService } from '../../services/sys.service';
 
 export class DataService {
 
-  public orders: BehaviorSubject<Array<Order>> = new BehaviorSubject([])
+  public orders: BehaviorSubject<Array<Order>>;
 
   constructor(
     private storage: Storage,
@@ -21,11 +21,19 @@ export class DataService {
     private auth: AuthService,
     private sys: SysService,
   ) {
+
     storage.ready().then((localforage) => {
-      this.getInitialData();
-      // this.orders.subscribe((orders: Order[]) => {
-      //   this.storage.set('orders', orders);
-      // })
+      this.storage.get('orders').then((orders: Array<Order>) => {
+        this.orders = new BehaviorSubject(orders);
+        console.log('Список заказов из стоража', orders);
+        this.getInitialData();
+        this.orders.subscribe((orders: Order[]) => {
+          this.storage.set('orders', orders).then(() => {
+            console.log('sys:: Список заказов сохранен в сторож: ', orders);
+          });
+        })
+      })
+
     });
 
   }

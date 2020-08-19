@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="96" id="postsrvs.i" version="1.9.15" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="97" id="postsrvs.i" version="1.9.16" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
@@ -181,4 +181,5 @@
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="Hostname" value="localhost" />
     <preference name="Scheme" value="http" />
+    <preference name="AndroidXEnabled" value="true" />
 </widget>
