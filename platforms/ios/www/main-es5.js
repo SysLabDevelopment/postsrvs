@@ -164,7 +164,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-login-login-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/login/login.module */
           "./src/app/pages/login/login.module.ts")).then(function (m) {
             return m.LoginPageModule;
@@ -176,7 +176,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-balance-balance-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("pages-balance-balance-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("pages-balance-balance-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/balance/balance.module */
           "./src/app/pages/balance/balance.module.ts")).then(function (m) {
             return m.BalancePageModule;
@@ -188,7 +188,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-courier-courier-module */
-          [__webpack_require__.e("default~pages-courier-courier-module~pages-test-test-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-courier-courier-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("default~pages-courier-courier-module~pages-test-test-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-courier-courier-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/courier/courier.module */
           "./src/app/pages/courier/courier.module.ts")).then(function (m) {
             return m.CourierPageModule;
@@ -200,7 +200,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-order-order-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("pages-order-order-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("common"), __webpack_require__.e("pages-order-order-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/order/order.module */
           "./src/app/pages/order/order.module.ts")).then(function (m) {
             return m.OrderPageModule;
@@ -212,7 +212,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-map-map-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("common"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/map/map.module */
           "./src/app/pages/map/map.module.ts")).then(function (m) {
             return m.MapPageModule;

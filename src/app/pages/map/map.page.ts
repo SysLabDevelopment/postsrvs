@@ -22,6 +22,7 @@ import { NavController, Platform, PopoverController } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
 import { Observable, Subject } from "rxjs";
 import { filter, takeUntil } from "rxjs/operators";
+import { Order } from 'src/app/interfaces/order';
 import { OrderComponent } from "../../components/order/order.component";
 import { Meta } from '../../interfaces/meta';
 import { AuthService } from "../../services/auth.service";
@@ -42,7 +43,7 @@ declare var AppVersion: { version: string };
 })
 export class MapPage implements OnInit {
   map: GoogleMap;
-  orders: Array<any> | null;
+  orders: Array<Order> | null;
   coords: { lt: number; lg: number };
   userId: string = localStorage.user;
   public isMapPreparing: boolean = false;
@@ -204,7 +205,7 @@ export class MapPage implements OnInit {
   private getOrdersId(): Observable<any> {
     return new Observable((ids) => {
       if (this.settings.rules.typeRoute == "standart") {
-        this.orders && ids.next(this.orders.map((order) => order.id));
+        this.orders && ids.next(this.orders.filter(order => order.status_id == 1).map((order) => order.id));
       } else {
         this.sysMap.getWay(this.coords).subscribe((resp: Response) => {
           ids.next(resp.orders.map((order) => order.id));
@@ -334,14 +335,12 @@ export class MapPage implements OnInit {
         },
       ],
     };
-    // let markerCluster: MarkerCluster = this.map.addMarkerClusterSync(options);
-    this.map.addMarkerCluster(options).then((markerCluster: MarkerCluster) => {
-      console.log(`sys:: MarkerCluster added: `, markerCluster);
-      markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(async (params) => {
-        let marker: Marker = params[1];
-        let popover = await this.popover(GoogleMapsEvent.MARKER_CLICK, marker.get('info'));
-        popover.present();
-      });
+    let markerCluster: MarkerCluster = this.map.addMarkerClusterSync(options);
+    console.log(`sys:: MarkerCluster added: `, markerCluster);
+    markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(async (params) => {
+      let marker: Marker = params[1];
+      let popover = await this.popover(GoogleMapsEvent.MARKER_CLICK, marker.get('info'));
+      popover.present();
     })
 
   }
@@ -486,7 +485,7 @@ ${arrows}
           geodesic: false
         });
         this.map.addMarkerSync({ position: this.destination });
-        // this.renderer.setDirections(result);
+        this.renderer.setDirections(result);
       }
     });
   }

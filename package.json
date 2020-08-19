@@ -121,7 +121,7 @@
     "cordova-android": "^9.0.0",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-fcm-with-dependecy-updated": "^7.1.1",
-    "cordova-plugin-googlemaps": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
+    "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
     "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^5.0.0",
@@ -178,15 +178,15 @@
       "cordova-sqlite-storage": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-appversion": {},
-      "cordova-plugin-googlemaps": {
-        "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
-        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
-      },
       "cordova-plugin-fcm-with-dependecy-updated": {
         "ANDROID_FCM_VERSION": "19.0.0",
         "ANDROID_GRADLE_TOOLS_VERSION": "3.5.3",
         "ANDROID_GOOGLE_SERVICES_VERSION": "4.3.3",
         "ANDROID_DEFAULT_NOTIFICATION_ICON": "@mipmap/ic_launcher"
+      },
+      "cordova-plugin-googlemaps": {
+        "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
       }
     },
     "platforms": [

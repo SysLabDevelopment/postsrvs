@@ -20,9 +20,6 @@
         </provider>
         <activity android:clearTaskOnLaunch="true" android:configChanges="orientation|keyboardHidden|screenSize" android:exported="false" android:name="com.google.zxing.client.android.CaptureActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:label="Share" android:name="com.google.zxing.client.android.encode.EncodeActivity" />
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="${GOOGLE_MAPS_ANDROID_API_KEY}" />
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity android:launchMode="singleTop" android:name="com.gae.scaffolder.plugin.FCMPluginActivity">
             <intent-filter>
                 <action android:name="FCM_PLUGIN_ACTIVITY" />
@@ -35,6 +32,9 @@
             </intent-filter>
         </service>
         <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@mipmap/ic_launcher" />
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="${GOOGLE_MAPS_ANDROID_API_KEY}" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
     </application>
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

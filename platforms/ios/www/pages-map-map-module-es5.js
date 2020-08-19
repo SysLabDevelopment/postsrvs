@@ -2551,9 +2551,9 @@
       /* harmony import */
 
 
-      var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! @ionic-native/google-maps */
-      "./node_modules/@ionic-native/google-maps/index.js");
+      var _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @ionic-native/google-maps/ngx */
+      "./node_modules/@ionic-native/google-maps/ngx/index.js");
       /* harmony import */
 
 
@@ -2756,9 +2756,9 @@
                 customData = data;
               }
 
-              _this12.map.clear();
-
-              _this12.drawData(null, customData);
+              _this12.map.clear().then(function () {
+                _this12.drawData(null, customData);
+              });
             });
           }
         }, {
@@ -2776,7 +2776,7 @@
             this.platform.ready().then(function () {
               _this13.initContent();
 
-              _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["LocationService"].getMyLocation().then(function (myLocation) {
+              _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["LocationService"].getMyLocation().then(function (myLocation) {
                 _this13.coords = {
                   lt: myLocation.latLng.lat,
                   lg: myLocation.latLng.lng
@@ -2841,11 +2841,11 @@
                         }
                       });
                       this.drawData(this.settings.rules.autoStartRoute);
-                      this.map.on(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].POI_CLICK).subscribe(function (params) {
+                      this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].POI_CLICK).subscribe(function (params) {
                         console.log(params);
                       });
 
-                      _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["LocationService"].getMyLocation().then(function (myLocation) {
+                      _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["LocationService"].getMyLocation().then(function (myLocation) {
                         _this14.myLocation = myLocation;
                         var coordinates = _this14.myLocation.latLng || {
                           lat: 55,
@@ -2904,8 +2904,8 @@
 
               markeredOrders.push({
                 "position": {
-                  "lat": Number(order.lt),
-                  "lng": Number(order.lg)
+                  "lat": parseFloat(order.lt),
+                  "lng": parseFloat(order.lg)
                 },
                 "name": order.id,
                 "info": info
@@ -2916,33 +2916,35 @@
         }, {
           key: "drawData",
           value: function drawData() {
+            var _this17 = this;
+
             var autoStartRoute = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "0";
             var customData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
             if (this.map !== undefined) {
-              this.map.clear();
+              this.map.clear().then(function () {
+                if (_this17.routeToOrder && customData) {
+                  _this17.requestDirection(customData.order.lt, customData.order.lg);
 
-              if (this.routeToOrder && customData) {
-                this.requestDirection(customData.order.lt, customData.order.lg);
-                this.addCluster(this.markeredOrders([customData.order]));
-              } else {
-                this.routeToOrder = false;
+                  _this17.addCluster(_this17.markeredOrders([customData.order]));
+                } else {
+                  _this17.routeToOrder = false;
 
-                if (autoStartRoute == "0") {
-                  this.addCluster(this.markeredOrders(this.orders));
-                  return false;
+                  if (autoStartRoute == "0") {
+                    _this17.addCluster(_this17.markeredOrders(_this17.orders));
+                  }
                 }
-              }
+              });
             }
           }
         }, {
           key: "p_btn",
           value: function p_btn() {
-            var _this17 = this;
+            var _this18 = this;
 
             setTimeout(function () {
-              _this17.out_counter = 0;
-              _this17.out_process = false;
+              _this18.out_counter = 0;
+              _this18.out_process = false;
               console.log("outprocess_die");
             }, 1000);
 
@@ -2976,40 +2978,40 @@
         }, {
           key: "initContent",
           value: function initContent() {
-            var _this18 = this;
+            var _this19 = this;
 
             this.sys.checkAuth(AppVersion.version).subscribe(function (res) {
               if (res.sync_id !== undefined) {
-                _this18.settings.getSettings(res.sync_id);
+                _this19.settings.getSettings(res.sync_id);
 
-                _this18.auth.setUser(res.sync_id);
+                _this19.auth.setUser(res.sync_id);
 
-                _this18.courier.getBalance(res.sync_id, 1).subscribe(function (data) {
-                  _this18.courier.ordersInfo = data.res_more;
+                _this19.courier.getBalance(res.sync_id, 1).subscribe(function (data) {
+                  _this19.courier.ordersInfo = data.res_more;
 
-                  _this18.courier.count_orders(data.res_more);
+                  _this19.courier.count_orders(data.res_more);
 
-                  _this18.orders = data.res_more;
+                  _this19.orders = data.res_more;
 
-                  _this18.state$.orders.next(data.res_more);
+                  _this19.state$.orders.next(data.res_more);
 
-                  _this18.getOrdersId().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])(function (ids) {
+                  _this19.getOrdersId().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])(function (ids) {
                     return ids.length > 0;
                   })).subscribe(function (ids) {
-                    _this18.getOrders(ids).subscribe(function (res) {
-                      _this18.data.orders.next(res.orders);
+                    _this19.getOrders(ids).subscribe(function (res) {
+                      _this19.data.orders.next(res.orders);
 
-                      _this18.storage.set('orders', res.orders);
+                      _this19.storage.set('orders', res.orders);
 
-                      _this18.orders = res.orders;
+                      _this19.orders = res.orders;
 
-                      if (_this18.settings.rules.appMode.toLowerCase().includes("auto")) {
-                        _this18.orders.length = 1;
+                      if (_this19.settings.rules.appMode.toLowerCase().includes("auto")) {
+                        _this19.orders.length = 1;
                       }
 
-                      console.log("sys:: заказы", _this18.orders);
+                      console.log("sys:: заказы", _this19.orders);
 
-                      _this18.drawData(_this18.settings.rules.autoStartRoute);
+                      _this19.drawData(_this19.settings.rules.autoStartRoute);
                     });
                   });
                 });
@@ -3019,7 +3021,7 @@
         }, {
           key: "addCluster",
           value: function addCluster(markeredOrders) {
-            var _this19 = this;
+            var _this20 = this;
 
             var markerCluster = this.map.addMarkerClusterSync({
               maxZoomLevel: 14,
@@ -3039,8 +3041,8 @@
                 }
               }]
             });
-            markerCluster.on(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].MARKER_CLICK).subscribe(function (params) {
-              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this19, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            markerCluster.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].MARKER_CLICK).subscribe(function (params) {
+              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this20, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                 var marker, popover;
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                   while (1) {
@@ -3048,7 +3050,7 @@
                       case 0:
                         marker = params[1];
                         _context2.next = 3;
-                        return this.popover(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].MARKER_CLICK, marker.get('info'));
+                        return this.popover(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].MARKER_CLICK, marker.get('info'));
 
                       case 3:
                         popover = _context2.sent;
@@ -3136,46 +3138,46 @@
         }, {
           key: "requestDirection",
           value: function requestDirection(lat, lng) {
-            var _this20 = this;
+            var _this21 = this;
 
             this.destination = {
               lat: lat,
               lng: lng
             };
 
-            _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["DirectionsService"].route({
+            _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["DirectionsService"].route({
               'origin': this.origin,
               'destination': this.destination,
               'travelMode': "DRIVING"
             }).then(function (result) {
               console.log(JSON.stringify(result, null, 2));
-              _this20.bounds = result.routes[0].bounds;
+              _this21.bounds = result.routes[0].bounds;
 
-              if (!_this20.renderer) {
-                _this20.renderer = _this20.map.addDirectionsRendererSync({
+              if (!_this21.renderer) {
+                _this21.renderer = _this21.map.addDirectionsRendererSync({
                   'directions': result,
                   'panel': 'guide',
                   'polylineOptions': {
-                    'points': [_this20.origin, _this20.destination]
+                    'points': [_this21.origin, _this21.destination]
                   },
                   'markerOptions': {
                     visible: false
                   }
                 });
 
-                _this20.renderer.on(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].DIRECTIONS_CHANGED).subscribe(_this20.onDirectionChanged.bind(_this20));
+                _this21.renderer.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].DIRECTIONS_CHANGED).subscribe(_this21.onDirectionChanged.bind(_this21));
               } else {
-                var decodedPoints = _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_3__["GoogleMaps"].getPlugin().geometry.encoding.decodePath(result.routes[0].overview_polyline);
+                var decodedPoints = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMaps"].getPlugin().geometry.encoding.decodePath(result.routes[0].overview_polyline);
 
-                _this20.map.addPolyline({
+                _this21.map.addPolyline({
                   points: decodedPoints,
                   'color': '#4a4a4a',
                   width: 4,
                   geodesic: false
                 });
 
-                _this20.map.addMarkerSync({
-                  position: _this20.destination
+                _this21.map.addMarkerSync({
+                  position: _this21.destination
                 }); // this.renderer.setDirections(result);
 
               }

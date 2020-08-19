@@ -65,6 +65,10 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"FCMPlugin\"><param name=\"android-package\" value=\"com.gae.scaffolder.plugin.FCMPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"CordovaGoogleMaps\"><param name=\"android-package\" value=\"plugin.google.maps.CordovaGoogleMaps\" /><param name=\"onload\" value=\"true\" /><param name=\"onreset\" value=\"true\" /></feature>",
               "count": 1
             },
@@ -127,10 +131,6 @@
             {
               "xml": "<feature name=\"PluginStreetViewPanorama\"><param name=\"android-package\" value=\"plugin.google.maps.PluginStreetViewPanorama\" /></feature>",
               "count": 1
-            },
-            {
-              "xml": "<feature name=\"FCMPlugin\"><param name=\"android-package\" value=\"com.gae.scaffolder.plugin.FCMPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
             }
           ]
         }
@@ -175,6 +175,10 @@
               "count": 1
             },
             {
+              "xml": "<platform name=\"android\"><preference name=\"AndroidXEnabled\" value=\"true\" /></platform>",
+              "count": 1
+            },
+            {
               "xml": "<preference name=\"xwalkZOrderOnTop\" value=\"true\" />",
               "count": 1
             },
@@ -184,10 +188,6 @@
             },
             {
               "xml": "<preference name=\"android-minSdkVersion\" value=\"19\" />",
-              "count": 1
-            },
-            {
-              "xml": "<platform name=\"android\"><preference name=\"AndroidXEnabled\" value=\"true\" /></platform>",
               "count": 1
             }
           ]
@@ -299,18 +299,6 @@
               "count": 1
             },
             {
-              "xml": "<meta-data android:name=\"com.google.android.geo.API_KEY\" android:value=\"${GOOGLE_MAPS_ANDROID_API_KEY}\" />",
-              "count": 1
-            },
-            {
-              "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-library android:name=\"org.apache.http.legacy\" android:required=\"false\" />",
-              "count": 1
-            },
-            {
               "xml": "<activity android:launchMode=\"singleTop\" android:name=\"com.gae.scaffolder.plugin.FCMPluginActivity\"><intent-filter><action android:name=\"FCM_PLUGIN_ACTIVITY\" /><category android:name=\"android.intent.category.DEFAULT\" /></intent-filter></activity>",
               "count": 1
             },
@@ -320,6 +308,18 @@
             },
             {
               "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_icon\" android:resource=\"@mipmap/ic_launcher\" />",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.google.android.geo.API_KEY\" android:value=\"${GOOGLE_MAPS_ANDROID_API_KEY}\" />",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-library android:name=\"org.apache.http.legacy\" android:required=\"false\" />",
               "count": 1
             }
           ],
@@ -440,17 +440,17 @@
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-androidx-build": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-googlemaps": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "cordova-plugin-fcm-with-dependecy-updated": {
       "ANDROID_FCM_VERSION": "19.0.0",
       "ANDROID_GRADLE_TOOLS_VERSION": "3.5.3",
       "ANDROID_GOOGLE_SERVICES_VERSION": "4.3.3",
       "ANDROID_DEFAULT_NOTIFICATION_ICON": "@mipmap/ic_launcher",
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-androidx-build": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-googlemaps": {
       "PACKAGE_NAME": "postsrvs.i"
     }
   },
@@ -635,6 +635,14 @@
       "pluginId": "cordova-plugin-appversion",
       "clobbers": [
         "AppVersion"
+      ]
+    },
+    {
+      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
+      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
+      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
+      "clobbers": [
+        "FCM"
       ]
     },
     {
@@ -883,14 +891,6 @@
       "file": "plugins/cordova-plugin-googlemaps/www/js_CordovaGoogleMaps-for-android_ios.js",
       "pluginId": "cordova-plugin-googlemaps",
       "runs": true
-    },
-    {
-      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
-      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
-      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
-      "clobbers": [
-        "FCM"
-      ]
     }
   ],
   "plugin_metadata": {
@@ -917,8 +917,8 @@
     "cordova-plugin-appversion": "1.0.0",
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-androidx-adapter": "1.1.1",
+    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1",
     "cordova-androidx-build": "1.0.4",
-    "cordova-plugin-googlemaps": "2.8.0-20200701-2202",
-    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1"
+    "cordova-plugin-googlemaps": "2.8.0-20200709-2008"
   }
 }

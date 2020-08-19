@@ -81,6 +81,9 @@
     <feature name="RareloopAppVersion">
         <param name="ios-package" value="RareloopAppVersion" />
     </feature>
+    <feature name="FCMPlugin">
+        <param name="ios-package" value="FCMPlugin" />
+    </feature>
     <feature name="CordovaGoogleMaps">
         <param name="ios-package" value="CordovaGoogleMaps" />
         <param name="onload" value="true" />
@@ -130,9 +133,6 @@
     </feature>
     <feature name="PluginStreetViewPanorama">
         <param name="ios-package" value="PluginStreetViewPanorama" />
-    </feature>
-    <feature name="FCMPlugin">
-        <param name="ios-package" value="FCMPlugin" />
     </feature>
     <name>Postsrvs</name>
     <description>Postsrvs.</description>

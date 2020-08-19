@@ -1,24 +1,24 @@
 {
-  "_from": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
-  "_id": "cordova-plugin-googlemaps@2.8.0-20200701-2202",
+  "_from": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
+  "_id": "cordova-plugin-googlemaps@2.8.0-20200709-2008",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/cordova-plugin-googlemaps",
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
-    "rawSpec": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
-    "saveSpec": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
-    "fetchSpec": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git",
-    "gitCommittish": "2616d16b0e09e0c02d9a47099b0d82467a65ca4d"
+    "raw": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
+    "rawSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
+    "saveSpec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
+    "fetchSpec": "https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
+    "gitCommittish": "multiple_maps"
   },
   "_requiredBy": [
     "#DEV:/",
     "#USER"
   ],
-  "_resolved": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
-  "_spec": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d",
+  "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#2cdc896cb5edfadb02aed9995ea742567dc8de02",
+  "_spec": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps",
   "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
   "author": {
     "name": "Masashi Katsumata, Hirbod Mirjavadi"
@@ -86,5 +86,5 @@
     "test": "jest && npm run eslint",
     "test:watch": "jest --watch"
   },
-  "version": "2.8.0-20200701-2202"
+  "version": "2.8.0-20200709-2008"
 }

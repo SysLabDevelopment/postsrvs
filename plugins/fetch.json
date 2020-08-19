@@ -199,18 +199,18 @@
     "is_top_level": false,
     "variables": {}
   },
-  "cordova-plugin-googlemaps": {
-    "source": {
-      "type": "registry",
-      "id": "git://github.com/mapsplugin/cordova-plugin-googlemaps.git#2616d16b0e09e0c02d9a47099b0d82467a65ca4d"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-fcm-with-dependecy-updated": {
     "source": {
       "type": "registry",
       "id": "cordova-plugin-fcm-with-dependecy-updated"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-googlemaps": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
     },
     "is_top_level": true,
     "variables": {}

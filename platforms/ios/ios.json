@@ -10,13 +10,13 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 27
+              "count": 29
             }
           ],
           "NSCameraUsageDescription": [
             {
               "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 27
+              "count": 29
             }
           ],
           "NSLocationWhenInUseUsageDescription": [
@@ -171,6 +171,10 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"FCMPlugin\"><param name=\"ios-package\" value=\"FCMPlugin\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"CordovaGoogleMaps\"><param name=\"ios-package\" value=\"CordovaGoogleMaps\" /><param name=\"onload\" value=\"true\" /><param name=\"onreset\" value=\"true\" /></feature>",
               "count": 1
             },
@@ -232,10 +236,6 @@
             },
             {
               "xml": "<feature name=\"PluginStreetViewPanorama\"><param name=\"ios-package\" value=\"PluginStreetViewPanorama\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"FCMPlugin\"><param name=\"ios-package\" value=\"FCMPlugin\" /></feature>",
               "count": 1
             }
           ]
@@ -330,12 +330,12 @@
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
     "cordova-plugin-googlemaps": {
       "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-fcm-with-dependecy-updated": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
@@ -540,6 +540,14 @@
       "pluginId": "cordova-plugin-appversion",
       "clobbers": [
         "AppVersion"
+      ]
+    },
+    {
+      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
+      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
+      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
+      "clobbers": [
+        "FCM"
       ]
     },
     {
@@ -788,14 +796,6 @@
       "file": "plugins/cordova-plugin-googlemaps/www/js_CordovaGoogleMaps-for-android_ios.js",
       "pluginId": "cordova-plugin-googlemaps",
       "runs": true
-    },
-    {
-      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
-      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
-      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
-      "clobbers": [
-        "FCM"
-      ]
     }
   ],
   "plugin_metadata": {
@@ -821,7 +821,7 @@
     "cordova-plugin-appversion": "1.0.0",
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-googlemaps": "2.8.0-20200701-2202",
-    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1"
+    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1",
+    "cordova-plugin-googlemaps": "2.8.0-20200709-2008"
   }
 }

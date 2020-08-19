@@ -202,6 +202,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
+      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
+      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
+      "clobbers": [
+        "FCM"
+      ]
+    },
+    {
       "id": "cordova-plugin-googlemaps.Promise",
       "file": "plugins/cordova-plugin-googlemaps/www/Promise.js",
       "pluginId": "cordova-plugin-googlemaps"
@@ -447,14 +455,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/cordova-plugin-googlemaps/www/js_CordovaGoogleMaps-for-android_ios.js",
       "pluginId": "cordova-plugin-googlemaps",
       "runs": true
-    },
-    {
-      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
-      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
-      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
-      "clobbers": [
-        "FCM"
-      ]
     }
   ];
   module.exports.metadata = {
@@ -480,7 +480,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-appversion": "1.0.0",
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-googlemaps": "2.8.0-20200701-2202",
-    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1"
+    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1",
+    "cordova-plugin-googlemaps": "2.8.0-20200709-2008"
   };
 });
