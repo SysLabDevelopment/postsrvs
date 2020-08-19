@@ -14,6 +14,8 @@
   "include": [
     "src/**/*.d.ts",
     "zone-flags.ts",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "assets/**/*.png",
+    "src/assets/markercluster/pipka.png"
   ]
 }

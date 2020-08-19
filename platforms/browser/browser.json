@@ -94,6 +94,9 @@
     },
     "cordova-plugin-googlemaps": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {},
@@ -621,6 +624,14 @@
       "id": "cordova-plugin-googlemaps.PluginEnvironment",
       "pluginId": "cordova-plugin-googlemaps",
       "runs": true
+    },
+    {
+      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
+      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
+      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
+      "clobbers": [
+        "FCM"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -646,6 +657,7 @@
     "cordova-plugin-appversion": "1.0.0",
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-googlemaps": "2.8.0-20200701-2202"
+    "cordova-plugin-googlemaps": "2.8.0-20200701-2202",
+    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1"
   }
 }

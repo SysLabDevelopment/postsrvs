@@ -32,7 +32,7 @@
   </ion-refresher>
 
   <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
-    <ion-segment (ionChange)="segmentChanged($event)" value='friends' style="height: 45px">
+    <ion-segment (ionChange)="segmentChanged($event)" value='1' style="height: 45px">
       <ion-segment-button value="1">
         <ion-label>В работе</ion-label>
       </ion-segment-button>

@@ -17,7 +17,7 @@ import {
   MarkerCluster,
   MarkerOptions,
   MyLocation
-} from "@ionic-native/google-maps";
+} from "@ionic-native/google-maps/ngx";
 import { NavController, Platform, PopoverController } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
 import { Observable, Subject } from "rxjs";
@@ -118,8 +118,9 @@ export class MapPage implements OnInit {
         this.currentOrder = String(data.order.client_id);
         customData = data;
       }
-      this.map.clear();
-      this.drawData(null, customData);
+      this.map.clear().then(() => {
+        this.drawData(null, customData);
+      });
     });
 
   }
@@ -219,12 +220,12 @@ export class MapPage implements OnInit {
       let info = this.createInfoContent(order);
       this.existsGeos.push([order.lt, order.lg]);
       markeredOrders.push({
-        position: {
-          lat: order.lt,
-          lng: order.lg,
+        "position": {
+          "lat": parseFloat(order.lt),
+          "lng": parseFloat(order.lg),
         },
-        name: order.id,
-        info: info
+        "name": order.id,
+        "info": info
 
       });
     });
@@ -233,17 +234,20 @@ export class MapPage implements OnInit {
 
   public drawData(autoStartRoute: string = "0", customData = null) {
     if (this.map !== undefined) {
-      this.map.clear();
-      if (this.routeToOrder && customData) {
-        this.requestDirection(customData.order.lt, customData.order.lg);
-        this.addCluster(this.markeredOrders([customData.order]));
-      } else {
-        this.routeToOrder = false;
-        if (autoStartRoute == "0") {
-          this.addCluster(this.markeredOrders(this.orders));
-          return false;
+      this.map.clear().then(() => {
+
+
+        if (this.routeToOrder && customData) {
+          this.requestDirection(customData.order.lt, customData.order.lg);
+          this.addCluster(this.markeredOrders([customData.order]));
+        } else {
+          this.routeToOrder = false;
+          if (autoStartRoute == "0") {
+            this.addCluster(this.markeredOrders(this.orders));
+
+          }
         }
-      }
+      });
 
     }
   }
@@ -313,7 +317,7 @@ export class MapPage implements OnInit {
   }
 
   addCluster(markeredOrders) {
-    let markerCluster: MarkerCluster = this.map.addMarkerClusterSync({
+    const options = {
       maxZoomLevel: 14,
       markers: markeredOrders,
       boundsDraw: false,
@@ -329,12 +333,17 @@ export class MapPage implements OnInit {
           anchor: { x: 16, y: 16 },
         },
       ],
-    });
-    markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(async (params) => {
-      let marker: Marker = params[1];
-      let popover = await this.popover(GoogleMapsEvent.MARKER_CLICK, marker.get('info'));
-      popover.present();
-    });
+    };
+    // let markerCluster: MarkerCluster = this.map.addMarkerClusterSync(options);
+    this.map.addMarkerCluster(options).then((markerCluster: MarkerCluster) => {
+      console.log(`sys:: MarkerCluster added: `, markerCluster);
+      markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(async (params) => {
+        let marker: Marker = params[1];
+        let popover = await this.popover(GoogleMapsEvent.MARKER_CLICK, marker.get('info'));
+        popover.present();
+      });
+    })
+
   }
 
   createInfoContent(order) {

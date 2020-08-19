@@ -1,24 +1,23 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { Platform } from '@ionic/angular';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../../services/auth.service';
-import { StateService } from '../../services/state.service';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import { CourierService } from '../../services/courier.service';
 import {
-  trigger,
-  state,
+  animate, state,
   style,
-  animate,
-  transition,
+
+  transition, trigger
 } from '@angular/animations';
-import { takeUntil } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { AlertController, Platform } from '@ionic/angular';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { MapService } from 'src/app/services/sys/map.service';
+import { AuthService } from '../../services/auth.service';
+import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
+import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
-declare var AppVersion:{version:string, build:number};
+declare var AppVersion: { version: string, build: number };
 
 @Component({
   selector: 'app-login',
@@ -28,7 +27,7 @@ declare var AppVersion:{version:string, build:number};
     trigger('openClose', [
       // ...
       state('open', style({
-        height: '264px', 
+        height: '264px',
       })),
       state('closed', style({
         height: '50px',
@@ -79,7 +78,8 @@ export class LoginPage implements OnInit {
     private AP: AndroidPermissions,
     public courier: CourierService,
     public settings: SettingsService,
-    public sys: SysService
+    public sys: SysService,
+    public sysMap: MapService
   ) {
     let self = this;
 
@@ -90,16 +90,16 @@ export class LoginPage implements OnInit {
       if (readySource == 'android') {
         this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
       }
-        this.auth.version = AppVersion.version;
-        this.auth.checkAuth().subscribe((data: any) => {
-          if (data.success == 'true') {
-            this.auth.setUser(data.sync_id);
-            this.settings.getSettings(data.sync_id);
-            self.router.navigate(['map']);
-            self.auth.initLogin();
-          } else {
-          }
-        })
+      this.auth.version = AppVersion.version;
+      this.auth.checkAuth().subscribe((data: any) => {
+        if (data.success == 'true') {
+          this.auth.setUser(data.sync_id);
+          this.settings.getSettings(data.sync_id);
+          self.router.navigate(['map']);
+          self.auth.initLogin();
+        } else {
+        }
+      })
 
     })
   }

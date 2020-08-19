@@ -9,7 +9,7 @@ import {
   GoogleMapOptions, GoogleMaps,
 
   GoogleMapsEvent
-} from "@ionic-native/google-maps";
+} from "@ionic-native/google-maps/ngx";
 import { Platform } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
 import { Order } from 'src/app/interfaces/order';
@@ -26,7 +26,7 @@ export class MapService {
     private device: Device,
     private platform: Platform,
     private router: Router
-  ) {}
+  ) { }
 
   public getWay(coords: { lt: number; lg: number }): Observable<any> {
     const url =
@@ -141,7 +141,7 @@ export class MapService {
     this.router.navigate(page);
   }
 
- public showRoute(order:Order) {
+  public showRoute(order: Order) {
     const meta = {
       label: 'showRouteToOrder',
       order

@@ -1,13 +1,12 @@
 // Здравый код, растущий рядом с какахами
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { ToastController } from '@ionic/angular';
-import { Response } from '../interfaces/response';
+import { Observable } from 'rxjs';
 import { Order } from '../interfaces/order';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { createWorker } from 'tesseract.js';
+import { Response } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ import { createWorker } from 'tesseract.js';
 export class SysService {
   public ordersIds: Array<string>;
   public proxy: string = 'http://mobile.postsrvs.ru:8080/';
-  public orders:Array<Order>
+  public orders: Array<Order>
 
   constructor(
     private http: HttpClient,
@@ -23,30 +22,30 @@ export class SysService {
     public toastController: ToastController,
     private camera: Camera
   ) {
-    
+
   }
-    //Распознавание текста
-   async doOCR(base64Image: string, noSkip = true) {
-     if(noSkip){
-    const worker = createWorker({
-      logger: m => console.log(m),
-    });
-    await worker.load();
-    await worker.loadLanguage('rus');
-    await worker.initialize('rus');
-    const {data:{text}} = await worker.recognize(base64Image);
-    console.log('sys:: распознанные данные с чека: ', text);
-    await worker.terminate();
-    return text;
-     }else{
-       return ''
-     }
-    
-    
+  //Распознавание текста
+  async doOCR(base64Image: string, noSkip = true) {
+    //  if(noSkip){
+    // const worker = createWorker({
+    //   logger: m => console.log(m),
+    // });
+    // await worker.load();
+    // await worker.loadLanguage('rus');
+    // await worker.initialize('rus');
+    // const {data:{text}} = await worker.recognize(base64Image);
+    // console.log('sys:: распознанные данные с чека: ', text);
+    // await worker.terminate();
+    // return text;
+    //  }else{
+    return ''
+    //  }
+
+
   }
   //Получение списка заказов по idшникам
   public getOrders(ids: Array<string>): Observable<Response> {
-    
+
     const url = this.proxy + "https://mobile.postsrvs.ru/mobile/orders";
     let data = {
       'uuid': this.device.uuid,
@@ -160,7 +159,7 @@ export class SysService {
     return this.http.post(url, data, httpOptions)
   }
 
-  public checkPhoto(){
+  public checkPhoto() {
     const options: CameraOptions = {
       saveToPhotoAlbum: true,
       quality: 25,
@@ -169,6 +168,6 @@ export class SysService {
       mediaType: this.camera.MediaType.PICTURE
     }
     return this.camera.getPicture(options)
-    
+
   }
 }

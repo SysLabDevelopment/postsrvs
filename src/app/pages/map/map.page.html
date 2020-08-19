@@ -10,10 +10,10 @@
     <as-split unit="percent" direction="vertical" class="work_pane" (dragEnd)="onSplitterDragEnd()">
       <as-split-area size="80" minSize="30" #area1="asSplitArea">
         <div id="map" style="height: 85vh; width: 100%;">
-          <ion-chip outline="false" *ngIf='routeToOrder' class='one-order-chip'>
+          <!-- <ion-chip outline="false" *ngIf='routeToOrder' class='one-order-chip'>
             <ion-label>Заказ </ion-label>
             <ion-icon name="close" (click)="drawData()"></ion-icon>
-          </ion-chip>
+          </ion-chip> -->
         </div>
       </as-split-area>
       <as-split-area size="20" minSize="10" #area2="asSplitArea">

@@ -23,9 +23,9 @@ export class DataService {
   ) {
     storage.ready().then((localforage) => {
       this.getInitialData();
-      this.orders.subscribe((orders: Order[]) => {
-        this.storage.set('orders', orders);
-      })
+      // this.orders.subscribe((orders: Order[]) => {
+      //   this.storage.set('orders', orders);
+      // })
     });
 
   }

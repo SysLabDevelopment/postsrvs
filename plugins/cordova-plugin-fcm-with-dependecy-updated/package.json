@@ -1,0 +1,80 @@
+{
+  "_from": "cordova-plugin-fcm-with-dependecy-updated",
+  "_id": "cordova-plugin-fcm-with-dependecy-updated@7.1.1",
+  "_inBundle": false,
+  "_integrity": "sha512-tSHRxxzgaC1sra7uDF1ipEN30tB/96rWkcC5aJe48Bvt6V0cEer2kwBdA4iXk3cE0MxXhTbb/YfFsY54hVI1cg==",
+  "_location": "/cordova-plugin-fcm-with-dependecy-updated",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-fcm-with-dependecy-updated",
+    "name": "cordova-plugin-fcm-with-dependecy-updated",
+    "escapedName": "cordova-plugin-fcm-with-dependecy-updated",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-fcm-with-dependecy-updated/-/cordova-plugin-fcm-with-dependecy-updated-7.1.1.tgz",
+  "_shasum": "76e20d3411c9fc48c1678761ecec3a144250a448",
+  "_spec": "cordova-plugin-fcm-with-dependecy-updated",
+  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "author": {
+    "name": "André Augusto Tissot"
+  },
+  "bugs": {
+    "url": "https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated/issues"
+  },
+  "bundleDependencies": false,
+  "cordova_name": "Cordova FCM Push Plugin",
+  "dependencies": {
+    "typescript": "^3.9.6"
+  },
+  "deprecated": false,
+  "description": "Google Firebase Cloud Messaging Cordova Push Plugin fork with dependecy updated",
+  "devDependencies": {
+    "prettier": "^2.0.5",
+    "tslint": "^6.1.2",
+    "tslint-microsoft-contrib": "^6.2.0"
+  },
+  "englishdoc": "",
+  "homepage": "https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated#readme",
+  "issue": "https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated/issues",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "notifications",
+    "push",
+    "firebase",
+    "fcm",
+    "ios",
+    "android",
+    "cordova"
+  ],
+  "license": "MIT",
+  "main": "www/FCMPlugin.js",
+  "name": "cordova-plugin-fcm-with-dependecy-updated",
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "repo": "https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrehtissot/cordova-plugin-fcm-with-dependecy-updated.git"
+  },
+  "scripts": {
+    "build": "npm run build:www;npm run build:ionic",
+    "build:ionic": "cd ./src/ionic;npm run build",
+    "build:www": "cd ./src/www;npm run build",
+    "prettier": "find ./src/ -name '*.js' -or -name '*.ts' -or -name '*.tsx' -or -name '*.scss' | xargs npx prettier --write",
+    "tslint": "npx tslint -p ./src/www --fix;npx tslint -p ./src/ionic --fix"
+  },
+  "typings": "typings/index.d.ts",
+  "version": "7.1.1"
+}
