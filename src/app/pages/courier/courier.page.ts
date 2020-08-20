@@ -12,7 +12,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
-import { IonReorderGroup, PopoverController } from "@ionic/angular";
+import { PopoverController } from "@ionic/angular";
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/interfaces/order';
@@ -51,7 +51,6 @@ import { DataService } from '../../services/sys/data.service';
   ]
 })
 export class CourierPage implements OnInit {
-  @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
   @ViewChild('sInput') public sInput: ElementRef;
   @ViewChild(CdkDropList, { static: false })
   Drop_L: CdkDropList;
@@ -86,6 +85,7 @@ export class CourierPage implements OnInit {
   public selectedPhone: string;
   public orderPhones: string[];
   public order: Order;
+  public noDrag = false;
 
   constructor(public courier: CourierService,
     private router: Router,
@@ -163,6 +163,9 @@ export class CourierPage implements OnInit {
     }
     if (this.settings.rules.appMode == 'hand') {
       this.state$.manual_route = true
+    }
+    if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
+      this.noDrag = true;
     }
     this.data.orders.subscribe((orders) => {
       this.courier.count_orders(orders)

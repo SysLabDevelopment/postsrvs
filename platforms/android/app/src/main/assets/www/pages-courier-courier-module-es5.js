@@ -579,7 +579,9 @@
         if (rf & 2) {
           var order_r13 = ctx.$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpureFunction1"](11, _c1, order_r13.overdue == "1" || order_r13.required == true))("cdkDragStartDelay", 500);
+          var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpureFunction1"](12, _c1, order_r13.overdue == "1" || order_r13.required == true))("cdkDragStartDelay", 500)("cdkDragDisabled", ctx_r12.noDrag);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
 
@@ -615,7 +617,7 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpureFunction1"](13, _c2, order_r13.show == true));
+          _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpureFunction1"](14, _c2, order_r13.show == true));
         }
       }
 
@@ -653,7 +655,7 @@
             return ctx_r32.drop($event);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, CourierPage_div_29_ion_item_3_Template, 19, 15, "ion-item", 26);
+          _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, CourierPage_div_29_ion_item_3_Template, 19, 16, "ion-item", 26);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipe"](4, "async");
 
@@ -1077,6 +1079,7 @@
           this.searchString = '';
           this.slicer = this.howSlice();
           this.callWindow = false;
+          this.noDrag = false;
           var self = this;
           this.initContent();
 
@@ -1150,6 +1153,10 @@
 
             if (this.settings.rules.appMode == 'hand') {
               this.state$.manual_route = true;
+            }
+
+            if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
+              this.noDrag = true;
             }
 
             this.data.orders.subscribe(function (orders) {
@@ -1756,8 +1763,6 @@
         selectors: [["app-courier"]],
         viewQuery: function CourierPage_Query(rf, ctx) {
           if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](_ionic_angular__WEBPACK_IMPORTED_MODULE_9__["IonReorderGroup"], true);
-
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](_c0, true);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵviewQuery"](_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_2__["CdkDropList"], true);
@@ -1768,7 +1773,6 @@
           if (rf & 2) {
             var _t;
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.reorderGroup = _t.first);
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.sInput = _t.first);
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.Drop_L = _t.first);
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵloadQuery"]()) && (ctx.DragItems = _t);
@@ -1776,7 +1780,7 @@
         },
         decls: 34,
         vars: 13,
-        consts: [[1, "toolbar"], ["slot", "start"], [3, "click"], ["name", "search", "slot", "start"], [4, "ngIf"], ["size", "small", "color", "dark"], ["slot", "primary"], [3, "click", 4, "ngIf"], ["slot", "icon-only", "name", "help-circle-outline"], ["slot", "fixed", 3, "ionRefresh"], ["pullingIcon", "arrow-dropdown", "pullingText", "\u041F\u043E\u0442\u044F\u043D\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u043E\u0431\u043D\u043E\u0432\u0438\u0442\u044C", "refreshingSpinner", "bubbles", "refreshingText", "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435..."], [1, "c-wrp", 3, "ngClass"], ["value", "1", 2, "height", "45px", 3, "ionChange"], ["value", "1"], ["value", "4"], ["value", "6"], ["class", "c-body", 4, "ngIf"], ["class", "start-route", 4, "ngIf"], ["class", "scanWindow", 4, "ngIf"], ["class", "shirm", 4, "ngIf"], ["class", "call-window", 4, "ngIf"], ["name", "box"], ["name", "check-square"], [1, "c-body"], ["placeholder", "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0437\u0430\u043A\u0430\u0437\u0430\u043C", "inputmode", "text", "animated", "", 3, "debounce", "ngModel", "ionChange", "ngModelChange"], ["cdkDropList", "", "itemSize", "50", 2, "height", "100%", "width", "100%", "min-height", "50vh", 3, "cdkDropListDropped"], ["cdkDrag", "", 3, "ngClass", "cdkDragStartDelay", "click", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 3, "ngClass", "cdkDragStartDelay", "click"], [1, "title"], [1, "client-id"], [1, "addr"], [1, "name"], ["class", "actions", 4, "ngIf"], ["name", "ellipsis-vertical", "slot", "start"], [1, "actions-button", 3, "click"], ["src", "../../../assets/actions-arrows.svg", 3, "ngClass"], [1, "actions"], ["fill", "solid", "size", "default", 3, "click"], ["slot", "start", "src", "../../../assets/mdi-light_note-plus.svg"], ["slot", "start", "name", "location-outline"], ["slot", "start", "name", "call-outline"], [1, "start-route"], ["class", "satrt-r-btn", 3, "click", 4, "ngIf"], ["class", "satrt-r-btn sr-stop", 3, "click", 4, "ngIf"], ["class", "satrt-r-btn find-o-btn", 3, "ngClass", "click", 4, "ngIf"], [1, "satrt-r-btn", 3, "click"], [1, "satrt-r-btn", "sr-stop", 3, "click"], [1, "satrt-r-btn", "find-o-btn", 3, "ngClass", "click"], [1, "scanWindow"], [1, "sw-wrp"], [1, "sw-title"], ["autofocus", "", 1, "ionInp", 3, "ngModel", "change", "ngModelChange"], ["sInput", ""], [1, "shirm"], ["name", "lines-small"], [1, "call-window"], [1, "cw-body"], ["name", "x-square", "size", "large", 3, "click"], ["name", "selectedPhone", 3, "ngModel", "ngModelChange"], [4, "ngFor", "ngForOf"], [3, "value"]],
+        consts: [[1, "toolbar"], ["slot", "start"], [3, "click"], ["name", "search", "slot", "start"], [4, "ngIf"], ["size", "small", "color", "dark"], ["slot", "primary"], [3, "click", 4, "ngIf"], ["slot", "icon-only", "name", "help-circle-outline"], ["slot", "fixed", 3, "ionRefresh"], ["pullingIcon", "arrow-dropdown", "pullingText", "\u041F\u043E\u0442\u044F\u043D\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B \u043E\u0431\u043D\u043E\u0432\u0438\u0442\u044C", "refreshingSpinner", "bubbles", "refreshingText", "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435..."], [1, "c-wrp", 3, "ngClass"], ["value", "1", 2, "height", "45px", 3, "ionChange"], ["value", "1"], ["value", "4"], ["value", "6"], ["class", "c-body", 4, "ngIf"], ["class", "start-route", 4, "ngIf"], ["class", "scanWindow", 4, "ngIf"], ["class", "shirm", 4, "ngIf"], ["class", "call-window", 4, "ngIf"], ["name", "box"], ["name", "check-square"], [1, "c-body"], ["placeholder", "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0437\u0430\u043A\u0430\u0437\u0430\u043C", "inputmode", "text", "animated", "", 3, "debounce", "ngModel", "ionChange", "ngModelChange"], ["cdkDropList", "", "itemSize", "50", 2, "height", "100%", "width", "100%", "min-height", "50vh", 3, "cdkDropListDropped"], ["cdkDrag", "", 3, "ngClass", "cdkDragStartDelay", "cdkDragDisabled", "click", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 3, "ngClass", "cdkDragStartDelay", "cdkDragDisabled", "click"], [1, "title"], [1, "client-id"], [1, "addr"], [1, "name"], ["class", "actions", 4, "ngIf"], ["name", "ellipsis-vertical", "slot", "start"], [1, "actions-button", 3, "click"], ["src", "../../../assets/actions-arrows.svg", 3, "ngClass"], [1, "actions"], ["fill", "solid", "size", "default", 3, "click"], ["slot", "start", "src", "../../../assets/mdi-light_note-plus.svg"], ["slot", "start", "name", "location-outline"], ["slot", "start", "name", "call-outline"], [1, "start-route"], ["class", "satrt-r-btn", 3, "click", 4, "ngIf"], ["class", "satrt-r-btn sr-stop", 3, "click", 4, "ngIf"], ["class", "satrt-r-btn find-o-btn", 3, "ngClass", "click", 4, "ngIf"], [1, "satrt-r-btn", 3, "click"], [1, "satrt-r-btn", "sr-stop", 3, "click"], [1, "satrt-r-btn", "find-o-btn", 3, "ngClass", "click"], [1, "scanWindow"], [1, "sw-wrp"], [1, "sw-title"], ["autofocus", "", 1, "ionInp", 3, "ngModel", "change", "ngModelChange"], ["sInput", ""], [1, "shirm"], ["name", "lines-small"], [1, "call-window"], [1, "cw-body"], ["name", "x-square", "size", "large", 3, "click"], ["name", "selectedPhone", 3, "ngModel", "ngModelChange"], [4, "ngFor", "ngForOf"], [3, "value"]],
         template: function CourierPage_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "ion-header");
@@ -2001,10 +2005,6 @@
             type: _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_7__["Network"]
           }];
         }, {
-          reorderGroup: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"],
-            args: [_ionic_angular__WEBPACK_IMPORTED_MODULE_9__["IonReorderGroup"]]
-          }],
           sInput: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"],
             args: ['sInput']
