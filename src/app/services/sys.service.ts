@@ -161,7 +161,6 @@ export class SysService {
 
   public checkPhoto() {
     const options: CameraOptions = {
-      saveToPhotoAlbum: true,
       quality: 25,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,

@@ -114,13 +114,13 @@ export class MapPage implements OnInit {
     });
     this.sysMap.infoUpdated.subscribe((data: Meta) => {
       let customData: any;
-      if (data.label == 'showRouteToOrder') {
+      if (data && data.label == 'showRouteToOrder') {
         this.routeToOrder = true;
         this.currentOrder = String(data.order.client_id);
         customData = data;
       }
       this.map.clear().then(() => {
-        this.drawData(null, customData);
+        this.drawData(this.settings.rules.autoStartRoute, customData);
       });
     });
 
@@ -236,8 +236,6 @@ export class MapPage implements OnInit {
   public drawData(autoStartRoute: string = "0", customData = null) {
     if (this.map !== undefined) {
       this.map.clear().then(() => {
-
-
         if (this.routeToOrder && customData) {
           this.requestDirection(customData.order.lt, customData.order.lg);
           this.addCluster(this.markeredOrders([customData.order]));

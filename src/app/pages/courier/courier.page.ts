@@ -9,12 +9,16 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { IonReorderGroup, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
+import { Order } from 'src/app/interfaces/order';
 import { MapService } from 'src/app/services/sys/map.service';
+import { OrderService } from 'src/app/services/sys/order.service';
 import { HelpComponent } from '../../components/help/help.component';
+import { NoteComponent } from '../../components/note/note.component';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
@@ -77,7 +81,10 @@ export class CourierPage implements OnInit {
   private ord: Observable<any[]>;
   public orders_c: Observable<any>;
   public slicer: number = this.howSlice();
-
+  public callWindow: boolean = false;
+  public selectedPhone: string;
+  public orderPhones: string[];
+  public order: Order;
 
   constructor(public courier: CourierService,
     private router: Router,
@@ -85,11 +92,14 @@ export class CourierPage implements OnInit {
     public auth: AuthService,
     private bs: BarcodeScanner,
     private vbr: Vibration,
-    private settings: SettingsService,
+    public settings: SettingsService,
     private sys: SysService,
     private data: DataService,
     public popoverController: PopoverController,
-    private map: MapService
+    private map: MapService,
+    private orderService: OrderService,
+    private CL: CallNumber,
+
   ) {
     let self = this;
 
@@ -506,20 +516,87 @@ export class CourierPage implements OnInit {
     console.log('sys:: массив заказов после перетаскивания: ', this.orders);
   }
 
-  async popoverNote(ev: any) {
+  async popoverNote(ev: any, orderId: string) {
     const popover = await this.popoverController.create({
-      component: HelpComponent,
+      component: NoteComponent,
       event: ev,
       translucent: true,
-      cssClass: 'help'
+      cssClass: 'help',
+      componentProps: {
+        "orderId": orderId
+      }
     });
     return popover
   }
 
-  async note(ev) {
-    let popover = await this.popoverNote(ev);
+  public async note(ev, orderId: string) {
+    let popover = await this.popoverNote(ev, orderId);
     popover.present();
-
   }
+
+  //Звонок получателю заказа
+  public phoneClick(action: string, order: Order) {
+    this.order = order;
+    this.orderPhones = this.parsePhone(order.client_phone);
+    let courierPhone = this.parsePhone(order.courier_phone)[0];
+    if (this.orderPhones.length == 1) {
+      this.selectedPhone = this.orderPhones[0];
+    }
+
+    switch (action) {
+      case "init":
+        this.callWindow = !this.callWindow;
+        break;
+      case "phone":
+        this.CL.callNumber(this.selectedPhone, false).then(() => { });
+        this.callWindow = false;
+        this.order = undefined;
+        break;
+      case "operator":
+        if (this.selectedPhone && courierPhone) {
+          let url = "orders";
+          let data = {
+            action: "send_phone",
+            client_number: this.selectedPhone,
+            cur_number: courierPhone,
+          };
+          this.auth.sendPost(url, data).subscribe((resp) => {
+            console.log("call_subs", resp);
+          });
+          this.auth.showError(9);
+          this.callWindow = false;
+        }
+        this.order = undefined;
+        break;
+    }
+  }
+
+  //Парсинг номера телефона из строки с лишним мусором
+  public parsePhone(phone): Array<string> {
+    let phones: Array<string> = [];
+    phone = phone.replace(/\D+/g, "");
+
+    while (phone.length > 7) {
+      phone = this.normalizePhoneNumber(phone);
+      phones.push(phone.slice("", 11));
+      phone = phone.slice(11);
+    }
+    return phones;
+  }
+
+  //Жонглирование '8' / '+7'
+  private normalizePhoneNumber(phone): string {
+    if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
+      phone = "8" + phone;
+    }
+    if (phone.length == 7 || phone.length == 10) {
+      phone = "8" + phone;
+    }
+    if (phone[0] !== "8" && phone.length == 11) {
+      phone = "8" + phone.slice(1);
+    }
+    return phone;
+  }
+
 
 }

@@ -2638,40 +2638,6 @@
       var angular_split__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
       /*! angular-split */
       "./node_modules/angular-split/fesm2015/angular-split.js");
-      /* harmony import */
-
-
-      var _angular_common__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
-      /*! @angular/common */
-      "./node_modules/@angular/common/fesm2015/common.js");
-
-      function MapPage_ion_chip_10_Template(rf, ctx) {
-        if (rf & 1) {
-          var _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "ion-chip", 10);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "ion-label");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "\u0417\u0430\u043A\u0430\u0437 ");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "ion-icon", 11);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MapPage_ion_chip_10_Template_ion_icon_click_3_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r4);
-
-            var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
-
-            return ctx_r3.drawData();
-          });
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        }
-      }
 
       var MapPage = /*#__PURE__*/function () {
         function MapPage(state$, platform, router, settings, courier, sys, sysMap, auth, nav, navCtrl, popoverController, data, storage) {
@@ -2878,7 +2844,9 @@
 
             return new rxjs__WEBPACK_IMPORTED_MODULE_6__["Observable"](function (ids) {
               if (_this15.settings.rules.typeRoute == "standart") {
-                _this15.orders && ids.next(_this15.orders.map(function (order) {
+                _this15.orders && ids.next(_this15.orders.filter(function (order) {
+                  return order.status_id == 1;
+                }).map(function (order) {
                   return order.id;
                 }));
               } else {
@@ -2999,10 +2967,8 @@
                     return ids.length > 0;
                   })).subscribe(function (ids) {
                     _this19.getOrders(ids).subscribe(function (res) {
-                      _this19.data.orders.next(res.orders);
-
-                      _this19.storage.set('orders', res.orders);
-
+                      // this.data.orders.next(res.orders);
+                      // this.storage.set('orders', res.orders)
                       _this19.orders = res.orders;
 
                       if (_this19.settings.rules.appMode.toLowerCase().includes("auto")) {
@@ -3023,7 +2989,7 @@
           value: function addCluster(markeredOrders) {
             var _this20 = this;
 
-            var markerCluster = this.map.addMarkerClusterSync({
+            var options = {
               maxZoomLevel: 14,
               markers: markeredOrders,
               boundsDraw: false,
@@ -3040,7 +3006,9 @@
                   y: 16
                 }
               }]
-            });
+            };
+            var markerCluster = this.map.addMarkerClusterSync(options);
+            console.log("sys:: MarkerCluster added: ", markerCluster);
             markerCluster.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].MARKER_CLICK).subscribe(function (params) {
               return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this20, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                 var marker, popover;
@@ -3178,8 +3146,9 @@
 
                 _this21.map.addMarkerSync({
                   position: _this21.destination
-                }); // this.renderer.setDirections(result);
+                });
 
+                _this21.renderer.setDirections(result);
               }
             });
           }
@@ -3212,9 +3181,9 @@
         type: MapPage,
         selectors: [["app-map"]],
         features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵNgOnChangesFeature"]],
-        decls: 14,
-        vars: 1,
-        consts: [[3, "click"], ["id", "container"], ["unit", "percent", "direction", "vertical", 1, "work_pane", 3, "dragEnd"], ["size", "80", "minSize", "30"], ["area1", "asSplitArea"], ["id", "map", 2, "height", "85vh", "width", "100%"], ["outline", "false", "class", "one-order-chip", 4, "ngIf"], ["size", "20", "minSize", "10"], ["area2", "asSplitArea"], ["id", "guide"], ["outline", "false", 1, "one-order-chip"], ["name", "close", 3, "click"]],
+        decls: 13,
+        vars: 0,
+        consts: [[3, "click"], ["id", "container"], ["unit", "percent", "direction", "vertical", 1, "work_pane", 3, "dragEnd"], ["size", "80", "minSize", "30"], ["area1", "asSplitArea"], ["id", "map", 2, "height", "85vh", "width", "100%"], ["size", "20", "minSize", "10"], ["area2", "asSplitArea"], ["id", "guide"]],
         template: function MapPage_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "ion-header");
@@ -3247,17 +3216,13 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "as-split-area", 3, 4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "div", 5);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, MapPage_ion_chip_10_Template, 4, 0, "ion-chip", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](9, "div", 5);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "as-split-area", 6, 7);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "as-split-area", 7, 8);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](13, "div", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](12, "div", 8);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
@@ -3266,15 +3231,9 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-          }
-
-          if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](10);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.routeToOrder);
           }
         },
-        directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonContent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitComponent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitAreaDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_18__["NgIf"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonChip"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonLabel"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonIcon"]],
+        directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonContent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitComponent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitAreaDirective"]],
         styles: ["ion-popover[_ngcontent-%COMP%] {\n  --width: max-content;\n}\n\n.popover[_ngcontent-%COMP%]   .popover-content[_ngcontent-%COMP%] {\n  --width: 90vw;\n  --min-width: max-content;\n}\n\n#map[_ngcontent-%COMP%], #guide[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border: 1px solid white;\n}\n\n.one-order-chip[_ngcontent-%COMP%] {\n  --background:#2b637e;\n  --color:white;\n}\n\n#map[_ngcontent-%COMP%] {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWFwL21hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBUTtBQUNWOztBQUNBO0VBQ0UsYUFBUTtFQUNSLHdCQUFZO0FBRWQ7O0FBQUE7O0VBRUUsV0FBVztFQUNYLFlBQVk7RUFDWix1QkFBdUI7QUFHekI7O0FBREE7RUFDRSxvQkFBYTtFQUNiLGFBQVE7QUFJVjs7QUFGQTtFQUNFLGtCQUFrQjtBQUtwQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21hcC9tYXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXBvcG92ZXIge1xuICAtLXdpZHRoOiBtYXgtY29udGVudDtcbn1cbi5wb3BvdmVyIC5wb3BvdmVyLWNvbnRlbnQge1xuICAtLXdpZHRoOiA5MHZ3O1xuICAtLW1pbi13aWR0aDogbWF4LWNvbnRlbnQ7XG59XG4jbWFwLFxuI2d1aWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG59XG4ub25lLW9yZGVyLWNoaXB7XG4gIC0tYmFja2dyb3VuZDojMmI2MzdlO1xuICAtLWNvbG9yOndoaXRlO1xufVxuI21hcHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuIl19 */"]
       });
       /*@__PURE__*/

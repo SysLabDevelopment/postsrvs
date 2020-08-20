@@ -472,7 +472,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-screen-orientation": "3.0.2",
-    "cordova-plugin-androidx": "1.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
     "cordova-sqlite-storage": "5.0.1",

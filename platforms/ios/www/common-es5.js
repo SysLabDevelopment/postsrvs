@@ -729,12 +729,19 @@
           this.courier = courier;
           this.auth = auth;
           this.sys = sys;
-          this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
           storage.ready().then(function (localforage) {
-            _this.getInitialData(); // this.orders.subscribe((orders: Order[]) => {
-            //   this.storage.set('orders', orders);
-            // })
+            _this.storage.get('orders').then(function (orders) {
+              _this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](orders);
+              console.log('Список заказов из стоража', orders);
 
+              _this.getInitialData();
+
+              _this.orders.subscribe(function (orders) {
+                _this.storage.set('orders', orders).then(function () {
+                  console.log('sys:: Список заказов сохранен в сторож: ', orders);
+                });
+              });
+            });
           });
         }
 

@@ -238,61 +238,67 @@
       /* harmony import */
 
 
-      var _services_auth_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+      var _components_note_note_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+      /*! ../../components/note/note.component */
+      "./src/app/components/note/note.component.ts");
+      /* harmony import */
+
+
+      var _services_auth_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
       /*! ../../services/auth.service */
       "./src/app/services/auth.service.ts");
       /* harmony import */
 
 
-      var _services_courier_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+      var _services_courier_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
       /*! ../../services/courier.service */
       "./src/app/services/courier.service.ts");
       /* harmony import */
 
 
-      var _services_settings_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+      var _services_settings_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
       /*! ../../services/settings.service */
       "./src/app/services/settings.service.ts");
       /* harmony import */
 
 
-      var _services_state_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+      var _services_state_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
       /*! ../../services/state.service */
       "./src/app/services/state.service.ts");
       /* harmony import */
 
 
-      var _services_sys_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+      var _services_sys_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
       /*! ../../services/sys.service */
       "./src/app/services/sys.service.ts");
       /* harmony import */
 
 
-      var _services_sys_data_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+      var _services_sys_data_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
       /*! ../../services/sys/data.service */
       "./src/app/services/sys/data.service.ts");
       /* harmony import */
 
 
-      var angular_feather__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+      var angular_feather__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
       /*! angular-feather */
       "./node_modules/angular-feather/fesm2015/angular-feather.js");
       /* harmony import */
 
 
-      var _angular_common__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+      var _angular_common__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
       /*! @angular/common */
       "./node_modules/@angular/common/fesm2015/common.js");
       /* harmony import */
 
 
-      var _angular_forms__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
       /*! @angular/forms */
       "./node_modules/@angular/forms/fesm2015/forms.js");
       /* harmony import */
 
 
-      var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+      var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
       /*! @angular/cdk/scrolling */
       "./node_modules/@angular/cdk/fesm2015/scrolling.js");
 
@@ -394,20 +400,20 @@
 
       function CourierPage_div_29_ion_item_3_div_15_Template(rf, ctx) {
         if (rf & 1) {
-          var _r20 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+          var _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 35);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "ion-button", 36);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function CourierPage_div_29_ion_item_3_div_15_Template_ion_button_click_1_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r20);
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r19);
 
             var order_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]().$implicit;
 
             var ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
 
-            ctx_r18.showRoute(order_r12);
+            ctx_r18.note($event, order_r12);
             return $event.stopPropagation();
           });
 
@@ -420,7 +426,7 @@
           _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "ion-button", 36);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function CourierPage_div_29_ion_item_3_div_15_Template_ion_button_click_4_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r20);
+            _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r19);
 
             var order_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]().$implicit;
 
@@ -1407,7 +1413,7 @@
           }
         }, {
           key: "popoverNote",
-          value: function popoverNote(ev) {
+          value: function popoverNote(ev, order) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
               var popover;
               return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -1416,10 +1422,11 @@
                     case 0:
                       _context3.next = 2;
                       return this.popoverController.create({
-                        component: _components_help_help_component__WEBPACK_IMPORTED_MODULE_11__["HelpComponent"],
+                        component: _components_note_note_component__WEBPACK_IMPORTED_MODULE_12__["NoteComponent"],
                         event: ev,
                         translucent: true,
-                        cssClass: 'help'
+                        cssClass: 'help',
+                        componentProps: order
                       });
 
                     case 2:
@@ -1436,7 +1443,7 @@
           }
         }, {
           key: "note",
-          value: function note(ev) {
+          value: function note(ev, order) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
               var popover;
               return regeneratorRuntime.wrap(function _callee4$(_context4) {
@@ -1444,7 +1451,7 @@
                   switch (_context4.prev = _context4.next) {
                     case 0:
                       _context4.next = 2;
-                      return this.popoverNote(ev);
+                      return this.popoverNote(ev, order);
 
                     case 2:
                       popover = _context4.sent;
@@ -1464,7 +1471,7 @@
       }();
 
       CourierPage.ɵfac = function CourierPage_Factory(t) {
-        return new (t || CourierPage)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_13__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_state_service__WEBPACK_IMPORTED_MODULE_15__["StateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_12__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__["BarcodeScanner"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_6__["Vibration"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_settings_service__WEBPACK_IMPORTED_MODULE_14__["SettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_16__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_sys_data_service__WEBPACK_IMPORTED_MODULE_17__["DataService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["PopoverController"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](src_app_services_sys_map_service__WEBPACK_IMPORTED_MODULE_10__["MapService"]));
+        return new (t || CourierPage)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_14__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_state_service__WEBPACK_IMPORTED_MODULE_16__["StateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_13__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__["BarcodeScanner"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_6__["Vibration"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_settings_service__WEBPACK_IMPORTED_MODULE_15__["SettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_17__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_sys_data_service__WEBPACK_IMPORTED_MODULE_18__["DataService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["PopoverController"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](src_app_services_sys_map_service__WEBPACK_IMPORTED_MODULE_10__["MapService"]));
       };
 
       CourierPage.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponent"]({
@@ -1652,8 +1659,8 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.loader);
           }
         },
-        directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonButtons"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonButton"], angular_feather__WEBPACK_IMPORTED_MODULE_18__["FeatherComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_19__["NgIf"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonIcon"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonContent"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonRefresher"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonRefresherContent"], _angular_common__WEBPACK_IMPORTED_MODULE_19__["NgClass"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonSegment"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["SelectValueAccessor"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonSegmentButton"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonLabel"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonSearchbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["TextValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_20__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_20__["NgModel"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualScrollViewport"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkFixedSizeVirtualScroll"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_2__["CdkDropList"], _angular_common__WEBPACK_IMPORTED_MODULE_19__["NgForOf"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonItem"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_2__["CdkDrag"], _angular_forms__WEBPACK_IMPORTED_MODULE_20__["DefaultValueAccessor"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonSpinner"]],
-        pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_19__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_19__["DatePipe"]],
+        directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonButtons"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonButton"], angular_feather__WEBPACK_IMPORTED_MODULE_19__["FeatherComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_20__["NgIf"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonIcon"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonContent"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonRefresher"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonRefresherContent"], _angular_common__WEBPACK_IMPORTED_MODULE_20__["NgClass"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonSegment"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["SelectValueAccessor"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonSegmentButton"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonLabel"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonSearchbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["TextValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_21__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_21__["NgModel"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualScrollViewport"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkFixedSizeVirtualScroll"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_2__["CdkDropList"], _angular_common__WEBPACK_IMPORTED_MODULE_20__["NgForOf"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonItem"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_2__["CdkDrag"], _angular_forms__WEBPACK_IMPORTED_MODULE_21__["DefaultValueAccessor"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["IonSpinner"]],
+        pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_20__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_20__["DatePipe"]],
         styles: ["ion-chip[_ngcontent-%COMP%] {\n  white-space: nowrap;\n}\n\n.headbar-right-buttons[_ngcontent-%COMP%] {\n  position: fixed;\n  right: 0;\n  z-index: 999999;\n  top: 0;\n  display: flex;\n}\n\nion-toolbar[_ngcontent-%COMP%] {\n  --min-height: 30px;\n}\n\n.toolbar[_ngcontent-%COMP%] {\n  font-size: 16px;\n}\n\nion-header[_ngcontent-%COMP%]   *[_ngcontent-%COMP%] {\n  font-size: 16px;\n}\n\nion-header[_ngcontent-%COMP%]   *[_ngcontent-%COMP%]   ion-button[_ngcontent-%COMP%] {\n  height: 30px;\n}\n\nion-header[_ngcontent-%COMP%]   *[_ngcontent-%COMP%]   ion-button[_ngcontent-%COMP%]   ion-icon[_ngcontent-%COMP%] {\n  font-size: 24px;\n}\n\n.fether[_ngcontent-%COMP%] {\n  height: 16px;\n}\n\nion-segment[_ngcontent-%COMP%] {\n  height: 45 px;\n}\n\nion-segment[_ngcontent-%COMP%]   ion-segment-button[_ngcontent-%COMP%] {\n  --background: #e5f0f4;\n  --border-style: solid;\n  --border-width: 0.5px;\n  --color: #585454;\n  --color-checked: #2b637e;\n  --indicator-height: 0;\n}\n\nion-segment[_ngcontent-%COMP%]   ion-segment-button[_ngcontent-%COMP%]   ion-label[_ngcontent-%COMP%] {\n  text-transform: none;\n}\n\nion-searchbar[_ngcontent-%COMP%] {\n  --box-shadow: 0 0 01px black;\n}\n\nion-item[_ngcontent-%COMP%] {\n  --border-color: #d6cfcf;\n  --border-width: 1px;\n  --border-radius: 2px;\n  --padding-start: 0;\n  margin: 0 2px 5px 2px;\n}\n\nion-item[_ngcontent-%COMP%]   ion-reorder[_ngcontent-%COMP%] {\n  margin: 8px 2px 5px 2px;\n}\n\nion-item[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  font-weight: bold;\n  font-size: 14px;\n}\n\nion-item[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%]   .client-id[_ngcontent-%COMP%] {\n  color: #2b637e;\n}\n\nion-item[_ngcontent-%COMP%]   .addr[_ngcontent-%COMP%] {\n  color: #585454;\n  font-size: 13px;\n  white-space: pre-wrap;\n  padding: 5px 0;\n}\n\nion-item[_ngcontent-%COMP%]   .name[_ngcontent-%COMP%] {\n  color: #333333;\n  font-size: 13px;\n  font-weight: bold;\n}\n\nion-item[_ngcontent-%COMP%]   .actions-button[_ngcontent-%COMP%] {\n  background: #4ba7c5;\n  box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.05);\n  border-radius: 10px 0px 2px;\n  position: absolute;\n  right: 0;\n  bottom: 0%;\n  width: 25px;\n  height: 35px;\n  text-align: center;\n}\n\nion-item[_ngcontent-%COMP%]   .actions-button[_ngcontent-%COMP%]   ion-icon[_ngcontent-%COMP%] {\n  margin: 50% 0;\n  width: 12px;\n  height: 12px;\n}\n\nion-item[_ngcontent-%COMP%]   .actions[_ngcontent-%COMP%] {\n  position: absolute;\n  bottom: 0;\n}\n\nion-item[_ngcontent-%COMP%]   .actions[_ngcontent-%COMP%]   ion-button[_ngcontent-%COMP%] {\n  --background: #2b637e;\n  --border-radius: 4px;\n  font-size: 12px;\n  text-transform: none;\n  --padding-bottom: 10px;\n  --padding-top: 10px;\n  --padding-start: 7px;\n  --padding-end: 7px;\n}\n\nion-item[_ngcontent-%COMP%]:nth-child(odd) {\n  --background: #f6fdff;\n}\n\nion-reorder[_ngcontent-%COMP%] {\n  margin: 0;\n}\n\nion-item.overdue[_ngcontent-%COMP%] {\n  --border-color: red;\n  --inner-border-width: 0;\n}\n\nion-item.overdue[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%]   .client-id[_ngcontent-%COMP%] {\n  color: red;\n}\n\n.turned[_ngcontent-%COMP%] {\n  transform: rotate(0.5turn);\n}\n\n.c-wrp[_ngcontent-%COMP%], .c-body[_ngcontent-%COMP%] {\n  height: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY291cmllci9jb3VyaWVyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLGVBQWU7RUFDZixRQUFRO0VBQ1IsZUFBZTtFQUNmLE1BQU07RUFDTixhQUFhO0FBQ2Y7O0FBQ0E7RUFDRSxrQkFBYTtBQUVmOztBQUNBO0VBQ0UsZUFBZTtBQUVqQjs7QUFBQTtFQUNFLGVBQWU7QUFHakI7O0FBSkE7RUFHSSxZQUFZO0FBS2hCOztBQVJBO0VBS00sZUFBZTtBQU9yQjs7QUFIQTtFQUNFLFlBQVk7QUFNZDs7QUFKQTtFQUNFLGFBQWE7QUFPZjs7QUFSQTtFQU1JLHFCQUFhO0VBQ2IscUJBQWU7RUFDZixxQkFBZTtFQUNmLGdCQUFRO0VBQ1Isd0JBQWdCO0VBQ2hCLHFCQUFtQjtBQU12Qjs7QUFqQkE7RUFJTSxvQkFBb0I7QUFpQjFCOztBQVBBO0VBQ0UsNEJBQWE7QUFVZjs7QUFSQTtFQUNFLHVCQUFlO0VBQ2YsbUJBQWU7RUFDZixvQkFBZ0I7RUFDaEIsa0JBQWdCO0VBQ2hCLHFCQUFxQjtBQVd2Qjs7QUFoQkE7RUFPSSx1QkFBdUI7QUFhM0I7O0FBcEJBO0VBVUksYUFBYTtFQUNiLDhCQUE4QjtFQUM5QixpQkFBaUI7RUFDakIsZUFBZTtBQWNuQjs7QUEzQkE7RUFlTSxjQUFjO0FBZ0JwQjs7QUEvQkE7RUFtQkksY0FBYztFQUNkLGVBQWU7RUFDZixxQkFBcUI7RUFDckIsY0FBYztBQWdCbEI7O0FBdENBO0VBeUJJLGNBQWM7RUFDZCxlQUFlO0VBQ2YsaUJBQWlCO0FBaUJyQjs7QUE1Q0E7RUE4QkksbUJBQW1CO0VBQ25CLDZDQUE2QztFQUM3QywyQkFBMkI7RUFDM0Isa0JBQWtCO0VBQ2xCLFFBQVE7RUFDUixVQUFVO0VBQ1YsV0FBVztFQUNYLFlBQVk7RUFDWixrQkFBa0I7QUFrQnRCOztBQXhEQTtFQXdDTSxhQUFhO0VBQ2IsV0FBVztFQUNYLFlBQVk7QUFvQmxCOztBQTlEQTtFQThDSSxrQkFBa0I7RUFDbEIsU0FBUztBQW9CYjs7QUFuRUE7RUFpRE0scUJBQWE7RUFDYixvQkFBZ0I7RUFDaEIsZUFBZTtFQUNmLG9CQUFvQjtFQUNwQixzQkFBaUI7RUFDakIsbUJBQWM7RUFDZCxvQkFBZ0I7RUFDaEIsa0JBQWM7QUFzQnBCOztBQWxCQTtFQUNFLHFCQUFhO0FBcUJmOztBQW5CQTtFQUNFLFNBQVM7QUFzQlg7O0FBcEJBO0VBQ0UsbUJBQWU7RUFDZix1QkFBcUI7QUF1QnZCOztBQXpCQTtFQUtNLFVBQVU7QUF3QmhCOztBQXBCQTtFQUNFLDBCQUEwQjtBQXVCNUI7O0FBckJBO0VBQ0UsWUFBWTtBQXdCZCIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NvdXJpZXIvY291cmllci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2hpcCB7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59XG5cbi5oZWFkYmFyLXJpZ2h0LWJ1dHRvbnMge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHJpZ2h0OiAwO1xuICB6LWluZGV4OiA5OTk5OTk7XG4gIHRvcDogMDtcbiAgZGlzcGxheTogZmxleDtcbn1cbmlvbi10b29sYmFyIHtcbiAgLS1taW4taGVpZ2h0OiAzMHB4O1xufVxuXG4udG9vbGJhciB7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cbmlvbi1oZWFkZXIgKiB7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgaW9uLWJ1dHRvbiB7XG4gICAgaGVpZ2h0OiAzMHB4O1xuICAgIGlvbi1pY29uIHtcbiAgICAgIGZvbnQtc2l6ZTogMjRweDtcbiAgICB9XG4gIH1cbn1cbi5mZXRoZXIge1xuICBoZWlnaHQ6IDE2cHg7XG59XG5pb24tc2VnbWVudCB7XG4gIGhlaWdodDogNDUgcHg7XG4gIGlvbi1zZWdtZW50LWJ1dHRvbiB7XG4gICAgaW9uLWxhYmVsIHtcbiAgICAgIHRleHQtdHJhbnNmb3JtOiBub25lO1xuICAgIH1cbiAgICAtLWJhY2tncm91bmQ6ICNlNWYwZjQ7XG4gICAgLS1ib3JkZXItc3R5bGU6IHNvbGlkO1xuICAgIC0tYm9yZGVyLXdpZHRoOiAwLjVweDtcbiAgICAtLWNvbG9yOiAjNTg1NDU0O1xuICAgIC0tY29sb3ItY2hlY2tlZDogIzJiNjM3ZTtcbiAgICAtLWluZGljYXRvci1oZWlnaHQ6IDA7XG4gIH1cbn1cbmlvbi1zZWFyY2hiYXIge1xuICAtLWJveC1zaGFkb3c6IDAgMCAwMXB4IGJsYWNrO1xufVxuaW9uLWl0ZW0ge1xuICAtLWJvcmRlci1jb2xvcjogI2Q2Y2ZjZjtcbiAgLS1ib3JkZXItd2lkdGg6IDFweDtcbiAgLS1ib3JkZXItcmFkaXVzOiAycHg7XG4gIC0tcGFkZGluZy1zdGFydDogMDtcbiAgbWFyZ2luOiAwIDJweCA1cHggMnB4O1xuICBpb24tcmVvcmRlciB7XG4gICAgbWFyZ2luOiA4cHggMnB4IDVweCAycHg7XG4gIH1cbiAgLnRpdGxlIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgLmNsaWVudC1pZCB7XG4gICAgICBjb2xvcjogIzJiNjM3ZTtcbiAgICB9XG4gIH1cbiAgLmFkZHIge1xuICAgIGNvbG9yOiAjNTg1NDU0O1xuICAgIGZvbnQtc2l6ZTogMTNweDtcbiAgICB3aGl0ZS1zcGFjZTogcHJlLXdyYXA7XG4gICAgcGFkZGluZzogNXB4IDA7XG4gIH1cbiAgLm5hbWUge1xuICAgIGNvbG9yOiAjMzMzMzMzO1xuICAgIGZvbnQtc2l6ZTogMTNweDtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgfVxuICAuYWN0aW9ucy1idXR0b24ge1xuICAgIGJhY2tncm91bmQ6ICM0YmE3YzU7XG4gICAgYm94LXNoYWRvdzogLTFweCAtMXB4IDJweCByZ2JhKDAsIDAsIDAsIDAuMDUpO1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcHggMHB4IDJweDtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgcmlnaHQ6IDA7XG4gICAgYm90dG9tOiAwJTtcbiAgICB3aWR0aDogMjVweDtcbiAgICBoZWlnaHQ6IDM1cHg7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGlvbi1pY29uIHtcbiAgICAgIG1hcmdpbjogNTAlIDA7XG4gICAgICB3aWR0aDogMTJweDtcbiAgICAgIGhlaWdodDogMTJweDtcbiAgICB9XG4gIH1cbiAgLmFjdGlvbnMge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206IDA7XG4gICAgaW9uLWJ1dHRvbiB7XG4gICAgICAtLWJhY2tncm91bmQ6ICMyYjYzN2U7XG4gICAgICAtLWJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgIHRleHQtdHJhbnNmb3JtOiBub25lO1xuICAgICAgLS1wYWRkaW5nLWJvdHRvbTogMTBweDtcbiAgICAgIC0tcGFkZGluZy10b3A6IDEwcHg7XG4gICAgICAtLXBhZGRpbmctc3RhcnQ6IDdweDtcbiAgICAgIC0tcGFkZGluZy1lbmQ6IDdweDtcbiAgICB9XG4gIH1cbn1cbmlvbi1pdGVtOm50aC1jaGlsZChvZGQpIHtcbiAgLS1iYWNrZ3JvdW5kOiAjZjZmZGZmO1xufVxuaW9uLXJlb3JkZXIge1xuICBtYXJnaW46IDA7XG59XG5pb24taXRlbS5vdmVyZHVlIHtcbiAgLS1ib3JkZXItY29sb3I6IHJlZDtcbiAgLS1pbm5lci1ib3JkZXItd2lkdGg6IDA7XG4gIC50aXRsZSB7XG4gICAgLmNsaWVudC1pZCB7XG4gICAgICBjb2xvcjogcmVkO1xuICAgIH1cbiAgfVxufVxuLnR1cm5lZCB7XG4gIHRyYW5zZm9ybTogcm90YXRlKDAuNXR1cm4pO1xufVxuLmMtd3JwLCAuYy1ib2R5e1xuICBoZWlnaHQ6IDEwMCU7XG59Il19 */"],
         data: {
           animation: [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('openClose', [// ...
@@ -1682,23 +1689,23 @@
           }]
         }], function () {
           return [{
-            type: _services_courier_service__WEBPACK_IMPORTED_MODULE_13__["CourierService"]
+            type: _services_courier_service__WEBPACK_IMPORTED_MODULE_14__["CourierService"]
           }, {
             type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
           }, {
-            type: _services_state_service__WEBPACK_IMPORTED_MODULE_15__["StateService"]
+            type: _services_state_service__WEBPACK_IMPORTED_MODULE_16__["StateService"]
           }, {
-            type: _services_auth_service__WEBPACK_IMPORTED_MODULE_12__["AuthService"]
+            type: _services_auth_service__WEBPACK_IMPORTED_MODULE_13__["AuthService"]
           }, {
             type: _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__["BarcodeScanner"]
           }, {
             type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_6__["Vibration"]
           }, {
-            type: _services_settings_service__WEBPACK_IMPORTED_MODULE_14__["SettingsService"]
+            type: _services_settings_service__WEBPACK_IMPORTED_MODULE_15__["SettingsService"]
           }, {
-            type: _services_sys_service__WEBPACK_IMPORTED_MODULE_16__["SysService"]
+            type: _services_sys_service__WEBPACK_IMPORTED_MODULE_17__["SysService"]
           }, {
-            type: _services_sys_data_service__WEBPACK_IMPORTED_MODULE_17__["DataService"]
+            type: _services_sys_data_service__WEBPACK_IMPORTED_MODULE_18__["DataService"]
           }, {
             type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["PopoverController"]
           }, {

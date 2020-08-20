@@ -162,9 +162,9 @@
       }, {
         path: 'login',
         loadChildren: function loadChildren() {
-          return Promise.all(
+          return __webpack_require__.e(
           /*! import() | pages-login-login-module */
-          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("pages-login-login-module")]).then(__webpack_require__.bind(null,
+          "pages-login-login-module").then(__webpack_require__.bind(null,
           /*! ./pages/login/login.module */
           "./src/app/pages/login/login.module.ts")).then(function (m) {
             return m.LoginPageModule;
@@ -174,9 +174,9 @@
       }, {
         path: 'balance',
         loadChildren: function loadChildren() {
-          return Promise.all(
+          return __webpack_require__.e(
           /*! import() | pages-balance-balance-module */
-          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("pages-balance-balance-module")]).then(__webpack_require__.bind(null,
+          "pages-balance-balance-module").then(__webpack_require__.bind(null,
           /*! ./pages/balance/balance.module */
           "./src/app/pages/balance/balance.module.ts")).then(function (m) {
             return m.BalancePageModule;
@@ -188,7 +188,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-courier-courier-module */
-          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("default~pages-courier-courier-module~pages-test-test-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-courier-courier-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~pages-courier-courier-module~pages-test-test-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-courier-courier-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/courier/courier.module */
           "./src/app/pages/courier/courier.module.ts")).then(function (m) {
             return m.CourierPageModule;
@@ -200,7 +200,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-order-order-module */
-          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("common"), __webpack_require__.e("pages-order-order-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-order-order-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/order/order.module */
           "./src/app/pages/order/order.module.ts")).then(function (m) {
             return m.OrderPageModule;
@@ -212,7 +212,7 @@
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | pages-map-map-module */
-          [__webpack_require__.e("default~pages-balance-balance-module~pages-courier-courier-module~pages-login-login-module~pages-map~8ddf1554"), __webpack_require__.e("common"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("common"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null,
           /*! ./pages/map/map.module */
           "./src/app/pages/map/map.module.ts")).then(function (m) {
             return m.MapPageModule;
@@ -728,63 +728,67 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/cdk/scrolling */
+      "./node_modules/@angular/cdk/fesm2015/scrolling.js");
       /* harmony import */
 
 
-      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/platform-browser */
-      "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+      var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/common */
+      "./node_modules/@angular/common/fesm2015/common.js");
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/router */
-      "./node_modules/@angular/router/fesm2015/router.js");
-      /* harmony import */
-
-
-      var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! @angular/platform-browser/animations */
-      "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-      /* harmony import */
-
-
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! @ionic/angular */
-      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
-      /* harmony import */
-
-
-      var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! @ionic-native/splash-screen/ngx */
-      "./node_modules/@ionic-native/splash-screen/ngx/index.js");
-      /* harmony import */
-
-
-      var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! @ionic-native/status-bar/ngx */
-      "./node_modules/@ionic-native/status-bar/ngx/index.js");
-      /* harmony import */
-
-
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/common/http */
       "./node_modules/@angular/common/fesm2015/http.js");
       /* harmony import */
 
 
-      var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-      /*! ./app.component */
-      "./src/app/app.component.ts");
+      var _angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/common/locales/ru */
+      "./node_modules/@angular/common/locales/ru.js");
       /* harmony import */
 
 
-      var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-      /*! ./app-routing.module */
-      "./src/app/app-routing.module.ts");
+      var _angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_3__);
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @angular/forms */
+      "./node_modules/@angular/forms/fesm2015/forms.js");
+      /* harmony import */
+
+
+      var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @angular/platform-browser */
+      "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+      /* harmony import */
+
+
+      var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! @angular/platform-browser/animations */
+      "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! @angular/router */
+      "./node_modules/@angular/router/fesm2015/router.js");
+      /* harmony import */
+
+
+      var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      /*! @ionic-native/android-permissions/ngx */
+      "./node_modules/@ionic-native/android-permissions/ngx/index.js");
       /* harmony import */
 
 
@@ -794,15 +798,15 @@
       /* harmony import */
 
 
-      var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-      /*! @angular/cdk/scrolling */
-      "./node_modules/@angular/cdk/fesm2015/scrolling.js");
+      var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+      /*! @ionic-native/call-number/ngx */
+      "./node_modules/@ionic-native/call-number/ngx/index.js");
       /* harmony import */
 
 
-      var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-      /*! @ionic-native/geolocation/ngx */
-      "./node_modules/@ionic-native/geolocation/ngx/index.js");
+      var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+      /*! @ionic-native/camera/ngx */
+      "./node_modules/@ionic-native/camera/ngx/index.js");
       /* harmony import */
 
 
@@ -812,45 +816,45 @@
       /* harmony import */
 
 
-      var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
-      /*! @ionic-native/web-intent/ngx */
-      "./node_modules/@ionic-native/web-intent/ngx/index.js");
-      /* harmony import */
-
-
-      var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
-      /*! @ionic-native/in-app-browser/ngx */
-      "./node_modules/@ionic-native/in-app-browser/ngx/index.js");
-      /* harmony import */
-
-
-      var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
-      /*! @ionic-native/call-number/ngx */
-      "./node_modules/@ionic-native/call-number/ngx/index.js");
-      /* harmony import */
-
-
-      var ngx_mask__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
-      /*! ngx-mask */
-      "./node_modules/ngx-mask/fesm2015/ngx-mask.js");
-      /* harmony import */
-
-
-      var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
-      /*! @ionic-native/android-permissions/ngx */
-      "./node_modules/@ionic-native/android-permissions/ngx/index.js");
-      /* harmony import */
-
-
-      var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+      var _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
       /*! @ionic-native/diagnostic/ngx */
       "./node_modules/@ionic-native/diagnostic/ngx/index.js");
       /* harmony import */
 
 
-      var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
-      /*! @ionic-native/camera/ngx */
-      "./node_modules/@ionic-native/camera/ngx/index.js");
+      var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+      /*! @ionic-native/geolocation/ngx */
+      "./node_modules/@ionic-native/geolocation/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+      /*! @ionic-native/google-maps */
+      "./node_modules/@ionic-native/google-maps/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+      /*! @ionic-native/in-app-browser/ngx */
+      "./node_modules/@ionic-native/in-app-browser/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+      /*! @ionic-native/network/ngx */
+      "./node_modules/@ionic-native/network/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+      /*! @ionic-native/splash-screen/ngx */
+      "./node_modules/@ionic-native/splash-screen/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+      /*! @ionic-native/status-bar/ngx */
+      "./node_modules/@ionic-native/status-bar/ngx/index.js");
       /* harmony import */
 
 
@@ -860,138 +864,146 @@
       /* harmony import */
 
 
-      var _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
-      /*! ./components/balance/cashout-fail-o/cashout-fail-o.component */
-      "./src/app/components/balance/cashout-fail-o/cashout-fail-o.component.ts");
+      var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+      /*! @ionic-native/web-intent/ngx */
+      "./node_modules/@ionic-native/web-intent/ngx/index.js");
       /* harmony import */
 
 
-      var _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
-      /*! ./components/balance/cashout-w/cashout-w.component */
-      "./src/app/components/balance/cashout-w/cashout-w.component.ts");
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
-      var _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
-      /*! ./interceptors/http.interceptor */
-      "./src/app/interceptors/http.interceptor.ts");
-      /* harmony import */
-
-
-      var _angular_common__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
-      /*! @angular/common */
-      "./node_modules/@angular/common/fesm2015/common.js");
-      /* harmony import */
-
-
-      var _angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
-      /*! @angular/common/locales/ru */
-      "./node_modules/@angular/common/locales/ru.js");
-      /* harmony import */
-
-
-      var _angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_26__);
-      /* harmony import */
-
-
-      var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
-      /*! @ionic-native/google-maps */
-      "./node_modules/@ionic-native/google-maps/index.js");
-      /* harmony import */
-
-
-      var _ionic_storage__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(
+      var _ionic_storage__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
       /*! @ionic/storage */
       "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
       /* harmony import */
 
 
-      var ionic_cache__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(
+      var ionic_cache__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
       /*! ionic-cache */
       "./node_modules/ionic-cache/dist/index.js");
       /* harmony import */
 
 
-      var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(
-      /*! @ionic-native/network/ngx */
-      "./node_modules/@ionic-native/network/ngx/index.js");
+      var ngx_mask__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
+      /*! ngx-mask */
+      "./node_modules/ngx-mask/fesm2015/ngx-mask.js");
       /* harmony import */
 
 
-      var _icons_icons_module__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(
+      var _app_routing_module__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
+      /*! ./app-routing.module */
+      "./src/app/app-routing.module.ts");
+      /* harmony import */
+
+
+      var _app_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(
+      /*! ./app.component */
+      "./src/app/app.component.ts");
+      /* harmony import */
+
+
+      var _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(
+      /*! ./components/balance/cashout-fail-o/cashout-fail-o.component */
+      "./src/app/components/balance/cashout-fail-o/cashout-fail-o.component.ts");
+      /* harmony import */
+
+
+      var _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(
+      /*! ./components/balance/cashout-w/cashout-w.component */
+      "./src/app/components/balance/cashout-w/cashout-w.component.ts");
+      /* harmony import */
+
+
+      var _components_help_help_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(
+      /*! ./components/help/help.component */
+      "./src/app/components/help/help.component.ts");
+      /* harmony import */
+
+
+      var _components_note_note_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(
+      /*! ./components/note/note.component */
+      "./src/app/components/note/note.component.ts");
+      /* harmony import */
+
+
+      var _icons_icons_module__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(
       /*! ./icons/icons.module */
       "./src/app/icons/icons.module.ts");
       /* harmony import */
 
 
-      var _components_help_help_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(
-      /*! ./components/help/help.component */
-      "./src/app/components/help/help.component.ts");
+      var _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(
+      /*! ./interceptors/http.interceptor */
+      "./src/app/interceptors/http.interceptor.ts");
 
-      Object(_angular_common__WEBPACK_IMPORTED_MODULE_25__["registerLocaleData"])(_angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_26___default.a, "ru");
+      Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["registerLocaleData"])(_angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_3___default.a, "ru");
 
       var AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
       };
 
-      AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+      AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({
         type: AppModule,
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_28__["AppComponent"]]
       });
-      AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+      AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({
         factory: function AppModule_Factory(t) {
           return new (t || AppModule)();
         },
-        providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_10__["BarcodeScanner"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_12__["Geolocation"], _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_13__["Device"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_14__["WebIntent"], _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_21__["Vibration"], _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_15__["InAppBrowser"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_18__["AndroidPermissions"], _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_19__["Diagnostic"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_20__["Camera"], _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_16__["CallNumber"], _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_27__["GoogleMaps"], _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_30__["Network"], {
-          provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"],
-          useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
+        providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_20__["StatusBar"], _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_10__["BarcodeScanner"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_19__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__["Geolocation"], _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_13__["Device"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_22__["WebIntent"], _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_21__["Vibration"], _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_17__["InAppBrowser"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_9__["AndroidPermissions"], _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_14__["Diagnostic"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_12__["Camera"], _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_11__["CallNumber"], _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_16__["GoogleMaps"], _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__["Network"], {
+          provide: _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouteReuseStrategy"],
+          useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicRouteStrategy"]
         }, {
-          provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HTTP_INTERCEPTORS"],
-          useClass: _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_24__["HttpErrorInterceptor"],
+          provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
+          useClass: _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_34__["HttpErrorInterceptor"],
           multi: true
         }, {
-          provide: _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"],
+          provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["LOCALE_ID"],
           useFactory: function useFactory() {
             return "ru";
           }
         }],
-        imports: [[_icons_icons_module__WEBPACK_IMPORTED_MODULE_31__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_17__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_11__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_28__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_29__["CacheModule"].forRoot({
+        imports: [[_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_33__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
           keyPrefix: 'offlineData'
         })]]
       });
 
       (function () {
-        (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](AppModule, {
-          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_22__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_23__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_32__["HelpComponent"]],
-          imports: [_icons_icons_module__WEBPACK_IMPORTED_MODULE_31__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_17__["NgxMaskModule"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_11__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_28__["IonicStorageModule"], ionic_cache__WEBPACK_IMPORTED_MODULE_29__["CacheModule"]]
+        (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](AppModule, {
+          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_28__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_29__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_30__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_31__["HelpComponent"], _components_note_note_component__WEBPACK_IMPORTED_MODULE_32__["NoteComponent"]],
+          imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_33__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"], ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"]]
         });
       })();
       /*@__PURE__*/
 
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppModule, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵsetClassMetadata"](AppModule, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"],
           args: [{
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_22__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_23__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_32__["HelpComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_28__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_29__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_30__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_31__["HelpComponent"], _components_note_note_component__WEBPACK_IMPORTED_MODULE_32__["NoteComponent"]],
             entryComponents: [],
-            imports: [_icons_icons_module__WEBPACK_IMPORTED_MODULE_31__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_17__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_11__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_28__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_29__["CacheModule"].forRoot({
+            imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_33__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
               keyPrefix: 'offlineData'
             })],
-            providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_10__["BarcodeScanner"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_12__["Geolocation"], _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_13__["Device"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_14__["WebIntent"], _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_21__["Vibration"], _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_15__["InAppBrowser"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_18__["AndroidPermissions"], _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_19__["Diagnostic"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_20__["Camera"], _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_16__["CallNumber"], _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_27__["GoogleMaps"], _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_30__["Network"], {
-              provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"],
-              useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
+            providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_20__["StatusBar"], _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_10__["BarcodeScanner"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_19__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__["Geolocation"], _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_13__["Device"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_22__["WebIntent"], _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_21__["Vibration"], _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_17__["InAppBrowser"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_9__["AndroidPermissions"], _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_14__["Diagnostic"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_12__["Camera"], _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_11__["CallNumber"], _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_16__["GoogleMaps"], _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__["Network"], {
+              provide: _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouteReuseStrategy"],
+              useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicRouteStrategy"]
             }, {
-              provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HTTP_INTERCEPTORS"],
-              useClass: _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_24__["HttpErrorInterceptor"],
+              provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
+              useClass: _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_34__["HttpErrorInterceptor"],
               multi: true
             }, {
-              provide: _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"],
+              provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["LOCALE_ID"],
               useFactory: function useFactory() {
                 return "ru";
               }
             }],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_28__["AppComponent"]]
           }]
         }], null, null);
       })();
@@ -1277,6 +1289,154 @@
         }], function () {
           return [];
         }, null);
+      })();
+      /***/
+
+    },
+
+    /***/
+    "./src/app/components/note/note.component.ts":
+    /*!***************************************************!*\
+      !*** ./src/app/components/note/note.component.ts ***!
+      \***************************************************/
+
+    /*! exports provided: NoteComponent */
+
+    /***/
+    function srcAppComponentsNoteNoteComponentTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "NoteComponent", function () {
+        return NoteComponent;
+      });
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+      /* harmony import */
+
+
+      var src_app_services_sys_map_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! src/app/services/sys/map.service */
+      "./src/app/services/sys/map.service.ts");
+      /* harmony import */
+
+
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/forms */
+      "./node_modules/@angular/forms/fesm2015/forms.js");
+      /* harmony import */
+
+
+      var angular_feather__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! angular-feather */
+      "./node_modules/angular-feather/fesm2015/angular-feather.js");
+
+      var NoteComponent = /*#__PURE__*/function () {
+        function NoteComponent(sysMap, viewCtrl) {
+          _classCallCheck(this, NoteComponent);
+
+          this.sysMap = sysMap;
+          this.viewCtrl = viewCtrl;
+        }
+
+        _createClass(NoteComponent, [{
+          key: "ngOnInit",
+          value: function ngOnInit() {
+            this.note = localStorage.getItem(this.order.id.toString());
+          }
+        }, {
+          key: "saveNote",
+          value: function saveNote() {
+            localStorage.setItem(this.order.id.toString(), this.note);
+            this.sysMap.infoUpdated.next();
+            this.viewCtrl.dismiss();
+          }
+        }]);
+
+        return NoteComponent;
+      }();
+
+      NoteComponent.ɵfac = function NoteComponent_Factory(t) {
+        return new (t || NoteComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_sys_map_service__WEBPACK_IMPORTED_MODULE_2__["MapService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["PopoverController"]));
+      };
+
+      NoteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+        type: NoteComponent,
+        selectors: [["app-note"]],
+        inputs: {
+          order: "order"
+        },
+        decls: 4,
+        vars: 1,
+        consts: [["placeholder", "\u0412\u0430\u0448\u0430 \u0437\u0430\u043C\u0435\u0442\u043A\u0430 \u043E \u0437\u0430\u043A\u0430\u0437\u0435", 3, "ngModel", "ngModelChange"], [3, "click"], ["name", "save"]],
+        template: function NoteComponent_Template(rf, ctx) {
+          if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ion-item");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "ion-textarea", 0);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function NoteComponent_Template_ion_textarea_ngModelChange_1_listener($event) {
+              return ctx.note = $event;
+            });
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ion-button", 1);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NoteComponent_Template_ion_button_click_2_listener() {
+              return ctx.saveNote();
+            });
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "i-feather", 2);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          }
+
+          if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.note);
+          }
+        },
+        directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonItem"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonTextarea"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["TextValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonButton"], angular_feather__WEBPACK_IMPORTED_MODULE_4__["FeatherComponent"]],
+        styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbm90ZS9ub3RlLmNvbXBvbmVudC5jc3MifQ== */"]
+      });
+      /*@__PURE__*/
+
+      (function () {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NoteComponent, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+          args: [{
+            selector: 'app-note',
+            templateUrl: './note.component.html',
+            styleUrls: ['./note.component.css']
+          }]
+        }], function () {
+          return [{
+            type: src_app_services_sys_map_service__WEBPACK_IMPORTED_MODULE_2__["MapService"]
+          }, {
+            type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["PopoverController"]
+          }];
+        }, {
+          order: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+          }]
+        });
       })();
       /***/
 
@@ -3565,6 +3725,299 @@
     },
 
     /***/
+    "./src/app/services/sys/map.service.ts":
+    /*!*********************************************!*\
+      !*** ./src/app/services/sys/map.service.ts ***!
+      \*********************************************/
+
+    /*! exports provided: MapService */
+
+    /***/
+    function srcAppServicesSysMapServiceTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "MapService", function () {
+        return MapService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/common/http */
+      "./node_modules/@angular/common/fesm2015/http.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/router */
+      "./node_modules/@angular/router/fesm2015/router.js");
+      /* harmony import */
+
+
+      var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @ionic-native/device/ngx */
+      "./node_modules/@ionic-native/device/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @ionic-native/geolocation/ngx */
+      "./node_modules/@ionic-native/geolocation/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @ionic-native/google-maps/ngx */
+      "./node_modules/@ionic-native/google-maps/ngx/index.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+      /* harmony import */
+
+
+      var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! rxjs */
+      "./node_modules/rxjs/_esm2015/index.js");
+
+      var MapService = /*#__PURE__*/function () {
+        function MapService(http, geo, device, platform, router) {
+          _classCallCheck(this, MapService);
+
+          this.http = http;
+          this.geo = geo;
+          this.device = device;
+          this.platform = platform;
+          this.router = router;
+          this.infoUpdated = new rxjs__WEBPACK_IMPORTED_MODULE_8__["Subject"]();
+        }
+
+        _createClass(MapService, [{
+          key: "getWay",
+          value: function getWay(coords) {
+            var url = "http://mobile.postsrvs.ru:8080/https://mobile.postsrvs.ru/mobile/orders";
+            var data = {
+              action: "getWay",
+              lt: coords === null || coords === void 0 ? void 0 : coords.lt,
+              lg: coords === null || coords === void 0 ? void 0 : coords.lg,
+              auto: 0,
+              mode: "auto",
+              uuid: this.device.uuid
+            };
+            var httpOptions = {
+              headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                "Content-type": "application/json"
+              })
+            };
+            return this.http.post(url, data, httpOptions);
+          }
+        }, {
+          key: "attachMap",
+          value: function attachMap(divId, options) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      options = options || {};
+
+                      if (!this.map) {
+                        _context4.next = 14;
+                        break;
+                      }
+
+                      _context4.next = 4;
+                      return new Promise(function (resolve) {
+                        var instance = setInterval(function () {
+                          if (document.querySelectorAll("#" + divId).length > 0) {
+                            clearInterval(instance);
+                            resolve();
+                          }
+                        }, 100);
+                      });
+
+                    case 4:
+                      _context4.next = 6;
+                      return this.map.setDiv(divId);
+
+                    case 6:
+                      _context4.next = 8;
+                      return new Promise(function (resolve) {
+                        setTimeout(resolve, 100);
+                      });
+
+                    case 8:
+                      if (!options) {
+                        _context4.next = 12;
+                        break;
+                      }
+
+                      options.mapType = options.mapType;
+                      _context4.next = 12;
+                      return this.map.setOptions(options);
+
+                    case 12:
+                      _context4.next = 18;
+                      break;
+
+                    case 14:
+                      _context4.next = 16;
+                      return this.platform.ready();
+
+                    case 16:
+                      _context4.next = 18;
+                      return this._loadMap(divId, options);
+
+                    case 18:
+                      return _context4.abrupt("return", Promise.resolve(this.map));
+
+                    case 19:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+          }
+        }, {
+          key: "_loadMap",
+          value: function _loadMap(divId, options) {
+            var _this10 = this;
+
+            _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["Environment"].setEnv({
+              API_KEY_FOR_BROWSER_RELEASE: "AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164",
+              API_KEY_FOR_BROWSER_DEBUG: "AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164"
+            });
+
+            var mapOptions = options || {};
+            this.map = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"].create(divId, options);
+            return new Promise(function (resolve) {
+              _this10.map.one(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleMapsEvent"].MAP_READY).then(function () {
+                resolve();
+              });
+            });
+          }
+        }, {
+          key: "detachMap",
+          value: function detachMap() {
+            if (!this.map) return;
+            this.map.setDiv();
+            this.map.off();
+            this.map.setOptions({
+              camera: {
+                target: {
+                  lat: 0,
+                  lng: 0
+                },
+                zoom: 1,
+                bearing: 0,
+                tilt: 0,
+                padding: 0
+              },
+              gestures: {
+                scroll: true,
+                tilt: true,
+                rotate: true,
+                zoom: true
+              },
+              controls: {
+                compass: true,
+                indoorPicker: true,
+                myLocationButton: true,
+                myLocation: true,
+                zoom: true,
+                mapToolbar: true
+              },
+              preferences: {
+                zoom: null,
+                building: true,
+                clickableIcons: false,
+                restriction: null
+              }
+            });
+            this.map.clear();
+          }
+        }, {
+          key: "orderDetails",
+          value: function orderDetails(orderId) {
+            console.log("sys:: переход на страницу заказа ", orderId);
+            this.router.navigate(["/order", orderId]);
+            localStorage.removeItem("needOrder");
+          }
+        }, {
+          key: "navigate",
+          value: function navigate(page) {
+            this.router.navigate(page);
+          }
+        }, {
+          key: "showRoute",
+          value: function showRoute(order) {
+            var meta = {
+              label: 'showRouteToOrder',
+              order: order
+            };
+            this.infoUpdated.next(meta);
+            this.router.navigate(['map']);
+          }
+        }]);
+
+        return MapService;
+      }();
+
+      MapService.ɵfac = function MapService_Factory(t) {
+        return new (t || MapService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_4__["Device"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]));
+      };
+
+      MapService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
+        token: MapService,
+        factory: MapService.ɵfac,
+        providedIn: "root"
+      });
+      /*@__PURE__*/
+
+      (function () {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](MapService, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"],
+          args: [{
+            providedIn: "root"
+          }]
+        }], function () {
+          return [{
+            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
+          }, {
+            type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]
+          }, {
+            type: _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_4__["Device"]
+          }, {
+            type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"]
+          }, {
+            type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+          }];
+        }, null);
+      })();
+      /***/
+
+    },
+
+    /***/
     "./src/app/services/sys/order.service.ts":
     /*!***********************************************!*\
       !*** ./src/app/services/sys/order.service.ts ***!
@@ -3627,7 +4080,7 @@
         _createClass(OrderService, [{
           key: "sendDelayedCall",
           value: function sendDelayedCall(order, status) {
-            var _this10 = this;
+            var _this11 = this;
 
             order.status_id = status;
             var self = this;
@@ -3638,9 +4091,9 @@
                 self.pay_access_data = res;
 
                 if (status == 5 || status == 6) {
-                  _this10.sendPay(order);
+                  _this11.sendPay(order);
                 } else {
-                  _this10.submitChange(order, status);
+                  _this11.submitChange(order, status);
                 }
               }
             });
@@ -3700,7 +4153,7 @@
         }, {
           key: "submitChange",
           value: function submitChange(order, status) {
-            var _this11 = this;
+            var _this12 = this;
 
             var self = this;
             var noSkip = true;
@@ -3724,7 +4177,7 @@
                 this.sys.doOCR(order.check, noSkip).then(function (recognizedData) {
                   var text = order.commentText ? order.commentText : "";
 
-                  _this11.courier.changeStatus(String(status), String(order.id), text, undefined, undefined, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
+                  _this12.courier.changeStatus(String(status), String(order.id), text, undefined, undefined, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
                     localStorage.removeItem("drawImg");
                   });
                 });
@@ -3736,7 +4189,7 @@
                 }
 
                 this.sys.doOCR(order.check, noSkip).then(function (recognizedData) {
-                  _this11.courier.changeStatus(String(status), String(order.id), undefined, undefined, order.quants, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
+                  _this12.courier.changeStatus(String(status), String(order.id), undefined, undefined, order.quants, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
                     localStorage.removeItem("drawImg");
                   });
                 });

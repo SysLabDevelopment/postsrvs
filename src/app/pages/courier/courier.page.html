@@ -68,7 +68,7 @@
             <div class='addr'>{{order.client_address}}</div>
             <div class='name'>{{order.client_fio}}</div>
             <div class='actions' *ngIf='order.show'>
-              <ion-button fill="solid" size='default' (click)="showRoute(order); $event.stopPropagation()">
+              <ion-button fill="solid" size='default' (click)="note($event, order.id); $event.stopPropagation()">
                 <ion-icon slot="start" src='../../../assets/mdi-light_note-plus.svg'></ion-icon>
                 Заметки
               </ion-button>
@@ -76,7 +76,7 @@
                 <ion-icon slot="start" name="location-outline"></ion-icon>
                 Маршрут
               </ion-button>
-              <ion-button fill="solid" size='default'>
+              <ion-button fill="solid" size='default' (click)="phoneClick('init', order); $event.stopPropagation()">
                 <ion-icon slot="start" name="call-outline"></ion-icon>
                 Позвонить
               </ion-button>
@@ -118,5 +118,29 @@
 
   <div class="shirm" *ngIf="loader">
     <ion-spinner name="lines-small"></ion-spinner>
+  </div>
+  <div class="call-window" *ngIf="callWindow">
+    <div class="cw-body">
+      <i-feather name="x-square" (click)="callWindow = !callWindow" size="large"></i-feather>
+      <ion-list *ngIf="orderPhones.length > 1">
+        <ion-radio-group name="selectedPhone" [(ngModel)]="selectedPhone">
+          <ion-list-header>
+            <ion-label>Выберите номер</ion-label>
+          </ion-list-header>
+          <ion-item *ngFor="let phone of orderPhones">
+            <ion-radio value="{{phone}}"></ion-radio>
+            <ion-label>{{phone}}</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <button (click)="phoneClick('phone', order)"
+        *ngIf="settings.rules.phoneMode == 'robotPhone' || settings.rules.phoneMode == 'phone' ">
+        Позвонить со своего телефона
+      </button>
+      <button (click)="phoneClick('operator',order)"
+        *ngIf="settings.rules.phoneMode == 'robotPhone' || settings.rules.phoneMode == 'robot' ">
+        Позвонить через ip-шлюз
+      </button>
+    </div>
   </div>
 </ion-content>

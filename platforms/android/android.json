@@ -335,7 +335,7 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<application android:usesCleartextTraffic=\"true\" />",
+              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
               "count": 2,
               "mode": "merge",
               "id": "config.xml",
@@ -349,7 +349,7 @@
               }
             },
             {
-              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
+              "xml": "<application android:usesCleartextTraffic=\"true\" />",
               "count": 1,
               "mode": "merge",
               "id": "config.xml",
@@ -412,9 +412,6 @@
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-screen-orientation": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-androidx": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova.plugins.diagnostic": {
@@ -909,7 +906,6 @@
     "cordova-plugin-vibration": "3.1.1",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-screen-orientation": "3.0.2",
-    "cordova-plugin-androidx": "1.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
     "cordova-sqlite-storage": "5.0.1",

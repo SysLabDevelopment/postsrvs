@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Order } from '../../interfaces/order';
-import {AuthService} from '../../services/auth.service';
 import { Storage } from "@ionic/storage";
-import {SysService} from '../sys.service';
-import {CourierService} from '../courier.service';
+import { Order } from '../../interfaces/order';
+import { AuthService } from '../../services/auth.service';
+import { CourierService } from '../courier.service';
+import { SysService } from '../sys.service';
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  private pay_access_data:any;
+  private pay_access_data: any;
 
   constructor(
-    private auth:AuthService,
-    private storage:Storage,
+    private auth: AuthService,
+    private storage: Storage,
     private sys: SysService,
     private courier: CourierService,
   ) { }
 
-  public sendDelayedCall(order:Order, status:number) {
+  public sendDelayedCall(order: Order, status: number) {
     order.status_id = status;
     let self = this;
     this.getPayData(order.client_id).subscribe((res: any) => {
@@ -29,12 +29,12 @@ export class OrderService {
           this.sendPay(order);
         } else {
           this.submitChange(order, status);
-        } 
+        }
       }
     });
-   }
+  }
 
-   private sendPay(order:Order){
+  private sendPay(order: Order) {
     let callback_url = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
     let products = [];
     for (let code in order.quants) {
@@ -81,9 +81,9 @@ export class OrderService {
     }
 
     this.send_api_data(order_data, order);
-   }
+  }
 
-public submitChange(order:Order, status:number) {
+  public submitChange(order: Order, status: number) {
     let self = this;
     let noSkip = true;
 
@@ -108,52 +108,52 @@ public submitChange(order:Order, status:number) {
         }
         break;
       case 5:
-        if(order.selectedPayment !== '2'){
+        if (order.selectedPayment !== '2') {
           noSkip = false
         }
 
-        this.sys.doOCR(order.check, noSkip).then((recognizedData)=>{
-        let text = order.commentText ? order.commentText : "";
-        this.courier
-          .changeStatus(
-            String(status),
-            String(order.id),
-            text,
-            undefined,
-            undefined,
-            order.selectedPayment,
-            '',
-            order.check,
-            recognizedData
-          )
-          .subscribe((data: any) => {
-            localStorage.removeItem("drawImg");
-          });
-          })
+        this.sys.doOCR(order.check, noSkip).then((recognizedData) => {
+          let text = order.commentText ? order.commentText : "";
+          this.courier
+            .changeStatus(
+              String(status),
+              String(order.id),
+              text,
+              undefined,
+              undefined,
+              order.selectedPayment,
+              '',
+              order.check,
+              recognizedData
+            )
+            .subscribe((data: any) => {
+              localStorage.removeItem("drawImg");
+            });
+        })
         break;
       case 6:
-        if(order.selectedPayment !== '2'){
+        if (order.selectedPayment !== '2') {
           noSkip = false
         }
 
 
-        this.sys.doOCR(order.check, noSkip).then((recognizedData)=>{
-        this.courier
-          .changeStatus(
-            String(status),
-            String(order.id),
-            undefined,
-            undefined,
-            order.quants,
-            order.selectedPayment,
-            '',
-            order.check,
-            recognizedData
-          )
-          .subscribe((data: any | null) => {
-            localStorage.removeItem("drawImg");
-          });
-          })
+        this.sys.doOCR(order.check, noSkip).then((recognizedData) => {
+          this.courier
+            .changeStatus(
+              String(status),
+              String(order.id),
+              undefined,
+              undefined,
+              order.quants,
+              order.selectedPayment,
+              '',
+              order.check,
+              recognizedData
+            )
+            .subscribe((data: any | null) => {
+              localStorage.removeItem("drawImg");
+            });
+        })
         break;
     }
   }
@@ -163,18 +163,18 @@ public submitChange(order:Order, status:number) {
     return this.auth.sendPost(url, data)
   }
 
-   public initClientInfo(phone) {
+  public initClientInfo(phone) {
     let mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
     let infoStr = phone;
     let mail = mail_exp.exec(infoStr);
     if (mail != null) {
       return mail[0];
-    } else{
+    } else {
       return null
     }
   }
 
-  public send_api_data(api_data, order:Order) {
+  public send_api_data(api_data, order: Order) {
     const url = "pay_order";
     let self = this;
     order.rur = 0;
@@ -192,4 +192,67 @@ public submitChange(order:Order, status:number) {
       self.submitChange(order, order.status_id);
     });
   }
+
+  // //Звонок получателю заказа
+  // public phoneClick(action: string, order: Order) {
+  //   let orderPhones = this.parsePhone(order.client_phone);
+  //   let courierPhone = this.parsePhone(order.courier_phone)[0];
+  //   let selectedPhone: string;
+  //   if (orderPhones.length == 1) {
+  //     selectedPhone = orderPhones[0];
+  //   }
+
+  //   switch (action) {
+  //     case "init":
+  //       this.callWindow = !this.callWindow;
+  //       break;
+  //     case "phone":
+  //       this.CL.callNumber(this.selectedPhone, false).then(() => { });
+  //       this.callWindow = false;
+  //       break;
+  //     case "operator":
+  //       if (this.selectedPhone && courierPhone) {
+  //         let url = "orders";
+  //         let data = {
+  //           action: "send_phone",
+  //           client_number: this.selectedPhone,
+  //           cur_number: courierPhone,
+  //         };
+  //         this.auth.sendPost(url, data).subscribe((resp) => {
+  //           console.log("call_subs", resp);
+  //         });
+  //         this.auth.showError(9);
+  //         this.callWindow = false;
+  //       }
+  //       break;
+  //   }
+  // }
+
+  // //Парсинг номера телефона из строки с лишним мусором
+  // public parsePhone(phone): Array<string> {
+  //   let phones: Array<string> = [];
+  //   phone = phone.replace(/\D+/g, "");
+
+  //   while (phone.length > 7) {
+  //     phone = this.normalizePhoneNumber(phone);
+  //     phones.push(phone.slice("", 11));
+  //     phone = phone.slice(11);
+  //   }
+  //   return phones;
+  // }
+
+  // //Жонглирование '8' / '+7'
+  // private normalizePhoneNumber(phone): string {
+  //   if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
+  //     phone = "8" + phone;
+  //   }
+  //   if (phone.length == 7 || phone.length == 10) {
+  //     phone = "8" + phone;
+  //   }
+  //   if (phone[0] !== "8" && phone.length == 11) {
+  //     phone = "8" + phone.slice(1);
+  //   }
+  //   return phone;
+  // }
+
 }

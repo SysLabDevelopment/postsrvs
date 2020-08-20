@@ -13,5 +13,7 @@ export interface Order {
     status_id: number,
     check?: string,
     lt?: string,
-    lg?: string
+    lg?: string,
+    client_phone?: string,
+    courier_phone?: string
 }

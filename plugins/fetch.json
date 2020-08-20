@@ -123,14 +123,6 @@
     "is_top_level": false,
     "variables": {}
   },
-  "cordova-plugin-androidx": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-androidx@^1.0.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova.plugins.diagnostic": {
     "source": {
       "type": "registry",

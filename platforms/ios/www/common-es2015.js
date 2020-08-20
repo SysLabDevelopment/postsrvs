@@ -470,12 +470,17 @@ class DataService {
         this.courier = courier;
         this.auth = auth;
         this.sys = sys;
-        this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
         storage.ready().then((localforage) => {
-            this.getInitialData();
-            // this.orders.subscribe((orders: Order[]) => {
-            //   this.storage.set('orders', orders);
-            // })
+            this.storage.get('orders').then((orders) => {
+                this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](orders);
+                console.log('Список заказов из стоража', orders);
+                this.getInitialData();
+                this.orders.subscribe((orders) => {
+                    this.storage.set('orders', orders).then(() => {
+                        console.log('sys:: Список заказов сохранен в сторож: ', orders);
+                    });
+                });
+            });
         });
     }
     getInitialData() {

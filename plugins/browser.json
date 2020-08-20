@@ -49,9 +49,6 @@
     "cordova-plugin-screen-orientation": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-androidx": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova.plugins.diagnostic": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
