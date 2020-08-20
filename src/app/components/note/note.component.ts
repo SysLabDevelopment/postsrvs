@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { MapService } from 'src/app/services/sys/map.service';
 
@@ -6,6 +6,7 @@ import { MapService } from 'src/app/services/sys/map.service';
   selector: 'app-note',
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NoteComponent implements OnInit {
   public note: string;

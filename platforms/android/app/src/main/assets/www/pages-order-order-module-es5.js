@@ -2580,6 +2580,11 @@
                 break;
 
               case "operator":
+                if (this.network.type == 'none') {
+                  this.phoneClick('phone');
+                  return false;
+                }
+
                 if (this.selectedPhone && courierPhone) {
                   var url = "orders";
                   var data = {

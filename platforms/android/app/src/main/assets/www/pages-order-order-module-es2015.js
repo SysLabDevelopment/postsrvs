@@ -1228,6 +1228,10 @@ class OrderPage {
                 this.callWindow = false;
                 break;
             case "operator":
+                if (this.network.type == 'none') {
+                    this.phoneClick('phone');
+                    return false;
+                }
                 if (this.selectedPhone && courierPhone) {
                     let url = "orders";
                     let data = {

@@ -10,6 +10,7 @@ import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } fro
 import { Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { Network } from '@ionic-native/network/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { IonReorderGroup, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from 'rxjs';
@@ -99,6 +100,7 @@ export class CourierPage implements OnInit {
     private map: MapService,
     private orderService: OrderService,
     private CL: CallNumber,
+    private network: Network
 
   ) {
     let self = this;
@@ -553,6 +555,10 @@ export class CourierPage implements OnInit {
         this.order = undefined;
         break;
       case "operator":
+        if (this.network.type == 'none') {
+          this.phoneClick('phone', order);
+          return false;
+        }
         if (this.selectedPhone && courierPhone) {
           let url = "orders";
           let data = {

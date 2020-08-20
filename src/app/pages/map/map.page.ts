@@ -1,5 +1,5 @@
 import {
-  Component,
+  ChangeDetectionStrategy, Component,
   OnInit
 } from "@angular/core";
 import { Router } from "@angular/router";
@@ -40,6 +40,7 @@ declare var AppVersion: { version: string };
   selector: "app-map",
   templateUrl: "./map.page.html",
   styleUrls: ["./map.page.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapPage implements OnInit {
   map: GoogleMap;
