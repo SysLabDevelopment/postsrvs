@@ -70,6 +70,8 @@ export class MapPage implements OnInit {
   public routeToOrder = false;
   public destination: ILatLng;
   public currentOrder = '';
+
+
   constructor(
     public state$: StateService,
     public platform: Platform,
@@ -85,9 +87,6 @@ export class MapPage implements OnInit {
     private data: DataService,
     private storage: Storage
   ) {
-    this.courier.ordersShortData.subscribe((data: Array<any>) => {
-      this.orders = data;
-    });
   }
 
   ngOnInit() {
@@ -299,8 +298,11 @@ export class MapPage implements OnInit {
             .pipe(filter((ids) => ids.length > 0))
             .subscribe((ids: Array<any>) => {
               this.getOrders(ids).subscribe((res: Response) => {
-                // this.data.orders.next(res.orders);
-                // this.storage.set('orders', res.orders)
+                this.storage.get('orders').then((orders) => {
+                  if (orders == null) {
+                    this.data.getApiData()
+                  }
+                })
                 this.orders = res.orders;
                 if (
                   this.settings.rules.appMode.toLowerCase().includes("auto")

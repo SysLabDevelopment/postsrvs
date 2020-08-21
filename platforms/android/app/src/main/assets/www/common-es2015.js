@@ -470,9 +470,13 @@ class DataService {
         this.courier = courier;
         this.auth = auth;
         this.sys = sys;
+        this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
         storage.ready().then((localforage) => {
             this.storage.get('orders').then((orders) => {
-                this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](orders);
+                if (orders == null) {
+                    this.getApiData();
+                }
+                this.orders.next(orders);
                 console.log('Список заказов из стоража', orders);
                 this.getInitialData();
                 this.orders.subscribe((orders) => {
@@ -499,7 +503,6 @@ class DataService {
             this.storage.set('orders', res.res_more);
             this.sys.getOrders(res.res_more.map((order) => order.id.toString())).subscribe((resp) => {
                 this.orders.next(resp.orders);
-                this.storage.set('orders', resp.orders);
             });
         });
     }

@@ -729,9 +729,15 @@
           this.courier = courier;
           this.auth = auth;
           this.sys = sys;
+          this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
           storage.ready().then(function (localforage) {
             _this.storage.get('orders').then(function (orders) {
-              _this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](orders);
+              if (orders == null) {
+                _this.getApiData();
+              }
+
+              _this.orders.next(orders);
+
               console.log('Список заказов из стоража', orders);
 
               _this.getInitialData();
@@ -776,8 +782,6 @@
                 return order.id.toString();
               })).subscribe(function (resp) {
                 _this3.orders.next(resp.orders);
-
-                _this3.storage.set('orders', resp.orders);
               });
             });
           }

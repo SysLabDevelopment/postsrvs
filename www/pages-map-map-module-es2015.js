@@ -1851,9 +1851,6 @@ class MapPage {
         };
         this.routeToOrder = false;
         this.currentOrder = '';
-        this.courier.ordersShortData.subscribe((data) => {
-            this.orders = data;
-        });
     }
     ngOnInit() {
         console.log("sys:: map init");
@@ -2047,8 +2044,11 @@ class MapPage {
                         .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])((ids) => ids.length > 0))
                         .subscribe((ids) => {
                         this.getOrders(ids).subscribe((res) => {
-                            // this.data.orders.next(res.orders);
-                            // this.storage.set('orders', res.orders)
+                            this.storage.get('orders').then((orders) => {
+                                if (orders == null) {
+                                    this.data.getApiData();
+                                }
+                            });
                             this.orders = res.orders;
                             if (this.settings.rules.appMode.toLowerCase().includes("auto")) {
                                 this.orders.length = 1;
