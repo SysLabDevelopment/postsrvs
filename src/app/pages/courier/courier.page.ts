@@ -36,10 +36,10 @@ import { DataService } from '../../services/sys/data.service';
     trigger('openClose', [
       // ...
       state('open', style({
-        height: '125px',
+        height: 'auto',
       })),
       state('closed', style({
-        height: '80px',
+        height: 'max-content',
       })),
       transition('open => closed', [
         animate('0.5s')

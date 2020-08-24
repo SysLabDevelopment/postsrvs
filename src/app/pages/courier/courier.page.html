@@ -68,7 +68,7 @@
             </div>
             <div class='addr'>{{order.client_address}}</div>
             <div class='name'>{{order.client_fio}}</div>
-            <div class='actions' *ngIf='order.show'>
+            <div class="actions" *ngIf='order.show'>
               <ion-button fill="solid" size='default' (click)="note($event, order.id); $event.stopPropagation()">
                 <ion-icon slot="start" src='../../../assets/mdi-light_note-plus.svg'></ion-icon>
                 Заметки
