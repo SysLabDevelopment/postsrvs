@@ -31,11 +31,12 @@ import { CashoutFailOComponent } from "./components/balance/cashout-fail-o/casho
 import { CashoutWComponent } from "./components/balance/cashout-w/cashout-w.component";
 import { HelpComponent } from './components/help/help.component';
 import { NoteComponent } from './components/note/note.component';
+import { LongPressDirective } from './directives/long-press.directive';
 import { IconsModule } from './icons/icons.module';
 import { HttpErrorInterceptor } from "./interceptors/http.interceptor";
 registerLocaleData(localeRu, "ru");
 @NgModule({
-  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent, HelpComponent, NoteComponent],
+  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent, HelpComponent, NoteComponent, LongPressDirective],
   entryComponents: [],
   imports: [
     FormsModule,

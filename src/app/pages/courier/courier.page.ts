@@ -91,7 +91,7 @@ export class CourierPage implements OnInit {
     public state$: StateService,
     public auth: AuthService,
     private bs: BarcodeScanner,
-    private vbr: Vibration,
+    public vbr: Vibration,
     public settings: SettingsService,
     private sys: SysService,
     private data: DataService,
@@ -148,10 +148,6 @@ export class CourierPage implements OnInit {
           touch: 500,
           mouse: 100
         };
-        DragItem.started.subscribe(() => {
-          this.vbr.vibrate(300)
-        })
-
       })
     });
   }
@@ -310,6 +306,7 @@ export class CourierPage implements OnInit {
   }
 
   public selectOrder(id) {
+
     this.router.navigate(['/order', id]);
   }
 
@@ -610,4 +607,10 @@ export class CourierPage implements OnInit {
   }
 
 
+  public vibr($event?) {
+
+
+    this.vbr.vibrate(200);
+    console.log('sys:: *Вибирация*');
+  }
 }

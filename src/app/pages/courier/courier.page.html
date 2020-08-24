@@ -8,7 +8,7 @@
         <i>G</i>
       </ion-button>
     </ion-buttons>
-    <ion-title>Мои заказы</ion-title>
+    <ion-title appLongPress (longPress)="vibr()">Мои заказы</ion-title>
     <ion-title size="small" color="dark">{{state$.filial}}</ion-title>
     <ion-buttons slot="primary">
       <ion-button *ngIf="subBtnCond" (click)="submitOrder()">
@@ -51,8 +51,8 @@
         style="height: 100%; width: 100%; min-height: 50vh;">
         <ion-item *ngFor="let order of orders_c | async" [ngClass]="{
          overdue: order.overdue == '1' || order.required == true
-        }" (click)="selectOrder(order.id)" cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'
-          cdkDragStarted="">
+        }" (click)="selectOrder(order.id)" appLongPress (longPress)="vibr()" (hold)="vibr()" (cdkDragStarted)="vibr()"
+          cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'>
 
           <ion-label [@openClose]="order.show ? 'open' : 'closed'">
 
