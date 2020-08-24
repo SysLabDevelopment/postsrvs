@@ -51,7 +51,8 @@
         style="height: 100%; width: 100%; min-height: 50vh;">
         <ion-item *ngFor="let order of orders_c | async" [ngClass]="{
          overdue: order.overdue == '1' || order.required == true
-        }" (click)="selectOrder(order.id)" cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'>
+        }" (click)="selectOrder(order.id)" cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'
+          cdkDragStarted="">
 
           <ion-label [@openClose]="order.show ? 'open' : 'closed'">
 

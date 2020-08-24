@@ -1070,7 +1070,6 @@
           };
           this.btn_go = false;
           this.notification = null;
-          this.dragStarted = false;
           this.subBtnCond = true;
           this.scanView = false;
           this.scan_process = false;
@@ -1135,6 +1134,9 @@
                   touch: 500,
                   mouse: 100
                 };
+                DragItem.started.subscribe(function () {
+                  _this.vbr.vibrate(300);
+                });
               });
             });
           }

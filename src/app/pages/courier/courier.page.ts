@@ -70,7 +70,6 @@ export class CourierPage implements OnInit {
   public lvl_ind = { width: '0%' };
   public btn_go: boolean = false;
   public notification = null;
-  public dragStarted: boolean = false;
   public subBtnCond: boolean = true;
   public scanView: boolean = false;
   public scanInput;
@@ -148,7 +147,10 @@ export class CourierPage implements OnInit {
         DragItem.dragStartDelay = {
           touch: 500,
           mouse: 100
-        }
+        };
+        DragItem.started.subscribe(() => {
+          this.vbr.vibrate(300)
+        })
 
       })
     });

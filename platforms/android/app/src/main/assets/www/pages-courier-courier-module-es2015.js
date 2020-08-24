@@ -476,7 +476,6 @@ class CourierPage {
         this.lvl_ind = { width: '0%' };
         this.btn_go = false;
         this.notification = null;
-        this.dragStarted = false;
         this.subBtnCond = true;
         this.scanView = false;
         this.scan_process = false;
@@ -529,6 +528,9 @@ class CourierPage {
                     touch: 500,
                     mouse: 100
                 };
+                DragItem.started.subscribe(() => {
+                    this.vbr.vibrate(300);
+                });
             });
         });
     }
