@@ -29,7 +29,6 @@ ion-header * {
   height: 16px;
 }
 ion-segment {
-  height: 45 px;
   ion-segment-button {
     ion-label {
       text-transform: none;
@@ -40,6 +39,9 @@ ion-segment {
     --color: #585454;
     --color-checked: #2b637e;
     --indicator-height: 0;
+  }
+  ion-segment-button.segment-button-checked {
+    border-bottom: white;
   }
 }
 ion-searchbar {
