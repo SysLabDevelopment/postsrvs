@@ -46,6 +46,8 @@ ion-segment {
 }
 ion-searchbar {
   --box-shadow: 0 0 01px black;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 ion-item {
   --border-color: #d6cfcf;
@@ -93,7 +95,6 @@ ion-item {
     }
   }
   .actions {
-    // position: absolute;
     bottom: 0;
     ion-button {
       --background: #2b637e;
