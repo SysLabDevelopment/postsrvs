@@ -69,15 +69,17 @@
             <div class='addr'>{{order.client_address}}</div>
             <div class='name'>{{order.client_fio}}</div>
             <div class="actions" *ngIf='order.show'>
-              <ion-button fill="solid" size='default' (click)="note($event, order.id); $event.stopPropagation()">
-                <ion-icon slot="start" src='../../../assets/mdi-light_note-plus.svg'></ion-icon>
+              <ion-button fill="solid" size='default' (click)="note($event, order.id); $event.stopPropagation()"
+                id='note'>
+                <ion-icon slot="start" name='document'></ion-icon>
                 Заметки
               </ion-button>
-              <ion-button fill="solid" size='default' (click)="showRoute(order); $event.stopPropagation()">
+              <ion-button fill="solid" size='default' (click)="showRoute(order); $event.stopPropagation()" id='route'>
                 <ion-icon slot="start" name="location-outline"></ion-icon>
                 Маршрут
               </ion-button>
-              <ion-button fill="solid" size='default' (click)="phoneClick('init', order); $event.stopPropagation()">
+              <ion-button fill="solid" size='default' (click)="phoneClick('init', order); $event.stopPropagation()"
+                id='call'>
                 <ion-icon slot="start" name="call-outline"></ion-icon>
                 Позвонить
               </ion-button>

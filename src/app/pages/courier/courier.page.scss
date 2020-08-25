@@ -99,13 +99,32 @@ ion-item {
     bottom: 0;
     ion-button {
       --background: #2b637e;
-      --border-radius: 4px;
+      --border-radius: 2px;
       font-size: 12px;
       text-transform: none;
-      --padding-bottom: 10px;
-      --padding-top: 10px;
+      --padding-bottom: 7px;
+      --padding-top: 7px;
       --padding-start: 7px;
       --padding-end: 7px;
+      font-family: Roboto;
+      --box-shadow: none;
+          margin-right: 13px;
+    margin-left: 0;
+      ion-icon{
+            margin-left: 0;
+      }
+    };
+    #note{
+      --background: #C9E9FA;
+          --color: #2B637E;
+    }
+    #route{
+      --background: #C9CBFA;
+      --color: #533F69
+    }
+    #call{
+      --background: #D7F3DD;
+      --color: #3A543B;
     }
   }
 }
