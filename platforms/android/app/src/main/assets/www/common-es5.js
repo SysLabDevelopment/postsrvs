@@ -776,8 +776,6 @@
             var _this3 = this;
 
             return this.courier.getBalance(this.auth.userId, 1).subscribe(function (res) {
-              _this3.orders.next(res.res_more);
-
               _this3.sys.getOrders(res.res_more.map(function (order) {
                 return order.id.toString();
               })).subscribe(function (resp) {

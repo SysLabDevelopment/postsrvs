@@ -114,11 +114,16 @@ export class MapPage implements OnInit {
     });
     this.sysMap.infoUpdated.subscribe((data: Meta) => {
       let customData: any;
-      if (data && data.label == 'showRouteToOrder') {
-        this.routeToOrder = true;
-        this.currentOrder = String(data.order.client_id);
-        customData = data;
+      if (data) {
+        if (data.label == 'showRouteToOrder') {
+          this.routeToOrder = true;
+          this.currentOrder = String(data.order.client_id);
+          customData = data;
+        } else if (data.label == 'localChanges') {
+          customData = data
+        }
       }
+
       this.map.clear().then(() => {
         this.drawData(this.settings.rules.autoStartRoute, customData);
       });
@@ -236,13 +241,18 @@ export class MapPage implements OnInit {
   public drawData(autoStartRoute: string = "0", customData = null) {
     if (this.map !== undefined) {
       this.map.clear().then(() => {
-        if (this.routeToOrder && customData) {
+        if (this.routeToOrder && customData.label == 'showRouteTooOrder') {
           this.requestDirection(customData.order.lt, customData.order.lg);
           this.addCluster(this.markeredOrders([customData.order]));
         } else {
           this.routeToOrder = false;
           if (autoStartRoute == "0") {
-            this.addCluster(this.markeredOrders(this.orders));
+            this.storage.get('orders').then((orders) => {
+              this.orders = orders.filter(order => order.status_id == 1);
+              this.addCluster(this.markeredOrders(this.orders));
+            })
+
+
 
           }
         }

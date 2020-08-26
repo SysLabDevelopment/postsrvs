@@ -3209,12 +3209,17 @@
           value: function localModifyOrders(newStatus) {
             var _this6 = this;
 
+            var meta = {
+              label: 'localChanges'
+            };
             this.storage.get('orders').then(function (orders) {
               orders === null || orders === void 0 ? void 0 : orders.map(function (order) {
                 if (order.id.toString() == _this6.order.id) {
                   order.status_id = newStatus;
 
-                  _this6.data.saveOrders(orders);
+                  _this6.data.saveOrders(orders).then(function () {
+                    return _this6.sysMap.infoUpdated.next(meta);
+                  });
 
                   _this6.data.orders.next(orders);
                 }

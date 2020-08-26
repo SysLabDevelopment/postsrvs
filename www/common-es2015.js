@@ -500,7 +500,6 @@ class DataService {
     }
     getApiData() {
         return this.courier.getBalance(this.auth.userId, 1).subscribe((res) => {
-            this.orders.next(res.res_more);
             this.sys.getOrders(res.res_more.map((order) => order.id.toString())).subscribe((resp) => {
                 this.saveOrders(resp.orders).then(() => {
                     this.storage.get('orders').then((orders) => {

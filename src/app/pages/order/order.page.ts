@@ -16,6 +16,7 @@ import { Storage } from "@ionic/storage";
 import { CacheService } from "ionic-cache";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
+import { Meta } from 'src/app/interfaces/meta';
 import { Order } from 'src/app/interfaces/order';
 import { Reason } from "../../interfaces/reason";
 import { Statuses } from "../../interfaces/statuses";
@@ -138,8 +139,6 @@ export class OrderPage implements OnInit {
     private orderService: OrderService,
     private bs: BarcodeScanner,
     private device: Device,
-
-
   ) {
     this.orderId = this.route.snapshot.paramMap.get("id");
 
@@ -759,11 +758,14 @@ export class OrderPage implements OnInit {
   }
 
   public localModifyOrders(newStatus: number) {
+    let meta: Meta = {
+      label: 'localChanges'
+    };
     this.storage.get('orders').then((orders) => {
       orders?.map((order: Order) => {
         if (order.id.toString() == this.order.id) {
           order.status_id = newStatus;
-          this.data.saveOrders(orders);
+          this.data.saveOrders(orders).then(() => this.sysMap.infoUpdated.next(meta));
           this.data.orders.next(orders);
         }
       });

@@ -1690,11 +1690,14 @@ class OrderPage {
         this.openCompany = !this.openCompany;
     }
     localModifyOrders(newStatus) {
+        let meta = {
+            label: 'localChanges'
+        };
         this.storage.get('orders').then((orders) => {
             orders === null || orders === void 0 ? void 0 : orders.map((order) => {
                 if (order.id.toString() == this.order.id) {
                     order.status_id = newStatus;
-                    this.data.saveOrders(orders);
+                    this.data.saveOrders(orders).then(() => this.sysMap.infoUpdated.next(meta));
                     this.data.orders.next(orders);
                 }
             });

@@ -2713,10 +2713,14 @@
             this.sysMap.infoUpdated.subscribe(function (data) {
               var customData;
 
-              if (data && data.label == 'showRouteToOrder') {
-                _this11.routeToOrder = true;
-                _this11.currentOrder = String(data.order.client_id);
-                customData = data;
+              if (data) {
+                if (data.label == 'showRouteToOrder') {
+                  _this11.routeToOrder = true;
+                  _this11.currentOrder = String(data.order.client_id);
+                  customData = data;
+                } else if (data.label == 'localChanges') {
+                  customData = data;
+                }
               }
 
               _this11.map.clear().then(function () {
@@ -2888,7 +2892,7 @@
 
             if (this.map !== undefined) {
               this.map.clear().then(function () {
-                if (_this16.routeToOrder && customData) {
+                if (_this16.routeToOrder && customData.label == 'showRouteTooOrder') {
                   _this16.requestDirection(customData.order.lt, customData.order.lg);
 
                   _this16.addCluster(_this16.markeredOrders([customData.order]));
@@ -2896,7 +2900,13 @@
                   _this16.routeToOrder = false;
 
                   if (autoStartRoute == "0") {
-                    _this16.addCluster(_this16.markeredOrders(_this16.orders));
+                    _this16.storage.get('orders').then(function (orders) {
+                      _this16.orders = orders.filter(function (order) {
+                        return order.status_id == 1;
+                      });
+
+                      _this16.addCluster(_this16.markeredOrders(_this16.orders));
+                    });
                   }
                 }
               });
