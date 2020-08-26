@@ -473,6 +473,7 @@ class DataService {
         this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
         storage.ready().then((localforage) => {
             this.storage.get('orders').then((orders) => {
+                this.ordersMap = this.getOrdersMap(orders);
                 if (orders == null) {
                     this.getApiData();
                 }
@@ -480,7 +481,7 @@ class DataService {
                 console.log('Список заказов из стоража', orders);
                 this.getInitialData();
                 this.orders.subscribe((orders) => {
-                    this.storage.set('orders', orders).then(() => {
+                    this.saveOrders(orders).then(() => {
                         console.log('sys:: Список заказов сохранен в сторож: ', orders);
                     });
                 });
@@ -500,17 +501,40 @@ class DataService {
     getApiData() {
         return this.courier.getBalance(this.auth.userId, 1).subscribe((res) => {
             this.orders.next(res.res_more);
-            this.storage.set('orders', res.res_more);
             this.sys.getOrders(res.res_more.map((order) => order.id.toString())).subscribe((resp) => {
-                this.orders.next(resp.orders);
+                this.saveOrders(resp.orders).then(() => {
+                    this.storage.get('orders').then((orders) => {
+                        this.orders.next(orders);
+                    });
+                });
             });
         });
     }
     getOrders(ids) {
         this.sys.getOrders(ids).subscribe((resp) => {
             this.orders.next(resp.orders);
-            this.storage.set('orders', resp.orders);
+            this.saveOrders(resp.orders);
         });
+    }
+    //Сохранение заказов в сторож с сохранением порядка
+    saveOrders(orders) {
+        orders && orders.forEach((order) => {
+            this.ordersMap.set(Number(order.id), order);
+        });
+        return this.storage.set('orders', Array.from(this.ordersMap.values()));
+    }
+    //Возвращает MAP заказов (не сортируемый)
+    getOrdersMap(orders) {
+        let map = new Map();
+        orders && orders.forEach((order) => {
+            map.set(Number(order.id), order);
+        });
+        return map;
+    }
+    //Перезапись списка заказов (если надо изменить сортировку)
+    rewriteOrders(orders) {
+        this.ordersMap = this.getOrdersMap(orders);
+        this.orders.next(orders);
     }
 }
 DataService.ɵfac = function DataService_Factory(t) { return new (t || DataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"])); };

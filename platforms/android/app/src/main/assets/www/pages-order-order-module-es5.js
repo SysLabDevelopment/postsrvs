@@ -2841,7 +2841,7 @@
                 if (order.id.toString() == _this3.order.id) {
                   order.status_id = _this3.selectedStatus;
 
-                  _this3.storage.set('orders', orders);
+                  _this3.data.saveOrders(orders);
 
                   _this3.data.orders.next(orders);
                 }
@@ -3214,7 +3214,7 @@
                 if (order.id.toString() == _this6.order.id) {
                   order.status_id = newStatus;
 
-                  _this6.storage.set('orders', orders);
+                  _this6.data.saveOrders(orders);
 
                   _this6.data.orders.next(orders);
                 }

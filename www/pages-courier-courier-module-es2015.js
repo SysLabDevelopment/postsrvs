@@ -829,6 +829,8 @@ class CourierPage {
         this.prepareOrdersList(ids);
     }
     onSearchChange(event) {
+        this.searchString = event.target.value;
+        this.prepareOrdersList();
     }
     prepareOrdersList(ids = [1]) {
         this.orders_c = this.ord.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_11__["map"])(orders => orders && orders.filter(order => ids.includes(Number(order.status_id)))
@@ -861,7 +863,7 @@ class CourierPage {
     }
     drop(event) {
         Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_2__["moveItemInArray"])(this.orders, event.previousIndex, event.currentIndex);
-        this.data.orders.next(this.orders);
+        this.data.rewriteOrders(this.orders);
         console.log('sys:: массив заказов после перетаскивания: ', this.orders);
     }
     popoverNote(ev, orderId) {

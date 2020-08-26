@@ -469,7 +469,8 @@ export class CourierPage implements OnInit {
   }
 
   public onSearchChange(event) {
-
+    this.searchString = event.target.value;
+    this.prepareOrdersList()
 
   }
   public prepareOrdersList(ids = [1]) {
@@ -516,7 +517,7 @@ export class CourierPage implements OnInit {
   public drop(event: CdkDragDrop<any[]>) {
 
     moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
-    this.data.orders.next(this.orders);
+    this.data.rewriteOrders(this.orders);
     console.log('sys:: массив заказов после перетаскивания: ', this.orders);
   }
 
@@ -608,9 +609,8 @@ export class CourierPage implements OnInit {
 
 
   public vibr($event?) {
-
-
     this.vbr.vibrate(200);
     console.log('sys:: *Вибирация*');
   }
+
 }

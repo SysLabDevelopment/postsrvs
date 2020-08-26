@@ -1539,7 +1539,10 @@
           }
         }, {
           key: "onSearchChange",
-          value: function onSearchChange(event) {}
+          value: function onSearchChange(event) {
+            this.searchString = event.target.value;
+            this.prepareOrdersList();
+          }
         }, {
           key: "prepareOrdersList",
           value: function prepareOrdersList() {
@@ -1627,7 +1630,7 @@
           key: "drop",
           value: function drop(event) {
             Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_2__["moveItemInArray"])(this.orders, event.previousIndex, event.currentIndex);
-            this.data.orders.next(this.orders);
+            this.data.rewriteOrders(this.orders);
             console.log('sys:: массив заказов после перетаскивания: ', this.orders);
           }
         }, {

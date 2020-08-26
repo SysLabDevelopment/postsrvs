@@ -1395,7 +1395,7 @@ class OrderPage {
             orders === null || orders === void 0 ? void 0 : orders.map((order) => {
                 if (order.id.toString() == this.order.id) {
                     order.status_id = this.selectedStatus;
-                    this.storage.set('orders', orders);
+                    this.data.saveOrders(orders);
                     this.data.orders.next(orders);
                 }
             });
@@ -1694,7 +1694,7 @@ class OrderPage {
             orders === null || orders === void 0 ? void 0 : orders.map((order) => {
                 if (order.id.toString() == this.order.id) {
                     order.status_id = newStatus;
-                    this.storage.set('orders', orders);
+                    this.data.saveOrders(orders);
                     this.data.orders.next(orders);
                 }
             });

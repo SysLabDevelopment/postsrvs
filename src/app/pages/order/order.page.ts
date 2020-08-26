@@ -402,7 +402,7 @@ export class OrderPage implements OnInit {
       orders?.map((order) => {
         if (order.id.toString() == this.order.id) {
           order.status_id = this.selectedStatus;
-          this.storage.set('orders', orders);
+          this.data.saveOrders(orders);
           this.data.orders.next(orders);
         }
       });
@@ -763,7 +763,7 @@ export class OrderPage implements OnInit {
       orders?.map((order: Order) => {
         if (order.id.toString() == this.order.id) {
           order.status_id = newStatus;
-          this.storage.set('orders', orders);
+          this.data.saveOrders(orders);
           this.data.orders.next(orders);
         }
       });

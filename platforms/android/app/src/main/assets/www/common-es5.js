@@ -732,6 +732,8 @@
           this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
           storage.ready().then(function (localforage) {
             _this.storage.get('orders').then(function (orders) {
+              _this.ordersMap = _this.getOrdersMap(orders);
+
               if (orders == null) {
                 _this.getApiData();
               }
@@ -743,7 +745,7 @@
               _this.getInitialData();
 
               _this.orders.subscribe(function (orders) {
-                _this.storage.set('orders', orders).then(function () {
+                _this.saveOrders(orders).then(function () {
                   console.log('sys:: Список заказов сохранен в сторож: ', orders);
                 });
               });
@@ -776,12 +778,14 @@
             return this.courier.getBalance(this.auth.userId, 1).subscribe(function (res) {
               _this3.orders.next(res.res_more);
 
-              _this3.storage.set('orders', res.res_more);
-
               _this3.sys.getOrders(res.res_more.map(function (order) {
                 return order.id.toString();
               })).subscribe(function (resp) {
-                _this3.orders.next(resp.orders);
+                _this3.saveOrders(resp.orders).then(function () {
+                  _this3.storage.get('orders').then(function (orders) {
+                    _this3.orders.next(orders);
+                  });
+                });
               });
             });
           }
@@ -793,8 +797,36 @@
             this.sys.getOrders(ids).subscribe(function (resp) {
               _this4.orders.next(resp.orders);
 
-              _this4.storage.set('orders', resp.orders);
+              _this4.saveOrders(resp.orders);
             });
+          } //Сохранение заказов в сторож с сохранением порядка
+
+        }, {
+          key: "saveOrders",
+          value: function saveOrders(orders) {
+            var _this5 = this;
+
+            orders && orders.forEach(function (order) {
+              _this5.ordersMap.set(Number(order.id), order);
+            });
+            return this.storage.set('orders', Array.from(this.ordersMap.values()));
+          } //Возвращает MAP заказов (не сортируемый)
+
+        }, {
+          key: "getOrdersMap",
+          value: function getOrdersMap(orders) {
+            var map = new Map();
+            orders && orders.forEach(function (order) {
+              map.set(Number(order.id), order);
+            });
+            return map;
+          } //Перезапись списка заказов (если надо изменить сортировку)
+
+        }, {
+          key: "rewriteOrders",
+          value: function rewriteOrders(orders) {
+            this.ordersMap = this.getOrdersMap(orders);
+            this.orders.next(orders);
           }
         }]);
 

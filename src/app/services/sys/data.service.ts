@@ -14,6 +14,7 @@ import { SysService } from '../../services/sys.service';
 export class DataService {
 
   public orders: BehaviorSubject<Array<Order>> = new BehaviorSubject([]);
+  public ordersMap: Map<number, Order>;
 
   constructor(
     private storage: Storage,
@@ -24,6 +25,7 @@ export class DataService {
 
     storage.ready().then((localforage) => {
       this.storage.get('orders').then((orders: Array<Order>) => {
+        this.ordersMap = this.getOrdersMap(orders);
         if (orders == null) {
           this.getApiData()
         }
@@ -31,7 +33,7 @@ export class DataService {
         console.log('Список заказов из стоража', orders);
         this.getInitialData();
         this.orders.subscribe((orders: Order[]) => {
-          this.storage.set('orders', orders).then(() => {
+          this.saveOrders(orders).then(() => {
             console.log('sys:: Список заказов сохранен в сторож: ', orders);
           });
         })
@@ -55,17 +57,44 @@ export class DataService {
 
   public getApiData() {
     return this.courier.getBalance(this.auth.userId, 1).subscribe((res: Response) => {
-      this.orders.next(res.res_more);
-      this.storage.set('orders', res.res_more);
       this.sys.getOrders(res.res_more.map((order: Order) => order.id.toString())).subscribe((resp: Response) => {
-        this.orders.next(resp.orders);
+        this.saveOrders(resp.orders).then(() => {
+          this.storage.get('orders').then((orders) => {
+            this.orders.next(orders);
+          })
+
+        });
+
       })
     })
   }
   public getOrders(ids: Array<string>) {
     this.sys.getOrders(ids).subscribe((resp: Response) => {
       this.orders.next(resp.orders);
-      this.storage.set('orders', resp.orders)
+      this.saveOrders(resp.orders)
     })
+  }
+
+  //Сохранение заказов в сторож с сохранением порядка
+  public saveOrders(orders: Order[]) {
+    orders && orders.forEach((order) => {
+      this.ordersMap.set(Number(order.id), order)
+    })
+    return this.storage.set('orders', Array.from(this.ordersMap.values()))
+  }
+
+  //Возвращает MAP заказов (не сортируемый)
+  public getOrdersMap(orders: Array<Order>): Map<number, Order> {
+    let map = new Map();
+    orders && orders.forEach((order: Order) => {
+      map.set(Number(order.id), order)
+    })
+    return map
+  }
+
+  //Перезапись списка заказов (если надо изменить сортировку)
+  public rewriteOrders(orders: Order[]) {
+    this.ordersMap = this.getOrdersMap(orders);
+    this.orders.next(orders)
   }
 }
