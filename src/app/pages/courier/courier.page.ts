@@ -462,8 +462,8 @@ export class CourierPage implements OnInit {
 
   public segmentChanged(event) {
     let ids = [Number(event.target.value)];
-    if (event.target.value == '4') {
-      ids.push(5)
+    if (event.target.value == '5') {
+      ids.push(6)
     }
     this.prepareOrdersList(ids)
   }
