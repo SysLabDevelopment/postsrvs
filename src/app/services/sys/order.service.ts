@@ -10,6 +10,7 @@ import { SysService } from '../sys.service';
 export class OrderService {
 
   private pay_access_data: any;
+  public notPayData = false;
 
   constructor(
     private auth: AuthService,
@@ -30,11 +31,15 @@ export class OrderService {
         } else {
           this.submitChange(order, status);
         }
+        if (!res.api_key) {
+          this.notPayData = true
+        }
       }
     });
   }
 
   private sendPay(order: Order) {
+    this.notPayData = false;
     let callback_url = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
     let products = [];
     for (let code in order.quants) {
@@ -86,7 +91,6 @@ export class OrderService {
   public submitChange(order: Order, status: number) {
     let self = this;
     let noSkip = true;
-
     switch (status) {
       case 4:
         if (order.selectedReason != null) {
@@ -103,7 +107,6 @@ export class OrderService {
             )
             .subscribe((data: any) => {
               localStorage.removeItem("drawImg");
-
             });
         }
         break;
@@ -111,7 +114,6 @@ export class OrderService {
         if (order.selectedPayment !== '2') {
           noSkip = false
         }
-
         this.sys.doOCR(order.check, noSkip).then((recognizedData) => {
           let text = order.commentText ? order.commentText : "";
           this.courier
@@ -135,8 +137,6 @@ export class OrderService {
         if (order.selectedPayment !== '2') {
           noSkip = false
         }
-
-
         this.sys.doOCR(order.check, noSkip).then((recognizedData) => {
           this.courier
             .changeStatus(

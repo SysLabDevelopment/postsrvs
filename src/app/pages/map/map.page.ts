@@ -251,9 +251,6 @@ export class MapPage implements OnInit {
               this.orders = orders.filter(order => order.status_id == 1);
               this.addCluster(this.markeredOrders(this.orders));
             })
-
-
-
           }
         }
       });
