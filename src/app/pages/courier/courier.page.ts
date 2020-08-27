@@ -85,6 +85,7 @@ export class CourierPage implements OnInit {
   public orderPhones: string[];
   public order: Order;
   public noDrag = false;
+  private segment: number[] = [1];
 
   constructor(public courier: CourierService,
     private router: Router,
@@ -465,15 +466,16 @@ export class CourierPage implements OnInit {
     if (event.target.value == '5') {
       ids.push(6)
     }
+    this.segment = ids;
     this.prepareOrdersList(ids)
   }
 
   public onSearchChange(event) {
     this.searchString = event.target.value;
-    this.prepareOrdersList()
+    this.prepareOrdersList(this.segment)
 
   }
-  public prepareOrdersList(ids = [1]) {
+  public prepareOrdersList(ids = this.segment) {
 
     this.orders_c = this.ord.pipe(
       map(
