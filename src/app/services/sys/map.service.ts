@@ -10,7 +10,7 @@ import {
 
   GoogleMapsEvent
 } from "@ionic-native/google-maps/ngx";
-import { Platform } from "@ionic/angular";
+import { Platform, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
 import { Order } from 'src/app/interfaces/order';
 @Injectable({
@@ -25,7 +25,8 @@ export class MapService {
     private geo: Geolocation,
     private device: Device,
     private platform: Platform,
-    private router: Router
+    private router: Router,
+    public viewCtrl: PopoverController
   ) { }
 
   public getWay(coords: { lt: number; lg: number }): Observable<any> {
@@ -135,6 +136,7 @@ export class MapService {
     console.log("sys:: переход на страницу заказа ", orderId);
     this.router.navigate(["/order", orderId]);
     localStorage.removeItem("needOrder");
+    this.viewCtrl.dismiss();
   }
 
   public navigate(page: any) {
