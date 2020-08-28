@@ -12,15 +12,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu", function() { return Menu; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu_button", function() { return MenuButton; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu_toggle", function() { return MenuToggle; });
-/* harmony import */ var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-44bf8136.js */ "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
-/* harmony import */ var _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-837be8f3.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-837be8f3.js");
+/* harmony import */ var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-92848855.js */ "./node_modules/@ionic/core/dist/esm/index-92848855.js");
+/* harmony import */ var _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-23e7365a.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-23e7365a.js");
 /* harmony import */ var _helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-5c745fbd.js */ "./node_modules/@ionic/core/dist/esm/helpers-5c745fbd.js");
 /* harmony import */ var _animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation-a635a2fc.js */ "./node_modules/@ionic/core/dist/esm/animation-a635a2fc.js");
 /* harmony import */ var _cubic_bezier_685f606a_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./cubic-bezier-685f606a.js */ "./node_modules/@ionic/core/dist/esm/cubic-bezier-685f606a.js");
 /* harmony import */ var _gesture_controller_89173521_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./gesture-controller-89173521.js */ "./node_modules/@ionic/core/dist/esm/gesture-controller-89173521.js");
 /* harmony import */ var _hardware_back_button_7b6ede21_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hardware-back-button-7b6ede21.js */ "./node_modules/@ionic/core/dist/esm/hardware-back-button-7b6ede21.js");
-/* harmony import */ var _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index-a8b25bef.js */ "./node_modules/@ionic/core/dist/esm/index-a8b25bef.js");
-/* harmony import */ var _theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./theme-3f0b0c04.js */ "./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js");
+/* harmony import */ var _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index-52d51fad.js */ "./node_modules/@ionic/core/dist/esm/index-52d51fad.js");
+/* harmony import */ var _theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./theme-5641d27f.js */ "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js");
 
 
 
@@ -41,12 +41,12 @@ const iosEasingReverse = 'cubic-bezier(1, 0, 0.68, 0.28)';
 const mdEasingReverse = 'cubic-bezier(0.4, 0, 0.6, 1)';
 const Menu = class {
     constructor(hostRef) {
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.ionWillOpen = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionWillOpen", 7);
-        this.ionWillClose = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionWillClose", 7);
-        this.ionDidOpen = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionDidOpen", 7);
-        this.ionDidClose = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionDidClose", 7);
-        this.ionMenuChange = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionMenuChange", 7);
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.ionWillOpen = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionWillOpen", 7);
+        this.ionWillClose = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionWillClose", 7);
+        this.ionDidOpen = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionDidOpen", 7);
+        this.ionDidClose = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionDidClose", 7);
+        this.ionMenuChange = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionMenuChange", 7);
         this.lastOnEnd = 0;
         this.blocker = _gesture_controller_89173521_js__WEBPACK_IMPORTED_MODULE_5__["G"].createBlocker({ disableScroll: true });
         this.isAnimating = false;
@@ -101,7 +101,7 @@ const Menu = class {
     }
     async connectedCallback() {
         if (this.type === undefined) {
-            this.type = _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["c"].get('menuType', 'overlay');
+            this.type = _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["c"].get('menuType', 'overlay');
         }
         const el = this.el;
         const parent = el.parentNode;
@@ -130,7 +130,7 @@ AFTER:
         this.typeChanged(this.type, undefined);
         this.sideChanged();
         // register this menu with the app's menu controller
-        _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"]._register(this);
+        _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"]._register(this);
         this.gesture = (await Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-eea61379.js */ "./node_modules/@ionic/core/dist/esm/index-eea61379.js"))).createGesture({
             el: document,
             gestureName: 'menu-swipe',
@@ -151,7 +151,7 @@ AFTER:
     }
     disconnectedCallback() {
         this.blocker.destroy();
-        _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"]._unregister(this);
+        _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"]._unregister(this);
         if (this.animation) {
             this.animation.destroy();
         }
@@ -219,7 +219,7 @@ AFTER:
      * If the operation can't be completed successfully, it returns `false`.
      */
     setOpen(shouldOpen, animated = true) {
-        return _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"]._setOpen(this, shouldOpen, animated);
+        return _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"]._setOpen(this, shouldOpen, animated);
     }
     async _setOpen(shouldOpen, animated = true) {
         // If the menu is disabled or it is currently being animated, let's do nothing
@@ -246,15 +246,15 @@ AFTER:
             this.animation = undefined;
         }
         // Create new animation
-        this.animation = await _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"]._createAnimation(this.type, this);
-        if (!_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["c"].getBoolean('animated', true)) {
+        this.animation = await _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"]._createAnimation(this.type, this);
+        if (!_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["c"].getBoolean('animated', true)) {
             this.animation.duration(0);
         }
         this.animation.fill('both');
     }
     async startAnimation(shouldOpen, animated) {
         const isReversed = !shouldOpen;
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
         const easing = mode === 'ios' ? iosEasing : mdEasing;
         const easingReverse = mode === 'ios' ? iosEasingReverse : mdEasingReverse;
         const ani = this.animation
@@ -288,7 +288,7 @@ AFTER:
             return true;
             // TODO error
         }
-        else if (_index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"]._getOpenSync()) {
+        else if (_index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"]._getOpenSync()) {
             return false;
         }
         return checkEdgeSide(window, detail.currentX, this.isEndSide, this.maxEdgeStart);
@@ -423,7 +423,7 @@ AFTER:
             this.forceClosing();
         }
         if (!this.disabled) {
-            _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"]._setActiveMenu(this);
+            _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"]._setActiveMenu(this);
         }
         Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_2__["b"])(!this.isAnimating, 'can not be animating');
     }
@@ -436,17 +436,17 @@ AFTER:
     }
     render() {
         const { isEndSide, type, disabled, isPaneVisible } = this;
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
-        return (Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "navigation", class: {
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "navigation", class: {
                 [mode]: true,
                 [`menu-type-${type}`]: true,
                 'menu-enabled': !disabled,
                 'menu-side-end': isEndSide,
                 'menu-side-start': !isEndSide,
                 'menu-pane-visible': isPaneVisible
-            } }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "menu-inner", part: "container", ref: el => this.menuInnerEl = el }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", { ref: el => this.backdropEl = el, class: "menu-backdrop", tappable: false, stopPropagation: false, part: "backdrop" })));
+            } }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "menu-inner", part: "container", ref: el => this.menuInnerEl = el }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", { ref: el => this.backdropEl = el, class: "menu-backdrop", tappable: false, stopPropagation: false, part: "backdrop" })));
     }
-    get el() { return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+    get el() { return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
     static get watchers() { return {
         "type": ["typeChanged"],
         "disabled": ["disabledChanged"],
@@ -475,7 +475,7 @@ Menu.style = {
 
 // Given a menu, return whether or not the menu toggle should be visible
 const updateVisibility = async (menu) => {
-    const menuEl = await _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"].get(menu);
+    const menuEl = await _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"].get(menu);
     return !!(menuEl && await menuEl.isActive());
 };
 
@@ -485,7 +485,7 @@ const menuButtonMdCss = ":host{--background:transparent;--color-focused:currentC
 
 const MenuButton = class {
     constructor(hostRef) {
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.visible = false;
         /**
          * If `true`, the user cannot interact with the menu button.
@@ -500,7 +500,7 @@ const MenuButton = class {
          */
         this.type = 'button';
         this.onClick = async () => {
-            return _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"].toggle(this.menu);
+            return _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"].toggle(this.menu);
         };
     }
     componentDidLoad() {
@@ -511,15 +511,24 @@ const MenuButton = class {
     }
     render() {
         const { color, disabled } = this;
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
-        const menuIcon = _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["c"].get('menuIcon', mode === 'ios' ? 'menu-outline' : 'menu-sharp');
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        const menuIcon = _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["c"].get('menuIcon', mode === 'ios' ? 'menu-outline' : 'menu-sharp');
         const hidden = this.autoHide && !this.visible;
         const attrs = {
             type: this.type
         };
-        return (Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, "aria-disabled": disabled ? 'true' : null, "aria-hidden": hidden ? 'true' : null, class: Object.assign(Object.assign({ [mode]: true }, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_8__["c"])(color)), { 'button': true, 'menu-button-hidden': hidden, 'menu-button-disabled': disabled, 'in-toolbar': Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_8__["h"])('ion-toolbar', this.el), 'in-toolbar-color': Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_8__["h"])('ion-toolbar[color]', this.el), 'ion-activatable': true, 'ion-focusable': true }) }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", Object.assign({}, attrs, { disabled: disabled, class: "button-native", part: "native", "aria-label": "menu" }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "button-inner" }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { part: "icon", icon: menuIcon, mode: mode, lazy: false, "aria-hidden": "true" }))), mode === 'md' && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", { type: "unbounded" }))));
+        return (Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, "aria-disabled": disabled ? 'true' : null, "aria-hidden": hidden ? 'true' : null, class: Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_8__["c"])(color, {
+                [mode]: true,
+                'button': true,
+                'menu-button-hidden': hidden,
+                'menu-button-disabled': disabled,
+                'in-toolbar': Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_8__["h"])('ion-toolbar', this.el),
+                'in-toolbar-color': Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_8__["h"])('ion-toolbar[color]', this.el),
+                'ion-activatable': true,
+                'ion-focusable': true
+            }) }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", Object.assign({}, attrs, { disabled: disabled, class: "button-native", part: "native", "aria-label": "menu" }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "button-inner" }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { part: "icon", icon: menuIcon, mode: mode, lazy: false, "aria-hidden": "true" }))), mode === 'md' && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", { type: "unbounded" }))));
     }
-    get el() { return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+    get el() { return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
 };
 MenuButton.style = {
     ios: menuButtonIosCss,
@@ -530,7 +539,7 @@ const menuToggleCss = ":host(.menu-toggle-hidden){display:none}";
 
 const MenuToggle = class {
     constructor(hostRef) {
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.visible = false;
         /**
          * Automatically hides the content when the corresponding menu is not active.
@@ -540,7 +549,7 @@ const MenuToggle = class {
          */
         this.autoHide = true;
         this.onClick = () => {
-            return _index_a8b25bef_js__WEBPACK_IMPORTED_MODULE_7__["m"].toggle(this.menu);
+            return _index_52d51fad_js__WEBPACK_IMPORTED_MODULE_7__["m"].toggle(this.menu);
         };
     }
     connectedCallback() {
@@ -550,12 +559,12 @@ const MenuToggle = class {
         this.visible = await updateVisibility(this.menu);
     }
     render() {
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
         const hidden = this.autoHide && !this.visible;
-        return (Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, "aria-hidden": hidden ? 'true' : null, class: {
+        return (Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, "aria-hidden": hidden ? 'true' : null, class: {
                 [mode]: true,
                 'menu-toggle-hidden': hidden,
-            } }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
+            } }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
     }
 };
 MenuToggle.style = menuToggleCss;

@@ -36,15 +36,15 @@
       /* harmony import */
 
 
-      var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! ./index-44bf8136.js */
-      "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
+      var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./index-92848855.js */
+      "./node_modules/@ionic/core/dist/esm/index-92848855.js");
       /* harmony import */
 
 
-      var _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! ./ionic-global-837be8f3.js */
-      "./node_modules/@ionic/core/dist/esm/ionic-global-837be8f3.js");
+      var _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./ionic-global-23e7365a.js */
+      "./node_modules/@ionic/core/dist/esm/ionic-global-23e7365a.js");
       /* harmony import */
 
 
@@ -54,9 +54,9 @@
       /* harmony import */
 
 
-      var _theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! ./theme-3f0b0c04.js */
-      "./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js");
+      var _theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! ./theme-5641d27f.js */
+      "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js");
 
       var CACHED_MAP;
 
@@ -111,7 +111,7 @@
           return url;
         }
 
-        return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["k"])("svg/".concat(iconName, ".svg"));
+        return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["k"])("svg/".concat(iconName, ".svg"));
       };
 
       var getName = function getName(iconName, icon, mode, ios, md) {
@@ -180,9 +180,9 @@
 
           _classCallCheck(this, Button);
 
-          Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-          this.ionFocus = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionFocus", 7);
-          this.ionBlur = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionBlur", 7);
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          this.ionFocus = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionFocus", 7);
+          this.ionBlur = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionBlur", 7);
           this.inItem = false;
           this.inListHeader = false;
           this.inToolbar = false;
@@ -215,7 +215,7 @@
 
           this.handleClick = function (ev) {
             if (_this.type === 'button') {
-              Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection, _this.routerAnimation);
+              Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection, _this.routerAnimation);
             } else if (Object(_helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_2__["h"])(_this.el)) {
               // this button wants to specifically submit a form
               // climb up the dom to see if we're in a <form>
@@ -253,9 +253,9 @@
         }, {
           key: "render",
           value: function render() {
-            var _Object$assign;
+            var _Object;
 
-            var mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+            var mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
             var buttonType = this.buttonType,
                 type = this.type,
                 disabled = this.disabled,
@@ -284,25 +284,25 @@
               fill = this.inToolbar || this.inListHeader ? 'clear' : 'solid';
             }
 
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
               onClick: this.handleClick,
               "aria-disabled": disabled ? 'true' : null,
-              "class": Object.assign(Object.assign({}, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, buttonType, true), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(expand), expand !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(finalSize), finalSize !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(shape), shape !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(fill), true), _defineProperty(_Object$assign, "".concat(buttonType, "-strong"), strong), _defineProperty(_Object$assign, 'in-toolbar', Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-toolbar', this.el)), _defineProperty(_Object$assign, 'in-toolbar-color', Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-toolbar[color]', this.el)), _defineProperty(_Object$assign, 'button-has-icon-only', hasIconOnly), _defineProperty(_Object$assign, 'button-disabled', disabled), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _Object$assign))
-            }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
+              "class": Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color, (_Object = {}, _defineProperty(_Object, mode, true), _defineProperty(_Object, buttonType, true), _defineProperty(_Object, "".concat(buttonType, "-").concat(expand), expand !== undefined), _defineProperty(_Object, "".concat(buttonType, "-").concat(finalSize), finalSize !== undefined), _defineProperty(_Object, "".concat(buttonType, "-").concat(shape), shape !== undefined), _defineProperty(_Object, "".concat(buttonType, "-").concat(fill), true), _defineProperty(_Object, "".concat(buttonType, "-strong"), strong), _defineProperty(_Object, 'in-toolbar', Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-toolbar', this.el)), _defineProperty(_Object, 'in-toolbar-color', Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-toolbar[color]', this.el)), _defineProperty(_Object, 'button-has-icon-only', hasIconOnly), _defineProperty(_Object, 'button-disabled', disabled), _defineProperty(_Object, 'ion-activatable', true), _defineProperty(_Object, 'ion-focusable', true), _Object))
+            }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
               "class": "button-native",
               part: "native",
               disabled: disabled,
               onFocus: this.onFocus,
               onBlur: this.onBlur
-            }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+            }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
               "class": "button-inner"
-            }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+            }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
               name: "icon-only"
-            }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+            }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
               name: "start"
-            }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+            }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
               name: "end"
-            })), mode === 'md' && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {
+            })), mode === 'md' && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {
               type: this.rippleType
             })));
           }
@@ -326,7 +326,7 @@
         }, {
           key: "el",
           get: function get() {
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
           }
         }]);
 
@@ -428,7 +428,7 @@
         function Icon(hostRef) {
           _classCallCheck(this, Icon);
 
-          Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
           this.isVisible = false;
           /**
            * The mode determines which platform styles to use.
@@ -520,24 +520,24 @@
         }, {
           key: "render",
           value: function render() {
-            var _Object$assign3;
+            var _Object$assign2;
 
             var mode = this.mode || 'md';
             var flipRtl = this.flipRtl || this.ariaLabel && (this.ariaLabel.indexOf('arrow') > -1 || this.ariaLabel.indexOf('chevron') > -1) && this.flipRtl !== false;
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
               role: "img",
-              "class": Object.assign(Object.assign(_defineProperty({}, mode, true), createColorClasses(this.color)), (_Object$assign3 = {}, _defineProperty(_Object$assign3, "icon-".concat(this.size), !!this.size), _defineProperty(_Object$assign3, 'flip-rtl', !!flipRtl && this.el.ownerDocument.dir === 'rtl'), _Object$assign3))
-            }, this.svgContent ? Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              "class": Object.assign(Object.assign(_defineProperty({}, mode, true), createColorClasses(this.color)), (_Object$assign2 = {}, _defineProperty(_Object$assign2, "icon-".concat(this.size), !!this.size), _defineProperty(_Object$assign2, 'flip-rtl', !!flipRtl && this.el.ownerDocument.dir === 'rtl'), _Object$assign2))
+            }, this.svgContent ? Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               "class": "icon-inner",
               innerHTML: this.svgContent
-            }) : Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            }) : Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               "class": "icon-inner"
             }));
           }
         }, {
           key: "el",
           get: function get() {
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
           }
         }], [{
           key: "assetsDirs",

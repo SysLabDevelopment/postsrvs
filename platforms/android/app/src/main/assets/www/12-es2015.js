@@ -12,9 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_fab", function() { return Fab; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_fab_button", function() { return FabButton; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_fab_list", function() { return FabList; });
-/* harmony import */ var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-44bf8136.js */ "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
-/* harmony import */ var _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-837be8f3.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-837be8f3.js");
-/* harmony import */ var _theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./theme-3f0b0c04.js */ "./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js");
+/* harmony import */ var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-92848855.js */ "./node_modules/@ionic/core/dist/esm/index-92848855.js");
+/* harmony import */ var _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-23e7365a.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-23e7365a.js");
+/* harmony import */ var _theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./theme-5641d27f.js */ "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js");
 
 
 
@@ -23,7 +23,7 @@ const fabCss = ":host{position:absolute;z-index:999}:host(.fab-horizontal-center
 
 const Fab = class {
     constructor(hostRef) {
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
          * If `true`, the fab will display on the edge of the header if
          * `vertical` is `"top"`, and on the edge of the footer if
@@ -70,15 +70,15 @@ const Fab = class {
     }
     render() {
         const { horizontal, vertical, edge } = this;
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
-        return (Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, class: {
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, class: {
                 [mode]: true,
                 [`fab-horizontal-${horizontal}`]: horizontal !== undefined,
                 [`fab-vertical-${vertical}`]: vertical !== undefined,
                 'fab-edge': edge
-            } }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
+            } }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
     }
-    get el() { return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+    get el() { return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
     static get watchers() { return {
         "activated": ["activatedChanged"]
     }; }
@@ -91,9 +91,9 @@ const fabButtonMdCss = ":host{--color-activated:var(--color);--color-focused:var
 
 const FabButton = class {
     constructor(hostRef) {
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.ionFocus = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionBlur", 7);
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.ionFocus = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionBlur", 7);
         /**
          * If `true`, the fab button will be show a close icon.
          */
@@ -136,8 +136,8 @@ const FabButton = class {
     }
     render() {
         const { el, disabled, color, href, activated, show, translucent, size } = this;
-        const inList = Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-fab-list', el);
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        const inList = Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-fab-list', el);
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
         const TagType = href === undefined ? 'button' : 'a';
         const attrs = (TagType === 'button')
             ? { type: this.type }
@@ -147,9 +147,20 @@ const FabButton = class {
                 rel: this.rel,
                 target: this.target
             };
-        return (Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], { "aria-disabled": disabled ? 'true' : null, class: Object.assign(Object.assign({}, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), { [mode]: true, 'fab-button-in-list': inList, 'fab-button-translucent-in-list': inList && translucent, 'fab-button-close-active': activated, 'fab-button-show': show, 'fab-button-disabled': disabled, 'fab-button-translucent': translucent, 'ion-activatable': true, 'ion-focusable': true, [`fab-button-${size}`]: size !== undefined }) }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, { class: "button-native", part: "native", disabled: disabled, onFocus: this.onFocus, onBlur: this.onBlur, onClick: (ev) => Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, this.routerDirection, this.routerAnimation) }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { icon: this.closeIcon, part: "close-icon", class: "close-icon", lazy: false }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "button-inner" }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), mode === 'md' && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null))));
+        return (Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], { "aria-disabled": disabled ? 'true' : null, class: Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color, {
+                [mode]: true,
+                'fab-button-in-list': inList,
+                'fab-button-translucent-in-list': inList && translucent,
+                'fab-button-close-active': activated,
+                'fab-button-show': show,
+                'fab-button-disabled': disabled,
+                'fab-button-translucent': translucent,
+                'ion-activatable': true,
+                'ion-focusable': true,
+                [`fab-button-${size}`]: size !== undefined,
+            }) }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, { class: "button-native", part: "native", disabled: disabled, onFocus: this.onFocus, onBlur: this.onBlur, onClick: (ev) => Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, this.routerDirection, this.routerAnimation) }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { icon: this.closeIcon, part: "close-icon", class: "close-icon", lazy: false }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "button-inner" }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), mode === 'md' && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null))));
     }
-    get el() { return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+    get el() { return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
 };
 FabButton.style = {
     ios: fabButtonIosCss,
@@ -160,7 +171,7 @@ const fabListCss = ":host{margin-left:0;margin-right:0;margin-top:66px;margin-bo
 
 const FabList = class {
     constructor(hostRef) {
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
          * If `true`, the fab list will show all fab buttons in the list.
          */
@@ -179,14 +190,14 @@ const FabList = class {
         });
     }
     render() {
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
-        return (Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: {
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: {
                 [mode]: true,
                 'fab-list-active': this.activated,
                 [`fab-list-side-${this.side}`]: true
-            } }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
+            } }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
     }
-    get el() { return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+    get el() { return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
     static get watchers() { return {
         "activated": ["activatedChanged"]
     }; }

@@ -36,15 +36,15 @@
       /* harmony import */
 
 
-      var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! ./index-44bf8136.js */
-      "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
+      var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./index-92848855.js */
+      "./node_modules/@ionic/core/dist/esm/index-92848855.js");
       /* harmony import */
 
 
-      var _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! ./ionic-global-837be8f3.js */
-      "./node_modules/@ionic/core/dist/esm/ionic-global-837be8f3.js");
+      var _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./ionic-global-23e7365a.js */
+      "./node_modules/@ionic/core/dist/esm/ionic-global-23e7365a.js");
       /* harmony import */
 
 
@@ -84,9 +84,9 @@
       /* harmony import */
 
 
-      var _overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-      /*! ./overlays-7c699579.js */
-      "./node_modules/@ionic/core/dist/esm/overlays-7c699579.js");
+      var _overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! ./overlays-2cc140a1.js */
+      "./node_modules/@ionic/core/dist/esm/overlays-2cc140a1.js");
       /* harmony import */
 
 
@@ -96,15 +96,15 @@
       /* harmony import */
 
 
-      var _button_active_0d5784f9_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-      /*! ./button-active-0d5784f9.js */
-      "./node_modules/@ionic/core/dist/esm/button-active-0d5784f9.js");
+      var _button_active_5da929d4_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+      /*! ./button-active-5da929d4.js */
+      "./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js");
       /* harmony import */
 
 
-      var _theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-      /*! ./theme-3f0b0c04.js */
-      "./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js");
+      var _theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+      /*! ./theme-5641d27f.js */
+      "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js");
       /**
        * iOS Alert Enter Animation
        */
@@ -195,11 +195,11 @@
 
           _classCallCheck(this, Alert);
 
-          Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-          this.didPresent = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionAlertDidPresent", 7);
-          this.willPresent = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionAlertWillPresent", 7);
-          this.willDismiss = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionAlertWillDismiss", 7);
-          this.didDismiss = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionAlertDidDismiss", 7);
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          this.didPresent = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionAlertDidPresent", 7);
+          this.willPresent = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionAlertWillPresent", 7);
+          this.willDismiss = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionAlertWillDismiss", 7);
+          this.didDismiss = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionAlertDidDismiss", 7);
           this.processedInputs = [];
           this.processedButtons = [];
           this.presented = false;
@@ -237,13 +237,13 @@
           this.animated = true;
 
           this.onBackdropTap = function () {
-            _this.dismiss(undefined, _overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["B"]);
+            _this.dismiss(undefined, _overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["B"]);
           };
 
           this.dispatchCancelHandler = function (ev) {
             var role = ev.detail.role;
 
-            if (Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["i"])(role)) {
+            if (Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["i"])(role)) {
               var cancelButton = _this.processedButtons.find(function (b) {
                 return b.role === 'cancel';
               });
@@ -302,7 +302,7 @@
         }, {
           key: "connectedCallback",
           value: function connectedCallback() {
-            Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["e"])(this.el);
+            Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["e"])(this.el);
           }
         }, {
           key: "componentWillLoad",
@@ -311,8 +311,8 @@
             this.buttonsChanged();
           }
         }, {
-          key: "componentDidUnload",
-          value: function componentDidUnload() {
+          key: "disconnectedCallback",
+          value: function disconnectedCallback() {
             if (this.gesture) {
               this.gesture.destroy();
               this.gesture = undefined;
@@ -327,11 +327,11 @@
              * 2. App is running in MD mode
              * 3. A wrapper ref does not exist
              */
-            if (this.gesture || Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this) === 'md' || !this.wrapperEl) {
+            if (this.gesture || Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this) === 'md' || !this.wrapperEl) {
               return;
             }
 
-            this.gesture = Object(_button_active_0d5784f9_js__WEBPACK_IMPORTED_MODULE_10__["c"])(this.wrapperEl, function (refEl) {
+            this.gesture = Object(_button_active_5da929d4_js__WEBPACK_IMPORTED_MODULE_10__["c"])(this.wrapperEl, function (refEl) {
               return refEl.classList.contains('alert-button');
             });
             this.gesture.enable(true);
@@ -343,7 +343,7 @@
         }, {
           key: "present",
           value: function present() {
-            return Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["d"])(this, 'alertEnter', iosEnterAnimation, mdEnterAnimation);
+            return Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["d"])(this, 'alertEnter', iosEnterAnimation, mdEnterAnimation);
           }
           /**
            * Dismiss the alert overlay after it has been presented.
@@ -358,7 +358,7 @@
         }, {
           key: "dismiss",
           value: function dismiss(data, role) {
-            return Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["f"])(this, data, role, 'alertLeave', iosLeaveAnimation, mdLeaveAnimation);
+            return Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["f"])(this, data, role, 'alertLeave', iosLeaveAnimation, mdLeaveAnimation);
           }
           /**
            * Returns a promise that resolves when the alert did dismiss.
@@ -367,7 +367,7 @@
         }, {
           key: "onDidDismiss",
           value: function onDidDismiss() {
-            return Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["g"])(this.el, 'ionAlertDidDismiss');
+            return Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["g"])(this.el, 'ionAlertDidDismiss');
           }
           /**
            * Returns a promise that resolves when the alert will dismiss.
@@ -376,7 +376,7 @@
         }, {
           key: "onWillDismiss",
           value: function onWillDismiss() {
-            return Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["g"])(this.el, 'ionAlertWillDismiss');
+            return Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["g"])(this.el, 'ionAlertWillDismiss');
           }
         }, {
           key: "rbClick",
@@ -396,15 +396,15 @@
             }
 
             this.activeId = selectedInput.id;
-            Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["s"])(selectedInput.handler, selectedInput);
-            Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["j"])(this);
+            Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["s"])(selectedInput.handler, selectedInput);
+            Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["j"])(this);
           }
         }, {
           key: "cbClick",
           value: function cbClick(selectedInput) {
             selectedInput.checked = !selectedInput.checked;
-            Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["s"])(selectedInput.handler, selectedInput);
-            Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["j"])(this);
+            Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["s"])(selectedInput.handler, selectedInput);
+            Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["j"])(this);
           }
         }, {
           key: "buttonClick",
@@ -412,7 +412,7 @@
             var role = button.role;
             var values = this.getValues();
 
-            if (Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["i"])(role)) {
+            if (Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["i"])(role)) {
               return this.dismiss({
                 values: values
               }, role);
@@ -434,7 +434,7 @@
             if (button && button.handler) {
               // a handler has been provided, execute it
               // pass the handler the values from the inputs
-              var returnData = Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_8__["s"])(button.handler, data);
+              var returnData = Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_8__["s"])(button.handler, data);
 
               if (returnData === false) {
                 // if the return value of the handler is false then do not dismiss
@@ -503,17 +503,17 @@
             var _this3 = this;
 
             var inputs = this.processedInputs;
-            var mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+            var mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
 
             if (inputs.length === 0) {
               return null;
             }
 
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               "class": "alert-checkbox-group",
               "aria-labelledby": labelledby
             }, inputs.map(function (i) {
-              return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+              return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
                 type: "button",
                 onClick: function onClick() {
                   return _this3.cbClick(i);
@@ -523,22 +523,22 @@
                 disabled: i.disabled,
                 tabIndex: 0,
                 role: "checkbox",
-                "class": Object.assign(Object.assign({}, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_11__["g"])(i.cssClass)), {
+                "class": Object.assign(Object.assign({}, Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_11__["g"])(i.cssClass)), {
                   'alert-tappable': true,
                   'alert-checkbox': true,
                   'alert-checkbox-button': true,
                   'ion-focusable': true,
                   'alert-checkbox-button-disabled': i.disabled || false
                 })
-              }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                 "class": "alert-button-inner"
-              }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                 "class": "alert-checkbox-icon"
-              }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                 "class": "alert-checkbox-inner"
-              })), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              })), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                 "class": "alert-checkbox-label"
-              }, i.label)), mode === 'md' && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null));
+              }, i.label)), mode === 'md' && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null));
             }));
           }
         }, {
@@ -552,13 +552,13 @@
               return null;
             }
 
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               "class": "alert-radio-group",
               role: "radiogroup",
               "aria-labelledby": labelledby,
               "aria-activedescendant": this.activeId
             }, inputs.map(function (i) {
-              return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+              return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
                 type: "button",
                 onClick: function onClick() {
                   return _this4.rbClick(i);
@@ -567,7 +567,7 @@
                 disabled: i.disabled,
                 id: i.id,
                 tabIndex: 0,
-                "class": Object.assign(Object.assign({}, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_11__["g"])(i.cssClass)), {
+                "class": Object.assign(Object.assign({}, Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_11__["g"])(i.cssClass)), {
                   'alert-radio-button': true,
                   'alert-tappable': true,
                   'alert-radio': true,
@@ -575,13 +575,13 @@
                   'alert-radio-button-disabled': i.disabled || false
                 }),
                 role: "radio"
-              }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                 "class": "alert-button-inner"
-              }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                 "class": "alert-radio-icon"
-              }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                 "class": "alert-radio-inner"
-              })), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+              })), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                 "class": "alert-radio-label"
               }, i.label)));
             }));
@@ -595,16 +595,16 @@
               return null;
             }
 
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               "class": "alert-input-group",
               "aria-labelledby": labelledby
             }, inputs.map(function (i) {
               var _a, _b, _c, _d;
 
               if (i.type === 'textarea') {
-                return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+                return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                   "class": "alert-input-wrapper"
-                }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("textarea", Object.assign({
+                }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("textarea", Object.assign({
                   placeholder: i.placeholder,
                   value: i.value,
                   id: i.id,
@@ -623,9 +623,9 @@
                   }
                 })));
               } else {
-                return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+                return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
                   "class": "alert-input-wrapper"
-                }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", Object.assign({
+                }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", Object.assign({
                   placeholder: i.placeholder,
                   type: i.type,
                   min: i.min,
@@ -655,24 +655,24 @@
             var _this5 = this;
 
             var buttons = this.processedButtons;
-            var mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+            var mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
             var alertButtonGroupClass = {
               'alert-button-group': true,
               'alert-button-group-vertical': buttons.length > 2
             };
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               "class": alertButtonGroupClass
             }, buttons.map(function (button) {
-              return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+              return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
                 type: "button",
                 "class": buttonClass(button),
                 tabIndex: 0,
                 onClick: function onClick() {
                   return _this5.buttonClick(button);
                 }
-              }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+              }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
                 "class": "alert-button-inner"
-              }, button.text), mode === 'md' && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null));
+              }, button.text), mode === 'md' && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null));
             }));
           }
         }, {
@@ -684,7 +684,7 @@
             var overlayIndex = this.overlayIndex,
                 header = this.header,
                 subHeader = this.subHeader;
-            var mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+            var mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
             var hdrId = "alert-".concat(overlayIndex, "-hdr");
             var subHdrId = "alert-".concat(overlayIndex, "-sub-hdr");
             var msgId = "alert-".concat(overlayIndex, "-msg");
@@ -696,45 +696,45 @@
               labelledById = subHdrId;
             }
 
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
               role: "dialog",
               "aria-modal": "true",
               tabindex: "-1",
               style: {
                 zIndex: "".concat(20000 + overlayIndex)
               },
-              "class": Object.assign(Object.assign({}, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_11__["g"])(this.cssClass)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'alert-translucent', this.translucent), _Object$assign)),
+              "class": Object.assign(Object.assign({}, Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_11__["g"])(this.cssClass)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'alert-translucent', this.translucent), _Object$assign)),
               onIonAlertWillDismiss: this.dispatchCancelHandler,
               onIonBackdropTap: this.onBackdropTap
-            }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
+            }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
               tappable: this.backdropDismiss
-            }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               tabindex: "0"
-            }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               "class": "alert-wrapper ion-overlay-wrapper",
               ref: function ref(el) {
                 return _this6.wrapperEl = el;
               }
-            }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               "class": "alert-head"
-            }, header && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", {
+            }, header && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", {
               id: hdrId,
               "class": "alert-title"
-            }, header), subHeader && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", {
+            }, header), subHeader && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", {
               id: subHdrId,
               "class": "alert-sub-title"
-            }, subHeader)), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            }, subHeader)), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               id: msgId,
               "class": "alert-message",
               innerHTML: Object(_index_79d74e0b_js__WEBPACK_IMPORTED_MODULE_6__["s"])(this.message)
-            }), this.renderAlertInputs(labelledById), this.renderAlertButtons()), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            }), this.renderAlertInputs(labelledById), this.renderAlertButtons()), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               tabindex: "0"
             }));
           }
         }, {
           key: "el",
           get: function get() {
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
           }
         }], [{
           key: "watchers",
@@ -755,7 +755,7 @@
         return Object.assign(Object.assign({
           'alert-input': true,
           'alert-input-disabled': ((_b = (_a = input.attributes) === null || _a === void 0 ? void 0 : _a.disabled) !== null && _b !== void 0 ? _b : input.disabled) || false
-        }, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_11__["g"])(input.cssClass)), Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_11__["g"])(input.attributes ? (_c = input.attributes["class"]) === null || _c === void 0 ? void 0 : _c.toString() : ''));
+        }, Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_11__["g"])(input.cssClass)), Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_11__["g"])(input.attributes ? (_c = input.attributes["class"]) === null || _c === void 0 ? void 0 : _c.toString() : ''));
       };
 
       var buttonClass = function buttonClass(button) {
@@ -763,7 +763,7 @@
           'alert-button': true,
           'ion-focusable': true,
           'ion-activatable': true
-        }, "alert-button-role-".concat(button.role), button.role !== undefined), Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_11__["g"])(button.cssClass));
+        }, "alert-button-role-".concat(button.role), button.role !== undefined), Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_11__["g"])(button.cssClass));
       };
 
       Alert.style = {

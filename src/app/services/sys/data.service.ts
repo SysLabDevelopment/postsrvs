@@ -6,6 +6,7 @@ import { Response } from '../../interfaces/response';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../../services/courier.service';
 import { SysService } from '../../services/sys.service';
+import { StateService } from '../state.service';
 
 @Injectable({
   providedIn: "root",
@@ -21,6 +22,7 @@ export class DataService {
     private courier: CourierService,
     private auth: AuthService,
     private sys: SysService,
+    public state$: StateService,
   ) {
 
     storage.ready().then((localforage) => {
@@ -33,14 +35,18 @@ export class DataService {
         console.log('Список заказов из стоража', orders);
         this.getInitialData();
         this.orders.subscribe((orders: Order[]) => {
+          console.trace('sys:: Пришли заказы в стрим data.orders');
           this.saveOrders(orders).then(() => {
             console.log('sys:: Список заказов сохранен в сторож: ', orders);
           });
         })
       })
-
     });
-
+    this.state$.g_state.subscribe((state) => {
+      if (state == 'unLogin') {
+        this.ordersMap.clear()
+      }
+    })
   }
 
   public getInitialData() {
@@ -77,10 +83,15 @@ export class DataService {
 
   //Сохранение заказов в сторож с сохранением порядка
   public saveOrders(orders: Order[]) {
-    orders && orders.forEach((order) => {
-      this.ordersMap.set(Number(order.id), order)
+    let incomOrdersMap = this.getOrdersMap(orders);
+    let ordersMapMerged = new Map([...this.ordersMap, ...incomOrdersMap]);
+    this.ordersMap.forEach((val, key) => {
+      if (!incomOrdersMap.has(key)) {
+        this.ordersMap.delete(key);
+        console.log(`sys:: Заказ ${key} удален из сторожа`);
+      }
     })
-    return this.storage.set('orders', Array.from(this.ordersMap.values()))
+    return this.storage.set('orders', Array.from(ordersMapMerged.values()))
   }
 
   //Возвращает MAP заказов (не сортируемый)

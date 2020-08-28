@@ -30,21 +30,21 @@
       /* harmony import */
 
 
-      var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! ./index-44bf8136.js */
-      "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
+      var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./index-92848855.js */
+      "./node_modules/@ionic/core/dist/esm/index-92848855.js");
       /* harmony import */
 
 
-      var _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! ./ionic-global-837be8f3.js */
-      "./node_modules/@ionic/core/dist/esm/ionic-global-837be8f3.js");
+      var _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./ionic-global-23e7365a.js */
+      "./node_modules/@ionic/core/dist/esm/ionic-global-23e7365a.js");
       /* harmony import */
 
 
-      var _theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! ./theme-3f0b0c04.js */
-      "./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js");
+      var _theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./theme-5641d27f.js */
+      "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js");
       /* harmony import */
 
 
@@ -58,7 +58,7 @@
         function Spinner(hostRef) {
           _classCallCheck(this, Spinner);
 
-          Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
           /**
            * If `true`, the spinner's animation will be paused.
            */
@@ -69,9 +69,9 @@
         _createClass(Spinner, [{
           key: "getName",
           value: function getName() {
-            var spinnerName = this.name || _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["c"].get('spinner');
+            var spinnerName = this.name || _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["c"].get('spinner');
 
-            var mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+            var mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
 
             if (spinnerName) {
               return spinnerName;
@@ -82,10 +82,10 @@
         }, {
           key: "render",
           value: function render() {
-            var _Object$assign;
+            var _Object;
 
             var self = this;
-            var mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(self);
+            var mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(self);
             var spinnerName = self.getName();
             var spinner = _spinner_configs_c78e170e_js__WEBPACK_IMPORTED_MODULE_3__["S"][spinnerName] || _spinner_configs_c78e170e_js__WEBPACK_IMPORTED_MODULE_3__["S"]['lines'];
             var duration = typeof self.duration === 'number' && self.duration > 10 ? self.duration : spinner.dur;
@@ -101,8 +101,8 @@
               }
             }
 
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-              "class": Object.assign(Object.assign({}, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_2__["c"])(self.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "spinner-".concat(spinnerName), true), _defineProperty(_Object$assign, 'spinner-paused', !!self.paused || _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["c"].getBoolean('_testing')), _Object$assign)),
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+              "class": Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_2__["c"])(self.color, (_Object = {}, _defineProperty(_Object, mode, true), _defineProperty(_Object, "spinner-".concat(spinnerName), true), _defineProperty(_Object, 'spinner-paused', !!self.paused || _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["c"].getBoolean('_testing')), _Object)),
               role: "progressbar",
               style: spinner.elmDuration ? {
                 animationDuration: duration + 'ms'
@@ -117,10 +117,10 @@
       var buildCircle = function buildCircle(spinner, duration, index, total) {
         var data = spinner.fn(duration, index, total);
         data.style['animation-duration'] = duration + 'ms';
-        return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
+        return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
           viewBox: data.viewBox || '0 0 64 64',
           style: data.style
-        }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("circle", {
+        }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("circle", {
           transform: data.transform || 'translate(32,32)',
           cx: data.cx,
           cy: data.cy,
@@ -134,10 +134,10 @@
       var buildLine = function buildLine(spinner, duration, index, total) {
         var data = spinner.fn(duration, index, total);
         data.style['animation-duration'] = duration + 'ms';
-        return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
+        return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
           viewBox: data.viewBox || '0 0 64 64',
           style: data.style
-        }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("line", {
+        }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("line", {
           transform: "translate(32,32)",
           y1: data.y1,
           y2: data.y2

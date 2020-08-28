@@ -290,12 +290,9 @@ export class CourierPage implements OnInit {
   public initContent() {
     var self = this;
     this.state$.orders.subscribe(() => {
-
-
       this.orders = this.state$.orders_data;
       console.log('sys::initСontent orders', this.orders);
       this.statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
-
       this.ordersInit = true;
       self.count_orders();
     })

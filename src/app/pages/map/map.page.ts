@@ -103,6 +103,7 @@ export class MapPage implements OnInit {
                 this.orders.length = 1;
               }
               console.log("sys:: заказы", this.orders);
+              this.orders && this.data.orders.next(this.orders);
               this.drawData(this.settings.rules.autoStartRoute);
             });
           });
@@ -248,8 +249,11 @@ export class MapPage implements OnInit {
           this.routeToOrder = false;
           if (autoStartRoute == "0") {
             this.storage.get('orders').then((orders) => {
-              this.orders = orders.filter(order => order.status_id == 1);
-              this.addCluster(this.markeredOrders(this.orders));
+              if (orders !== null) {
+                this.orders = orders.filter(order => order.status_id == 1);
+                this.addCluster(this.markeredOrders(this.orders));
+              }
+
             })
           }
         }
@@ -279,6 +283,13 @@ export class MapPage implements OnInit {
   public logout() {
     this.map.clear();
     localStorage.clear();
+    this.storage.clear().then(() => {
+      console.log('sys:: Сторож очищен');
+      this.storage.keys().then((keys) => console.log('записи в стораже: ', keys));
+    });
+    this.data.ordersMap.clear();
+
+
     const url = "orders";
     const data = { action: "logout" };
 
@@ -296,7 +307,6 @@ export class MapPage implements OnInit {
         this.settings.getSettings(res.sync_id);
         this.auth.setUser(res.sync_id);
         this.courier.getBalance(res.sync_id, 1).subscribe((data: any) => {
-
           this.courier.ordersInfo = data.res_more;
           this.courier.count_orders(data.res_more);
           this.orders = data.res_more;
@@ -308,6 +318,8 @@ export class MapPage implements OnInit {
                 this.storage.get('orders').then((orders) => {
                   if (orders == null) {
                     this.data.getApiData()
+                  } else {
+                    this.data.orders.next(orders)
                   }
                 })
                 this.orders = res.orders;

@@ -2449,7 +2449,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -2561,7 +2561,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -2700,6 +2700,7 @@
                   }
 
                   console.log("sys:: заказы", _this11.orders);
+                  _this11.orders && _this11.data.orders.next(_this11.orders);
 
                   _this11.drawData(_this11.settings.rules.autoStartRoute);
                 });
@@ -2901,11 +2902,13 @@
 
                   if (autoStartRoute == "0") {
                     _this16.storage.get('orders').then(function (orders) {
-                      _this16.orders = orders.filter(function (order) {
-                        return order.status_id == 1;
-                      });
+                      if (orders !== null) {
+                        _this16.orders = orders.filter(function (order) {
+                          return order.status_id == 1;
+                        });
 
-                      _this16.addCluster(_this16.markeredOrders(_this16.orders));
+                        _this16.addCluster(_this16.markeredOrders(_this16.orders));
+                      }
                     });
                   }
                 }
@@ -2937,8 +2940,18 @@
         }, {
           key: "logout",
           value: function logout() {
+            var _this18 = this;
+
             this.map.clear();
             localStorage.clear();
+            this.storage.clear().then(function () {
+              console.log('sys:: Сторож очищен');
+
+              _this18.storage.keys().then(function (keys) {
+                return console.log('записи в стораже: ', keys);
+              });
+            });
+            this.data.ordersMap.clear();
             var url = "orders";
             var data = {
               action: "logout"
@@ -2953,42 +2966,44 @@
         }, {
           key: "initContent",
           value: function initContent() {
-            var _this18 = this;
+            var _this19 = this;
 
             this.sys.checkAuth(AppVersion.version).subscribe(function (res) {
               if (res.sync_id !== undefined) {
-                _this18.settings.getSettings(res.sync_id);
+                _this19.settings.getSettings(res.sync_id);
 
-                _this18.auth.setUser(res.sync_id);
+                _this19.auth.setUser(res.sync_id);
 
-                _this18.courier.getBalance(res.sync_id, 1).subscribe(function (data) {
-                  _this18.courier.ordersInfo = data.res_more;
+                _this19.courier.getBalance(res.sync_id, 1).subscribe(function (data) {
+                  _this19.courier.ordersInfo = data.res_more;
 
-                  _this18.courier.count_orders(data.res_more);
+                  _this19.courier.count_orders(data.res_more);
 
-                  _this18.orders = data.res_more;
+                  _this19.orders = data.res_more;
 
-                  _this18.state$.orders.next(data.res_more);
+                  _this19.state$.orders.next(data.res_more);
 
-                  _this18.getOrdersId().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])(function (ids) {
+                  _this19.getOrdersId().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])(function (ids) {
                     return ids.length > 0;
                   })).subscribe(function (ids) {
-                    _this18.getOrders(ids).subscribe(function (res) {
-                      _this18.storage.get('orders').then(function (orders) {
+                    _this19.getOrders(ids).subscribe(function (res) {
+                      _this19.storage.get('orders').then(function (orders) {
                         if (orders == null) {
-                          _this18.data.getApiData();
+                          _this19.data.getApiData();
+                        } else {
+                          _this19.data.orders.next(orders);
                         }
                       });
 
-                      _this18.orders = res.orders;
+                      _this19.orders = res.orders;
 
-                      if (_this18.settings.rules.appMode.toLowerCase().includes("auto")) {
-                        _this18.orders.length = 1;
+                      if (_this19.settings.rules.appMode.toLowerCase().includes("auto")) {
+                        _this19.orders.length = 1;
                       }
 
-                      console.log("sys:: заказы", _this18.orders);
+                      console.log("sys:: заказы", _this19.orders);
 
-                      _this18.drawData(_this18.settings.rules.autoStartRoute);
+                      _this19.drawData(_this19.settings.rules.autoStartRoute);
                     });
                   });
                 });
@@ -2998,7 +3013,7 @@
         }, {
           key: "addCluster",
           value: function addCluster(markeredOrders) {
-            var _this19 = this;
+            var _this20 = this;
 
             var options = {
               maxZoomLevel: 14,
@@ -3021,7 +3036,7 @@
             var markerCluster = this.map.addMarkerClusterSync(options);
             console.log("sys:: MarkerCluster added: ", markerCluster);
             markerCluster.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].MARKER_CLICK).subscribe(function (params) {
-              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this19, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this20, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                 var marker, popover;
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                   while (1) {
@@ -3117,7 +3132,7 @@
         }, {
           key: "requestDirection",
           value: function requestDirection(lat, lng) {
-            var _this20 = this;
+            var _this21 = this;
 
             this.destination = {
               lat: lat,
@@ -3130,36 +3145,36 @@
               'travelMode': "DRIVING"
             }).then(function (result) {
               console.log(JSON.stringify(result, null, 2));
-              _this20.bounds = result.routes[0].bounds;
+              _this21.bounds = result.routes[0].bounds;
 
-              if (!_this20.renderer) {
-                _this20.renderer = _this20.map.addDirectionsRendererSync({
+              if (!_this21.renderer) {
+                _this21.renderer = _this21.map.addDirectionsRendererSync({
                   'directions': result,
                   'panel': 'guide',
                   'polylineOptions': {
-                    'points': [_this20.origin, _this20.destination]
+                    'points': [_this21.origin, _this21.destination]
                   },
                   'markerOptions': {
                     visible: false
                   }
                 });
 
-                _this20.renderer.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].DIRECTIONS_CHANGED).subscribe(_this20.onDirectionChanged.bind(_this20));
+                _this21.renderer.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].DIRECTIONS_CHANGED).subscribe(_this21.onDirectionChanged.bind(_this21));
               } else {
                 var decodedPoints = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMaps"].getPlugin().geometry.encoding.decodePath(result.routes[0].overview_polyline);
 
-                _this20.map.addPolyline({
+                _this21.map.addPolyline({
                   points: decodedPoints,
                   'color': '#4a4a4a',
                   width: 4,
                   geodesic: false
                 });
 
-                _this20.map.addMarkerSync({
-                  position: _this20.destination
+                _this21.map.addMarkerSync({
+                  position: _this21.destination
                 });
 
-                _this20.renderer.setDirections(result);
+                _this21.renderer.setDirections(result);
               }
             });
           }

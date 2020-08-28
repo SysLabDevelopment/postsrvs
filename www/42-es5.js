@@ -38,9 +38,9 @@
       /* harmony import */
 
 
-      var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! ./index-44bf8136.js */
-      "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
+      var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./index-92848855.js */
+      "./node_modules/@ionic/core/dist/esm/index-92848855.js");
 
       var CELL_TYPE_ITEM = 'item';
       var CELL_TYPE_HEADER = 'header';
@@ -377,7 +377,7 @@
 
           _classCallCheck(this, VirtualScroll);
 
-          Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
           this.range = {
             offset: 0,
             length: 0
@@ -609,8 +609,8 @@
             } // schedule DOM operations into the stencil queue
 
 
-            Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["f"])(this.readVS.bind(this));
-            Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this.writeVS.bind(this));
+            Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["f"])(this.readVS.bind(this));
+            Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this.writeVS.bind(this));
           }
         }, {
           key: "readVS",
@@ -661,7 +661,7 @@
             } else if (this.domRender) {
               this.domRender(this.virtualDom);
             } else if (this.renderItem) {
-              Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["j"])(this);
+              Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["j"])(this);
             }
           }
         }, {
@@ -797,11 +797,11 @@
           value: function render() {
             var _this5 = this;
 
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
               style: {
                 height: "".concat(this.totalHeight, "px")
               }
-            }, this.renderItem && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(VirtualProxy, {
+            }, this.renderItem && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(VirtualProxy, {
               dom: this.virtualDom
             }, this.virtualDom.map(function (node) {
               return _this5.renderVirtualNode(node);
@@ -810,7 +810,7 @@
         }, {
           key: "el",
           get: function get() {
-            return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
+            return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this);
           }
         }], [{
           key: "watchers",

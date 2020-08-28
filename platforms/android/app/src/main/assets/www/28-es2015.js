@@ -10,8 +10,8 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_ripple_effect", function() { return RippleEffect; });
-/* harmony import */ var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-44bf8136.js */ "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
-/* harmony import */ var _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-837be8f3.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-837be8f3.js");
+/* harmony import */ var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-92848855.js */ "./node_modules/@ionic/core/dist/esm/index-92848855.js");
+/* harmony import */ var _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-23e7365a.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-23e7365a.js");
 
 
 
@@ -19,7 +19,7 @@ const rippleEffectCss = ":host{left:0;right:0;top:0;bottom:0;position:absolute;c
 
 const RippleEffect = class {
     constructor(hostRef) {
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
          * Sets the type of ripple-effect:
          *
@@ -39,7 +39,7 @@ const RippleEffect = class {
      */
     async addRipple(x, y) {
         return new Promise(resolve => {
-            Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
+            Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
                 const rect = this.el.getBoundingClientRect();
                 const width = rect.width;
                 const height = rect.height;
@@ -58,7 +58,7 @@ const RippleEffect = class {
                 const styleY = posY - initialSize * 0.5;
                 const moveX = width * 0.5 - posX;
                 const moveY = height * 0.5 - posY;
-                Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["c"])(() => {
+                Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(() => {
                     const div = document.createElement('div');
                     div.classList.add('ripple-effect');
                     const style = div.style;
@@ -82,13 +82,13 @@ const RippleEffect = class {
         return this.type === 'unbounded';
     }
     render() {
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
-        return (Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "presentation", class: {
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        return (Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "presentation", class: {
                 [mode]: true,
                 'unbounded': this.unbounded
             } }));
     }
-    get el() { return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+    get el() { return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
 };
 const removeRipple = (ripple) => {
     ripple.classList.add('fade-out');

@@ -10,17 +10,17 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_action_sheet", function() { return ActionSheet; });
-/* harmony import */ var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-44bf8136.js */ "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
-/* harmony import */ var _ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-837be8f3.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-837be8f3.js");
+/* harmony import */ var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-92848855.js */ "./node_modules/@ionic/core/dist/esm/index-92848855.js");
+/* harmony import */ var _ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-23e7365a.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-23e7365a.js");
 /* harmony import */ var _helpers_5c745fbd_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-5c745fbd.js */ "./node_modules/@ionic/core/dist/esm/helpers-5c745fbd.js");
 /* harmony import */ var _animation_a635a2fc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation-a635a2fc.js */ "./node_modules/@ionic/core/dist/esm/animation-a635a2fc.js");
 /* harmony import */ var _gesture_controller_89173521_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./gesture-controller-89173521.js */ "./node_modules/@ionic/core/dist/esm/gesture-controller-89173521.js");
 /* harmony import */ var _index_eea61379_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-eea61379.js */ "./node_modules/@ionic/core/dist/esm/index-eea61379.js");
 /* harmony import */ var _hardware_back_button_7b6ede21_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hardware-back-button-7b6ede21.js */ "./node_modules/@ionic/core/dist/esm/hardware-back-button-7b6ede21.js");
-/* harmony import */ var _overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./overlays-7c699579.js */ "./node_modules/@ionic/core/dist/esm/overlays-7c699579.js");
+/* harmony import */ var _overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./overlays-2cc140a1.js */ "./node_modules/@ionic/core/dist/esm/overlays-2cc140a1.js");
 /* harmony import */ var _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./haptic-7b8ba70a.js */ "./node_modules/@ionic/core/dist/esm/haptic-7b8ba70a.js");
-/* harmony import */ var _button_active_0d5784f9_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./button-active-0d5784f9.js */ "./node_modules/@ionic/core/dist/esm/button-active-0d5784f9.js");
-/* harmony import */ var _theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./theme-3f0b0c04.js */ "./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js");
+/* harmony import */ var _button_active_5da929d4_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./button-active-5da929d4.js */ "./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js");
+/* harmony import */ var _theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./theme-5641d27f.js */ "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js");
 
 
 
@@ -127,11 +127,11 @@ const actionSheetMdCss = ".sc-ion-action-sheet-md-h{--color:initial;--button-col
 
 const ActionSheet = class {
     constructor(hostRef) {
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.didPresent = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionActionSheetDidPresent", 7);
-        this.willPresent = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionActionSheetWillPresent", 7);
-        this.willDismiss = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionActionSheetWillDismiss", 7);
-        this.didDismiss = Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionActionSheetDidDismiss", 7);
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.didPresent = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionActionSheetDidPresent", 7);
+        this.willPresent = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionActionSheetWillPresent", 7);
+        this.willDismiss = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionActionSheetWillDismiss", 7);
+        this.didDismiss = Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this, "ionActionSheetDidDismiss", 7);
         this.presented = false;
         /**
          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
@@ -156,11 +156,11 @@ const ActionSheet = class {
          */
         this.animated = true;
         this.onBackdropTap = () => {
-            this.dismiss(undefined, _overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["B"]);
+            this.dismiss(undefined, _overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["B"]);
         };
         this.dispatchCancelHandler = (ev) => {
             const role = ev.detail.role;
-            if (Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["i"])(role)) {
+            if (Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["i"])(role)) {
                 const cancelButton = this.getButtons().find(b => b.role === 'cancel');
                 this.callButtonHandler(cancelButton);
             }
@@ -170,10 +170,10 @@ const ActionSheet = class {
      * Present the action sheet overlay after it has been created.
      */
     present() {
-        return Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["d"])(this, 'actionSheetEnter', iosEnterAnimation, mdEnterAnimation);
+        return Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["d"])(this, 'actionSheetEnter', iosEnterAnimation, mdEnterAnimation);
     }
     connectedCallback() {
-        Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["e"])(this.el);
+        Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["e"])(this.el);
     }
     /**
      * Dismiss the action sheet overlay after it has been presented.
@@ -185,24 +185,24 @@ const ActionSheet = class {
      * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
      */
     dismiss(data, role) {
-        return Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["f"])(this, data, role, 'actionSheetLeave', iosLeaveAnimation, mdLeaveAnimation);
+        return Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["f"])(this, data, role, 'actionSheetLeave', iosLeaveAnimation, mdLeaveAnimation);
     }
     /**
      * Returns a promise that resolves when the action sheet did dismiss.
      */
     onDidDismiss() {
-        return Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["g"])(this.el, 'ionActionSheetDidDismiss');
+        return Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["g"])(this.el, 'ionActionSheetDidDismiss');
     }
     /**
      * Returns a promise that resolves when the action sheet will dismiss.
      *
      */
     onWillDismiss() {
-        return Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["g"])(this.el, 'ionActionSheetWillDismiss');
+        return Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["g"])(this.el, 'ionActionSheetWillDismiss');
     }
     async buttonClick(button) {
         const role = button.role;
-        if (Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["i"])(role)) {
+        if (Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["i"])(role)) {
             return this.dismiss(undefined, role);
         }
         const shouldDismiss = await this.callButtonHandler(button);
@@ -215,7 +215,7 @@ const ActionSheet = class {
         if (button) {
             // a handler has been provided, execute it
             // pass the handler the values from the inputs
-            const rtn = await Object(_overlays_7c699579_js__WEBPACK_IMPORTED_MODULE_7__["s"])(button.handler);
+            const rtn = await Object(_overlays_2cc140a1_js__WEBPACK_IMPORTED_MODULE_7__["s"])(button.handler);
             if (rtn === false) {
                 // if the return value of the handler is false then do not dismiss
                 return false;
@@ -230,7 +230,7 @@ const ActionSheet = class {
                 : b;
         });
     }
-    componentDidUnload() {
+    disconnectedCallback() {
         if (this.gesture) {
             this.gesture.destroy();
             this.gesture = undefined;
@@ -244,33 +244,33 @@ const ActionSheet = class {
          * 3. A wrapper ref does not exist
          */
         const { groupEl, wrapperEl } = this;
-        if (this.gesture || Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this) === 'md' || !wrapperEl || !groupEl) {
+        if (this.gesture || Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this) === 'md' || !wrapperEl || !groupEl) {
             return;
         }
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
             const isScrollable = groupEl.scrollHeight > groupEl.clientHeight;
             if (!isScrollable) {
-                this.gesture = Object(_button_active_0d5784f9_js__WEBPACK_IMPORTED_MODULE_9__["c"])(wrapperEl, (refEl) => refEl.classList.contains('action-sheet-button'));
+                this.gesture = Object(_button_active_5da929d4_js__WEBPACK_IMPORTED_MODULE_9__["c"])(wrapperEl, (refEl) => refEl.classList.contains('action-sheet-button'));
                 this.gesture.enable(true);
             }
         });
     }
     render() {
-        const mode = Object(_ionic_global_837be8f3_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
+        const mode = Object(_ionic_global_23e7365a_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
         const allButtons = this.getButtons();
         const cancelButton = allButtons.find(b => b.role === 'cancel');
         const buttons = allButtons.filter(b => b.role !== 'cancel');
-        return (Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "dialog", "aria-modal": "true", tabindex: "-1", style: {
+        return (Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "dialog", "aria-modal": "true", tabindex: "-1", style: {
                 zIndex: `${20000 + this.overlayIndex}`,
-            }, class: Object.assign(Object.assign({ [mode]: true }, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_10__["g"])(this.cssClass)), { 'action-sheet-translucent': this.translucent }), onIonActionSheetWillDismiss: this.dispatchCancelHandler, onIonBackdropTap: this.onBackdropTap }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", { tappable: this.backdropDismiss }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { tabindex: "0" }), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-wrapper ion-overlay-wrapper", role: "dialog", ref: el => this.wrapperEl = el }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-container" }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-group", ref: el => this.groupEl = el }, this.header !== undefined &&
-            Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-title" }, this.header, this.subHeader && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-sub-title" }, this.subHeader)), buttons.map(b => Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", class: buttonClass(b), onClick: () => this.buttonClick(b) }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "action-sheet-button-inner" }, b.icon && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { icon: b.icon, lazy: false, class: "action-sheet-icon" }), b.text), mode === 'md' && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)))), cancelButton &&
-            Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-group action-sheet-group-cancel" }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", class: buttonClass(cancelButton), onClick: () => this.buttonClick(cancelButton) }, Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "action-sheet-button-inner" }, cancelButton.icon &&
-                Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { icon: cancelButton.icon, lazy: false, class: "action-sheet-icon" }), cancelButton.text), mode === 'md' && Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null))))), Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { tabindex: "0" })));
+            }, class: Object.assign(Object.assign({ [mode]: true }, Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_10__["g"])(this.cssClass)), { 'action-sheet-translucent': this.translucent }), onIonActionSheetWillDismiss: this.dispatchCancelHandler, onIonBackdropTap: this.onBackdropTap }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", { tappable: this.backdropDismiss }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { tabindex: "0" }), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-wrapper ion-overlay-wrapper", role: "dialog", ref: el => this.wrapperEl = el }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-container" }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-group", ref: el => this.groupEl = el }, this.header !== undefined &&
+            Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-title" }, this.header, this.subHeader && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-sub-title" }, this.subHeader)), buttons.map(b => Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", class: buttonClass(b), onClick: () => this.buttonClick(b) }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "action-sheet-button-inner" }, b.icon && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { icon: b.icon, lazy: false, class: "action-sheet-icon" }), b.text), mode === 'md' && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)))), cancelButton &&
+            Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "action-sheet-group action-sheet-group-cancel" }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", class: buttonClass(cancelButton), onClick: () => this.buttonClick(cancelButton) }, Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "action-sheet-button-inner" }, cancelButton.icon &&
+                Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { icon: cancelButton.icon, lazy: false, class: "action-sheet-icon" }), cancelButton.text), mode === 'md' && Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null))))), Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { tabindex: "0" })));
     }
-    get el() { return Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
+    get el() { return Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["i"])(this); }
 };
 const buttonClass = (button) => {
-    return Object.assign({ 'action-sheet-button': true, 'ion-activatable': true, 'ion-focusable': true, [`action-sheet-${button.role}`]: button.role !== undefined }, Object(_theme_3f0b0c04_js__WEBPACK_IMPORTED_MODULE_10__["g"])(button.cssClass));
+    return Object.assign({ 'action-sheet-button': true, 'ion-activatable': true, 'ion-focusable': true, [`action-sheet-${button.role}`]: button.role !== undefined }, Object(_theme_5641d27f_js__WEBPACK_IMPORTED_MODULE_10__["g"])(button.cssClass));
 };
 ActionSheet.style = {
     ios: actionSheetIosCss,

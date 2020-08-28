@@ -1,17 +1,17 @@
 (function () {
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills-dom"], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/dom-5f2688df.js":
+    "./node_modules/@ionic/core/dist/esm/dom-4061ceba.js":
     /*!***********************************************************!*\
-      !*** ./node_modules/@ionic/core/dist/esm/dom-5f2688df.js ***!
+      !*** ./node_modules/@ionic/core/dist/esm/dom-4061ceba.js ***!
       \***********************************************************/
 
     /*! no static exports found */
 
     /***/
-    function node_modulesIonicCoreDistEsmDom5f2688dfJs(module, exports) {
+    function node_modulesIonicCoreDistEsmDom4061cebaJs(module, exports) {
       /*
-       Stencil Client Patch v1.17.1 | MIT Licensed | https://stenciljs.com
+       Stencil Client Patch v1.17.3 | MIT Licensed | https://stenciljs.com
        */
       (function () {
         var aa = new Set("annotation-xml color-profile font-face font-face-src font-face-uri font-face-format font-face-name missing-glyph".split(" "));

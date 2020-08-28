@@ -3,17 +3,17 @@
 
   function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-  (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["input-shims-b956f530-js"], {
+  (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["input-shims-4f0dbb39-js"], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/input-shims-b956f530.js":
+    "./node_modules/@ionic/core/dist/esm/input-shims-4f0dbb39.js":
     /*!*******************************************************************!*\
-      !*** ./node_modules/@ionic/core/dist/esm/input-shims-b956f530.js ***!
+      !*** ./node_modules/@ionic/core/dist/esm/input-shims-4f0dbb39.js ***!
       \*******************************************************************/
 
     /*! exports provided: startInputShims */
 
     /***/
-    function node_modulesIonicCoreDistEsmInputShimsB956f530Js(module, __webpack_exports__, __webpack_require__) {
+    function node_modulesIonicCoreDistEsmInputShims4f0dbb39Js(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -199,7 +199,7 @@
         var visibleAreaBottom = Math.min(contentRect.bottom, platformHeight - keyboardHeight); // compute safe area
 
         var safeAreaTop = visibleAreaTop + 15;
-        var safeAreaBottom = visibleAreaBottom - 15; // figure out if each edge of the input is within the safe area
+        var safeAreaBottom = visibleAreaBottom * 0.75; // figure out if each edge of the input is within the safe area
 
         var distanceToBottom = safeAreaBottom - inputBottom;
         var distanceToTop = safeAreaTop - inputTop; // desiredScrollAmount is the negated distance to the safe area according to our calculations.
@@ -591,4 +591,4 @@
     }
   }]);
 })();
-//# sourceMappingURL=input-shims-b956f530-js-es5.js.map
+//# sourceMappingURL=input-shims-4f0dbb39-js-es5.js.map

@@ -1,4 +1,16 @@
 (function () {
+  function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+  function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+  function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+  function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+  function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+  function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -13,15 +25,15 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/button-active-0d5784f9.js":
+    "./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js":
     /*!*********************************************************************!*\
-      !*** ./node_modules/@ionic/core/dist/esm/button-active-0d5784f9.js ***!
+      !*** ./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js ***!
       \*********************************************************************/
 
     /*! exports provided: c */
 
     /***/
-    function node_modulesIonicCoreDistEsmButtonActive0d5784f9Js(module, __webpack_exports__, __webpack_require__) {
+    function node_modulesIonicCoreDistEsmButtonActive5da929d4Js(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -34,9 +46,9 @@
       /* harmony import */
 
 
-      var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! ./index-44bf8136.js */
-      "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
+      var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./index-92848855.js */
+      "./node_modules/@ionic/core/dist/esm/index-92848855.js");
       /* harmony import */
 
 
@@ -80,7 +92,7 @@
           }
 
           var buttonToModify = currentTouchedButton;
-          Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["c"])(function () {
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(function () {
             return buttonToModify.classList.add('ion-activated');
           });
           hapticFeedbackFn();
@@ -94,7 +106,7 @@
           }
 
           var buttonToModify = currentTouchedButton;
-          Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["c"])(function () {
+          Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(function () {
             return buttonToModify.classList.remove('ion-activated');
           });
           /**
@@ -543,15 +555,15 @@
     },
 
     /***/
-    "./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js":
+    "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js":
     /*!*************************************************************!*\
-      !*** ./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js ***!
+      !*** ./node_modules/@ionic/core/dist/esm/theme-5641d27f.js ***!
       \*************************************************************/
 
     /*! exports provided: c, g, h, o */
 
     /***/
-    function node_modulesIonicCoreDistEsmTheme3f0b0c04Js(module, __webpack_exports__, __webpack_require__) {
+    function node_modulesIonicCoreDistEsmTheme5641d27fJs(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -588,10 +600,10 @@
        */
 
 
-      var createColorClasses = function createColorClasses(color) {
-        return typeof color === 'string' && color.length > 0 ? _defineProperty({
+      var createColorClasses = function createColorClasses(color, cssClassMap) {
+        return typeof color === 'string' && color.length > 0 ? Object.assign(_defineProperty({
           'ion-color': true
-        }, "ion-color-".concat(color), true) : undefined;
+        }, "ion-color-".concat(color), true), cssClassMap) : cssClassMap;
       };
 
       var getClassList = function getClassList(classes) {
@@ -620,7 +632,7 @@
       var SCHEME = /^[a-z][a-z0-9+\-.]*:/;
 
       var openURL = /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(url, ev, direction, animation) {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(url, ev, direction, animation) {
           var router;
           return regeneratorRuntime.wrap(function _callee2$(_context2) {
             while (1) {
@@ -656,7 +668,7 @@
         }));
 
         return function openURL(_x6, _x7, _x8, _x9) {
-          return _ref3.apply(this, arguments);
+          return _ref2.apply(this, arguments);
         };
       }();
       /***/
@@ -718,9 +730,15 @@
       var _services_sys_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! ../../services/sys.service */
       "./src/app/services/sys.service.ts");
+      /* harmony import */
+
+
+      var _state_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ../state.service */
+      "./src/app/services/state.service.ts");
 
       var DataService = /*#__PURE__*/function () {
-        function DataService(storage, courier, auth, sys) {
+        function DataService(storage, courier, auth, sys, state$) {
           var _this = this;
 
           _classCallCheck(this, DataService);
@@ -729,6 +747,7 @@
           this.courier = courier;
           this.auth = auth;
           this.sys = sys;
+          this.state$ = state$;
           this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
           storage.ready().then(function (localforage) {
             _this.storage.get('orders').then(function (orders) {
@@ -745,11 +764,18 @@
               _this.getInitialData();
 
               _this.orders.subscribe(function (orders) {
+                console.trace('sys:: Пришли заказы в стрим data.orders');
+
                 _this.saveOrders(orders).then(function () {
                   console.log('sys:: Список заказов сохранен в сторож: ', orders);
                 });
               });
             });
+          });
+          this.state$.g_state.subscribe(function (state) {
+            if (state == 'unLogin') {
+              _this.ordersMap.clear();
+            }
           });
         }
 
@@ -804,10 +830,16 @@
           value: function saveOrders(orders) {
             var _this5 = this;
 
-            orders && orders.forEach(function (order) {
-              _this5.ordersMap.set(Number(order.id), order);
+            var incomOrdersMap = this.getOrdersMap(orders);
+            var ordersMapMerged = new Map([].concat(_toConsumableArray(this.ordersMap), _toConsumableArray(incomOrdersMap)));
+            this.ordersMap.forEach(function (val, key) {
+              if (!incomOrdersMap.has(key)) {
+                _this5.ordersMap["delete"](key);
+
+                console.log("sys:: \u0417\u0430\u043A\u0430\u0437 ".concat(key, " \u0443\u0434\u0430\u043B\u0435\u043D \u0438\u0437 \u0441\u0442\u043E\u0440\u043E\u0436\u0430"));
+              }
             });
-            return this.storage.set('orders', Array.from(this.ordersMap.values()));
+            return this.storage.set('orders', Array.from(ordersMapMerged.values()));
           } //Возвращает MAP заказов (не сортируемый)
 
         }, {
@@ -832,7 +864,7 @@
       }();
 
       DataService.ɵfac = function DataService_Factory(t) {
-        return new (t || DataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]));
+        return new (t || DataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_state_service__WEBPACK_IMPORTED_MODULE_6__["StateService"]));
       };
 
       DataService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
@@ -857,6 +889,8 @@
             type: _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]
           }, {
             type: _services_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]
+          }, {
+            type: _state_service__WEBPACK_IMPORTED_MODULE_6__["StateService"]
           }];
         }, null);
       })();
