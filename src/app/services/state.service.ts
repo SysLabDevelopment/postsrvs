@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, Observable, interval, BehaviorSubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SysService } from './sys.service';
+import { BehaviorSubject, interval, Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Response } from '../interfaces/response';
+import { SysService } from './sys.service';
 
 @Injectable({
   providedIn: 'root'
@@ -39,9 +39,7 @@ export class StateService {
 
   public position: BehaviorSubject<any> = new BehaviorSubject(null);
   public points: BehaviorSubject<any> = new BehaviorSubject(null);
-  public l_route;
-  public l_map;
-  public duration;
+  public l_route: unknown | null;
   public map_state: BehaviorSubject<any> = new BehaviorSubject(null);
   public route_state: BehaviorSubject<any> = new BehaviorSubject('not_init');
   public change_state: BehaviorSubject<any> = new BehaviorSubject('not_init');
@@ -159,8 +157,6 @@ export class StateService {
     this.position.next(null);
     this.points.next(null);
     this.l_route = null;
-    this.l_map = null;
-    this.duration = null;
     this.map_state.next(null);
     this.route_state.next('not_init');
     this.change_state.next('not_init');

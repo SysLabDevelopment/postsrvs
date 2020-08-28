@@ -91,7 +91,20 @@
         </ion-item>
       </cdk-virtual-scroll-viewport>
     </div>
-
+    <div class="orders-lable">
+      <ion-chip color="primary" mode="md" outline="true">
+        <ion-label>Всего заказов {{courier.sortOrders.all}}</ion-label>
+      </ion-chip>
+      <ion-chip color="danger" mode="md" outline="true" *ngIf="courier.sortOrders.g_fail != 0">
+        <ion-label>Отменено {{courier.sortOrders.g_fail}}</ion-label>
+      </ion-chip>
+      <ion-chip color="success" mode="md" outline="true" *ngIf="courier.sortOrders.g_done != 0">
+        <ion-label>Доставлено {{courier.sortOrders.g_done}}</ion-label>
+      </ion-chip>
+      <ion-chip color="secondary" mode="md" outline="true" *ngIf="courier.sortOrders.g_process != 0">
+        <ion-label>Осталось {{courier.sortOrders?.g_process}}</ion-label>
+      </ion-chip>
+    </div>
     <div class="start-route"
       *ngIf="ordersInit && state$.orders_data != [] && state$.orders_data !== null && auth.checkState == 'checkedOut'">
       <button class="satrt-r-btn" *ngIf="!btn_go && !this.state$.manual_route && auth.routingModeAuto"

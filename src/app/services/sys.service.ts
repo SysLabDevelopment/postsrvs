@@ -111,7 +111,7 @@ export class SysService {
   }
 
   //Отправка данных о нерабочих днях и причинах
-  public stopWork(dates) {
+  public stopWork(dates: Array<any>) {
     const url = this.proxy + "https://mobile.postsrvs.ru/sheduleData.php";
     let data = {
       "type": "stopWork",

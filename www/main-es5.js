@@ -3302,33 +3302,33 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/common/http */
+      "./node_modules/@angular/common/fesm2015/http.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
       "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
-      var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! rxjs */
-      "./node_modules/rxjs/_esm2015/index.js");
-      /* harmony import */
-
-
-      var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! rxjs/operators */
-      "./node_modules/rxjs/_esm2015/operators/index.js");
-      /* harmony import */
-
-
-      var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @ionic-native/web-intent/ngx */
       "./node_modules/@ionic-native/web-intent/ngx/index.js");
       /* harmony import */
 
 
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! @angular/common/http */
-      "./node_modules/@angular/common/fesm2015/http.js");
+      var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! rxjs */
+      "./node_modules/rxjs/_esm2015/index.js");
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! rxjs/operators */
+      "./node_modules/rxjs/_esm2015/operators/index.js");
       /* harmony import */
 
 
@@ -3345,8 +3345,8 @@
           this.sys = sys; // переменные состояний
           //GLOBAL
 
-          this.login_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_login');
-          this.stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"](); // останаливает все подписки;
+          this.login_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_login');
+          this.stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](); // останаливает все подписки;
 
           /* Режим работы с маршрутом
               auto    - маршрут с бека
@@ -3358,54 +3358,54 @@
           this.confirmed = false;
           this.scan_mode = false; //INTERVALS
 
-          this.interval_1ss = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(1000);
-          this.interval_1s = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(2000);
-          this.interval_1 = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(3000);
-          this.interval_3m = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(3000);
-          this.interval_3 = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(4000);
-          this.interval_2s = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(15000);
-          this.interval_30 = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(30000);
-          this.interval_1m = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(60000); //MAP
+          this.interval_1ss = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(1000);
+          this.interval_1s = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(2000);
+          this.interval_1 = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(3000);
+          this.interval_3m = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(3000);
+          this.interval_3 = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(4000);
+          this.interval_2s = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(15000);
+          this.interval_30 = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(30000);
+          this.interval_1m = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(60000); //MAP
 
-          this.position = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.points = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.map_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.route_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.change_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.map_event = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.point_check = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.geo_check = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.init_params_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
+          this.position = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.points = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.map_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.route_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.change_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.map_event = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.point_check = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.geo_check = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.init_params_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
           this.init_map_state = false;
-          this.check_changes_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.linkPoints = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
+          this.check_changes_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.linkPoints = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
           this.link_init = false;
           this.map_state_watch = false;
           this.disLink = true; //COURIER
 
-          this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.statuses = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.way = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.o_status = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.s_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.$stop = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+          this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.statuses = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.way = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.o_status = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.s_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.$stop = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
           this.check_state = false;
-          this.g_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('unLogin');
+          this.g_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('unLogin');
           this.courier_init = false;
           this.orders_page_check = false;
-          this.status_changed = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+          this.status_changed = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
           this.sc_flag = false;
           this.page_orders_check = false;
-          this.client_states = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null); //STATUS-BAR
+          this.client_states = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null); //STATUS-BAR
 
-          this.load_lvl = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](0);
+          this.load_lvl = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](0);
           this.c_update_content_f = false; //BALANCE
 
           this.balance_check = false; // BROADCAST
           //обновляем все данные с сервера
 
-          this.updateWayInfo = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"](); // DATA
+          this.updateWayInfo = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](); // DATA
 
           this.orders_data = null;
           this.statuses_data = null; //NOTIFICATIONS
@@ -3418,12 +3418,12 @@
               для отрисовки на страницах (дабы убрать подписки со страниц)
           */
 
-          this.orders.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this.stop$)).subscribe(function (od) {
+          this.orders.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.stop$)).subscribe(function (od) {
             if (od != null) {
               self.orders_data = od;
             }
           });
-          this.statuses.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this.stop$)).subscribe(function (st) {
+          this.statuses.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.stop$)).subscribe(function (st) {
             if (st != null) {
               self.statuses_data = st;
             }
@@ -3472,8 +3472,6 @@
             this.position.next(null);
             this.points.next(null);
             this.l_route = null;
-            this.l_map = null;
-            this.duration = null;
             this.map_state.next(null);
             this.route_state.next('not_init');
             this.change_state.next('not_init');
@@ -3537,10 +3535,10 @@
       }();
 
       StateService.ɵfac = function StateService_Factory(t) {
-        return new (t || StateService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_3__["WebIntent"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]));
+        return new (t || StateService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_2__["WebIntent"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]));
       };
 
-      StateService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      StateService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
         token: StateService,
         factory: StateService.ɵfac,
         providedIn: 'root'
@@ -3548,16 +3546,16 @@
       /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](StateService, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](StateService, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
           args: [{
             providedIn: 'root'
           }]
         }], function () {
           return [{
-            type: _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_3__["WebIntent"]
+            type: _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_2__["WebIntent"]
           }, {
-            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
+            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]
           }, {
             type: _sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]
           }];
