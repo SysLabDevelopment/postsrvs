@@ -52,7 +52,6 @@ export class StateService {
   public linkPoints: BehaviorSubject<any> = new BehaviorSubject('not_init');
   public link_init: boolean = false;
   public map_state_watch: boolean = false;
-  public link;
   public disLink: boolean = true;
 
   //COURIER
