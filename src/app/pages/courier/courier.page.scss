@@ -56,29 +56,31 @@ ion-item {
   --padding-start: 0;
   margin: 0 2px 5px 2px;
   --inner-border-width: 0;
-  ion-reorder {
-    margin: 8px 2px 5px 2px;
-  }
+
   .title {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
     font-size: 14px;
+
     .client-id {
       color: #2b637e;
     }
   }
+
   .addr {
     color: #585454;
     font-size: 13px;
     white-space: pre-wrap;
     padding: 5px 0;
   }
+
   .name {
     color: #333333;
     font-size: 13px;
     font-weight: bold;
   }
+
   .actions-button {
     background: #4ba7c5;
     box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.05);
@@ -95,6 +97,7 @@ ion-item {
       height: 12px;
     }
   }
+
   .actions {
     bottom: 0;
     ion-button {
@@ -108,24 +111,31 @@ ion-item {
       --padding-end: 7px;
       font-family: Roboto;
       --box-shadow: none;
-          margin-right: 13px;
-    margin-left: 0;
+      margin-right: 13px;
+      margin-left: 0;
       ion-icon{
-            margin-left: 0;
+        margin-left: 0;
       }
     };
+
     #note{
       --background: #C9E9FA;
           --color: #2B637E;
     }
+
     #route{
       --background: #C9CBFA;
       --color: #533F69
     }
+
     #call{
       --background: #D7F3DD;
       --color: #3A543B;
     }
+  }
+
+  .points{
+    margin-right: 10px;
   }
 }
 ion-item:nth-child(odd) {

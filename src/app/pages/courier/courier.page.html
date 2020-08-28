@@ -53,9 +53,7 @@
          overdue: order.overdue == '1' || order.required == true
         }" (click)="selectOrder(order.id)" appLongPress (longPress)="vibr()" (hold)="vibr()" (cdkDragStarted)="vibr()"
           cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'>
-
           <ion-label [@openClose]="order.show ? 'open' : 'closed'">
-
             <div class='title'>
               <span>
                 <span class='client-id'> {{order.client_id}}</span>
@@ -85,9 +83,7 @@
               </ion-button>
             </div>
           </ion-label>
-
-
-          <ion-icon name="ellipsis-vertical" slot='start'></ion-icon>
+          <ion-icon name="ellipsis-vertical" slot='start' class='points'></ion-icon>
 
           <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()">
             <ion-icon src='../../../assets/actions-arrows.svg' [ngClass]="{turned: order.show == true }"></ion-icon>
