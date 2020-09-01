@@ -435,6 +435,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/cordova-plugin-googlemaps/www/js_CordovaGoogleMaps-for-android_ios.js",
       "pluginId": "cordova-plugin-googlemaps",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-firebasex.FirebasePlugin",
+      "file": "plugins/cordova-plugin-firebasex/www/firebase.js",
+      "pluginId": "cordova-plugin-firebasex",
+      "clobbers": [
+        "FirebasePlugin"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -453,7 +461,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-vibration": "3.1.1",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-screen-orientation": "3.0.2",
-    "cordova-plugin-androidx": "1.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
     "cordova-sqlite-storage": "5.0.1",
@@ -463,6 +470,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-fcm-with-dependecy-updated": "7.1.1",
     "cordova-androidx-build": "1.0.4",
-    "cordova-plugin-googlemaps": "2.8.0-20200709-2008"
+    "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
+    "cordova-plugin-androidx": "2.0.0",
+    "cordova-plugin-firebasex": "10.2.0-cli"
   };
 });

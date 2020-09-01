@@ -558,7 +558,9 @@ module.exports.metadata =
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-fcm-with-dependecy-updated": "7.1.1",
-    "cordova-plugin-googlemaps": "2.8.0-20200709-2008"
+    "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
+    "cordova-plugin-androidx": "2.0.0",
+    "cordova-plugin-firebasex": "10.2.0-cli"
 }
 // BOTTOM OF METADATA
 });

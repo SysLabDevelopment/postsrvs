@@ -1,24 +1,12 @@
 {
+  "background_color": "#FFF",
+  "display": "standalone",
   "name": "Postsrvs",
   "short_name": "Postsrvs",
-  "description": "Description of your app from template",
+  "version": "postsrvs.i",
+  "description": "Postsrvs.",
+  "author": "Psvs Team",
+  "icons": [],
   "start_url": "index.html",
-  "scope": "index.html",
-  "icons": [
-    {
-      "src": "img/logo.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "img/splash.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "default_locale": "en",
-  "display": "standalone",
-  "background_color": "#FFF",
-  "theme_color": "#000",
-  "orientation": "landscape"
+  "theme_color": "#1976d2"
 }

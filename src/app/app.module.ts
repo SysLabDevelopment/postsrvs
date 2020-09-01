@@ -13,6 +13,7 @@ import { CallNumber } from "@ionic-native/call-number/ngx";
 import { Camera } from "@ionic-native/camera/ngx";
 import { Device } from "@ionic-native/device/ngx";
 import { Diagnostic } from "@ionic-native/diagnostic/ngx";
+import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { GoogleMaps } from "@ionic-native/google-maps";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
@@ -52,6 +53,7 @@ registerLocaleData(localeRu, "ru");
     CacheModule.forRoot({ keyPrefix: 'offlineData' })
   ],
   providers: [
+    FirebaseX,
     StatusBar,
     BarcodeScanner,
     SplashScreen,

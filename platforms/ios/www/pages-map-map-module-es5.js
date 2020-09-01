@@ -54,7 +54,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2330,7 +2330,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
       var OrderComponent = /*#__PURE__*/function () {
         function OrderComponent() {
@@ -2375,7 +2375,8 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 0);
           }
         },
-        styles: [".order-id[_ngcontent-%COMP%] {\n  font-weight: bold;\n  font-size: 14px;\n  line-height: 16px;\n  text-align: center;\n  color: #2b637e;\n}\n.prop[_ngcontent-%COMP%] {\n  color: #717171;\n  font-size: 13px;\n  line-height: 15px;\n}\n.val[_ngcontent-%COMP%] {\n  color: #333333;\n  font-weight: bold;\n  font-size: 13px;\n  line-height: 15px;\n  text-align: center;\n}\n.slide[_ngcontent-%COMP%] {\n  padding: 10px;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9vcmRlci9vcmRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLGNBQWM7QUFDaEI7QUFDQTtFQUNFLGNBQWM7RUFDZCxlQUFlO0VBQ2YsaUJBQWlCO0FBQ25CO0FBQ0E7RUFDRSxjQUFjO0VBQ2QsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsa0JBQWtCO0FBQ3BCO0FBRUE7RUFDRSxhQUFhO0VBQ2IsV0FBVztBQUNiIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9vcmRlci9vcmRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm9yZGVyLWlkIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbGluZS1oZWlnaHQ6IDE2cHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgY29sb3I6ICMyYjYzN2U7XG59XG4ucHJvcCB7XG4gIGNvbG9yOiAjNzE3MTcxO1xuICBmb250LXNpemU6IDEzcHg7XG4gIGxpbmUtaGVpZ2h0OiAxNXB4O1xufVxuLnZhbCB7XG4gIGNvbG9yOiAjMzMzMzMzO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1zaXplOiAxM3B4O1xuICBsaW5lLWhlaWdodDogMTVweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uc2xpZGUge1xuICBwYWRkaW5nOiAxMHB4O1xuICB3aWR0aDogMTAwJTtcbn1cbiJdfQ== */"]
+        styles: [".order-id[_ngcontent-%COMP%] {\n  font-weight: bold;\n  font-size: 14px;\n  line-height: 16px;\n  text-align: center;\n  color: #2b637e;\n}\n.prop[_ngcontent-%COMP%] {\n  color: #717171;\n  font-size: 13px;\n  line-height: 15px;\n}\n.val[_ngcontent-%COMP%] {\n  color: #333333;\n  font-weight: bold;\n  font-size: 13px;\n  line-height: 15px;\n  text-align: center;\n}\n.slide[_ngcontent-%COMP%] {\n  padding: 10px;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9vcmRlci9vcmRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLGNBQWM7QUFDaEI7QUFDQTtFQUNFLGNBQWM7RUFDZCxlQUFlO0VBQ2YsaUJBQWlCO0FBQ25CO0FBQ0E7RUFDRSxjQUFjO0VBQ2QsaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsa0JBQWtCO0FBQ3BCO0FBRUE7RUFDRSxhQUFhO0VBQ2IsV0FBVztBQUNiIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9vcmRlci9vcmRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm9yZGVyLWlkIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbGluZS1oZWlnaHQ6IDE2cHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgY29sb3I6ICMyYjYzN2U7XG59XG4ucHJvcCB7XG4gIGNvbG9yOiAjNzE3MTcxO1xuICBmb250LXNpemU6IDEzcHg7XG4gIGxpbmUtaGVpZ2h0OiAxNXB4O1xufVxuLnZhbCB7XG4gIGNvbG9yOiAjMzMzMzMzO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1zaXplOiAxM3B4O1xuICBsaW5lLWhlaWdodDogMTVweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uc2xpZGUge1xuICBwYWRkaW5nOiAxMHB4O1xuICB3aWR0aDogMTAwJTtcbn1cbiJdfQ== */"],
+        changeDetection: 0
       });
       /*@__PURE__*/
 
@@ -2385,7 +2386,8 @@
           args: [{
             selector: 'app-order',
             templateUrl: './order.component.html',
-            styleUrls: ['./order.component.css']
+            styleUrls: ['./order.component.css'],
+            changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
           }]
         }], function () {
           return [];
@@ -2423,7 +2425,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2541,7 +2543,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2641,8 +2643,6 @@
 
       var MapPage = /*#__PURE__*/function () {
         function MapPage(state$, platform, router, settings, courier, sys, sysMap, auth, nav, navCtrl, popoverController, data, storage) {
-          var _this11 = this;
-
           _classCallCheck(this, MapPage);
 
           this.state$ = state$;
@@ -2678,52 +2678,54 @@
           };
           this.routeToOrder = false;
           this.currentOrder = '';
-          this.courier.ordersShortData.subscribe(function (data) {
-            _this11.orders = data;
-          });
         }
 
         _createClass(MapPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this12 = this;
+            var _this11 = this;
 
             console.log("sys:: map init");
             this.settings.state.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])(function (state) {
               return state == "hasRules";
             })).subscribe(function () {
-              _this12.getOrdersId().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])(function (ids) {
+              _this11.getOrdersId().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])(function (ids) {
                 return ids.length > 0;
               })).subscribe(function (ids) {
-                _this12.getOrders(ids).subscribe(function (res) {
-                  _this12.orders = res.orders;
+                _this11.getOrders(ids).subscribe(function (res) {
+                  _this11.orders = res.orders;
 
-                  if (_this12.settings.rules.appMode.toLowerCase().includes("auto")) {
-                    _this12.orders.length = 1;
+                  if (_this11.settings.rules.appMode.toLowerCase().includes("auto")) {
+                    _this11.orders.length = 1;
                   }
 
-                  console.log("sys:: заказы", _this12.orders);
+                  console.log("sys:: заказы", _this11.orders);
+                  _this11.orders && _this11.data.orders.next(_this11.orders);
 
-                  _this12.drawData(_this12.settings.rules.autoStartRoute);
+                  _this11.drawData(_this11.settings.rules.autoStartRoute);
                 });
               });
             });
             this.state$.g_state.subscribe(function (state) {
               if (state == "login") {
-                _this12.initContent();
+                _this11.initContent();
               }
             });
             this.sysMap.infoUpdated.subscribe(function (data) {
               var customData;
 
-              if (data.label == 'showRouteToOrder') {
-                _this12.routeToOrder = true;
-                _this12.currentOrder = String(data.order.client_id);
-                customData = data;
+              if (data) {
+                if (data.label == 'showRouteToOrder') {
+                  _this11.routeToOrder = true;
+                  _this11.currentOrder = String(data.order.client_id);
+                  customData = data;
+                } else if (data.label == 'localChanges') {
+                  customData = data;
+                }
               }
 
-              _this12.map.clear().then(function () {
-                _this12.drawData(null, customData);
+              _this11.map.clear().then(function () {
+                _this11.drawData(_this11.settings.rules.autoStartRoute, customData);
               });
             });
           }
@@ -2735,15 +2737,15 @@
         }, {
           key: "ngAfterViewInit",
           value: function ngAfterViewInit() {
-            var _this13 = this;
+            var _this12 = this;
 
             console.log("sys:: map view init");
             this.loadMap();
             this.platform.ready().then(function () {
-              _this13.initContent();
+              _this12.initContent();
 
               _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["LocationService"].getMyLocation().then(function (myLocation) {
-                _this13.coords = {
+                _this12.coords = {
                   lt: myLocation.latLng.lat,
                   lg: myLocation.latLng.lng
                 };
@@ -2753,7 +2755,7 @@
               var orderId = localStorage.getItem("needOrder");
 
               if (orderId) {
-                _this13.sysMap.orderDetails(orderId);
+                _this12.sysMap.orderDetails(orderId);
               }
             });
           }
@@ -2766,7 +2768,7 @@
           key: "loadMap",
           value: function loadMap() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var _this14 = this;
+              var _this13 = this;
 
               var options;
               return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -2803,7 +2805,7 @@
                       this.map = _context.sent;
                       this.sys.checkAuth(AppVersion.version).subscribe(function (res) {
                         if (res.success == "false") {
-                          _this14.logout();
+                          _this13.logout();
                         }
                       });
                       this.drawData(this.settings.rules.autoStartRoute);
@@ -2812,15 +2814,15 @@
                       });
 
                       _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["LocationService"].getMyLocation().then(function (myLocation) {
-                        _this14.myLocation = myLocation;
-                        var coordinates = _this14.myLocation.latLng || {
+                        _this13.myLocation = myLocation;
+                        var coordinates = _this13.myLocation.latLng || {
                           lat: 55,
                           lng: 37
                         };
 
-                        _this14.map.setCameraTarget(coordinates);
+                        _this13.map.setCameraTarget(coordinates);
 
-                        _this14.map.setCameraZoom(8);
+                        _this13.map.setCameraZoom(8);
                       });
 
                     case 8:
@@ -2840,17 +2842,17 @@
         }, {
           key: "getOrdersId",
           value: function getOrdersId() {
-            var _this15 = this;
+            var _this14 = this;
 
             return new rxjs__WEBPACK_IMPORTED_MODULE_6__["Observable"](function (ids) {
-              if (_this15.settings.rules.typeRoute == "standart") {
-                _this15.orders && ids.next(_this15.orders.filter(function (order) {
+              if (_this14.settings.rules.typeRoute == "standart") {
+                _this14.orders && ids.next(_this14.orders.filter(function (order) {
                   return order.status_id == 1;
                 }).map(function (order) {
                   return order.id;
                 }));
               } else {
-                _this15.sysMap.getWay(_this15.coords).subscribe(function (resp) {
+                _this14.sysMap.getWay(_this14.coords).subscribe(function (resp) {
                   ids.next(resp.orders.map(function (order) {
                     return order.id;
                   }));
@@ -2862,13 +2864,13 @@
         }, {
           key: "markeredOrders",
           value: function markeredOrders(orders) {
-            var _this16 = this;
+            var _this15 = this;
 
             var markeredOrders = [];
             orders === null || orders === void 0 ? void 0 : orders.forEach(function (order) {
-              var info = _this16.createInfoContent(order);
+              var info = _this15.createInfoContent(order);
 
-              _this16.existsGeos.push([order.lt, order.lg]);
+              _this15.existsGeos.push([order.lt, order.lg]);
 
               markeredOrders.push({
                 "position": {
@@ -2884,22 +2886,30 @@
         }, {
           key: "drawData",
           value: function drawData() {
-            var _this17 = this;
+            var _this16 = this;
 
             var autoStartRoute = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "0";
             var customData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
             if (this.map !== undefined) {
               this.map.clear().then(function () {
-                if (_this17.routeToOrder && customData) {
-                  _this17.requestDirection(customData.order.lt, customData.order.lg);
+                if (_this16.routeToOrder && customData.label == 'showRouteTooOrder') {
+                  _this16.requestDirection(customData.order.lt, customData.order.lg);
 
-                  _this17.addCluster(_this17.markeredOrders([customData.order]));
+                  _this16.addCluster(_this16.markeredOrders([customData.order]));
                 } else {
-                  _this17.routeToOrder = false;
+                  _this16.routeToOrder = false;
 
                   if (autoStartRoute == "0") {
-                    _this17.addCluster(_this17.markeredOrders(_this17.orders));
+                    _this16.storage.get('orders').then(function (orders) {
+                      if (orders !== null) {
+                        _this16.orders = orders.filter(function (order) {
+                          return order.status_id == 1;
+                        });
+
+                        _this16.addCluster(_this16.markeredOrders(_this16.orders));
+                      }
+                    });
                   }
                 }
               });
@@ -2908,11 +2918,11 @@
         }, {
           key: "p_btn",
           value: function p_btn() {
-            var _this18 = this;
+            var _this17 = this;
 
             setTimeout(function () {
-              _this18.out_counter = 0;
-              _this18.out_process = false;
+              _this17.out_counter = 0;
+              _this17.out_process = false;
               console.log("outprocess_die");
             }, 1000);
 
@@ -2930,8 +2940,18 @@
         }, {
           key: "logout",
           value: function logout() {
+            var _this18 = this;
+
             this.map.clear();
             localStorage.clear();
+            this.storage.clear().then(function () {
+              console.log('sys:: Сторож очищен');
+
+              _this18.storage.keys().then(function (keys) {
+                return console.log('записи в стораже: ', keys);
+              });
+            });
+            this.data.ordersMap.clear();
             var url = "orders";
             var data = {
               action: "logout"
@@ -2967,8 +2987,14 @@
                     return ids.length > 0;
                   })).subscribe(function (ids) {
                     _this19.getOrders(ids).subscribe(function (res) {
-                      // this.data.orders.next(res.orders);
-                      // this.storage.set('orders', res.orders)
+                      _this19.storage.get('orders').then(function (orders) {
+                        if (orders == null) {
+                          _this19.data.getApiData();
+                        } else {
+                          _this19.data.orders.next(orders);
+                        }
+                      });
+
                       _this19.orders = res.orders;
 
                       if (_this19.settings.rules.appMode.toLowerCase().includes("auto")) {
@@ -3234,7 +3260,8 @@
           }
         },
         directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonContent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitComponent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitAreaDirective"]],
-        styles: ["ion-popover[_ngcontent-%COMP%] {\n  --width: max-content;\n}\n\n.popover[_ngcontent-%COMP%]   .popover-content[_ngcontent-%COMP%] {\n  --width: 90vw;\n  --min-width: max-content;\n}\n\n#map[_ngcontent-%COMP%], #guide[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border: 1px solid white;\n}\n\n.one-order-chip[_ngcontent-%COMP%] {\n  --background:#2b637e;\n  --color:white;\n}\n\n#map[_ngcontent-%COMP%] {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWFwL21hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBUTtBQUNWOztBQUNBO0VBQ0UsYUFBUTtFQUNSLHdCQUFZO0FBRWQ7O0FBQUE7O0VBRUUsV0FBVztFQUNYLFlBQVk7RUFDWix1QkFBdUI7QUFHekI7O0FBREE7RUFDRSxvQkFBYTtFQUNiLGFBQVE7QUFJVjs7QUFGQTtFQUNFLGtCQUFrQjtBQUtwQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21hcC9tYXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXBvcG92ZXIge1xuICAtLXdpZHRoOiBtYXgtY29udGVudDtcbn1cbi5wb3BvdmVyIC5wb3BvdmVyLWNvbnRlbnQge1xuICAtLXdpZHRoOiA5MHZ3O1xuICAtLW1pbi13aWR0aDogbWF4LWNvbnRlbnQ7XG59XG4jbWFwLFxuI2d1aWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG59XG4ub25lLW9yZGVyLWNoaXB7XG4gIC0tYmFja2dyb3VuZDojMmI2MzdlO1xuICAtLWNvbG9yOndoaXRlO1xufVxuI21hcHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuIl19 */"]
+        styles: ["ion-popover[_ngcontent-%COMP%] {\n  --width: max-content;\n}\n\n.popover[_ngcontent-%COMP%]   .popover-content[_ngcontent-%COMP%] {\n  --width: 90vw;\n  --min-width: max-content;\n}\n\n#map[_ngcontent-%COMP%], #guide[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border: 1px solid white;\n}\n\n.one-order-chip[_ngcontent-%COMP%] {\n  --background:#2b637e;\n  --color:white;\n}\n\n#map[_ngcontent-%COMP%] {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWFwL21hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBUTtBQUNWOztBQUNBO0VBQ0UsYUFBUTtFQUNSLHdCQUFZO0FBRWQ7O0FBQUE7O0VBRUUsV0FBVztFQUNYLFlBQVk7RUFDWix1QkFBdUI7QUFHekI7O0FBREE7RUFDRSxvQkFBYTtFQUNiLGFBQVE7QUFJVjs7QUFGQTtFQUNFLGtCQUFrQjtBQUtwQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21hcC9tYXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXBvcG92ZXIge1xuICAtLXdpZHRoOiBtYXgtY29udGVudDtcbn1cbi5wb3BvdmVyIC5wb3BvdmVyLWNvbnRlbnQge1xuICAtLXdpZHRoOiA5MHZ3O1xuICAtLW1pbi13aWR0aDogbWF4LWNvbnRlbnQ7XG59XG4jbWFwLFxuI2d1aWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG59XG4ub25lLW9yZGVyLWNoaXB7XG4gIC0tYmFja2dyb3VuZDojMmI2MzdlO1xuICAtLWNvbG9yOndoaXRlO1xufVxuI21hcHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuIl19 */"],
+        changeDetection: 0
       });
       /*@__PURE__*/
 
@@ -3244,7 +3271,8 @@
           args: [{
             selector: "app-map",
             templateUrl: "./map.page.html",
-            styleUrls: ["./map.page.scss"]
+            styleUrls: ["./map.page.scss"],
+            changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectionStrategy"].OnPush
           }]
         }], function () {
           return [{

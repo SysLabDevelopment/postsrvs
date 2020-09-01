@@ -205,6 +205,72 @@
       "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
     },
     "is_top_level": true,
+    "variables": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
+    }
+  },
+  "cordova-play-services-version-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-play-services-version-adapter"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-annotated-plugin-android": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-annotated-plugin-android"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-support-android-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-support-android-plugin@~1.0.0"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-support-google-services": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-support-google-services@^1.3.2"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-firebasex": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-firebasex"
+    },
+    "is_top_level": true,
+    "variables": {
+      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+      "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
+      "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
+      "ANDROID_ICON_ACCENT": "#FF00FFFF",
+      "ANDROID_PLAY_SERVICES_AUTH_VERSION": "18.0.0",
+      "ANDROID_FIREBASE_ANALYTICS_VERSION": "17.4.3",
+      "ANDROID_FIREBASE_MESSAGING_VERSION": "20.2.1",
+      "ANDROID_FIREBASE_CONFIG_VERSION": "19.1.4",
+      "ANDROID_FIREBASE_PERF_VERSION": "19.0.7",
+      "ANDROID_FIREBASE_AUTH_VERSION": "19.3.1",
+      "ANDROID_FIREBASE_FIRESTORE_VERSION": "21.4.3",
+      "ANDROID_FIREBASE_CRASHLYTICS_VERSION": "17.0.1",
+      "ANDROID_FIREBASE_CRASHLYTICS_NDK_VERSION": "17.0.1",
+      "ANDROID_GSON_VERSION": "2.8.6"
+    }
+  },
+  "cordova-plugin-androidx": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-androidx@^2.0.0"
+    },
+    "is_top_level": false,
     "variables": {}
   }
 }

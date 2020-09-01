@@ -7,77 +7,87 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-uniquedeviceid": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    "call-number": {
+      "PACKAGE_NAME": "postsrvs.i"
     },
     "com-darryncampbell-cordova-plugin-intent": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "call-number": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-android-permissions": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-camera": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-screen-orientation": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova.plugins.diagnostic": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "phonegap-plugin-barcodescanner": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-appversion": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "postsrvs.i"
     },
     "com.googlemaps.ios": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-appversion": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-googlemaps": {
       "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-uniquedeviceid": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "postsrvs.i"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-androidx-build": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-androidx": {
+      "PACKAGE_NAME": "postsrvs.i"
+    }
+  }
 }

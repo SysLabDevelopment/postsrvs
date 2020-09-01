@@ -1,20 +1,19 @@
-import { Order } from 'src/app/interfaces/order';
 import { Component } from "@angular/core";
-import { Platform } from "@ionic/angular";
+import { Router } from "@angular/router";
+import { FirebaseX } from "@ionic-native/firebase-x/ngx";
+import { Environment } from "@ionic-native/google-maps";
+import { Network } from '@ionic-native/network/ngx';
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
-import { Route, Router } from "@angular/router";
-import { NavService } from "./services/nav.service";
-import { CourierService } from "./services/courier.service";
-import { AuthService } from "./services/auth.service";
-import { SettingsService } from "./services/settings.service";
-import { environment } from "../environments/environment";
-import { Environment } from "@ionic-native/google-maps";
+import { Platform } from "@ionic/angular";
 import { CacheService } from "ionic-cache";
-import { Network } from '@ionic-native/network/ngx';
-import {OrderService } from './services/sys/order.service';
-
-declare var AppVersion:{version:string};
+import { Order } from 'src/app/interfaces/order';
+import { AuthService } from "./services/auth.service";
+import { CourierService } from "./services/courier.service";
+import { NavService } from "./services/nav.service";
+import { SettingsService } from "./services/settings.service";
+import { OrderService } from './services/sys/order.service';
+declare var AppVersion: { version: string };
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
@@ -33,33 +32,34 @@ export class AppComponent {
     public settings: SettingsService,
     cache: CacheService,
     private network: Network,
-    private order: OrderService
+    private order: OrderService,
+    private firebase: FirebaseX
   ) {
     this.initializeApp();
     console.log(this.platform.platforms());
-  
-      
-      
-    cache.setDefaultTTL(60*60*24);
-     cache.itemExists('syncRequests').then((exist)=>{
-        if(!exist){
-          cache.saveItem('syncRequests',[])
-        }
-        this.network.onConnect().subscribe(()=>{
-      console.warn('network connected!');
-      cache.getItem('syncRequests').then((syncRequests:Array<{order:Order,status:number}>)=>{
-        syncRequests && syncRequests.forEach((syncRequest)=>{
-          this.order.sendDelayedCall(syncRequest.order,syncRequest.status);
-        });
-        cache.clearGroup('delayedCalls');
+
+
+
+    cache.setDefaultTTL(60 * 60 * 24);
+    cache.itemExists('syncRequests').then((exist) => {
+      if (!exist) {
+        cache.saveItem('syncRequests', [])
+      }
+      this.network.onConnect().subscribe(() => {
+        console.warn('network connected!');
+        cache.getItem('syncRequests').then((syncRequests: Array<{ order: Order, status: number }>) => {
+          syncRequests && syncRequests.forEach((syncRequest) => {
+            this.order.sendDelayedCall(syncRequest.order, syncRequest.status);
+          });
+          cache.clearGroup('delayedCalls');
+        })
+
+      });
+      this.network.onDisconnect().subscribe(() => {
+        console.warn('sys:: disconnected');
       })
-      
-    });
-    this.network.onDisconnect().subscribe(()=>{
-      console.warn('sys:: disconnected');
     })
-       })
-    
+
   }
 
   initializeApp() {
@@ -75,12 +75,14 @@ export class AppComponent {
         // api key for local development
         API_KEY_FOR_BROWSER_DEBUG: "AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164",
       });
+
+      this.firebase.setAnalyticsCollectionEnabled(true);
     });
     const self = this;
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
     });
-    
+
   }
 
   public navTo(index) {
