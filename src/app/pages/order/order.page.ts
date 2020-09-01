@@ -37,7 +37,7 @@ import { DataService } from './../../services/sys/data.service';
         height: '264px',
       })),
       state('closed', style({
-        height: '70px',
+        height: '50px',
       })),
       transition('open => closed', [
         animate('0.5s')
@@ -56,7 +56,7 @@ export class OrderPage implements OnInit {
   public status: string = null;
   public goods: any = null;
   public address: any = null;
-  public order: any = null;
+  public order: Order = null;
   public name: string = null;
   public timeFrom: string = null;
   public timeTo: string = null;
@@ -254,10 +254,8 @@ export class OrderPage implements OnInit {
       this.phone = this.order.client_phone;
       this.status = this.order.status_text;
       this.status_id = Number(this.order.status_id);
-      this.clientId = this.order.client_id;
       this.client_status = this.order.client_status;
       this.client_status_dt = this.order.client_status_dt;
-      this.client_status_id = this.order.client_status_id;
       this.vlog = this.order.vlog;
       this.poruch = this.order.poruch;
       (this.mass = this.order.mass), (this.amount = this.order.amount);
@@ -415,7 +413,7 @@ export class OrderPage implements OnInit {
           this.courier
             .changeStatus(
               this.selectedStatus,
-              this.order.id,
+              String(this.order.id),
               undefined,
               this.selectedReason,
               null,
@@ -445,7 +443,7 @@ export class OrderPage implements OnInit {
           this.courier
             .changeStatus(
               this.selectedStatus,
-              this.order.id,
+              String(this.order.id),
               text,
               undefined,
               undefined,
@@ -480,7 +478,7 @@ export class OrderPage implements OnInit {
           this.courier
             .changeStatus(
               this.selectedStatus,
-              this.order.id,
+              String(this.order.id),
               undefined,
               undefined,
               this.g_quants,
@@ -667,7 +665,7 @@ export class OrderPage implements OnInit {
   }
 
   public voiceLink() {
-    const browser = this.iab.create(this.order.r_url);
+    const browser = this.iab.create(String(this.order.r_url));
   }
 
   public checkPayment() {
@@ -726,7 +724,7 @@ export class OrderPage implements OnInit {
     this.state$.intentStart(this.coords);
   }
 
-  onMap() {
+  public showRoute() {
     this.sysMap.showRoute(this.order);
 
   }
@@ -763,7 +761,7 @@ export class OrderPage implements OnInit {
     };
     this.storage.get('orders').then((orders) => {
       orders?.map((order: Order) => {
-        if (order.id.toString() == this.order.id) {
+        if (order.id.toString() == this.order.id.toString()) {
           order.status_id = newStatus;
           this.data.saveOrders(orders).then(() => this.sysMap.infoUpdated.next(meta));
           this.data.orders.next(orders);

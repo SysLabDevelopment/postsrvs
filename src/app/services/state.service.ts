@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { BehaviorSubject, interval, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Order } from '../interfaces/order';
 import { Response } from '../interfaces/response';
 import { SysService } from './sys.service';
 
@@ -93,10 +94,10 @@ export class StateService {
   //обновляем все данные с сервера
   public updateWayInfo: Subject<any> = new Subject();
   // DATA
-  public orders_data = null;
-  public statuses_data = null;
+  public orders_data: Order[] = null;
+  public statuses_data: unknown = null;
   //NOTIFICATIONS
-  public notifications = [];
+  public notifications: Array<string> = [];
   public notificationStr = null;
   public coords: any;
   public filial: string = '';

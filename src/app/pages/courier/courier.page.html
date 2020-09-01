@@ -8,7 +8,7 @@
         <i>G</i>
       </ion-button>
     </ion-buttons>
-    <ion-title appLongPress (longPress)="vibr()">Мои заказы</ion-title>
+    <ion-title>Мои заказы</ion-title>
     <ion-title size="small" color="dark">{{state$.filial}}</ion-title>
     <ion-buttons slot="primary">
       <ion-button *ngIf="subBtnCond" (click)="submitOrder()">
@@ -68,16 +68,17 @@
             <div class='name'>{{order.client_fio}}</div>
             <div class="actions" *ngIf='order.show'>
               <ion-button fill="solid" size='default' (click)="note($event, order.id); $event.stopPropagation()"
-                id='note'>
+                id='light-blue-button'>
                 <ion-icon slot="start" name='document'></ion-icon>
                 Заметки
               </ion-button>
-              <ion-button fill="solid" size='default' (click)="showRoute(order); $event.stopPropagation()" id='route'>
+              <ion-button fill="solid" size='default' (click)="showRoute(order); $event.stopPropagation()"
+                id="light-purple-button">
                 <ion-icon slot="start" name="location-outline"></ion-icon>
                 Маршрут
               </ion-button>
               <ion-button fill="solid" size='default' (click)="phoneClick('init', order); $event.stopPropagation()"
-                id='call'>
+                id='light-green-button'>
                 <ion-icon slot="start" name="call-outline"></ion-icon>
                 Позвонить
               </ion-button>

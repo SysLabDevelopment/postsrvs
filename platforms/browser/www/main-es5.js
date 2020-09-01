@@ -141,7 +141,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -332,7 +332,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -758,7 +758,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -930,13 +930,19 @@
       /* harmony import */
 
 
-      var _icons_icons_module__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(
+      var _directives_long_press_directive__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(
+      /*! ./directives/long-press.directive */
+      "./src/app/directives/long-press.directive.ts");
+      /* harmony import */
+
+
+      var _icons_icons_module__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(
       /*! ./icons/icons.module */
       "./src/app/icons/icons.module.ts");
       /* harmony import */
 
 
-      var _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(
+      var _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(
       /*! ./interceptors/http.interceptor */
       "./src/app/interceptors/http.interceptor.ts");
 
@@ -959,7 +965,7 @@
           useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicRouteStrategy"]
         }, {
           provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
-          useClass: _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_34__["HttpErrorInterceptor"],
+          useClass: _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_35__["HttpErrorInterceptor"],
           multi: true
         }, {
           provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["LOCALE_ID"],
@@ -967,15 +973,15 @@
             return "ru";
           }
         }],
-        imports: [[_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_33__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
+        imports: [[_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_34__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
           keyPrefix: 'offlineData'
         })]]
       });
 
       (function () {
         (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](AppModule, {
-          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_28__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_29__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_30__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_31__["HelpComponent"], _components_note_note_component__WEBPACK_IMPORTED_MODULE_32__["NoteComponent"]],
-          imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_33__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"], ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"]]
+          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_28__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_29__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_30__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_31__["HelpComponent"], _components_note_note_component__WEBPACK_IMPORTED_MODULE_32__["NoteComponent"], _directives_long_press_directive__WEBPACK_IMPORTED_MODULE_33__["LongPressDirective"]],
+          imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_34__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"], ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"]]
         });
       })();
       /*@__PURE__*/
@@ -985,9 +991,9 @@
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵsetClassMetadata"](AppModule, [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"],
           args: [{
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_28__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_29__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_30__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_31__["HelpComponent"], _components_note_note_component__WEBPACK_IMPORTED_MODULE_32__["NoteComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_28__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_29__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_30__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_31__["HelpComponent"], _components_note_note_component__WEBPACK_IMPORTED_MODULE_32__["NoteComponent"], _directives_long_press_directive__WEBPACK_IMPORTED_MODULE_33__["LongPressDirective"]],
             entryComponents: [],
-            imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_33__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
+            imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_34__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_27__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
               keyPrefix: 'offlineData'
             })],
             providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_20__["StatusBar"], _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_10__["BarcodeScanner"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_19__["SplashScreen"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__["Geolocation"], _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_13__["Device"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_22__["WebIntent"], _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_21__["Vibration"], _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_17__["InAppBrowser"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_9__["AndroidPermissions"], _ionic_native_diagnostic_ngx__WEBPACK_IMPORTED_MODULE_14__["Diagnostic"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_12__["Camera"], _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_11__["CallNumber"], _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_16__["GoogleMaps"], _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__["Network"], {
@@ -995,7 +1001,7 @@
               useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicRouteStrategy"]
             }, {
               provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
-              useClass: _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_34__["HttpErrorInterceptor"],
+              useClass: _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_35__["HttpErrorInterceptor"],
               multi: true
             }, {
               provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["LOCALE_ID"],
@@ -1035,7 +1041,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
       var CashoutFailOComponent = /*#__PURE__*/function () {
         function CashoutFailOComponent() {
@@ -1112,7 +1118,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
       var CashoutWComponent = /*#__PURE__*/function () {
         function CashoutWComponent() {
@@ -1189,7 +1195,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1318,7 +1324,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1355,12 +1361,12 @@
         _createClass(NoteComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            this.note = localStorage.getItem(this.order.id.toString());
+            this.note = localStorage.getItem(this.orderId);
           }
         }, {
           key: "saveNote",
           value: function saveNote() {
-            localStorage.setItem(this.order.id.toString(), this.note);
+            localStorage.setItem(this.orderId, this.note);
             this.sysMap.infoUpdated.next();
             this.viewCtrl.dismiss();
           }
@@ -1377,7 +1383,7 @@
         type: NoteComponent,
         selectors: [["app-note"]],
         inputs: {
-          order: "order"
+          orderId: "orderId"
         },
         decls: 4,
         vars: 1,
@@ -1414,7 +1420,8 @@
           }
         },
         directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonItem"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonTextarea"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["TextValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonButton"], angular_feather__WEBPACK_IMPORTED_MODULE_4__["FeatherComponent"]],
-        styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbm90ZS9ub3RlLmNvbXBvbmVudC5jc3MifQ== */"]
+        styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbm90ZS9ub3RlLmNvbXBvbmVudC5jc3MifQ== */"],
+        changeDetection: 0
       });
       /*@__PURE__*/
 
@@ -1424,7 +1431,8 @@
           args: [{
             selector: 'app-note',
             templateUrl: './note.component.html',
-            styleUrls: ['./note.component.css']
+            styleUrls: ['./note.component.css'],
+            changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
           }]
         }], function () {
           return [{
@@ -1433,8 +1441,119 @@
             type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["PopoverController"]
           }];
         }, {
-          order: [{
+          orderId: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+          }]
+        });
+      })();
+      /***/
+
+    },
+
+    /***/
+    "./src/app/directives/long-press.directive.ts":
+    /*!****************************************************!*\
+      !*** ./src/app/directives/long-press.directive.ts ***!
+      \****************************************************/
+
+    /*! exports provided: LongPressDirective */
+
+    /***/
+    function srcAppDirectivesLongPressDirectiveTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "LongPressDirective", function () {
+        return LongPressDirective;
+      });
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+      var LongPressDirective = /*#__PURE__*/function () {
+        function LongPressDirective() {
+          _classCallCheck(this, LongPressDirective);
+
+          this.longPress = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        }
+
+        _createClass(LongPressDirective, [{
+          key: "onMouseDown",
+          value: function onMouseDown($event) {
+            var _this3 = this;
+
+            console.log('touchstarted!', $event);
+            this._timeout = setTimeout(function () {
+              _this3.longPress.emit($event);
+            }, 400);
+          }
+        }, {
+          key: "onMouseLeave",
+          value: function onMouseLeave() {
+            clearTimeout(this._timeout);
+          }
+        }, {
+          key: "onMouseUp",
+          value: function onMouseUp() {
+            clearTimeout(this._timeout);
+          }
+        }]);
+
+        return LongPressDirective;
+      }();
+
+      LongPressDirective.ɵfac = function LongPressDirective_Factory(t) {
+        return new (t || LongPressDirective)();
+      };
+
+      LongPressDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+        type: LongPressDirective,
+        selectors: [["", "appLongPress", ""]],
+        hostBindings: function LongPressDirective_HostBindings(rf, ctx) {
+          if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mousedown", function LongPressDirective_mousedown_HostBindingHandler($event) {
+              return ctx.onMouseDown($event);
+            })("touchend", function LongPressDirective_touchend_HostBindingHandler() {
+              return ctx.onMouseLeave();
+            })("mouseleave", function LongPressDirective_mouseleave_HostBindingHandler() {
+              return ctx.onMouseUp();
+            });
+          }
+        },
+        outputs: {
+          longPress: "longPress"
+        }
+      });
+      /*@__PURE__*/
+
+      (function () {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](LongPressDirective, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+          args: [{
+            selector: '[appLongPress]',
+            outputs: ['longPress']
+          }]
+        }], null, {
+          longPress: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+          }],
+          onMouseDown: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['mousedown', ['$event']]
+          }],
+          onMouseLeave: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['touchend']
+          }],
+          onMouseUp: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['mouseleave']
           }]
         });
       })();
@@ -1466,7 +1585,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1576,7 +1695,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1668,7 +1787,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1812,7 +1931,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1948,7 +2067,7 @@
         }, {
           key: "sendPost",
           value: function sendPost(url, data) {
-            var _this3 = this;
+            var _this4 = this;
 
             var host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/";
             url = host + url;
@@ -1962,7 +2081,7 @@
             var resp = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
             this.plt.ready().then(function () {
               self.http.post(url, data, httpOptions).subscribe(function (data) {
-                _this3.state$.unsetNotification('internet');
+                _this4.state$.unsetNotification('internet');
 
                 if (data) {
                   console.log('sys:: data == true, data.success', data.success);
@@ -1977,7 +2096,7 @@
                 }
               }, function (err) {
                 if (err.error instanceof Error) {
-                  _this3.state$.setNotification('internet', 'Ошибка ответа сервера! Обратитесь к разработчикам.');
+                  _this4.state$.setNotification('internet', 'Ошибка ответа сервера! Обратитесь к разработчикам.');
                 }
               });
             });
@@ -2239,13 +2358,13 @@
         }, {
           key: "check",
           value: function check(mode) {
-            var _this4 = this;
+            var _this5 = this;
 
             this.bScan.scan().then(function (scanData) {
               console.log('sys:: auth.check() данные qr-кода: ', scanData);
-              var url = _this4.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/wh.php';
+              var url = _this5.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/wh.php';
               var data = {
-                'cId': _this4.getUserId(),
+                'cId': _this5.getUserId(),
                 'token': "l;sdfjkhglsoapl[",
                 'qr': scanData.text,
                 'mode': 'check' + mode
@@ -2255,11 +2374,11 @@
                 'Content-type': 'application/json'
               });
 
-              _this4.http.post(url, data, {
+              _this5.http.post(url, data, {
                 headers: headers
               }).subscribe(function (data) {
                 if (data.success == true) {
-                  _this4.checkState = 'checked' + mode;
+                  _this5.checkState = 'checked' + mode;
                   localStorage.check = mode;
                 }
               });
@@ -2339,7 +2458,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2500,7 +2619,7 @@
         }, {
           key: "initOrders",
           value: function initOrders() {
-            var _this5 = this;
+            var _this6 = this;
 
             var self = this; //проверяем наличие координат перед запуском
 
@@ -2518,8 +2637,8 @@
 
                 switch (state) {
                   case 'init':
-                    if (_this5.auth.getDefaultRouteBuilding() == '1') {
-                      console.log('sys:: дефолтное построение маршрута ', _this5.auth.getDefaultRouteBuilding());
+                    if (_this6.auth.getDefaultRouteBuilding() == '1') {
+                      console.log('sys:: дефолтное построение маршрута ', _this6.auth.getDefaultRouteBuilding());
                       self.getWay();
                     } else {
                       self.state$.state.next('way_init');
@@ -2535,7 +2654,7 @@
                         self.state$.orders.next(data.orders);
                         self.state$.orders_data = data.orders;
                         self.state$.state.next('orders_init');
-                        _this5.state$.confirmed = true;
+                        _this6.state$.confirmed = true;
                         data.orders.forEach(function (order) {
                           if (order.confirm == '0') {
                             self.state$.confirmed = false;
@@ -2547,7 +2666,7 @@
                         self.state$.orders.next(rmpt);
                         self.state$.orders_data = rmpt;
                         self.state$.state.next('orders_init');
-                        _this5.state$.confirmed = true;
+                        _this6.state$.confirmed = true;
                       }
                     }, function (error) {
                       console.error('sys:: Ошибка получения данных о заказах!');
@@ -2688,7 +2807,7 @@
         }, {
           key: "changeStatus",
           value: function changeStatus() {
-            var _this6 = this;
+            var _this7 = this;
 
             var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
             var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -2729,7 +2848,7 @@
                   data: data
                 });
 
-                _this6.cache.saveItem('requests', requests);
+                _this7.cache.saveItem('requests', requests);
               });
               return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["from"])([{
                 success: 'true'
@@ -2806,7 +2925,7 @@
         }, {
           key: "check_to_work",
           value: function check_to_work() {
-            var _this7 = this;
+            var _this8 = this;
 
             var url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/check_to_work.php';
             var data = {
@@ -2823,7 +2942,7 @@
               if (data.success == true) {
                 var checkedDate = new Date();
                 localStorage.setItem('checkedDate', checkedDate.toLocaleDateString());
-                _this7.checkedOnWork = true;
+                _this8.checkedOnWork = true;
               }
             });
           }
@@ -2970,7 +3089,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -3039,7 +3158,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -3101,7 +3220,7 @@
         }, {
           key: "getSettings",
           value: function getSettings(cid) {
-            var _this8 = this;
+            var _this9 = this;
 
             var self = this;
             var data = {
@@ -3117,12 +3236,12 @@
             var url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/getRules.php';
             this.http.post(url, data).subscribe(function (data) {
               if (data.success == true) {
-                _this8.rules = data.rules;
+                _this9.rules = data.rules;
 
-                _this8.state.next('hasRules');
+                _this9.state.next('hasRules');
 
                 if (data.rules.typeRoute == 'standart') {
-                  _this8.routingModeAuto = false;
+                  _this9.routingModeAuto = false;
                 }
               }
             });
@@ -3183,33 +3302,33 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/common/http */
+      "./node_modules/@angular/common/fesm2015/http.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
-      var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! rxjs */
-      "./node_modules/rxjs/_esm2015/index.js");
-      /* harmony import */
-
-
-      var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! rxjs/operators */
-      "./node_modules/rxjs/_esm2015/operators/index.js");
-      /* harmony import */
-
-
-      var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @ionic-native/web-intent/ngx */
       "./node_modules/@ionic-native/web-intent/ngx/index.js");
       /* harmony import */
 
 
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! @angular/common/http */
-      "./node_modules/@angular/common/fesm2015/http.js");
+      var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! rxjs */
+      "./node_modules/rxjs/_esm2015/index.js");
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! rxjs/operators */
+      "./node_modules/rxjs/_esm2015/operators/index.js");
       /* harmony import */
 
 
@@ -3226,8 +3345,8 @@
           this.sys = sys; // переменные состояний
           //GLOBAL
 
-          this.login_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_login');
-          this.stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"](); // останаливает все подписки;
+          this.login_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_login');
+          this.stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](); // останаливает все подписки;
 
           /* Режим работы с маршрутом
               auto    - маршрут с бека
@@ -3239,54 +3358,54 @@
           this.confirmed = false;
           this.scan_mode = false; //INTERVALS
 
-          this.interval_1ss = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(1000);
-          this.interval_1s = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(2000);
-          this.interval_1 = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(3000);
-          this.interval_3m = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(3000);
-          this.interval_3 = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(4000);
-          this.interval_2s = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(15000);
-          this.interval_30 = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(30000);
-          this.interval_1m = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(60000); //MAP
+          this.interval_1ss = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(1000);
+          this.interval_1s = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(2000);
+          this.interval_1 = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(3000);
+          this.interval_3m = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(3000);
+          this.interval_3 = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(4000);
+          this.interval_2s = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(15000);
+          this.interval_30 = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(30000);
+          this.interval_1m = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(60000); //MAP
 
-          this.position = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.points = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.map_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.route_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.change_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.map_event = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.point_check = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.geo_check = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.init_params_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
+          this.position = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.points = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.map_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.route_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.change_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.map_event = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.point_check = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.geo_check = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.init_params_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
           this.init_map_state = false;
-          this.check_changes_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
-          this.linkPoints = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('not_init');
+          this.check_changes_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
+          this.linkPoints = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('not_init');
           this.link_init = false;
           this.map_state_watch = false;
           this.disLink = true; //COURIER
 
-          this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.statuses = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.way = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.o_status = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.s_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null);
-          this.$stop = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+          this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.statuses = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.way = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.o_status = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.s_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null);
+          this.$stop = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
           this.check_state = false;
-          this.g_state = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('unLogin');
+          this.g_state = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"]('unLogin');
           this.courier_init = false;
           this.orders_page_check = false;
-          this.status_changed = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+          this.status_changed = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
           this.sc_flag = false;
           this.page_orders_check = false;
-          this.client_states = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](null); //STATUS-BAR
+          this.client_states = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](null); //STATUS-BAR
 
-          this.load_lvl = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](0);
+          this.load_lvl = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](0);
           this.c_update_content_f = false; //BALANCE
 
           this.balance_check = false; // BROADCAST
           //обновляем все данные с сервера
 
-          this.updateWayInfo = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"](); // DATA
+          this.updateWayInfo = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](); // DATA
 
           this.orders_data = null;
           this.statuses_data = null; //NOTIFICATIONS
@@ -3299,12 +3418,12 @@
               для отрисовки на страницах (дабы убрать подписки со страниц)
           */
 
-          this.orders.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this.stop$)).subscribe(function (od) {
+          this.orders.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.stop$)).subscribe(function (od) {
             if (od != null) {
               self.orders_data = od;
             }
           });
-          this.statuses.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this.stop$)).subscribe(function (st) {
+          this.statuses.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.stop$)).subscribe(function (st) {
             if (st != null) {
               self.statuses_data = st;
             }
@@ -3353,8 +3472,6 @@
             this.position.next(null);
             this.points.next(null);
             this.l_route = null;
-            this.l_map = null;
-            this.duration = null;
             this.map_state.next(null);
             this.route_state.next('not_init');
             this.change_state.next('not_init');
@@ -3389,7 +3506,7 @@
         }, {
           key: "intentStart",
           value: function intentStart(coordinates) {
-            var _this9 = this;
+            var _this10 = this;
 
             console.log('sys:: coordinates', coordinates);
             var options = {
@@ -3401,7 +3518,7 @@
               var signature = resp.signature;
               options.url += "&signature=".concat(signature);
 
-              _this9.wi.startActivity(options).then(function (data) {
+              _this10.wi.startActivity(options).then(function (data) {
                 console.log('sys:: yandexnavi запущен', data);
               });
             });
@@ -3418,10 +3535,10 @@
       }();
 
       StateService.ɵfac = function StateService_Factory(t) {
-        return new (t || StateService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_3__["WebIntent"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]));
+        return new (t || StateService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_2__["WebIntent"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]));
       };
 
-      StateService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      StateService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
         token: StateService,
         factory: StateService.ɵfac,
         providedIn: 'root'
@@ -3429,16 +3546,16 @@
       /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](StateService, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](StateService, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
           args: [{
             providedIn: 'root'
           }]
         }], function () {
           return [{
-            type: _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_3__["WebIntent"]
+            type: _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_2__["WebIntent"]
           }, {
-            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
+            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]
           }, {
             type: _sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]
           }];
@@ -3484,7 +3601,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -3678,7 +3795,6 @@
           key: "checkPhoto",
           value: function checkPhoto() {
             var options = {
-              saveToPhotoAlbum: true,
               quality: 25,
               destinationType: this.camera.DestinationType.DATA_URL,
               encodingType: this.camera.EncodingType.JPEG,
@@ -3760,7 +3876,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -3799,7 +3915,7 @@
       "./node_modules/rxjs/_esm2015/index.js");
 
       var MapService = /*#__PURE__*/function () {
-        function MapService(http, geo, device, platform, router) {
+        function MapService(http, geo, device, platform, router, viewCtrl) {
           _classCallCheck(this, MapService);
 
           this.http = http;
@@ -3807,6 +3923,7 @@
           this.device = device;
           this.platform = platform;
           this.router = router;
+          this.viewCtrl = viewCtrl;
           this.infoUpdated = new rxjs__WEBPACK_IMPORTED_MODULE_8__["Subject"]();
         }
 
@@ -3900,7 +4017,7 @@
         }, {
           key: "_loadMap",
           value: function _loadMap(divId, options) {
-            var _this10 = this;
+            var _this11 = this;
 
             _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["Environment"].setEnv({
               API_KEY_FOR_BROWSER_RELEASE: "AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164",
@@ -3910,7 +4027,7 @@
             var mapOptions = options || {};
             this.map = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"].create(divId, options);
             return new Promise(function (resolve) {
-              _this10.map.one(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleMapsEvent"].MAP_READY).then(function () {
+              _this11.map.one(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleMapsEvent"].MAP_READY).then(function () {
                 resolve();
               });
             });
@@ -3961,6 +4078,7 @@
             console.log("sys:: переход на страницу заказа ", orderId);
             this.router.navigate(["/order", orderId]);
             localStorage.removeItem("needOrder");
+            this.viewCtrl.dismiss();
           }
         }, {
           key: "navigate",
@@ -3983,7 +4101,7 @@
       }();
 
       MapService.ɵfac = function MapService_Factory(t) {
-        return new (t || MapService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_4__["Device"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]));
+        return new (t || MapService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_4__["Device"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_7__["PopoverController"]));
       };
 
       MapService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
@@ -4010,6 +4128,8 @@
             type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"]
           }, {
             type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+          }, {
+            type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["PopoverController"]
           }];
         }, null);
       })();
@@ -4041,31 +4161,31 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
-      var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! ../../services/auth.service */
-      "./src/app/services/auth.service.ts");
-      /* harmony import */
-
-
-      var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _ionic_storage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @ionic/storage */
       "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
       /* harmony import */
 
 
-      var _sys_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! ../sys.service */
-      "./src/app/services/sys.service.ts");
+      var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ../../services/auth.service */
+      "./src/app/services/auth.service.ts");
       /* harmony import */
 
 
-      var _courier_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _courier_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! ../courier.service */
       "./src/app/services/courier.service.ts");
+      /* harmony import */
+
+
+      var _sys_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! ../sys.service */
+      "./src/app/services/sys.service.ts");
 
       var OrderService = /*#__PURE__*/function () {
         function OrderService(auth, storage, sys, courier) {
@@ -4075,12 +4195,13 @@
           this.storage = storage;
           this.sys = sys;
           this.courier = courier;
+          this.notPayData = false;
         }
 
         _createClass(OrderService, [{
           key: "sendDelayedCall",
           value: function sendDelayedCall(order, status) {
-            var _this11 = this;
+            var _this12 = this;
 
             order.status_id = status;
             var self = this;
@@ -4091,9 +4212,13 @@
                 self.pay_access_data = res;
 
                 if (status == 5 || status == 6) {
-                  _this11.sendPay(order);
+                  _this12.sendPay(order);
                 } else {
-                  _this11.submitChange(order, status);
+                  _this12.submitChange(order, status);
+                }
+
+                if (!res.api_key) {
+                  _this12.notPayData = true;
                 }
               }
             });
@@ -4101,6 +4226,7 @@
         }, {
           key: "sendPay",
           value: function sendPay(order) {
+            this.notPayData = false;
             var callback_url = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
             var products = [];
 
@@ -4153,7 +4279,7 @@
         }, {
           key: "submitChange",
           value: function submitChange(order, status) {
-            var _this12 = this;
+            var _this13 = this;
 
             var self = this;
             var noSkip = true;
@@ -4177,7 +4303,7 @@
                 this.sys.doOCR(order.check, noSkip).then(function (recognizedData) {
                   var text = order.commentText ? order.commentText : "";
 
-                  _this12.courier.changeStatus(String(status), String(order.id), text, undefined, undefined, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
+                  _this13.courier.changeStatus(String(status), String(order.id), text, undefined, undefined, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
                     localStorage.removeItem("drawImg");
                   });
                 });
@@ -4189,7 +4315,7 @@
                 }
 
                 this.sys.doOCR(order.check, noSkip).then(function (recognizedData) {
-                  _this12.courier.changeStatus(String(status), String(order.id), undefined, undefined, order.quants, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
+                  _this13.courier.changeStatus(String(status), String(order.id), undefined, undefined, order.quants, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
                     localStorage.removeItem("drawImg");
                   });
                 });
@@ -4243,7 +4369,7 @@
       }();
 
       OrderService.ɵfac = function OrderService_Factory(t) {
-        return new (t || OrderService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_sys_service__WEBPACK_IMPORTED_MODULE_3__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"]));
+        return new (t || OrderService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_sys_service__WEBPACK_IMPORTED_MODULE_4__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_courier_service__WEBPACK_IMPORTED_MODULE_3__["CourierService"]));
       };
 
       OrderService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
@@ -4261,13 +4387,13 @@
           }]
         }], function () {
           return [{
-            type: _services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]
+            type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]
           }, {
-            type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"]
+            type: _ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"]
           }, {
-            type: _sys_service__WEBPACK_IMPORTED_MODULE_3__["SysService"]
+            type: _sys_service__WEBPACK_IMPORTED_MODULE_4__["SysService"]
           }, {
-            type: _courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"]
+            type: _courier_service__WEBPACK_IMPORTED_MODULE_3__["CourierService"]
           }];
         }, null);
       })();
@@ -4332,7 +4458,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 

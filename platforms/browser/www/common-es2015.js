@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/button-active-0d5784f9.js":
+/***/ "./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js":
 /*!*********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/button-active-0d5784f9.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/button-active-5da929d4.js ***!
   \*********************************************************************/
 /*! exports provided: c */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -10,7 +10,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return createButtonActiveGesture; });
-/* harmony import */ var _index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-44bf8136.js */ "./node_modules/@ionic/core/dist/esm/index-44bf8136.js");
+/* harmony import */ var _index_92848855_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-92848855.js */ "./node_modules/@ionic/core/dist/esm/index-92848855.js");
 /* harmony import */ var _index_eea61379_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-eea61379.js */ "./node_modules/@ionic/core/dist/esm/index-eea61379.js");
 /* harmony import */ var _haptic_7b8ba70a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./haptic-7b8ba70a.js */ "./node_modules/@ionic/core/dist/esm/haptic-7b8ba70a.js");
 
@@ -40,7 +40,7 @@ const createButtonActiveGesture = (el, isButton) => {
             initialTouchedButton = currentTouchedButton;
         }
         const buttonToModify = currentTouchedButton;
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["c"])(() => buttonToModify.classList.add('ion-activated'));
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(() => buttonToModify.classList.add('ion-activated'));
         hapticFeedbackFn();
     };
     const clearActiveButton = (dispatchClick = false) => {
@@ -48,7 +48,7 @@ const createButtonActiveGesture = (el, isButton) => {
             return;
         }
         const buttonToModify = currentTouchedButton;
-        Object(_index_44bf8136_js__WEBPACK_IMPORTED_MODULE_0__["c"])(() => buttonToModify.classList.remove('ion-activated'));
+        Object(_index_92848855_js__WEBPACK_IMPORTED_MODULE_0__["c"])(() => buttonToModify.classList.remove('ion-activated'));
         /**
          * Clicking on one button, but releasing on another button
          * does not dispatch a click event in browsers, so we
@@ -378,9 +378,9 @@ const SPINNERS = spinners;
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js":
+/***/ "./node_modules/@ionic/core/dist/esm/theme-5641d27f.js":
 /*!*************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/theme-3f0b0c04.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/theme-5641d27f.js ***!
   \*************************************************************/
 /*! exports provided: c, g, h, o */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -397,11 +397,8 @@ const hostContext = (selector, el) => {
 /**
  * Create the mode and color classes for the component based on the classes passed in
  */
-const createColorClasses = (color) => {
-    return (typeof color === 'string' && color.length > 0) ? {
-        'ion-color': true,
-        [`ion-color-${color}`]: true
-    } : undefined;
+const createColorClasses = (color, cssClassMap) => {
+    return (typeof color === 'string' && color.length > 0) ? Object.assign({ 'ion-color': true, [`ion-color-${color}`]: true }, cssClassMap) : cssClassMap;
 };
 const getClassList = (classes) => {
     if (classes !== undefined) {
@@ -447,12 +444,15 @@ const openURL = async (url, ev, direction, animation) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _services_courier_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/courier.service */ "./src/app/services/courier.service.ts");
 /* harmony import */ var _services_sys_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/sys.service */ "./src/app/services/sys.service.ts");
+/* harmony import */ var _state_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../state.service */ "./src/app/services/state.service.ts");
+
+
 
 
 
@@ -465,22 +465,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class DataService {
-    constructor(storage, courier, auth, sys) {
+    constructor(storage, courier, auth, sys, state$) {
         this.storage = storage;
         this.courier = courier;
         this.auth = auth;
         this.sys = sys;
+        this.state$ = state$;
+        this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
         storage.ready().then((localforage) => {
             this.storage.get('orders').then((orders) => {
-                this.orders = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](orders);
+                this.ordersMap = this.getOrdersMap(orders);
+                if (orders == null) {
+                    this.getApiData();
+                }
+                this.orders.next(orders);
                 console.log('Список заказов из стоража', orders);
                 this.getInitialData();
                 this.orders.subscribe((orders) => {
-                    this.storage.set('orders', orders).then(() => {
+                    console.trace('sys:: Пришли заказы в стрим data.orders');
+                    this.saveOrders(orders).then(() => {
                         console.log('sys:: Список заказов сохранен в сторож: ', orders);
                     });
                 });
             });
+        });
+        this.state$.g_state.subscribe((state) => {
+            if (state == 'unLogin') {
+                this.ordersMap.clear();
+            }
         });
     }
     getInitialData() {
@@ -495,29 +507,55 @@ class DataService {
     }
     getApiData() {
         return this.courier.getBalance(this.auth.userId, 1).subscribe((res) => {
-            this.orders.next(res.res_more);
-            this.storage.set('orders', res.res_more);
             this.sys.getOrders(res.res_more.map((order) => order.id.toString())).subscribe((resp) => {
-                this.orders.next(resp.orders);
-                this.storage.set('orders', resp.orders);
+                this.saveOrders(resp.orders).then(() => {
+                    this.storage.get('orders').then((orders) => {
+                        this.orders.next(orders);
+                    });
+                });
             });
         });
     }
     getOrders(ids) {
         this.sys.getOrders(ids).subscribe((resp) => {
             this.orders.next(resp.orders);
-            this.storage.set('orders', resp.orders);
+            this.saveOrders(resp.orders);
         });
     }
+    //Сохранение заказов в сторож с сохранением порядка
+    saveOrders(orders) {
+        let incomOrdersMap = this.getOrdersMap(orders);
+        let ordersMapMerged = new Map([...this.ordersMap, ...incomOrdersMap]);
+        this.ordersMap.forEach((val, key) => {
+            if (!incomOrdersMap.has(key)) {
+                this.ordersMap.delete(key);
+                console.log(`sys:: Заказ ${key} удален из сторожа`);
+            }
+        });
+        return this.storage.set('orders', Array.from(ordersMapMerged.values()));
+    }
+    //Возвращает MAP заказов (не сортируемый)
+    getOrdersMap(orders) {
+        let map = new Map();
+        orders && orders.forEach((order) => {
+            map.set(Number(order.id), order);
+        });
+        return map;
+    }
+    //Перезапись списка заказов (если надо изменить сортировку)
+    rewriteOrders(orders) {
+        this.ordersMap = this.getOrdersMap(orders);
+        this.orders.next(orders);
+    }
 }
-DataService.ɵfac = function DataService_Factory(t) { return new (t || DataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"])); };
+DataService.ɵfac = function DataService_Factory(t) { return new (t || DataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_state_service__WEBPACK_IMPORTED_MODULE_6__["StateService"])); };
 DataService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: DataService, factory: DataService.ɵfac, providedIn: "root" });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DataService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: "root",
             }]
-    }], function () { return [{ type: _ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"] }, { type: _services_courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"] }, { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }, { type: _services_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"] }]; }, null); })();
+    }], function () { return [{ type: _ionic_storage__WEBPACK_IMPORTED_MODULE_1__["Storage"] }, { type: _services_courier_service__WEBPACK_IMPORTED_MODULE_4__["CourierService"] }, { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }, { type: _services_sys_service__WEBPACK_IMPORTED_MODULE_5__["SysService"] }, { type: _state_service__WEBPACK_IMPORTED_MODULE_6__["StateService"] }]; }, null); })();
 
 
 /***/ })

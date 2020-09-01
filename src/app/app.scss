@@ -60,7 +60,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background: RGBA(0, 0, 0, 0.0);
+  background: RGBA(0, 0, 0, 0);
   z-index: 99999999;
 }
 
@@ -77,15 +77,81 @@ app-orders-list-guess {
 
 @font-face {
   font-family: "Roboto";
-  src: url('../Roboto.ttf');
+  src: url("../Roboto.ttf");
 }
 
-ion-toolbar {
-  --background: #2b637e;
-  color: white;
-  text-align: center;
-}
+:root {
+  ion-header * {
+    font-size: 16px;
 
-// ion-app.ios {
-//   top: 5vh;
-// }
+    ion-toolbar {
+      --background: #2b637e;
+      color: white;
+      text-align: center;
+      --min-height: 30px;
+
+      ion-back-button {
+        height: 30px;
+      }
+
+      ion-button {
+        height: 30px;
+        ion-icon {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  .actions-button {
+    background: #4ba7c5;
+    box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 10px 0px 2px;
+    position: absolute;
+    right: 0;
+    bottom: 0%;
+    width: 25px;
+    height: 35px;
+    text-align: center;
+    ion-icon {
+      margin: 50% 0;
+      width: 12px;
+      height: 12px;
+    }
+  }
+  .turned {
+    transform: rotate(0.5turn);
+  }
+
+  ion-button.action {
+    --background: #2b637e;
+    --border-radius: 2px;
+    font-size: 12px;
+    text-transform: none;
+    --padding-bottom: 7px;
+    --padding-top: 7px;
+    --padding-start: 7px;
+    --padding-end: 7px;
+    font-family: Roboto;
+    --box-shadow: none;
+    margin-right: 13px;
+    margin-left: 0;
+    ion-icon {
+      margin-left: 0;
+    }
+  }
+
+  #light-blue-button {
+    --background: #c9e9fa;
+    --color: #2b637e;
+  }
+
+  #light-purple-button {
+    --background: #c9cbfa;
+    --color: #533f69;
+  }
+
+  #light-green-button {
+    --background: #d7f3dd;
+    --color: #3a543b;
+  }
+}

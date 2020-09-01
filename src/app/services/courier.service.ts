@@ -1,16 +1,14 @@
-import { Injectable, Directive } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Directive, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { StateService } from '../services/state.service';
-import { forkJoin, interval, BehaviorSubject, Subject, Observable, from } from 'rxjs';
-import { takeUntil, merge, take } from 'rxjs/operators';
 import { Platform } from '@ionic/angular';
-import { AuthService } from '../services/auth.service';
-import { OrderPage } from '../pages/order/order.page';
-import { SettingsService } from './settings.service';
-import { SysService } from '../services/sys.service';
 import { CacheService } from "ionic-cache";
-import { Storage } from "@ionic/storage";
+import { from, Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
+import { StateService } from '../services/state.service';
+import { SysService } from '../services/sys.service';
+import { SettingsService } from './settings.service';
 
 declare var ymaps: any;
 @Directive()
@@ -22,11 +20,11 @@ export class CourierService {
   public ordersShortData: Subject<any> = new Subject();
   public checkedOnWork: boolean = true;
   public sortOrders = {
-      "g_done": 0,
-      "g_process": 0,
-      "g_fail": 0,
-      "all": 0
-    };
+    "g_done": 0,
+    "g_process": 0,
+    "g_fail": 0,
+    "all": 0
+  };
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -292,15 +290,12 @@ export class CourierService {
   }
 
   public getStatus(order) {
-
     if (order.status_id == 1) {
       return 'Доставляется';
     } else {
-      var statuses = this.state$.statuses.getValue();
-
+      let statuses = this.state$.statuses.getValue();
       for (var i = 0; i < statuses.length; i++) {
-        var status = statuses[i];
-
+        let status = statuses[i];
         if (status.id == order.status_id) {
           return status.status;
         }
@@ -326,18 +321,18 @@ export class CourierService {
     };
     if (draw) data['sign'] = draw;
 
-    if(navigator.onLine){
+    if (navigator.onLine) {
       return this.auth.sendPost(url, data);
-    }else{
+    } else {
       let requests = [];
-      this.cache.getItem('requests').then((req)=>{
-        if(req !==undefined){
+      this.cache.getItem('requests').then((req) => {
+        if (req !== undefined) {
           requests = req;
         }
-          requests.push({url:url, data:data});
-          this.cache.saveItem('requests',requests);
+        requests.push({ url: url, data: data });
+        this.cache.saveItem('requests', requests);
       });
-      return from([{success:'true'}])
+      return from([{ success: 'true' }])
     }
 
   }

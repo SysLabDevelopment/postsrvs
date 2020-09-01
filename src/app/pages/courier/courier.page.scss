@@ -81,23 +81,6 @@ ion-item {
     font-weight: bold;
   }
 
-  .actions-button {
-    background: #4ba7c5;
-    box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.05);
-    border-radius: 10px 0px 2px;
-    position: absolute;
-    right: 0;
-    bottom: 0%;
-    width: 25px;
-    height: 35px;
-    text-align: center;
-    ion-icon {
-      margin: 50% 0;
-      width: 12px;
-      height: 12px;
-    }
-  }
-
   .actions {
     bottom: 0;
     ion-button {
@@ -113,28 +96,13 @@ ion-item {
       --box-shadow: none;
       margin-right: 13px;
       margin-left: 0;
-      ion-icon{
+      ion-icon {
         margin-left: 0;
       }
-    };
-
-    #note{
-      --background: #C9E9FA;
-          --color: #2B637E;
-    }
-
-    #route{
-      --background: #C9CBFA;
-      --color: #533F69
-    }
-
-    #call{
-      --background: #D7F3DD;
-      --color: #3A543B;
     }
   }
 
-  .points{
+  .points {
     margin-right: 10px;
   }
 }
@@ -153,24 +121,22 @@ ion-item.overdue {
     }
   }
 }
-.turned {
-  transform: rotate(0.5turn);
-}
-.c-wrp, .c-body{
+.c-wrp,
+.c-body {
   height: 100%;
 }
 
 .call-window {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.6);
-    .cw-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  .cw-body {
     width: 85%;
     display: flex;
     justify-content: center;
@@ -181,18 +147,18 @@ ion-item.overdue {
     position: relative;
 
     button {
-        background: none;
-        height: 44px;
-        width: 80%;
-        box-shadow: 0px 0px 0.5px 0.5px #7cd5ff;
-        border-radius: 3px;
-        margin: 5px 0;
-        text-transform: uppercase;
+      background: none;
+      height: 44px;
+      width: 80%;
+      box-shadow: 0px 0px 0.5px 0.5px #7cd5ff;
+      border-radius: 3px;
+      margin: 5px 0;
+      text-transform: uppercase;
     }
+  }
 }
-}
-.c-wrp{
+.c-wrp {
   display: flex;
-    flex-direction: column;
-    height: calc(100% - 40px);
+  flex-direction: column;
+  height: calc(100% - 40px);
 }
