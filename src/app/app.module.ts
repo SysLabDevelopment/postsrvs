@@ -2,7 +2,7 @@ import { ScrollingModule } from "@angular/cdk/scrolling";
 import { registerLocaleData } from "@angular/common";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import localeRu from "@angular/common/locales/ru";
-import { LOCALE_ID, NgModule } from "@angular/core";
+import { ErrorHandler, LOCALE_ID, NgModule } from "@angular/core";
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -34,7 +34,9 @@ import { HelpComponent } from './components/help/help.component';
 import { NoteComponent } from './components/note/note.component';
 import { LongPressDirective } from './directives/long-press.directive';
 import { IconsModule } from './icons/icons.module';
+import { ErrorIntercept } from "./interceptors/error.interceptor";
 import { HttpErrorInterceptor } from "./interceptors/http.interceptor";
+
 registerLocaleData(localeRu, "ru");
 @NgModule({
   declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent, HelpComponent, NoteComponent, LongPressDirective],
@@ -75,6 +77,7 @@ registerLocaleData(localeRu, "ru");
       multi: true,
     },
     { provide: LOCALE_ID, useFactory: () => "ru" },
+    { provide: ErrorHandler, useClass: ErrorIntercept }
   ],
   bootstrap: [AppComponent],
 })

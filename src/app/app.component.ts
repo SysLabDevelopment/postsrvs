@@ -77,6 +77,8 @@ export class AppComponent {
       });
 
       this.firebase.setAnalyticsCollectionEnabled(true);
+      this.firebase.setCrashlyticsCollectionEnabled(true);
+      this.firebase.setPerformanceCollectionEnabled(true);
     });
     const self = this;
     this.nav_s.tabNav.subscribe((data) => {
