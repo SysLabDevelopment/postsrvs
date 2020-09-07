@@ -1,0 +1,52 @@
+.ion-padding {
+  font-size: 14px;
+
+  h1 {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+
+    a {
+      float: right;
+      color: #2b637e;
+      font-weight: normal;
+    }
+  }
+
+  ion-list {
+    border: 1px solid #d6cfcf;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    ion-item {
+      --border-style: none;
+      font-size: 14px;
+      --min-height: 35px;
+      ion-radio {
+        margin-right: 5px;
+      }
+    }
+  }
+  p.descr {
+    font-size: 12px;
+    font-style: italic;
+    color: #d12437;
+  }
+  ion-item.comment {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    ion-label {
+      font-weight: bold;
+    }
+    ion-textarea {
+      border: 1px solid #d6cfcf;
+      box-sizing: border-box;
+      border-radius: 2px;
+    }
+  }
+  ion-button {
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}

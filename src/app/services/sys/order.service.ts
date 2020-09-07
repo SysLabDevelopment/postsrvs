@@ -115,12 +115,12 @@ export class OrderService {
           noSkip = false
         }
         this.sys.doOCR(order.check, noSkip).then((recognizedData) => {
-          let text = order.commentText ? order.commentText : "";
+
           this.courier
             .changeStatus(
               String(status),
               String(order.id),
-              text,
+              order.commentText ?? "",
               undefined,
               undefined,
               order.selectedPayment,

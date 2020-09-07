@@ -83,7 +83,7 @@
         Статус: <span class='bold'>{{getStatus()}} </span>
       </ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="order.poruch">
       <ion-label>
         Комментарий к заказу
         <div class='bold'>
@@ -143,9 +143,9 @@
       Показать на карте
     </ion-button>
   </div>
-  <div id='done-buttons' *ngIf="!(hide_status || status_id == 5 || status_id == 6)">
+  <div id='done-buttons' *ngIf="!(hide_status || status_id == 5 || status_id == 6 || status_id == 4)">
     <ion-button expand="full" fill="solid" shape="round" id='light-purple-button' class='action'
-      (click)="selectStatus(4)">
+      (click)="selectStatus(4); presentNotDeliveredModal()">
       <ion-icon slot="start" name="close"></ion-icon>
       Не доставлено
     </ion-button>
@@ -200,13 +200,7 @@
     </ion-button>
   </div>
   <div>
-    <div *ngIf="selectedStatus == 4 ">
-      <div class="sc-r-title">Причина:</div>
-      <div class="sc-reason" [ngClass]="{'status_active' : selectedReason == reason.id}" *ngFor="let reason of reasons"
-        (click)="selectReason(reason.id)">
-        {{reason.reason}}
-      </div>
-    </div>
+
     <!-- Блок подписи -->
     <div class="draw" *ngIf="selectedStatus == 5 || selectedStatus == 6">
       <div class="asc-row">
@@ -250,7 +244,7 @@
     <details *ngIf="selectedStatus && selectedStatus !== 6">
       <summary>Дополнительно</summary>
 
-      <div class="sc-comment-block" *ngIf="selectedStatus == 5 || selectedStatus == 4">
+      <div class="sc-comment-block" *ngIf="selectedStatus == 5">
         <div class="sc-r-title">Комментарий:</div>
         <textarea [(ngModel)]="commentText" cols="30" rows="3" class="sc-comment"></textarea>
       </div>
@@ -285,10 +279,9 @@
     </div>
 
     <div class="sc-s-wrp">
-      <button class="sc-submit" (click)="doneOrder()" *ngIf="selectedStatus" [ngClass]="{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6,
-                                              'c_t_u_del'  : selectedStatus == 4}">
+      <button class="sc-submit" (click)="doneOrder()" *ngIf="selectedStatus"
+        [ngClass]="{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6}">
         <span *ngIf="selectedStatus == 5 || selectedStatus == 6" class="l_btn_del">Доставлено</span>
-        <span *ngIf="selectedStatus == 4" class="l_btn_u_del">Завершить заказ</span>
       </button>
     </div>
   </div>

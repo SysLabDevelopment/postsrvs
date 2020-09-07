@@ -91,7 +91,7 @@
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "request": "^2.88.2",
     "rollup": "^2.22.2",
-    "rxjs": "^6.5.4",
+    "rxjs": "^6.6.3",
     "sharp": "^0.25.1",
     "tslib": "^2.0.0",
     "web": "0.0.2",

@@ -36,10 +36,11 @@ import { LongPressDirective } from './directives/long-press.directive';
 import { IconsModule } from './icons/icons.module';
 import { ErrorIntercept } from "./interceptors/error.interceptor";
 import { HttpErrorInterceptor } from "./interceptors/http.interceptor";
+import { NotDeliveredComponent } from './components/not-delivered/not-delivered.component';
 
 registerLocaleData(localeRu, "ru");
 @NgModule({
-  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent, HelpComponent, NoteComponent, LongPressDirective],
+  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent, HelpComponent, NoteComponent, LongPressDirective, NotDeliveredComponent],
   entryComponents: [],
   imports: [
     FormsModule,

@@ -1,8 +1,9 @@
 import {
-  animate, state,
+  animate,
+  state,
   style,
-
-  transition, trigger
+  transition,
+  trigger
 } from "@angular/animations";
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
@@ -12,12 +13,14 @@ import { CallNumber } from "@ionic-native/call-number/ngx";
 import { Device } from '@ionic-native/device/ngx';
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { Network } from '@ionic-native/network/ngx';
+import { ModalController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { CacheService } from "ionic-cache";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { Meta } from 'src/app/interfaces/meta';
 import { Order } from 'src/app/interfaces/order';
+import { NotDeliveredComponent } from '../../components/not-delivered/not-delivered.component';
 import { Reason } from "../../interfaces/reason";
 import { Statuses } from "../../interfaces/statuses";
 import { AuthService } from "../../services/auth.service";
@@ -139,6 +142,7 @@ export class OrderPage implements OnInit {
     private orderService: OrderService,
     private bs: BarcodeScanner,
     private device: Device,
+    public modalController: ModalController
   ) {
     this.orderId = this.route.snapshot.paramMap.get("id");
 
@@ -369,9 +373,7 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public selectReason(id) {
-    this.selectedReason = id;
-  }
+
   public sendPayCall(order: Order = this.order, newStatus = this.selectedStatus as number) {
     if (this.network.type == 'none') {
       //Если оффлайн
@@ -439,7 +441,7 @@ export class OrderPage implements OnInit {
           noSkip = false
         }
         this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData) => {
-          let text = this.commentText ? this.commentText : "";
+          let text = (this.commentText ? this.commentText : "");
           this.courier
             .changeStatus(
               this.selectedStatus,
@@ -729,7 +731,7 @@ export class OrderPage implements OnInit {
 
   }
 
-  public doneOrder() {
+  public doneOrder(data?) {
     let drawedImg = localStorage.drawImg;
     if (this.drawNeedle && !drawedImg) {
       this.drawBtn(this.drawNeedle);
@@ -784,5 +786,22 @@ export class OrderPage implements OnInit {
         this.changeQuant(res[0], 'delete')
       })
     })
+  }
+
+  async presentNotDeliveredModal() {
+    const modal = await this.modalController.create({
+      component: NotDeliveredComponent,
+      cssClass: 'done-order-modal',
+      componentProps: {
+        reasons: this.reasons
+      },
+      showBackdrop: true
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    console.log('sys:: dismissed data from modal:', data);
+    this.selectedReason = data.selectedReason;
+    this.commentText = data.commentText;
+    this.doneOrder(data);
   }
 }

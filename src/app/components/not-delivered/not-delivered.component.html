@@ -1,0 +1,20 @@
+<div class="ion-padding">
+  <h1>Не доставлено <a (click)="dismiss()">Закрыть</a></h1>
+  <p>Укажите причину невыполненной доставки заказа:</p>
+  <ion-list>
+    <ion-radio-group name="reason" [(ngModel)]="selectedReason">
+      <ion-item *ngFor="let reason of reasons">
+        <ion-label>{{reason.reason}}</ion-label>
+        <ion-radio value="{{reason.id}}" slot='start'></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <p class="descr">укажите причину невыполненной доставки заказа </p>
+  <ion-item class='comment' lines='none'>
+    <ion-label position="stacked">Комментарий</ion-label>
+    <ion-textarea [(ngModel)]="commentText"></ion-textarea>
+  </ion-item>
+  <ion-button expand="full" fill="solid" shape="round" id='light-purple-button' class='action' (click)="dismiss()">
+    Завершить заказ
+  </ion-button>
+</div>
