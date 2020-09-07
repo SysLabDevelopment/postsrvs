@@ -31,15 +31,15 @@
           Дата доставки:
           <p>
             <span>
-              {{order.datetime_to | date: 'DD.MM.YYYY'}}
+              {{order.datetime_to | date: 'd.MM.yyyy'}}
             </span>
           </p>
         </div>
         <div class='time'>
           Время доставки:
           <p>
-            После <span>{{order.datetime_to | date: 'HH:MM'}}</span> До
-            <span>{{order.datetime_to | date: 'HH:MM'}}</span>
+            После <span>{{order.datetime_from | date: 'H:mm'}}</span> До
+            <span>{{order.datetime_to | date: 'H:mm'}}</span>
           </p>
         </div>
       </ion-label>

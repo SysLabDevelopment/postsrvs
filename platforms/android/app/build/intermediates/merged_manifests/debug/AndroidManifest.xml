@@ -3,7 +3,7 @@
     package="postsrvs.i"
     android:hardwareAccelerated="true"
     android:versionCode="104"
-    android:versionName="1.15.0" >
+    android:versionName="1.15.1" >
 
     <uses-sdk
         android:minSdkVersion="22"
