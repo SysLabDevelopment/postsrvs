@@ -1840,7 +1840,7 @@
         }, {
           key: "vibr",
           value: function vibr($event) {
-            this.vbr.vibrate(200);
+            this.vbr.vibrate(10);
             console.log('sys:: *Вибирация*');
           }
         }]);

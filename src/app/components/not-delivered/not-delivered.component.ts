@@ -17,13 +17,12 @@ export class NotDeliveredComponent implements OnInit {
   ngOnInit() {
   }
 
-  dismiss() {
-    // using the injected ModalController this page
-    // can "dismiss" itself and optionally pass back data
-    this.modalController.dismiss({
+  dismiss(role = '') {
+    const details = (role == 'cancel' ? undefined : {
       'commentText': this.commentText,
       'selectedReason': this.selectedReason
-    });
+    })
+    this.modalController.dismiss(details);
   }
 
 }

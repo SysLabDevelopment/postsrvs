@@ -155,7 +155,7 @@
       Частично доставлено
     </ion-button>
     <ion-button expand="full" fill="solid" shape="round" id='light-green-button' class='action'
-      (click)="selectStatus(5)">
+      (click)="selectStatus(5); presentDeliveredModal()">
       <ion-icon slot="start" name="checkmark-done"></ion-icon>
       Доставлено
     </ion-button>
@@ -202,7 +202,7 @@
   <div>
 
     <!-- Блок подписи -->
-    <div class="draw" *ngIf="selectedStatus == 5 || selectedStatus == 6">
+    <div class="draw" *ngIf="selectedStatus == 6">
       <div class="asc-row">
         <div class="title">Требуется ли подпись клиента?</div>
         <div class="draw-btns">
@@ -217,7 +217,7 @@
       <img [src]="imageToShow" alt="Подпись" *ngIf="imageToShow && drawNeedle" style="height: 200px;" />
       <button *ngIf="drawNeedle" class="drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
     </div>
-    <div class="sc-payment" *ngIf="selectedStatus == 5 || selectedStatus == 6">
+    <div class="sc-payment" *ngIf="selectedStatus == 6">
       <div class="sc-payment__title">Оплата</div>
       <div class="dc-payment__wrp">
         <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == 1}" (click)="selectPayment('1')">
@@ -229,11 +229,10 @@
       </div>
     </div>
 
-    <div class="sc-payment-block o-row" *ngIf="pay_access && (selectedStatus == 5 || selectedStatus == 6)  ">
+    <div class="sc-payment-block o-row" *ngIf="pay_access && (selectedStatus == 6)  ">
       <div class="pb-email" *ngIf="show_email">
         <div class="pb-email__title">Email клиента</div>
-        <input type="email" class="pb-email__input" [(ngModel)]="email_input" (input)="emailChange()" />
-        <span class="email-error" *ngIf="email_error">Заполните поле</span>
+        <input type="email" class="pb-email__input" [(ngModel)]="email_input" />
       </div>
       <div class="pb-phone">
         <div class="pb-phone__title" *ngIf="showPhone">Телефон клиента</div>
@@ -241,35 +240,6 @@
       </div>
       <button class="show-phone" (click)="enterPhone()">Прочее</button>
     </div>
-    <details *ngIf="selectedStatus && selectedStatus !== 6">
-      <summary>Дополнительно</summary>
-
-      <div class="sc-comment-block" *ngIf="selectedStatus == 5">
-        <div class="sc-r-title">Комментарий:</div>
-        <textarea [(ngModel)]="commentText" cols="30" rows="3" class="sc-comment"></textarea>
-      </div>
-
-      <div class="goods-row o-row" *ngIf="selectedStatus == 5">
-        <div class="gr-title o-t">Товары в заказе</div>
-
-        <div class="gr-goods-list">
-          <div class="gr-head">
-            <div class="gr-col">Название</div>
-            <div class="gr-col">Кол-во</div>
-            <div class="gr-col">Цена</div>
-          </div>
-          <div *ngFor="let good of goods">
-            <div class="gr-item" [ngClass]="{'st_fail': good.kol_vo == 0}">
-              <div class="gr-col gr-name">{{good.Name}}</div>
-              <div class="gr-col gr-quant">
-                {{good.kol_vo}}
-              </div>
-              <div class="gr-col gr-price">{{good.Price}}р.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </details>
     <div class="dt-picker" *ngIf="selectedReason == 8">
       <ion-item>
         <ion-label position="floating">MM/DD/YYYY</ion-label>

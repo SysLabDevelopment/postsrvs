@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, Renderer2 } from '@angular/core';
-import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController, Platform } from '@ionic/angular';
 @Component({
   selector: 'app-draw',
   templateUrl: './draw.page.html',
@@ -21,7 +21,13 @@ export class DrawPage implements OnInit {
   brushSize: number = 10;
 
   public save_process: boolean = false;
-  constructor(private platform: Platform, public router: Router, public renderer: Renderer2, private location: Location) {
+  constructor(
+    private platform: Platform,
+    public router: Router,
+    public renderer: Renderer2,
+    private location: Location,
+    private modal: ModalController
+  ) {
 
   }
   ngAfterViewInit() {
@@ -72,7 +78,6 @@ export class DrawPage implements OnInit {
       this.error_mes = true;
       return false;
     }
-    console.log('save_image_call');
     var code = this.canvasElement.toDataURL();
     code = code.split(',')[1];
     localStorage.setItem('drawImg', code);
@@ -80,7 +85,7 @@ export class DrawPage implements OnInit {
   }
 
   public back() {
-    this.location.back();
+    this.modal.dismiss()
   }
 
 }

@@ -20,6 +20,7 @@ import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { Meta } from 'src/app/interfaces/meta';
 import { Order } from 'src/app/interfaces/order';
+import { DeliveredComponent } from '../../components/delivered/delivered.component';
 import { NotDeliveredComponent } from '../../components/not-delivered/not-delivered.component';
 import { Reason } from "../../interfaces/reason";
 import { Statuses } from "../../interfaces/statuses";
@@ -31,6 +32,7 @@ import { SysService } from "../../services/sys.service";
 import { MapService } from "../../services/sys/map.service";
 import { OrderService } from '../../services/sys/order.service';
 import { DataService } from './../../services/sys/data.service';
+
 @Component({
   selector: "app-order",
   animations: [
@@ -112,7 +114,6 @@ export class OrderPage implements OnInit {
   public show_email: boolean = false;
   public callWindow: boolean = false;
   public drawimage: boolean = false;
-  public drawNeedle: boolean = true;
   public imageToShow = null;
   coords: Array<any>;
   public orderPhones: Array<string> = [];
@@ -123,6 +124,8 @@ export class OrderPage implements OnInit {
   public new_plan_date: string; //Дата переноса заказа
   public openCompany = false;
   public checkBase64Image: string;
+  public drawNeedle: boolean = true;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -704,11 +707,7 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public emailChange() {
-    if (this.email_error) {
-      this.email_error = false;
-    }
-  }
+
 
   public initClientInfo() {
     let mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
@@ -802,6 +801,33 @@ export class OrderPage implements OnInit {
     console.log('sys:: dismissed data from modal:', data);
     this.selectedReason = data.selectedReason;
     this.commentText = data.commentText;
-    this.doneOrder(data);
+    modal.onDidDismiss().then((details) => {
+      details.data && this.doneOrder();
+    })
+  }
+
+  async presentDeliveredModal() {
+    const modal = await this.modalController.create({
+      component: DeliveredComponent,
+      cssClass: 'done-order-modal',
+      componentProps: {
+        goods: this.goods
+      },
+      showBackdrop: true
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    console.log('sys:: dismissed data from modal:', data);
+    this.drawNeedle = data.drawNeedle;
+    this.selectedPayment = data.selectedPayment;
+    this.email_input = data.email_input;
+    this.phone_input = data.phone_input;
+    this.commentText = data.commentText;
+    modal.onDidDismiss().then((details) => {
+      console.log('sys:: dismiss details: ', details);
+      if (details.data) {
+        this.doneOrder();
+      }
+    })
   }
 }

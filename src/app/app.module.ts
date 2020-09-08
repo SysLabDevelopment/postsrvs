@@ -30,17 +30,18 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CashoutFailOComponent } from "./components/balance/cashout-fail-o/cashout-fail-o.component";
 import { CashoutWComponent } from "./components/balance/cashout-w/cashout-w.component";
+import { DeliveredComponent } from './components/delivered/delivered.component';
 import { HelpComponent } from './components/help/help.component';
+import { NotDeliveredComponent } from './components/not-delivered/not-delivered.component';
 import { NoteComponent } from './components/note/note.component';
 import { LongPressDirective } from './directives/long-press.directive';
 import { IconsModule } from './icons/icons.module';
 import { ErrorIntercept } from "./interceptors/error.interceptor";
 import { HttpErrorInterceptor } from "./interceptors/http.interceptor";
-import { NotDeliveredComponent } from './components/not-delivered/not-delivered.component';
 
 registerLocaleData(localeRu, "ru");
 @NgModule({
-  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent, HelpComponent, NoteComponent, LongPressDirective, NotDeliveredComponent],
+  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent, HelpComponent, NoteComponent, LongPressDirective, NotDeliveredComponent, DeliveredComponent],
   entryComponents: [],
   imports: [
     FormsModule,

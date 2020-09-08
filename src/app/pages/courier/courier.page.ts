@@ -608,7 +608,7 @@ export class CourierPage implements OnInit {
 
 
   public vibr($event?) {
-    this.vbr.vibrate(200);
+    this.vbr.vibrate(10);
     console.log('sys:: *Вибирация*');
   }
 
