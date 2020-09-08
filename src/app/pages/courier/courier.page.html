@@ -11,6 +11,9 @@
     <ion-title>Мои заказы</ion-title>
     <ion-title size="small" color="dark">{{state$.filial}}</ion-title>
     <ion-buttons slot="primary">
+      <ion-button (click)="doRefresh()">
+        <ion-icon slot="icon-only" name="refresh-circle-sharp"></ion-icon>
+      </ion-button>
       <ion-button *ngIf="subBtnCond" (click)="submitOrder()">
         <i-feather name="box"></i-feather>
       </ion-button>
@@ -25,11 +28,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Потяните, чтобы обновить"
-      refreshingSpinner="bubbles" refreshingText="Обновление...">
-    </ion-refresher-content>
-  </ion-refresher>
 
   <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
     <ion-segment (ionChange)="segmentChanged($event)" value='1'>

@@ -453,8 +453,8 @@ export class CourierPage implements OnInit {
       })
 
   }
-  doRefresh(event) {
-    this.data.getApiData().add(event.target.complete());
+  doRefresh() {
+    this.data.getApiData();
 
   }
 
