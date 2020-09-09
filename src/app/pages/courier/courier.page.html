@@ -90,19 +90,30 @@
         </ion-item>
       </cdk-virtual-scroll-viewport>
     </div>
-    <div class="orders-lable">
-      <ion-chip color="primary" mode="md" outline="true">
-        <ion-label>Всего заказов {{courier.sortOrders.all}}</ion-label>
-      </ion-chip>
-      <ion-chip color="danger" mode="md" outline="true" *ngIf="courier.sortOrders.g_fail != 0">
-        <ion-label>Отменено {{courier.sortOrders.g_fail}}</ion-label>
-      </ion-chip>
-      <ion-chip color="success" mode="md" outline="true" *ngIf="courier.sortOrders.g_done != 0">
-        <ion-label>Доставлено {{courier.sortOrders.g_done}}</ion-label>
-      </ion-chip>
-      <ion-chip color="secondary" mode="md" outline="true" *ngIf="courier.sortOrders.g_process != 0">
-        <ion-label>Осталось {{courier.sortOrders?.g_process}}</ion-label>
-      </ion-chip>
+    <div class='ion-padding sub-footer'>
+      <div class="orders-lable ion-justify-content-between ">
+        <div class='ion-margin-vertical'>
+          <span>Всего:</span> {{courier.sortOrders.all}}
+        </div>
+        <div *ngIf="courier.sortOrders.g_process != 0" class='ion-margin'>
+          <span>В работе:</span> {{courier.sortOrders?.g_process}}
+        </div>
+        <div *ngIf="courier.sortOrders.g_fail != 0" class='ion-margin'>
+          <span>Не доставлено:</span> <span style="color: red">{{courier.sortOrders.g_fail}}</span>
+        </div>
+        <div *ngIf="courier.sortOrders.g_done != 0" class='ion-margin'>
+          <span>Доставлено:</span> {{courier.sortOrders.g_done}}
+        </div>
+      </div>
+
+      <div class="checking" *ngIf="auth.checkState !== 'checkedOut'">
+        <ion-button (click)="auth.check('In')" expand="full" fill="solid" *ngIf="auth.checkState == 'checkedundefined'">
+          Приехал на склад
+        </ion-button>
+        <ion-button (click)="auth.check('Out')" expand="full" fill="solid" *ngIf="auth.checkState == 'checkedIn'">
+          Уехал со склада
+        </ion-button>
+      </div>
     </div>
     <div class="start-route"
       *ngIf="ordersInit && state$.orders_data != [] && state$.orders_data !== null && auth.checkState == 'checkedOut'">
