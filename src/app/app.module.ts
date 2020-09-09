@@ -16,7 +16,6 @@ import { Diagnostic } from "@ionic-native/diagnostic/ngx";
 import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { GoogleMaps } from "@ionic-native/google-maps";
-import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { Network } from '@ionic-native/network/ngx';
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
@@ -65,7 +64,6 @@ registerLocaleData(localeRu, "ru");
     Device,
     WebIntent,
     Vibration,
-    InAppBrowser,
     AndroidPermissions,
     Diagnostic,
     Camera,

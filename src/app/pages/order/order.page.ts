@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from "@ionic-native/call-number/ngx";
 import { Device } from '@ionic-native/device/ngx';
-import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { Network } from '@ionic-native/network/ngx';
 import { ModalController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
@@ -133,7 +132,6 @@ export class OrderPage implements OnInit {
     private state$: StateService,
     private auth: AuthService,
     private http: HttpClient,
-    private iab: InAppBrowser,
     private CL: CallNumber,
     public sys: SysService,
     public settings: SettingsService,
@@ -665,13 +663,6 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public showCheck() {
-    const browser = this.iab.create(this.barcode_url, "_blank");
-  }
-
-  public voiceLink() {
-    const browser = this.iab.create(String(this.order.r_url));
-  }
 
   public checkPayment() {
     var self = this;
@@ -797,13 +788,11 @@ export class OrderPage implements OnInit {
       showBackdrop: true
     });
     await modal.present();
-    const { data } = await modal.onWillDismiss();
-    console.log('sys:: dismissed data from modal:', data);
-    this.selectedReason = data.selectedReason;
-    this.commentText = data.commentText;
-    modal.onDidDismiss().then((details) => {
-      details.data && this.doneOrder();
-    })
+    const details = await modal.onDidDismiss();
+    console.log('sys:: dismiss details: ', details);
+    this.selectedReason = details.data.selectedReason;
+    this.commentText = details.data.commentText;
+    details.data && this.doneOrder();
   }
 
   async presentDeliveredModal() {
@@ -816,18 +805,16 @@ export class OrderPage implements OnInit {
       showBackdrop: true
     });
     await modal.present();
-    const { data } = await modal.onWillDismiss();
-    console.log('sys:: dismissed data from modal:', data);
-    this.drawNeedle = data.drawNeedle;
-    this.selectedPayment = data.selectedPayment;
-    this.email_input = data.email_input;
-    this.phone_input = data.phone_input;
-    this.commentText = data.commentText;
-    modal.onDidDismiss().then((details) => {
-      console.log('sys:: dismiss details: ', details);
-      if (details.data) {
-        this.doneOrder();
-      }
-    })
+    const details = await modal.onDidDismiss();
+    console.log('sys:: dismiss details: ', details);
+    this.drawNeedle = details.data.drawNeedle;
+    this.selectedPayment = details.data.selectedPayment;
+    this.email_input = details.data.email_input;
+    this.phone_input = details.data.phone_input;
+    this.commentText = details.data.commentText;
+    if (details.data) {
+      this.doneOrder();
+    }
+
   }
 }

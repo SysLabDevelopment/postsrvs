@@ -23,7 +23,6 @@ export class OrderService {
     order.status_id = status;
     let self = this;
     this.getPayData(order.client_id).subscribe((res: any) => {
-      console.log("GET_PAY_DATA", res);
       if (res.success == "true") {
         self.pay_access_data = res;
         if (status == 5 || status == 6) {

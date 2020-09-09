@@ -31,9 +31,6 @@
     "com-darryncampbell-cordova-plugin-intent": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "call-number": {
       "PACKAGE_NAME": "postsrvs.i"
     },

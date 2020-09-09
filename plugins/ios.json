@@ -42,9 +42,6 @@
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "postsrvs.i"
     },

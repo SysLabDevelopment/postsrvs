@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="106" id="postsrvs.i" version="1.16.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="106" id="postsrvs.i" version="1.16.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ps@psvs.com" href="http://psvs.com/">Psvs Team</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -131,7 +131,6 @@
     <plugin name="cordova-plugin-geolocation" spec="~4.0.2" />
     <plugin name="cordova-plugin-uniquedeviceid" spec="~1.3.2" />
     <plugin name="com-darryncampbell-cordova-plugin-intent" spec="~2.0.0" />
-    <plugin name="cordova-plugin-inappbrowser" spec="~3.2.0" />
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-android-permissions" spec="~1.0.2" />
     <plugin name="cordova-plugin-camera" spec="~4.1.0">

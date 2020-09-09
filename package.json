@@ -71,7 +71,6 @@
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-firebasex": "10.2.0-cli",
     "cordova-plugin-geolocation": "4.0.2",
-    "cordova-plugin-inappbrowser": "3.2.0",
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-plugin-screen-orientation": "^3.0.2",
     "cordova-plugin-splashscreen": "^6.0.0",
@@ -162,7 +161,6 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-uniquedeviceid": {},
       "com-darryncampbell-cordova-plugin-intent": {},
-      "cordova-plugin-inappbrowser": {},
       "mx.ferreyra.callnumber": {},
       "cordova-plugin-android-permissions": {},
       "cordova-plugin-camera": {

@@ -17,34 +17,33 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.14.0</string>
+	<string>1.16.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>postsrvs.i</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>postsrvs.i</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>1.14.0</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string/>
-	<key>NSMainNibFile~ipad</key>
-	<string/>
-	<key>UILaunchStoryboardName</key>
-	<string>CDVLaunchScreen</string>
-	<key>UIRequiresFullScreen</key>
-	<true/>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -60,35 +59,32 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Вам нужно будет сканировать штрих-коды и делать фото</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requires access to your location when the screen is on and the app is displayed.</string>
+	<key>NSMainNibFile~ipad</key>
+	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requires access to your location when the screen is on and the app is displayed.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
-	<key>LSApplicationQueriesSchemes</key>
+	<key>UILaunchStoryboardName</key>
+	<string>CDVLaunchScreen</string>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>googlechromes</string>
-		<string>comgooglemaps</string>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>CFBundleURLTypes</key>
+	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>postsrvs.i</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>postsrvs.i</string>
-			</array>
-		</dict>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
 </dict>
 </plist>

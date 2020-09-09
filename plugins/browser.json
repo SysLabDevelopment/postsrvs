@@ -31,9 +31,6 @@
     "com-darryncampbell-cordova-plugin-intent": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "call-number": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
