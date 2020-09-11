@@ -1,24 +1,24 @@
+import {
+  animate, state,
+  style,
+
+  transition, trigger
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { CourierService } from '../../services/courier.service';
-import { AuthService } from '../../services/auth.service';
-import { StateService } from '../../services/state.service';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { AlertController } from '@ionic/angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
-
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
+import { AlertController } from '@ionic/angular';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../../services/auth.service';
+import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
+import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
 import { MapService } from './../../services/sys/map.service';
+
 
 @Component({
   selector: 'app-balance',
@@ -104,7 +104,8 @@ export class BalancePage implements OnInit {
     private AP: AndroidPermissions,
     public settings: SettingsService,
     public sys: SysService,
-    private sysMap: MapService
+    private sysMap: MapService,
+    private firebase: FirebaseX
   ) {
     this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
     if (this.info == null) {
@@ -129,6 +130,7 @@ export class BalancePage implements OnInit {
   ngOnInit() {
     this.schedule = Boolean(this.settings.rules.schedule);
     this.courier.getBalance(this.auth.userId, 1).subscribe((data: any) => {
+      this.firebase.setUserProperty('courier', data.name);
       this.courier.ordersInfo = data.res_more;
       this.courier.count_orders(data.res_more);
       this.courier.ordersShortData.next(data.res_more);

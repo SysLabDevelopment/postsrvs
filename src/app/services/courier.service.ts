@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Directive, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { CacheService } from "ionic-cache";
 import { from, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -27,13 +26,12 @@ export class CourierService {
   };
 
   constructor(private http: HttpClient,
-    private router: Router,
-    private plt: Platform,
     private state$: StateService,
     private auth: AuthService,
     private settings: SettingsService,
     public sys: SysService,
     private cache: CacheService,
+    private firebase: FirebaseX
   ) {
     //при выходе из приложения возвращаем начальное состояние
     var self = this;
@@ -283,9 +281,9 @@ export class CourierService {
   //@more - флаг необходимости доп данных (краткая инфа о заказах для листинга)
   //@CL - код филлиала
   public getBalance(sync_id, more = 0) {
+    this.firebase.setUserId(sync_id);
     let CL = this.settings.get('cl');
     let url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=' + CL;
-
     return this.http.get(url);
   }
 
