@@ -48,7 +48,7 @@
       <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="50"
         style="height: 100%; width: 100%; min-height: 50vh;">
         <ion-item *ngFor="let order of orders_c | async" [ngClass]="{
-         overdue: order.overdue == '1' || order.required == true
+         overdue: (order.overdue == '1' || order.required == true) && order.status_id == 1
         }" (click)="selectOrder(order.id)" appLongPress (longPress)="vibr()" (hold)="vibr()" (cdkDragStarted)="vibr()"
           cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'>
           <ion-label [@openClose]="order.show ? 'open' : 'closed'">
@@ -62,8 +62,9 @@
                 <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'H:mm':'ru' }}</span>
               </span>
             </div>
-            <div class='addr'>{{order.client_address}}</div>
             <div class='name'>{{order.client_fio}}</div>
+            <div class='addr'>{{order.client_address}}</div>
+
             <div class="actions" *ngIf='order.show'>
               <ion-button fill="solid" size='default' (click)="note($event, order.id); $event.stopPropagation()"
                 id='light-blue-button'>
