@@ -161,11 +161,12 @@ ion-item.overdue {
   display: flex;
   flex-direction: column;
   height: calc(100% - 40px);
-  .sub-footer {
-    box-shadow: 0px -2px 3px rgba(117, 117, 117, 0.1);
-  }
   .c-body {
     overflow: scroll;
+  }
+
+  .sub-footer {
+    box-shadow: 0px -2px 3px rgba(117, 117, 117, 0.1);
     .orders-lable {
       font-weight: bolder;
       display: flex;
