@@ -31,9 +31,6 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "postsrvs.i"
     },

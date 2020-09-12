@@ -28,6 +28,14 @@
     <preference name="Hostname" value="localhost" />
     <preference name="Scheme" value="http" />
     <platform name="android">
+        <resource-file src="resources/android/icon/drawable-mdpi-icon.png" target="app/src/main/res/drawable-mdpi/notification_icon.png" />
+        <resource-file src="resources/android/icon/drawable-hdpi-icon.png" target="app/src/main/res/drawable-hdpi/notification_icon.png" />
+        <resource-file src="resources/android/icon/drawable-xhdpi-icon.png" target="app/src/main/res/drawable-xhdpi/notification_icon.png" />
+        <resource-file src="resources/android/icon/drawable-xxhdpi-icon.png" target="app/src/main/res/drawable-xxhdpi/notification_icon.png" />
+        <resource-file src="resources/android/icon/drawable-xxxhdpi-icon.png" target="app/src/main/res/drawable-xxxhdpi/notification_icon.png" />
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notification_icon" />
+        </config-file>
         <preference name="AndroidXEnabled" value="true" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:usesCleartextTraffic="true" />

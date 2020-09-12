@@ -1,19 +1,5 @@
 {
     "declarations": {},
-    "sources": {
-        "https://github.com/CocoaPods/Specs.git": {
-            "source": "https://github.com/CocoaPods/Specs.git",
-            "count": 1
-        }
-    },
-    "libraries": {
-        "Firebase/Analytics": {
-            "name": "Firebase/Analytics",
-            "count": 1
-        },
-        "Firebase/Messaging": {
-            "name": "Firebase/Messaging",
-            "count": 1
-        }
-    }
+    "sources": {},
+    "libraries": {}
 }

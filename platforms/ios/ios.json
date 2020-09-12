@@ -10,27 +10,17 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 11
+              "count": 12
             }
           ],
           "NSCameraUsageDescription": [
             {
               "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 11
+              "count": 12
             }
           ],
-          "UIBackgroundModes": [
-            {
-              "xml": "<array><string>remote-notification</string></array>",
-              "count": 1
-            }
-          ],
-          "FirebaseAppDelegateProxyEnabled": [
-            {
-              "xml": "<false />",
-              "count": 1
-            }
-          ],
+          "UIBackgroundModes": [],
+          "FirebaseAppDelegateProxyEnabled": [],
           "NSLocationWhenInUseUsageDescription": [
             {
               "xml": "<string>This app wants to get your location while this app runs only.</string>",
@@ -93,10 +83,6 @@
             },
             {
               "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"FCMPlugin\"><param name=\"ios-package\" value=\"FCMPlugin\" /></feature>",
               "count": 1
             },
             {
@@ -232,22 +218,12 @@
       },
       "*/Entitlements-Debug.plist": {
         "parents": {
-          "aps-environment": [
-            {
-              "xml": "<string>development</string>",
-              "count": 1
-            }
-          ]
+          "aps-environment": []
         }
       },
       "*/Entitlements-Release.plist": {
         "parents": {
-          "aps-environment": [
-            {
-              "xml": "<string>production</string>",
-              "count": 1
-            }
-          ]
+          "aps-environment": []
         }
       }
     }
@@ -278,9 +254,6 @@
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-fcm-with-dependecy-updated": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-geolocation": {
@@ -403,14 +376,6 @@
       "pluginId": "cordova-plugin-device",
       "clobbers": [
         "device"
-      ]
-    },
-    {
-      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
-      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
-      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
-      "clobbers": [
-        "FCM"
       ]
     },
     {
@@ -797,7 +762,6 @@
     "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-ionic-keyboard": "2.2.0",

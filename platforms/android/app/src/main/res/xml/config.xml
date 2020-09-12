@@ -43,10 +43,6 @@
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="FCMPlugin">
-        <param name="android-package" value="com.gae.scaffolder.plugin.FCMPlugin" />
-        <param name="onload" value="true" />
-    </feature>
     <feature name="CordovaGoogleMaps">
         <param name="android-package" value="plugin.google.maps.CordovaGoogleMaps" />
         <param name="onload" value="true" />
@@ -121,9 +117,6 @@
     <feature name="RareloopAppVersion">
         <param name="android-package" value="com.rareloop.cordova.appversion.RareloopAppVersion" />
     </feature>
-    <platform name="android">
-        <preference name="AndroidXEnabled" value="true" />
-    </platform>
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ps@psvs.com" href="http://psvs.com/">Psvs Team</author>
@@ -136,6 +129,14 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-navigation href="http://localhost:8100" sessionid="855e7208" />
+    <resource-file src="resources/android/icon/drawable-mdpi-icon.png" target="app/src/main/res/drawable-mdpi/notification_icon.png" />
+    <resource-file src="resources/android/icon/drawable-hdpi-icon.png" target="app/src/main/res/drawable-hdpi/notification_icon.png" />
+    <resource-file src="resources/android/icon/drawable-xhdpi-icon.png" target="app/src/main/res/drawable-xhdpi/notification_icon.png" />
+    <resource-file src="resources/android/icon/drawable-xxhdpi-icon.png" target="app/src/main/res/drawable-xxhdpi/notification_icon.png" />
+    <resource-file src="resources/android/icon/drawable-xxxhdpi-icon.png" target="app/src/main/res/drawable-xxxhdpi/notification_icon.png" />
+    <config-file parent="/manifest/application" target="AndroidManifest.xml">
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notification_icon" />
+    </config-file>
     <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
         <application android:usesCleartextTraffic="true" />
         <application android:networkSecurityConfig="@xml/network_security_config" />

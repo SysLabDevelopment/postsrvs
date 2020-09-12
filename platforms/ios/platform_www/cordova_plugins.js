@@ -73,14 +73,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
-      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
-      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
-      "clobbers": [
-        "FCM"
-      ]
-    },
-    {
       "id": "cordova-plugin-geolocation.Coordinates",
       "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
       "pluginId": "cordova-plugin-geolocation",
@@ -464,7 +456,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-ionic-keyboard": "2.2.0",

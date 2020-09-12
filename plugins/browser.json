@@ -67,9 +67,6 @@
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-googlemaps": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
