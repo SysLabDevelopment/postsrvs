@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hi/values-hi.xml",
+            "outputFile": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hi/values-hi.xml",
             "map": [
                 {
                     "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/70dbf0b74c0ecc6131daaff64f992408/jetified-barcodescanner-release-2.1.5/res/values-hi/values-hi.xml",
@@ -35,23 +35,6 @@
                         "startOffsets": "7002",
                         "endColumns": "204",
                         "endOffsets": "7202"
-                    }
-                },
-                {
-                    "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-hi/pgm_strings.xml",
-                    "from": {
-                        "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
-                        "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
-                        "startOffsets": "110,2302,55,342,238,567,723,842,1012,1146,1303,1490,1636,1810,2199,1972,2115",
-                        "endColumns": "126,110,53,223,102,154,117,168,132,155,185,144,172,160,101,141,82",
-                        "endOffsets": "234,2410,106,563,338,719,838,1008,1142,1299,1486,1632,1806,1968,2298,2111,2195"
-                    },
-                    "to": {
-                        "startLines": "154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "12943,13072,13185,13241,13467,13572,13729,13849,14020,14155,14313,14501,14648,14823,14986,15090,15234",
-                        "endColumns": "128,112,55,225,104,156,119,170,134,157,187,146,174,162,103,143,84",
-                        "endOffsets": "13067,13180,13236,13462,13567,13724,13844,14015,14150,14308,14496,14643,14818,14981,15085,15229,15314"
                     }
                 },
                 {
@@ -105,6 +88,23 @@
                         "startOffsets": "1645,1751,1848,1958,2044,2146,2268,2345,2423,2514,2607,2703,2797,2898,2991,3086,3180,3271,3362,3452,3561,3664,3766,3876,3977,4089,4251,19483",
                         "endColumns": "105,96,109,85,101,121,76,77,90,92,95,93,100,92,94,93,90,90,89,108,102,101,109,100,111,161,100,79",
                         "endOffsets": "1746,1843,1953,2039,2141,2263,2340,2418,2509,2602,2698,2792,2893,2986,3081,3175,3266,3357,3447,3556,3659,3761,3871,3972,4084,4246,4347,19558"
+                    }
+                },
+                {
+                    "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-hi/pgm_strings.xml",
+                    "from": {
+                        "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
+                        "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
+                        "startOffsets": "110,2302,55,342,238,567,723,842,1012,1146,1303,1490,1636,1810,2199,1972,2115",
+                        "endColumns": "126,110,53,223,102,154,117,168,132,155,185,144,172,160,101,141,82",
+                        "endOffsets": "234,2410,106,563,338,719,838,1008,1142,1299,1486,1632,1806,1968,2298,2111,2195"
+                    },
+                    "to": {
+                        "startLines": "154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "12943,13072,13185,13241,13467,13572,13729,13849,14020,14155,14313,14501,14648,14823,14986,15090,15234",
+                        "endColumns": "128,112,55,225,104,156,119,170,134,157,187,146,174,162,103,143,84",
+                        "endOffsets": "13067,13180,13236,13462,13567,13724,13844,14015,14150,14308,14496,14643,14818,14981,15085,15229,15314"
                     }
                 },
                 {

@@ -81,12 +81,14 @@ export class DrawPage implements OnInit {
     var code = this.canvasElement.toDataURL();
     code = code.split(',')[1];
     localStorage.setItem('drawImg', code);
-    this.back();
+    this.back('ok');
   }
 
-  public back() {
-    this.modal.dismiss()
+  public back(role: string) {
+    const details = (role == 'cancel' ? undefined : role)
+    this.modal.dismiss(details);
   }
+
 
 }
 

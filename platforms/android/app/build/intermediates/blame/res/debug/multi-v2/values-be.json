@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-be/values-be.xml",
+            "outputFile": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-be/values-be.xml",
             "map": [
                 {
                     "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/7f216ceaa5477e939530eec95bf4d7d6/jetified-play-services-basement-17.1.1/res/values-be/values.xml",

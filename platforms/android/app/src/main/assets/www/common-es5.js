@@ -699,7 +699,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -801,7 +801,7 @@
           value: function getApiData() {
             var _this3 = this;
 
-            return this.courier.getBalance(this.auth.userId, 1).subscribe(function (res) {
+            return this.courier.getBalance(Number(this.auth.userId), 1).subscribe(function (res) {
               _this3.sys.getOrders(res.res_more.map(function (order) {
                 return order.id.toString();
               })).subscribe(function (resp) {

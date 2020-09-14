@@ -54,7 +54,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2330,7 +2330,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
 
       var OrderComponent = /*#__PURE__*/function () {
         function OrderComponent() {
@@ -2425,7 +2425,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2543,7 +2543,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2663,7 +2663,6 @@
           this.out_process = false;
           this.out_counter = 0;
           this.local_stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
-          this.icons = [];
           this.existsGeos = [];
           this.sliderOptions = {
             navigation: {
@@ -2870,7 +2869,7 @@
             orders === null || orders === void 0 ? void 0 : orders.forEach(function (order) {
               var info = _this15.createInfoContent(order);
 
-              _this15.existsGeos.push([order.lt, order.lg]);
+              _this15.existsGeos.push([Number(order.lt), Number(order.lg)]);
 
               markeredOrders.push({
                 "position": {
@@ -2904,7 +2903,7 @@
                     _this16.storage.get('orders').then(function (orders) {
                       if (orders !== null) {
                         _this16.orders = orders.filter(function (order) {
-                          return order.status_id == 1;
+                          order.status_id == 1;
                         });
 
                         _this16.addCluster(_this16.markeredOrders(_this16.orders));
@@ -3066,7 +3065,7 @@
               return iOrder.lt == order.lt && iOrder.lg == order.lg;
             });
             var tabsContent = "";
-            var note = localStorage.getItem(order.id) ? localStorage.getItem(order.id) : "";
+            var note = localStorage.getItem(String(order.id)) ? localStorage.getItem(String(order.id)) : "";
             var from = order.datetime_from || "";
             var arrows = sameGeoOrders.length > 1 ? "<div class=\"swiper-button-prev\" onClick='this.parentElement.parentElement.parentElement.slidePrev()'></div>\n<div class=\"swiper-button-next\" onClick='this.parentElement.parentElement.parentElement.slideNext()'></div>" : "";
             sameGeoOrders.forEach(function (order) {

@@ -1567,10 +1567,11 @@ class DrawPage {
         var code = this.canvasElement.toDataURL();
         code = code.split(',')[1];
         localStorage.setItem('drawImg', code);
-        this.back();
+        this.back('ok');
     }
-    back() {
-        this.modal.dismiss();
+    back(role) {
+        const details = (role == 'cancel' ? undefined : role);
+        this.modal.dismiss(details);
     }
 }
 DrawPage.ɵfac = function DrawPage_Factory(t) { return new (t || DrawPage)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["Renderer2"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"])); };
@@ -1602,7 +1603,7 @@ DrawPage.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "\u041E\u0447\u0438\u0441\u0442\u0438\u0442\u044C");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "button", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function DrawPage_Template_button_click_13_listener() { return ctx.back(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function DrawPage_Template_button_click_13_listener() { return ctx.back("cancel"); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\u041D\u0430\u0437\u0430\u0434");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -3291,7 +3292,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/timkovik/Documents/Repositories/postsrvs/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/src/main.ts */"./src/main.ts");
 
 
 /***/ })

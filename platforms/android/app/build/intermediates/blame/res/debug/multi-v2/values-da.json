@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-da/values-da.xml",
+            "outputFile": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-da/values-da.xml",
             "map": [
-                {
-                    "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-da/pgm_strings.xml",
-                    "from": {
-                        "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
-                        "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
-                        "startOffsets": "110,2493,55,379,241,627,787,922,1100,1239,1438,1642,1790,1982,2396,2162,2300",
-                        "endColumns": "129,90,53,246,136,158,133,176,137,197,202,146,190,178,95,136,94",
-                        "endOffsets": "237,2581,106,623,375,783,918,1096,1235,1434,1638,1786,1978,2158,2489,2296,2392"
-                    },
-                    "to": {
-                        "startLines": "154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "12912,13044,13137,13193,13442,13581,13742,13878,14057,14197,14397,14602,14751,14944,15125,15223,15362",
-                        "endColumns": "131,92,55,248,138,160,135,178,139,199,204,148,192,180,97,138,96",
-                        "endOffsets": "13039,13132,13188,13437,13576,13737,13873,14052,14192,14392,14597,14746,14939,15120,15218,15357,15454"
-                    }
-                },
                 {
                     "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/70dbf0b74c0ecc6131daaff64f992408/jetified-barcodescanner-release-2.1.5/res/values-da/values-da.xml",
                     "from": {
@@ -122,6 +105,23 @@
                         "startOffsets": "5784,5892,6084,6213,6324,6526,6653,6803,7123,7338,7446,7639,7768,7972,8180,8276,8368",
                         "endColumns": "107,191,128,110,201,126,149,133,214,107,192,128,203,207,95,91,106",
                         "endOffsets": "5887,6079,6208,6319,6521,6648,6798,6932,7333,7441,7634,7763,7967,8175,8271,8363,8470"
+                    }
+                },
+                {
+                    "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-da/pgm_strings.xml",
+                    "from": {
+                        "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
+                        "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
+                        "startOffsets": "110,2493,55,379,241,627,787,922,1100,1239,1438,1642,1790,1982,2396,2162,2300",
+                        "endColumns": "129,90,53,246,136,158,133,176,137,197,202,146,190,178,95,136,94",
+                        "endOffsets": "237,2581,106,623,375,783,918,1096,1235,1434,1638,1786,1978,2158,2489,2296,2392"
+                    },
+                    "to": {
+                        "startLines": "154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "12912,13044,13137,13193,13442,13581,13742,13878,14057,14197,14397,14602,14751,14944,15125,15223,15362",
+                        "endColumns": "131,92,55,248,138,160,135,178,139,199,204,148,192,180,97,138,96",
+                        "endOffsets": "13039,13132,13188,13437,13576,13737,13873,14052,14192,14392,14597,14746,14939,15120,15218,15357,15454"
                     }
                 },
                 {

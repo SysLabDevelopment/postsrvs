@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml",
+            "outputFile": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml",
             "map": [
                 {
                     "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/7f216ceaa5477e939530eec95bf4d7d6/jetified-play-services-basement-17.1.1/res/values-nl/values.xml",
@@ -72,23 +72,6 @@
                     }
                 },
                 {
-                    "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-nl/pgm_strings.xml",
-                    "from": {
-                        "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
-                        "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
-                        "startOffsets": "111,2279,53,337,225,560,705,846,991,1109,1275,1455,1594,1776,2175,1951,2086",
-                        "endColumns": "113,96,57,222,111,144,140,144,117,165,179,138,181,174,103,134,88",
-                        "endOffsets": "222,2373,108,557,334,702,843,988,1106,1272,1452,1591,1773,1948,2276,2083,2172"
-                    },
-                    "to": {
-                        "startLines": "154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "13270,13386,13485,13545,13770,13884,14031,14174,14321,14441,14609,14791,14932,15116,15293,15399,15536",
-                        "endColumns": "115,98,59,224,113,146,142,146,119,167,181,140,183,176,105,136,90",
-                        "endOffsets": "13381,13480,13540,13765,13879,14026,14169,14316,14436,14604,14786,14927,15111,15288,15394,15531,15622"
-                    }
-                },
-                {
                     "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/res/values-nl/values-nl.xml",
                     "from": {
                         "startLines": "2",
@@ -139,6 +122,23 @@
                         "startOffsets": "9081",
                         "endColumns": "105",
                         "endOffsets": "9182"
+                    }
+                },
+                {
+                    "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-nl/pgm_strings.xml",
+                    "from": {
+                        "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
+                        "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
+                        "startOffsets": "111,2279,53,337,225,560,705,846,991,1109,1275,1455,1594,1776,2175,1951,2086",
+                        "endColumns": "113,96,57,222,111,144,140,144,117,165,179,138,181,174,103,134,88",
+                        "endOffsets": "222,2373,108,557,334,702,843,988,1106,1272,1452,1591,1773,1948,2276,2083,2172"
+                    },
+                    "to": {
+                        "startLines": "154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "13270,13386,13485,13545,13770,13884,14031,14174,14321,14441,14609,14791,14932,15116,15293,15399,15536",
+                        "endColumns": "115,98,59,224,113,146,142,146,119,167,181,140,183,176,105,136,90",
+                        "endOffsets": "13381,13480,13540,13765,13879,14026,14169,14316,14436,14604,14786,14927,15111,15288,15394,15531,15622"
                     }
                 }
             ]

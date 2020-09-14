@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ar/values-ar.xml",
+            "outputFile": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ar/values-ar.xml",
             "map": [
+                {
+                    "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-ar/pgm_strings.xml",
+                    "from": {
+                        "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
+                        "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
+                        "startOffsets": "111,2181,55,354,244,589,727,831,983,1107,1260,1425,1557,1716,2089,1865,2005",
+                        "endColumns": "131,88,54,233,108,136,102,150,122,151,163,130,157,147,90,138,82",
+                        "endOffsets": "240,2267,107,585,350,723,827,979,1103,1256,1421,1553,1712,1861,2177,2001,2085"
+                    },
+                    "to": {
+                        "startLines": "154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "12683,12817,12908,12965,13201,13312,13451,13556,13709,13834,13988,14154,14287,14447,14597,14690,14831",
+                        "endColumns": "133,90,56,235,110,138,104,152,124,153,165,132,159,149,92,140,84",
+                        "endOffsets": "12812,12903,12960,13196,13307,13446,13551,13704,13829,13983,14149,14282,14442,14592,14685,14826,14911"
+                    }
+                },
                 {
                     "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/e7171c11ec6fdfb1be618bcd9248b8d8/jetified-firebase-messaging-20.2.1/res/values-ar/values.xml",
                     "from": {
@@ -105,23 +122,6 @@
                         "startOffsets": "6953",
                         "endColumns": "188",
                         "endOffsets": "7137"
-                    }
-                },
-                {
-                    "source": "/Users/timkovik/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-ar/pgm_strings.xml",
-                    "from": {
-                        "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
-                        "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
-                        "startOffsets": "111,2181,55,354,244,589,727,831,983,1107,1260,1425,1557,1716,2089,1865,2005",
-                        "endColumns": "131,88,54,233,108,136,102,150,122,151,163,130,157,147,90,138,82",
-                        "endOffsets": "240,2267,107,585,350,723,827,979,1103,1256,1421,1553,1712,1861,2177,2001,2085"
-                    },
-                    "to": {
-                        "startLines": "154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "12683,12817,12908,12965,13201,13312,13451,13556,13709,13834,13988,14154,14287,14447,14597,14690,14831",
-                        "endColumns": "133,90,56,235,110,138,104,152,124,153,165,132,159,149,92,140,84",
-                        "endOffsets": "12812,12903,12960,13196,13307,13446,13551,13704,13829,13983,14149,14282,14442,14592,14685,14826,14911"
                     }
                 },
                 {

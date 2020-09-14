@@ -30,6 +30,7 @@ import { StateService } from "../../services/state.service";
 import { SysService } from "../../services/sys.service";
 import { MapService } from "../../services/sys/map.service";
 import { OrderService } from '../../services/sys/order.service';
+import { DrawPage } from '../draw/draw.page';
 import { DataService } from './../../services/sys/data.service';
 
 @Component({
@@ -172,12 +173,24 @@ export class OrderPage implements OnInit {
     return this.http.post(url, data);
   }
 
-  public drawBtn(need: boolean) {
+  public async drawBtn(need: boolean) {
     this.drawNeedle = need;
     if (need) {
-      this.router.navigate(["draw"]);
+      this.draw()
     } else {
       localStorage.removeItem("drawImg");
+    }
+  }
+  public async draw() {
+    const modal = await this.modalController.create({
+      component: DrawPage,
+      showBackdrop: false
+    });
+    await modal.present();
+    const details = await modal.onDidDismiss();
+    console.log('sys:: drawModal dismiss details: ', details);
+    if (details.data == 'ok') {
+      this.doneOrder();
     }
   }
 

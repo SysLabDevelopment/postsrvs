@@ -2837,12 +2837,13 @@
             var code = this.canvasElement.toDataURL();
             code = code.split(',')[1];
             localStorage.setItem('drawImg', code);
-            this.back();
+            this.back('ok');
           }
         }, {
           key: "back",
-          value: function back() {
-            this.modal.dismiss();
+          value: function back(role) {
+            var details = role == 'cancel' ? undefined : role;
+            this.modal.dismiss(details);
           }
         }]);
 
@@ -2925,7 +2926,7 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "button", 6);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function DrawPage_Template_button_click_13_listener() {
-              return ctx.back();
+              return ctx.back("cancel");
             });
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](14, "\u041D\u0430\u0437\u0430\u0434");
@@ -5559,7 +5560,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! /Users/timkovik/Documents/Repositories/postsrvs/src/main.ts */
+      /*! /Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/src/main.ts */
       "./src/main.ts");
       /***/
     }
