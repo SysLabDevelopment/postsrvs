@@ -12,7 +12,7 @@ export class LongPressDirective {
 
   private _timeout: any;
 
-  @HostListener('mousedown', ['$event']) onMouseDown($event) {
+  @HostListener('mousedown', ['$event']) onMouseDown($event: Event) {
     console.log('touchstarted!', $event);
     this._timeout = setTimeout(() => {
       this.longPress.emit($event);

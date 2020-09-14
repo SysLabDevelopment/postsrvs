@@ -153,7 +153,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -344,7 +344,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -356,7 +356,7 @@
 
       var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @ionic-native/firebase-x/ngx */
-      "./node_modules/@ionic-native/firebase-x/__ivy_ngcc__/ngx/index.js");
+      "./node_modules/@ionic-native/firebase-x/ngx/index.js");
       /* harmony import */
 
 
@@ -785,7 +785,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -851,7 +851,7 @@
 
       var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
       /*! @ionic-native/firebase-x/ngx */
-      "./node_modules/@ionic-native/firebase-x/__ivy_ngcc__/ngx/index.js");
+      "./node_modules/@ionic-native/firebase-x/ngx/index.js");
       /* harmony import */
 
 
@@ -1092,7 +1092,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
 
       var CashoutFailOComponent = /*#__PURE__*/function () {
         function CashoutFailOComponent() {
@@ -1169,7 +1169,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
 
       var CashoutWComponent = /*#__PURE__*/function () {
         function CashoutWComponent() {
@@ -1252,7 +1252,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1697,7 +1697,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1826,7 +1826,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2055,7 +2055,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2205,7 +2205,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
 
       var LongPressDirective = /*#__PURE__*/function () {
         function LongPressDirective() {
@@ -2316,7 +2316,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2426,7 +2426,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2518,13 +2518,13 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
       var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @ionic-native/firebase-x/ngx */
-      "./node_modules/@ionic-native/firebase-x/__ivy_ngcc__/ngx/index.js");
+      "./node_modules/@ionic-native/firebase-x/ngx/index.js");
 
       var ErrorIntercept = /*#__PURE__*/function () {
         function ErrorIntercept(firebase) {
@@ -2594,45 +2594,45 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-      /* harmony import */
-
-
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/common/http */
       "./node_modules/@angular/common/fesm2015/http.js");
       /* harmony import */
 
 
-      var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! rxjs */
-      "./node_modules/rxjs/_esm2015/index.js");
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
-      var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! rxjs/operators */
-      "./node_modules/rxjs/_esm2015/operators/index.js");
+      var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @ionic-native/network/ngx */
+      "./node_modules/@ionic-native/network/ngx/index.js");
       /* harmony import */
 
 
-      var _services_sys_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ../services/sys.service */
-      "./src/app/services/sys.service.ts");
-      /* harmony import */
-
-
-      var ionic_cache__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var ionic_cache__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! ionic-cache */
       "./node_modules/ionic-cache/dist/index.js");
       /* harmony import */
 
 
-      var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! @ionic-native/network/ngx */
-      "./node_modules/@ionic-native/network/ngx/index.js");
+      var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! rxjs */
+      "./node_modules/rxjs/_esm2015/index.js");
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! rxjs/operators */
+      "./node_modules/rxjs/_esm2015/operators/index.js");
+      /* harmony import */
+
+
+      var _services_sys_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ../services/sys.service */
+      "./src/app/services/sys.service.ts");
 
       var HttpErrorInterceptor = /*#__PURE__*/function () {
         function HttpErrorInterceptor(sys, cache, network) {
@@ -2651,18 +2651,18 @@
 
             var url = request.url;
             var cacheKey = url + ((_a = request.body) === null || _a === void 0 ? void 0 : _a.action);
-            var req = next.handle(request).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (event) {}, function (error) {
-              if (error instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpErrorResponse"]) {// this.sys.presentToast('Ошибка сети (или сервера)', 'warning');
+            var req = next.handle(request).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (event) {}, function (error) {
+              if (error instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpErrorResponse"]) {// this.sys.presentToast('Ошибка сети (или сервера)', 'warning');
               }
-            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(function (response) {
-              return !(response instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpErrorResponse"]);
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(function (response) {
+              return !(response instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpErrorResponse"]);
             }));
             return this.completedResponse(cacheKey, req);
           }
         }, {
           key: "completedResponse",
           value: function completedResponse(cacheKey, req) {
-            var response = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+            var response = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
 
             if (this.network.type !== 'none') {
               this.cache.removeItem(cacheKey).then(function () {
@@ -2670,7 +2670,7 @@
               });
             }
 
-            return this.cache.loadFromObservable(cacheKey, req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (resp) {
+            return this.cache.loadFromObservable(cacheKey, req).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(function (resp) {
               console.log("sys:: returned response: ", resp.body);
             }));
           }
@@ -2680,10 +2680,10 @@
       }();
 
       HttpErrorInterceptor.ɵfac = function HttpErrorInterceptor_Factory(t) {
-        return new (t || HttpErrorInterceptor)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_4__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](ionic_cache__WEBPACK_IMPORTED_MODULE_5__["CacheService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_6__["Network"]));
+        return new (t || HttpErrorInterceptor)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_6__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](ionic_cache__WEBPACK_IMPORTED_MODULE_3__["CacheService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__["Network"]));
       };
 
-      HttpErrorInterceptor.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      HttpErrorInterceptor.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
         token: HttpErrorInterceptor,
         factory: HttpErrorInterceptor.ɵfac,
         providedIn: 'root'
@@ -2691,18 +2691,18 @@
       /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HttpErrorInterceptor, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](HttpErrorInterceptor, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
           args: [{
             providedIn: 'root'
           }]
         }], function () {
           return [{
-            type: _services_sys_service__WEBPACK_IMPORTED_MODULE_4__["SysService"]
+            type: _services_sys_service__WEBPACK_IMPORTED_MODULE_6__["SysService"]
           }, {
-            type: ionic_cache__WEBPACK_IMPORTED_MODULE_5__["CacheService"]
+            type: ionic_cache__WEBPACK_IMPORTED_MODULE_3__["CacheService"]
           }, {
-            type: _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_6__["Network"]
+            type: _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__["Network"]
           }];
         }, null);
       })();
@@ -2740,7 +2740,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -3031,27 +3031,27 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-      /* harmony import */
-
-
-      var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @ionic-native/barcode-scanner/ngx */
-      "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
-      /* harmony import */
-
-
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/common/http */
       "./node_modules/@angular/common/fesm2015/http.js");
       /* harmony import */
 
 
-      var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! rxjs */
-      "./node_modules/rxjs/_esm2015/index.js");
+      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/router */
+      "./node_modules/@angular/router/fesm2015/router.js");
+      /* harmony import */
+
+
+      var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @ionic-native/barcode-scanner/ngx */
+      "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
       /* harmony import */
 
 
@@ -3067,33 +3067,33 @@
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-      /*! @angular/router */
-      "./node_modules/@angular/router/fesm2015/router.js");
+      var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! rxjs */
+      "./node_modules/rxjs/_esm2015/index.js");
       /* harmony import */
 
 
-      var _state_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-      /*! ./state.service */
-      "./src/app/services/state.service.ts");
+      var _services_nav_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! ../services/nav.service */
+      "./src/app/services/nav.service.ts");
       /* harmony import */
 
 
-      var _settings_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-      /*! ./settings.service */
-      "./src/app/services/settings.service.ts");
-      /* harmony import */
-
-
-      var _services_sys_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+      var _services_sys_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! ../services/sys.service */
       "./src/app/services/sys.service.ts");
       /* harmony import */
 
 
-      var _services_nav_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-      /*! ../services/nav.service */
-      "./src/app/services/nav.service.ts");
+      var _settings_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+      /*! ./settings.service */
+      "./src/app/services/settings.service.ts");
+      /* harmony import */
+
+
+      var _state_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+      /*! ./state.service */
+      "./src/app/services/state.service.ts");
 
       var AuthService = /*#__PURE__*/function () {
         function AuthService(bScan, http, device, plt, router, state$, alert, settings, sys, nav_s) {
@@ -3110,8 +3110,8 @@
           this.sys = sys;
           this.nav_s = nav_s;
           this.user = false;
-          this.auth_state = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]('not_login');
-          this.stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"](); // останаливает все подписки;
+          this.auth_state = new rxjs__WEBPACK_IMPORTED_MODULE_7__["BehaviorSubject"]('not_login');
+          this.stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_7__["Subject"](); // останаливает все подписки;
 
           this.checkState = undefined; //Состояние чекнутости на складе
 
@@ -3169,22 +3169,18 @@
         }, {
           key: "sendPost",
           value: function sendPost(url, data) {
-            var _this4 = this;
-
             var host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/";
             url = host + url;
             data['uuid'] = this.isDebug ? '6b356755575fce31' : this.getUuid();
             var httpOptions = {
-              headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
+              headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-type': 'application/json'
               })
             };
             var self = this;
-            var resp = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+            var resp = new rxjs__WEBPACK_IMPORTED_MODULE_7__["Subject"]();
             this.plt.ready().then(function () {
               self.http.post(url, data, httpOptions).subscribe(function (data) {
-                _this4.state$.unsetNotification('internet');
-
                 if (data) {
                   console.log('sys:: data == true, data.success', data.success);
 
@@ -3195,10 +3191,6 @@
                   }
                 } else {
                   resp.next(data);
-                }
-              }, function (err) {
-                if (err.error instanceof Error) {
-                  _this4.state$.setNotification('internet', 'Ошибка ответа сервера! Обратитесь к разработчикам.');
                 }
               });
             });
@@ -3427,11 +3419,6 @@
             }));
           }
         }, {
-          key: "setGuessMode",
-          value: function setGuessMode(guessMode) {
-            this.settings.rules.gess = guessMode;
-          }
-        }, {
           key: "getGuessMode",
           value: function getGuessMode() {
             return Boolean(Number(this.settings.rules.gess));
@@ -3440,7 +3427,7 @@
         }, {
           key: "setDefaultRouteBuilding",
           value: function setDefaultRouteBuilding(defaultRouteBuilding) {
-            defaultRouteBuilding && localStorage.setItem('defaultRouteBuilding', defaultRouteBuilding);
+            defaultRouteBuilding && localStorage.setItem('defaultRouteBuilding', '' + defaultRouteBuilding);
           }
         }, {
           key: "getDefaultRouteBuilding",
@@ -3460,27 +3447,27 @@
         }, {
           key: "check",
           value: function check(mode) {
-            var _this5 = this;
+            var _this4 = this;
 
             this.bScan.scan().then(function (scanData) {
               console.log('sys:: auth.check() данные qr-кода: ', scanData);
-              var url = _this5.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/wh.php';
+              var url = _this4.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/wh.php';
               var data = {
-                'cId': _this5.getUserId(),
+                'cId': _this4.getUserId(),
                 'token': "l;sdfjkhglsoapl[",
                 'qr': scanData.text,
                 'mode': 'check' + mode
               };
-              var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
+              var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Access-Control-Allow-Origin': '*',
                 'Content-type': 'application/json'
               });
 
-              _this5.http.post(url, data, {
+              _this4.http.post(url, data, {
                 headers: headers
               }).subscribe(function (data) {
                 if (data.success == true) {
-                  _this5.checkState = 'checked' + mode;
+                  _this4.checkState = 'checked' + mode;
                   localStorage.check = mode;
                 }
               });
@@ -3492,10 +3479,10 @@
       }();
 
       AuthService.ɵfac = function AuthService_Factory(t) {
-        return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__["BarcodeScanner"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_5__["Device"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_state_service__WEBPACK_IMPORTED_MODULE_8__["StateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_settings_service__WEBPACK_IMPORTED_MODULE_9__["SettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_10__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_nav_service__WEBPACK_IMPORTED_MODULE_11__["NavService"]));
+        return new (t || AuthService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_4__["BarcodeScanner"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_5__["Device"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_state_service__WEBPACK_IMPORTED_MODULE_11__["StateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_settings_service__WEBPACK_IMPORTED_MODULE_10__["SettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_9__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_services_nav_service__WEBPACK_IMPORTED_MODULE_8__["NavService"]));
       };
 
-      AuthService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      AuthService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
         token: AuthService,
         factory: AuthService.ɵfac,
         providedIn: 'root'
@@ -3503,32 +3490,32 @@
       /*@__PURE__*/
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AuthService, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](AuthService, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"],
           args: [{
             providedIn: 'root'
           }]
         }], function () {
           return [{
-            type: _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__["BarcodeScanner"]
+            type: _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_4__["BarcodeScanner"]
           }, {
-            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]
+            type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
           }, {
             type: _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_5__["Device"]
           }, {
             type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["Platform"]
           }, {
-            type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
+            type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
           }, {
-            type: _state_service__WEBPACK_IMPORTED_MODULE_8__["StateService"]
+            type: _state_service__WEBPACK_IMPORTED_MODULE_11__["StateService"]
           }, {
             type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]
           }, {
-            type: _settings_service__WEBPACK_IMPORTED_MODULE_9__["SettingsService"]
+            type: _settings_service__WEBPACK_IMPORTED_MODULE_10__["SettingsService"]
           }, {
-            type: _services_sys_service__WEBPACK_IMPORTED_MODULE_10__["SysService"]
+            type: _services_sys_service__WEBPACK_IMPORTED_MODULE_9__["SysService"]
           }, {
-            type: _services_nav_service__WEBPACK_IMPORTED_MODULE_11__["NavService"]
+            type: _services_nav_service__WEBPACK_IMPORTED_MODULE_8__["NavService"]
           }];
         }, null);
       })();
@@ -3566,13 +3553,13 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
       var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @ionic-native/firebase-x/ngx */
-      "./node_modules/@ionic-native/firebase-x/__ivy_ngcc__/ngx/index.js");
+      "./node_modules/@ionic-native/firebase-x/ngx/index.js");
       /* harmony import */
 
 
@@ -3678,7 +3665,8 @@
               var routeId = this.state$.way.getValue()[0].route;
               var data = {
                 'action': 'changeRouteMode',
-                'routeId': this.state$.way.getValue()[0].route
+                'routeId': this.state$.way.getValue()[0].route,
+                'mode': ''
               };
 
               if (mode == 'auto' || mode == 'fullHand') {
@@ -3714,7 +3702,7 @@
         }, {
           key: "initOrders",
           value: function initOrders() {
-            var _this6 = this;
+            var _this5 = this;
 
             var self = this; //проверяем наличие координат перед запуском
 
@@ -3732,8 +3720,8 @@
 
                 switch (state) {
                   case 'init':
-                    if (_this6.auth.getDefaultRouteBuilding() == '1') {
-                      console.log('sys:: дефолтное построение маршрута ', _this6.auth.getDefaultRouteBuilding());
+                    if (_this5.auth.getDefaultRouteBuilding() == '1') {
+                      console.log('sys:: дефолтное построение маршрута ', _this5.auth.getDefaultRouteBuilding());
                       self.getWay();
                     } else {
                       self.state$.state.next('way_init');
@@ -3749,7 +3737,7 @@
                         self.state$.orders.next(data.orders);
                         self.state$.orders_data = data.orders;
                         self.state$.state.next('orders_init');
-                        _this6.state$.confirmed = true;
+                        _this5.state$.confirmed = true;
                         data.orders.forEach(function (order) {
                           if (order.confirm == '0') {
                             self.state$.confirmed = false;
@@ -3761,7 +3749,7 @@
                         self.state$.orders.next(rmpt);
                         self.state$.orders_data = rmpt;
                         self.state$.state.next('orders_init');
-                        _this6.state$.confirmed = true;
+                        _this5.state$.confirmed = true;
                       }
                     }, function (error) {
                       console.error('sys:: Ошибка получения данных о заказах!');
@@ -3812,7 +3800,8 @@
               'action': 'getWay',
               'lt': this.state$.position.getValue().lt,
               'lg': this.state$.position.getValue().lg,
-              'auto': mode
+              'auto': mode,
+              'mode': ''
             };
             var app_mode = this.auth.getMode();
 
@@ -3878,7 +3867,7 @@
           key: "getBalance",
           value: function getBalance(sync_id) {
             var more = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-            this.firebase.setUserId(sync_id);
+            this.firebase.setUserId(String(sync_id));
             var CL = this.settings.get('cl');
             var url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=' + CL;
             return this.http.get(url);
@@ -3903,7 +3892,7 @@
         }, {
           key: "changeStatus",
           value: function changeStatus() {
-            var _this7 = this;
+            var _this6 = this;
 
             var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
             var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -3926,7 +3915,8 @@
               'payment': payment,
               'new_plam_date': new_plan_date,
               'check': check,
-              'recognizedCheckData': recognizedCheckData
+              'recognizedCheckData': recognizedCheckData,
+              'sign': ''
             };
             if (draw) data['sign'] = draw;
 
@@ -3944,7 +3934,7 @@
                   data: data
                 });
 
-                _this7.cache.saveItem('requests', requests);
+                _this6.cache.saveItem('requests', requests);
               });
               return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["from"])([{
                 success: 'true'
@@ -4021,7 +4011,7 @@
         }, {
           key: "check_to_work",
           value: function check_to_work() {
-            var _this8 = this;
+            var _this7 = this;
 
             var url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/check_to_work.php';
             var data = {
@@ -4038,7 +4028,7 @@
               if (data.success == true) {
                 var checkedDate = new Date();
                 localStorage.setItem('checkedDate', checkedDate.toLocaleDateString());
-                _this8.checkedOnWork = true;
+                _this7.checkedOnWork = true;
               }
             });
           }
@@ -4183,7 +4173,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -4252,13 +4242,13 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
       var _ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @ionic-native/firebase-x/ngx */
-      "./node_modules/@ionic-native/firebase-x/__ivy_ngcc__/ngx/index.js");
+      "./node_modules/@ionic-native/firebase-x/ngx/index.js");
       /* harmony import */
 
 
@@ -4321,9 +4311,8 @@
         }, {
           key: "getSettings",
           value: function getSettings(cid) {
-            var _this9 = this;
+            var _this8 = this;
 
-            var self = this;
             var data = {
               cid: cid
             };
@@ -4337,12 +4326,12 @@
             var url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/getRules.php';
             this.http.post(url, data).subscribe(function (data) {
               if (data.success == true) {
-                _this9.rules = data.rules;
+                _this8.rules = data.rules;
 
-                _this9.state.next('hasRules');
+                _this8.state.next('hasRules');
 
                 if (data.rules.typeRoute == 'standart') {
-                  _this9.routingModeAuto = false;
+                  _this8.routingModeAuto = false;
                 }
 
                 Object.entries(data.rules).forEach(function (_ref) {
@@ -4350,7 +4339,7 @@
                       key = _ref2[0],
                       val = _ref2[1];
 
-                  _this9.firebase.setUserProperty(key, val);
+                  _this8.firebase.setUserProperty(key, val);
                 });
               }
             });
@@ -4421,7 +4410,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -4519,10 +4508,7 @@
           this.updateWayInfo = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"](); // DATA
 
           this.orders_data = null;
-          this.statuses_data = null; //NOTIFICATIONS
-
-          this.notifications = [];
-          this.notificationStr = null;
+          this.statuses_data = null;
           this.filial = '';
           var self = this;
           /* Подписываемся на все сабжекты поставляющие данные и запоминаем в переменных
@@ -4547,36 +4533,8 @@
             return this.coords;
           }
         }, {
-          key: "setNotification",
-          value: function setNotification(tag, mes) {
-            this.notifications[tag] = mes;
-            this.setNotificationStr();
-          }
-        }, {
-          key: "unsetNotification",
-          value: function unsetNotification(tag) {
-            delete this.notifications[tag];
-            this.setNotificationStr();
-          }
-        }, {
-          key: "getNotification",
-          value: function getNotification(tag) {
-            return this.notifications[tag];
-          }
-        }, {
-          key: "setNotificationStr",
-          value: function setNotificationStr() {
-            var n_s = "";
-
-            for (var tag in this.notifications) {
-              n_s += this.notifications[tag];
-            }
-
-            this.notificationStr = n_s;
-          } //при выходе возвращаем приложение в иходное состояние
-
-        }, {
           key: "logout",
+          //при выходе возвращаем приложение в иходное состояние
           value: function logout() {
             this.stop$.next(); // map
 
@@ -4617,7 +4575,7 @@
         }, {
           key: "intentStart",
           value: function intentStart(coordinates) {
-            var _this10 = this;
+            var _this9 = this;
 
             console.log('sys:: coordinates', coordinates);
             var options = {
@@ -4629,7 +4587,7 @@
               var signature = resp.signature;
               options.url += "&signature=".concat(signature);
 
-              _this10.wi.startActivity(options).then(function (data) {
+              _this9.wi.startActivity(options).then(function (data) {
                 console.log('sys:: yandexnavi запущен', data);
               });
             });
@@ -4712,7 +4670,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -4987,7 +4945,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -5128,7 +5086,7 @@
         }, {
           key: "_loadMap",
           value: function _loadMap(divId, options) {
-            var _this11 = this;
+            var _this10 = this;
 
             _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["Environment"].setEnv({
               API_KEY_FOR_BROWSER_RELEASE: "AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164",
@@ -5138,7 +5096,7 @@
             var mapOptions = options || {};
             this.map = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleMaps"].create(divId, options);
             return new Promise(function (resolve) {
-              _this11.map.one(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleMapsEvent"].MAP_READY).then(function () {
+              _this10.map.one(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleMapsEvent"].MAP_READY).then(function () {
                 resolve();
               });
             });
@@ -5272,7 +5230,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -5312,7 +5270,7 @@
         _createClass(OrderService, [{
           key: "sendDelayedCall",
           value: function sendDelayedCall(order, status) {
-            var _this12 = this;
+            var _this11 = this;
 
             order.status_id = status;
             var self = this;
@@ -5321,13 +5279,13 @@
                 self.pay_access_data = res;
 
                 if (status == 5 || status == 6) {
-                  _this12.sendPay(order);
+                  _this11.sendPay(order);
                 } else {
-                  _this12.submitChange(order, status);
+                  _this11.submitChange(order, status);
                 }
 
                 if (!res.api_key) {
-                  _this12.notPayData = true;
+                  _this11.notPayData = true;
                 }
               }
             });
@@ -5370,7 +5328,9 @@
               callback_url: callback_url,
               mode: "email",
               customer_email: order.email_input,
-              customer_phone: order.phone_input
+              customer_phone: order.phone_input,
+              card_amount: '',
+              cash_amount: ''
             };
 
             if (order.selectedPayment == "2") {
@@ -5388,7 +5348,7 @@
         }, {
           key: "submitChange",
           value: function submitChange(order, status) {
-            var _this13 = this;
+            var _this12 = this;
 
             var self = this;
             var noSkip = true;
@@ -5412,7 +5372,7 @@
                 this.sys.doOCR(order.check, noSkip).then(function (recognizedData) {
                   var _a;
 
-                  _this13.courier.changeStatus(String(status), String(order.id), (_a = order.commentText) !== null && _a !== void 0 ? _a : "", undefined, undefined, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
+                  _this12.courier.changeStatus(String(status), String(order.id), (_a = order.commentText) !== null && _a !== void 0 ? _a : "", undefined, undefined, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
                     localStorage.removeItem("drawImg");
                   });
                 });
@@ -5424,7 +5384,7 @@
                 }
 
                 this.sys.doOCR(order.check, noSkip).then(function (recognizedData) {
-                  _this13.courier.changeStatus(String(status), String(order.id), undefined, undefined, order.quants, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
+                  _this12.courier.changeStatus(String(status), String(order.id), undefined, undefined, order.quants, order.selectedPayment, '', order.check, recognizedData).subscribe(function (data) {
                     localStorage.removeItem("drawImg");
                   });
                 });
@@ -5440,19 +5400,6 @@
               orderId: client_id
             };
             return this.auth.sendPost(url, data);
-          }
-        }, {
-          key: "initClientInfo",
-          value: function initClientInfo(phone) {
-            var mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
-            var infoStr = phone;
-            var mail = mail_exp.exec(infoStr);
-
-            if (mail != null) {
-              return mail[0];
-            } else {
-              return null;
-            }
           }
         }, {
           key: "send_api_data",
@@ -5567,7 +5514,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 

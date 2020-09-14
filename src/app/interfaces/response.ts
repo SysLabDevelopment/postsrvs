@@ -1,10 +1,10 @@
 //Ответ Апишки в JSON формате
-import{Order}from './order';
+import { Order } from './order';
 export interface Response {
   success?: string,
   signature?: string,
   orders?: Array<any>,
-  sync_id?: string,
+  sync_id?: string | number,
   res_more?: Array<Order>,
-  [key:string]:any
+  [key: string]: any
 }

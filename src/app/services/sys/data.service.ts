@@ -62,7 +62,7 @@ export class DataService {
   }
 
   public getApiData() {
-    return this.courier.getBalance(this.auth.userId, 1).subscribe((res: Response) => {
+    return this.courier.getBalance(Number(this.auth.userId), 1).subscribe((res: Response) => {
       this.sys.getOrders(res.res_more.map((order: Order) => order.id.toString())).subscribe((resp: Response) => {
         this.saveOrders(resp.orders).then(() => {
           this.storage.get('orders').then((orders) => {

@@ -90,30 +90,29 @@ export class OrderPage implements OnInit {
   public client_status = "";
   public client_status_dt = "";
   public client_status_id = "";
-  public order_sum = null;
-  public vlog = null;
-  public poruch = null;
-  public mass = null;
-  public amount = null;
+  public vlog: string = null;
+  public poruch: string = null;
+  public mass: unknown = null;
+  public amount: unknown = null;
   public email_input = "";
   public phone_input = "";
   public barcode_flag = false;
-  public barcode_url = null;
-  public barcode = null;
+  public barcode_url: string = null;
+  public barcode: unknown = null;
   public selectedReason: any = null;
   public selectedStatus: any = null;
   public hide_status = false;
   public $codeStop: Subject<any> = new Subject();
   public showPhone: boolean = false;
-  public podrazd = null;
+  public podrazd: unknown = null;
   public email_error = false;
   public pay_access: boolean = false;
-  public pay_access_data = null;
+  public pay_access_data: any = null;
   public show_info: boolean = false;
   public show_email: boolean = false;
   public callWindow: boolean = false;
   public drawimage: boolean = false;
-  public imageToShow = null;
+  public imageToShow: string = null;
   coords: Array<any>;
   public orderPhones: Array<string> = [];
   public selectedPhone: string;
@@ -167,13 +166,13 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public sendPost(url, data) {
+  public sendPost(url: string, data: any) {
     data = JSON.stringify(data);
 
     return this.http.post(url, data);
   }
 
-  public drawBtn(need) {
+  public drawBtn(need: boolean) {
     this.drawNeedle = need;
     if (need) {
       this.router.navigate(["draw"]);
@@ -182,20 +181,20 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public parsePhone(phone): Array<string> {
+  public parsePhone(phone: string): Array<string> {
     let phones: Array<string> = [];
     phone = phone.replace(/\D+/g, "");
 
     while (phone.length > 7) {
       phone = this.normalizePhoneNumber(phone);
-      phones.push(phone.slice("", 11));
+      phones.push(phone.slice(null, 11));
       phone = phone.slice(11);
     }
 
     return phones;
   }
 
-  private normalizePhoneNumber(phone): string {
+  private normalizePhoneNumber(phone: string): string {
     if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
       phone = "8" + phone;
     }
@@ -208,7 +207,7 @@ export class OrderPage implements OnInit {
     return phone;
   }
 
-  public phoneClick(action) {
+  public phoneClick(action: string) {
     this.orderPhones = this.parsePhone(this.phone);
     let courierPhone = this.parsePhone(this.order.courier_phone)[0];
 
@@ -251,7 +250,7 @@ export class OrderPage implements OnInit {
       console.log('Список заказов из стоража', orders);
     })
     this.storage.get('orders').then((orders) => {
-      this.order = orders?.filter((order) => { return order.id.toString() == this.orderId })[0];
+      this.order = orders?.filter((order: Order) => { return order.id.toString() == this.orderId })[0];
       this.goods = this.order.goods;
       this.address = this.order.client_address;
       this.timeFrom = this.order.datetime_from;
@@ -299,7 +298,7 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public changeQuant(code, action) {
+  public changeQuant(code: string, action: string) {
     var q: number = this.g_quants[code]["amount"];
     var good = null;
 
@@ -331,16 +330,6 @@ export class OrderPage implements OnInit {
     this.getSum();
   }
 
-  public parseOrder(orders) {
-    if (this.state$.orders.getValue() == null) {
-      this.courier.getOrders();
-    }
-    for (var i = 0; i < orders.length; i++) {
-      if (orders[i].id == this.orderId) {
-        return orders[i];
-      }
-    }
-  }
 
   public navBack() {
     localStorage.removeItem("drawImg");
@@ -363,7 +352,7 @@ export class OrderPage implements OnInit {
     this.changeWindow = false;
   }
 
-  public selectStatus(id) {
+  public selectStatus(id: number) {
     this.selectedStatus = id;
     if (id == 4 || id == 5) {
       this.setQuants();
@@ -399,8 +388,8 @@ export class OrderPage implements OnInit {
   public submitChange() {
     let self = this;
     this.storage.get('orders').then((orders) => {
-      orders?.map((order) => {
-        if (order.id.toString() == this.order.id) {
+      orders?.map((order: Order) => {
+        if (String(order.id) == String(this.order.id)) {
           order.status_id = this.selectedStatus;
           this.data.saveOrders(orders);
           this.data.orders.next(orders);
@@ -529,7 +518,7 @@ export class OrderPage implements OnInit {
   }
 
   //подсчитывает сумму заказа
-  public getPrice(order) {
+  public getPrice(order: Order) {
     if (order) {
       let price: number = 0;
       for (let i = 0; i < order.goods.length; i++) {
@@ -540,7 +529,7 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public selectPayment(item) {
+  public selectPayment(item: string) {
     this.selectedPayment = item;
   }
 
@@ -574,10 +563,6 @@ export class OrderPage implements OnInit {
     var self = this;
 
     if (this.pay_access) {
-      let api_key = this.pay_access_data["api_key"];
-      let login = this.pay_access_data["login"];
-      let cashier = this.pay_access_data["cashier_name"];
-      let phone;
 
       let order_data = {
         apikey: String(this.pay_access_data.api_key),
@@ -590,6 +575,8 @@ export class OrderPage implements OnInit {
         mode: "email",
         customer_email: this.email_input,
         customer_phone: this.phone_input,
+        card_amount: '',
+        cash_amount: ''
       };
       if (self.selectedPayment == "2") {
         order_data["card_amount"] = "#";
@@ -626,12 +613,12 @@ export class OrderPage implements OnInit {
     }
   }
 
-  public send_api_data(api_data) {
+  public send_api_data(api_data: any) {
     let url = "pay_order";
     let self = this;
     this.order.rur = 0;
 
-    api_data.purchase.products.forEach((product) => {
+    api_data.purchase.products.forEach((product: any) => {
       this.order.rur += product.price * product.quantity;
     });
 
@@ -647,7 +634,7 @@ export class OrderPage implements OnInit {
         self.hide_status = true;
       });
     } else {
-      let requests = [];
+      let requests: any[] = [];
       this.cache.getItem('requests').then((req) => {
         if (req !== undefined) {
           requests = req;
@@ -721,7 +708,7 @@ export class OrderPage implements OnInit {
 
   }
 
-  public doneOrder(data?) {
+  public doneOrder() {
     let drawedImg = localStorage.drawImg;
     if (this.drawNeedle && !drawedImg) {
       this.drawBtn(this.drawNeedle);
@@ -771,7 +758,7 @@ export class OrderPage implements OnInit {
         "action": "get_box",
         "uuid": this.device.uuid
       };
-      this.http.post(url, data1).subscribe(res => {
+      this.http.post(url, data1).subscribe((res: string[]) => {
         console.log(`sys:: ответ скана возврата: ${res}`);
         this.changeQuant(res[0], 'delete')
       })

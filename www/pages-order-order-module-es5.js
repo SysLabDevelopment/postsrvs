@@ -30,7 +30,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -151,7 +151,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1836,7 +1836,6 @@
           this.client_status = "";
           this.client_status_dt = "";
           this.client_status_id = "";
-          this.order_sum = null;
           this.vlog = null;
           this.poruch = null;
           this.mass = null;
@@ -1915,7 +1914,7 @@
 
             while (phone.length > 7) {
               phone = this.normalizePhoneNumber(phone);
-              phones.push(phone.slice("", 11));
+              phones.push(phone.slice(null, 11));
               phone = phone.slice(11);
             }
 
@@ -2085,19 +2084,6 @@
             this.getSum();
           }
         }, {
-          key: "parseOrder",
-          value: function parseOrder(orders) {
-            if (this.state$.orders.getValue() == null) {
-              this.courier.getOrders();
-            }
-
-            for (var i = 0; i < orders.length; i++) {
-              if (orders[i].id == this.orderId) {
-                return orders[i];
-              }
-            }
-          }
-        }, {
           key: "navBack",
           value: function navBack() {
             localStorage.removeItem("drawImg");
@@ -2210,7 +2196,7 @@
             var self = this;
             this.storage.get('orders').then(function (orders) {
               orders === null || orders === void 0 ? void 0 : orders.map(function (order) {
-                if (order.id.toString() == _this3.order.id) {
+                if (String(order.id) == String(_this3.order.id)) {
                   order.status_id = _this3.selectedStatus;
 
                   _this3.data.saveOrders(orders);
@@ -2368,10 +2354,6 @@
             var self = this;
 
             if (this.pay_access) {
-              var api_key = this.pay_access_data["api_key"];
-              var login = this.pay_access_data["login"];
-              var cashier = this.pay_access_data["cashier_name"];
-              var phone;
               var order_data = {
                 apikey: String(this.pay_access_data.api_key),
                 login: String(this.pay_access_data.phone),
@@ -2380,7 +2362,9 @@
                 callback_url: callback_url,
                 mode: "email",
                 customer_email: this.email_input,
-                customer_phone: this.phone_input
+                customer_phone: this.phone_input,
+                card_amount: '',
+                cash_amount: ''
               };
 
               if (self.selectedPayment == "2") {
@@ -2529,7 +2513,7 @@
           }
         }, {
           key: "doneOrder",
-          value: function doneOrder(data) {
+          value: function doneOrder() {
             var _this5 = this;
 
             var drawedImg = localStorage.drawImg;

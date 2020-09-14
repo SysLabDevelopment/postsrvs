@@ -132,7 +132,7 @@ export class MapService {
     this.map.clear();
   }
 
-  orderDetails(orderId) {
+  orderDetails(orderId: string) {
     console.log("sys:: переход на страницу заказа ", orderId);
     this.router.navigate(["/order", orderId]);
     localStorage.removeItem("needOrder");

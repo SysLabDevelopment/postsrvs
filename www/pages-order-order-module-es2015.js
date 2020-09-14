@@ -10,7 +10,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderPageModule", function() { return OrderPageModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
@@ -76,7 +76,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm2015/animations.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
@@ -837,7 +837,6 @@ class OrderPage {
         this.client_status = "";
         this.client_status_dt = "";
         this.client_status_id = "";
-        this.order_sum = null;
         this.vlog = null;
         this.poruch = null;
         this.mass = null;
@@ -902,7 +901,7 @@ class OrderPage {
         phone = phone.replace(/\D+/g, "");
         while (phone.length > 7) {
             phone = this.normalizePhoneNumber(phone);
-            phones.push(phone.slice("", 11));
+            phones.push(phone.slice(null, 11));
             phone = phone.slice(11);
         }
         return phones;
@@ -1033,16 +1032,6 @@ class OrderPage {
         }
         this.getSum();
     }
-    parseOrder(orders) {
-        if (this.state$.orders.getValue() == null) {
-            this.courier.getOrders();
-        }
-        for (var i = 0; i < orders.length; i++) {
-            if (orders[i].id == this.orderId) {
-                return orders[i];
-            }
-        }
-    }
     navBack() {
         localStorage.removeItem("drawImg");
         this.router.navigate(["/courier"]);
@@ -1094,7 +1083,7 @@ class OrderPage {
         let self = this;
         this.storage.get('orders').then((orders) => {
             orders === null || orders === void 0 ? void 0 : orders.map((order) => {
-                if (order.id.toString() == this.order.id) {
+                if (String(order.id) == String(this.order.id)) {
                     order.status_id = this.selectedStatus;
                     this.data.saveOrders(orders);
                     this.data.orders.next(orders);
@@ -1226,10 +1215,6 @@ class OrderPage {
         console.log("goods_description\n", purchase);
         var self = this;
         if (this.pay_access) {
-            let api_key = this.pay_access_data["api_key"];
-            let login = this.pay_access_data["login"];
-            let cashier = this.pay_access_data["cashier_name"];
-            let phone;
             let order_data = {
                 apikey: String(this.pay_access_data.api_key),
                 login: String(this.pay_access_data.phone),
@@ -1240,6 +1225,8 @@ class OrderPage {
                 mode: "email",
                 customer_email: this.email_input,
                 customer_phone: this.phone_input,
+                card_amount: '',
+                cash_amount: ''
             };
             if (self.selectedPayment == "2") {
                 order_data["card_amount"] = "#";
@@ -1355,7 +1342,7 @@ class OrderPage {
     showRoute() {
         this.sysMap.showRoute(this.order);
     }
-    doneOrder(data) {
+    doneOrder() {
         let drawedImg = localStorage.drawImg;
         if (this.drawNeedle && !drawedImg) {
             this.drawBtn(this.drawNeedle);
@@ -1402,7 +1389,7 @@ class OrderPage {
                 "action": "get_box",
                 "uuid": this.device.uuid
             };
-            this.http.post(url, data1).subscribe(res => {
+            this.http.post(url, data1).subscribe((res) => {
                 console.log(`sys:: ответ скана возврата: ${res}`);
                 this.changeQuant(res[0], 'delete');
             });

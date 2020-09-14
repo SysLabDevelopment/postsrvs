@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare var AppVersion:{version:string, build:number};
+declare var AppVersion: { version: string, build: number };
 
 @Component({
   selector: 'app-about',
@@ -8,12 +8,18 @@ declare var AppVersion:{version:string, build:number};
 })
 export class AboutPage implements OnInit {
 
-  public app = {
-    name: undefined,
-    packageName: undefined,
-    versionCode: undefined,
-    versionNumber: undefined
-  };
+  public app: {
+    name: string,
+    packageName: string,
+    versionCode: string,
+    versionNumber: string
+  } =
+    {
+      name: undefined,
+      packageName: undefined,
+      versionCode: undefined,
+      versionNumber: undefined
+    };
 
   constructor(
   ) { }
@@ -22,7 +28,7 @@ export class AboutPage implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.app.versionCode = AppVersion.build;
+    this.app.versionCode = String(AppVersion.build);
     this.app.versionNumber = AppVersion.version;
   }
 

@@ -64,11 +64,10 @@ export class LoginPage implements OnInit {
   public phone = '';
   public loader: boolean = false;
   public auth_step: boolean = false;
-  public code = null;
+  public code: string = null;
   public resend_dis: boolean = false;
-  public dis_timer = null;
+  public dis_timer: number = null;
   public $stopTimer: Subject<any> = new Subject();
-
   constructor(private auth: AuthService,
     private router: Router,
     private alert: AlertController,
@@ -181,7 +180,6 @@ export class LoginPage implements OnInit {
     const data = "action=registerP&phone=8" + this.phone + "&type=courier";
     var self = this;
     this.sendPost(url, data).subscribe((res: any) => {
-      this.state$.unsetNotification('internet');
       if (res.success == 'true') {
         self.authStep();
       } else {
@@ -193,7 +191,7 @@ export class LoginPage implements OnInit {
     this.startTimer();
   }
 
-  public sendPost(url, data) {
+  public sendPost(url: string, data: any) {
     console.log('send_data', data);
     const httpOptions = {
       headers: new HttpHeaders({
@@ -227,7 +225,7 @@ export class LoginPage implements OnInit {
     })
   }
 
-  public login(courier) {
+  public login(courier: string) {
     let base = "33dbcda2db5311e39760309e88d17f08," + courier;
     localStorage.setItem('cId', courier);
     var self = this;
@@ -249,7 +247,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  public showLoginError(err_n) {
+  public showLoginError(err_n: number) {
     switch (err_n) {
       case 3:
         this.loader = false;

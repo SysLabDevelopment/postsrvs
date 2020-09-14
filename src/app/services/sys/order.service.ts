@@ -73,6 +73,8 @@ export class OrderService {
       mode: "email",
       customer_email: order.email_input,
       customer_phone: order.phone_input,
+      card_amount: '',
+      cash_amount: ''
     };
     if (order.selectedPayment == "2") {
       order_data["card_amount"] = "#";
@@ -156,29 +158,19 @@ export class OrderService {
         break;
     }
   }
-  public getPayData(client_id) {
+  public getPayData(client_id: number) {
     let url = "pay_order";
     let data = { action: "getData", orderId: client_id };
     return this.auth.sendPost(url, data)
   }
 
-  public initClientInfo(phone) {
-    let mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
-    let infoStr = phone;
-    let mail = mail_exp.exec(infoStr);
-    if (mail != null) {
-      return mail[0];
-    } else {
-      return null
-    }
-  }
 
-  public send_api_data(api_data, order: Order) {
+  public send_api_data(api_data: any, order: Order) {
     const url = "pay_order";
     let self = this;
     order.rur = 0;
 
-    api_data.purchase.products.forEach((product) => {
+    api_data.purchase.products.forEach((product: any) => {
       order.rur += product.price * product.quantity;
     });
 

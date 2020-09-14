@@ -53,8 +53,7 @@ export class MapPage implements OnInit {
   public out_counter = 0;
   public local_stop$: Subject<any> = new Subject();
   markers: Array<MarkerOptions>;
-  icons = [];
-  existsGeos = [];
+  existsGeos: Array<number>[] = [];
   sliderOptions = {
     navigation: {
       nextEl: ".swiper-button-next",
@@ -222,10 +221,10 @@ export class MapPage implements OnInit {
 
   //Подготовка массива заказов к отрисовке в виду не рабочести markerCluster
   markeredOrders(orders: Array<any>) {
-    let markeredOrders = [];
-    orders?.forEach((order) => {
+    let markeredOrders: MarkerOptions[] = [];
+    orders?.forEach((order: Order) => {
       let info = this.createInfoContent(order);
-      this.existsGeos.push([order.lt, order.lg]);
+      this.existsGeos.push([Number(order.lt), Number(order.lg)]);
       markeredOrders.push({
         "position": {
           "lat": parseFloat(order.lt),
@@ -239,7 +238,7 @@ export class MapPage implements OnInit {
     return markeredOrders;
   }
 
-  public drawData(autoStartRoute: string = "0", customData = null) {
+  public drawData(autoStartRoute: string = "0", customData: any = null) {
     if (this.map !== undefined) {
       this.map.clear().then(() => {
         if (this.routeToOrder && customData.label == 'showRouteTooOrder') {
@@ -250,7 +249,7 @@ export class MapPage implements OnInit {
           if (autoStartRoute == "0") {
             this.storage.get('orders').then((orders) => {
               if (orders !== null) {
-                this.orders = orders.filter(order => order.status_id == 1);
+                this.orders = orders.filter((order: Order) => { order.status_id == 1 });
                 this.addCluster(this.markeredOrders(this.orders));
               }
 
@@ -304,9 +303,9 @@ export class MapPage implements OnInit {
   initContent() {
     this.sys.checkAuth(AppVersion.version).subscribe((res: Response) => {
       if (res.sync_id !== undefined) {
-        this.settings.getSettings(res.sync_id);
-        this.auth.setUser(res.sync_id);
-        this.courier.getBalance(res.sync_id, 1).subscribe((data: any) => {
+        this.settings.getSettings(res.sync_id as string);
+        this.auth.setUser(res.sync_id as string);
+        this.courier.getBalance(res.sync_id as number, 1).subscribe((data: any) => {
           this.courier.ordersInfo = data.res_more;
           this.courier.count_orders(data.res_more);
           this.orders = data.res_more;
@@ -337,7 +336,7 @@ export class MapPage implements OnInit {
     });
   }
 
-  addCluster(markeredOrders) {
+  addCluster(markeredOrders: MarkerOptions[]) {
     const options = {
       maxZoomLevel: 14,
       markers: markeredOrders,
@@ -365,13 +364,13 @@ export class MapPage implements OnInit {
 
   }
 
-  createInfoContent(order) {
+  createInfoContent(order: Order) {
     let sameGeoOrders: Array<any> = this.orders.filter(
       (iOrder) => iOrder.lt == order.lt && iOrder.lg == order.lg
     );
     let tabsContent = "";
-    let note = localStorage.getItem(order.id)
-      ? localStorage.getItem(order.id)
+    let note = localStorage.getItem(String(order.id))
+      ? localStorage.getItem(String(order.id))
       : "";
     let from = order.datetime_from || "";
     let arrows =

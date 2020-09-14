@@ -69,10 +69,9 @@ export class CourierPage implements OnInit {
   public g_fail = 0;
   public lvl_ind = { width: '0%' };
   public btn_go: boolean = false;
-  public notification = null;
   public subBtnCond: boolean = true;
   public scanView: boolean = false;
-  public scanInput;
+  public scanInput: string;
   public scan_process = false;
   public find_order: boolean = false;
   public isWorkEnded: boolean = false;
@@ -194,7 +193,7 @@ export class CourierPage implements OnInit {
           self.scanView = false;
         }
         self.state$.confirmed = true;
-        self.orders.forEach(order => {
+        self.orders.forEach((order: any) => {
           if (order.confirm == '0') {
             self.state$.confirmed = false;
           }
@@ -249,7 +248,7 @@ export class CourierPage implements OnInit {
             self.loader = false;
           }
           self.state$.confirmed = true;
-          self.orders.forEach(order => {
+          self.orders.forEach((order: any) => {
             if (order.confirm == '0') {
               self.state$.confirmed = false;
             }
@@ -261,7 +260,7 @@ export class CourierPage implements OnInit {
     });
   }
 
-  public ordersListChanged(orders) {
+  public ordersListChanged(orders: Order[]) {
     this.orders = orders;
     let way: any[] = new Array();
     orders.forEach(order => {
@@ -299,16 +298,16 @@ export class CourierPage implements OnInit {
   }
 
 
-  public getStatus(order) {
+  public getStatus(order: Order) {
     return this.courier.getStatus(order);
   }
 
-  public selectOrder(id) {
+  public selectOrder(id: string) {
 
     this.router.navigate(['/order', id]);
   }
 
-  public tabSelect(tab) {
+  public tabSelect(tab: number) {
     this.selectedTab = tab;
   }
 
@@ -316,7 +315,7 @@ export class CourierPage implements OnInit {
     return index;
   }
 
-  public getCondition(status) {
+  public getCondition(status: number) {
     switch (this.selectedTab) {
       case 1:
         if (status == 1) return true;
@@ -371,12 +370,14 @@ export class CourierPage implements OnInit {
   }
 
 
-  public sendStartRoute(cid, start, stop) {
+  public sendStartRoute(cid: number, start: boolean, stop: boolean) {
     const url = "geo/route_start.php";
     let data = {
       'cid': cid,
       'lt': this.state$.position.getValue().lt,
-      'lg': this.state$.position.getValue().lg
+      'lg': this.state$.position.getValue().lg,
+      'start': '',
+      'stop': ''
     };
     if (start) {
       data['start'] = '1';
@@ -458,7 +459,7 @@ export class CourierPage implements OnInit {
 
   }
 
-  public segmentChanged(event) {
+  public segmentChanged(event: any) {
     let ids = [Number(event.target.value)];
     if (event.target.value == '5') {
       ids.push(6)
@@ -467,7 +468,7 @@ export class CourierPage implements OnInit {
     this.prepareOrdersList(ids)
   }
 
-  public onSearchChange(event) {
+  public onSearchChange(event: any) {
     this.searchString = event.target.value;
     this.prepareOrdersList(this.segment)
 
@@ -503,13 +504,13 @@ export class CourierPage implements OnInit {
     return popover
   }
 
-  async showHelp(ev) {
+  async showHelp(ev: any) {
     let popover = await this.popoverHelp(ev);
     popover.present();
 
   }
 
-  public showRoute(order) {
+  public showRoute(order: Order) {
     this.map.showRoute(order)
   }
 
@@ -533,7 +534,7 @@ export class CourierPage implements OnInit {
     return popover
   }
 
-  public async note(ev, orderId: string) {
+  public async note(ev: any, orderId: string) {
     let popover = await this.popoverNote(ev, orderId);
     popover.present();
   }
@@ -580,20 +581,20 @@ export class CourierPage implements OnInit {
   }
 
   //Парсинг номера телефона из строки с лишним мусором
-  public parsePhone(phone): Array<string> {
+  public parsePhone(phone: string): Array<string> {
     let phones: Array<string> = [];
     phone = phone.replace(/\D+/g, "");
 
     while (phone.length > 7) {
       phone = this.normalizePhoneNumber(phone);
-      phones.push(phone.slice("", 11));
+      phones.push(phone.slice(null, 11));
       phone = phone.slice(11);
     }
     return phones;
   }
 
   //Жонглирование '8' / '+7'
-  private normalizePhoneNumber(phone): string {
+  private normalizePhoneNumber(phone: string): string {
     if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
       phone = "8" + phone;
     }
@@ -607,7 +608,7 @@ export class CourierPage implements OnInit {
   }
 
 
-  public vibr($event?) {
+  public vibr($event?: any) {
     this.vbr.vibrate(10);
     console.log('sys:: *Вибирация*');
   }

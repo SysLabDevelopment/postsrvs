@@ -132,7 +132,7 @@ export class SysService {
   //Возвращает сигнатуру, кодированную ключем яндекс.навигатора
   //@lat - широта
   //@lon - долгота
-  public getYandexnaviSignature(lat: number, lon: number): Observable<Response> {
+  public getYandexnaviSignature(lat: string, lon: string): Observable<Response> {
     const url = `${this.proxy}https://areg-p.flexcore.ru/admin/accessKeySignature/index.php?LAT=${lat}&LON=${lon}`;
     return this.http.get<Response>(url);
 

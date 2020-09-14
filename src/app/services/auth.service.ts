@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
-import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { Device } from '@ionic-native/device/ngx';
-import { Platform } from '@ionic/angular';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { StateService } from './state.service';
-import { AlertController } from '@ionic/angular';
-import { SettingsService } from './settings.service';
-import { SysService } from '../services/sys.service';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { Device } from '@ionic-native/device/ngx';
+import { AlertController, Platform } from '@ionic/angular';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { NavService } from '../services/nav.service';
+import { SysService } from '../services/sys.service';
+import { SettingsService } from './settings.service';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +24,8 @@ export class AuthService {
   public version: string = undefined; // версия приложения
   public isDebug: boolean = false; //Нужна в случае хардкодной отладки нативных функций
   public userId: string;
-  public pay_access:boolean;
-  public pay_access_data:any;
+  public pay_access: boolean;
+  public pay_access_data: any;
   constructor(
     private bScan: BarcodeScanner,
     private http: HttpClient,
@@ -69,7 +68,7 @@ export class AuthService {
     return this.sendPost(url, data);
   }
 
-  public setMode(mode) {
+  public setMode(mode: string) {
     localStorage.setItem('mode', mode);
   }
 
@@ -77,17 +76,17 @@ export class AuthService {
     return this.settings.rules.appMode;
   }
 
-  public setScanMode(mode) {
+  public setScanMode(mode: string) {
     localStorage.setItem('scan_mode', mode);
   }
   //меняет способ сканирования
   public getScanMode(): string {
     return this.settings.rules.scanMode;
   }
-  public sendPost(url, data) {
-  
-    let  host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/"
-    
+  public sendPost(url: string, data: { uuid?: string, action?: string, barcode?: string, cid?: unknown, lt?: unknown, lg?: unknown, start?: string, stop?: string }) {
+
+    let host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/"
+
 
     url = host + url;
     data['uuid'] = (this.isDebug ? '6b356755575fce31' : this.getUuid());
@@ -101,7 +100,6 @@ export class AuthService {
 
     this.plt.ready().then(() => {
       self.http.post(url, data, httpOptions).subscribe((data: any) => {
-        this.state$.unsetNotification('internet');
         if (data) {
           console.log('sys:: data == true, data.success', data.success);
           if (data.success == 'false' && data.reason == "not_auth") {
@@ -111,10 +109,6 @@ export class AuthService {
           }
         } else {
           resp.next(data);
-        }
-      }, (err) => {
-        if (err.error instanceof Error) {
-          this.state$.setNotification('internet', 'Ошибка ответа сервера! Обратитесь к разработчикам.');
         }
       });
     });
@@ -127,7 +121,7 @@ export class AuthService {
     return this.device.uuid;
   }
 
-  public setUser(id) {
+  public setUser(id: string) {
     localStorage.setItem('user', id);
     this.user = true;
     this.userId = id;
@@ -141,7 +135,7 @@ export class AuthService {
     return this.bScan.scan();
   }
 
-  public login(code) {
+  public login(code: { action: string, barcode: string }) {
     return this.sendPost('auth', code);
   }
 
@@ -159,7 +153,7 @@ export class AuthService {
 
   }
 
-  public async showError(err) {
+  public async showError(err: number) {
     switch (err) {
       case 1:
         const alert = await this.alert.create({
@@ -254,22 +248,19 @@ export class AuthService {
     }
   }
 
-  setGuessMode(guessMode) {
-    this.settings.rules.gess = guessMode;
-  }
   getGuessMode() {
     return Boolean(Number(this.settings.rules.gess));
   }
 
   //Сохранение режима построения маршрута по умолчанию
-  setDefaultRouteBuilding(defaultRouteBuilding) {
-    defaultRouteBuilding && localStorage.setItem('defaultRouteBuilding', defaultRouteBuilding);
+  setDefaultRouteBuilding(defaultRouteBuilding: boolean) {
+    defaultRouteBuilding && localStorage.setItem('defaultRouteBuilding', '' + defaultRouteBuilding);
   }
 
   getDefaultRouteBuilding() {
     return this.settings.rules.autoStartRoute;
   }
-  setRoutingMode(auto) {
+  setRoutingMode(auto: string) {
     auto && localStorage.setItem('auto', auto + '');
   }
   public getRoutingMode() {

@@ -12,6 +12,7 @@ import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { AlertController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Response } from 'src/app/interfaces/response';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
@@ -73,7 +74,7 @@ import { MapService } from './../../services/sys/map.service';
   ]
 })
 export class BalancePage implements OnInit {
-  public info = null;
+  public info: Response = null;
   public pageInit: boolean = false;
   public loader = true;
   public local_stop$: Subject<any> = new Subject();
@@ -86,8 +87,8 @@ export class BalancePage implements OnInit {
   public review_w: boolean = false;
   public failsOrder: boolean = false;
   public failsOrderNotFull: boolean = false;
-  public failOrdersCount: Number = 0;
-  public fo_comment: String = ""; //комментарий к частичной сдаче заказов
+  public failOrdersCount: number = 0;
+  public fo_comment: string = ""; //комментарий к частичной сдаче заказов
   public schedule = Boolean(this.settings.rules.schedule);
   public isShowSchedule: boolean = false;
   public isGoToWork: boolean = false;
@@ -129,7 +130,7 @@ export class BalancePage implements OnInit {
 
   ngOnInit() {
     this.schedule = Boolean(this.settings.rules.schedule);
-    this.courier.getBalance(this.auth.userId, 1).subscribe((data: any) => {
+    this.courier.getBalance(Number(this.auth.userId), 1).subscribe((data: any) => {
       this.firebase.setUserProperty('courier', data.name);
       this.courier.ordersInfo = data.res_more;
       this.courier.count_orders(data.res_more);
@@ -153,7 +154,7 @@ export class BalancePage implements OnInit {
     })
   }
 
-  public getInfo(sync_id) {
+  public getInfo(sync_id: number) {
     var self = this;
 
     this.courier.getBalance(sync_id).subscribe((data: any) => {
@@ -175,11 +176,11 @@ export class BalancePage implements OnInit {
     console.log('sys::cashOut() !openBtn && !failsOrder', !this.openBtn && !this.failsOrder);
   }
 
-  public sendCash(photo) {
+  public sendCash(photo: string) {
     this.loader = true;
 
     const url = 'orders';
-    let data = { 'action': 'cashout', 'sum': this.info.sumNal, 'image': photo };
+    let data = { 'action': 'cashout', 'sum': this.info.sumNal, 'image': photo, 'isFull': '', 'ordersCount': 0, 'comment': '', 'ordersComment': '' };
 
     if (this.commentText != '' && this.commentText) {
       data['isFull'] = '0';
@@ -241,7 +242,7 @@ export class BalancePage implements OnInit {
     });
   }
 
-  public async cashoutResult(result) {
+  public async cashoutResult(result: boolean) {
 
     if (result) {
       const alert = await this.alert.create({
@@ -264,7 +265,7 @@ export class BalancePage implements OnInit {
     }
   }
 
-  public answer(isFull) {
+  public answer(isFull: boolean) {
     console.log('sys:: answer');
     if (!isFull && (!this.commentText || this.commentText == '')) {
       this.commentError = true;
@@ -284,7 +285,7 @@ export class BalancePage implements OnInit {
     }
   }
 
-  public fo_answer(flag) {
+  public fo_answer(flag: boolean) {
 
     if (!this.failsOrderNotFull) {
       if (flag) {
@@ -316,7 +317,7 @@ export class BalancePage implements OnInit {
   }
 
 
-  public sendReview(text) {
+  public sendReview(text: String) {
     this.loader = true;
     let url = 'orders';
     let data = {

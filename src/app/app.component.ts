@@ -87,7 +87,7 @@ export class AppComponent {
 
   }
 
-  public navTo(index) {
+  public navTo(index: number) {
     switch (index) {
       case 1:
         this.router.navigate(["balance"]);

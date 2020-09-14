@@ -10,7 +10,7 @@ import { DrawPage } from '../../pages/draw/draw.page';
 export class DeliveredComponent implements OnInit {
   public root = DeliveredComponent;
   public commentText: string;
-  @Input() goods;
+  @Input() goods: any[];
   public drawNeedle: boolean = true;
   public selectedPayment: string = '1';
   public email_input: string = ''
@@ -35,7 +35,7 @@ export class DeliveredComponent implements OnInit {
     this.modalController.dismiss(details);
   }
 
-  public selectPayment(id) {
+  public selectPayment(id: string) {
     this.selectedPayment = id;
   }
 

@@ -56,8 +56,7 @@ export class SettingsService {
 
   //Получение настроек с сервака
   //@cid - id курьера
-  public getSettings(cid) {
-    let self = this;
+  public getSettings(cid: string) {
     let data = {
       cid: cid
     }

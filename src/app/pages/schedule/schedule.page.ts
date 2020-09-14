@@ -1,6 +1,6 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { formatDate } from '@angular/common';
 import { SysService } from 'src/app/services/sys.service';
 @Component({
   selector: 'app-schedule',
@@ -9,41 +9,41 @@ import { SysService } from 'src/app/services/sys.service';
 })
 export class SchedulePage implements OnInit {
 
-    public workDates: Array<string> = [];
-    public notWorkRules = {};
-    public nonWorkDates: Array<any> = [];
+  public workDates: Array<string> = [];
+  public notWorkRules: { [key: string]: string } = {};
+  public nonWorkDates: Array<any> = [];
 
   constructor(
     public alertController: AlertController,
     private sys: SysService
-    ) { }
+  ) { }
 
   ngOnInit() {
-    this.sys.getNotWorkRules().subscribe((data) => {
+    this.sys.getNotWorkRules().subscribe((data: any) => {
       this.notWorkRules = data;
     })
   }
-    //Добавление рабочей даты курьера
-  public addWorkDate(workDate) {
+  //Добавление рабочей даты курьера
+  public addWorkDate(workDate: any) {
     workDate = workDate.el.value.replace('T', ' ').substr('', 19);
-    let onConfirm = ()=>{this.workDates.push(workDate)};
-    let datePresent:(Date|string) = new Date (workDate);
-    datePresent = formatDate(datePresent,'d.MM.yyyy','ru');
-    
+    let onConfirm = () => { this.workDates.push(workDate) };
+    let datePresent: (Date | string) = new Date(workDate);
+    datePresent = formatDate(datePresent, 'd.MM.yyyy', 'ru');
+
     this.presentAlertConfirm(datePresent, onConfirm);
   }
 
-    //Добавление даты НЕ выхода на работу
-    public addNonWorkDate(date){
-      date = date.el.value.replace('T', ' ').substr('', 10);
-      let datePresent:(Date|string) = new Date (date);
-      datePresent = formatDate(datePresent,'d.MM.yyyy','ru');
-      this.presentAlertRadio(date, this.confirmNonWork);
+  //Добавление даты НЕ выхода на работу
+  public addNonWorkDate(date: any) {
+    date = date.el.value.replace('T', ' ').substr('', 10);
+    let datePresent: (Date | string) = new Date(date);
+    datePresent = formatDate(datePresent, 'd.MM.yyyy', 'ru');
+    this.presentAlertRadio(date);
 
   }
 
 
-async presentAlertConfirm(date: string, confirmHandler:any, index= '') {
+  async presentAlertConfirm(date: string, confirmHandler: any, index = '') {
     const alert = await this.alertController.create({
       cssClass: 'alert',
       header: `Сделать ${date} рабочим днем?`,
@@ -64,18 +64,18 @@ async presentAlertConfirm(date: string, confirmHandler:any, index= '') {
         }
       ]
     });
-     await alert.present();
+    await alert.present();
   }
 
-  public delWorkDate(index,date){
+  public delWorkDate(index: string, date: string) {
     this.presentAlertConfirmDel(date, this.delDate, index)
-    
+
   }
-    public delNonWorkDate(index){
-    this.nonWorkDates.splice(index,1);
+  public delNonWorkDate(index: number) {
+    this.nonWorkDates.splice(index, 1);
   }
 
-  async presentAlertRadio(date, confirmHandler:any) {
+  async presentAlertRadio(date: any) {
     const alert = await this.alertController.create({
       cssClass: 'non-work-alert',
       header: `Укажите причину пропуска ${date}`,
@@ -118,9 +118,9 @@ async presentAlertConfirm(date: string, confirmHandler:any, index= '') {
         }, {
           text: 'Подтвердить',
           handler: (data) => {
-            
+
             console.log('sys:: radio', data);
-            this.confirmNonWork(date ,data);
+            this.confirmNonWork(date, data);
           }
         }
       ]
@@ -129,14 +129,14 @@ async presentAlertConfirm(date: string, confirmHandler:any, index= '') {
     await alert.present();
   }
 
-  confirmNonWork(date,reason){
-    this.nonWorkDates.push({date, reason})
+  confirmNonWork(date: any, reason: unknown) {
+    this.nonWorkDates.push({ date, reason })
   }
 
-  delDate(index){
-    this.workDates.splice(index,1);
+  delDate(index: number) {
+    this.workDates.splice(index, 1);
   }
-  async presentAlertConfirmDel(date: string, confirmHandler:any, index= '') {
+  async presentAlertConfirmDel(date: string, confirmHandler: any, index = '') {
     const alert = await this.alertController.create({
       cssClass: 'alertDel',
       header: `Удалить рабочий день ${date}?`,
@@ -152,12 +152,12 @@ async presentAlertConfirm(date: string, confirmHandler:any, index= '') {
         }, {
           text: 'Подтвердить',
           handler: () => {
-            this.delDate(index);
+            this.delDate(Number(index));
           }
         }
       ]
     });
-     await alert.present();
+    await alert.present();
   }
   public goToWork() {
     this.sys.goToWork(this.workDates).subscribe((data: { success: boolean }) => {

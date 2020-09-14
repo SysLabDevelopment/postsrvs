@@ -444,7 +444,7 @@ const openURL = async (url, ev, direction, animation) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
@@ -506,7 +506,7 @@ class DataService {
         });
     }
     getApiData() {
-        return this.courier.getBalance(this.auth.userId, 1).subscribe((res) => {
+        return this.courier.getBalance(Number(this.auth.userId), 1).subscribe((res) => {
             this.sys.getOrders(res.res_more.map((order) => order.id.toString())).subscribe((resp) => {
                 this.saveOrders(resp.orders).then(() => {
                     this.storage.get('orders').then((orders) => {

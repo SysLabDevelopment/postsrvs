@@ -1,141 +1,126 @@
-.lg-wrp{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.lg-wrp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.lg-btn{
-    min-height: 22%;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.lg-btn {
+  min-height: 22%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.lg-login{
-    outline: none;
-    height: 50px;
-    width: 100%;
-    background: no-repeat;
-    box-shadow: 0 0 1px 1px #bdbdbd;
-    border-radius: 3px;
-    color: #4a4a4a;
-    font-size: 19px;
-    margin: 5px 0;
+.lg-login {
+  outline: none;
+  height: 50px;
+  width: 100%;
+  background: no-repeat;
+  box-shadow: 0 0 1px 1px #bdbdbd;
+  border-radius: 3px;
+  color: #4a4a4a;
+  font-size: 19px;
+  margin: 5px 0;
 }
-.login-phone{
-    overflow: hidden;
-    padding: 0;
-}
-
-.btn-title{
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #4a4a4a;
-    font-size: 19px;
+.login-phone {
+  overflow: hidden;
+  padding: 0;
 }
 
-.btn-wrp{
-    height: 100%;
-    display: grid;
-    grid-template-rows: 50px auto;
+.btn-title {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4a4a4a;
+  font-size: 19px;
 }
 
-.btn-title{
-    height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-wrp {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 50px auto;
 }
 
-.btn-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
+.btn-title {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.error-phone{
-    font-size: 15px;
-    color: #c50000;
+.btn-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
-.phone-inp{
-    margin: 6px 0 0 0;
-    height: 45px;
-    border-radius: 3px;
-    border: none;
-    box-shadow: 0 0 1px 1px #bdbdbd;
-    border-radius: 3px;
-    text-align: center;
+.error-phone {
+  font-size: 15px;
+  color: #c50000;
 }
 
-.btn-open .btn-title{
-    border-bottom: 1px solid #bdbdbd;
+.phone-inp {
+  margin: 6px 0 0 0;
+  height: 45px;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 0 1px 1px #bdbdbd;
+  border-radius: 3px;
+  text-align: center;
 }
 
-.enter-phone{
-    margin: 8px 0 0 0;
-    height: 45px;
-    border-radius: 3px;
-    border: none;
-    background: none;
-    box-shadow: 0 0 1px 1px #bdbdbd;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 20px;
-    width: 100%;
-    color: #2b637e;
-    outline: none;
+.btn-open .btn-title {
+  border-bottom: 1px solid #bdbdbd;
 }
 
-.bi-inp{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 12px 0 0 0;
+.enter-phone {
+  margin: 8px 0 0 0;
+  height: 45px;
+  border-radius: 3px;
+  border: none;
+  background: none;
+  box-shadow: 0 0 1px 1px #bdbdbd;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+  color: #2b637e;
+  outline: none;
 }
 
-.sh-icons{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,0.1);
-    font-size: 35px;
-    color: #2b637e;
+.bi-inp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 12px 0 0 0;
 }
 
-.btn-resend{
-    color: #8d999e;
+.sh-icons {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+  font-size: 35px;
+  color: #2b637e;
 }
 
-.notification{
-    position: fixed;
-    top: 0;
-    left: 0px;
-    right: 0px;
-    background: rgba(192, 26, 26, 0.472);
-    min-height: 30px;
-    color: #d21212;
-    font-size: 15px;
-    z-index: 99;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-resend {
+  color: #8d999e;
 }

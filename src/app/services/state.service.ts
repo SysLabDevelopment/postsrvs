@@ -96,9 +96,6 @@ export class StateService {
   // DATA
   public orders_data: Order[] = null;
   public statuses_data: unknown = null;
-  //NOTIFICATIONS
-  public notifications: Array<string> = [];
-  public notificationStr = null;
   public coords: any;
   public filial: string = '';
   public orderCoordinates(): Observable<any> {
@@ -126,28 +123,6 @@ export class StateService {
         self.statuses_data = st;
       }
     });
-  }
-
-  public setNotification(tag: string, mes: string) {
-    this.notifications[tag] = mes;
-    this.setNotificationStr();
-  }
-
-  public unsetNotification(tag: string) {
-    delete (this.notifications[tag]);
-    this.setNotificationStr();
-  }
-
-  public getNotification(tag: string): string {
-    return this.notifications[tag];
-  }
-
-  private setNotificationStr() {
-    let n_s = "";
-    for (let tag in this.notifications) {
-      n_s += this.notifications[tag];
-    }
-    this.notificationStr = n_s;
   }
 
   //при выходе возвращаем приложение в иходное состояние
@@ -191,7 +166,7 @@ export class StateService {
   }
 
   //Открыть маршрут в навигаторе
-  public intentStart(coordinates) {
+  public intentStart(coordinates: string[]) {
     console.log('sys:: coordinates', coordinates);
     const options = {
       action: this.wi.ACTION_VIEW,
@@ -208,7 +183,7 @@ export class StateService {
   }
 
   //adress - строка с адресом
-  getCoordinates(adress) {
+  getCoordinates(adress: string) {
 
     return this.http.get('https://geocode-maps.yandex.ru/1.x/?apikey=4949ca72-35d9-48b0-892d-72d307850c87&format=json&geocode=' + adress)
 

@@ -39,7 +39,7 @@ export class DrawPage implements OnInit {
 
   }
 
-  handleStart(ev) {
+  handleStart(ev: any) {
 
     this.lastX = ev.touches[0].pageX;
     this.lastY = ev.touches[0].pageY;
@@ -52,7 +52,7 @@ export class DrawPage implements OnInit {
 
   }
 
-  handleMove(ev) {
+  handleMove(ev: any) {
     this.isClear = false;
     this.error_mes = false;
     let ctx = this.canvasElement.getContext('2d');

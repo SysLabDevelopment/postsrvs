@@ -1,7 +1,4 @@
 <ion-content>
-  <div class="notification" *ngIf="state$.notificationStr && state$.notificationStr != ''">
-    {{state$.notificationStr}}
-  </div>
   <div class="lg-wrp">
     <div class="lg-btn">
       <button class="lg-login" [@openClose1]="auth_step ? 'closed' : 'open'" (click)="scanAuth()">

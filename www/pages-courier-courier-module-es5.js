@@ -58,7 +58,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -186,7 +186,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1227,7 +1227,6 @@
             width: '0%'
           };
           this.btn_go = false;
-          this.notification = null;
           this.subBtnCond = true;
           this.scanView = false;
           this.scan_process = false;
@@ -1573,7 +1572,9 @@
             var data = {
               'cid': cid,
               'lt': this.state$.position.getValue().lt,
-              'lg': this.state$.position.getValue().lg
+              'lg': this.state$.position.getValue().lg,
+              'start': '',
+              'stop': ''
             };
 
             if (start) {
@@ -1887,7 +1888,7 @@
 
             while (phone.length > 7) {
               phone = this.normalizePhoneNumber(phone);
-              phones.push(phone.slice("", 11));
+              phones.push(phone.slice(null, 11));
               phone = phone.slice(11);
             }
 

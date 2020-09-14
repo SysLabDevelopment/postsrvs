@@ -12,9 +12,6 @@
 
 <ion-content>
 
-  <span class="cn" *ngIf="state$.notificationStr && state$.notificationStr.length != 0">
-    {{state$.notificationStr}}
-  </span>
   <div class="o-body" *ngIf="info">
     <cdk-virtual-scroll-viewport style="height: 100%;" itemSize="auto">
       <div class="b-row">
