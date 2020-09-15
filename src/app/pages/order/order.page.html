@@ -65,8 +65,8 @@
           </div>
           <div>
             Сумма с клиента:
-            <div class='primary-color bold' *ngIf='order.rur'>
-              {{order.rur.toLocaleString('ru')}} р.
+            <div class='primary-color bold'>
+              {{order.rur?.toLocaleString('ru') || 0}} р.
             </div>
           </div>
           <div>
