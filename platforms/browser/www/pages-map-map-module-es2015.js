@@ -12,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AngularSplitModule", function() { return AngularSplitModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SplitAreaDirective", function() { return SplitAreaDirective; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SplitComponent", function() { return SplitComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
@@ -1653,7 +1653,7 @@ AngularSplitModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderComponent", function() { return OrderComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 
 
 class OrderComponent {
@@ -1701,7 +1701,7 @@ OrderComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapPageModule", function() { return MapPageModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
@@ -1769,7 +1769,7 @@ MapPageModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInje
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapPage", function() { return MapPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/google-maps/ngx */ "./node_modules/@ionic-native/google-maps/ngx/index.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
@@ -1836,7 +1836,6 @@ class MapPage {
         this.out_process = false;
         this.out_counter = 0;
         this.local_stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
-        this.icons = [];
         this.existsGeos = [];
         this.sliderOptions = {
             navigation: {
@@ -1921,9 +1920,6 @@ class MapPage {
                 preferences: {
                     building: false,
                     clickableIcons: true,
-                    padding: {
-                        bottom: 10,
-                    },
                 },
                 controls: {
                     myLocation: true,
@@ -1979,7 +1975,7 @@ class MapPage {
         let markeredOrders = [];
         orders === null || orders === void 0 ? void 0 : orders.forEach((order) => {
             let info = this.createInfoContent(order);
-            this.existsGeos.push([order.lt, order.lg]);
+            this.existsGeos.push([Number(order.lt), Number(order.lg)]);
             markeredOrders.push({
                 "position": {
                     "lat": parseFloat(order.lt),
@@ -2003,7 +1999,7 @@ class MapPage {
                     if (autoStartRoute == "0") {
                         this.storage.get('orders').then((orders) => {
                             if (orders !== null) {
-                                this.orders = orders.filter(order => order.status_id == 1);
+                                this.orders = orders.filter((order) => { return order.status_id == 1; });
                                 this.addCluster(this.markeredOrders(this.orders));
                             }
                         });
@@ -2109,8 +2105,8 @@ class MapPage {
     createInfoContent(order) {
         let sameGeoOrders = this.orders.filter((iOrder) => iOrder.lt == order.lt && iOrder.lg == order.lg);
         let tabsContent = "";
-        let note = localStorage.getItem(order.id)
-            ? localStorage.getItem(order.id)
+        let note = localStorage.getItem(String(order.id))
+            ? localStorage.getItem(String(order.id))
             : "";
         let from = order.datetime_from || "";
         let arrows = sameGeoOrders.length > 1
@@ -2273,14 +2269,13 @@ MapPage.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    } }, directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonContent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitComponent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitAreaDirective"]], styles: ["ion-popover[_ngcontent-%COMP%] {\n  --width: max-content;\n}\n\n.popover[_ngcontent-%COMP%]   .popover-content[_ngcontent-%COMP%] {\n  --width: 90vw;\n  --min-width: max-content;\n}\n\n#map[_ngcontent-%COMP%], #guide[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border: 1px solid white;\n}\n\n.one-order-chip[_ngcontent-%COMP%] {\n  --background:#2b637e;\n  --color:white;\n}\n\n#map[_ngcontent-%COMP%] {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWFwL21hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBUTtBQUNWOztBQUNBO0VBQ0UsYUFBUTtFQUNSLHdCQUFZO0FBRWQ7O0FBQUE7O0VBRUUsV0FBVztFQUNYLFlBQVk7RUFDWix1QkFBdUI7QUFHekI7O0FBREE7RUFDRSxvQkFBYTtFQUNiLGFBQVE7QUFJVjs7QUFGQTtFQUNFLGtCQUFrQjtBQUtwQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21hcC9tYXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXBvcG92ZXIge1xuICAtLXdpZHRoOiBtYXgtY29udGVudDtcbn1cbi5wb3BvdmVyIC5wb3BvdmVyLWNvbnRlbnQge1xuICAtLXdpZHRoOiA5MHZ3O1xuICAtLW1pbi13aWR0aDogbWF4LWNvbnRlbnQ7XG59XG4jbWFwLFxuI2d1aWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG59XG4ub25lLW9yZGVyLWNoaXB7XG4gIC0tYmFja2dyb3VuZDojMmI2MzdlO1xuICAtLWNvbG9yOndoaXRlO1xufVxuI21hcHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuIl19 */"], changeDetection: 0 });
+    } }, directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonContent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitComponent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitAreaDirective"]], styles: ["ion-popover[_ngcontent-%COMP%] {\n  --width: max-content;\n}\n\n.popover[_ngcontent-%COMP%]   .popover-content[_ngcontent-%COMP%] {\n  --width: 90vw;\n  --min-width: max-content;\n}\n\n#map[_ngcontent-%COMP%], #guide[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border: 1px solid white;\n}\n\n.one-order-chip[_ngcontent-%COMP%] {\n  --background:#2b637e;\n  --color:white;\n}\n\n#map[_ngcontent-%COMP%] {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWFwL21hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBUTtBQUNWOztBQUNBO0VBQ0UsYUFBUTtFQUNSLHdCQUFZO0FBRWQ7O0FBQUE7O0VBRUUsV0FBVztFQUNYLFlBQVk7RUFDWix1QkFBdUI7QUFHekI7O0FBREE7RUFDRSxvQkFBYTtFQUNiLGFBQVE7QUFJVjs7QUFGQTtFQUNFLGtCQUFrQjtBQUtwQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21hcC9tYXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXBvcG92ZXIge1xuICAtLXdpZHRoOiBtYXgtY29udGVudDtcbn1cbi5wb3BvdmVyIC5wb3BvdmVyLWNvbnRlbnQge1xuICAtLXdpZHRoOiA5MHZ3O1xuICAtLW1pbi13aWR0aDogbWF4LWNvbnRlbnQ7XG59XG4jbWFwLFxuI2d1aWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG59XG4ub25lLW9yZGVyLWNoaXB7XG4gIC0tYmFja2dyb3VuZDojMmI2MzdlO1xuICAtLWNvbG9yOndoaXRlO1xufVxuI21hcHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuIl19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MapPage, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
                 selector: "app-map",
                 templateUrl: "./map.page.html",
                 styleUrls: ["./map.page.scss"],
-                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectionStrategy"].OnPush
             }]
     }], function () { return [{ type: _services_state_service__WEBPACK_IMPORTED_MODULE_11__["StateService"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: _services_settings_service__WEBPACK_IMPORTED_MODULE_14__["SettingsService"] }, { type: _services_courier_service__WEBPACK_IMPORTED_MODULE_13__["CourierService"] }, { type: _services_sys_service__WEBPACK_IMPORTED_MODULE_15__["SysService"] }, { type: _services_sys_map_service__WEBPACK_IMPORTED_MODULE_16__["MapService"] }, { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"] }, { type: _services_nav_service__WEBPACK_IMPORTED_MODULE_10__["NavService"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["PopoverController"] }, { type: _services_sys_data_service__WEBPACK_IMPORTED_MODULE_12__["DataService"] }, { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] }]; }, null); })();
 

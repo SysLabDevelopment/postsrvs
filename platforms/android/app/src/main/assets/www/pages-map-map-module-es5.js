@@ -2900,7 +2900,7 @@
                     _this16.storage.get('orders').then(function (orders) {
                       if (orders !== null) {
                         _this16.orders = orders.filter(function (order) {
-                          order.status_id == 1;
+                          return order.status_id == 1;
                         });
 
                         _this16.addCluster(_this16.markeredOrders(_this16.orders));

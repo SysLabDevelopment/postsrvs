@@ -368,7 +368,7 @@
 
       var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic-native/network/ngx */
-      "./node_modules/@ionic-native/network/ngx/index.js");
+      "./node_modules/@ionic-native/network/__ivy_ngcc__/ngx/index.js");
       /* harmony import */
 
 
@@ -580,7 +580,7 @@
               console.warn('network connected!');
               cache.getItem('syncRequests').then(function (syncRequests) {
                 syncRequests && syncRequests.forEach(function (syncRequest) {
-                  _this.order.sendDelayedCall(syncRequest.order, syncRequest.status);
+                  _this.order.sendDelayedCall(syncRequest.order, syncRequest.newStatus);
                 });
                 cache.clearGroup('delayedCalls');
               });
@@ -622,6 +622,9 @@
             var self = this;
             this.nav_s.tabNav.subscribe(function (data) {
               self.nav = data;
+            });
+            this.network.onChange().subscribe(function () {
+              return console.log('sys:: Статус сети изменился!');
             });
           }
         }, {
@@ -869,7 +872,7 @@
 
       var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
       /*! @ionic-native/network/ngx */
-      "./node_modules/@ionic-native/network/ngx/index.js");
+      "./node_modules/@ionic-native/network/__ivy_ngcc__/ngx/index.js");
       /* harmony import */
 
 
@@ -2608,7 +2611,7 @@
 
       var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @ionic-native/network/ngx */
-      "./node_modules/@ionic-native/network/ngx/index.js");
+      "./node_modules/@ionic-native/network/__ivy_ngcc__/ngx/index.js");
       /* harmony import */
 
 

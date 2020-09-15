@@ -335,10 +335,6 @@ export class CourierService {
 
   }
 
-  public logout() {
-
-  }
-
 
   /**
    * Ищет заказ в милевском(через 4 круга ада)

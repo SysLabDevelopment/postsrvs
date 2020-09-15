@@ -47,9 +47,9 @@ export class AppComponent {
       }
       this.network.onConnect().subscribe(() => {
         console.warn('network connected!');
-        cache.getItem('syncRequests').then((syncRequests: Array<{ order: Order, status: number }>) => {
+        cache.getItem('syncRequests').then((syncRequests: Array<{ order: Order, newStatus: number }>) => {
           syncRequests && syncRequests.forEach((syncRequest) => {
-            this.order.sendDelayedCall(syncRequest.order, syncRequest.status);
+            this.order.sendDelayedCall(syncRequest.order, syncRequest.newStatus);
           });
           cache.clearGroup('delayedCalls');
         })
@@ -84,6 +84,7 @@ export class AppComponent {
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
     });
+    this.network.onChange().subscribe(() => console.log('sys:: Статус сети изменился!'))
 
   }
 

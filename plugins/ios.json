@@ -71,6 +71,9 @@
     },
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "flexcore.postsrvs.w"
     }
   },
   "dependent_plugins": {

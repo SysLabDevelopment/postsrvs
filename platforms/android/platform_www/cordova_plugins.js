@@ -63,15 +63,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-inappbrowser.inappbrowser",
-      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-      "pluginId": "cordova-plugin-inappbrowser",
-      "clobbers": [
-        "cordova.InAppBrowser.open",
-        "window.open"
-      ]
-    },
-    {
       "id": "call-number.CallNumber",
       "file": "plugins/call-number/www/CallNumber.js",
       "pluginId": "call-number",
@@ -179,14 +170,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-appversion",
       "clobbers": [
         "AppVersion"
-      ]
-    },
-    {
-      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
-      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
-      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
-      "clobbers": [
-        "FCM"
       ]
     },
     {
@@ -443,6 +426,23 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "FirebasePlugin"
       ]
+    },
+    {
+      "id": "cordova-plugin-network-information.network",
+      "file": "plugins/cordova-plugin-network-information/www/network.js",
+      "pluginId": "cordova-plugin-network-information",
+      "clobbers": [
+        "navigator.connection",
+        "navigator.network.connection"
+      ]
+    },
+    {
+      "id": "cordova-plugin-network-information.Connection",
+      "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+      "pluginId": "cordova-plugin-network-information",
+      "clobbers": [
+        "Connection"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -454,7 +454,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-uniquedeviceid": "1.3.2",
     "com-darryncampbell-cordova-plugin-intent": "2.0.0",
-    "cordova-plugin-inappbrowser": "3.2.0",
     "call-number": "0.0.2",
     "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-camera": "4.1.0",
@@ -468,10 +467,10 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-appversion": "1.0.0",
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-fcm-with-dependecy-updated": "7.1.1",
     "cordova-androidx-build": "1.0.4",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-firebasex": "10.2.0-cli"
+    "cordova-plugin-firebasex": "10.2.0-cli",
+    "cordova-plugin-network-information": "2.0.2"
   };
 });

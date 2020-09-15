@@ -1999,7 +1999,7 @@ class MapPage {
                     if (autoStartRoute == "0") {
                         this.storage.get('orders').then((orders) => {
                             if (orders !== null) {
-                                this.orders = orders.filter((order) => { order.status_id == 1; });
+                                this.orders = orders.filter((order) => { return order.status_id == 1; });
                                 this.addCluster(this.markeredOrders(this.orders));
                             }
                         });

@@ -10,13 +10,13 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 13
+              "count": 14
             }
           ],
           "NSCameraUsageDescription": [
             {
               "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 13
+              "count": 14
             }
           ],
           "UIBackgroundModes": [],
@@ -212,6 +212,10 @@
             {
               "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -302,6 +306,9 @@
     },
     "cordova-plugin-androidx": {
       "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "flexcore.postsrvs.w"
     }
   },
   "dependent_plugins": {},
@@ -750,6 +757,23 @@
       "clobbers": [
         "cordova.plugins.barcodeScanner"
       ]
+    },
+    {
+      "id": "cordova-plugin-network-information.network",
+      "file": "plugins/cordova-plugin-network-information/www/network.js",
+      "pluginId": "cordova-plugin-network-information",
+      "clobbers": [
+        "navigator.connection",
+        "navigator.network.connection"
+      ]
+    },
+    {
+      "id": "cordova-plugin-network-information.Connection",
+      "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+      "pluginId": "cordova-plugin-network-information",
+      "clobbers": [
+        "Connection"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -776,6 +800,7 @@
     "cordova.plugins.diagnostic": "5.0.2",
     "es6-promise-plugin": "4.2.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
-    "cordova-plugin-androidx": "2.0.0"
+    "cordova-plugin-androidx": "2.0.0",
+    "cordova-plugin-network-information": "2.0.2"
   }
 }

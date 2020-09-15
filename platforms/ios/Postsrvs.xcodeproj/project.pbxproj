@@ -103,6 +103,8 @@
 		FCA0B153CED04E94B638670F /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E4951319644F17B46B8E71 /* CDVWKWebViewUIDelegate.m */; };
 		FE24908BF6AF4C9D99C1DEEE /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A18F6C603A4BDD807E5087 /* GoogleMapsCore.framework */; };
 		FE664B2EE4DD4689AD51F7C4 /* UIImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C116D62F7E495F926B5936 /* UIImageCache.m */; };
+		2CE9D585B28145A3B7DB5F36 /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A6E8A4336347AA9359D9C2 /* CDVConnection.m */; };
+		02146A8CF8C140DFBE84D832 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E4A13EDA39455798F7C2E9 /* CDVReachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -292,6 +294,10 @@
 		FE2B77122FC94214935BD0E6 /* PluginGroundOverlay.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = PluginGroundOverlay.m; path = "cordova-plugin-googlemaps/PluginGroundOverlay.m"; sourceTree = "<group>"; };
 		FF77854F95904E8195E9A8B2 /* CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FFC1A595111742319BF30999 /* CDVCamera.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVCamera.h; path = "cordova-plugin-camera/CDVCamera.h"; sourceTree = "<group>"; };
+		20A6E8A4336347AA9359D9C2 /* CDVConnection.m */ = {isa = PBXFileReference; name = "CDVConnection.m"; path = "cordova-plugin-network-information/CDVConnection.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		F1E4A13EDA39455798F7C2E9 /* CDVReachability.m */ = {isa = PBXFileReference; name = "CDVReachability.m"; path = "cordova-plugin-network-information/CDVReachability.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		AB180E1FB9D342BBA9A0C0A7 /* CDVConnection.h */ = {isa = PBXFileReference; name = "CDVConnection.h"; path = "cordova-plugin-network-information/CDVConnection.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		571062A4324A4B02A5827C74 /* CDVReachability.h */ = {isa = PBXFileReference; name = "CDVReachability.h"; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -568,6 +574,10 @@
 				9728A95DE8DC4B81B873D2A0 /* Diagnostic.h */,
 				75AD5EEE652743AD921CBA13 /* Diagnostic_Location.h */,
 				EA20FC4ADC4940DFA0B9E94A /* CDVBarcodeScanner.mm */,
+				20A6E8A4336347AA9359D9C2 /* CDVConnection.m */,
+				F1E4A13EDA39455798F7C2E9 /* CDVReachability.m */,
+				AB180E1FB9D342BBA9A0C0A7 /* CDVConnection.h */,
+				571062A4324A4B02A5827C74 /* CDVReachability.h */,
 			);
 			name = Plugins;
 			path = Postsrvs/Plugins;
@@ -787,6 +797,8 @@
 				3753ECEC4E88426C97DC3D88 /* Diagnostic.m in Sources */,
 				18B22D7715E7447295FEF7C9 /* Diagnostic_Location.m in Sources */,
 				997DD39173EF45E0B8E03405 /* CDVBarcodeScanner.mm in Sources */,
+				2CE9D585B28145A3B7DB5F36 /* CDVConnection.m in Sources */,
+				02146A8CF8C140DFBE84D832 /* CDVReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,7 +842,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = flexcore.postsrvs.w;
+				PRODUCT_BUNDLE_IDENTIFIER = postsrvs.i;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -864,7 +876,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = flexcore.postsrvs.w;
+				PRODUCT_BUNDLE_IDENTIFIER = postsrvs.i;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

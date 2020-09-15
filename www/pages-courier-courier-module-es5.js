@@ -210,7 +210,7 @@
 
       var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @ionic-native/network/ngx */
-      "./node_modules/@ionic-native/network/ngx/index.js");
+      "./node_modules/@ionic-native/network/__ivy_ngcc__/ngx/index.js");
       /* harmony import */
 
 
