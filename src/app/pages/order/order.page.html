@@ -48,8 +48,9 @@
       <ion-label>
         <div class='flex main-info'>
           <div>
-            Имя: <span class='bold'>{{order.client_fio}} </span><br>
-            Компания: <span class='bold'>{{order.client_name}} </span>
+            Имя: <span class='bold'>{{order.client_fio}} </span><br />
+            Компания: <span class='bold'>{{order.client_name}} </span><br />
+            Отдел: <span class='bold'>{{order.Podrazd}} </span>
           </div>
           <div>
             Робот прозвон:
@@ -250,8 +251,8 @@
 
     <div class="sc-s-wrp">
       <button class="sc-submit" (click)="doneOrder()" *ngIf="selectedStatus"
-        [ngClass]="{'c_t_del'   : selectedStatus == 5 || selectedStatus == 6}">
-        <span *ngIf="selectedStatus == 5 || selectedStatus == 6" class="l_btn_del">Доставлено</span>
+        [ngClass]="{'c_t_del'   : selectedStatus == 6}">
+        <span *ngIf="selectedStatus == 6" class="l_btn_del">Доставлено</span>
       </button>
     </div>
   </div>

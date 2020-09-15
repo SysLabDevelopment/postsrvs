@@ -1,126 +1,126 @@
 [
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-ldpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxhdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_camera_provider_paths.xml.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/xml/camera_provider_paths.xml"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-mdpi_notification_icon.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-mdpi/notification_icon.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_provider_paths.xml.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/xml/provider_paths.xml"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-hdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxhdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxhdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi_notification_icon.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-hdpi/notification_icon.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_provider_paths.xml.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/xml/provider_paths.xml"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xhdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-mdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_network_security_config.xml.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/xml/network_security_config.xml"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-hdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/layout_dummy_infowindow.xml.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/layout/dummy_infowindow.xml"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable_dummy_my_location_button.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable/dummy_my_location_button.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-hdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable_dummy_my_location_button.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable/dummy_my_location_button.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_network_security_config.xml.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/xml/network_security_config.xml"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-ldpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi_notification_icon.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-hdpi/notification_icon.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-ldpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_notification_icon.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-xxxhdpi/notification_icon.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_camera_provider_paths.xml.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/xml/camera_provider_paths.xml"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_config.xml.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/xml/config.xml"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_notification_icon.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-xxhdpi/notification_icon.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_notification_icon.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-xxxhdpi/notification_icon.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xhdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxxhdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-ldpi_ic_launcher.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/mipmap-ldpi/ic_launcher.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_notification_icon.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-xxhdpi/notification_icon.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xhdpi_notification_icon.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-xhdpi/notification_icon.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap_icon.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/mipmap/icon.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxhdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-mdpi_notification_icon.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-mdpi/notification_icon.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-xhdpi_notification_icon.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-xhdpi/notification_icon.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-mdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-ldpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-hdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xhdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable_dummy_mylocation_button_shadow.xml.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable/dummy_mylocation_button_shadow.xml"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxxhdpi_screen.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap_icon.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/mipmap/icon.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable_dummy_mylocation_button_shadow.xml.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/drawable/dummy_mylocation_button_shadow.xml"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xhdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/mipmap-ldpi_ic_launcher.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/mipmap-ldpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/layout_dummy_infowindow.xml.flat",
-        "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/layout/dummy_infowindow.xml"
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_config.xml.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/xml/config.xml"
     }
 ]

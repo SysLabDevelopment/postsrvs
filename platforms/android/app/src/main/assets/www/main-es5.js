@@ -5560,7 +5560,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! /Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/src/main.ts */
+      /*! /Users/timkovik/Documents/postsrvs/src/main.ts */
       "./src/main.ts");
       /***/
     }

@@ -40,7 +40,6 @@
     "@ionic-native/core": "^5.27.0",
     "@ionic-native/device": "^5.22.0",
     "@ionic-native/diagnostic": "^5.23.0",
-    "@ionic-native/fcm": "^5.28.0",
     "@ionic-native/firebase-x": "^5.28.0",
     "@ionic-native/geolocation": "^5.22.0",
     "@ionic-native/google-maps": "^5.27.0-beta-20200630",

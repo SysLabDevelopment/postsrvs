@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-de/values-de.xml",
+            "outputFile": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-de/values-de.xml",
             "map": [
                 {
                     "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/8b967124605341d77efe9df8073cb25a/jetified-play-services-base-17.1.0/res/values-de/values.xml",
@@ -74,7 +74,24 @@
                     }
                 },
                 {
-                    "source": "/Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/platforms/android/app/src/main/res/values-de/pgm_strings.xml",
+                    "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/res/values-de/values-de.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "226",
+                        "startColumns": "4",
+                        "startOffsets": "20395",
+                        "endColumns": "100",
+                        "endOffsets": "20491"
+                    }
+                },
+                {
+                    "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/values-de/pgm_strings.xml",
                     "from": {
                         "startLines": "3,19,2,5,4,6,7,8,9,10,11,12,14,15,18,16,17",
                         "startColumns": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
@@ -90,23 +107,6 @@
                         "endLines": "154,155,156,157,158,159,160,161,162,163,164,166,167,168,169,170,171",
                         "endColumns": "134,121,61,219,142,150,152,189,168,193,233,9,194,214,105,141,99",
                         "endOffsets": "13409,13531,13593,13813,13956,14107,14260,14450,14619,14813,15047,15221,15416,15631,15737,15879,15979"
-                    }
-                },
-                {
-                    "source": "/Users/timkovik/.gradle/caches/transforms-2/files-2.1/57b7f42ffa61e27821b7c87274482ce6/core-1.1.0/res/values-de/values-de.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "226",
-                        "startColumns": "4",
-                        "startOffsets": "20395",
-                        "endColumns": "100",
-                        "endOffsets": "20491"
                     }
                 },
                 {

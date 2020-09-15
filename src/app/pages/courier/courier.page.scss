@@ -170,6 +170,10 @@ ion-item.overdue {
     .orders-lable {
       font-weight: bolder;
       display: flex;
+      & > div {
+        white-space: nowrap;
+        flex: 1 1 30%;
+      }
       span {
         color: #585454;
       }

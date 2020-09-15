@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, Component,
+  Component,
   OnInit
 } from "@angular/core";
 import { Router } from "@angular/router";
@@ -40,7 +40,7 @@ declare var AppVersion: { version: string };
   selector: "app-map",
   templateUrl: "./map.page.html",
   styleUrls: ["./map.page.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapPage implements OnInit {
   map: GoogleMap;
@@ -161,9 +161,9 @@ export class MapPage implements OnInit {
       preferences: {
         building: false,
         clickableIcons: true,
-        padding: {
-          bottom: 10,
-        },
+        // padding: {
+        //   bottom: 10,
+        // },
       },
       controls: {
         myLocation: true,
@@ -249,7 +249,7 @@ export class MapPage implements OnInit {
           if (autoStartRoute == "0") {
             this.storage.get('orders').then((orders) => {
               if (orders !== null) {
-                this.orders = orders.filter((order: Order) => { order.status_id == 1 });
+                this.orders = orders.filter((order: Order) => { return order.status_id == 1 });
                 this.addCluster(this.markeredOrders(this.orders));
               }
 

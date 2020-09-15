@@ -3292,7 +3292,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/timkovik/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/postsrvs/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/timkovik/Documents/postsrvs/src/main.ts */"./src/main.ts");
 
 
 /***/ })
