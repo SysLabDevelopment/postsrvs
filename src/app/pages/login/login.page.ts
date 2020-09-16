@@ -257,7 +257,7 @@ export class LoginPage implements OnInit {
       self.dis_timer--;
       if (self.dis_timer == 0) {
         self.dis_timer = null;
-        self.$stopTimer.next();
+        self.$stopTimer.next(null);
         self.resend_dis = false;
       }
     });

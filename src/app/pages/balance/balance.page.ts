@@ -140,7 +140,7 @@ export class BalancePage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.local_stop$.next();
+    this.local_stop$.next(null);
   }
 
 

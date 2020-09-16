@@ -21,7 +21,7 @@ export class NoteComponent implements OnInit {
   }
   public saveNote() {
     localStorage.setItem(this.orderId, this.note);
-    this.sysMap.infoUpdated.next();
+    this.sysMap.infoUpdated.next(null);
     this.viewCtrl.dismiss();
   }
 }

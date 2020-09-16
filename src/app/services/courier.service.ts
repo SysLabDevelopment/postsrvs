@@ -82,7 +82,7 @@ export class CourierService {
       this.auth.sendPost(url, data).subscribe((resp) => {
         if (resp.success == 'true') {
           self.state$.manual_route = resp.mode == 'fullHand' ? true : false;
-          self.state$.updateWayInfo.next();
+          self.state$.updateWayInfo.next(null);
         } else {
           self.auth.showError(5);
         }
@@ -381,7 +381,7 @@ export class CourierService {
     this.auth.sendPost(url, data).subscribe((resp: any) => {
       console.log('submit_order_response', resp);
       if (resp.success == 'true') {
-        self.state$.updateWayInfo.next();
+        self.state$.updateWayInfo.next(null);
         ret.next(true);
       } else {
         self.auth.showError(6);

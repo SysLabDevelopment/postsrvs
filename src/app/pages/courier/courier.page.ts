@@ -272,7 +272,7 @@ export class CourierPage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.local_stop$.next();
+    this.local_stop$.next(null);
     this.state$.orders_page_check = false;
   }
 

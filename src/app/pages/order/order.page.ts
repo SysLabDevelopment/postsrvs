@@ -682,7 +682,7 @@ export class OrderPage implements OnInit {
         self.barcode_flag = true;
         self.barcode_url = data.barcode_url;
         self.barcode = data.barcode;
-        self.$codeStop.next();
+        self.$codeStop.next(null);
         self.hide_status = true;
       }
     });
@@ -740,7 +740,7 @@ export class OrderPage implements OnInit {
 
   public saveNote() {
     localStorage.setItem(this.orderId, this.note);
-    this.sysMap.infoUpdated.next();
+    this.sysMap.infoUpdated.next(null);
   }
 
   public tapBlock() {

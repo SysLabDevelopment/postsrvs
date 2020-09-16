@@ -127,7 +127,7 @@ export class StateService {
 
   //при выходе возвращаем приложение в иходное состояние
   public logout() {
-    this.stop$.next();
+    this.stop$.next(null);
     // map
     this.position.next(null);
     this.points.next(null);

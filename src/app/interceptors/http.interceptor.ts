@@ -41,7 +41,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     let response = new Subject();
     if (this.network.type !== 'none') {
       this.cache.removeItem(cacheKey).then(() => {
-        response.next()
+        response.next(null)
       })
     }
     return this.cache.loadFromObservable(cacheKey, req).pipe(
