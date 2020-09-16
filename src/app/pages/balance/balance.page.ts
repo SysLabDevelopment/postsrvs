@@ -336,10 +336,6 @@ export class BalancePage implements OnInit {
     });
   }
 
-  public navToSettings() {
-    this.sysMap.navigate(['/about']);
-  }
-
   public showSchedule() {
     this.router.navigate(['schedule']);
   }

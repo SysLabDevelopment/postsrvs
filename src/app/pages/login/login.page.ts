@@ -17,7 +17,6 @@ import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
 import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
-declare var AppVersion: { version: string, build: number };
 
 @Component({
   selector: 'app-login',
@@ -89,7 +88,6 @@ export class LoginPage implements OnInit {
       if (readySource == 'android') {
         this.AP.requestPermission(this.AP.PERMISSION.ACCESS_FINE_LOCATION);
       }
-      this.auth.version = AppVersion.version;
       this.auth.checkAuth().subscribe((data: any) => {
         if (data.success == 'true') {
           this.auth.setUser(data.sync_id);

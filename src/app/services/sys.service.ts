@@ -140,13 +140,11 @@ export class SysService {
   }
 
   //Проверка на авторизованность
-  //@appVersion - версия приложения
-  public checkAuth(appVersion = '') {
+  public checkAuth() {
     const url = `${this.proxy}https://mobile.postsrvs.ru/mobile/orders`;
     let data = {
       "action": "checkAuth",
-      "uuid": this.device.uuid,
-      'appVersion': appVersion
+      "uuid": this.device.uuid
     }
     if (localStorage.debug == 'true') {
       data['uuid'] = '6b356755575fce31';

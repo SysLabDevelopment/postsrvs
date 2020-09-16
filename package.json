@@ -28,13 +28,11 @@
     "@babel/plugin-proposal-decorators": "^7.10.1",
     "@capacitor/android": "^1.5.1",
     "@capacitor/core": "1.5.1",
-    "@capacitor/ios": "^1.5.1",
     "@google/markerclusterer": "^2.0.8",
     "@google/markerclustererplus": "^5.0.4",
     "@google/markerwithlabel": "^1.2.12",
     "@googlemaps/markermanager": "0.0.6",
     "@ionic-native/android-permissions": "^5.22.0",
-    "@ionic-native/app-version": "^5.22.0",
     "@ionic-native/barcode-scanner": "^5.26.0",
     "@ionic-native/call-number": "^5.22.0",
     "@ionic-native/camera": "^5.22.0",
@@ -60,14 +58,12 @@
     "call-number": "1.0.1",
     "com-darryncampbell-cordova-plugin-intent": "2.0.0",
     "cordova-androidx-build": "^1.0.4",
-    "cordova-browser": "6.0.0",
     "cordova-ios": "6.1.1",
     "cordova-lib": "^10.0.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-androidx": "2.0.0",
     "cordova-plugin-androidx-adapter": "^1.1.1",
-    "cordova-plugin-appversion": "^1.0.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-firebasex": "10.2.0-cli",
     "cordova-plugin-geolocation": "4.0.2",
@@ -178,7 +174,6 @@
       "cordova-plugin-androidx-adapter": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-appversion": {},
       "cordova-plugin-googlemaps": {
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
@@ -186,7 +181,6 @@
       "cordova-plugin-network-information": {}
     },
     "platforms": [
-      "browser",
       "android",
       "ios"
     ]

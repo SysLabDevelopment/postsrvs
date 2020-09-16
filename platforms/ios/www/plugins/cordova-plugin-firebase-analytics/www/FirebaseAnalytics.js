@@ -1,5 +1,4 @@
-cordova.define("cordova-plugin-firebase-analytics.FirebaseAnalytics", function(require, exports, module) {
-var exec = require("cordova/exec");
+cordova.define("cordova-plugin-firebase-analytics.FirebaseAnalytics", function(require, exports, module) { var exec = require("cordova/exec");
 var PLUGIN_NAME = "FirebaseAnalytics";
 
 module.exports = {

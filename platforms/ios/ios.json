@@ -10,13 +10,13 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 14
+              "count": 15
             }
           ],
           "NSCameraUsageDescription": [
             {
               "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 14
+              "count": 15
             }
           ],
           "UIBackgroundModes": [],
@@ -67,10 +67,6 @@
           "/*": [
             {
               "xml": "<feature name=\"CallNumber\"><param name=\"ios-package\" value=\"CFCallNumber\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"RareloopAppVersion\"><param name=\"ios-package\" value=\"RareloopAppVersion\" /></feature>",
               "count": 1
             },
             {
@@ -251,9 +247,6 @@
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-appversion": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "postsrvs.i"
     },
@@ -335,14 +328,6 @@
       "pluginId": "cordova-plugin-android-permissions",
       "clobbers": [
         "cordova.plugins.permissions"
-      ]
-    },
-    {
-      "id": "cordova-plugin-appversion.RareloopAppVersion",
-      "file": "plugins/cordova-plugin-appversion/www/app-version.js",
-      "pluginId": "cordova-plugin-appversion",
-      "clobbers": [
-        "AppVersion"
       ]
     },
     {
@@ -783,7 +768,6 @@
     "cordova-androidx-build": "1.0.4",
     "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-device": "2.0.3",
     "cordova-plugin-geolocation": "4.0.2",

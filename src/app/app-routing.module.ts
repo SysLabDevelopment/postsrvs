@@ -10,12 +10,7 @@ const routes: Routes = [
   { path: 'order/:id', loadChildren: () => import('./pages/order/order.module').then(m => m.OrderPageModule), pathMatch: 'full' },
   { path: 'map', loadChildren: () => import('./pages/map/map.module').then(m => m.MapPageModule), canActivate: [AuthGuard] },
   { path: 'schedule', loadChildren: () => import('./pages/schedule/schedule.module').then(m => m.SchedulePageModule) },
-  { path: 'settings', redirectTo: 'about' },
   { path: 'draw', loadChildren: () => import('./pages/draw/draw.module').then(m => m.DrawPageModule) },
-  {
-    path: 'about',
-    loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule)
-  },
   { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestPageModule) },
 ];
 

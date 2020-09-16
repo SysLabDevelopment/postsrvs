@@ -25,14 +25,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-appversion.RareloopAppVersion",
-      "file": "plugins/cordova-plugin-appversion/www/app-version.js",
-      "pluginId": "cordova-plugin-appversion",
-      "clobbers": [
-        "AppVersion"
-      ]
-    },
-    {
       "id": "cordova-plugin-camera.Camera",
       "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
       "pluginId": "cordova-plugin-camera",
@@ -470,7 +462,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-androidx-build": "1.0.4",
     "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-appversion": "1.0.0",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-device": "2.0.3",
     "cordova-plugin-geolocation": "4.0.2",

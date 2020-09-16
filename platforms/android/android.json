@@ -171,10 +171,6 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"RareloopAppVersion\"><param name=\"android-package\" value=\"com.rareloop.cordova.appversion.RareloopAppVersion\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<preference name=\"xwalkZOrderOnTop\" value=\"true\" />",
               "count": 1
             },
@@ -367,7 +363,7 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<application android:usesCleartextTraffic=\"true\" />",
+              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
               "count": 2,
               "mode": "merge",
               "id": "config.xml",
@@ -381,7 +377,7 @@
               }
             },
             {
-              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
+              "xml": "<application android:usesCleartextTraffic=\"true\" />",
               "count": 1,
               "mode": "merge",
               "id": "config.xml",
@@ -455,9 +451,6 @@
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-appversion": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "com.googlemaps.ios": {
@@ -660,14 +653,6 @@
       "pluginId": "cordova-plugin-splashscreen",
       "clobbers": [
         "navigator.splashscreen"
-      ]
-    },
-    {
-      "id": "cordova-plugin-appversion.RareloopAppVersion",
-      "file": "plugins/cordova-plugin-appversion/www/app-version.js",
-      "pluginId": "cordova-plugin-appversion",
-      "clobbers": [
-        "AppVersion"
       ]
     },
     {
@@ -962,7 +947,6 @@
     "phonegap-plugin-barcodescanner": "8.1.0",
     "cordova-sqlite-storage": "5.0.1",
     "cordova-plugin-splashscreen": "6.0.0",
-    "cordova-plugin-appversion": "1.0.0",
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-androidx-build": "1.0.4",

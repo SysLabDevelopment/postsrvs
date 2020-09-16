@@ -117,9 +117,6 @@
         <param name="android-package" value="cordova.plugins.Diagnostic_Location" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="RareloopAppVersion">
-        <param name="android-package" value="com.rareloop.cordova.appversion.RareloopAppVersion" />
-    </feature>
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ps@psvs.com" href="http://psvs.com/">Psvs Team</author>

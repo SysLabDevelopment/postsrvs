@@ -34,7 +34,6 @@ import { SettingsService } from "./../../services/settings.service";
 import { SysService } from "./../../services/sys.service";
 import { MapService } from "./../../services/sys/map.service";
 
-declare var AppVersion: { version: string };
 @Component({
   selector: "app-map",
   templateUrl: "./map.page.html",
@@ -176,7 +175,7 @@ export class MapPage implements OnInit {
       },
     };
     this.map = await this.sysMap.attachMap("map", options);
-    this.sys.checkAuth(AppVersion.version).subscribe((res: Response) => {
+    this.sys.checkAuth().subscribe((res: Response) => {
       if (res.success == "false") {
         this.logout();
       } else {
@@ -298,7 +297,7 @@ export class MapPage implements OnInit {
   }
 
   initContent() {
-    this.sys.checkAuth(AppVersion.version).subscribe((res: Response) => {
+    this.sys.checkAuth().subscribe((res: Response) => {
       if (res.sync_id !== undefined) {
         this.settings.getSettings(res.sync_id as string);
         this.auth.setUser(res.sync_id as string);

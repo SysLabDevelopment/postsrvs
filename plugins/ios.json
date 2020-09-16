@@ -22,9 +22,6 @@
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-appversion": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "postsrvs.i"
     },

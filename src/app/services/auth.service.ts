@@ -21,7 +21,6 @@ export class AuthService {
   barcodeScannerOptions: BarcodeScannerOptions;
   public checkState: string = undefined; //Состояние чекнутости на складе
   public routingModeAuto: boolean;
-  public version: string = undefined; // версия приложения
   public isDebug: boolean = false; //Нужна в случае хардкодной отладки нативных функций
   public userId: string;
   public pay_access: boolean;
@@ -61,8 +60,7 @@ export class AuthService {
     const url = 'orders';
     let data = {
 
-      'action': 'checkAuth',
-      'appVersion': this.version || ''
+      'action': 'checkAuth'
     }
 
     return this.sendPost(url, data);

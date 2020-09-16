@@ -15,7 +15,6 @@ import { SettingsService } from "./services/settings.service";
 import { StateService } from './services/state.service';
 import { SysService } from './services/sys.service';
 import { OrderService } from './services/sys/order.service';
-declare var AppVersion: { version: string };
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
