@@ -3633,10 +3633,7 @@
             var old_val = self.state$.load_lvl.getValue();
             self.state$.load_lvl.next(old_val + 1.7);
           });
-          var self = this;
-          this.state$.stop$.subscribe(function () {
-            self.logout();
-          }); //обновляем заказы по запросу
+          var self = this; //обновляем заказы по запросу
 
           this.state$.updateWayInfo.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.state$.stop$)).subscribe(function () {
             self.updateOrders();
@@ -3945,9 +3942,6 @@
               }]);
             }
           }
-        }, {
-          key: "logout",
-          value: function logout() {}
           /**
            * Ищет заказ в милевском(через 4 круга ада)
            * Возвращает adress_code
@@ -4110,12 +4104,9 @@
       }();
 
       CourierService.ɵfac = function CourierService_Factory(t) {
-        return new (t || CourierService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_state_service__WEBPACK_IMPORTED_MODULE_7__["StateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_settings_service__WEBPACK_IMPORTED_MODULE_9__["SettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_8__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ionic_cache__WEBPACK_IMPORTED_MODULE_3__["CacheService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_2__["FirebaseX"]));
+        return new (t || CourierService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_state_service__WEBPACK_IMPORTED_MODULE_7__["StateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_settings_service__WEBPACK_IMPORTED_MODULE_9__["SettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_8__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](ionic_cache__WEBPACK_IMPORTED_MODULE_3__["CacheService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_ionic_native_firebase_x_ngx__WEBPACK_IMPORTED_MODULE_2__["FirebaseX"]));
       };
 
-      CourierService.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({
-        type: CourierService
-      });
       CourierService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
         token: CourierService,
         factory: CourierService.ɵfac,
@@ -4125,8 +4116,6 @@
 
       (function () {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CourierService, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"]
-        }, {
           type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
           args: [{
             providedIn: 'root'

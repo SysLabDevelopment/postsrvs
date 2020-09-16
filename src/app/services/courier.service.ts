@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Directive, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { CacheService } from "ionic-cache";
 import { from, Observable, Subject } from 'rxjs';
@@ -11,7 +11,6 @@ import { StateService } from '../services/state.service';
 import { SysService } from '../services/sys.service';
 import { SettingsService } from './settings.service';
 declare var ymaps: any;
-@Directive()
 @Injectable({
   providedIn: 'root'
 })
@@ -42,10 +41,6 @@ export class CourierService {
     });
 
     var self = this;
-    this.state$.stop$.subscribe(() => {
-
-      self.logout();
-    });
     //обновляем заказы по запросу
     this.state$.updateWayInfo.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
       self.updateOrders();
