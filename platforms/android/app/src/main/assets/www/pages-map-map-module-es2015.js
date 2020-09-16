@@ -1937,6 +1937,9 @@ class MapPage {
                 if (res.success == "false") {
                     this.logout();
                 }
+                else {
+                    this.auth.initLogin(res.sync_id);
+                }
             });
             this.drawData(this.settings.rules.autoStartRoute);
             this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].POI_CLICK).subscribe((params) => {

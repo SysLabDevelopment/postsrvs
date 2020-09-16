@@ -11,7 +11,7 @@
         "type": "MAIN",
         "splits": [],
         "versionCode": 111,
-        "versionName": "1.18.6",
+        "versionName": "1.19.0",
         "outputFile": "app-debug.apk",
         "fullName": "debug",
         "baseName": "debug",

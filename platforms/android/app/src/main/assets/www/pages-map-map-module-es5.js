@@ -2795,6 +2795,8 @@
                       this.sys.checkAuth(AppVersion.version).subscribe(function (res) {
                         if (res.success == "false") {
                           _this13.logout();
+                        } else {
+                          _this13.auth.initLogin(res.sync_id);
                         }
                       });
                       this.drawData(this.settings.rules.autoStartRoute);

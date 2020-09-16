@@ -415,7 +415,7 @@ function AppComponent_div_3_Template(rf, ctx) { if (rf & 1) {
 function AppComponent_ion_button_4_Template(rf, ctx) { if (rf & 1) {
     const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ion-button", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_ion_button_4_Template_ion_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r10); const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.courier.check_to_work(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_ion_button_4_Template_ion_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r10); const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.check_to_work(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " \u0415\u0434\u0443 \u043D\u0430 \u0440\u0430\u0431\u043E\u0442\u0443 ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -503,7 +503,7 @@ class AppComponent {
                 break;
         }
     }
-    check_to_work(cId) {
+    check_to_work(cId = this.auth.userId) {
         this.sys.check_to_work(cId).subscribe((data) => {
             if (data.success == true)
                 this.checkedOnWork = true;
@@ -1808,7 +1808,8 @@ class AuthService {
     login(code) {
         return this.sendPost('auth', code);
     }
-    initLogin() {
+    initLogin(userId) {
+        userId && this.setUser(userId);
         this.state$.g_state.next('login');
         this.state$.map_state.next('init');
     }

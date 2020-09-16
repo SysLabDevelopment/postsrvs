@@ -553,7 +553,7 @@
 
             var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-            return ctx_r9.courier.check_to_work();
+            return ctx_r9.check_to_work();
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " \u0415\u0434\u0443 \u043D\u0430 \u0440\u0430\u0431\u043E\u0442\u0443 ");
@@ -671,9 +671,10 @@
           }
         }, {
           key: "check_to_work",
-          value: function check_to_work(cId) {
+          value: function check_to_work() {
             var _this3 = this;
 
+            var cId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.auth.userId;
             this.sys.check_to_work(cId).subscribe(function (data) {
               if (data.success == true) _this3.checkedOnWork = true;
             });
@@ -3264,7 +3265,8 @@
           }
         }, {
           key: "initLogin",
-          value: function initLogin() {
+          value: function initLogin(userId) {
+            userId && this.setUser(userId);
             this.state$.g_state.next('login');
             this.state$.map_state.next('init');
           }
