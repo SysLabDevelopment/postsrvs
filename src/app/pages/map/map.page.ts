@@ -2,7 +2,6 @@ import {
   Component,
   OnInit
 } from "@angular/core";
-import { Router } from "@angular/router";
 import {
   DirectionsRenderer,
   DirectionsResult,
@@ -74,7 +73,6 @@ export class MapPage implements OnInit {
   constructor(
     public state$: StateService,
     public platform: Platform,
-    private router: Router,
     private settings: SettingsService,
     private courier: CourierService,
     private sys: SysService,
@@ -161,9 +159,6 @@ export class MapPage implements OnInit {
       preferences: {
         building: false,
         clickableIcons: true,
-        // padding: {
-        //   bottom: 10,
-        // },
       },
       controls: {
         myLocation: true,
@@ -184,6 +179,8 @@ export class MapPage implements OnInit {
     this.sys.checkAuth(AppVersion.version).subscribe((res: Response) => {
       if (res.success == "false") {
         this.logout();
+      } else {
+        this.auth.initLogin(res.sync_id as string)
       }
     });
 
@@ -372,7 +369,6 @@ export class MapPage implements OnInit {
     let note = localStorage.getItem(String(order.id))
       ? localStorage.getItem(String(order.id))
       : "";
-    let from = order.datetime_from || "";
     let arrows =
       sameGeoOrders.length > 1
         ? `<div class="swiper-button-prev" onClick='this.parentElement.parentElement.parentElement.slidePrev()'></div>

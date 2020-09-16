@@ -104,31 +104,13 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.isCheckedToWork().subscribe((data: { success: boolean, checked: boolean }) => {
-      if (data.checked) {
-        this.courier.checkedOnWork = true
-      }
-    })
-    if (!this.auth.getUserId()) {
-      this.courier.checkedOnWork = true;
-    }
+
     if (localStorage.debug == 'true') {
       this.auth.isDebug = true;
     }
 
   }
 
-  public isCheckedToWork() {
-    const url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php';
-    let data = {
-      "token": "l;sdfjkhglsoapl[",
-      "cId": localStorage.userId
-    }
-    const headers = {
-      'Content-type': 'application/json'
-    }
-    return this.http.post(url, data, { headers: headers });
-  }
   public scanAuth() {
     let self = this;
 

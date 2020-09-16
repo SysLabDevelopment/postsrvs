@@ -70,7 +70,7 @@ export class StateService {
 
   public check_state: boolean = false;
 
-  public g_state: BehaviorSubject<any> = new BehaviorSubject('unLogin');
+  public g_state: BehaviorSubject<string> = new BehaviorSubject('unLogin');
 
   public courier_init: boolean = false;
 

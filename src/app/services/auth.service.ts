@@ -139,10 +139,13 @@ export class AuthService {
     return this.sendPost('auth', code);
   }
 
-  public initLogin() {
+  public initLogin(userId?: string) {
+    userId && this.setUser(userId);
     this.state$.g_state.next('login');
     this.state$.map_state.next('init');
   }
+
+
 
   public logout() {
 

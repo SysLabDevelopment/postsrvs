@@ -514,41 +514,14 @@
         _createClass(LoginPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this2 = this;
-
-            this.isCheckedToWork().subscribe(function (data) {
-              if (data.checked) {
-                _this2.courier.checkedOnWork = true;
-              }
-            });
-
-            if (!this.auth.getUserId()) {
-              this.courier.checkedOnWork = true;
-            }
-
             if (localStorage.debug == 'true') {
               this.auth.isDebug = true;
             }
           }
         }, {
-          key: "isCheckedToWork",
-          value: function isCheckedToWork() {
-            var url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php';
-            var data = {
-              "token": "l;sdfjkhglsoapl[",
-              "cId": localStorage.userId
-            };
-            var headers = {
-              'Content-type': 'application/json'
-            };
-            return this.http.post(url, data, {
-              headers: headers
-            });
-          }
-        }, {
           key: "scanAuth",
           value: function scanAuth() {
-            var _this3 = this;
+            var _this2 = this;
 
             var self = this;
             this.auth.scanData().then(function (data) {
@@ -562,9 +535,9 @@
                 if (data.success == "true") {
                   self.auth.initLogin();
 
-                  _this3.auth.setUser(data.sync_id);
+                  _this2.auth.setUser(data.sync_id);
 
-                  _this3.settings.getSettings(data.sync_id);
+                  _this2.settings.getSettings(data.sync_id);
 
                   self.router.navigate(['map']);
                 } else {
@@ -598,7 +571,7 @@
         }, {
           key: "sendPhone",
           value: function sendPhone() {
-            var _this4 = this;
+            var _this3 = this;
 
             var url = this.sys.proxy + "https://mok.flexcore.ru/client/registerP/";
             var data = "action=registerP&phone=8" + this.phone + "&type=courier";
@@ -607,10 +580,10 @@
               if (res.success == 'true') {
                 self.authStep();
               } else {
-                _this4.showLoginError(4);
+                _this3.showLoginError(4);
               }
             }, function (err) {
-              _this4.showLoginError(3);
+              _this3.showLoginError(3);
             });
             this.startTimer();
           }
@@ -652,7 +625,7 @@
         }, {
           key: "login",
           value: function login(courier) {
-            var _this5 = this;
+            var _this4 = this;
 
             var base = "33dbcda2db5311e39760309e88d17f08," + courier;
             localStorage.setItem('cId', courier);
@@ -663,9 +636,9 @@
             };
             this.auth.login(a_data).subscribe(function (data) {
               if (data.success == "true") {
-                _this5.auth.setUser(data.sync_id);
+                _this4.auth.setUser(data.sync_id);
 
-                _this5.settings.getSettings(data.sync_id);
+                _this4.settings.getSettings(data.sync_id);
 
                 self.router.navigate(['map']);
                 self.auth.initLogin();

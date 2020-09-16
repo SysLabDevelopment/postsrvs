@@ -252,28 +252,9 @@ class LoginPage {
         });
     }
     ngOnInit() {
-        this.isCheckedToWork().subscribe((data) => {
-            if (data.checked) {
-                this.courier.checkedOnWork = true;
-            }
-        });
-        if (!this.auth.getUserId()) {
-            this.courier.checkedOnWork = true;
-        }
         if (localStorage.debug == 'true') {
             this.auth.isDebug = true;
         }
-    }
-    isCheckedToWork() {
-        const url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php';
-        let data = {
-            "token": "l;sdfjkhglsoapl[",
-            "cId": localStorage.userId
-        };
-        const headers = {
-            'Content-type': 'application/json'
-        };
-        return this.http.post(url, data, { headers: headers });
     }
     scanAuth() {
         let self = this;

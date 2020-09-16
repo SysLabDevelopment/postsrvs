@@ -17,7 +17,6 @@ declare var ymaps: any;
 export class CourierService {
   public ordersInfo: Array<any> = [];
   public ordersShortData: Subject<any> = new Subject();
-  public checkedOnWork: boolean = true;
   public sortOrders = {
     "g_done": 0,
     "g_process": 0,
@@ -393,24 +392,7 @@ export class CourierService {
     return ret;
   }
 
-  public check_to_work() {
-    let url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/check_to_work.php';
-    let data = {
-      cId: this.auth.getUserId(),
-      token: "l;sdfjkhglsoapl[",
-    }
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-type': 'application/json'
-    })
-    this.http.post(url, data, { headers: headers }).subscribe((data: any) => {
-      if (data.success == true) {
-        let checkedDate = new Date();
-        localStorage.setItem('checkedDate', checkedDate.toLocaleDateString());
-        this.checkedOnWork = true;
-      }
-    })
-  }
+
 
   public count_orders(orders: Order[]) {
     let g_done = 0;

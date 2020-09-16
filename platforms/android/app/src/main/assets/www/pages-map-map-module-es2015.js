@@ -1770,24 +1770,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapPage", function() { return MapPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/google-maps/ngx */ "./node_modules/@ionic-native/google-maps/ngx/index.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _components_order_order_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/order/order.component */ "./src/app/components/order/order.component.ts");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _services_nav_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../services/nav.service */ "./src/app/services/nav.service.ts");
-/* harmony import */ var _services_state_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../services/state.service */ "./src/app/services/state.service.ts");
-/* harmony import */ var _services_sys_data_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../services/sys/data.service */ "./src/app/services/sys/data.service.ts");
-/* harmony import */ var _services_courier_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./../../services/courier.service */ "./src/app/services/courier.service.ts");
-/* harmony import */ var _services_settings_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./../../services/settings.service */ "./src/app/services/settings.service.ts");
-/* harmony import */ var _services_sys_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./../../services/sys.service */ "./src/app/services/sys.service.ts");
-/* harmony import */ var _services_sys_map_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./../../services/sys/map.service */ "./src/app/services/sys/map.service.ts");
-/* harmony import */ var angular_split__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! angular-split */ "./node_modules/angular-split/fesm2015/angular-split.js");
-
-
+/* harmony import */ var _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/google-maps/ngx */ "./node_modules/@ionic-native/google-maps/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _components_order_order_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/order/order.component */ "./src/app/components/order/order.component.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_nav_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../services/nav.service */ "./src/app/services/nav.service.ts");
+/* harmony import */ var _services_state_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../services/state.service */ "./src/app/services/state.service.ts");
+/* harmony import */ var _services_sys_data_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../services/sys/data.service */ "./src/app/services/sys/data.service.ts");
+/* harmony import */ var _services_courier_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./../../services/courier.service */ "./src/app/services/courier.service.ts");
+/* harmony import */ var _services_settings_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./../../services/settings.service */ "./src/app/services/settings.service.ts");
+/* harmony import */ var _services_sys_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./../../services/sys.service */ "./src/app/services/sys.service.ts");
+/* harmony import */ var _services_sys_map_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./../../services/sys/map.service */ "./src/app/services/sys/map.service.ts");
+/* harmony import */ var angular_split__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! angular-split */ "./node_modules/angular-split/fesm2015/angular-split.js");
 
 
 
@@ -1817,10 +1814,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class MapPage {
-    constructor(state$, platform, router, settings, courier, sys, sysMap, auth, nav, navCtrl, popoverController, data, storage) {
+    constructor(state$, platform, settings, courier, sys, sysMap, auth, nav, navCtrl, popoverController, data, storage) {
         this.state$ = state$;
         this.platform = platform;
-        this.router = router;
         this.settings = settings;
         this.courier = courier;
         this.sys = sys;
@@ -1835,7 +1831,7 @@ class MapPage {
         this.isMapPreparing = false;
         this.out_process = false;
         this.out_counter = 0;
-        this.local_stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
+        this.local_stop$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
         this.existsGeos = [];
         this.sliderOptions = {
             navigation: {
@@ -1854,10 +1850,10 @@ class MapPage {
     ngOnInit() {
         console.log("sys:: map init");
         this.settings.state
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])((state) => state == "hasRules"))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["filter"])((state) => state == "hasRules"))
             .subscribe(() => {
             this.getOrdersId()
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])((ids) => ids.length > 0))
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["filter"])((ids) => ids.length > 0))
                 .subscribe((ids) => {
                 this.getOrders(ids).subscribe((res) => {
                     this.orders = res.orders;
@@ -1900,11 +1896,11 @@ class MapPage {
         this.loadMap();
         this.platform.ready().then(() => {
             this.initContent();
-            _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["LocationService"].getMyLocation().then((myLocation) => {
+            _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["LocationService"].getMyLocation().then((myLocation) => {
                 this.coords = { lt: myLocation.latLng.lat, lg: myLocation.latLng.lng };
             });
         });
-        this.state$.interval_1ss.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this.local_stop$)).subscribe(() => {
+        this.state$.interval_1ss.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["takeUntil"])(this.local_stop$)).subscribe(() => {
             let orderId = localStorage.getItem("needOrder");
             if (orderId) {
                 this.sysMap.orderDetails(orderId);
@@ -1943,10 +1939,10 @@ class MapPage {
                 }
             });
             this.drawData(this.settings.rules.autoStartRoute);
-            this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].POI_CLICK).subscribe((params) => {
+            this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].POI_CLICK).subscribe((params) => {
                 console.log(params);
             });
-            _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["LocationService"].getMyLocation().then((myLocation) => {
+            _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["LocationService"].getMyLocation().then((myLocation) => {
                 this.myLocation = myLocation;
                 const coordinates = this.myLocation.latLng || { lat: 55, lng: 37 };
                 this.map.setCameraTarget(coordinates);
@@ -1959,7 +1955,7 @@ class MapPage {
         return this.sys.getOrders(ids);
     }
     getOrdersId() {
-        return new rxjs__WEBPACK_IMPORTED_MODULE_6__["Observable"]((ids) => {
+        return new rxjs__WEBPACK_IMPORTED_MODULE_5__["Observable"]((ids) => {
             if (this.settings.rules.typeRoute == "standart") {
                 this.orders && ids.next(this.orders.filter(order => order.status_id == 1).map((order) => order.id));
             }
@@ -2053,7 +2049,7 @@ class MapPage {
                     this.orders = data.res_more;
                     this.state$.orders.next(data.res_more);
                     this.getOrdersId()
-                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["filter"])((ids) => ids.length > 0))
+                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["filter"])((ids) => ids.length > 0))
                         .subscribe((ids) => {
                         this.getOrders(ids).subscribe((res) => {
                             this.storage.get('orders').then((orders) => {
@@ -2096,9 +2092,9 @@ class MapPage {
         };
         let markerCluster = this.map.addMarkerClusterSync(options);
         console.log(`sys:: MarkerCluster added: `, markerCluster);
-        markerCluster.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].MARKER_CLICK).subscribe((params) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+        markerCluster.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].MARKER_CLICK).subscribe((params) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             let marker = params[1];
-            let popover = yield this.popover(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].MARKER_CLICK, marker.get('info'));
+            let popover = yield this.popover(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].MARKER_CLICK, marker.get('info'));
             popover.present();
         }));
     }
@@ -2108,7 +2104,6 @@ class MapPage {
         let note = localStorage.getItem(String(order.id))
             ? localStorage.getItem(String(order.id))
             : "";
-        let from = order.datetime_from || "";
         let arrows = sameGeoOrders.length > 1
             ? `<div class="swiper-button-prev" onClick='this.parentElement.parentElement.parentElement.slidePrev()'></div>
 <div class="swiper-button-next" onClick='this.parentElement.parentElement.parentElement.slideNext()'></div>`
@@ -2184,7 +2179,7 @@ ${arrows}
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             content = content.innerHTML;
             const popover = yield this.popoverController.create({
-                component: _components_order_order_component__WEBPACK_IMPORTED_MODULE_8__["OrderComponent"],
+                component: _components_order_order_component__WEBPACK_IMPORTED_MODULE_7__["OrderComponent"],
                 event: ev,
                 translucent: true,
                 componentProps: {
@@ -2197,7 +2192,7 @@ ${arrows}
     }
     requestDirection(lat, lng) {
         this.destination = { lat, lng };
-        _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["DirectionsService"].route({
+        _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["DirectionsService"].route({
             'origin': this.origin,
             'destination': this.destination,
             'travelMode': "DRIVING"
@@ -2218,10 +2213,10 @@ ${arrows}
                         visible: false
                     }
                 });
-                this.renderer.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMapsEvent"].DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
+                this.renderer.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
             }
             else {
-                let decodedPoints = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_3__["GoogleMaps"].getPlugin().geometry.encoding.decodePath(result.routes[0].overview_polyline);
+                let decodedPoints = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMaps"].getPlugin().geometry.encoding.decodePath(result.routes[0].overview_polyline);
                 this.map.addPolyline({
                     points: decodedPoints,
                     'color': '#4a4a4a',
@@ -2246,7 +2241,7 @@ ${arrows}
         });
     }
 }
-MapPage.ɵfac = function MapPage_Factory(t) { return new (t || MapPage)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_state_service__WEBPACK_IMPORTED_MODULE_11__["StateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_settings_service__WEBPACK_IMPORTED_MODULE_14__["SettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_13__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_15__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_sys_map_service__WEBPACK_IMPORTED_MODULE_16__["MapService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_nav_service__WEBPACK_IMPORTED_MODULE_10__["NavService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["PopoverController"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_sys_data_service__WEBPACK_IMPORTED_MODULE_12__["DataService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"])); };
+MapPage.ɵfac = function MapPage_Factory(t) { return new (t || MapPage)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_state_service__WEBPACK_IMPORTED_MODULE_10__["StateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_settings_service__WEBPACK_IMPORTED_MODULE_13__["SettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_courier_service__WEBPACK_IMPORTED_MODULE_12__["CourierService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_sys_service__WEBPACK_IMPORTED_MODULE_14__["SysService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_sys_map_service__WEBPACK_IMPORTED_MODULE_15__["MapService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_8__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_nav_service__WEBPACK_IMPORTED_MODULE_9__["NavService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["PopoverController"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_sys_data_service__WEBPACK_IMPORTED_MODULE_11__["DataService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"])); };
 MapPage.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MapPage, selectors: [["app-map"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵNgOnChangesFeature"]], decls: 13, vars: 0, consts: [[3, "click"], ["id", "container"], ["unit", "percent", "direction", "vertical", 1, "work_pane", 3, "dragEnd"], ["size", "80", "minSize", "30"], ["area1", "asSplitArea"], ["id", "map", 2, "height", "85vh", "width", "100%"], ["size", "20", "minSize", "10"], ["area2", "asSplitArea"], ["id", "guide"]], template: function MapPage_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "ion-header");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "ion-toolbar");
@@ -2269,7 +2264,7 @@ MapPage.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    } }, directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonContent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitComponent"], angular_split__WEBPACK_IMPORTED_MODULE_17__["SplitAreaDirective"]], styles: ["ion-popover[_ngcontent-%COMP%] {\n  --width: max-content;\n}\n\n.popover[_ngcontent-%COMP%]   .popover-content[_ngcontent-%COMP%] {\n  --width: 90vw;\n  --min-width: max-content;\n}\n\n#map[_ngcontent-%COMP%], #guide[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border: 1px solid white;\n}\n\n.one-order-chip[_ngcontent-%COMP%] {\n  --background:#2b637e;\n  --color:white;\n}\n\n#map[_ngcontent-%COMP%] {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWFwL21hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBUTtBQUNWOztBQUNBO0VBQ0UsYUFBUTtFQUNSLHdCQUFZO0FBRWQ7O0FBQUE7O0VBRUUsV0FBVztFQUNYLFlBQVk7RUFDWix1QkFBdUI7QUFHekI7O0FBREE7RUFDRSxvQkFBYTtFQUNiLGFBQVE7QUFJVjs7QUFGQTtFQUNFLGtCQUFrQjtBQUtwQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21hcC9tYXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXBvcG92ZXIge1xuICAtLXdpZHRoOiBtYXgtY29udGVudDtcbn1cbi5wb3BvdmVyIC5wb3BvdmVyLWNvbnRlbnQge1xuICAtLXdpZHRoOiA5MHZ3O1xuICAtLW1pbi13aWR0aDogbWF4LWNvbnRlbnQ7XG59XG4jbWFwLFxuI2d1aWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG59XG4ub25lLW9yZGVyLWNoaXB7XG4gIC0tYmFja2dyb3VuZDojMmI2MzdlO1xuICAtLWNvbG9yOndoaXRlO1xufVxuI21hcHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuIl19 */"] });
+    } }, directives: [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonHeader"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonToolbar"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonTitle"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonContent"], angular_split__WEBPACK_IMPORTED_MODULE_16__["SplitComponent"], angular_split__WEBPACK_IMPORTED_MODULE_16__["SplitAreaDirective"]], styles: ["ion-popover[_ngcontent-%COMP%] {\n  --width: max-content;\n}\n\n.popover[_ngcontent-%COMP%]   .popover-content[_ngcontent-%COMP%] {\n  --width: 90vw;\n  --min-width: max-content;\n}\n\n#map[_ngcontent-%COMP%], #guide[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  border: 1px solid white;\n}\n\n.one-order-chip[_ngcontent-%COMP%] {\n  --background:#2b637e;\n  --color:white;\n}\n\n#map[_ngcontent-%COMP%] {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWFwL21hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBUTtBQUNWOztBQUNBO0VBQ0UsYUFBUTtFQUNSLHdCQUFZO0FBRWQ7O0FBQUE7O0VBRUUsV0FBVztFQUNYLFlBQVk7RUFDWix1QkFBdUI7QUFHekI7O0FBREE7RUFDRSxvQkFBYTtFQUNiLGFBQVE7QUFJVjs7QUFGQTtFQUNFLGtCQUFrQjtBQUtwQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21hcC9tYXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXBvcG92ZXIge1xuICAtLXdpZHRoOiBtYXgtY29udGVudDtcbn1cbi5wb3BvdmVyIC5wb3BvdmVyLWNvbnRlbnQge1xuICAtLXdpZHRoOiA5MHZ3O1xuICAtLW1pbi13aWR0aDogbWF4LWNvbnRlbnQ7XG59XG4jbWFwLFxuI2d1aWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG59XG4ub25lLW9yZGVyLWNoaXB7XG4gIC0tYmFja2dyb3VuZDojMmI2MzdlO1xuICAtLWNvbG9yOndoaXRlO1xufVxuI21hcHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuIl19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MapPage, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
@@ -2277,7 +2272,7 @@ MapPage.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"
                 templateUrl: "./map.page.html",
                 styleUrls: ["./map.page.scss"],
             }]
-    }], function () { return [{ type: _services_state_service__WEBPACK_IMPORTED_MODULE_11__["StateService"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: _services_settings_service__WEBPACK_IMPORTED_MODULE_14__["SettingsService"] }, { type: _services_courier_service__WEBPACK_IMPORTED_MODULE_13__["CourierService"] }, { type: _services_sys_service__WEBPACK_IMPORTED_MODULE_15__["SysService"] }, { type: _services_sys_map_service__WEBPACK_IMPORTED_MODULE_16__["MapService"] }, { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"] }, { type: _services_nav_service__WEBPACK_IMPORTED_MODULE_10__["NavService"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["PopoverController"] }, { type: _services_sys_data_service__WEBPACK_IMPORTED_MODULE_12__["DataService"] }, { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] }]; }, null); })();
+    }], function () { return [{ type: _services_state_service__WEBPACK_IMPORTED_MODULE_10__["StateService"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"] }, { type: _services_settings_service__WEBPACK_IMPORTED_MODULE_13__["SettingsService"] }, { type: _services_courier_service__WEBPACK_IMPORTED_MODULE_12__["CourierService"] }, { type: _services_sys_service__WEBPACK_IMPORTED_MODULE_14__["SysService"] }, { type: _services_sys_map_service__WEBPACK_IMPORTED_MODULE_15__["MapService"] }, { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_8__["AuthService"] }, { type: _services_nav_service__WEBPACK_IMPORTED_MODULE_9__["NavService"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["PopoverController"] }, { type: _services_sys_data_service__WEBPACK_IMPORTED_MODULE_11__["DataService"] }, { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] }]; }, null); })();
 
 
 /***/ })

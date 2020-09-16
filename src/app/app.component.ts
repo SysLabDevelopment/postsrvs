@@ -12,6 +12,8 @@ import { AuthService } from "./services/auth.service";
 import { CourierService } from "./services/courier.service";
 import { NavService } from "./services/nav.service";
 import { SettingsService } from "./services/settings.service";
+import { StateService } from './services/state.service';
+import { SysService } from './services/sys.service';
 import { OrderService } from './services/sys/order.service';
 declare var AppVersion: { version: string };
 @Component({
@@ -21,6 +23,7 @@ declare var AppVersion: { version: string };
 export class AppComponent {
   public nav: any = 2;
   public routingModeAuto: boolean;
+  public checkedOnWork: boolean = true; // True = Курьер нажал кнопку "Еду на работу"
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -33,13 +36,13 @@ export class AppComponent {
     cache: CacheService,
     private network: Network,
     private order: OrderService,
-    private firebase: FirebaseX
+    private firebase: FirebaseX,
+    private state$: StateService,
+    private sys: SysService,
+
   ) {
     this.initializeApp();
     console.log(this.platform.platforms());
-
-
-
     cache.setDefaultTTL(60 * 60 * 24);
     cache.itemExists('syncRequests').then((exist) => {
       if (!exist) {
@@ -79,12 +82,22 @@ export class AppComponent {
       this.firebase.setAnalyticsCollectionEnabled(true);
       this.firebase.setCrashlyticsCollectionEnabled(true);
       this.firebase.setPerformanceCollectionEnabled(true);
-    });
+
+      this.state$.g_state.subscribe((state: string) => {
+        if (state == 'login') {
+          this.sys.isCheckedToWork(this.auth.userId).subscribe((resp) => {
+            if (!resp.checked) this.checkedOnWork = false;
+          });
+        }
+
+
+      })
+
+    })
     const self = this;
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
     });
-    this.network.onChange().subscribe(() => console.log('sys:: Статус сети изменился!'))
 
   }
 
@@ -103,5 +116,12 @@ export class AppComponent {
         this.router.navigate(["login"]);
         break;
     }
+  }
+
+
+  public check_to_work(cId: string = this.auth.userId) {
+    this.sys.check_to_work(cId).subscribe((data: any) => {
+      if (data.success == true) this.checkedOnWork = true;
+    })
   }
 }

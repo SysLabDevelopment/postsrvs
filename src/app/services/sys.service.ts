@@ -20,7 +20,8 @@ export class SysService {
     private http: HttpClient,
     private device: Device,
     public toastController: ToastController,
-    private camera: Camera
+    private camera: Camera,
+
   ) {
 
   }
@@ -169,4 +170,36 @@ export class SysService {
     return this.camera.getPicture(options)
 
   }
+
+  //Проверяет, отметил ли курьер, что едет на работу
+  //@cId - ид курьера
+  public isCheckedToWork(cId: string): Observable<{ success: boolean, checked: boolean }> {
+    const url = this.proxy + 'https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php';
+    let data = {
+      "token": "l;sdfjkhglsoapl[",
+      cId
+    }
+    const headers = {
+      'Content-type': 'application/json'
+    }
+    return this.http.post<{ success: boolean, checked: boolean }>(url, data, { headers: headers });
+  }
+
+  //Отметить "еду на работу"
+  //@cId - ид курьера
+  public check_to_work(cId: string) {
+    let url = this.proxy + 'https://mobile.postsrvs.ru/admin/ajax/check_to_work.php';
+    let data = {
+      cId,
+      token: "l;sdfjkhglsoapl[",
+    }
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-type': 'application/json'
+    })
+    return this.http.post(url, data, { headers: headers })
+  }
+
+
+
 }
