@@ -125,11 +125,11 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"FirebasePlugin\"><param name=\"android-package\" value=\"org.apache.cordova.firebase.FirebasePlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+              "xml": "<feature name=\"FirebasePlugin\"><param name=\"android-package\" value=\"org.apache.cordova.firebase.FirebasePlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ]
@@ -217,12 +217,12 @@
               "count": 1
             },
             {
-              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 1
-            },
-            {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
               "count": 2
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+              "count": 1
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
@@ -313,10 +313,6 @@
             {
               "xml": "<uses-library android:name=\"org.apache.http.legacy\" android:required=\"false\" />",
               "count": 1
-            },
-            {
-              "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_icon\" android:resource=\"@drawable/notification_icon\" />",
-              "count": 2
             }
           ],
           "application": [
@@ -453,16 +449,16 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "com.googlemaps.ios": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "cordova-androidx-build": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-androidx": {
@@ -483,9 +479,6 @@
       "ANDROID_FIREBASE_CRASHLYTICS_VERSION": "17.0.1",
       "ANDROID_FIREBASE_CRASHLYTICS_NDK_VERSION": "17.0.1",
       "ANDROID_GSON_VERSION": "2.8.6",
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "postsrvs.i"
     }
   },
@@ -903,14 +896,6 @@
       "runs": true
     },
     {
-      "id": "cordova-plugin-firebasex.FirebasePlugin",
-      "file": "plugins/cordova-plugin-firebasex/www/firebase.js",
-      "pluginId": "cordova-plugin-firebasex",
-      "clobbers": [
-        "FirebasePlugin"
-      ]
-    },
-    {
       "id": "cordova-plugin-network-information.network",
       "file": "plugins/cordova-plugin-network-information/www/network.js",
       "pluginId": "cordova-plugin-network-information",
@@ -925,6 +910,14 @@
       "pluginId": "cordova-plugin-network-information",
       "clobbers": [
         "Connection"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebasex.FirebasePlugin",
+      "file": "plugins/cordova-plugin-firebasex/www/firebase.js",
+      "pluginId": "cordova-plugin-firebasex",
+      "clobbers": [
+        "FirebasePlugin"
       ]
     }
   ],
@@ -947,12 +940,11 @@
     "phonegap-plugin-barcodescanner": "8.1.0",
     "cordova-sqlite-storage": "5.0.1",
     "cordova-plugin-splashscreen": "6.0.0",
-    "com.googlemaps.ios": "3.9.0",
-    "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-androidx-build": "1.0.4",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
+    "cordova-plugin-network-information": "2.0.2",
+    "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-firebasex": "10.2.0-cli",
-    "cordova-plugin-network-information": "2.0.2"
+    "cordova-plugin-firebasex": "10.2.0-cli"
   }
 }

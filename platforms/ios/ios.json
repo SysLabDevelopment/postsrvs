@@ -5,66 +5,53 @@
   },
   "config_munge": {
     "files": {
-      "*-Info.plist": {
-        "parents": {
-          "NSAppTransportSecurity": [
-            {
-              "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 15
-            }
-          ],
-          "NSCameraUsageDescription": [
-            {
-              "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 15
-            }
-          ],
-          "UIBackgroundModes": [],
-          "FirebaseAppDelegateProxyEnabled": [],
-          "NSLocationWhenInUseUsageDescription": [
-            {
-              "xml": "<string>This app wants to get your location while this app runs only.</string>",
-              "count": 1
-            },
-            {
-              "xml": "<string>This app requires access to your location when the screen is on and the app is displayed.</string>",
-              "count": 1
-            }
-          ],
-          "NSLocationAlwaysUsageDescription": [
-            {
-              "xml": "<string>This app wants to get your location always, even this app runs in background.</string>",
-              "count": 1
-            },
-            {
-              "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>",
-              "count": 1
-            }
-          ],
-          "LSApplicationQueriesSchemes": [
-            {
-              "xml": "<array><string>googlechromes</string><string>comgooglemaps</string></array>",
-              "count": 1
-            }
-          ],
-          "CFBundleURLTypes": [
-            {
-              "xml": "<array><dict><key>CFBundleTypeRole</key><string>Editor</string><key>CFBundleURLName</key><string>postsrvs.i</string><key>CFBundleURLSchemes</key><array><string>postsrvs.i</string></array></dict></array>",
-              "count": 1
-            }
-          ],
-          "NSLocationAlwaysAndWhenInUseUsageDescription": [
-            {
-              "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>",
-              "count": 1
-            }
-          ],
-          "FIREBASE_ANALYTICS_COLLECTION_ENABLED": []
-        }
-      },
       "config.xml": {
         "parents": {
           "/*": [
+            {
+              "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<allow-navigation href=\"ionic://*\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"deployment-target\" value=\"11.0\" />",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"IonicWebView\"><param name=\"ios-package\" value=\"CDVWKWebViewEngine\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"CordovaWebViewEngine\" value=\"CDVWKWebViewEngine\" />",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"ios-package\" onload=\"true\" value=\"CDVIonicKeyboard\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"UniqueDeviceID\"><param name=\"ios-package\" value=\"CDVUniqueDeviceID\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
             {
               "xml": "<feature name=\"CallNumber\"><param name=\"ios-package\" value=\"CFCallNumber\" /></feature>",
               "count": 1
@@ -78,11 +65,27 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+              "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+              "xml": "<feature name=\"CDVOrientation\"><param name=\"ios-package\" value=\"CDVOrientation\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Diagnostic_Location\"><param name=\"ios-package\" value=\"Diagnostic_Location\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
               "count": 1
             },
             {
@@ -150,67 +153,71 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"ios-package\" onload=\"true\" value=\"CDVIonicKeyboard\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<allow-navigation href=\"ionic://*\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"deployment-target\" value=\"11.0\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"IonicWebView\"><param name=\"ios-package\" value=\"CDVWKWebViewEngine\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"CordovaWebViewEngine\" value=\"CDVWKWebViewEngine\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"CDVOrientation\"><param name=\"ios-package\" value=\"CDVOrientation\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"UniqueDeviceID\"><param name=\"ios-package\" value=\"CDVUniqueDeviceID\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Diagnostic_Location\"><param name=\"ios-package\" value=\"Diagnostic_Location\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"FirebasePlugin\"><param name=\"ios-package\" value=\"FirebasePlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "*-Info.plist": {
+        "parents": {
+          "NSLocationWhenInUseUsageDescription": [
+            {
+              "xml": "<string>This app requires access to your location when the screen is on and the app is displayed.</string>",
+              "count": 1
+            },
+            {
+              "xml": "<string>This app wants to get your location while this app runs only.</string>",
+              "count": 1
+            }
+          ],
+          "NSLocationAlwaysAndWhenInUseUsageDescription": [
+            {
+              "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>",
+              "count": 1
+            }
+          ],
+          "NSLocationAlwaysUsageDescription": [
+            {
+              "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>",
+              "count": 1
+            },
+            {
+              "xml": "<string>This app wants to get your location always, even this app runs in background.</string>",
+              "count": 1
+            }
+          ],
+          "LSApplicationQueriesSchemes": [
+            {
+              "xml": "<array><string>googlechromes</string><string>comgooglemaps</string></array>",
+              "count": 1
+            }
+          ],
+          "CFBundleURLTypes": [
+            {
+              "xml": "<array><dict><key>CFBundleTypeRole</key><string>Editor</string><key>CFBundleURLName</key><string>postsrvs.i</string><key>CFBundleURLSchemes</key><array><string>postsrvs.i</string></array></dict></array>",
+              "count": 1
+            }
+          ],
+          "NSAppTransportSecurity": [
+            {
+              "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
+              "count": 1
+            }
+          ],
+          "NSCameraUsageDescription": [
+            {
+              "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
+              "count": 1
+            }
+          ],
+          "UIBackgroundModes": [
+            {
+              "xml": "<array><string>remote-notification</string></array>",
               "count": 1
             }
           ]
@@ -218,42 +225,79 @@
       },
       "*/Entitlements-Debug.plist": {
         "parents": {
-          "aps-environment": []
+          "aps-environment": [
+            {
+              "xml": "<string>development</string>",
+              "count": 1
+            }
+          ]
         }
       },
       "*/Entitlements-Release.plist": {
         "parents": {
-          "aps-environment": []
+          "aps-environment": [
+            {
+              "xml": "<string>production</string>",
+              "count": 1
+            }
+          ]
         }
       }
     }
   },
   "installed_plugins": {
-    "call-number": {
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "com-darryncampbell-cordova-plugin-intent": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "com.googlemaps.ios": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-androidx-build": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-android-permissions": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-camera": {
+    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "postsrvs.i"
     },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
     "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-uniquedeviceid": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "com-darryncampbell-cordova-plugin-intent": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "call-number": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "com.googlemaps.ios": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-googlemaps": {
@@ -261,57 +305,102 @@
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-ionic-keyboard": {
+    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-screen-orientation": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-uniquedeviceid": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova.plugins.diagnostic": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "es6-promise-plugin": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "phonegap-plugin-barcodescanner": {
+    "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-androidx": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "flexcore.postsrvs.w"
+    "cordova-plugin-firebasex": {
+      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+      "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
+      "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
+      "PACKAGE_NAME": "postsrvs.i"
     }
   },
   "dependent_plugins": {},
   "modules": [
     {
-      "id": "call-number.CallNumber",
-      "file": "plugins/call-number/www/CallNumber.js",
-      "pluginId": "call-number",
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
       "clobbers": [
-        "call"
+        "window.StatusBar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-webview.IonicWebView",
+      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
+      "pluginId": "cordova-plugin-ionic-webview",
+      "clobbers": [
+        "Ionic.WebView"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
+      "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
+      "pluginId": "cordova-plugin-ionic-webview",
+      "clobbers": [
+        "cordova.exec"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
+      "pluginId": "cordova-plugin-ionic-keyboard",
+      "clobbers": [
+        "window.Keyboard"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Coordinates",
+      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Coordinates"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "PositionError"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Position",
+      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Position"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
+    },
+    {
+      "id": "cordova-plugin-uniquedeviceid.UniqueDeviceID",
+      "file": "plugins/cordova-plugin-uniquedeviceid/www/uniqueid.js",
+      "pluginId": "cordova-plugin-uniquedeviceid",
+      "merges": [
+        "window.plugins.uniqueDeviceID"
       ]
     },
     {
@@ -320,6 +409,14 @@
       "pluginId": "com-darryncampbell-cordova-plugin-intent",
       "clobbers": [
         "intentShim"
+      ]
+    },
+    {
+      "id": "call-number.CallNumber",
+      "file": "plugins/call-number/www/CallNumber.js",
+      "pluginId": "call-number",
+      "clobbers": [
+        "call"
       ]
     },
     {
@@ -363,43 +460,51 @@
       ]
     },
     {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
-      "clobbers": [
-        "device"
+      "id": "cordova-plugin-vibration.notification",
+      "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+      "pluginId": "cordova-plugin-vibration",
+      "merges": [
+        "navigator"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.Coordinates",
-      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
-      "pluginId": "cordova-plugin-geolocation",
+      "id": "cordova-plugin-screen-orientation.screenorientation",
+      "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+      "pluginId": "cordova-plugin-screen-orientation",
       "clobbers": [
-        "Coordinates"
+        "cordova.plugins.screenorientation"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.PositionError",
-      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-      "pluginId": "cordova-plugin-geolocation",
-      "clobbers": [
-        "PositionError"
+      "id": "cordova.plugins.diagnostic.Diagnostic",
+      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
+      "pluginId": "cordova.plugins.diagnostic",
+      "merges": [
+        "cordova.plugins.diagnostic"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.Position",
-      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
-      "pluginId": "cordova-plugin-geolocation",
-      "clobbers": [
-        "Position"
+      "id": "cordova.plugins.diagnostic.Diagnostic_Location",
+      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
+      "pluginId": "cordova.plugins.diagnostic",
+      "merges": [
+        "cordova.plugins.diagnostic.location"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.geolocation",
-      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
-      "pluginId": "cordova-plugin-geolocation",
+      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+      "pluginId": "phonegap-plugin-barcodescanner",
       "clobbers": [
-        "navigator.geolocation"
+        "cordova.plugins.barcodeScanner"
+      ]
+    },
+    {
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
       ]
     },
     {
@@ -650,100 +755,6 @@
       "runs": true
     },
     {
-      "id": "cordova-plugin-ionic-keyboard.keyboard",
-      "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
-      "pluginId": "cordova-plugin-ionic-keyboard",
-      "clobbers": [
-        "window.Keyboard"
-      ]
-    },
-    {
-      "id": "cordova-plugin-ionic-webview.IonicWebView",
-      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
-      "pluginId": "cordova-plugin-ionic-webview",
-      "clobbers": [
-        "Ionic.WebView"
-      ]
-    },
-    {
-      "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
-      "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
-      "pluginId": "cordova-plugin-ionic-webview",
-      "clobbers": [
-        "cordova.exec"
-      ]
-    },
-    {
-      "id": "cordova-plugin-screen-orientation.screenorientation",
-      "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
-      "pluginId": "cordova-plugin-screen-orientation",
-      "clobbers": [
-        "cordova.plugins.screenorientation"
-      ]
-    },
-    {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
-      "clobbers": [
-        "window.StatusBar"
-      ]
-    },
-    {
-      "id": "cordova-plugin-uniquedeviceid.UniqueDeviceID",
-      "file": "plugins/cordova-plugin-uniquedeviceid/www/uniqueid.js",
-      "pluginId": "cordova-plugin-uniquedeviceid",
-      "merges": [
-        "window.plugins.uniqueDeviceID"
-      ]
-    },
-    {
-      "id": "cordova-plugin-vibration.notification",
-      "file": "plugins/cordova-plugin-vibration/www/vibration.js",
-      "pluginId": "cordova-plugin-vibration",
-      "merges": [
-        "navigator"
-      ]
-    },
-    {
-      "id": "cordova-sqlite-storage.SQLitePlugin",
-      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-      "pluginId": "cordova-sqlite-storage",
-      "clobbers": [
-        "SQLitePlugin"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic",
-      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Location",
-      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.location"
-      ]
-    },
-    {
-      "id": "es6-promise-plugin.Promise",
-      "file": "plugins/es6-promise-plugin/www/promise.js",
-      "pluginId": "es6-promise-plugin",
-      "runs": true
-    },
-    {
-      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-      "pluginId": "phonegap-plugin-barcodescanner",
-      "clobbers": [
-        "cordova.plugins.barcodeScanner"
-      ]
-    },
-    {
       "id": "cordova-plugin-network-information.network",
       "file": "plugins/cordova-plugin-network-information/www/network.js",
       "pluginId": "cordova-plugin-network-information",
@@ -759,32 +770,39 @@
       "clobbers": [
         "Connection"
       ]
+    },
+    {
+      "id": "cordova-plugin-firebasex.FirebasePlugin",
+      "file": "plugins/cordova-plugin-firebasex/www/firebase.js",
+      "pluginId": "cordova-plugin-firebasex",
+      "clobbers": [
+        "FirebasePlugin"
+      ]
     }
   ],
   "plugin_metadata": {
-    "call-number": "0.0.2",
-    "com-darryncampbell-cordova-plugin-intent": "2.0.0",
-    "com.googlemaps.ios": "3.9.0",
-    "cordova-androidx-build": "1.0.4",
-    "cordova-plugin-android-permissions": "1.0.2",
-    "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-camera": "4.1.0",
-    "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-geolocation": "4.0.2",
-    "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-ionic-webview": "5.0.0",
-    "cordova-plugin-screen-orientation": "3.0.2",
-    "cordova-plugin-splashscreen": "6.0.0",
-    "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-uniquedeviceid": "1.3.2",
-    "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-whitelist": "1.3.4",
-    "cordova-sqlite-storage": "5.0.1",
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-ionic-webview": "5.0.0",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
+    "cordova-plugin-geolocation": "4.0.2",
+    "cordova-plugin-uniquedeviceid": "1.3.2",
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0",
+    "call-number": "0.0.2",
+    "cordova-plugin-android-permissions": "1.0.2",
+    "cordova-plugin-camera": "4.1.0",
+    "cordova-plugin-vibration": "3.1.1",
+    "cordova-plugin-screen-orientation": "3.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
-    "es6-promise-plugin": "4.2.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
+    "cordova-sqlite-storage": "5.0.1",
+    "cordova-plugin-splashscreen": "6.0.0",
+    "com.googlemaps.ios": "3.9.0",
+    "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
+    "cordova-plugin-network-information": "2.0.2",
+    "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-network-information": "2.0.2"
+    "cordova-plugin-firebasex": "10.2.0-cli"
   }
 }

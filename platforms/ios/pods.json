@@ -1,5 +1,57 @@
 {
-    "declarations": {},
-    "sources": {},
-    "libraries": {}
+    "declarations": {
+        "use_frameworks!": {
+            "declaration": "use_frameworks!",
+            "count": 1
+        }
+    },
+    "sources": {
+        "https://cdn.cocoapods.org/": {
+            "source": "https://cdn.cocoapods.org/",
+            "count": 1
+        }
+    },
+    "libraries": {
+        "Firebase/Core": {
+            "name": "Firebase/Core",
+            "spec": "6.28.1",
+            "count": 1
+        },
+        "Firebase/Auth": {
+            "name": "Firebase/Auth",
+            "spec": "6.28.1",
+            "count": 1
+        },
+        "Firebase/Messaging": {
+            "name": "Firebase/Messaging",
+            "spec": "6.28.1",
+            "count": 1
+        },
+        "Firebase/Performance": {
+            "name": "Firebase/Performance",
+            "spec": "6.28.1",
+            "count": 1
+        },
+        "Firebase/RemoteConfig": {
+            "name": "Firebase/RemoteConfig",
+            "spec": "6.28.1",
+            "count": 1
+        },
+        "FirebaseFirestore": {
+            "name": "FirebaseFirestore",
+            "git": "https://github.com/invertase/firestore-ios-sdk-frameworks.git",
+            "tag": "6.28.1",
+            "count": 1
+        },
+        "Firebase/Crashlytics": {
+            "name": "Firebase/Crashlytics",
+            "spec": "6.28.1",
+            "count": 1
+        },
+        "GoogleSignIn": {
+            "name": "GoogleSignIn",
+            "spec": "5.0.2",
+            "count": 1
+        }
+    }
 }

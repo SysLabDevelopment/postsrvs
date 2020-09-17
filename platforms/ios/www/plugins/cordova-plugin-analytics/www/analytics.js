@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-analytics.GAPlugin", function(require, exports, module) { /*
+cordova.define("cordova-plugin-analytics.GAPlugin", function(require, exports, module) {
+/*
  analytics.js
  Copyright 2014 AppFeel. All rights reserved.
  http://www.appfeel.com

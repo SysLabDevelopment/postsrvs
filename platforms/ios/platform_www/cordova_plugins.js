@@ -1,11 +1,83 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
-      "id": "call-number.CallNumber",
-      "file": "plugins/call-number/www/CallNumber.js",
-      "pluginId": "call-number",
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
       "clobbers": [
-        "call"
+        "window.StatusBar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-webview.IonicWebView",
+      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
+      "pluginId": "cordova-plugin-ionic-webview",
+      "clobbers": [
+        "Ionic.WebView"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
+      "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
+      "pluginId": "cordova-plugin-ionic-webview",
+      "clobbers": [
+        "cordova.exec"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
+      "pluginId": "cordova-plugin-ionic-keyboard",
+      "clobbers": [
+        "window.Keyboard"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Coordinates",
+      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Coordinates"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "PositionError"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Position",
+      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Position"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
+    },
+    {
+      "id": "cordova-plugin-uniquedeviceid.UniqueDeviceID",
+      "file": "plugins/cordova-plugin-uniquedeviceid/www/uniqueid.js",
+      "pluginId": "cordova-plugin-uniquedeviceid",
+      "merges": [
+        "window.plugins.uniqueDeviceID"
       ]
     },
     {
@@ -14,6 +86,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "com-darryncampbell-cordova-plugin-intent",
       "clobbers": [
         "intentShim"
+      ]
+    },
+    {
+      "id": "call-number.CallNumber",
+      "file": "plugins/call-number/www/CallNumber.js",
+      "pluginId": "call-number",
+      "clobbers": [
+        "call"
       ]
     },
     {
@@ -57,43 +137,51 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
-      "clobbers": [
-        "device"
+      "id": "cordova-plugin-vibration.notification",
+      "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+      "pluginId": "cordova-plugin-vibration",
+      "merges": [
+        "navigator"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.Coordinates",
-      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
-      "pluginId": "cordova-plugin-geolocation",
+      "id": "cordova-plugin-screen-orientation.screenorientation",
+      "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+      "pluginId": "cordova-plugin-screen-orientation",
       "clobbers": [
-        "Coordinates"
+        "cordova.plugins.screenorientation"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.PositionError",
-      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-      "pluginId": "cordova-plugin-geolocation",
-      "clobbers": [
-        "PositionError"
+      "id": "cordova.plugins.diagnostic.Diagnostic",
+      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
+      "pluginId": "cordova.plugins.diagnostic",
+      "merges": [
+        "cordova.plugins.diagnostic"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.Position",
-      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
-      "pluginId": "cordova-plugin-geolocation",
-      "clobbers": [
-        "Position"
+      "id": "cordova.plugins.diagnostic.Diagnostic_Location",
+      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
+      "pluginId": "cordova.plugins.diagnostic",
+      "merges": [
+        "cordova.plugins.diagnostic.location"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.geolocation",
-      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
-      "pluginId": "cordova-plugin-geolocation",
+      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+      "pluginId": "phonegap-plugin-barcodescanner",
       "clobbers": [
-        "navigator.geolocation"
+        "cordova.plugins.barcodeScanner"
+      ]
+    },
+    {
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
       ]
     },
     {
@@ -344,100 +432,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "runs": true
     },
     {
-      "id": "cordova-plugin-ionic-keyboard.keyboard",
-      "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
-      "pluginId": "cordova-plugin-ionic-keyboard",
-      "clobbers": [
-        "window.Keyboard"
-      ]
-    },
-    {
-      "id": "cordova-plugin-ionic-webview.IonicWebView",
-      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
-      "pluginId": "cordova-plugin-ionic-webview",
-      "clobbers": [
-        "Ionic.WebView"
-      ]
-    },
-    {
-      "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
-      "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
-      "pluginId": "cordova-plugin-ionic-webview",
-      "clobbers": [
-        "cordova.exec"
-      ]
-    },
-    {
-      "id": "cordova-plugin-screen-orientation.screenorientation",
-      "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
-      "pluginId": "cordova-plugin-screen-orientation",
-      "clobbers": [
-        "cordova.plugins.screenorientation"
-      ]
-    },
-    {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
-      "clobbers": [
-        "window.StatusBar"
-      ]
-    },
-    {
-      "id": "cordova-plugin-uniquedeviceid.UniqueDeviceID",
-      "file": "plugins/cordova-plugin-uniquedeviceid/www/uniqueid.js",
-      "pluginId": "cordova-plugin-uniquedeviceid",
-      "merges": [
-        "window.plugins.uniqueDeviceID"
-      ]
-    },
-    {
-      "id": "cordova-plugin-vibration.notification",
-      "file": "plugins/cordova-plugin-vibration/www/vibration.js",
-      "pluginId": "cordova-plugin-vibration",
-      "merges": [
-        "navigator"
-      ]
-    },
-    {
-      "id": "cordova-sqlite-storage.SQLitePlugin",
-      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-      "pluginId": "cordova-sqlite-storage",
-      "clobbers": [
-        "SQLitePlugin"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic",
-      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Location",
-      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.location"
-      ]
-    },
-    {
-      "id": "es6-promise-plugin.Promise",
-      "file": "plugins/es6-promise-plugin/www/promise.js",
-      "pluginId": "es6-promise-plugin",
-      "runs": true
-    },
-    {
-      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-      "pluginId": "phonegap-plugin-barcodescanner",
-      "clobbers": [
-        "cordova.plugins.barcodeScanner"
-      ]
-    },
-    {
       "id": "cordova-plugin-network-information.network",
       "file": "plugins/cordova-plugin-network-information/www/network.js",
       "pluginId": "cordova-plugin-network-information",
@@ -453,32 +447,39 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "Connection"
       ]
+    },
+    {
+      "id": "cordova-plugin-firebasex.FirebasePlugin",
+      "file": "plugins/cordova-plugin-firebasex/www/firebase.js",
+      "pluginId": "cordova-plugin-firebasex",
+      "clobbers": [
+        "FirebasePlugin"
+      ]
     }
   ];
   module.exports.metadata = {
-    "call-number": "0.0.2",
-    "com-darryncampbell-cordova-plugin-intent": "2.0.0",
-    "com.googlemaps.ios": "3.9.0",
-    "cordova-androidx-build": "1.0.4",
-    "cordova-plugin-android-permissions": "1.0.2",
-    "cordova-plugin-androidx-adapter": "1.1.1",
-    "cordova-plugin-camera": "4.1.0",
-    "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-geolocation": "4.0.2",
-    "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-ionic-webview": "5.0.0",
-    "cordova-plugin-screen-orientation": "3.0.2",
-    "cordova-plugin-splashscreen": "6.0.0",
-    "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-uniquedeviceid": "1.3.2",
-    "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-whitelist": "1.3.4",
-    "cordova-sqlite-storage": "5.0.1",
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-ionic-webview": "5.0.0",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
+    "cordova-plugin-geolocation": "4.0.2",
+    "cordova-plugin-uniquedeviceid": "1.3.2",
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0",
+    "call-number": "0.0.2",
+    "cordova-plugin-android-permissions": "1.0.2",
+    "cordova-plugin-camera": "4.1.0",
+    "cordova-plugin-vibration": "3.1.1",
+    "cordova-plugin-screen-orientation": "3.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
-    "es6-promise-plugin": "4.2.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
+    "cordova-sqlite-storage": "5.0.1",
+    "cordova-plugin-splashscreen": "6.0.0",
+    "com.googlemaps.ios": "3.9.0",
+    "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
+    "cordova-plugin-network-information": "2.0.2",
+    "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-network-information": "2.0.2"
+    "cordova-plugin-firebasex": "10.2.0-cli"
   };
 });

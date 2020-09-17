@@ -19,7 +19,7 @@
   ],
   "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git#f16676a612b1bf50fb482d2dd0ad9109daabc2b1",
   "_spec": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Masashi Katsumata, Hirbod Mirjavadi"
   },

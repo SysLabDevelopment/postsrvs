@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1600290346138,
+  "timestamp": 1600356043341,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -329,7 +329,7 @@
     "/common-es5.220c0b804a84499345aa.js": "5804a4cdf92d3ba8be52275f851e09d99604d285",
     "/cordova.a2fa906a490455e3109c.js": "1b14fa7ebadfa169121cef53c0f0e5356fbbaf5d",
     "/cordova.js": "8bc0e999ae299eee7977a5b40ec4dca3bbb451be",
-    "/cordova_plugins.js": "64f5e6fa5c7b32901bb08bd2ea01a058cacaf28f",
+    "/cordova_plugins.js": "f80f457649e034e1cea42d1d504e8e4a539acaae",
     "/index.html": "b73246f824812f7688e794af5031f492cc89082c",
     "/main-es2015.bf4ec8014cb906595b9d.js": "a0f287aac037be6e88622fa5b68cc140c71d54bf",
     "/main-es5.bf4ec8014cb906595b9d.js": "539859d304e74d4a6cb3252b93e43f1c9a87192f",

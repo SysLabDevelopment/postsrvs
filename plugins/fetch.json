@@ -151,10 +151,37 @@
     "is_top_level": true,
     "variables": {}
   },
+  "cordova-plugin-googlemaps": {
+    "source": {
+      "type": "registry",
+      "id": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps"
+    },
+    "is_top_level": true,
+    "variables": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
+    }
+  },
+  "cordova-androidx-build": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-androidx-build"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
   "com.googlemaps.ios": {
     "source": {
       "type": "registry",
       "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-network-information": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-network-information@^2.0.2"
     },
     "is_top_level": true,
     "variables": {}
@@ -167,61 +194,10 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-androidx-build": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-androidx-build"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-plugin-googlemaps": {
-    "source": {
-      "type": "registry",
-      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps"
-    },
-    "is_top_level": true,
-    "variables": {
-      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
-      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
-    }
-  },
-  "cordova-play-services-version-adapter": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-play-services-version-adapter"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-annotated-plugin-android": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-annotated-plugin-android"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-support-android-plugin": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-support-android-plugin@~1.0.0"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-support-google-services": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-support-google-services@^1.3.2"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
   "cordova-plugin-firebasex": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-firebasex"
+      "id": "cordova-plugin-firebasex@10.2.0-cli"
     },
     "is_top_level": true,
     "variables": {
@@ -247,14 +223,6 @@
       "id": "cordova-plugin-androidx@^2.0.0"
     },
     "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-plugin-network-information": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-network-information@^2.0.2"
-    },
-    "is_top_level": true,
     "variables": {}
   }
 }

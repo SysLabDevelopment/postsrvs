@@ -165,14 +165,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-appversion.RareloopAppVersion",
-      "file": "plugins/cordova-plugin-appversion/www/app-version.js",
-      "pluginId": "cordova-plugin-appversion",
-      "clobbers": [
-        "AppVersion"
-      ]
-    },
-    {
       "id": "cordova-plugin-googlemaps.Promise",
       "file": "plugins/cordova-plugin-googlemaps/www/Promise.js",
       "pluginId": "cordova-plugin-googlemaps"
@@ -420,14 +412,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "runs": true
     },
     {
-      "id": "cordova-plugin-firebasex.FirebasePlugin",
-      "file": "plugins/cordova-plugin-firebasex/www/firebase.js",
-      "pluginId": "cordova-plugin-firebasex",
-      "clobbers": [
-        "FirebasePlugin"
-      ]
-    },
-    {
       "id": "cordova-plugin-network-information.network",
       "file": "plugins/cordova-plugin-network-information/www/network.js",
       "pluginId": "cordova-plugin-network-information",
@@ -442,6 +426,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-network-information",
       "clobbers": [
         "Connection"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebasex.FirebasePlugin",
+      "file": "plugins/cordova-plugin-firebasex/www/firebase.js",
+      "pluginId": "cordova-plugin-firebasex",
+      "clobbers": [
+        "FirebasePlugin"
       ]
     }
   ];
@@ -464,13 +456,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "phonegap-plugin-barcodescanner": "8.1.0",
     "cordova-sqlite-storage": "5.0.1",
     "cordova-plugin-splashscreen": "6.0.0",
-    "cordova-plugin-appversion": "1.0.0",
-    "com.googlemaps.ios": "3.9.0",
-    "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-androidx-build": "1.0.4",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
+    "cordova-plugin-network-information": "2.0.2",
+    "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-firebasex": "10.2.0-cli",
-    "cordova-plugin-network-information": "2.0.2"
+    "cordova-plugin-firebasex": "10.2.0-cli"
   };
 });

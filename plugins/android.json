@@ -61,13 +61,13 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "com.googlemaps.ios": {
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-googlemaps": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-firebasex": {
@@ -85,9 +85,6 @@
       "ANDROID_FIREBASE_CRASHLYTICS_VERSION": "17.0.1",
       "ANDROID_FIREBASE_CRASHLYTICS_NDK_VERSION": "17.0.1",
       "ANDROID_GSON_VERSION": "2.8.6",
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "postsrvs.i"
     }
   },
