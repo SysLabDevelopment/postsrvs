@@ -79,38 +79,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-camera.Camera",
-      "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
-      "pluginId": "cordova-plugin-camera",
-      "clobbers": [
-        "Camera"
-      ]
-    },
-    {
-      "id": "cordova-plugin-camera.CameraPopoverOptions",
-      "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
-      "pluginId": "cordova-plugin-camera",
-      "clobbers": [
-        "CameraPopoverOptions"
-      ]
-    },
-    {
-      "id": "cordova-plugin-camera.camera",
-      "file": "plugins/cordova-plugin-camera/www/Camera.js",
-      "pluginId": "cordova-plugin-camera",
-      "clobbers": [
-        "navigator.camera"
-      ]
-    },
-    {
-      "id": "cordova-plugin-camera.CameraPopoverHandle",
-      "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
-      "pluginId": "cordova-plugin-camera",
-      "clobbers": [
-        "CameraPopoverHandle"
-      ]
-    },
-    {
       "id": "es6-promise-plugin.Promise",
       "file": "plugins/es6-promise-plugin/www/promise.js",
       "pluginId": "es6-promise-plugin",
@@ -429,6 +397,38 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-camera.Camera",
+      "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "Camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverOptions",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverOptions"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.camera",
+      "file": "plugins/cordova-plugin-camera/www/Camera.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "navigator.camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverHandle",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverHandle"
+      ]
+    },
+    {
       "id": "cordova-plugin-firebasex.FirebasePlugin",
       "file": "plugins/cordova-plugin-firebasex/www/firebase.js",
       "pluginId": "cordova-plugin-firebasex",
@@ -447,18 +447,18 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-uniquedeviceid": "1.3.2",
     "com-darryncampbell-cordova-plugin-intent": "2.0.0",
     "call-number": "0.0.2",
-    "cordova-plugin-android-permissions": "1.0.2",
-    "cordova-plugin-camera": "4.1.0",
+    "cordova-plugin-android-permissions": "1.1.0",
     "cordova-plugin-vibration": "3.1.1",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-screen-orientation": "3.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
-    "cordova-sqlite-storage": "5.0.1",
+    "cordova-sqlite-storage": "5.1.0",
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-androidx-build": "1.0.4",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-network-information": "2.0.2",
+    "cordova-plugin-camera": "5.0.0",
     "cordova-plugin-androidx-adapter": "1.1.1",
     "cordova-plugin-androidx": "2.0.0",
     "cordova-plugin-firebasex": "10.2.0-cli"

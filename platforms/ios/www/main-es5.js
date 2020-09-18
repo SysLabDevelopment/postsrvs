@@ -264,6 +264,17 @@
             return m.TestPageModule;
           });
         }
+      }, {
+        path: 'version',
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | pages-version-version-module */
+          "pages-version-version-module").then(__webpack_require__.bind(null,
+          /*! ./pages/version/version.module */
+          "./src/app/pages/version/version.module.ts")).then(function (m) {
+            return m.VersionPageModule;
+          });
+        }
       }];
 
       var AppRoutingModule = function AppRoutingModule() {
@@ -5516,7 +5527,7 @@
 
       var environment = {
         production: false,
-        wiredPath: ''
+        CURRENT_VERSION: "1.19.6"
       };
       /*
        * For easier debugging in development mode, you can import the following file

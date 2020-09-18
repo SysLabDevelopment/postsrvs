@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  wiredPath: ''
+  CURRENT_VERSION: "Next",
 
 };
 

@@ -343,4 +343,9 @@ export class BalancePage implements OnInit {
   navToMap() {
     this.router.navigate(['map'])
   }
+
+  public navToSettings() {
+    this.sysMap.navigate(['version']);
+  }
+
 }

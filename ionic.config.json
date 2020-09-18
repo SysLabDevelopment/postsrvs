@@ -2,10 +2,12 @@
   "name": "Postsrvs",
   "integrations": {
     "cordova": {
-      "android": "8.1.0",
-      "ios": "5.1.1",
-      "browser": "6.0.0"
+      "android": "9.0.0",
+      "ios": "6.1.1"
     }
   },
-  "type": "angular"
+  "type": "angular",
+  "hooks": {
+    "build:before": "./build-before.js"
+  }
 }

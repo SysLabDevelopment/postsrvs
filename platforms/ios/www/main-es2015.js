@@ -289,6 +289,10 @@ const routes = [
     { path: 'schedule', loadChildren: () => __webpack_require__.e(/*! import() | pages-schedule-schedule-module */ "pages-schedule-schedule-module").then(__webpack_require__.bind(null, /*! ./pages/schedule/schedule.module */ "./src/app/pages/schedule/schedule.module.ts")).then(m => m.SchedulePageModule) },
     { path: 'draw', loadChildren: () => __webpack_require__.e(/*! import() | pages-draw-draw-module */ "pages-draw-draw-module").then(__webpack_require__.bind(null, /*! ./pages/draw/draw.module */ "./src/app/pages/draw/draw.module.ts")).then(m => m.DrawPageModule) },
     { path: 'test', loadChildren: () => Promise.all(/*! import() | pages-test-test-module */[__webpack_require__.e("default~pages-courier-courier-module~pages-test-test-module"), __webpack_require__.e("pages-test-test-module")]).then(__webpack_require__.bind(null, /*! ./pages/test/test.module */ "./src/app/pages/test/test.module.ts")).then(m => m.TestPageModule) },
+    {
+        path: 'version',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-version-version-module */ "pages-version-version-module").then(__webpack_require__.bind(null, /*! ./pages/version/version.module */ "./src/app/pages/version/version.module.ts")).then(m => m.VersionPageModule)
+    },
 ];
 class AppRoutingModule {
 }
@@ -3264,7 +3268,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    wiredPath: ''
+    CURRENT_VERSION: "1.19.6",
 };
 /*
  * For easier debugging in development mode, you can import the following file

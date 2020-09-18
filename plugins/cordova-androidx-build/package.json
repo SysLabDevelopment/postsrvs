@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-androidx-build/-/cordova-androidx-build-1.0.4.tgz",
   "_shasum": "caaf2bf59dcc82f4d12b4c384e1deafce6ba3ca4",
   "_spec": "cordova-androidx-build@^1.0.4",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Masashi Katsumata"
   },

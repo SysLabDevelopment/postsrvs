@@ -12,6 +12,10 @@ const routes: Routes = [
   { path: 'schedule', loadChildren: () => import('./pages/schedule/schedule.module').then(m => m.SchedulePageModule) },
   { path: 'draw', loadChildren: () => import('./pages/draw/draw.module').then(m => m.DrawPageModule) },
   { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestPageModule) },
+  {
+    path: 'version',
+    loadChildren: () => import('./pages/version/version.module').then( m => m.VersionPageModule)
+  },
 ];
 
 @NgModule({

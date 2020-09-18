@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova.plugins.diagnostic/-/cordova.plugins.diagnostic-5.0.2.tgz",
   "_shasum": "2657e8db33ae4ec347fef87f83a710d07d898a59",
   "_spec": "cordova.plugins.diagnostic@^5.0.1",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Dave Alden"
   },

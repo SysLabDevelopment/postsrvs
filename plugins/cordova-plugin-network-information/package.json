@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-network-information/-/cordova-plugin-network-information-2.0.2.tgz",
   "_shasum": "f48a92cbd7cccb63cb0a5e5a00030001b8ac4fea",
   "_spec": "cordova-plugin-network-information@^2.0.2",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Apache Software Foundation"
   },

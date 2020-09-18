@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-5.0.0.tgz",
   "_shasum": "d58741af85754d80da82c7f673842a3e71bde630",
   "_spec": "cordova-plugin-ionic-webview@^5.0.0",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Ionic Team"
   },

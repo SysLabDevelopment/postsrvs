@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FeatherModule } from 'angular-feather';
-import { Box, CheckSquare, List, Loader, MinusCircle, PhoneCall, PlusCircle, Save, Search, User, XCircle, XOctagon, XSquare } from 'angular-feather/icons';
+import { Box, CheckSquare, List, Loader, MinusCircle, PhoneCall, PlusCircle, Save, Search, Settings, User, XCircle, XOctagon, XSquare } from 'angular-feather/icons';
 
 const icons = {
   PhoneCall,
@@ -15,7 +15,8 @@ const icons = {
   CheckSquare,
   Search,
   Box,
-  Loader
+  Loader,
+  Settings
 };
 
 @NgModule({

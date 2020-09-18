@@ -21,7 +21,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-6.0.0.tgz",
   "_shasum": "674718f87894cd75615da2b55905eb4cc719cf01",
   "_spec": "cordova-plugin-splashscreen@^6.0.0",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Apache Software Foundation"
   },

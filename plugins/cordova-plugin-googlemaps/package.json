@@ -4,7 +4,21 @@
   "_inBundle": false,
   "_integrity": "",
   "_location": "/cordova-plugin-googlemaps",
-  "_phantomChildren": {},
+  "_phantomChildren": {
+    "ansi": "0.3.1",
+    "big-integer": "1.6.48",
+    "elementtree": "0.1.7",
+    "endent": "1.4.1",
+    "glob": "7.1.2",
+    "graceful-fs": "4.2.4",
+    "isexe": "2.0.0",
+    "minimatch": "3.0.4",
+    "nice-try": "1.0.5",
+    "plist": "3.0.1",
+    "q": "1.5.1",
+    "semver": "5.7.1",
+    "underscore": "1.11.0"
+  },
   "_requested": {
     "type": "git",
     "raw": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",

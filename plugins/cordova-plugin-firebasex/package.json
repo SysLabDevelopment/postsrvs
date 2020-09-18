@@ -1,30 +1,27 @@
 {
-  "_from": "cordova-plugin-firebasex",
+  "_from": "cordova-plugin-firebasex@10.2.0-cli",
   "_id": "cordova-plugin-firebasex@10.2.0-cli",
   "_inBundle": false,
   "_integrity": "sha512-EQWsbVHlr5jHrmi0WCdnkYpV/6BNBhhNIpD0gOIMFrHIETjCPSkV1epeW5nvISRW23OZqd4LAZTQeByFa7AcNQ==",
   "_location": "/cordova-plugin-firebasex",
-  "_phantomChildren": {
-    "simple-plist": "1.1.0"
-  },
+  "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-firebasex",
+    "raw": "cordova-plugin-firebasex@10.2.0-cli",
     "name": "cordova-plugin-firebasex",
     "escapedName": "cordova-plugin-firebasex",
-    "rawSpec": "",
+    "rawSpec": "10.2.0-cli",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "10.2.0-cli"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-firebasex/-/cordova-plugin-firebasex-10.2.0-cli.tgz",
   "_shasum": "c1cdeb6d957a35e84977106f0db74c3a129e49ec",
-  "_spec": "cordova-plugin-firebasex",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_spec": "cordova-plugin-firebasex@10.2.0-cli",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Dave Alden"
   },

@@ -3,7 +3,7 @@
     package="postsrvs.i"
     android:hardwareAccelerated="true"
     android:versionCode="113"
-    android:versionName="1.19.2" >
+    android:versionName="1.19.6" >
 
     <uses-sdk
         android:minSdkVersion="22"
@@ -32,7 +32,6 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -48,6 +47,7 @@
         android:required="true" />
     <uses-feature android:name="android.hardware.location" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Required by older versions of Google Play services to create IID tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -90,15 +90,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-        <provider
-            android:name="org.apache.cordova.camera.FileProvider"
-            android:authorities="postsrvs.i.provider"
-            android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/camera_provider_paths" />
-        </provider>
 
         <activity
             android:name="com.google.zxing.client.android.CaptureActivity"
@@ -121,6 +112,16 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+        <provider
+            android:name="org.apache.cordova.camera.FileProvider"
+            android:authorities="postsrvs.i.cordova.plugin.camera.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/camera_provider_paths" />
+        </provider>
 
         <service
             android:name="com.google.android.gms.measurement.AppMeasurementService"

@@ -12,6 +12,7 @@ function Permissions() {
     this.ACCESS_SURFACE_FLINGER = 'android.permission.ACCESS_SURFACE_FLINGER';
     this.ACCESS_WIFI_STATE = 'android.permission.ACCESS_WIFI_STATE';
     this.ACCOUNT_MANAGER = 'android.permission.ACCOUNT_MANAGER';
+    this.ACTIVITY_RECOGNITION  = 'android.permission.ACTIVITY_RECOGNITION ';
     this.ADD_VOICEMAIL = 'com.android.voicemail.permission.ADD_VOICEMAIL';
     this.AUTHENTICATE_ACCOUNTS = 'android.permission.AUTHENTICATE_ACCOUNTS';
     this.BATTERY_STATS = 'android.permission.BATTERY_STATS';

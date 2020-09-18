@@ -1,28 +1,27 @@
 {
-  "_from": "cordova-plugin-androidx@^2.0.0",
+  "_from": "cordova-plugin-androidx@2.0.0",
   "_id": "cordova-plugin-androidx@2.0.0",
   "_inBundle": false,
   "_integrity": "sha512-n5QA1LJ/wT9qpDCHAw2GwqVXVlEajRPnDH5CKZGpv90M1FYVMydYlFwCEbpp263e5I5QloPjyoyWagiKLB+JMg==",
   "_location": "/cordova-plugin-androidx",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-androidx@^2.0.0",
+    "raw": "cordova-plugin-androidx@2.0.0",
     "name": "cordova-plugin-androidx",
     "escapedName": "cordova-plugin-androidx",
-    "rawSpec": "^2.0.0",
+    "rawSpec": "2.0.0",
     "saveSpec": null,
-    "fetchSpec": "^2.0.0"
+    "fetchSpec": "2.0.0"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-androidx/-/cordova-plugin-androidx-2.0.0.tgz",
   "_shasum": "ac7bd51ba0ae42dbfe4090a3cd4b8fac32f35ad1",
-  "_spec": "cordova-plugin-androidx@^2.0.0",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_spec": "cordova-plugin-androidx@2.0.0",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Dave Alden"
   },

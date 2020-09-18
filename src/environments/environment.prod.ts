@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  wiredPath: ''
+  CURRENT_VERSION: "1.19.6",
 };

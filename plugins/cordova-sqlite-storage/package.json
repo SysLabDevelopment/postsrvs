@@ -1,8 +1,8 @@
 {
   "_from": "cordova-sqlite-storage@^5.0.0",
-  "_id": "cordova-sqlite-storage@5.0.1",
+  "_id": "cordova-sqlite-storage@5.1.0",
   "_inBundle": false,
-  "_integrity": "sha512-uyRUcs2UCAi/LYRlrZ7ykcyOINzwClgWc45Myi4UxF//GFC3EP7qRZbVp/JWFVWs8a8QActNNQBBEe8pz3VTNw==",
+  "_integrity": "sha512-UmHe9yQiYblDBToh3z91WHuD6ZgmCm3VX+1QFseYQs4WVQ3+ndj22qyGby/NV0uyCgok91gB1obLjLM+9vYJEw==",
   "_location": "/cordova-sqlite-storage",
   "_phantomChildren": {},
   "_requested": {
@@ -18,10 +18,10 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-5.0.1.tgz",
-  "_shasum": "591e2abbd0ea5d0725981c1f81f02024bc6a1c1d",
+  "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-5.1.0.tgz",
+  "_shasum": "ded50473525ad178fd623c3881a60662b79a3712",
   "_spec": "cordova-sqlite-storage@^5.0.0",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "various"
   },
@@ -33,13 +33,14 @@
     "id": "cordova-sqlite-storage",
     "platforms": [
       "android",
+      "browser",
       "ios",
       "osx",
       "windows"
     ]
   },
   "dependencies": {
-    "cordova-sqlite-storage-dependencies": "2.1.2"
+    "cordova-sqlite-storage-dependencies": "3.0.0"
   },
   "deprecated": false,
   "description": "Native interface to SQLite for PhoneGap/Cordova - cordova-sqlite-storage plugin version",
@@ -53,6 +54,7 @@
     "sqlite",
     "ecosystem:cordova",
     "cordova-android",
+    "cordova-browser",
     "cordova-ios",
     "cordova-osx",
     "cordova-windows"
@@ -68,5 +70,5 @@
     "prepare-js": "coffee -p SQLitePlugin.coffee.md > www/SQLitePlugin.js",
     "prepare-spec": "node scripts/prepareSpec.js"
   },
-  "version": "5.0.1"
+  "version": "5.1.0"
 }

@@ -1,8 +1,8 @@
 {
   "_from": "cordova-plugin-android-permissions@^1.0.2",
-  "_id": "cordova-plugin-android-permissions@1.0.2",
+  "_id": "cordova-plugin-android-permissions@1.1.0",
   "_inBundle": false,
-  "_integrity": "sha512-Eb7Cf3lk9RydSYqmUzBAEVTT/EU+opV2yvyqkgZZAB/RVfHxsla/1wzHq0PBwAFjHIrxBAGZrOpJFVKc1SxtuA==",
+  "_integrity": "sha512-5zw+sMEak3iqZkl5/L0Q3n7d2qe/KjKm1P7qb7BhvsxT3r+05YiTPdfXC5dSdg6ZW8ObRTRH+CdMC1nBjwb5Pg==",
   "_location": "/cordova-plugin-android-permissions",
   "_phantomChildren": {},
   "_requested": {
@@ -18,10 +18,10 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-android-permissions/-/cordova-plugin-android-permissions-1.0.2.tgz",
-  "_shasum": "e26556ff11a560dffa33a5915d27fe9d44b3c248",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-android-permissions/-/cordova-plugin-android-permissions-1.1.0.tgz",
+  "_shasum": "cdd4bf7c40d15c5e55ae27a18a782d5ebebf0230",
   "_spec": "cordova-plugin-android-permissions@^1.0.2",
-  "_where": "/Users/timkovik/Documents/Repositories/postsrvs",
+  "_where": "/Users/timkovik/Documents/postsrvs",
   "author": {
     "name": "Jason Yang"
   },
@@ -58,5 +58,5 @@
     "type": "git",
     "url": "git+https://github.com/NeoLSN/cordova-plugin-android-permission.git"
   },
-  "version": "1.0.2"
+  "version": "1.1.0"
 }

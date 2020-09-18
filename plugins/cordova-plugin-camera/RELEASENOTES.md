@@ -20,6 +20,35 @@
 -->
 # Release Notes
 
+### 5.0.0 (Sep 14, 2020)
+
+* [GH-648](https://github.com/apache/cordova-plugin-camera/pull/648) ci(travis): update osx xcode image
+* [GH-637](https://github.com/apache/cordova-plugin-camera/pull/637) breaking: remove `NATIVE_URI` DestinationType
+* [GH-628](https://github.com/apache/cordova-plugin-camera/pull/628) breaking: bump project requirements
+* [GH-634](https://github.com/apache/cordova-plugin-camera/pull/634) chore: remove deprecated `file-transfer` plugin
+* [GH-632](https://github.com/apache/cordova-plugin-camera/pull/632) fix(android): return error if file url is null
+* [GH-510](https://github.com/apache/cordova-plugin-camera/pull/510) fix(android): use provider prefix to avoid conflicts other plugin providers
+* [GH-617](https://github.com/apache/cordova-plugin-camera/pull/617) breaking(android): stop using `CordovaUri` helper class
+* [GH-630](https://github.com/apache/cordova-plugin-camera/pull/630) chore: add `package-lock.json`
+* [GH-631](https://github.com/apache/cordova-plugin-camera/pull/631) chore(package): use short notation
+* [GH-629](https://github.com/apache/cordova-plugin-camera/pull/629) feat: migrate to `@cordova/eslint-config@3.x`
+* [GH-626](https://github.com/apache/cordova-plugin-camera/pull/626) ci: fix additional tests
+* [GH-627](https://github.com/apache/cordova-plugin-camera/pull/627) breaking: bump version 5.0.0-dev
+* [GH-612](https://github.com/apache/cordova-plugin-camera/pull/612) fix(ios): `tempFilePath` called twice if using `CameraUsesGeolocation`
+
+### 4.2.0 (May 07, 2020)
+* Cache images in device storage, devices have enough space now.
+* docs(readme): app renamed to Google Photos
+* chore(asf): update git notification settings
+* fix(ios): return copy of video when picking from gallery on **iOS** 13 (#580)
+* Update CONTRIBUTING.md
+* Fix UI API called on a background thread (#550, #530, #447) (#551)
+* ci: updates Node.js versions (#576)
+* chore(npm): adds ignore list (#575)
+* docs(README): remove confusing comment (#513)
+* docs(README): remove orphan **Windows** phone 7 note (#512)
+* ImagePicker returning same image (#306)
+
 ### 4.1.0 (Jun 27, 2019)
 
 -   docs: remove outdated test docs translations ([`06dc38f`](https://github.com/apache/cordova-plugin-camera/commit/06dc38f))
