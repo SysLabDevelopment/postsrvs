@@ -111,7 +111,6 @@ export class LoginPage implements OnInit {
 
   public scanAuth() {
     let self = this;
-
     this.auth.scanData().then((data) => {
       let id = data.text.slice(0, -4);
       localStorage.setItem('cId', id);
@@ -122,7 +121,7 @@ export class LoginPage implements OnInit {
       };
       self.auth.login(a_data).subscribe((data: any) => {
         if (data.success == "true") {
-          self.auth.initLogin();
+          self.auth.initLogin(data.sync_id);
           this.auth.setUser(data.sync_id);
           this.settings.getSettings(data.sync_id);
           self.router.navigate(['map']);

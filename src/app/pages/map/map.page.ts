@@ -234,22 +234,18 @@ export class MapPage implements OnInit {
     return markeredOrders;
   }
 
-  public drawData(autoStartRoute: string = "0", customData: any = null) {
+  public drawData(autoStartRoute: string = "0", customData: any = null, drawOrders?: Order[]) {
     if (this.map !== undefined) {
-      this.map.clear().then(() => {
+      this.map.clear().then(async () => {
         if (this.routeToOrder && customData.label == 'showRouteTooOrder') {
           this.requestDirection(customData.order.lt, customData.order.lg);
           this.addCluster(this.markeredOrders([customData.order]));
         } else {
           this.routeToOrder = false;
           if (autoStartRoute == "0") {
-            this.storage.get('orders').then((orders) => {
-              if (orders !== null) {
-                this.orders = orders.filter((order: Order) => { return order.status_id == 1 });
-                this.addCluster(this.markeredOrders(this.orders));
-              }
-
-            })
+            if (!drawOrders) drawOrders = await this.storage.get('orders');
+            this.orders = drawOrders.filter((order: Order) => { return order.status_id == 1 });
+            this.addCluster(this.markeredOrders(this.orders));
           }
         }
       });
@@ -312,7 +308,7 @@ export class MapPage implements OnInit {
               this.getOrders(ids).subscribe((res: Response) => {
                 this.storage.get('orders').then((orders) => {
                   if (orders == null) {
-                    this.data.getApiData()
+                    this.data.orders.next(res.orders)
                   } else {
                     this.data.orders.next(orders)
                   }
@@ -324,7 +320,7 @@ export class MapPage implements OnInit {
                   this.orders.length = 1;
                 }
                 console.log("sys:: заказы", this.orders);
-                this.drawData(this.settings.rules.autoStartRoute);
+                this.drawData(this.settings.rules.autoStartRoute, null, res.orders);
               });
             });
         });
