@@ -1,6 +1,6 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.19.6",
+	"version": "1.19.7",
 	"versionCode": "113",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
@@ -27,12 +27,7 @@
 		"@angular/router": "^11.0.0-next.1",
 		"@angular/service-worker": "^11.0.0-next.1",
 		"@babel/plugin-proposal-decorators": "^7.10.1",
-		"@capacitor/android": "^1.5.1",
-		"@capacitor/core": "1.5.1",
-		"@google/markerclusterer": "^2.0.8",
-		"@google/markerclustererplus": "^5.0.4",
 		"@google/markerwithlabel": "^1.2.12",
-		"@googlemaps/markermanager": "0.0.6",
 		"@ionic-native/android-permissions": "^5.22.0",
 		"@ionic-native/barcode-scanner": "^5.26.0",
 		"@ionic-native/call-number": "^5.22.0",
@@ -68,6 +63,7 @@
 		"cordova-plugin-camera": "5.0.0",
 		"cordova-plugin-firebasex": "10.2.0-cli",
 		"cordova-plugin-geolocation": "4.0.2",
+		"cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
 		"cordova-plugin-network-information": "^2.0.2",
 		"cordova-plugin-screen-orientation": "^3.0.2",
 		"cordova-plugin-splashscreen": "^6.0.0",
@@ -121,7 +117,6 @@
 		"codelyzer": "^6.0.0",
 		"cordova-android": "^9.0.0",
 		"cordova-plugin-device": "^2.0.3",
-		"cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
 		"cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
 		"cordova-plugin-ionic-keyboard": "^2.2.0",
 		"cordova-plugin-ionic-webview": "^5.0.0",
@@ -168,18 +163,18 @@
 			"phonegap-plugin-barcodescanner": {
 				"ANDROID_SUPPORT_V4_VERSION": "27.+"
 			},
-			"com.googlemaps.ios": {},
 			"cordova-plugin-androidx-adapter": {},
 			"cordova-sqlite-storage": {},
 			"cordova-plugin-splashscreen": {},
+			"cordova-plugin-network-information": {},
+			"cordova-plugin-camera": {
+				"ANDROID_SUPPORT_V4_VERSION": "27.+"
+			},
 			"cordova-plugin-googlemaps": {
 				"LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
 				"LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
 			},
-			"cordova-plugin-network-information": {},
-			"cordova-plugin-camera": {
-				"ANDROID_SUPPORT_V4_VERSION": "27.+"
-			}
+			"cordova-plugin-firebasex": {}
 		},
 		"platforms": [
 			"android",

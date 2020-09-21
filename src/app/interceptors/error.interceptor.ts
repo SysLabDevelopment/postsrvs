@@ -8,8 +8,8 @@ export class ErrorIntercept implements ErrorHandler {
 
     constructor(private firebase: FirebaseX) { }
 
-    handleError(error: Error) {
-        this.firebase.logEvent('app_exception', { fatal: JSON.stringify(error) })
+    handleError(error: any): void {
+        this.firebase.logEvent('app_exception', { fatal: error.message })
     }
 
 }

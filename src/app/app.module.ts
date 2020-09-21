@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouteReuseStrategy } from "@angular/router";
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 import { BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
 import { CallNumber } from "@ionic-native/call-number/ngx";
@@ -15,7 +16,7 @@ import { Device } from "@ionic-native/device/ngx";
 import { Diagnostic } from "@ionic-native/diagnostic/ngx";
 import { FirebaseX } from "@ionic-native/firebase-x/ngx";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
-import { GoogleMaps } from "@ionic-native/google-maps";
+// import { GoogleMaps } from "@ionic-native/google-maps";
 import { Network } from '@ionic-native/network/ngx';
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
@@ -25,6 +26,7 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 import { IonicStorageModule } from "@ionic/storage";
 import { CacheModule } from "ionic-cache";
 import { NgxMaskModule } from "ngx-mask";
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CashoutFailOComponent } from "./components/balance/cashout-fail-o/cashout-fail-o.component";
@@ -37,8 +39,6 @@ import { LongPressDirective } from './directives/long-press.directive';
 import { IconsModule } from './icons/icons.module';
 import { ErrorIntercept } from "./interceptors/error.interceptor";
 import { HttpErrorInterceptor } from "./interceptors/http.interceptor";
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
 registerLocaleData(localeRu, "ru");
 @NgModule({
@@ -71,7 +71,7 @@ registerLocaleData(localeRu, "ru");
     Diagnostic,
     Camera,
     CallNumber,
-    GoogleMaps,
+    // GoogleMaps,
     Network,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {

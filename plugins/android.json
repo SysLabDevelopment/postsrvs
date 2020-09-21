@@ -51,13 +51,13 @@
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "postsrvs.i"
     },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-googlemaps": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-network-information": {
@@ -67,7 +67,7 @@
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-androidx-adapter": {
+    "cordova-plugin-googlemaps": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-firebasex": {

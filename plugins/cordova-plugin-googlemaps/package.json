@@ -28,8 +28,8 @@
     "gitCommittish": "multiple_maps"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#USER",
+    "/"
   ],
   "_resolved": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#2cdc896cb5edfadb02aed9995ea742567dc8de02",
   "_spec": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",

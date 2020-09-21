@@ -4,12 +4,13 @@ import { Router } from "@angular/router";
 import { Device } from "@ionic-native/device/ngx";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import {
-  Environment, GoogleMap,
-
-  GoogleMapOptions, GoogleMaps,
-
-  GoogleMapsEvent
-} from "@ionic-native/google-maps/ngx";
+  Environment,
+  GoogleMap,
+  GoogleMapOptions,
+  GoogleMaps,
+  GoogleMapsEvent,
+  MapTypeId
+} from "@ionic-native/google-maps";
 import { Platform, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
 import { Order } from 'src/app/interfaces/order';
@@ -68,7 +69,7 @@ export class MapService {
         setTimeout(resolve, 100);
       });
       if (options) {
-        options.mapType = options.mapType;
+        options.mapType = options.mapType || MapTypeId.NORMAL;
         await this.map.setOptions(options);
       }
     } else {

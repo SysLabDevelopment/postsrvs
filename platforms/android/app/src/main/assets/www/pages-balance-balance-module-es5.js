@@ -1608,7 +1608,7 @@
         }, {
           key: "navToSettings",
           value: function navToSettings() {
-            this.sysMap.navigate(['/version']);
+            this.sysMap.navigate(['version']);
           }
         }]);
 

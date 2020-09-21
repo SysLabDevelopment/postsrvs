@@ -49,15 +49,13 @@
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "postsrvs.i"
     },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-googlemaps": {
-      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
-      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-network-information": {
@@ -66,7 +64,9 @@
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-plugin-androidx-adapter": {
+    "cordova-plugin-googlemaps": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
       "PACKAGE_NAME": "postsrvs.i"
     }
   },

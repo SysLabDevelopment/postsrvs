@@ -7,7 +7,8 @@ import {
   DirectionsResult,
   DirectionsService,
   GoogleMap,
-  GoogleMapOptions, GoogleMaps,
+  GoogleMapOptions,
+  GoogleMaps,
   GoogleMapsEvent,
   ILatLng,
   ILatLngBounds,
@@ -15,8 +16,9 @@ import {
   Marker,
   MarkerCluster,
   MarkerOptions,
-  MyLocation
-} from "@ionic-native/google-maps/ngx";
+  MyLocation,
+  TravelModeId
+} from "@ionic-native/google-maps";
 import { NavController, Platform, PopoverController } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
 import { Observable, Subject } from "rxjs";
@@ -81,7 +83,7 @@ export class MapPage implements OnInit {
     public navCtrl: NavController,
     public popoverController: PopoverController,
     private data: DataService,
-    private storage: Storage
+    private storage: Storage,
   ) {
   }
 
@@ -237,8 +239,8 @@ export class MapPage implements OnInit {
   public drawData(autoStartRoute: string = "0", customData: any = null, drawOrders?: Order[]) {
     if (this.map !== undefined) {
       this.map.clear().then(async () => {
-        if (this.routeToOrder && customData.label == 'showRouteTooOrder') {
-          this.requestDirection(customData.order.lt, customData.order.lg);
+        if (this.routeToOrder && customData.label == 'showRouteToOrder') {
+          this.requestDirection(parseFloat(customData.order.lt), parseFloat(customData.order.lg));
           this.addCluster(this.markeredOrders([customData.order]));
         } else {
           this.routeToOrder = false;
@@ -458,15 +460,13 @@ ${arrows}
     return popover
   }
 
-  private requestDirection(lat: number, lng: number) {
+  requestDirection(lat: number, lng: number) {
     this.destination = { lat, lng };
-
     DirectionsService.route({
       'origin': this.origin,
       'destination': this.destination,
-      'travelMode': "DRIVING"
+      'travelMode': TravelModeId.DRIVING
     }).then((result: DirectionsResult) => {
-      console.log(JSON.stringify(result, null, 2));
       this.bounds = result.routes[0].bounds;
       if (!this.renderer) {
         this.renderer = this.map.addDirectionsRendererSync({

@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { GoogleMaps, Polygon } from '@ionic-native/google-maps';
-import { MapPage } from './map.page';
 import { AngularSplitModule } from 'angular-split';
+// import { GoogleMaps, Polygon } from '@ionic-native/google-maps';
+import { MapPage } from './map.page';
 const routes: Routes = [
   {
     path: '',
@@ -21,7 +21,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  providers: [GoogleMaps],
+  providers: [],
   declarations: [MapPage],
   bootstrap: []
 })

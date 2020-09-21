@@ -10,24 +10,24 @@ INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/
 		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:108-132
 	android:name
 		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:16:168-255
-meta-data#com.google.android.geo.API_KEY
-INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:9-115
-	android:value
-		INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:66-112
-	android:name
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:20-65
 provider#org.apache.cordova.camera.FileProvider
-INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:9-26:20
+INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:9-23:20
 	android:grantUriPermissions
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:114-148
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:114-148
 	android:authorities
 		INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:19-88
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:19-88
 	android:exported
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:89-113
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:89-113
 	android:name
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:149-202
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:21:149-202
+meta-data#com.google.android.geo.API_KEY
+INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:9-115
+	android:value
+		INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:66-112
+	android:name
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:24:20-65
 manifest
 ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
 INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
@@ -326,21 +326,21 @@ ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/And
 	android:name
 		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:20:41-109
 meta-data#com.google.android.gms.version
-ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:22:9-122
+ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:25:9-122
 MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7f216ceaa5477e939530eec95bf4d7d6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:23:9-25:69
 MERGED from [com.google.android.gms:play-services-basement:17.1.1] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/7f216ceaa5477e939530eec95bf4d7d6/jetified-play-services-basement-17.1.1/AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:22:66-119
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:25:66-119
 	android:name
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:22:20-65
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:25:20-65
 uses-library#org.apache.http.legacy
-ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:23:9-88
+ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:26:9-88
 MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6973cb6e3575881ccec08337e1bad679/jetified-maps-3.1.0-beta/AndroidManifest.xml:20:7-86
 MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6973cb6e3575881ccec08337e1bad679/jetified-maps-3.1.0-beta/AndroidManifest.xml:20:7-86
 	android:required
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:23:61-85
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:26:61-85
 	android:name
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:23:23-60
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:26:23-60
 service#com.google.android.gms.measurement.AppMeasurementService
 ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:27:9-140
 MERGED from [com.google.android.gms:play-services-measurement:17.4.3] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/9de6b67be6715ef71c7b1b67d15f0484/jetified-play-services-measurement-17.4.3/AndroidManifest.xml:35:9-38:40
@@ -479,22 +479,22 @@ MERGED from [com.google.android.datatransport:transport-runtime:2.2.3] /Users/ti
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.3] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/0471e9c39c9e08939562d48eb1542cd8/jetified-transport-runtime-2.2.3/AndroidManifest.xml:22:5-79
 	android:name
 		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:52:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:53:5-81
+	android:name
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:53:22-78
 uses-feature#0x00020000
-ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:53:5-78
+ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:54:5-78
 MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6973cb6e3575881ccec08337e1bad679/jetified-maps-3.1.0-beta/AndroidManifest.xml:15:3-17:30
 MERGED from [com.google.android.libraries.maps:maps:3.1.0-beta] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/6973cb6e3575881ccec08337e1bad679/jetified-maps-3.1.0-beta/AndroidManifest.xml:15:3-17:30
 	android:glEsVersion
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:53:19-51
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:54:19-51
 	android:required
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:53:52-75
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:54:52-75
 uses-feature#android.hardware.location
-ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:54:5-62
+ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:55:5-62
 	android:name
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:54:19-59
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:55:5-81
-	android:name
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:55:22-78
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:55:19-59
 uses-permission#android.permission.WAKE_LOCK
 ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:56:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.3] /Users/timkovik/.gradle/caches/transforms-2/files-2.1/74c26ba8bdcd3a1beea883bd43a3af7f/jetified-play-services-measurement-api-17.4.3/AndroidManifest.xml:24:5-68

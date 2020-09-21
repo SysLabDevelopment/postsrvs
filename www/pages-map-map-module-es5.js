@@ -2423,15 +2423,15 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! @angular/common */
+      "./node_modules/@angular/common/fesm2015/common.js");
       /* harmony import */
 
 
-      var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/common */
-      "./node_modules/@angular/common/fesm2015/common.js");
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2453,21 +2453,16 @@
       /* harmony import */
 
 
-      var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! @ionic-native/google-maps */
-      "./node_modules/@ionic-native/google-maps/index.js");
+      var angular_split__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! angular-split */
+      "./node_modules/angular-split/fesm2015/angular-split.js");
       /* harmony import */
 
 
       var _map_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! ./map.page */
-      "./src/app/pages/map/map.page.ts");
-      /* harmony import */
+      "./src/app/pages/map/map.page.ts"); // import { GoogleMaps, Polygon } from '@ionic-native/google-maps';
 
-
-      var angular_split__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-      /*! angular-split */
-      "./node_modules/angular-split/fesm2015/angular-split.js");
 
       var routes = [{
         path: '',
@@ -2478,32 +2473,32 @@
         _classCallCheck(this, MapPageModule);
       };
 
-      MapPageModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+      MapPageModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
         type: MapPageModule
       });
-      MapPageModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+      MapPageModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({
         factory: function MapPageModule_Factory(t) {
           return new (t || MapPageModule)();
         },
-        providers: [_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_5__["GoogleMaps"]],
-        imports: [[angular_split__WEBPACK_IMPORTED_MODULE_7__["AngularSplitModule"].forRoot(), _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(routes)]]
+        providers: [],
+        imports: [[angular_split__WEBPACK_IMPORTED_MODULE_5__["AngularSplitModule"].forRoot(), _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(routes)]]
       });
 
       (function () {
-        (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MapPageModule, {
+        (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](MapPageModule, {
           declarations: [_map_page__WEBPACK_IMPORTED_MODULE_6__["MapPage"]],
-          imports: [angular_split__WEBPACK_IMPORTED_MODULE_7__["AngularSplitModule"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"]]
+          imports: [angular_split__WEBPACK_IMPORTED_MODULE_5__["AngularSplitModule"], _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"]]
         });
       })();
       /*@__PURE__*/
 
 
       (function () {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MapPageModule, [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](MapPageModule, [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
           args: [{
-            imports: [angular_split__WEBPACK_IMPORTED_MODULE_7__["AngularSplitModule"].forRoot(), _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(routes)],
-            providers: [_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_5__["GoogleMaps"]],
+            imports: [angular_split__WEBPACK_IMPORTED_MODULE_5__["AngularSplitModule"].forRoot(), _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forChild(routes)],
+            providers: [],
             declarations: [_map_page__WEBPACK_IMPORTED_MODULE_6__["MapPage"]],
             bootstrap: []
           }]
@@ -2547,9 +2542,9 @@
       /* harmony import */
 
 
-      var _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @ionic-native/google-maps/ngx */
-      "./node_modules/@ionic-native/google-maps/ngx/index.js");
+      var _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @ionic-native/google-maps */
+      "./node_modules/@ionic-native/google-maps/index.js");
       /* harmony import */
 
 
@@ -2736,7 +2731,7 @@
             this.platform.ready().then(function () {
               _this12.initContent();
 
-              _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["LocationService"].getMyLocation().then(function (myLocation) {
+              _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["LocationService"].getMyLocation().then(function (myLocation) {
                 _this12.coords = {
                   lt: myLocation.latLng.lat,
                   lg: myLocation.latLng.lng
@@ -2800,11 +2795,11 @@
                         }
                       });
                       this.drawData(this.settings.rules.autoStartRoute);
-                      this.map.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].POI_CLICK).subscribe(function (params) {
+                      this.map.on(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].POI_CLICK).subscribe(function (params) {
                         console.log(params);
                       });
 
-                      _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["LocationService"].getMyLocation().then(function (myLocation) {
+                      _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["LocationService"].getMyLocation().then(function (myLocation) {
                         _this13.myLocation = myLocation;
                         var coordinates = _this13.myLocation.latLng || {
                           lat: 55,
@@ -2890,12 +2885,12 @@
                     while (1) {
                       switch (_context2.prev = _context2.next) {
                         case 0:
-                          if (!(this.routeToOrder && customData.label == 'showRouteTooOrder')) {
+                          if (!(this.routeToOrder && customData.label == 'showRouteToOrder')) {
                             _context2.next = 5;
                             break;
                           }
 
-                          this.requestDirection(customData.order.lt, customData.order.lg);
+                          this.requestDirection(parseFloat(customData.order.lt), parseFloat(customData.order.lg));
                           this.addCluster(this.markeredOrders([customData.order]));
                           _context2.next = 13;
                           break;
@@ -3055,7 +3050,7 @@
             };
             var markerCluster = this.map.addMarkerClusterSync(options);
             console.log("sys:: MarkerCluster added: ", markerCluster);
-            markerCluster.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].MARKER_CLICK).subscribe(function (params) {
+            markerCluster.on(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].MARKER_CLICK).subscribe(function (params) {
               return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this20, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
                 var marker, popover;
                 return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -3064,7 +3059,7 @@
                       case 0:
                         marker = params[1];
                         _context3.next = 3;
-                        return this.popover(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].MARKER_CLICK, marker.get('info'));
+                        return this.popover(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].MARKER_CLICK, marker.get('info'));
 
                       case 3:
                         popover = _context3.sent;
@@ -3158,12 +3153,11 @@
               lng: lng
             };
 
-            _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["DirectionsService"].route({
+            _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["DirectionsService"].route({
               'origin': this.origin,
               'destination': this.destination,
-              'travelMode': "DRIVING"
+              'travelMode': _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["TravelModeId"].DRIVING
             }).then(function (result) {
-              console.log(JSON.stringify(result, null, 2));
               _this21.bounds = result.routes[0].bounds;
 
               if (!_this21.renderer) {
@@ -3178,9 +3172,9 @@
                   }
                 });
 
-                _this21.renderer.on(_ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].DIRECTIONS_CHANGED).subscribe(_this21.onDirectionChanged.bind(_this21));
+                _this21.renderer.on(_ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["GoogleMapsEvent"].DIRECTIONS_CHANGED).subscribe(_this21.onDirectionChanged.bind(_this21));
               } else {
-                var decodedPoints = _ionic_native_google_maps_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleMaps"].getPlugin().geometry.encoding.decodePath(result.routes[0].overview_polyline);
+                var decodedPoints = _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["GoogleMaps"].getPlugin().geometry.encoding.decodePath(result.routes[0].overview_polyline);
 
                 _this21.map.addPolyline({
                   points: decodedPoints,
