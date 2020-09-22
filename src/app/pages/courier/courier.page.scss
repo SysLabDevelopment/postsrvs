@@ -186,3 +186,11 @@ ion-item.overdue {
     }
   }
 }
+.ios {
+  ion-content {
+    min-height: 85vh;
+    ion-segment {
+      height: 60px;
+    }
+  }
+}
