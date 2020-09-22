@@ -5,7 +5,7 @@ import {
 import {
   DirectionsRenderer,
   DirectionsResult,
-  DirectionsService,
+
   GoogleMap,
   GoogleMapOptions,
   GoogleMaps,
@@ -16,8 +16,7 @@ import {
   Marker,
   MarkerCluster,
   MarkerOptions,
-  MyLocation,
-  TravelModeId
+  MyLocation
 } from "@ionic-native/google-maps";
 import { NavController, Platform, PopoverController } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
@@ -36,6 +35,7 @@ import { SettingsService } from "./../../services/settings.service";
 import { SysService } from "./../../services/sys.service";
 import { MapService } from "./../../services/sys/map.service";
 
+declare var google: any;
 @Component({
   selector: "app-map",
   templateUrl: "./map.page.html",
@@ -69,7 +69,7 @@ export class MapPage implements OnInit {
   public routeToOrder = false;
   public destination: ILatLng;
   public currentOrder = '';
-
+  directionsService = new google.maps.DirectionsService;
 
   constructor(
     public state$: StateService,
@@ -239,7 +239,7 @@ export class MapPage implements OnInit {
   public drawData(autoStartRoute: string = "0", customData: any = null, drawOrders?: Order[]) {
     if (this.map !== undefined) {
       this.map.clear().then(async () => {
-        if (this.routeToOrder && customData.label == 'showRouteToOrder') {
+        if (this.routeToOrder && customData?.label == 'showRouteToOrder') {
           this.requestDirection(parseFloat(customData.order.lt), parseFloat(customData.order.lg));
           this.addCluster(this.markeredOrders([customData.order]));
         } else {
@@ -462,29 +462,15 @@ ${arrows}
 
   requestDirection(lat: number, lng: number) {
     this.destination = { lat, lng };
-    DirectionsService.route({
-      'origin': this.origin,
+    this.directionsService.route({
+      'origin': this.myLocation.latLng,
       'destination': this.destination,
-      'travelMode': TravelModeId.DRIVING
-    }).then((result: DirectionsResult) => {
-      this.bounds = result.routes[0].bounds;
-      if (!this.renderer) {
-        this.renderer = this.map.addDirectionsRendererSync({
-          'directions': result,
-          'panel': 'guide',
-          'polylineOptions': {
-            'points':
-              [
-                this.origin,
-                this.destination
-              ]
-          },
-          'markerOptions': {
-            visible: false
-          }
-        });
-        this.renderer.on(GoogleMapsEvent.DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
-      } else {
+      'travelMode': 'DRIVING'
+    },
+      (result: DirectionsResult, status: string) => {
+        console.log('sys:: Статус запроса directionsService:', status);
+        this.bounds = result.routes[0].bounds;
+
         let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
           result.routes[0].overview_polyline
         );
@@ -495,9 +481,21 @@ ${arrows}
           geodesic: false
         });
         this.map.addMarkerSync({ position: this.destination });
-        this.renderer.setDirections(result);
-      }
-    });
+
+        // if (!this.renderer) {
+        //   this.renderer = this.map.addDirectionsRendererSync({
+        //     'directions': result,
+        //     'panel': 'guide',
+        //     'markerOptions': {
+        //       visible: false
+        //     }
+        //   });
+        //   this.renderer.on(GoogleMapsEvent.DIRECTIONS_CHANGED).subscribe(this.onDirectionChanged.bind(this));
+        // } else {
+
+        //   this.renderer.setDirections(result);
+        // }
+      });
   }
   onDirectionChanged() {
     let directions: DirectionsResult = this.renderer.getDirections();

@@ -716,8 +716,8 @@ export class OrderPage implements OnInit {
     this.state$.intentStart(this.coords);
   }
 
-  public showRoute() {
-    this.sysMap.showRoute(this.order);
+  public showRoute(order: Order) {
+    this.sysMap.showRoute(order);
 
   }
 

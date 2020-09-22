@@ -13,7 +13,8 @@ module.exports = (ctx) => {
         versionArray[2] = (parseInt(versionArray[2]) + 1).toString();
         versionCode = (parseInt(versionCode) + 1).toString();
         packageJSON.version = versionArray.join(".");
-        console.warn(`sys:: versionCode is ${versionCode}`);
+        packageJSON.versionCode = versionCode;
+        console.warn(`sys:: versionCode is ${packageJSON.versionCode}`);
         console.warn(`sys:: app version is ${packageJSON.version}`);
         fs.writeFileSync('package.json', JSON.stringify(packageJSON, null, "\t"), 'utf-8');
         console.log("package.json app version updated");
@@ -45,7 +46,8 @@ module.exports = (ctx) => {
 
         fs.writeFileSync('config.xml', configXmlData,'utf-8');
         console.log("config.xml app version updated");
-
+        // let file = new URL('file:platforms/android/app/build/outputs/apk/release/postsrvs.apk')
+        // fs.rmdirSync(file);
     };
 
 };
