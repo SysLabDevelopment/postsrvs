@@ -157,23 +157,23 @@ export class MapPage implements OnInit {
 
   async loadMap() {
     let options: GoogleMapOptions = {
-      preferences: {
-        building: false,
-        clickableIcons: true,
+      "preferences": {
+        "building": false,
+        "clickableIcons": true,
       },
-      controls: {
-        myLocation: true,
-        myLocationButton: true,
-        zoom: true,
-        compass: false,
-        indoorPicker: true,
+      "controls": {
+        "myLocation": true,
+        "myLocationButton": true,
+        "zoom": true,
+        "compass": false,
+        "indoorPicker": true,
       },
-      camera: {
-        target: this.origin,
-        zoom: 10,
+      "camera": {
+        "target": this.origin,
+        "zoom": 10,
       },
-      gestures: {
-        zoom: true,
+      "gestures": {
+        "zoom": true,
       },
     };
     this.map = await this.sysMap.attachMap("map", options);

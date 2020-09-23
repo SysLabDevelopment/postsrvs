@@ -480,6 +480,9 @@
       "ANDROID_FIREBASE_CRASHLYTICS_NDK_VERSION": "17.0.1",
       "ANDROID_GSON_VERSION": "2.8.6",
       "PACKAGE_NAME": "postsrvs.i"
+    },
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "postsrvs.i"
     }
   },
   "dependent_plugins": {},
@@ -945,6 +948,7 @@
     "cordova-androidx-build": "1.0.4",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-firebasex": "10.2.0-cli"
+    "cordova-plugin-firebasex": "10.2.0-cli",
+    "com.googlemaps.ios": "3.9.0"
   }
 }

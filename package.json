@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.20.5",
-	"versionCode": "118",
+	"version": "1.20.6",
+	"versionCode": "119",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -174,7 +174,8 @@
 				"LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
 				"LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
 			},
-			"cordova-plugin-firebasex": {}
+			"cordova-plugin-firebasex": {},
+			"com.googlemaps.ios": {}
 		},
 		"platforms": [
 			"android",

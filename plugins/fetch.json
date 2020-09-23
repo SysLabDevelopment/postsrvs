@@ -191,7 +191,7 @@
       "type": "registry",
       "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
     },
-    "is_top_level": false,
+    "is_top_level": true,
     "variables": {}
   },
   "cordova-plugin-firebasex": {
