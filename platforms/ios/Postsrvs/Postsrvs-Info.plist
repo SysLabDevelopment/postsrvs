@@ -64,9 +64,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app wants to get your location while this app runs only.</string>
 	<key>NSMainNibFile</key>
-	<string/>
+	<string></string>
 	<key>NSMainNibFile~ipad</key>
-	<string/>
+	<string></string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

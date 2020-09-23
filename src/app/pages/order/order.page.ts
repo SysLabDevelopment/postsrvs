@@ -124,7 +124,7 @@ export class OrderPage implements OnInit {
   public openCompany = false;
   public checkBase64Image: string;
   public drawNeedle: boolean = true;
-
+  public cardNums: number;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -381,7 +381,7 @@ export class OrderPage implements OnInit {
     if (this.network.type == 'none') {
       //Если оффлайн
       this.cache.getItem('syncRequests').then((syncRequests: Array<any>) => {
-        order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image } };
+        order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums } };
         syncRequests && syncRequests.push({ order, newStatus });
         this.cache.saveItem('syncRequests', syncRequests, 'delayedCalls').then(() => {
           console.log(`sys:: Отложено изменение статуса на ${newStatus} для заказа ${order.client_id}`);
@@ -392,7 +392,7 @@ export class OrderPage implements OnInit {
     } else {
       //Если онлайн
       this.localModifyOrders(newStatus);
-      order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image } };
+      order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums } };
       this.orderService.sendDelayedCall(order, newStatus);
       this.router.navigate(['courier']);
     }
@@ -812,6 +812,7 @@ export class OrderPage implements OnInit {
     this.email_input = details.data.email_input;
     this.phone_input = details.data.phone_input;
     this.commentText = details.data.commentText;
+    this.cardNums = details.data.cardNums;
     if (details.data) {
       this.doneOrder();
     }

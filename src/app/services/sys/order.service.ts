@@ -127,7 +127,8 @@ export class OrderService {
               order.selectedPayment,
               '',
               order.check,
-              recognizedData
+              recognizedData,
+              order.cardNums
             )
             .subscribe((data: any) => {
               localStorage.removeItem("drawImg");
@@ -149,7 +150,8 @@ export class OrderService {
               order.selectedPayment,
               '',
               order.check,
-              recognizedData
+              recognizedData,
+              order.cardNums
             )
             .subscribe((data: any | null) => {
               localStorage.removeItem("drawImg");

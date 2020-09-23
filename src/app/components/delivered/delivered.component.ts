@@ -16,6 +16,7 @@ export class DeliveredComponent implements OnInit {
   public email_input: string = ''
   public phone_input: string = '';
   public drawPage = DrawPage;
+  public cardNums: number;
   constructor(
     public modalController: ModalController,
     public router: Router,
@@ -31,6 +32,7 @@ export class DeliveredComponent implements OnInit {
       'email_input': this.email_input,
       'phone_input': this.phone_input,
       'commentText': this.commentText,
+      'cardNums': this.cardNums
     })
     this.modalController.dismiss(details);
   }

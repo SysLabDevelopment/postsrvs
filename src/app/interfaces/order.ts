@@ -38,6 +38,6 @@ export interface Order {
     Cadress?: string,
     Cphone?: string,
     Cphone_s?: string,
-
+    cardNums?: number
 
 }
