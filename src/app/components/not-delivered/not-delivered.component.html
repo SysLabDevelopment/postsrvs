@@ -10,11 +10,20 @@
     </ion-radio-group>
   </ion-list>
   <p class="descr">укажите причину невыполненной доставки заказа </p>
+  <ion-text class="title" *ngIf="selectedReason == 8">
+    Новая дата доставки
+  </ion-text>
+  <ion-item *ngIf="selectedReason == 8" class='datepicker' lines='none'>
+    <ion-datetime placeholder="DD.MM.YYYY" displayFormat="DD.MM.YYYY" min="{{today.toISOString()}}"
+      value="{{tomorrow.toISOString()}}" [(ngModel)]='new_plan_date'></ion-datetime>
+  </ion-item>
+
   <ion-item class='comment' lines='none'>
     <ion-label position="stacked">Комментарий</ion-label>
     <ion-textarea [(ngModel)]="commentText"></ion-textarea>
   </ion-item>
-  <ion-button expand="full" fill="solid" shape="round" id='light-purple-button' class='action' (click)="dismiss()">
+  <ion-button [disabled]='selectedReason == 8 && !new_plan_date' expand="full" fill="solid" shape="round"
+    id='light-purple-button' class='action' (click)="dismiss()">
     Завершить заказ
   </ion-button>
 </div>

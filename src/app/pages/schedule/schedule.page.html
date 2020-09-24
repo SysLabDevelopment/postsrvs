@@ -8,69 +8,69 @@
 </ion-header>
 
 <ion-content>
-<div class="schedule-area working">
-  <h4>Добавить рабочие дни</h4>
-  <ion-text class="descr">Выберите даты, в которые вы хотите выйти на работу</ion-text>
-  <ion-item lines="none">
-    <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder="DD.MM.YYYY HH:mm"></ion-datetime>
-    <ion-button size="default" fill="solid" (click)="addWorkDate(workDate)" class='confirm'>
-  <ion-icon name="checkmark-outline"></ion-icon>
-</ion-button>
-</ion-item>
-<ion-list>
-  <ion-list-header>
-  <ion-label>Выбранные рабочие дни:</ion-label>
-</ion-list-header>
-<ul *ngFor="let date of workDates; index as i">
-              <li>
-                {{date | date: 'd.MM.yyyy H:mm'}} 
-                <ion-text class='del' (click)="delWorkDate(i, date)">
-                  <a>
-                    удалить
-                  <ion-icon name="close"></ion-icon>  
-                   </a>            
-                </ion-text>
-            </li>
-  </ul>
+  <div class="schedule-area working">
+    <h4>Добавить рабочие дни</h4>
+    <ion-text class="descr">Выберите даты, в которые вы хотите выйти на работу</ion-text>
+    <ion-item lines="none">
+      <ion-datetime display-format="DD.MM.YYYY HH:mm" #workDate placeholder="DD.MM.YYYY HH:mm"></ion-datetime>
+      <ion-button size="default" fill="solid" (click)="addWorkDate(workDate)" class='confirm'>
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Выбранные рабочие дни:</ion-label>
+      </ion-list-header>
+      <ul *ngFor="let date of workDates; index as i">
+        <li>
+          {{date | date: 'd.MM.yyyy H:mm'}}
+          <ion-text class='del' (click)="delWorkDate(i, date)">
+            <a>
+              удалить
+              <ion-icon name="close"></ion-icon>
+            </a>
+          </ion-text>
+        </li>
+      </ul>
 
-</ion-list>
-  <ion-button (click)="goToWork()" fill="solid">
-    Сохранить
-  </ion-button>
-</div>
-<div class='schedule-area non-working'>
-    <h4>Добавить НЕрабочие дни</h4>
-  <ion-text class="descr">
-    Выберите даты, в которые вы не можете выйти на работу и укажите причину
-  </ion-text>
-  <ion-item lines="none">
-    <ion-datetime display-format="DD.MM.YYYY" placeholder="DD.MM.YYYY" #nonWorkDate></ion-datetime>
-    <ion-button size="default" fill="solid" (click)="addNonWorkDate(nonWorkDate)" class='confirm'>
-      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-list>
+    <ion-button (click)="goToWork()" fill="solid">
+      Сохранить
     </ion-button>
-  </ion-item>
-  <ion-list>
-    <ion-list-header>
-    <ion-label>Выбранные НЕрабочие дни:</ion-label>
-  </ion-list-header>
-  <ul *ngFor="let date of nonWorkDates; index as i">
-      <li>
-        {{date.date | date: 'd.MM.yyyy'}} 
-        <ion-text class='del' (click)="delNonWorkDate(i)">
-          <a>
-            удалить
-          <ion-icon name="close"></ion-icon>  
-            </a>            
-        </ion-text>
-    </li>
-    {{notWorkRules[date.reason]}}
-  </ul>
-          
+  </div>
+  <div class='schedule-area non-working'>
+    <h4>Добавить НЕрабочие дни</h4>
+    <ion-text class="descr">
+      Выберите даты, в которые вы не можете выйти на работу и укажите причину
+    </ion-text>
+    <ion-item lines="none" class='datepicker'>
+      <ion-datetime display-format="DD.MM.YYYY" placeholder="DD.MM.YYYY" #nonWorkDate></ion-datetime>
+      <ion-button size="default" fill="solid" (click)="addNonWorkDate(nonWorkDate)" class='confirm'>
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Выбранные НЕрабочие дни:</ion-label>
+      </ion-list-header>
+      <ul *ngFor="let date of nonWorkDates; index as i">
+        <li>
+          {{date.date | date: 'd.MM.yyyy'}}
+          <ion-text class='del' (click)="delNonWorkDate(i)">
+            <a>
+              удалить
+              <ion-icon name="close"></ion-icon>
+            </a>
+          </ion-text>
+        </li>
+        {{notWorkRules[date.reason]}}
+      </ul>
 
-  </ion-list>
+
+    </ion-list>
     <ion-button (click)="stopWork()" fill="solid">
-   Сохранить
-  </ion-button>
+      Сохранить
+    </ion-button>
 
-</div>
+  </div>
 </ion-content>

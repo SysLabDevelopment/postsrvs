@@ -699,7 +699,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/fesm2015/core.js");
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
       /* harmony import */
 
 
@@ -711,7 +711,7 @@
 
       var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! rxjs */
-      "./node_modules/rxjs/dist/esm/index.js");
+      "./node_modules/rxjs/_esm2015/index.js");
       /* harmony import */
 
 

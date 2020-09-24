@@ -118,8 +118,6 @@ export class OrderPage implements OnInit {
   public orderPhones: Array<string> = [];
   public selectedPhone: string;
   public note: string;
-  public today = new Date();
-  public tomorrow = new Date();
   public new_plan_date: string; //Дата переноса заказа
   public openCompany = false;
   public checkBase64Image: string;
@@ -156,7 +154,6 @@ export class OrderPage implements OnInit {
 
   ngOnInit() {
     this.courier.initStatuses();
-    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
     this.note = localStorage.getItem(this.orderId);
   }
 
@@ -792,6 +789,7 @@ export class OrderPage implements OnInit {
     console.log('sys:: dismiss details: ', details);
     this.selectedReason = details.data.selectedReason;
     this.commentText = details.data.commentText;
+    this.new_plan_date = details.data.new_plan_date;
     details.data && this.doneOrder();
   }
 

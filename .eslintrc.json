@@ -19,7 +19,11 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": ["angular", "prettier", "unicorn"],
+  "plugins": [
+    "angular",
+    "prettier",
+    "unicorn"
+  ],
   "rules": {
     "no-unused-vars": "off",
     "unicorn/prevent-abbreviations": "off"

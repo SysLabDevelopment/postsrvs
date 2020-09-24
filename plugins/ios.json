@@ -69,11 +69,17 @@
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "com.googlemaps.ios": {
+    "cordova-plugin-firebasex": {
+      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+      "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
+      "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
       "PACKAGE_NAME": "postsrvs.i"
     }
   },
   "dependent_plugins": {
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
     "cordova-plugin-androidx": {
       "PACKAGE_NAME": "postsrvs.i"
     }
