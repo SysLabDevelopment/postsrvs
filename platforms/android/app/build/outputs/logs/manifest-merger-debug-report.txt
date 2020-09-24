@@ -118,17 +118,17 @@ INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/
 INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
 INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:1-57:12
 	package
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:101-121
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:102-122
 		INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:72-100
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:72-101
 		INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml
 	android:hardwareAccelerated
 		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:11-45
 	xmlns:android
-		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:122-180
+		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:123-181
 	android:versionCode
 		ADDED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml:2:46-71
 		INJECTED from /Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/AndroidManifest.xml

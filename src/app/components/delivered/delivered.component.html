@@ -16,10 +16,12 @@
       <ion-label class='title'>
         Оплата заказа
         <p>
-          <ion-button size='large' [ngClass]='{"light": selectedPayment !== "1"}' (click)='selectPayment("1")'>
+          <ion-button [disabled]='isDisabled("наличные")' size='large' [ngClass]='{"light": selectedPayment !== "1"}'
+            (click)='selectPayment("1")'>
             Наличными
           </ion-button>
-          <ion-button size='large' [ngClass]='{"light": selectedPayment !== "2"}' (click)='selectPayment("2")'>
+          <ion-button [disabled]='isDisabled("карта")' size='large' [ngClass]='{"light": selectedPayment !== "2"}'
+            (click)='selectPayment("2")'>
             Картой
           </ion-button>
         </p>

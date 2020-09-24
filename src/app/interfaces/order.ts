@@ -38,6 +38,8 @@ export interface Order {
     Cadress?: string,
     Cphone?: string,
     Cphone_s?: string,
-    cardNums?: number
+    cardNums?: number,
+    pay_type_change_allowed?: Boolean, //Можно ли изменять тип оплаты?
+    pay_type?: string //Тип оплаты
 
 }

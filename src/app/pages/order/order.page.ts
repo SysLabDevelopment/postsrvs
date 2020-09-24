@@ -798,7 +798,9 @@ export class OrderPage implements OnInit {
       component: DeliveredComponent,
       cssClass: 'done-order-modal',
       componentProps: {
-        goods: this.goods
+        goods: this.goods,
+        pay_type: this.order.pay_type,
+        pay_type_change_allowed: this.order.pay_type_change_allowed
       },
       showBackdrop: true
     });

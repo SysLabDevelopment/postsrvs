@@ -11,12 +11,15 @@ export class DeliveredComponent implements OnInit {
   public root = DeliveredComponent;
   public commentText: string;
   @Input() goods: any[];
+  @Input() pay_type: string;
+  @Input() pay_type_change_allowed: boolean;
   public drawNeedle: boolean = true;
   public selectedPayment: string = '1';
   public email_input: string = ''
   public phone_input: string = '';
   public drawPage = DrawPage;
   public cardNums: number;
+
   constructor(
     public modalController: ModalController,
     public router: Router,
@@ -47,5 +50,9 @@ export class DeliveredComponent implements OnInit {
       showBackdrop: false
     });
     modal.present();
+  }
+
+  public isDisabled(payType: string): boolean {
+    return this.pay_type_change_allowed ? false : (payType !== this.pay_type);
   }
 }
