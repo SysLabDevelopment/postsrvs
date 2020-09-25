@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.22.10",
-	"versionCode": "123",
+	"version": "1.22.11",
+	"versionCode": "124",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -44,8 +44,8 @@
 		"@ionic-native/unique-device-id": "^5.22.0",
 		"@ionic-native/vibration": "^5.22.0",
 		"@ionic-native/web-intent": "^5.26.0",
-		"@ionic/angular": "^5.3.3",
-		"@ionic/core": "^5.3.3",
+		"@ionic/angular": "^5.3.4",
+		"@ionic/core": "^5.3.4",
 		"@ionic/storage": "^2.2.0",
 		"angular": "^1.8.0",
 		"angular-feather": "^6.0.10",
