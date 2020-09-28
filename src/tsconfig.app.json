@@ -6,7 +6,8 @@
       "node"
     ],
     "sourceMap": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "noImplicitThis": true
   },
   "files": [
     "main.ts",

@@ -21,5 +21,6 @@
   },
   "angularCompilerOptions": {
     "disableTypeScriptVersionCheck": true,
+    "annotationsAs": true
   }
 }

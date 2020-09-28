@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="124" id="postsrvs.i" version="1.22.11" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="125" id="postsrvs.i" version="1.23.12" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
@@ -165,7 +165,7 @@
     <preference name="webView" value="com.ionicframework.cordova.webview.IonicWebViewEngine" />
     <preference name="xwalkZOrderOnTop" value="true" />
     <preference name="BackgroundColor" value="0" />
-    <preference name="android-minSdkVersion" value="22" />
+    <preference name="android-minSdkVersion" value="23" />
     <preference name="WKWebViewOnly" value="true" />
     <preference name="android-usesCleartextTraffic" value="true" />
     <preference name="ScrollEnabled" value="false" />

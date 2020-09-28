@@ -10,8 +10,8 @@
       "apkData": {
         "type": "MAIN",
         "splits": [],
-        "versionCode": 123,
-        "versionName": "1.21.10",
+        "versionCode": 125,
+        "versionName": "1.23.12",
         "outputFile": "app-debug.apk",
         "fullName": "debug",
         "baseName": "debug",
@@ -21,7 +21,7 @@
       "properties": {
         "packageId": "postsrvs.i",
         "split": "",
-        "minSdkVersion": "22"
+        "minSdkVersion": "23"
       }
     }
   ]

@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.22.11",
-	"versionCode": "124",
+	"version": "1.23.12",
+	"versionCode": "125",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -53,6 +53,7 @@
 		"call-number": "1.0.1",
 		"com-darryncampbell-cordova-plugin-intent": "2.0.0",
 		"cordova-androidx-build": "^1.0.4",
+		"cordova-browser": "6.0.0",
 		"cordova-ios": "6.1.1",
 		"cordova-lib": "^10.0.0",
 		"cordova-plugin-add-swift-support": "^2.0.2",
@@ -177,7 +178,8 @@
 		},
 		"platforms": [
 			"android",
-			"ios"
+			"ios",
+			"browser"
 		]
 	}
 }

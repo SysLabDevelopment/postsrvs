@@ -22,7 +22,7 @@ import { OrderService } from './services/sys/order.service';
 export class AppComponent {
   public nav: any = 2;
   public routingModeAuto: boolean;
-  public checkedOnWork: boolean = true; // True = Курьер нажал кнопку "Еду на работу"
+  public checkedOnWork = true; // True = Курьер нажал кнопку "Еду на работу"
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
