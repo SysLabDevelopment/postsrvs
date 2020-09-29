@@ -54,7 +54,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -187,7 +187,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -205,13 +205,13 @@
 
       var rxjs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
       /*! rxjs */
-      "./node_modules/rxjs/dist/esm/index.js");
+      "./node_modules/rxjs/_esm2015/index.js");
       /* harmony import */
 
 
       var rxjs_operators__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
       /*! rxjs/operators */
-      "./node_modules/rxjs/dist/esm/operators/index.js");
+      "./node_modules/rxjs/_esm2015/operators/index.js");
       /* harmony import */
 
 
@@ -2654,7 +2654,9 @@
                         component: _components_delivered_delivered_component__WEBPACK_IMPORTED_MODULE_14__["DeliveredComponent"],
                         cssClass: 'done-order-modal',
                         componentProps: {
-                          goods: this.goods
+                          goods: this.goods,
+                          pay_type: this.order.pay_type,
+                          pay_type_change_allowed: this.order.pay_type_change_allowed
                         },
                         showBackdrop: true
                       });

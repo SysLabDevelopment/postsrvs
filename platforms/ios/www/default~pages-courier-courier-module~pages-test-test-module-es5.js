@@ -200,13 +200,13 @@
 
       var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! rxjs */
-      "./node_modules/rxjs/dist/esm/index.js");
+      "./node_modules/rxjs/_esm2015/index.js");
       /* harmony import */
 
 
       var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! rxjs/operators */
-      "./node_modules/rxjs/dist/esm/operators/index.js");
+      "./node_modules/rxjs/_esm2015/operators/index.js");
       /* harmony import */
 
 

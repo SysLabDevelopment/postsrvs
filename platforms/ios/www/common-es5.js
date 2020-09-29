@@ -711,7 +711,7 @@
 
       var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! rxjs */
-      "./node_modules/rxjs/dist/esm/index.js");
+      "./node_modules/rxjs/_esm2015/index.js");
       /* harmony import */
 
 

@@ -47,6 +47,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: 50px auto;
+  min-height: 300px;
 }
 
 .btn-title {
