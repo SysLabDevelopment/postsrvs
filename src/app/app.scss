@@ -80,6 +80,19 @@ app-orders-list-guess {
 }
 
 :root {
+  .introjs-helperLayer{
+  }
+
+  .introjs-helperLayer{
+    background-color: rgba(255,245,245, 0.2);
+  }
+
+  .light-blue-button{
+    --background: #4BA7C5;
+    font-weight: bold;
+    text-transform: none;
+    --box-shadow: none;
+  }
   ion-item.datepicker {
     margin-top: 20px;
     width: 80%;

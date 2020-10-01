@@ -1,6 +1,4 @@
-cordova.define("cordova-plugin-geolocation.Position", function(require, exports, module) {
 /*
- *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -17,20 +15,22 @@ cordova.define("cordova-plugin-geolocation.Position", function(require, exports,
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License.
- *
 */
 
-var Coordinates = require('./Coordinates');
+/**
+ * Exports the ExposedJsApi.java object if available, otherwise exports the PromptBasedNativeApi.
+ */
 
-var Position = function (coords, timestamp) {
-    if (coords) {
-        this.coords = new Coordinates(coords.latitude, coords.longitude, coords.altitude, coords.accuracy, coords.heading, coords.velocity, coords.altitudeAccuracy);
-    } else {
-        this.coords = new Coordinates();
+var nativeApi = this._cordovaNative || require('cordova/android/promptbasednativeapi');
+var currentApi = nativeApi;
+
+module.exports = {
+    get: function () { return currentApi; },
+    setPreferPrompt: function (value) {
+        currentApi = value ? require('cordova/android/promptbasednativeapi') : nativeApi;
+    },
+    // Used only by tests.
+    set: function (value) {
+        currentApi = value;
     }
-    this.timestamp = (timestamp !== undefined) ? timestamp : new Date().getTime();
 };
-
-module.exports = Position;
-
-});

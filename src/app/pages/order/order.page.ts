@@ -4,37 +4,37 @@ import {
   style,
   transition,
   trigger
-} from "@angular/animations";
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+} from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { CallNumber } from "@ionic-native/call-number/ngx";
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { ModalController } from '@ionic/angular';
-import { Storage } from "@ionic/storage";
-import { CacheService } from "ionic-cache";
-import { Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
+import { Storage } from '@ionic/storage';
+import { CacheService } from 'ionic-cache';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Meta } from 'src/app/interfaces/meta';
 import { Order } from 'src/app/interfaces/order';
 import { DeliveredComponent } from '../../components/delivered/delivered.component';
 import { NotDeliveredComponent } from '../../components/not-delivered/not-delivered.component';
-import { Reason } from "../../interfaces/reason";
-import { Statuses } from "../../interfaces/statuses";
-import { AuthService } from "../../services/auth.service";
-import { CourierService } from "../../services/courier.service";
-import { SettingsService } from "../../services/settings.service";
-import { StateService } from "../../services/state.service";
-import { SysService } from "../../services/sys.service";
-import { MapService } from "../../services/sys/map.service";
+import { Reason } from '../../interfaces/reason';
+import { Statuses } from '../../interfaces/statuses';
+import { AuthService } from '../../services/auth.service';
+import { CourierService } from '../../services/courier.service';
+import { SettingsService } from '../../services/settings.service';
+import { StateService } from '../../services/state.service';
+import { SysService } from '../../services/sys.service';
+import { MapService } from '../../services/sys/map.service';
 import { OrderService } from '../../services/sys/order.service';
 import { DrawPage } from '../draw/draw.page';
 import { DataService } from './../../services/sys/data.service';
 
 @Component({
-  selector: "app-order",
+  selector: 'app-order',
   animations: [
     trigger('openClose', [
       // ...
@@ -51,8 +51,8 @@ import { DataService } from './../../services/sys/data.service';
         animate('0.5s')
       ]),
     ])],
-  templateUrl: "./order.page.html",
-  styleUrls: ["./order.page.scss"],
+  templateUrl: './order.page.html',
+  styleUrls: ['./order.page.scss'],
 })
 export class OrderPage implements OnInit {
   public orderId: string = null;
@@ -66,37 +66,37 @@ export class OrderPage implements OnInit {
   public timeFrom: string = null;
   public timeTo: string = null;
   public phone: string = null;
-  public pageInit: boolean = true;
+  public pageInit = true;
   public statuses: Statuses[] = [
-    { id: 4, status: "Не доставлено" },
-    { id: 5, status: "Доставлено" },
-    { id: 6, status: "Частично доставлено" },
+    { id: 4, status: 'Не доставлено' },
+    { id: 5, status: 'Доставлено' },
+    { id: 6, status: 'Частично доставлено' },
   ];
   public reasons: Reason[] = [
-    { id: 1, reason: "Не удалось Дозвониться!" },
-    { id: 2, reason: "Отказ, при созвоне с клиентом" },
-    { id: 3, reason: "Отказ от доставки без объяснения причины" },
-    { id: 4, reason: "Ошибка оформления ИМ" },
-    { id: 5, reason: "Получатель передумал" },
-    { id: 6, reason: "Товар не подошел/не понравился" },
-    { id: 7, reason: "Финансовые трудности у получателя" },
-    { id: 8, reason: "Перенос даты доставки получателем." },
-    { id: 10, reason: "Не успел" },
-    { id: 11, reason: "Переехали/нев.Адрес" },
+    { id: 1, reason: 'Не удалось Дозвониться!' },
+    { id: 2, reason: 'Отказ, при созвоне с клиентом' },
+    { id: 3, reason: 'Отказ от доставки без объяснения причины' },
+    { id: 4, reason: 'Ошибка оформления ИМ' },
+    { id: 5, reason: 'Получатель передумал' },
+    { id: 6, reason: 'Товар не подошел/не понравился' },
+    { id: 7, reason: 'Финансовые трудности у получателя' },
+    { id: 8, reason: 'Перенос даты доставки получателем.' },
+    { id: 10, reason: 'Не успел' },
+    { id: 11, reason: 'Переехали/нев.Адрес' },
   ];
   public commentText: any = null;
   public g_quants: any = {};
-  public changeWindow: boolean = false;
-  public selectedPayment = "1";
-  public client_status = "";
-  public client_status_dt = "";
-  public client_status_id = "";
+  public changeWindow = false;
+  public selectedPayment = '1';
+  public client_status = '';
+  public client_status_dt = '';
+  public client_status_id = '';
   public vlog: string = null;
   public poruch: string = null;
   public mass: unknown = null;
   public amount: unknown = null;
-  public email_input = "";
-  public phone_input = "";
+  public email_input = '';
+  public phone_input = '';
   public barcode_flag = false;
   public barcode_url: string = null;
   public barcode: unknown = null;
@@ -104,24 +104,24 @@ export class OrderPage implements OnInit {
   public selectedStatus: any = null;
   public hide_status = false;
   public $codeStop: Subject<any> = new Subject();
-  public showPhone: boolean = false;
+  public showPhone = false;
   public podrazd: unknown = null;
   public email_error = false;
-  public pay_access: boolean = false;
+  public pay_access = false;
   public pay_access_data: any = null;
-  public show_info: boolean = false;
-  public show_email: boolean = false;
-  public callWindow: boolean = false;
-  public drawimage: boolean = false;
+  public show_info = false;
+  public show_email = false;
+  public callWindow = false;
+  public drawimage = false;
   public imageToShow: string = null;
   coords: Array<any>;
   public orderPhones: Array<string> = [];
   public selectedPhone: string;
   public note: string;
-  public new_plan_date: string; //Дата переноса заказа
+  public new_plan_date: string; // Дата переноса заказа
   public openCompany = false;
   public checkBase64Image: string;
-  public drawNeedle: boolean = true;
+  public drawNeedle = true;
   public cardNums: number;
   constructor(
     private router: Router,
@@ -143,12 +143,12 @@ export class OrderPage implements OnInit {
     private device: Device,
     public modalController: ModalController
   ) {
-    this.orderId = this.route.snapshot.paramMap.get("id");
+    this.orderId = this.route.snapshot.paramMap.get('id');
 
     this.initOrder();
-    var img = localStorage.getItem("drawImg");
+    const img = localStorage.getItem('drawImg');
     if (img) {
-      this.imageToShow = "data:image/jpg;base64," + img;
+      this.imageToShow = 'data:image/jpg;base64,' + img;
     }
   }
 
@@ -158,9 +158,9 @@ export class OrderPage implements OnInit {
   }
 
   ngAfterViewChecked() {
-    var img = localStorage.getItem("drawImg");
+    const img = localStorage.getItem('drawImg');
     if (img) {
-      this.imageToShow = "data:image/jpg;base64," + img;
+      this.imageToShow = 'data:image/jpg;base64,' + img;
     }
   }
 
@@ -173,9 +173,9 @@ export class OrderPage implements OnInit {
   public async drawBtn(need: boolean) {
     this.drawNeedle = need;
     if (need) {
-      this.draw()
+      this.draw();
     } else {
-      localStorage.removeItem("drawImg");
+      localStorage.removeItem('drawImg');
     }
   }
   public async draw() {
@@ -192,8 +192,8 @@ export class OrderPage implements OnInit {
   }
 
   public parsePhone(phone: string): Array<string> {
-    let phones: Array<string> = [];
-    phone = phone.replace(/\D+/g, "");
+    const phones: Array<string> = [];
+    phone = phone.replace(/\D+/g, '');
 
     while (phone.length > 7) {
       phone = this.normalizePhoneNumber(phone);
@@ -205,48 +205,48 @@ export class OrderPage implements OnInit {
   }
 
   private normalizePhoneNumber(phone: string): string {
-    if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
-      phone = "8" + phone;
+    if (phone[0] !== '8' && phone[0] !== '7' && phone.length !== 11) {
+      phone = '8' + phone;
     }
     if (phone.length == 7 || phone.length == 10) {
-      phone = "8" + phone;
+      phone = '8' + phone;
     }
-    if (phone[0] !== "8" && phone.length == 11) {
-      phone = "8" + phone.slice(1);
+    if (phone[0] !== '8' && phone.length == 11) {
+      phone = '8' + phone.slice(1);
     }
     return phone;
   }
 
   public phoneClick(action: string) {
     this.orderPhones = this.parsePhone(this.phone);
-    let courierPhone = this.parsePhone(this.order.courier_phone)[0];
+    const courierPhone = this.parsePhone(this.order.courier_phone)[0];
 
     if (this.orderPhones.length == 1) {
       this.selectedPhone = this.orderPhones[0];
     }
 
     switch (action) {
-      case "init":
+      case 'init':
         this.callWindow = !this.callWindow;
         break;
-      case "phone":
+      case 'phone':
         this.CL.callNumber(this.selectedPhone, false).then(() => { });
         this.callWindow = false;
         break;
-      case "operator":
+      case 'operator':
         if (this.network.type == 'none') {
           this.phoneClick('phone');
           return false;
         }
         if (this.selectedPhone && courierPhone) {
-          let url = "orders";
-          let data = {
-            action: "send_phone",
+          const url = 'orders';
+          const data = {
+            action: 'send_phone',
             client_number: this.selectedPhone,
             cur_number: courierPhone,
           };
           this.auth.sendPost(url, data).subscribe((resp) => {
-            console.log("call_subs", resp);
+            console.log('call_subs', resp);
           });
           this.auth.showError(9);
           this.callWindow = false;
@@ -258,9 +258,9 @@ export class OrderPage implements OnInit {
   public initOrder() {
     this.storage.get('orders').then((orders: Array<Order>) => {
       console.log('Список заказов из стоража', orders);
-    })
+    });
     this.storage.get('orders').then((orders) => {
-      this.order = orders?.filter((order: Order) => { return order.id.toString() == this.orderId })[0];
+      this.order = orders?.filter((order: Order) => order.id.toString() == this.orderId)[0];
       this.goods = this.order.goods;
       this.address = this.order.client_address;
       this.timeFrom = this.order.datetime_from;
@@ -284,8 +284,8 @@ export class OrderPage implements OnInit {
   }
 
   public getClientState() {
-    var states = this.state$.client_states.getValue();
-    var state_id = this.order.client_state;
+    const states = this.state$.client_states.getValue();
+    const state_id = this.order.client_state;
 
     for (let i = 0; i < states.length; i++) {
       if (states[i].id == state_id) {
@@ -293,57 +293,57 @@ export class OrderPage implements OnInit {
       }
     }
 
-    return "";
+    return '';
   }
-  //Заполняет массив с ценой товаров и их количеством(для частички)
+  // Заполняет массив с ценой товаров и их количеством(для частички)
   public setQuants() {
-    var goods = this.order.goods;
+    const goods = this.order.goods;
 
-    for (var i = 0; i < goods.length; i++) {
-      let good = goods[i];
-      let code = good.Code;
-      let count = good.final_kol_vo ? good.final_kol_vo : good.kol_vo;
-      let quant = { amount: good.kol_vo, price: good.Price };
+    for (let i = 0; i < goods.length; i++) {
+      const good = goods[i];
+      const code = good.Code;
+      const count = good.final_kol_vo ? good.final_kol_vo : good.kol_vo;
+      const quant = { amount: good.kol_vo, price: good.Price };
       this.g_quants[code] = quant;
     }
   }
 
   public changeQuant(code: string, action: string) {
-    var q: number = this.g_quants[code]["amount"];
-    var good = null;
+    const q: number = this.g_quants[code].amount;
+    let good = null;
 
-    for (var i = 0; i < this.order.goods.length; i++) {
+    for (let i = 0; i < this.order.goods.length; i++) {
       if (this.order.goods[i].Code == code) {
         good = this.order.goods[i];
       }
     }
 
-    if (action == "plus") {
-      var n_q = q + 1;
+    if (action == 'plus') {
+      const n_q = q + 1;
 
       if (n_q > good.kol_vo) {
         return false;
       } else {
-        this.g_quants[code]["amount"] = n_q;
+        this.g_quants[code].amount = n_q;
       }
-    } else if (action == "minus") {
-      var n_q = q - 1;
+    } else if (action == 'minus') {
+      const n_q = q - 1;
 
       if (n_q < 0) {
         return false;
       } else {
-        this.g_quants[code]["amount"] = n_q;
+        this.g_quants[code].amount = n_q;
       }
     } else if (action == 'delete') {
-      this.g_quants[code]["amount"] = 0;
+      this.g_quants[code].amount = 0;
     }
     this.getSum();
   }
 
 
   public navBack() {
-    localStorage.removeItem("drawImg");
-    this.router.navigate(["/courier"]);
+    localStorage.removeItem('drawImg');
+    this.router.navigate(['/courier']);
   }
 
   public getStatus(): string {
@@ -376,7 +376,7 @@ export class OrderPage implements OnInit {
 
   public sendPayCall(order: Order = this.order, newStatus = this.selectedStatus as number) {
     if (this.network.type == 'none') {
-      //Если оффлайн
+      // Если оффлайн
       this.cache.getItem('syncRequests').then((syncRequests: Array<any>) => {
         order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums } };
         syncRequests && syncRequests.push({ order, newStatus });
@@ -384,10 +384,10 @@ export class OrderPage implements OnInit {
           console.log(`sys:: Отложено изменение статуса на ${newStatus} для заказа ${order.client_id}`);
           this.localModifyOrders(newStatus);
           this.router.navigate(['courier']);
-        })
-      })
+        });
+      });
     } else {
-      //Если онлайн
+      // Если онлайн
       this.localModifyOrders(newStatus);
       order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums } };
       this.orderService.sendDelayedCall(order, newStatus);
@@ -396,7 +396,7 @@ export class OrderPage implements OnInit {
   }
 
   public submitChange() {
-    let self = this;
+    const self = this;
     this.storage.get('orders').then((orders) => {
       orders?.map((order: Order) => {
         if (String(order.id) == String(this.order.id)) {
@@ -405,12 +405,12 @@ export class OrderPage implements OnInit {
           this.data.orders.next(orders);
         }
       });
-    })
+    });
     let noSkip = true;
     switch (this.selectedStatus) {
       case 4:
         if (this.selectedReason != null) {
-          let new_plan_date = new Date(this.new_plan_date);
+          const new_plan_date = new Date(this.new_plan_date);
 
           this.courier
             .changeStatus(
@@ -423,25 +423,25 @@ export class OrderPage implements OnInit {
               new_plan_date.toLocaleDateString()
             )
             .subscribe((data: any) => {
-              if (data.success == "true") {
+              if (data.success == 'true') {
                 self.changeWindow = false;
-                self.state$.state.next("init");
-                self.selectedPayment = "1";
+                self.state$.state.next('init');
+                self.selectedPayment = '1';
                 self.selectedReason = null;
                 self.selectedStatus = null;
-                self.router.navigate(["courier"]);
-                self.state$.updateWayInfo.next("0");
+                self.router.navigate(['courier']);
+                self.state$.updateWayInfo.next('0');
               }
-              localStorage.removeItem("drawImg");
+              localStorage.removeItem('drawImg');
             });
         }
         break;
       case 5:
         if (this.selectedPayment !== '2') {
-          noSkip = false
+          noSkip = false;
         }
         this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData) => {
-          let text = (this.commentText ? this.commentText : "");
+          const text = (this.commentText ? this.commentText : '');
           this.courier
             .changeStatus(
               this.selectedStatus,
@@ -455,26 +455,26 @@ export class OrderPage implements OnInit {
               recognizedData
             )
             .subscribe((data: any) => {
-              if (data.success == "true") {
+              if (data.success == 'true') {
                 self.changeWindow = false;
-                self.state$.state.next("init");
-                self.selectedPayment = "1";
+                self.state$.state.next('init');
+                self.selectedPayment = '1';
                 self.selectedReason = null;
                 self.selectedStatus = null;
                 if (!self.pay_access) {
-                  self.router.navigate(["courier"]);
+                  self.router.navigate(['courier']);
                 }
                 self.initOrder();
-                self.state$.updateWayInfo.next("0");
+                self.state$.updateWayInfo.next('0');
               }
-              localStorage.removeItem("drawImg");
+              localStorage.removeItem('drawImg');
             });
-        })
+        });
         break;
       case 6:
 
         if (this.selectedPayment !== '2') {
-          noSkip = false
+          noSkip = false;
         }
         this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData) => {
           this.courier
@@ -490,49 +490,49 @@ export class OrderPage implements OnInit {
               recognizedData
             )
             .subscribe((data: any | null) => {
-              if (data?.success == "true") {
+              if (data?.success == 'true') {
                 self.changeWindow = false;
-                self.state$.state.next("init");
-                self.selectedPayment = "1";
+                self.state$.state.next('init');
+                self.selectedPayment = '1';
                 self.selectedReason = null;
                 self.selectedStatus = null;
                 if (!self.pay_access) {
-                  self.router.navigate(["courier"]);
+                  self.router.navigate(['courier']);
                 }
                 self.initOrder();
-                self.state$.updateWayInfo.next("0");
+                self.state$.updateWayInfo.next('0');
               } else {
                 this.sys.presentToast(
-                  "Нет товаров в заказе",
-                  "danger",
-                  "Частичная доставка невозможна"
+                  'Нет товаров в заказе',
+                  'danger',
+                  'Частичная доставка невозможна'
                 );
               }
-              localStorage.removeItem("drawImg");
+              localStorage.removeItem('drawImg');
             });
-        })
+        });
         break;
     }
   }
 
   public getSum() {
     if (this.order) {
-      let price: number = 0;
-      let quants = this.g_quants;
-      for (let code in quants) {
-        price += quants[code]["price"] * quants[code]["amount"];
+      let price = 0;
+      const quants = this.g_quants;
+      for (const code in quants) {
+        price += quants[code].price * quants[code].amount;
       }
 
       this.order.rur = price;
     }
   }
 
-  //подсчитывает сумму заказа
+  // подсчитывает сумму заказа
   public getPrice(order: Order) {
     if (order) {
-      let price: number = 0;
+      let price = 0;
       for (let i = 0; i < order.goods.length; i++) {
-        let good = order.goods[i];
+        const good = order.goods[i];
         price += Number(good.Price) * Number(good.kol_vo);
       }
       return price;
@@ -544,20 +544,20 @@ export class OrderPage implements OnInit {
   }
 
   public sendPay() {
-    let goods = this.order.goods;
-    let quants = this.g_quants;
-    let callback_url =
-      this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
-    let products = [];
+    const goods = this.order.goods;
+    const quants = this.g_quants;
+    const callback_url =
+      this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/pay_callback.php';
+    const products = [];
 
-    for (let code in quants) {
-      if (quants[code]["amount"] > 0) {
+    for (const code in quants) {
+      if (quants[code].amount > 0) {
         for (let i = 0; i < goods.length; i++) {
-          if (goods[i]["Code"] == code) {
-            let good_name = goods[i]["Name"];
-            let good_amount = quants[code]["amount"];
-            let good_price = Math.round(quants[code]["price"] * 100) / 100;
-            let pos = {
+          if (goods[i].Code == code) {
+            const good_name = goods[i].Name;
+            const good_amount = quants[code].amount;
+            const good_price = Math.round(quants[code].price * 100) / 100;
+            const pos = {
               name: good_name,
               price: good_price,
               quantity: good_amount,
@@ -568,50 +568,50 @@ export class OrderPage implements OnInit {
       }
     }
 
-    var purchase = { products: products };
-    console.log("goods_description\n", purchase);
-    var self = this;
+    const purchase = { products };
+    console.log('goods_description\n', purchase);
+    const self = this;
 
     if (this.pay_access) {
 
-      let order_data = {
+      const order_data = {
         apikey: String(this.pay_access_data.api_key),
         login: String(this.pay_access_data.phone),
         cashier_name:
           String(this.pay_access_data.name) +
           String(this.pay_access_data.phone),
-        purchase: purchase,
-        callback_url: callback_url,
-        mode: "email",
+        purchase,
+        callback_url,
+        mode: 'email',
         customer_email: this.email_input,
         customer_phone: this.phone_input,
         card_amount: '',
         cash_amount: ''
       };
-      if (self.selectedPayment == "2") {
-        order_data["card_amount"] = "#";
+      if (self.selectedPayment == '2') {
+        order_data.card_amount = '#';
       } else {
-        order_data["cash_amount"] = "#";
+        order_data.cash_amount = '#';
       }
 
-      if (this.phone_input != "") {
-        order_data["customer_phone"] = this.phone_input;
+      if (this.phone_input != '') {
+        order_data.customer_phone = this.phone_input;
       }
 
       self.send_api_data(order_data);
     }
   }
 
-  //Получаем api key & login
+  // Получаем api key & login
   public getPayData() {
 
-    let url = "pay_order";
-    let data = { action: "getData", orderId: this.clientId };
-    let self = this;
+    const url = 'pay_order';
+    const data = { action: 'getData', orderId: this.clientId };
+    const self = this;
     if (navigator.onLine) {
       this.auth.sendPost(url, data).subscribe((res: any) => {
-        console.log("GET_PAY_DATA", res);
-        if (res.success == "true") {
+        console.log('GET_PAY_DATA', res);
+        if (res.success == 'true') {
           self.pay_access = true;
           self.pay_access_data = res;
         } else {
@@ -624,16 +624,16 @@ export class OrderPage implements OnInit {
   }
 
   public send_api_data(api_data: any) {
-    let url = "pay_order";
-    let self = this;
+    const url = 'pay_order';
+    const self = this;
     this.order.rur = 0;
 
     api_data.purchase.products.forEach((product: any) => {
       this.order.rur += product.price * product.quantity;
     });
 
-    var data = {
-      action: "sendPay",
+    const data = {
+      action: 'sendPay',
       orderData: api_data,
       orderId: this.order.id,
     };
@@ -649,33 +649,33 @@ export class OrderPage implements OnInit {
         if (req !== undefined) {
           requests = req;
         }
-        requests.push({ url: url, data: data });
+        requests.push({ url, data });
         this.cache.saveItem('requests', requests);
 
         self.submitChange();
         self.checkPayment();
         self.hide_status = true;
-      })
+      });
 
     }
   }
 
 
   public checkPayment() {
-    var self = this;
+    const self = this;
     this.state$.interval_1ss.pipe(takeUntil(this.$codeStop)).subscribe(() => {
       self.ifPaid();
-      console.log("paid_iter");
+      console.log('paid_iter');
     });
   }
 
   public ifPaid() {
-    var url = "pay_order";
-    var data = { action: "checkPaid", orderId: this.order.id };
-    var self = this;
+    const url = 'pay_order';
+    const data = { action: 'checkPaid', orderId: this.order.id };
+    const self = this;
 
     this.auth.sendPost(url, data).subscribe((data) => {
-      if (data.success == "true" && data.barcode != null) {
+      if (data.success == 'true' && data.barcode != null) {
         self.barcode_flag = true;
         self.barcode_url = data.barcode_url;
         self.barcode = data.barcode;
@@ -698,9 +698,9 @@ export class OrderPage implements OnInit {
 
 
   public initClientInfo() {
-    let mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
-    let infoStr = this.phone;
-    let mail = mail_exp.exec(infoStr);
+    const mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
+    const infoStr = this.phone;
+    const mail = mail_exp.exec(infoStr);
 
     if (mail != null) {
       this.email_input = mail[0];
@@ -719,14 +719,21 @@ export class OrderPage implements OnInit {
   }
 
   public doneOrder() {
-    let drawedImg = localStorage.drawImg;
+    const drawedImg = localStorage.drawImg;
     if (this.drawNeedle && !drawedImg) {
       this.drawBtn(this.drawNeedle);
     } else {
       if (this.selectedPayment == '2') {
+        this.sendPayCall();
         this.sys.checkPhoto().then((imageData) => {
           this.checkBase64Image = 'data:image/jpeg;base64,' + imageData;
-          this.sendPayCall();
+          const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/orders';
+          const data = {
+            action: 'save_check_data',
+            order_id: this.orderId,
+            check_photo: this.checkBase64Image,
+          };
+          this.http.post(url, data);
         });
       } else {
         this.sendPayCall();
@@ -745,7 +752,7 @@ export class OrderPage implements OnInit {
   }
 
   public localModifyOrders(newStatus: number) {
-    let meta: Meta = {
+    const meta: Meta = {
       label: 'localChanges'
     };
     this.storage.get('orders').then((orders) => {
@@ -756,23 +763,23 @@ export class OrderPage implements OnInit {
           this.data.orders.next(orders);
         }
       });
-    })
+    });
   }
 
   public scanReturned() {
     this.bs.scan().then((data) => {
       const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/orders';
-      let data1 = {
-        "orderId": this.orderId,
-        "box_barcode": data.text,
-        "action": "get_box",
-        "uuid": this.device.uuid
+      const data1 = {
+        orderId: this.orderId,
+        box_barcode: data.text,
+        action: 'get_box',
+        uuid: this.device.uuid
       };
       this.http.post(url, data1).subscribe((res: string[]) => {
         console.log(`sys:: ответ скана возврата: ${res}`);
-        this.changeQuant(res[0], 'delete')
-      })
-    })
+        this.changeQuant(res[0], 'delete');
+      });
+    });
   }
 
   async presentNotDeliveredModal() {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-//Отдельный сервис для лучших реализаций функционала
-//Если есть выбор велосипедов для решения задаи в этом приложении - выбирай велосипеды из этого комплекта
+// Отдельный сервис для лучших реализаций функционала
+// Если есть выбор велосипедов для решения задаи в этом приложении - выбирай велосипеды из этого комплекта
 import { Injectable } from '@angular/core';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Subject } from 'rxjs';
@@ -24,7 +24,9 @@ export class SettingsService {
     storeCheckMode: "",
     gess: undefined,
     schedule: undefined,
-    phoneMode: ''
+    phoneMode: '',
+    scanPVZ: '0'
+
   };
   public checkout: boolean;
   public state = new Subject();

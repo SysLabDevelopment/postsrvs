@@ -12,7 +12,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
-import { PopoverController } from "@ionic/angular";
+import { PopoverController } from '@ionic/angular';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/interfaces/order';
@@ -26,6 +26,8 @@ import { SettingsService } from '../../services/settings.service';
 import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
 import { DataService } from '../../services/sys/data.service';
+import {HttpClient} from '@angular/common/http';
+import {ScanPVZResponse} from '../../interfaces/scan-pvzresponse';
 
 
 @Component({
@@ -60,26 +62,26 @@ export class CourierPage implements OnInit {
   public orders: any = null;
   public statuses: any = null;
   public selectedTab = 1;
-  public ordersInit: boolean = false;
-  public loader: boolean = false;
+  public ordersInit = false;
+  public loader = false;
   public local_stop$: Subject<any> = new Subject();
-  public localcheck: boolean = false;
+  public localcheck = false;
   public g_done = 0;
   public g_process = 0;
   public g_fail = 0;
   public lvl_ind = { width: '0%' };
-  public btn_go: boolean = false;
-  public subBtnCond: boolean = true;
-  public scanView: boolean = false;
+  public btn_go = false;
+  public subBtnCond = true;
+  public scanView = false;
   public scanInput: string;
   public scan_process = false;
-  public find_order: boolean = false;
-  public isWorkEnded: boolean = false;
+  public find_order = false;
+  public isWorkEnded = false;
   public searchString = '';
   private ord: Observable<any[]>;
   public orders_c: Observable<any>;
   public slicer: number = this.howSlice();
-  public callWindow: boolean = false;
+  public callWindow = false;
   public selectedPhone: string;
   public orderPhones: string[];
   public order: Order;
@@ -87,22 +89,24 @@ export class CourierPage implements OnInit {
   private segment: number[] = [1];
 
   constructor(public courier: CourierService,
-    private router: Router,
-    public state$: StateService,
-    public auth: AuthService,
-    private bs: BarcodeScanner,
-    public vbr: Vibration,
-    public settings: SettingsService,
-    private sys: SysService,
-    private data: DataService,
-    public popoverController: PopoverController,
-    private map: MapService,
-    private orderService: OrderService,
-    private CL: CallNumber,
-    private network: Network
+              private router: Router,
+              public state$: StateService,
+              public auth: AuthService,
+              private bs: BarcodeScanner,
+              public vbr: Vibration,
+              public settings: SettingsService,
+              private sys: SysService,
+              private data: DataService,
+              public popoverController: PopoverController,
+              private map: MapService,
+              private orderService: OrderService,
+              private CL: CallNumber,
+              private network: Network,
+              private http: HttpClient,
+
 
   ) {
-    let self = this;
+    const self = this;
 
     this.initContent();
     if (this.state$.position.getValue() != null) {
@@ -115,7 +119,7 @@ export class CourierPage implements OnInit {
       if (state == 'orders_init') {
         self.initContent();
       }
-    })
+    });
     this.initConditions();
     this.ord = this.data.orders.asObservable();
     this.prepareOrdersList();
@@ -123,16 +127,16 @@ export class CourierPage implements OnInit {
   }
 
   public initConditions() {
-    let app_mode = this.auth.getMode();
+    const app_mode = this.auth.getMode();
     switch (app_mode) {
       case 'fullAuto':
-        if (!this.state$.confirmed) this.subBtnCond = true;;
+        if (!this.state$.confirmed) { this.subBtnCond = true; }
         break;
       case 'auto':
         this.subBtnCond = false;
         break;
       case 'fullHand':
-        if (!this.state$.confirmed) this.subBtnCond = true;
+        if (!this.state$.confirmed) { this.subBtnCond = true; }
         break;
       case 'hand':
         this.subBtnCond = false;
@@ -148,30 +152,30 @@ export class CourierPage implements OnInit {
           touch: 500,
           mouse: 100
         };
-      })
+      });
     });
   }
 
   ngOnInit() {
     this.settings.checkout = !!(this.settings.rules.storeCheckMode - 0);
     if (!this.settings.checkout) {
-      this.auth.checkState = 'checkedOut'
+      this.auth.checkState = 'checkedOut';
     } else {
-      this.auth.checkState = 'checked' + localStorage.check
+      this.auth.checkState = 'checked' + localStorage.check;
     }
     if (this.settings.rules.appMode == 'hand') {
-      this.state$.manual_route = true
+      this.state$.manual_route = true;
     }
     if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
       this.noDrag = true;
     }
     this.data.orders.subscribe((orders) => {
-      this.courier.count_orders(orders)
-    })
+      this.courier.count_orders(orders);
+    });
   }
 
   public scanInputStart() {
-    let self = this;
+    const self = this;
     this.scanView = !this.scanView;
     this.loader = true;
     if (this.auth.getScanMode() == 'scan') {
@@ -198,7 +202,7 @@ export class CourierPage implements OnInit {
             self.state$.confirmed = false;
           }
         });
-      })
+      });
     } else {
       self.loader = false;
     }
@@ -207,33 +211,32 @@ export class CourierPage implements OnInit {
 
   public scanInputChange() {
     console.log('inputData', this.scanInput);
-    let self = this;
-    if (this.scan_process) return false;
+    const self = this;
+    if (this.scan_process) { return false; }
     this.scan_process = true;
     if (this.find_order) {
-      setTimeout(function () {
+      setTimeout(function() {
         self.scanSearch();
-      }, 1500)
+      }, 1500);
     } else {
-      setTimeout(function () {
+      setTimeout(function() {
         self.scanInputStart();
-      }, 1500)
+      }, 1500);
     }
   }
 
   public submitOrder() {
-    var self = this;
+    const self = this;
     console.log('SUBMIT_ORDER_CALL');
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
-      setTimeout(function () {
+      setTimeout(function() {
         self.sInput.nativeElement.focus();
       }, 500);
-      return false
+      return false;
     }
     this.bs.scan().then((data) => {
-      console.log('SCAN_RETURN_DATA', data);
-      if (data.text != "") {
+      if (data.text != '') {
         self.loader = true;
         self.courier.findOrder(data.text).subscribe((res) => {
           if (res.success == 'true') {
@@ -253,7 +256,7 @@ export class CourierPage implements OnInit {
               self.state$.confirmed = false;
             }
           });
-        })
+        });
       } else {
         self.loader = false;
       }
@@ -262,7 +265,7 @@ export class CourierPage implements OnInit {
 
   public ordersListChanged(orders: Order[]) {
     this.orders = orders;
-    let way: any[] = new Array();
+    const way: any[] = new Array();
     orders.forEach(order => {
       if (Number(order.status_id) == 1) {
         way.push(order.id);
@@ -287,14 +290,14 @@ export class CourierPage implements OnInit {
 
 
   public initContent() {
-    var self = this;
+    const self = this;
     this.state$.orders.subscribe(() => {
       this.orders = this.state$.orders_data;
       console.log('sys::initСontent orders', this.orders);
-      this.statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
+      this.statuses = [{ id: 4, status: 'Не доставлено' }, { id: 5, status: 'Доставлено' }, { id: 6, status: 'Частично доставлено' }];
       this.ordersInit = true;
       self.count_orders();
-    })
+    });
   }
 
 
@@ -318,13 +321,13 @@ export class CourierPage implements OnInit {
   public getCondition(status: number) {
     switch (this.selectedTab) {
       case 1:
-        if (status == 1) return true;
+        if (status == 1) { return true; }
         break;
       case 2:
-        if (status == 5 || status == 6) return true;
+        if (status == 5 || status == 6) { return true; }
         break;
       case 3:
-        if (status == 4) return true;
+        if (status == 4) { return true; }
         break;
     }
     return false;
@@ -357,12 +360,12 @@ export class CourierPage implements OnInit {
   }
 
   public startRoute(start = true, stop = false) {
-    let self = this;
+    const self = this;
     this.auth.checkAuth().subscribe((data) => {
       if (data.success == 'true') {
         self.sendStartRoute(data.sync_id, start, stop);
       }
-    })
+    });
   }
 
   public stopRoute() {
@@ -371,21 +374,21 @@ export class CourierPage implements OnInit {
 
 
   public sendStartRoute(cid: number, start: boolean, stop: boolean) {
-    const url = "geo/route_start.php";
-    let data = {
-      'cid': cid,
-      'lt': this.state$.position.getValue().lt,
-      'lg': this.state$.position.getValue().lg,
-      'start': '',
-      'stop': ''
+    const url = 'geo/route_start.php';
+    const data = {
+      cid: cid,
+      lt: this.state$.position.getValue().lt,
+      lg: this.state$.position.getValue().lg,
+      start: '',
+      stop: ''
     };
     if (start) {
-      data['start'] = '1';
+      data.start = '1';
     }
     if (stop) {
-      data['stop'] = '1';
+      data.stop = '1';
     }
-    let self = this;
+    const self = this;
     this.auth.sendPost(url, data).subscribe((data) => {
       if (data.success == true) {
         self.btn_go = true;
@@ -397,7 +400,7 @@ export class CourierPage implements OnInit {
   }
 
   public scanSearch() {
-    let self = this;
+    const self = this;
     this.scanView = !this.scanView;
     this.loader = true;
     if (this.auth.getScanMode() == 'scan') {
@@ -410,7 +413,7 @@ export class CourierPage implements OnInit {
         }
         self.loader = false;
         self.scanView = false;
-      })
+      });
     } else {
       self.loader = false;
     }
@@ -419,14 +422,14 @@ export class CourierPage implements OnInit {
   }
 
   public findOrder() {
-    let self = this;
+    const self = this;
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
       this.find_order = true;
-      setTimeout(function () {
+      setTimeout(function() {
         self.sInput.nativeElement.focus();
       }, 500);
-      return false
+      return false;
     }
 
     this.bs.scan().then((data) => {
@@ -436,22 +439,22 @@ export class CourierPage implements OnInit {
         } else {
           self.auth.showError(2);
         }
-      })
+      });
     });
   }
 
-  //Завершение рабочего дня курьера
+  // Завершение рабочего дня курьера
   public endWork() {
     this.courier.endWork().subscribe((data: { success: boolean }) => {
       if (data.success) {
         this.isWorkEnded = true;
         this.sys.presentToast('Рабочий день завершен',
-          'success')
+          'success');
       }
     },
       error => {
-        this.sys.presentToast('Ошибка: ' + error.message, 'danger')
-      })
+        this.sys.presentToast('Ошибка: ' + error.message, 'danger');
+      });
 
   }
   doRefresh() {
@@ -460,17 +463,17 @@ export class CourierPage implements OnInit {
   }
 
   public segmentChanged(event: any) {
-    let ids = [Number(event.target.value)];
+    const ids = [Number(event.target.value)];
     if (event.target.value == '5') {
-      ids.push(6)
+      ids.push(6);
     }
     this.segment = ids;
-    this.prepareOrdersList(ids)
+    this.prepareOrdersList(ids);
   }
 
   public onSearchChange(event: any) {
     this.searchString = event.target.value;
-    this.prepareOrdersList(this.segment)
+    this.prepareOrdersList(this.segment);
 
   }
   public prepareOrdersList(ids = this.segment) {
@@ -485,13 +488,13 @@ export class CourierPage implements OnInit {
           .slice(this.slicer)
       ),
       map(
-        (orders) => { orders.forEach((order) => { order.show = false }); this.orders = orders; return orders }
+        (orders) => { orders.forEach((order) => { order.show = false; }); this.orders = orders; return orders; }
       )
     );
 
   }
   public howSlice(): number {
-    return (this.settings.rules.typeRoute === 'standart' ? 0 : 1)
+    return (this.settings.rules.typeRoute === 'standart' ? 0 : 1);
   }
 
   async popoverHelp(ev: any) {
@@ -501,17 +504,17 @@ export class CourierPage implements OnInit {
       translucent: true,
       cssClass: 'help'
     });
-    return popover
+    return popover;
   }
 
   async showHelp(ev: any) {
-    let popover = await this.popoverHelp(ev);
+    const popover = await this.popoverHelp(ev);
     popover.present();
 
   }
 
   public showRoute(order: Order) {
-    this.map.showRoute(order)
+    this.map.showRoute(order);
   }
 
   public drop(event: CdkDragDrop<any[]>) {
@@ -528,49 +531,49 @@ export class CourierPage implements OnInit {
       translucent: true,
       cssClass: 'help',
       componentProps: {
-        "orderId": orderId
+        orderId: orderId
       }
     });
-    return popover
+    return popover;
   }
 
   public async note(ev: any, orderId: string) {
-    let popover = await this.popoverNote(ev, orderId);
+    const popover = await this.popoverNote(ev, orderId);
     popover.present();
   }
 
-  //Звонок получателю заказа
+  // Звонок получателю заказа
   public phoneClick(action: string, order: Order) {
     this.order = order;
     this.orderPhones = this.parsePhone(order.client_phone);
-    let courierPhone = this.parsePhone(order.courier_phone)[0];
+    const courierPhone = this.parsePhone(order.courier_phone)[0];
     if (this.orderPhones.length == 1) {
       this.selectedPhone = this.orderPhones[0];
     }
 
     switch (action) {
-      case "init":
+      case 'init':
         this.callWindow = !this.callWindow;
         break;
-      case "phone":
+      case 'phone':
         this.CL.callNumber(this.selectedPhone, false).then(() => { });
         this.callWindow = false;
         this.order = undefined;
         break;
-      case "operator":
+      case 'operator':
         if (this.network.type == 'none') {
           this.phoneClick('phone', order);
           return false;
         }
         if (this.selectedPhone && courierPhone) {
-          let url = "orders";
-          let data = {
-            action: "send_phone",
+          const url = 'orders';
+          const data = {
+            action: 'send_phone',
             client_number: this.selectedPhone,
             cur_number: courierPhone,
           };
           this.auth.sendPost(url, data).subscribe((resp) => {
-            console.log("call_subs", resp);
+            console.log('call_subs', resp);
           });
           this.auth.showError(9);
           this.callWindow = false;
@@ -580,10 +583,10 @@ export class CourierPage implements OnInit {
     }
   }
 
-  //Парсинг номера телефона из строки с лишним мусором
+  // Парсинг номера телефона из строки с лишним мусором
   public parsePhone(phone: string): Array<string> {
-    let phones: Array<string> = [];
-    phone = phone.replace(/\D+/g, "");
+    const phones: Array<string> = [];
+    phone = phone.replace(/\D+/g, '');
 
     while (phone.length > 7) {
       phone = this.normalizePhoneNumber(phone);
@@ -593,16 +596,16 @@ export class CourierPage implements OnInit {
     return phones;
   }
 
-  //Жонглирование '8' / '+7'
+  // Жонглирование '8' / '+7'
   private normalizePhoneNumber(phone: string): string {
-    if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
-      phone = "8" + phone;
+    if (phone[0] !== '8' && phone[0] !== '7' && phone.length !== 11) {
+      phone = '8' + phone;
     }
     if (phone.length == 7 || phone.length == 10) {
-      phone = "8" + phone;
+      phone = '8' + phone;
     }
-    if (phone[0] !== "8" && phone.length == 11) {
-      phone = "8" + phone.slice(1);
+    if (phone[0] !== '8' && phone.length == 11) {
+      phone = '8' + phone.slice(1);
     }
     return phone;
   }
@@ -611,6 +614,27 @@ export class CourierPage implements OnInit {
   public vibr($event?: any) {
     this.vbr.vibrate(10);
     console.log('sys:: *Вибирация*');
+  }
+
+  public getScanData(){
+    this.bs.scan().then((data) => {
+      console.log(`sys:: данные штрихкода: ${data.text}`);
+      const url = this.sys.proxy + 'https://mobile.postsrvs.ru/getScanPVZ.php';
+      const reqData = {
+        type : "scanOrder",
+        uuid : this.auth.getUuid(),
+        courieriId: this.auth.getUserId(),
+      clientId : data.text
+    };
+      this.http.post(url, reqData).subscribe((resp: ScanPVZResponse) =>{
+        let color = 'success';
+        if (!resp.success){
+          color = 'danger';
+        }
+        this.sys.presentToast(resp.dateTime, 'success', resp.message);
+      })
+
+    });
   }
 
 }

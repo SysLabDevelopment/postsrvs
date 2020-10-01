@@ -1,19 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { DrawPage } from '../../pages/draw/draw.page';
+// @ts-ignore
+import * as introJs from 'intro.js/intro.js';
 @Component({
   selector: 'app-delivered',
   templateUrl: './delivered.component.html',
   styleUrls: ['./delivered.component.scss'],
 })
-export class DeliveredComponent implements OnInit {
+export class DeliveredComponent implements OnInit, AfterViewInit {
   public root = DeliveredComponent;
   public commentText: string;
   @Input() goods: any[];
   @Input() pay_type: string;
   @Input() pay_type_change_allowed: boolean;
-  public drawNeedle: boolean = true;
+  public drawNeedle = true;
   public selectedPayment: string = '1';
   public email_input: string = ''
   public phone_input: string = '';
@@ -27,7 +29,12 @@ export class DeliveredComponent implements OnInit {
 
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
+
+  ngAfterViewInit(){}
+  ionViewDidEnter(){
+    introJs().start();
+  }
   dismiss(role = '') {
     const details = (role == 'cancel' ? undefined : {
       'drawNeedle': this.drawNeedle,

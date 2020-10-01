@@ -30,6 +30,11 @@
 <ion-content>
 
   <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
+    <ion-button *ngIf="settings.rules.scanPVZ == '1'" fill="solid" size='default'
+                class='light-blue-button' (click)="getScanData()">
+      <ion-icon slot="start" name="barcode-sharp" size="large"></ion-icon>
+      Прием
+    </ion-button>
     <ion-segment (ionChange)="segmentChanged($event)" value='1'>
       <ion-segment-button value="1">
         <ion-label>В работе</ion-label>

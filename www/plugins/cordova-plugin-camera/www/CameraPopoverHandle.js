@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-camera.CameraPopoverHandle", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,24 +20,16 @@
  *
 */
 
-var exec = require('cordova/exec');
-
-var WkWebKit = {
-    allowsBackForwardNavigationGestures: function (allow) {
-        exec(null, null, 'CDVWebViewEngine', 'allowsBackForwardNavigationGestures', [allow]);
-    },
-    convertFilePath: function (path) {
-        if (!path || !window.CDV_ASSETS_URL) {
-            return path;
-        }
-        if (path.startsWith('/')) {
-            return window.CDV_ASSETS_URL + '/_app_file_' + path;
-        }
-        if (path.startsWith('file://')) {
-            return window.CDV_ASSETS_URL + path.replace('file://', '/_app_file_');
-        }
-        return path;
-    }
+/**
+ * @ignore in favour of iOS' one
+ * A handle to an image picker popover.
+ */
+var CameraPopoverHandle = function () {
+    this.setPosition = function (popoverOptions) {
+        console.log('CameraPopoverHandle.setPosition is only supported on iOS.');
+    };
 };
 
-module.exports = WkWebKit;
+module.exports = CameraPopoverHandle;
+
+});

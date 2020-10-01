@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.23.13",
-	"versionCode": "126",
+	"version": "1.24.16",
+	"versionCode": "129",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -47,6 +47,7 @@
 		"@ionic/angular": "^5.3.4",
 		"@ionic/core": "^5.3.4",
 		"@ionic/storage": "^2.2.0",
+		"@types/intro.js": "^2.4.7",
 		"angular": "^1.8.0",
 		"angular-feather": "^6.0.10",
 		"angular-split": "^4.0.0",
@@ -76,6 +77,7 @@
 		"core-js": "^3.6.4",
 		"es6-promise-plugin": "^4.2.2",
 		"feather-icons": "^4.28.0",
+		"intro.js": "^2.9.3",
 		"ionic-cache": "^5.2.0",
 		"mx.ferreyra.callnumber": "0.0.2",
 		"ngx-mask": "^9.1.2",

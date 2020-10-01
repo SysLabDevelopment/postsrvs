@@ -160,7 +160,7 @@ export class SysService {
 
   public checkPhoto() {
     const options: CameraOptions = {
-      quality: 25,
+      quality: 10,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
