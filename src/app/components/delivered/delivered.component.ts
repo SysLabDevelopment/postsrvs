@@ -1,9 +1,9 @@
-import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
-import { DrawPage } from '../../pages/draw/draw.page';
 // @ts-ignore
 import * as introJs from 'intro.js/intro.js';
+import { DrawPage } from '../../pages/draw/draw.page';
 @Component({
   selector: 'app-delivered',
   templateUrl: './delivered.component.html',
@@ -29,10 +29,10 @@ export class DeliveredComponent implements OnInit, AfterViewInit {
 
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngAfterViewInit(){}
-  ionViewDidEnter(){
+  ngAfterViewInit() { }
+  ionViewDidEnter() {
     introJs().start();
   }
   dismiss(role = '') {
@@ -52,9 +52,13 @@ export class DeliveredComponent implements OnInit, AfterViewInit {
   }
 
   public async draw() {
+    const DIV = document.createElement("div");
     const modal = await this.modalController.create({
       component: DrawPage,
-      showBackdrop: false
+      showBackdrop: false,
+      mode: 'md',
+      animated: false,
+      presentingElement: DIV
     });
     modal.present();
   }

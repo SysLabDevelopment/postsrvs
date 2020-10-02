@@ -10,11 +10,11 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderPageModule", function() { return OrderPageModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 /* harmony import */ var _order_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./order.page */ "./src/app/pages/order/order.page.ts");
 /* harmony import */ var _icons_icons_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../icons/icons.module */ "./src/app/icons/icons.module.ts");
 
@@ -76,13 +76,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm2015/animations.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
 /* harmony import */ var _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/device/ngx */ "./node_modules/@ionic-native/device/ngx/index.js");
 /* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/network/ngx */ "./node_modules/@ionic-native/network/ngx/index.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 /* harmony import */ var ionic_cache__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ionic-cache */ "./node_modules/ionic-cache/dist/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
@@ -794,35 +794,35 @@ class OrderPage {
         this.phone = null;
         this.pageInit = true;
         this.statuses = [
-            { id: 4, status: "Не доставлено" },
-            { id: 5, status: "Доставлено" },
-            { id: 6, status: "Частично доставлено" },
+            { id: 4, status: 'Не доставлено' },
+            { id: 5, status: 'Доставлено' },
+            { id: 6, status: 'Частично доставлено' },
         ];
         this.reasons = [
-            { id: 1, reason: "Не удалось Дозвониться!" },
-            { id: 2, reason: "Отказ, при созвоне с клиентом" },
-            { id: 3, reason: "Отказ от доставки без объяснения причины" },
-            { id: 4, reason: "Ошибка оформления ИМ" },
-            { id: 5, reason: "Получатель передумал" },
-            { id: 6, reason: "Товар не подошел/не понравился" },
-            { id: 7, reason: "Финансовые трудности у получателя" },
-            { id: 8, reason: "Перенос даты доставки получателем." },
-            { id: 10, reason: "Не успел" },
-            { id: 11, reason: "Переехали/нев.Адрес" },
+            { id: 1, reason: 'Не удалось Дозвониться!' },
+            { id: 2, reason: 'Отказ, при созвоне с клиентом' },
+            { id: 3, reason: 'Отказ от доставки без объяснения причины' },
+            { id: 4, reason: 'Ошибка оформления ИМ' },
+            { id: 5, reason: 'Получатель передумал' },
+            { id: 6, reason: 'Товар не подошел/не понравился' },
+            { id: 7, reason: 'Финансовые трудности у получателя' },
+            { id: 8, reason: 'Перенос даты доставки получателем.' },
+            { id: 10, reason: 'Не успел' },
+            { id: 11, reason: 'Переехали/нев.Адрес' },
         ];
         this.commentText = null;
         this.g_quants = {};
         this.changeWindow = false;
-        this.selectedPayment = "1";
-        this.client_status = "";
-        this.client_status_dt = "";
-        this.client_status_id = "";
+        this.selectedPayment = '1';
+        this.client_status = '';
+        this.client_status_dt = '';
+        this.client_status_id = '';
         this.vlog = null;
         this.poruch = null;
         this.mass = null;
         this.amount = null;
-        this.email_input = "";
-        this.phone_input = "";
+        this.email_input = '';
+        this.phone_input = '';
         this.barcode_flag = false;
         this.barcode_url = null;
         this.barcode = null;
@@ -843,11 +843,11 @@ class OrderPage {
         this.orderPhones = [];
         this.openCompany = false;
         this.drawNeedle = true;
-        this.orderId = this.route.snapshot.paramMap.get("id");
+        this.orderId = this.route.snapshot.paramMap.get('id');
         this.initOrder();
-        var img = localStorage.getItem("drawImg");
+        const img = localStorage.getItem('drawImg');
         if (img) {
-            this.imageToShow = "data:image/jpg;base64," + img;
+            this.imageToShow = 'data:image/jpg;base64,' + img;
         }
     }
     ngOnInit() {
@@ -855,9 +855,9 @@ class OrderPage {
         this.note = localStorage.getItem(this.orderId);
     }
     ngAfterViewChecked() {
-        var img = localStorage.getItem("drawImg");
+        const img = localStorage.getItem('drawImg');
         if (img) {
-            this.imageToShow = "data:image/jpg;base64," + img;
+            this.imageToShow = 'data:image/jpg;base64,' + img;
         }
     }
     sendPost(url, data) {
@@ -871,7 +871,7 @@ class OrderPage {
                 this.draw();
             }
             else {
-                localStorage.removeItem("drawImg");
+                localStorage.removeItem('drawImg');
             }
         });
     }
@@ -890,8 +890,8 @@ class OrderPage {
         });
     }
     parsePhone(phone) {
-        let phones = [];
-        phone = phone.replace(/\D+/g, "");
+        const phones = [];
+        phone = phone.replace(/\D+/g, '');
         while (phone.length > 7) {
             phone = this.normalizePhoneNumber(phone);
             phones.push(phone.slice(null, 11));
@@ -900,45 +900,45 @@ class OrderPage {
         return phones;
     }
     normalizePhoneNumber(phone) {
-        if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
-            phone = "8" + phone;
+        if (phone[0] !== '8' && phone[0] !== '7' && phone.length !== 11) {
+            phone = '8' + phone;
         }
         if (phone.length == 7 || phone.length == 10) {
-            phone = "8" + phone;
+            phone = '8' + phone;
         }
-        if (phone[0] !== "8" && phone.length == 11) {
-            phone = "8" + phone.slice(1);
+        if (phone[0] !== '8' && phone.length == 11) {
+            phone = '8' + phone.slice(1);
         }
         return phone;
     }
     phoneClick(action) {
         this.orderPhones = this.parsePhone(this.phone);
-        let courierPhone = this.parsePhone(this.order.courier_phone)[0];
+        const courierPhone = this.parsePhone(this.order.courier_phone)[0];
         if (this.orderPhones.length == 1) {
             this.selectedPhone = this.orderPhones[0];
         }
         switch (action) {
-            case "init":
+            case 'init':
                 this.callWindow = !this.callWindow;
                 break;
-            case "phone":
+            case 'phone':
                 this.CL.callNumber(this.selectedPhone, false).then(() => { });
                 this.callWindow = false;
                 break;
-            case "operator":
+            case 'operator':
                 if (this.network.type == 'none') {
                     this.phoneClick('phone');
                     return false;
                 }
                 if (this.selectedPhone && courierPhone) {
-                    let url = "orders";
-                    let data = {
-                        action: "send_phone",
+                    const url = 'orders';
+                    const data = {
+                        action: 'send_phone',
                         client_number: this.selectedPhone,
                         cur_number: courierPhone,
                     };
                     this.auth.sendPost(url, data).subscribe((resp) => {
-                        console.log("call_subs", resp);
+                        console.log('call_subs', resp);
                     });
                     this.auth.showError(9);
                     this.callWindow = false;
@@ -951,7 +951,7 @@ class OrderPage {
             console.log('Список заказов из стоража', orders);
         });
         this.storage.get('orders').then((orders) => {
-            this.order = orders === null || orders === void 0 ? void 0 : orders.filter((order) => { return order.id.toString() == this.orderId; })[0];
+            this.order = orders === null || orders === void 0 ? void 0 : orders.filter((order) => order.id.toString() == this.orderId)[0];
             this.goods = this.order.goods;
             this.address = this.order.client_address;
             this.timeFrom = this.order.datetime_from;
@@ -974,60 +974,60 @@ class OrderPage {
         });
     }
     getClientState() {
-        var states = this.state$.client_states.getValue();
-        var state_id = this.order.client_state;
+        const states = this.state$.client_states.getValue();
+        const state_id = this.order.client_state;
         for (let i = 0; i < states.length; i++) {
             if (states[i].id == state_id) {
                 return states[i].state;
             }
         }
-        return "";
+        return '';
     }
-    //Заполняет массив с ценой товаров и их количеством(для частички)
+    // Заполняет массив с ценой товаров и их количеством(для частички)
     setQuants() {
-        var goods = this.order.goods;
-        for (var i = 0; i < goods.length; i++) {
-            let good = goods[i];
-            let code = good.Code;
-            let count = good.final_kol_vo ? good.final_kol_vo : good.kol_vo;
-            let quant = { amount: good.kol_vo, price: good.Price };
+        const goods = this.order.goods;
+        for (let i = 0; i < goods.length; i++) {
+            const good = goods[i];
+            const code = good.Code;
+            const count = good.final_kol_vo ? good.final_kol_vo : good.kol_vo;
+            const quant = { amount: good.kol_vo, price: good.Price };
             this.g_quants[code] = quant;
         }
     }
     changeQuant(code, action) {
-        var q = this.g_quants[code]["amount"];
-        var good = null;
-        for (var i = 0; i < this.order.goods.length; i++) {
+        const q = this.g_quants[code].amount;
+        let good = null;
+        for (let i = 0; i < this.order.goods.length; i++) {
             if (this.order.goods[i].Code == code) {
                 good = this.order.goods[i];
             }
         }
-        if (action == "plus") {
-            var n_q = q + 1;
+        if (action == 'plus') {
+            const n_q = q + 1;
             if (n_q > good.kol_vo) {
                 return false;
             }
             else {
-                this.g_quants[code]["amount"] = n_q;
+                this.g_quants[code].amount = n_q;
             }
         }
-        else if (action == "minus") {
-            var n_q = q - 1;
+        else if (action == 'minus') {
+            const n_q = q - 1;
             if (n_q < 0) {
                 return false;
             }
             else {
-                this.g_quants[code]["amount"] = n_q;
+                this.g_quants[code].amount = n_q;
             }
         }
         else if (action == 'delete') {
-            this.g_quants[code]["amount"] = 0;
+            this.g_quants[code].amount = 0;
         }
         this.getSum();
     }
     navBack() {
-        localStorage.removeItem("drawImg");
-        this.router.navigate(["/courier"]);
+        localStorage.removeItem('drawImg');
+        this.router.navigate(['/courier']);
     }
     getStatus() {
         return this.courier.getStatus(this.order);
@@ -1053,7 +1053,7 @@ class OrderPage {
     }
     sendPayCall(order = this.order, newStatus = this.selectedStatus) {
         if (this.network.type == 'none') {
-            //Если оффлайн
+            // Если оффлайн
             this.cache.getItem('syncRequests').then((syncRequests) => {
                 order = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ phone_input: this.phone_input }, { email_input: this.email_input }), { quants: this.g_quants }), order), { selectedPayment: this.selectedPayment }), { selectedReason: this.selectedReason }), { new_plan_date: this.new_plan_date }), { commentText: this.commentText }), { check: this.checkBase64Image }), { cardNums: this.cardNums });
                 syncRequests && syncRequests.push({ order, newStatus });
@@ -1065,7 +1065,7 @@ class OrderPage {
             });
         }
         else {
-            //Если онлайн
+            // Если онлайн
             this.localModifyOrders(newStatus);
             order = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ phone_input: this.phone_input }, { email_input: this.email_input }), { quants: this.g_quants }), order), { selectedPayment: this.selectedPayment }), { selectedReason: this.selectedReason }), { new_plan_date: this.new_plan_date }), { commentText: this.commentText }), { check: this.checkBase64Image }), { cardNums: this.cardNums });
             this.orderService.sendDelayedCall(order, newStatus);
@@ -1073,7 +1073,7 @@ class OrderPage {
         }
     }
     submitChange() {
-        let self = this;
+        const self = this;
         this.storage.get('orders').then((orders) => {
             orders === null || orders === void 0 ? void 0 : orders.map((order) => {
                 if (String(order.id) == String(this.order.id)) {
@@ -1087,20 +1087,20 @@ class OrderPage {
         switch (this.selectedStatus) {
             case 4:
                 if (this.selectedReason != null) {
-                    let new_plan_date = new Date(this.new_plan_date);
+                    const new_plan_date = new Date(this.new_plan_date);
                     this.courier
                         .changeStatus(this.selectedStatus, String(this.order.id), undefined, this.selectedReason, null, null, new_plan_date.toLocaleDateString())
                         .subscribe((data) => {
-                        if (data.success == "true") {
+                        if (data.success == 'true') {
                             self.changeWindow = false;
-                            self.state$.state.next("init");
-                            self.selectedPayment = "1";
+                            self.state$.state.next('init');
+                            self.selectedPayment = '1';
                             self.selectedReason = null;
                             self.selectedStatus = null;
-                            self.router.navigate(["courier"]);
-                            self.state$.updateWayInfo.next("0");
+                            self.router.navigate(['courier']);
+                            self.state$.updateWayInfo.next('0');
                         }
-                        localStorage.removeItem("drawImg");
+                        localStorage.removeItem('drawImg');
                     });
                 }
                 break;
@@ -1109,23 +1109,23 @@ class OrderPage {
                     noSkip = false;
                 }
                 this.sys.doOCR(this.checkBase64Image, noSkip).then((recognizedData) => {
-                    let text = (this.commentText ? this.commentText : "");
+                    const text = (this.commentText ? this.commentText : '');
                     this.courier
                         .changeStatus(this.selectedStatus, String(this.order.id), text, undefined, undefined, this.selectedPayment, '', this.checkBase64Image, recognizedData)
                         .subscribe((data) => {
-                        if (data.success == "true") {
+                        if (data.success == 'true') {
                             self.changeWindow = false;
-                            self.state$.state.next("init");
-                            self.selectedPayment = "1";
+                            self.state$.state.next('init');
+                            self.selectedPayment = '1';
                             self.selectedReason = null;
                             self.selectedStatus = null;
                             if (!self.pay_access) {
-                                self.router.navigate(["courier"]);
+                                self.router.navigate(['courier']);
                             }
                             self.initOrder();
-                            self.state$.updateWayInfo.next("0");
+                            self.state$.updateWayInfo.next('0');
                         }
-                        localStorage.removeItem("drawImg");
+                        localStorage.removeItem('drawImg');
                     });
                 });
                 break;
@@ -1137,22 +1137,22 @@ class OrderPage {
                     this.courier
                         .changeStatus(this.selectedStatus, String(this.order.id), undefined, undefined, this.g_quants, this.selectedPayment, '', this.checkBase64Image, recognizedData)
                         .subscribe((data) => {
-                        if ((data === null || data === void 0 ? void 0 : data.success) == "true") {
+                        if ((data === null || data === void 0 ? void 0 : data.success) == 'true') {
                             self.changeWindow = false;
-                            self.state$.state.next("init");
-                            self.selectedPayment = "1";
+                            self.state$.state.next('init');
+                            self.selectedPayment = '1';
                             self.selectedReason = null;
                             self.selectedStatus = null;
                             if (!self.pay_access) {
-                                self.router.navigate(["courier"]);
+                                self.router.navigate(['courier']);
                             }
                             self.initOrder();
-                            self.state$.updateWayInfo.next("0");
+                            self.state$.updateWayInfo.next('0');
                         }
                         else {
-                            this.sys.presentToast("Нет товаров в заказе", "danger", "Частичная доставка невозможна");
+                            this.sys.presentToast('Нет товаров в заказе', 'danger', 'Частичная доставка невозможна');
                         }
-                        localStorage.removeItem("drawImg");
+                        localStorage.removeItem('drawImg');
                     });
                 });
                 break;
@@ -1161,19 +1161,19 @@ class OrderPage {
     getSum() {
         if (this.order) {
             let price = 0;
-            let quants = this.g_quants;
-            for (let code in quants) {
-                price += quants[code]["price"] * quants[code]["amount"];
+            const quants = this.g_quants;
+            for (const code in quants) {
+                price += quants[code].price * quants[code].amount;
             }
             this.order.rur = price;
         }
     }
-    //подсчитывает сумму заказа
+    // подсчитывает сумму заказа
     getPrice(order) {
         if (order) {
             let price = 0;
             for (let i = 0; i < order.goods.length; i++) {
-                let good = order.goods[i];
+                const good = order.goods[i];
                 price += Number(good.Price) * Number(good.kol_vo);
             }
             return price;
@@ -1183,18 +1183,18 @@ class OrderPage {
         this.selectedPayment = item;
     }
     sendPay() {
-        let goods = this.order.goods;
-        let quants = this.g_quants;
-        let callback_url = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
-        let products = [];
-        for (let code in quants) {
-            if (quants[code]["amount"] > 0) {
+        const goods = this.order.goods;
+        const quants = this.g_quants;
+        const callback_url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/pay_callback.php';
+        const products = [];
+        for (const code in quants) {
+            if (quants[code].amount > 0) {
                 for (let i = 0; i < goods.length; i++) {
-                    if (goods[i]["Code"] == code) {
-                        let good_name = goods[i]["Name"];
-                        let good_amount = quants[code]["amount"];
-                        let good_price = Math.round(quants[code]["price"] * 100) / 100;
-                        let pos = {
+                    if (goods[i].Code == code) {
+                        const good_name = goods[i].Name;
+                        const good_amount = quants[code].amount;
+                        const good_price = Math.round(quants[code].price * 100) / 100;
+                        const pos = {
                             name: good_name,
                             price: good_price,
                             quantity: good_amount,
@@ -1204,44 +1204,44 @@ class OrderPage {
                 }
             }
         }
-        var purchase = { products: products };
-        console.log("goods_description\n", purchase);
-        var self = this;
+        const purchase = { products };
+        console.log('goods_description\n', purchase);
+        const self = this;
         if (this.pay_access) {
-            let order_data = {
+            const order_data = {
                 apikey: String(this.pay_access_data.api_key),
                 login: String(this.pay_access_data.phone),
                 cashier_name: String(this.pay_access_data.name) +
                     String(this.pay_access_data.phone),
-                purchase: purchase,
-                callback_url: callback_url,
-                mode: "email",
+                purchase,
+                callback_url,
+                mode: 'email',
                 customer_email: this.email_input,
                 customer_phone: this.phone_input,
                 card_amount: '',
                 cash_amount: ''
             };
-            if (self.selectedPayment == "2") {
-                order_data["card_amount"] = "#";
+            if (self.selectedPayment == '2') {
+                order_data.card_amount = '#';
             }
             else {
-                order_data["cash_amount"] = "#";
+                order_data.cash_amount = '#';
             }
-            if (this.phone_input != "") {
-                order_data["customer_phone"] = this.phone_input;
+            if (this.phone_input != '') {
+                order_data.customer_phone = this.phone_input;
             }
             self.send_api_data(order_data);
         }
     }
-    //Получаем api key & login
+    // Получаем api key & login
     getPayData() {
-        let url = "pay_order";
-        let data = { action: "getData", orderId: this.clientId };
-        let self = this;
+        const url = 'pay_order';
+        const data = { action: 'getData', orderId: this.clientId };
+        const self = this;
         if (navigator.onLine) {
             this.auth.sendPost(url, data).subscribe((res) => {
-                console.log("GET_PAY_DATA", res);
-                if (res.success == "true") {
+                console.log('GET_PAY_DATA', res);
+                if (res.success == 'true') {
                     self.pay_access = true;
                     self.pay_access_data = res;
                 }
@@ -1255,14 +1255,14 @@ class OrderPage {
         }
     }
     send_api_data(api_data) {
-        let url = "pay_order";
-        let self = this;
+        const url = 'pay_order';
+        const self = this;
         this.order.rur = 0;
         api_data.purchase.products.forEach((product) => {
             this.order.rur += product.price * product.quantity;
         });
-        var data = {
-            action: "sendPay",
+        const data = {
+            action: 'sendPay',
             orderData: api_data,
             orderId: this.order.id,
         };
@@ -1279,7 +1279,7 @@ class OrderPage {
                 if (req !== undefined) {
                     requests = req;
                 }
-                requests.push({ url: url, data: data });
+                requests.push({ url, data });
                 this.cache.saveItem('requests', requests);
                 self.submitChange();
                 self.checkPayment();
@@ -1288,18 +1288,18 @@ class OrderPage {
         }
     }
     checkPayment() {
-        var self = this;
+        const self = this;
         this.state$.interval_1ss.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_13__["takeUntil"])(this.$codeStop)).subscribe(() => {
             self.ifPaid();
-            console.log("paid_iter");
+            console.log('paid_iter');
         });
     }
     ifPaid() {
-        var url = "pay_order";
-        var data = { action: "checkPaid", orderId: this.order.id };
-        var self = this;
+        const url = 'pay_order';
+        const data = { action: 'checkPaid', orderId: this.order.id };
+        const self = this;
         this.auth.sendPost(url, data).subscribe((data) => {
-            if (data.success == "true" && data.barcode != null) {
+            if (data.success == 'true' && data.barcode != null) {
                 self.barcode_flag = true;
                 self.barcode_url = data.barcode_url;
                 self.barcode = data.barcode;
@@ -1319,9 +1319,9 @@ class OrderPage {
         }
     }
     initClientInfo() {
-        let mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
-        let infoStr = this.phone;
-        let mail = mail_exp.exec(infoStr);
+        const mail_exp = /(?:([\s.,]{1}))([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}/gm;
+        const infoStr = this.phone;
+        const mail = mail_exp.exec(infoStr);
         if (mail != null) {
             this.email_input = mail[0];
         }
@@ -1336,15 +1336,22 @@ class OrderPage {
         this.sysMap.showRoute(order);
     }
     doneOrder() {
-        let drawedImg = localStorage.drawImg;
+        const drawedImg = localStorage.drawImg;
         if (this.drawNeedle && !drawedImg) {
             this.drawBtn(this.drawNeedle);
         }
         else {
             if (this.selectedPayment == '2') {
+                this.sendPayCall();
                 this.sys.checkPhoto().then((imageData) => {
                     this.checkBase64Image = 'data:image/jpeg;base64,' + imageData;
-                    this.sendPayCall();
+                    const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/orders';
+                    const data = {
+                        action: 'save_check_data',
+                        order_id: this.orderId,
+                        check_photo: this.checkBase64Image,
+                    };
+                    this.http.post(url, data);
                 });
             }
             else {
@@ -1360,7 +1367,7 @@ class OrderPage {
         this.openCompany = !this.openCompany;
     }
     localModifyOrders(newStatus) {
-        let meta = {
+        const meta = {
             label: 'localChanges'
         };
         this.storage.get('orders').then((orders) => {
@@ -1376,11 +1383,11 @@ class OrderPage {
     scanReturned() {
         this.bs.scan().then((data) => {
             const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/orders';
-            let data1 = {
-                "orderId": this.orderId,
-                "box_barcode": data.text,
-                "action": "get_box",
-                "uuid": this.device.uuid
+            const data1 = {
+                orderId: this.orderId,
+                box_barcode: data.text,
+                action: 'get_box',
+                uuid: this.device.uuid
             };
             this.http.post(url, data1).subscribe((res) => {
                 console.log(`sys:: ответ скана возврата: ${res}`);
@@ -1470,7 +1477,7 @@ OrderPage.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponen
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵsetClassMetadata"](OrderPage, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
         args: [{
-                selector: "app-order",
+                selector: 'app-order',
                 animations: [
                     Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('openClose', [
                         // ...
@@ -1488,8 +1495,8 @@ OrderPage.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineComponen
                         ]),
                     ])
                 ],
-                templateUrl: "./order.page.html",
-                styleUrls: ["./order.page.scss"],
+                templateUrl: './order.page.html',
+                styleUrls: ['./order.page.scss'],
             }]
     }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] }, { type: _services_courier_service__WEBPACK_IMPORTED_MODULE_17__["CourierService"] }, { type: _services_state_service__WEBPACK_IMPORTED_MODULE_19__["StateService"] }, { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_16__["AuthService"] }, { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }, { type: _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_6__["CallNumber"] }, { type: _services_sys_service__WEBPACK_IMPORTED_MODULE_20__["SysService"] }, { type: _services_settings_service__WEBPACK_IMPORTED_MODULE_18__["SettingsService"] }, { type: _services_sys_map_service__WEBPACK_IMPORTED_MODULE_21__["MapService"] }, { type: _services_sys_data_service__WEBPACK_IMPORTED_MODULE_24__["DataService"] }, { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_10__["Storage"] }, { type: ionic_cache__WEBPACK_IMPORTED_MODULE_11__["CacheService"] }, { type: _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_8__["Network"] }, { type: _services_sys_order_service__WEBPACK_IMPORTED_MODULE_22__["OrderService"] }, { type: _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__["BarcodeScanner"] }, { type: _ionic_native_device_ngx__WEBPACK_IMPORTED_MODULE_7__["Device"] }, { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__["ModalController"] }]; }, null); })();
 

@@ -153,7 +153,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -341,7 +341,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -383,7 +383,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -820,7 +820,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -934,7 +934,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -1030,8 +1030,7 @@
 
       var _interceptors_http_interceptor__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(
       /*! ./interceptors/http.interceptor */
-      "./src/app/interceptors/http.interceptor.ts"); // import { GoogleMaps } from "@ionic-native/google-maps";
-
+      "./src/app/interceptors/http.interceptor.ts");
 
       Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["registerLocaleData"])(_angular_common_locales_ru__WEBPACK_IMPORTED_MODULE_3___default.a, "ru");
 
@@ -1064,7 +1063,9 @@
           provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ErrorHandler"],
           useClass: _interceptors_error_interceptor__WEBPACK_IMPORTED_MODULE_38__["ErrorIntercept"]
         }],
-        imports: [[_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_37__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_28__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
+        imports: [[_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_37__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot({
+          mode: "md"
+        }), _app_routing_module__WEBPACK_IMPORTED_MODULE_28__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
           keyPrefix: 'offlineData'
         }), _angular_service_worker__WEBPACK_IMPORTED_MODULE_9__["ServiceWorkerModule"].register('ngsw-worker.js', {
           enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_27__["environment"].production
@@ -1086,7 +1087,9 @@
           args: [{
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_29__["AppComponent"], _components_balance_cashout_fail_o_cashout_fail_o_component__WEBPACK_IMPORTED_MODULE_30__["CashoutFailOComponent"], _components_balance_cashout_w_cashout_w_component__WEBPACK_IMPORTED_MODULE_31__["CashoutWComponent"], _components_help_help_component__WEBPACK_IMPORTED_MODULE_33__["HelpComponent"], _components_note_note_component__WEBPACK_IMPORTED_MODULE_35__["NoteComponent"], _directives_long_press_directive__WEBPACK_IMPORTED_MODULE_36__["LongPressDirective"], _components_not_delivered_not_delivered_component__WEBPACK_IMPORTED_MODULE_34__["NotDeliveredComponent"], _components_delivered_delivered_component__WEBPACK_IMPORTED_MODULE_32__["DeliveredComponent"]],
             entryComponents: [],
-            imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_37__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_28__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
+            imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _icons_icons_module__WEBPACK_IMPORTED_MODULE_37__["IconsModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_23__["IonicModule"].forRoot({
+              mode: "md"
+            }), _app_routing_module__WEBPACK_IMPORTED_MODULE_28__["AppRoutingModule"], ngx_mask__WEBPACK_IMPORTED_MODULE_26__["NgxMaskModule"].forRoot(), _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_0__["ScrollingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_24__["IonicStorageModule"].forRoot(), ionic_cache__WEBPACK_IMPORTED_MODULE_25__["CacheModule"].forRoot({
               keyPrefix: 'offlineData'
             }), _angular_service_worker__WEBPACK_IMPORTED_MODULE_9__["ServiceWorkerModule"].register('ngsw-worker.js', {
               enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_27__["environment"].production
@@ -1140,7 +1143,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
 
       var CashoutFailOComponent = /*#__PURE__*/function () {
         function CashoutFailOComponent() {
@@ -1217,7 +1220,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
 
       var CashoutWComponent = /*#__PURE__*/function () {
         function CashoutWComponent() {
@@ -1300,7 +1303,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -1312,23 +1315,23 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
-      var _pages_draw_draw_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ../../pages/draw/draw.page */
-      "./src/app/pages/draw/draw.page.ts");
-      /* harmony import */
-
-
-      var intro_js_intro_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var intro_js_intro_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! intro.js/intro.js */
       "./node_modules/intro.js/intro.js");
       /* harmony import */
 
 
-      var intro_js_intro_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(intro_js_intro_js__WEBPACK_IMPORTED_MODULE_5__);
+      var intro_js_intro_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(intro_js_intro_js__WEBPACK_IMPORTED_MODULE_4__);
+      /* harmony import */
+
+
+      var _pages_draw_draw_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! ../../pages/draw/draw.page */
+      "./src/app/pages/draw/draw.page.ts");
       /* harmony import */
 
 
@@ -1445,7 +1448,7 @@
           this.selectedPayment = '1';
           this.email_input = '';
           this.phone_input = '';
-          this.drawPage = _pages_draw_draw_page__WEBPACK_IMPORTED_MODULE_4__["DrawPage"];
+          this.drawPage = _pages_draw_draw_page__WEBPACK_IMPORTED_MODULE_5__["DrawPage"];
         }
 
         _createClass(DeliveredComponent, [{
@@ -1457,7 +1460,7 @@
         }, {
           key: "ionViewDidEnter",
           value: function ionViewDidEnter() {
-            intro_js_intro_js__WEBPACK_IMPORTED_MODULE_5__().start();
+            intro_js_intro_js__WEBPACK_IMPORTED_MODULE_4__().start();
           }
         }, {
           key: "dismiss",
@@ -1482,22 +1485,26 @@
           key: "draw",
           value: function draw() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var modal;
+              var DIV, modal;
               return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                   switch (_context.prev = _context.next) {
                     case 0:
-                      _context.next = 2;
+                      DIV = document.createElement("div");
+                      _context.next = 3;
                       return this.modalController.create({
-                        component: _pages_draw_draw_page__WEBPACK_IMPORTED_MODULE_4__["DrawPage"],
-                        showBackdrop: false
+                        component: _pages_draw_draw_page__WEBPACK_IMPORTED_MODULE_5__["DrawPage"],
+                        showBackdrop: false,
+                        mode: 'md',
+                        animated: false,
+                        presentingElement: DIV
                       });
 
-                    case 2:
+                    case 3:
                       modal = _context.sent;
                       modal.present();
 
-                    case 4:
+                    case 5:
                     case "end":
                       return _context.stop();
                   }
@@ -1830,13 +1837,13 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 
       var HelpComponent = /*#__PURE__*/function () {
         function HelpComponent() {
@@ -1959,13 +1966,13 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -2253,13 +2260,13 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -2403,7 +2410,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
 
       var LongPressDirective = /*#__PURE__*/function () {
         function LongPressDirective() {
@@ -2514,7 +2521,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2624,7 +2631,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2716,7 +2723,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2800,7 +2807,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2938,7 +2945,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -2950,13 +2957,13 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 
       var _c0 = ["myCanvas"];
 
       function DrawPage_div_7_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 7);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 8);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "\u041D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E \u043E\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u043F\u0438\u0441\u044C");
 
@@ -3068,7 +3075,7 @@
         },
         decls: 15,
         vars: 1,
-        consts: [[3, "touchstart", "touchmove"], ["myCanvas", ""], ["class", "error", 4, "ngIf"], [1, "btns"], [1, "save-btn", 3, "click"], [1, "save-btn", "clear-btn", 3, "click"], [1, "save-btn", "back", 3, "click"], [1, "error"]],
+        consts: [["mode", "md"], [3, "touchstart", "touchmove"], ["myCanvas", ""], ["class", "error", 4, "ngIf"], [1, "btns"], [1, "save-btn", 3, "click"], [1, "save-btn", "clear-btn", 3, "click"], [1, "save-btn", "back", 3, "click"], [1, "error"]],
         template: function DrawPage_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "ion-header");
@@ -3085,23 +3092,25 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "ion-content");
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "ion-content", 0);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "canvas", 0, 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "canvas", 1, 2);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("touchstart", function DrawPage_Template_canvas_touchstart_5_listener($event) {
-              return ctx.handleStart($event);
+              ctx.handleStart($event);
+              return $event.stopPropagation();
             })("touchmove", function DrawPage_Template_canvas_touchmove_5_listener($event) {
-              return ctx.handleMove($event);
+              ctx.handleMove($event);
+              return $event.stopPropagation();
             });
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, DrawPage_div_7_Template, 2, 0, "div", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, DrawPage_div_7_Template, 2, 0, "div", 3);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "button", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "button", 5);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function DrawPage_Template_button_click_9_listener() {
               return ctx.saveImage();
@@ -3111,7 +3120,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "button", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "button", 6);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function DrawPage_Template_button_click_11_listener() {
               return ctx.clearCanvas();
@@ -3121,7 +3130,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "button", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "button", 7);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function DrawPage_Template_button_click_13_listener() {
               return ctx.back("cancel");
@@ -3238,7 +3247,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -3262,7 +3271,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -3750,7 +3759,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -4336,7 +4345,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -4405,7 +4414,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -4423,8 +4432,8 @@
 
       var _services_sys_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! ../services/sys.service */
-      "./src/app/services/sys.service.ts"); //Отдельный сервис для лучших реализаций функционала
-      //Если есть выбор велосипедов для решения задаи в этом приложении - выбирай велосипеды из этого комплекта
+      "./src/app/services/sys.service.ts"); // Отдельный сервис для лучших реализаций функционала
+      // Если есть выбор велосипедов для решения задаи в этом приложении - выбирай велосипеды из этого комплекта
 
 
       var SettingsService = /*#__PURE__*/function () {
@@ -4574,7 +4583,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -4834,7 +4843,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -4852,7 +4861,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js"); // Здравый код, растущий рядом с какахами
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js"); // Здравый код, растущий рядом с какахами
 
 
       var SysService = /*#__PURE__*/function () {
@@ -5141,7 +5150,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -5171,7 +5180,7 @@
 
       var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
       /* harmony import */
 
 
@@ -5426,7 +5435,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 
@@ -5710,7 +5719,7 @@
 
       var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      "./node_modules/@angular/core/fesm2015/core.js");
       /* harmony import */
 
 

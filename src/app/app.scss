@@ -80,15 +80,12 @@ app-orders-list-guess {
 }
 
 :root {
-  .introjs-helperLayer{
+  .introjs-helperLayer {
+    background-color: rgba(255, 245, 245, 0.2);
   }
 
-  .introjs-helperLayer{
-    background-color: rgba(255,245,245, 0.2);
-  }
-
-  .light-blue-button{
-    --background: #4BA7C5;
+  .light-blue-button {
+    --background: #4ba7c5;
     font-weight: bold;
     text-transform: none;
     --box-shadow: none;
