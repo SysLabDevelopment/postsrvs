@@ -22,13 +22,12 @@ export class OrderService {
   public sendDelayedCall(order: Order, status: number) {
     order.status_id = status;
     let self = this;
+    this.submitChange(order, status);
     this.getPayData(order.client_id).subscribe((res: any) => {
       if (res.success == "true") {
         self.pay_access_data = res;
         if (status == 5 || status == 6) {
           this.sendPay(order);
-        } else {
-          this.submitChange(order, status);
         }
         if (!res.api_key) {
           this.notPayData = true
@@ -182,7 +181,7 @@ export class OrderService {
       orderId: order.id,
     };
     this.auth.sendPost(url, data).subscribe((res: any) => {
-      self.submitChange(order, order.status_id);
+      console.log('sys:: send_api_data() sended')
     });
   }
 
