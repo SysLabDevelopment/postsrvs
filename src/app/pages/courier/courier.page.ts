@@ -6,6 +6,7 @@ import {
   trigger
 } from '@angular/animations';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
@@ -20,14 +21,13 @@ import { MapService } from 'src/app/services/sys/map.service';
 import { OrderService } from 'src/app/services/sys/order.service';
 import { HelpComponent } from '../../components/help/help.component';
 import { NoteComponent } from '../../components/note/note.component';
+import { ScanPVZResponse } from '../../interfaces/scan-pvzresponse';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
 import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
 import { DataService } from '../../services/sys/data.service';
-import {HttpClient} from '@angular/common/http';
-import {ScanPVZResponse} from '../../interfaces/scan-pvzresponse';
 
 
 @Component({
@@ -89,20 +89,20 @@ export class CourierPage implements OnInit {
   private segment: number[] = [1];
 
   constructor(public courier: CourierService,
-              private router: Router,
-              public state$: StateService,
-              public auth: AuthService,
-              private bs: BarcodeScanner,
-              public vbr: Vibration,
-              public settings: SettingsService,
-              private sys: SysService,
-              private data: DataService,
-              public popoverController: PopoverController,
-              private map: MapService,
-              private orderService: OrderService,
-              private CL: CallNumber,
-              private network: Network,
-              private http: HttpClient,
+    private router: Router,
+    public state$: StateService,
+    public auth: AuthService,
+    private bs: BarcodeScanner,
+    public vbr: Vibration,
+    public settings: SettingsService,
+    private sys: SysService,
+    private data: DataService,
+    public popoverController: PopoverController,
+    private map: MapService,
+    private orderService: OrderService,
+    private CL: CallNumber,
+    private network: Network,
+    private http: HttpClient,
 
 
   ) {
@@ -215,11 +215,11 @@ export class CourierPage implements OnInit {
     if (this.scan_process) { return false; }
     this.scan_process = true;
     if (this.find_order) {
-      setTimeout(function() {
+      setTimeout(function () {
         self.scanSearch();
       }, 1500);
     } else {
-      setTimeout(function() {
+      setTimeout(function () {
         self.scanInputStart();
       }, 1500);
     }
@@ -230,7 +230,7 @@ export class CourierPage implements OnInit {
     console.log('SUBMIT_ORDER_CALL');
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
-      setTimeout(function() {
+      setTimeout(function () {
         self.sInput.nativeElement.focus();
       }, 500);
       return false;
@@ -426,7 +426,7 @@ export class CourierPage implements OnInit {
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
       this.find_order = true;
-      setTimeout(function() {
+      setTimeout(function () {
         self.sInput.nativeElement.focus();
       }, 500);
       return false;
@@ -616,25 +616,31 @@ export class CourierPage implements OnInit {
     console.log('sys:: *Вибирация*');
   }
 
-  public getScanData(){
+  public getScanData() {
     this.bs.scan().then((data) => {
       console.log(`sys:: данные штрихкода: ${data.text}`);
       const url = this.sys.proxy + 'https://mobile.postsrvs.ru/getScanPVZ.php';
       const reqData = {
-        type : "scanOrder",
-        uuid : this.auth.getUuid(),
+        type: "scanOrder",
+        uuid: this.auth.getUuid(),
         courieriId: this.auth.getUserId(),
-      clientId : data.text
-    };
-      this.http.post(url, reqData).subscribe((resp: ScanPVZResponse) =>{
+        clientId: data.text
+      };
+      this.http.post(url, reqData).subscribe((resp: ScanPVZResponse) => {
         let color = 'success';
-        if (!resp.success){
+        if (!resp.success) {
           color = 'danger';
         }
         this.sys.presentToast(resp.dateTime, 'success', resp.message);
       })
 
     });
+  }
+
+  //Возвращает заметку к заказу
+  //@orderId - ид заказа
+  public orderNote(orderId: string) {
+    return localStorage.getItem(orderId);
   }
 
 }

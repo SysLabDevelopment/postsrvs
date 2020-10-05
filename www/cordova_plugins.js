@@ -25,52 +25,26 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
-      "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
-      "pluginId": "cordova-plugin-ionic-webview",
-      "clobbers": [
-        "cordova.exec"
-      ]
-    },
-    {
       "id": "cordova-plugin-ionic-keyboard.keyboard",
-      "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
       "pluginId": "cordova-plugin-ionic-keyboard",
       "clobbers": [
         "window.Keyboard"
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.Coordinates",
-      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
       "pluginId": "cordova-plugin-geolocation",
       "clobbers": [
-        "Coordinates"
+        "navigator.geolocation"
       ]
     },
     {
       "id": "cordova-plugin-geolocation.PositionError",
       "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
       "pluginId": "cordova-plugin-geolocation",
-      "clobbers": [
-        "PositionError"
-      ]
-    },
-    {
-      "id": "cordova-plugin-geolocation.Position",
-      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
-      "pluginId": "cordova-plugin-geolocation",
-      "clobbers": [
-        "Position"
-      ]
-    },
-    {
-      "id": "cordova-plugin-geolocation.geolocation",
-      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
-      "pluginId": "cordova-plugin-geolocation",
-      "clobbers": [
-        "navigator.geolocation"
-      ]
+      "runs": true
     },
     {
       "id": "cordova-plugin-uniquedeviceid.UniqueDeviceID",
@@ -98,19 +72,17 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     },
     {
       "id": "cordova-plugin-android-permissions.Permissions",
-      "file": "plugins/cordova-plugin-android-permissions/www/permissions-dummy.js",
+      "file": "plugins/cordova-plugin-android-permissions/www/permissions.js",
       "pluginId": "cordova-plugin-android-permissions",
       "clobbers": [
         "cordova.plugins.permissions"
       ]
     },
     {
-      "id": "cordova-plugin-vibration.notification",
-      "file": "plugins/cordova-plugin-vibration/www/vibration.js",
-      "pluginId": "cordova-plugin-vibration",
-      "merges": [
-        "navigator"
-      ]
+      "id": "es6-promise-plugin.Promise",
+      "file": "plugins/es6-promise-plugin/www/promise.js",
+      "pluginId": "es6-promise-plugin",
+      "runs": true
     },
     {
       "id": "cordova-plugin-screen-orientation.screenorientation",
@@ -122,7 +94,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     },
     {
       "id": "cordova.plugins.diagnostic.Diagnostic",
-      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
+      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.js",
       "pluginId": "cordova.plugins.diagnostic",
       "merges": [
         "cordova.plugins.diagnostic"
@@ -130,7 +102,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     },
     {
       "id": "cordova.plugins.diagnostic.Diagnostic_Location",
-      "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
+      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.location.js",
       "pluginId": "cordova.plugins.diagnostic",
       "merges": [
         "cordova.plugins.diagnostic.location"
@@ -150,6 +122,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-sqlite-storage",
       "clobbers": [
         "SQLitePlugin"
+      ]
+    },
+    {
+      "id": "cordova-plugin-splashscreen.SplashScreen",
+      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+      "pluginId": "cordova-plugin-splashscreen",
+      "clobbers": [
+        "navigator.splashscreen"
       ]
     },
     {
@@ -195,7 +175,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     },
     {
       "id": "cordova-plugin-camera.CameraPopoverHandle",
-      "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
       "pluginId": "cordova-plugin-camera",
       "clobbers": [
         "CameraPopoverHandle"
@@ -469,6 +449,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "call-number": "0.0.2",
     "cordova-plugin-android-permissions": "1.1.0",
     "cordova-plugin-vibration": "3.1.1",
+    "es6-promise-plugin": "4.2.2",
     "cordova-plugin-screen-orientation": "3.0.2",
     "cordova.plugins.diagnostic": "5.0.2",
     "phonegap-plugin-barcodescanner": "8.1.0",
@@ -477,7 +458,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-network-information": "2.0.2",
     "cordova-plugin-camera": "5.0.0",
-    "com.googlemaps.ios": "3.9.0",
+    "cordova-androidx-build": "1.0.4",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-androidx": "2.0.0",
     "cordova-plugin-firebasex": "10.2.0-cli"

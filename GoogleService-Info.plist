@@ -6,6 +6,8 @@
 	<string>341711898125-ofbukjprhdv2g7hfk2i14mg1naroapmo.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.341711898125-ofbukjprhdv2g7hfk2i14mg1naroapmo</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>341711898125-tkn38012v7neiojp9s12vqbd2c84mh7s.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBan2Zj7OTOnNNwzy_1VYeWSp7MjGlIgDQ</string>
 	<key>GCM_SENDER_ID</key>
@@ -19,18 +21,29 @@
 	<key>STORAGE_BUCKET</key>
 	<string>postsrvs.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:341711898125:ios:6b2dddc52d3b90eda5b744</string>
 	<key>DATABASE_URL</key>
 	<string>https://postsrvs.firebaseio.com</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>appdistribution-1-341711898125-ios-6b2dddc52d3b90eda5b744</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
 </dict>
 </plist>

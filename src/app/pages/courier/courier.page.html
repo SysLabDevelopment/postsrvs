@@ -30,8 +30,8 @@
 <ion-content>
 
   <div class="c-wrp" [ngClass]="{  'm_wrp' : auth.getMode() == 'fullHand' || auth.getMode() == 'hand'}">
-    <ion-button *ngIf="settings.rules.scanPVZ == '1'" fill="solid" size='default'
-                class='light-blue-button' (click)="getScanData()">
+    <ion-button *ngIf="settings.rules.scanPVZ == '1'" fill="solid" size='default' class='light-blue-button'
+      (click)="getScanData()">
       <ion-icon slot="start" name="barcode-sharp" size="large"></ion-icon>
       Прием
     </ion-button>
@@ -87,6 +87,9 @@
                 Позвонить
               </ion-button>
             </div>
+            <ion-text *ngIf="!!orderNote(order.id)" class='note' color="dark">
+              &nbsp;<span>{{orderNote(order.id)}}</span>&nbsp;
+            </ion-text>
           </ion-label>
           <ion-icon name="ellipsis-vertical" slot='start' class='points'></ion-icon>
 
