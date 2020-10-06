@@ -145,7 +145,6 @@ export class OrderPage implements OnInit {
   ) {
     this.orderId = this.route.snapshot.paramMap.get('id');
 
-    this.initOrder();
     const img = localStorage.getItem('drawImg');
     if (img) {
       this.imageToShow = 'data:image/jpg;base64,' + img;
@@ -153,8 +152,10 @@ export class OrderPage implements OnInit {
   }
 
   ngOnInit() {
+    this.initOrder();
     this.courier.initStatuses();
     this.note = localStorage.getItem(this.orderId);
+
   }
 
   ngAfterViewChecked() {
@@ -257,10 +258,8 @@ export class OrderPage implements OnInit {
 
   public initOrder() {
     this.storage.get('orders').then((orders: Array<Order>) => {
-      console.log('Список заказов из стоража', orders);
-    });
-    this.storage.get('orders').then((orders) => {
       this.order = orders?.filter((order: Order) => order.id.toString() == this.orderId)[0];
+      console.log('sys:: данные заказа: ', this.order);
       this.goods = this.order.goods;
       this.address = this.order.client_address;
       this.timeFrom = this.order.datetime_from;
@@ -311,7 +310,6 @@ export class OrderPage implements OnInit {
   public changeQuant(code: string, action: string) {
     const q: number = this.g_quants[code].amount;
     let good = null;
-
     for (let i = 0; i < this.order.goods.length; i++) {
       if (this.order.goods[i].Code == code) {
         good = this.order.goods[i];
@@ -375,21 +373,23 @@ export class OrderPage implements OnInit {
 
 
   public sendPayCall(order: Order = this.order, newStatus = this.selectedStatus as number) {
+    order.goods = this.changeGoods(order, this.g_quants);
     if (this.network.type == 'none') {
       // Если оффлайн
       this.cache.getItem('syncRequests').then((syncRequests: Array<any>) => {
-        order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums } };
+        order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums }, ...{ goods: this.goods } };
         syncRequests && syncRequests.push({ order, newStatus });
         this.cache.saveItem('syncRequests', syncRequests, 'delayedCalls').then(() => {
           console.log(`sys:: Отложено изменение статуса на ${newStatus} для заказа ${order.client_id}`);
-          this.localModifyOrders(newStatus);
+          this.localModifyOrders(newStatus, order.goods);
           this.router.navigate(['courier']);
         });
       });
     } else {
       // Если онлайн
-      this.localModifyOrders(newStatus);
+
       order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums } };
+      this.localModifyOrders(newStatus, order.goods);
       this.orderService.sendDelayedCall(order, newStatus);
       this.router.navigate(['courier']);
     }
@@ -751,7 +751,7 @@ export class OrderPage implements OnInit {
     this.openCompany = !this.openCompany;
   }
 
-  public localModifyOrders(newStatus: number) {
+  public localModifyOrders(newStatus: number, goods: any[]) {
     const meta: Meta = {
       label: 'localChanges'
     };
@@ -759,6 +759,7 @@ export class OrderPage implements OnInit {
       orders?.map((order: Order) => {
         if (order.id.toString() == this.order.id.toString()) {
           order.status_id = newStatus;
+          order.goods = goods;
           this.data.saveOrders(orders).then(() => this.sysMap.infoUpdated.next(meta));
           this.data.orders.next(orders);
         }
@@ -820,9 +821,19 @@ export class OrderPage implements OnInit {
     this.phone_input = details.data.phone_input;
     this.commentText = details.data.commentText;
     this.cardNums = details.data.cardNums;
+
     if (details.data) {
       this.doneOrder();
     }
 
+  }
+
+  //Изменение товаров на основе мифических quants
+  //Возвращает goods
+  public changeGoods(order: Order, quants: any) {
+    order.goods.forEach((good: any) => {
+      good.kol_vo = quants[good.Code].amount;
+    });
+    return order.goods;
   }
 }

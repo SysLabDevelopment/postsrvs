@@ -166,7 +166,6 @@
     <div class="sc-goods-block">
       <div class="goods-row o-row">
         <div class="gr-title o-t">Товары в заказе</div>
-
         <div class="gr-goods-list">
           <div class="gr-head">
             <div class="gr-col">Название</div>
@@ -180,11 +179,11 @@
                           }">
               <div class="gr-col">{{good.Name}}</div>
               <div class="gr-col gr-quant">
-                <div (click)="changeQuant(good.Code,'minus')">
+                <div (click)="changeQuant(good.Code,'minus')" *ngIf="order.status_id == 1">
                   <i-feather name="minus-circle"></i-feather>
                 </div>
                 {{g_quants[good.Code]['amount']}}
-                <div (click)="changeQuant(good.Code,'plus')">
+                <div (click)="changeQuant(good.Code,'plus')" *ngIf="order.status_id == 1">
                   <i-feather name="plus-circle"></i-feather>
                 </div>
               </div>

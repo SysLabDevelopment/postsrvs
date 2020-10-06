@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
-// @ts-ignore
-import * as introJs from 'intro.js/intro.js';
 import { DrawPage } from '../../pages/draw/draw.page';
 @Component({
   selector: 'app-delivered',
@@ -33,7 +31,7 @@ export class DeliveredComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() { }
   ionViewDidEnter() {
-    introJs().start();
+    // introJs().start();
   }
   dismiss(role = '') {
     const details = (role == 'cancel' ? undefined : {
