@@ -497,18 +497,7 @@ ${arrows}
         // }
       });
   }
-  onDirectionChanged() {
-    let directions: DirectionsResult = this.renderer.getDirections();
-    this.origin = directions.routes[0].legs[0].start_location;
-    this.destination = directions.routes[0].legs[0].end_location;
-    this.bounds = directions.routes[0].bounds;
-  }
-  onSplitterDragEnd() {
-    this.map.animateCamera({
-      'target': this.bounds,
-      'duration': 500
-    });
 
-  }
+
 
 }

@@ -5,29 +5,6 @@
 // file can hold Sass mixins, functions, and placeholder classes to be imported
 // and used throughout the application.
 
-.my-custom-menu {
-  --width: 500px;
-}
-
-#bottom-menu {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  grid-auto-rows: 40px;
-  background: #2b637e;
-  color: #fff;
-  font-size: 25px;
-}
-
-.bm-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .active {
   background-color: rgba(229, 238, 235, 1);
   color: #2b637e;
@@ -80,6 +57,11 @@ app-orders-list-guess {
 }
 
 :root {
+  ion-footer {
+    ion-button {
+      width: 50%;
+    }
+  }
   .introjs-helperLayer {
     background-color: rgba(255, 245, 245, 0.2);
   }

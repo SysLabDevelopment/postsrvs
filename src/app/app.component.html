@@ -1,24 +1,29 @@
 <ion-app>
+  <ion-content>
 
-  <ion-router-outlet id="content1">
-  </ion-router-outlet>
-  <div id="bottom-menu" *ngIf="nav == 2">
-    <div class="bm-item" [ngClass]="{active:nav == 1}" (click)="navTo(1)">
-      <i-feather name="user"></i-feather>
-    </div>
-    <div class="bm-item" [ngClass]="{active:nav == 3}" (click)="navTo(3)">
-      <i-feather name="list"></i-feather>
-    </div>
-  </div>
-  <div id="bottom-menu" *ngIf="!(nav == 2) && !(nav == 0)">
-    <ion-button (click)="navTo(2)" color="light" expand="block" fill="clear" shape="round" *ngIf="nav !==2">
-      Назад
+    <ion-router-outlet id="content1">
+    </ion-router-outlet>
+
+    <ion-button class='check_to_work' (click)="check_to_work()" expand="block" fill="clear" shape="round"
+      *ngIf="!checkedOnWork">
+      Еду на работу
     </ion-button>
 
-  </div>
-
-  <ion-button class='check_to_work' (click)="check_to_work()" expand="block" fill="clear" shape="round"
-    *ngIf="!checkedOnWork">
-    Еду на работу
-  </ion-button>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons>
+        <ion-button (click)="navTo(1)" [ngClass]="{active:nav == 1}" *ngIf="nav == 2">
+          <i-feather name="user"></i-feather>
+        </ion-button>
+        <ion-button (click)="navTo(3)" [ngClass]="{active:nav == 3}" *ngIf="nav == 2">
+          <i-feather name="list"></i-feather>
+        </ion-button>
+        <ion-button (click)="navTo(2)" color="light" expand="block" fill="clear" shape="round"
+          *ngIf="!(nav == 2) && !(nav == 0)">
+          Назад
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
 </ion-app>
