@@ -136,7 +136,7 @@ export class SysService {
   //@lat - широта
   //@lon - долгота
   public getYandexnaviSignature(lat: string, lon: string): Observable<Response> {
-    const url = `${this.proxy}https://areg-p.flexcore.ru/admin/accessKeySignature/index.php?LAT=${lat}&LON=${lon}`;
+    const url = `${this.proxy}https://mobile.postsrvs.ru/admin/accessKeySignature/index.php?LAT=${lat}&LON=${lon}`;
     return this.http.get<Response>(url);
 
   }

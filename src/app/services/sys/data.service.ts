@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
-import { BehaviorSubject } from "rxjs";
+import {BehaviorSubject, interval} from 'rxjs';
 import { Order } from '../../interfaces/order';
 import { Response } from '../../interfaces/response';
 import { AuthService } from '../../services/auth.service';
@@ -16,6 +16,7 @@ export class DataService {
 
   public orders: BehaviorSubject<Array<Order>> = new BehaviorSubject([]);
   public ordersMap: Map<number, Order>;
+  public interval10min = interval(600000);
 
   constructor(
     private storage: Storage,
@@ -47,6 +48,11 @@ export class DataService {
         this.ordersMap.clear()
       }
     })
+
+   this.interval10min.subscribe(() => {
+     console.log('sys::  очередная синхронизация списка заказов с серкава');
+     this.getApiData();
+   });
   }
 
   public getInitialData() {

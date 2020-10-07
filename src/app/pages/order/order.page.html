@@ -199,10 +199,10 @@
       Сканировать возврат
     </ion-button>
   </div>
-  <div>
 
+  <div *ngIf="selectedStatus == 6">
     <!-- Блок подписи -->
-    <div class="draw" *ngIf="selectedStatus == 6">
+    <div class="draw">
       <div class="asc-row">
         <div class="title">Требуется ли подпись клиента?</div>
         <div class="draw-btns">
@@ -217,7 +217,7 @@
       <img [src]="imageToShow" alt="Подпись" *ngIf="imageToShow && drawNeedle" style="height: 200px;" />
       <button *ngIf="drawNeedle" class="drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
     </div>
-    <div class="sc-payment" *ngIf="selectedStatus == 6">
+    <div class="sc-payment">
       <div class="sc-payment__title">Оплата</div>
       <div class="dc-payment__wrp">
         <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == 1}" (click)="selectPayment('1')">
@@ -229,7 +229,7 @@
       </div>
     </div>
 
-    <div class="sc-payment-block o-row" *ngIf="pay_access && (selectedStatus == 6)  ">
+    <div class="sc-payment-block o-row" *ngIf="pay_access">
       <div class="pb-email" *ngIf="show_email">
         <div class="pb-email__title">Email клиента</div>
         <input type="email" class="pb-email__input" [(ngModel)]="email_input" />
@@ -242,9 +242,9 @@
     </div>
 
     <div class="sc-s-wrp">
-      <button class="sc-submit" (click)="doneOrder()" *ngIf="selectedStatus"
-        [ngClass]="{'c_t_del'   : selectedStatus == 6}">
-        <span *ngIf="selectedStatus == 6" class="l_btn_del">Доставлено</span>
+      <button class="sc-submit" (click)="doneOrder()"
+        [ngClass]="{'c_t_del' : selectedStatus == 6}">
+        <span class="l_btn_del">Доставлено</span>
       </button>
     </div>
   </div>
