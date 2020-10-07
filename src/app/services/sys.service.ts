@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { WebIntent } from '@ionic-native/web-intent/ngx';
 import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Order } from '../interfaces/order';
@@ -21,6 +22,7 @@ export class SysService {
     private device: Device,
     public toastController: ToastController,
     private camera: Camera,
+    private wi: WebIntent
 
   ) {
 
@@ -198,6 +200,18 @@ export class SysService {
     return this.http.post(url, data, { headers: headers })
   }
 
+  //Обработка интентов
+  public intentStart(url: string, pkg: string) {
+    console.log('sys:: intent url: ', url);
+    const options = {
+      action: this.wi.ACTION_VIEW,
+      url,
+      package: pkg
+    }
+    this.wi.startActivity(options).then((data) => {
+      console.log('sys:: Обработчик интента запущен', data);
+    });
+  }
 
 
 }

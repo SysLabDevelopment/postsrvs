@@ -88,15 +88,28 @@ export class AppComponent {
             if (!resp.checked) this.checkedOnWork = false;
           });
         }
-
-
       })
+      this.firebase.getToken()
+        .then(token => console.log(`sys:: Токен для push'ей:  ${token}`)) // save the token server-side and use it to push notifications to this device
+        .catch(error => console.error('sys:: Ошибка получения токена', error));
 
+      this.firebase.onMessageReceived()
+        .subscribe((data: any) => {
+          console.log(`sys:: Пользователь открыл пуш-уведомление ${data}`);
+          if (data.updateUrl) {
+            this.sys.intentStart(data.updateUrl, 'com.android.chrome');
+          }
+
+        });
+
+      this.firebase.onTokenRefresh()
+        .subscribe((token: string) => console.log(`sys:: получен новый токен${token}`));
     })
     const self = this;
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
     });
+
 
   }
 
