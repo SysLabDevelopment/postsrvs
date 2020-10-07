@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { SysService } from 'src/app/services/sys.service';
+import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.page.html',
@@ -15,13 +16,16 @@ export class SchedulePage implements OnInit {
 
   constructor(
     public alertController: AlertController,
-    private sys: SysService
+    private sys: SysService,
+    private firebase: FirebaseX
   ) { }
 
   ngOnInit() {
     this.sys.getNotWorkRules().subscribe((data: any) => {
       this.notWorkRules = data;
-    })
+    });
+
+    this.firebase.setScreenName('schedule');
   }
   //Добавление рабочей даты курьера
   public addWorkDate(workDate: any) {

@@ -34,6 +34,7 @@ import { CourierService } from "./../../services/courier.service";
 import { SettingsService } from "./../../services/settings.service";
 import { SysService } from "./../../services/sys.service";
 import { MapService } from "./../../services/sys/map.service";
+import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
 declare var google: any;
 @Component({
@@ -84,6 +85,7 @@ export class MapPage implements OnInit {
     public popoverController: PopoverController,
     private data: DataService,
     private storage: Storage,
+    private firebase: FirebaseX
   ) {
   }
 
@@ -127,6 +129,8 @@ export class MapPage implements OnInit {
         this.drawData(this.settings.rules.autoStartRoute, customData);
       });
     });
+
+    this.firebase.setScreenName('map');
 
   }
 

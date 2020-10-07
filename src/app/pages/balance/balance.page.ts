@@ -137,6 +137,8 @@ export class BalancePage implements OnInit {
       this.courier.ordersShortData.next(data.res_more);
       this.state$.orders.next(data.res_more);
     });
+
+    this.firebase.setScreenName('balance');
   }
 
   ngOnDestroy() {

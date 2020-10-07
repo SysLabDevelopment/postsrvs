@@ -17,6 +17,7 @@ import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
 import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
+import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
 @Component({
   selector: 'app-login',
@@ -77,7 +78,8 @@ export class LoginPage implements OnInit {
     public courier: CourierService,
     public settings: SettingsService,
     public sys: SysService,
-    public sysMap: MapService
+    public sysMap: MapService,
+              private firebase: FirebaseX
   ) {
     let self = this;
 
@@ -106,7 +108,7 @@ export class LoginPage implements OnInit {
     if (localStorage.debug == 'true') {
       this.auth.isDebug = true;
     }
-
+    this.firebase.setScreenName('login');
   }
 
   public scanAuth() {

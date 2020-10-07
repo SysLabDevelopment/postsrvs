@@ -28,6 +28,7 @@ import { SettingsService } from '../../services/settings.service';
 import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
 import { DataService } from '../../services/sys/data.service';
+import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
 
 @Component({
@@ -103,6 +104,7 @@ export class CourierPage implements OnInit {
     private CL: CallNumber,
     private network: Network,
     private http: HttpClient,
+    private firebase: FirebaseX
 
 
   ) {
@@ -172,6 +174,7 @@ export class CourierPage implements OnInit {
     this.data.orders.subscribe((orders) => {
       this.courier.count_orders(orders);
     });
+    this.firebase.setScreenName('courier');
   }
 
   public scanInputStart() {

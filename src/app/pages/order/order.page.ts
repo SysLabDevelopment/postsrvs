@@ -32,6 +32,7 @@ import { MapService } from '../../services/sys/map.service';
 import { OrderService } from '../../services/sys/order.service';
 import { DrawPage } from '../draw/draw.page';
 import { DataService } from './../../services/sys/data.service';
+import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
 @Component({
   selector: 'app-order',
@@ -141,7 +142,8 @@ export class OrderPage implements OnInit {
     private orderService: OrderService,
     private bs: BarcodeScanner,
     private device: Device,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private firebase:FirebaseX
   ) {
     this.orderId = this.route.snapshot.paramMap.get('id');
 
@@ -155,7 +157,7 @@ export class OrderPage implements OnInit {
     this.initOrder();
     this.courier.initStatuses();
     this.note = localStorage.getItem(this.orderId);
-
+  this.firebase.setScreenName('order');
   }
 
   ngAfterViewChecked() {

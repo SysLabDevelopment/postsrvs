@@ -2,13 +2,16 @@ import { Location } from '@angular/common';
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, Platform } from '@ionic/angular';
+import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 @Component({
   selector: 'app-draw',
   templateUrl: './draw.page.html',
   styleUrls: ['./draw.page.scss'],
 })
 export class DrawPage implements OnInit {
-  ngOnInit() { }
+  ngOnInit() {
+    this.firebase.setScreenName('draw');
+  }
 
   @ViewChild('myCanvas', { static: true }) canvas: any;
 
@@ -26,7 +29,9 @@ export class DrawPage implements OnInit {
     public router: Router,
     public renderer: Renderer2,
     private location: Location,
-    private modal: ModalController
+    private modal: ModalController,
+    private firebase: FirebaseX
+
   ) {
 
   }
