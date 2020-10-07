@@ -58,8 +58,13 @@ app-orders-list-guess {
 
 :root {
   ion-footer {
-    ion-button {
-      width: 50%;
+    ion-buttons {
+      display: flex;
+      justify-content: space-around;
+
+      ion-button {
+        flex-grow: 1;
+      }
     }
   }
   .introjs-helperLayer {

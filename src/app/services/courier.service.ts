@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { CacheService } from "ionic-cache";
-import { from, Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { EMPTY, from, Observable, Subject } from 'rxjs';
+import { catchError, retry, takeUntil } from 'rxjs/operators';
 import { Order } from '../interfaces/order';
 import { Response } from '../interfaces/response';
 import { AuthService } from '../services/auth.service';
@@ -313,9 +313,7 @@ export class CourierService {
     };
     if (draw) data['sign'] = draw;
 
-    if (navigator.onLine) {
-      return this.auth.sendPost(url, data);
-    } else {
+    if (!navigator.onLine) {
       let requests: any = [];
       this.cache.getItem('requests').then((req: any
       ) => {
@@ -327,7 +325,7 @@ export class CourierService {
       });
       return from([{ success: 'true' }])
     }
-
+    return this.auth.sendPost(url, data).pipe(retry(5), catchError(() => { return EMPTY }));
   }
 
 

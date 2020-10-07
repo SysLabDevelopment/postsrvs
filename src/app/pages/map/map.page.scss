@@ -11,10 +11,13 @@ ion-popover {
   height: 100%;
   border: 1px solid white;
 }
-.one-order-chip{
-  --background:#2b637e;
-  --color:white;
+.one-order-chip {
+  --background: #2b637e;
+  --color: white;
 }
-#map{
+#map {
   text-align: center;
+}
+#container {
+  height: 100%;
 }

@@ -5,7 +5,7 @@ import { Environment } from "@ionic-native/google-maps";
 import { Network } from '@ionic-native/network/ngx';
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
-import { Platform } from "@ionic/angular";
+import { AlertController, Platform } from "@ionic/angular";
 import { CacheService } from "ionic-cache";
 import { Order } from 'src/app/interfaces/order';
 import { AuthService } from "./services/auth.service";
@@ -15,6 +15,8 @@ import { SettingsService } from "./services/settings.service";
 import { StateService } from './services/state.service';
 import { SysService } from './services/sys.service';
 import { OrderService } from './services/sys/order.service';
+import { RemoteConfigService } from './services/sys/remote-config.service';
+
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
@@ -38,7 +40,8 @@ export class AppComponent {
     private firebase: FirebaseX,
     private state$: StateService,
     private sys: SysService,
-
+    private remoteConfig: RemoteConfigService,
+    private alertC: AlertController
   ) {
     this.initializeApp();
     console.log(this.platform.platforms());
@@ -104,6 +107,8 @@ export class AppComponent {
 
       this.firebase.onTokenRefresh()
         .subscribe((token: string) => console.log(`sys:: получен новый токен${token}`));
+
+      this.remoteConf();
     })
     const self = this;
     this.nav_s.tabNav.subscribe((data) => {
@@ -135,5 +140,28 @@ export class AppComponent {
     this.sys.check_to_work(cId).subscribe((data: any) => {
       if (data.success == true) this.checkedOnWork = true;
     })
+  }
+
+  public async remoteConf() {
+    const hasNewVersion = await this.remoteConfig.isNewVersionAvailable();
+    if (hasNewVersion) {
+      const alert = await this.alertC.create({
+        header: 'Update is available',
+        message: 'Good news! A new version is available',
+        cssClass: 'custom-css-class',
+        buttons: [{
+          text: 'Update',
+          handler: async () => {
+            if (this.platform.is('ios')) {
+              this.sys.intentStart('https://apps.apple.com/us/app/id1491156686', 'com.android.chrome')
+            } else if (this.platform.is('android')) {
+              this.sys.intentStart('https://play.google.com/store/apps/details?id=postsrvs.i', 'com.android.chrome')
+            }
+          }
+        }]
+      });
+      await alert.present();
+    }
+
   }
 }

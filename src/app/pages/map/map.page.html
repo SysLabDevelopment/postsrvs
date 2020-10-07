@@ -7,7 +7,7 @@
 <ion-content>
   <!-- <div id="map" style="height: 85vh; width: 100%;"></div> -->
   <div id="container">
-    <div id="map" style="height: 85vh; width: 100%;">
+    <div id="map" style="height: 100%; width: 100%; min-height:90vh">
       <ion-chip outline="false" *ngIf='routeToOrder' class='one-order-chip'>
         <ion-label>Заказ {{currentOrder}}</ion-label>
         <ion-icon name="close" (click)="drawData()"></ion-icon>
