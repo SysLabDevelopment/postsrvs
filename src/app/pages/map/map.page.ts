@@ -1,7 +1,7 @@
 import {
   Component,
   OnInit
-} from "@angular/core";
+} from '@angular/core';
 import {
   DirectionsRenderer,
   DirectionsResult,
@@ -17,30 +17,30 @@ import {
   MarkerCluster,
   MarkerOptions,
   MyLocation
-} from "@ionic-native/google-maps";
-import { NavController, Platform, PopoverController } from "@ionic/angular";
-import { Storage } from "@ionic/storage";
-import { Observable, Subject } from "rxjs";
-import { filter, takeUntil } from "rxjs/operators";
+} from '@ionic-native/google-maps';
+import { NavController, Platform, PopoverController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { Observable, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/interfaces/order';
-import { OrderComponent } from "../../components/order/order.component";
+import { OrderComponent } from '../../components/order/order.component';
 import { Meta } from '../../interfaces/meta';
-import { AuthService } from "../../services/auth.service";
-import { NavService } from "../../services/nav.service";
-import { StateService } from "../../services/state.service";
-import { DataService } from "../../services/sys/data.service";
-import { Response } from "./../../interfaces/response";
-import { CourierService } from "./../../services/courier.service";
-import { SettingsService } from "./../../services/settings.service";
-import { SysService } from "./../../services/sys.service";
-import { MapService } from "./../../services/sys/map.service";
+import { AuthService } from '../../services/auth.service';
+import { NavService } from '../../services/nav.service';
+import { StateService } from '../../services/state.service';
+import { DataService } from '../../services/sys/data.service';
+import { Response } from './../../interfaces/response';
+import { CourierService } from './../../services/courier.service';
+import { SettingsService } from './../../services/settings.service';
+import { SysService } from './../../services/sys.service';
+import { MapService } from './../../services/sys/map.service';
 import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
 declare var google: any;
 @Component({
-  selector: "app-map",
-  templateUrl: "./map.page.html",
-  styleUrls: ["./map.page.scss"],
+  selector: 'app-map',
+  templateUrl: './map.page.html',
+  styleUrls: ['./map.page.scss'],
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapPage implements OnInit {
@@ -48,17 +48,17 @@ export class MapPage implements OnInit {
   orders: Array<Order> | null;
   coords: { lt: number; lg: number };
   userId: string = localStorage.user;
-  public isMapPreparing: boolean = false;
+  public isMapPreparing = false;
   myLocation: MyLocation;
-  public out_process: boolean = false;
+  public out_process = false;
   public out_counter = 0;
   public local_stop$: Subject<any> = new Subject();
   markers: Array<MarkerOptions>;
   existsGeos: Array<number>[] = [];
   sliderOptions = {
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
   };
   renderer: DirectionsRenderer = null;
@@ -90,26 +90,26 @@ export class MapPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("sys:: map init");
+    console.log('sys:: map init');
     this.settings.state
-      .pipe(filter((state) => state == "hasRules"))
+      .pipe(filter((state) => state == 'hasRules'))
       .subscribe(() => {
         this.getOrdersId()
           .pipe(filter((ids) => ids.length > 0))
           .subscribe((ids: Array<any>) => {
             this.getOrders(ids).subscribe((res: Response) => {
               this.orders = res.orders;
-              if (this.settings.rules.appMode.toLowerCase().includes("auto")) {
+              if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
                 this.orders.length = 1;
               }
-              console.log("sys:: заказы", this.orders);
+              console.log('sys:: заказы', this.orders);
               this.orders && this.data.orders.next(this.orders);
               this.drawData(this.settings.rules.autoStartRoute);
             });
           });
       });
     this.state$.g_state.subscribe((state) => {
-      if (state == "login") {
+      if (state == 'login') {
         this.initContent();
       }
     });
@@ -121,7 +121,7 @@ export class MapPage implements OnInit {
           this.currentOrder = String(data.order.client_id);
           customData = data;
         } else if (data.label == 'localChanges') {
-          customData = data
+          customData = data;
         }
       }
 
@@ -139,7 +139,7 @@ export class MapPage implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log("sys:: map view init");
+    console.log('sys:: map view init');
     this.loadMap();
     this.platform.ready().then(() => {
       this.initContent();
@@ -148,7 +148,7 @@ export class MapPage implements OnInit {
       });
     });
     this.state$.interval_1ss.pipe(takeUntil(this.local_stop$)).subscribe(() => {
-      let orderId = localStorage.getItem("needOrder");
+      const orderId = localStorage.getItem('needOrder');
       if (orderId) {
         this.sysMap.orderDetails(orderId);
       }
@@ -160,32 +160,33 @@ export class MapPage implements OnInit {
   }
 
   async loadMap() {
-    let options: GoogleMapOptions = {
-      "preferences": {
-        "building": false,
-        "clickableIcons": true,
+    const options: GoogleMapOptions = {
+      preferences: {
+        building: false,
+        clickableIcons: true,
       },
-      "controls": {
-        "myLocation": true,
-        "myLocationButton": true,
-        "zoom": true,
-        "compass": false,
-        "indoorPicker": true,
+      controls: {
+        myLocation: true,
+        myLocationButton: true,
+        zoom: true,
+        compass: false,
+        indoorPicker: true,
       },
-      "camera": {
-        "target": this.origin,
-        "zoom": 10,
+      camera: {
+        target: this.origin,
+        zoom: 10,
       },
-      "gestures": {
-        "zoom": true,
+      gestures: {
+        zoom: true,
+        scroll: true
       },
     };
-    this.map = await this.sysMap.attachMap("map", options);
+    this.map = await this.sysMap.attachMap('map', options);
     this.sys.checkAuth().subscribe((res: Response) => {
-      if (res.success == "false") {
+      if (res.success == 'false') {
         this.logout();
       } else {
-        this.auth.initLogin(res.sync_id as string)
+        this.auth.initLogin(res.sync_id as string);
       }
     });
 
@@ -204,14 +205,14 @@ export class MapPage implements OnInit {
     });
   }
 
-  //Запрос Данных о заказах с учетом настроек
+  // Запрос Данных о заказах с учетом настроек
   private getOrders(ids: Array<string>) {
     return this.sys.getOrders(ids);
   }
 
   private getOrdersId(): Observable<any> {
     return new Observable((ids) => {
-      if (this.settings.rules.typeRoute == "standart") {
+      if (this.settings.rules.typeRoute == 'standart') {
         this.orders && ids.next(this.orders.filter(order => order.status_id == 1).map((order) => order.id));
       } else {
         this.sysMap.getWay(this.coords).subscribe((resp: Response) => {
@@ -221,26 +222,26 @@ export class MapPage implements OnInit {
     });
   }
 
-  //Подготовка массива заказов к отрисовке в виду не рабочести markerCluster
+  // Подготовка массива заказов к отрисовке в виду не рабочести markerCluster
   markeredOrders(orders: Array<any>) {
-    let markeredOrders: MarkerOptions[] = [];
+    const markeredOrders: MarkerOptions[] = [];
     orders?.forEach((order: Order) => {
-      let info = this.createInfoContent(order);
+      const info = this.createInfoContent(order);
       this.existsGeos.push([Number(order.lt), Number(order.lg)]);
       markeredOrders.push({
-        "position": {
-          "lat": parseFloat(order.lt),
-          "lng": parseFloat(order.lg),
+        position: {
+          lat: parseFloat(order.lt),
+          lng: parseFloat(order.lg),
         },
-        "name": order.id,
-        "info": info
+        name: order.id,
+        info: info
 
       });
     });
     return markeredOrders;
   }
 
-  public drawData(autoStartRoute: string = "0", customData: any = null, drawOrders?: Order[]) {
+  public drawData(autoStartRoute: string = '0', customData: any = null, drawOrders?: Order[]) {
     if (this.map !== undefined) {
       this.map.clear().then(async () => {
         if (this.routeToOrder && customData?.label == 'showRouteToOrder') {
@@ -248,9 +249,9 @@ export class MapPage implements OnInit {
           this.addCluster(this.markeredOrders([customData.order]));
         } else {
           this.routeToOrder = false;
-          if (autoStartRoute == "0") {
-            if (!drawOrders) drawOrders = await this.storage.get('orders');
-            this.orders = drawOrders.filter((order: Order) => { return order.status_id == 1 });
+          if (autoStartRoute == '0') {
+            if (!drawOrders) { drawOrders = await this.storage.get('orders'); }
+            this.orders = drawOrders.filter((order: Order) => order.status_id == 1);
             this.addCluster(this.markeredOrders(this.orders));
           }
         }
@@ -263,7 +264,7 @@ export class MapPage implements OnInit {
     setTimeout(() => {
       this.out_counter = 0;
       this.out_process = false;
-      console.log("outprocess_die");
+      console.log('outprocess_die');
     }, 1000);
 
     if (this.out_process) {
@@ -272,7 +273,7 @@ export class MapPage implements OnInit {
         this.logout();
       }
     } else {
-      console.log("outprocess_false");
+      console.log('outprocess_false');
       this.out_process = true;
     }
   }
@@ -287,12 +288,12 @@ export class MapPage implements OnInit {
     this.data.ordersMap.clear();
 
 
-    const url = "orders";
-    const data = { action: "logout" };
+    const url = 'orders';
+    const data = { action: 'logout' };
 
-    let self = this;
+    const self = this;
     this.auth.sendPost(url, data).subscribe((data: any) => {
-      if (data.success == "true") {
+      if (data.success == 'true') {
         self.auth.logout();
       }
     });
@@ -314,18 +315,18 @@ export class MapPage implements OnInit {
               this.getOrders(ids).subscribe((res: Response) => {
                 this.storage.get('orders').then((orders) => {
                   if (orders == null) {
-                    this.data.orders.next(res.orders)
+                    this.data.orders.next(res.orders);
                   } else {
-                    this.data.orders.next(orders)
+                    this.data.orders.next(orders);
                   }
-                })
+                });
                 this.orders = res.orders;
                 if (
-                  this.settings.rules.appMode.toLowerCase().includes("auto")
+                  this.settings.rules.appMode.toLowerCase().includes('auto')
                 ) {
                   this.orders.length = 1;
                 }
-                console.log("sys:: заказы", this.orders);
+                console.log('sys:: заказы', this.orders);
                 this.drawData(this.settings.rules.autoStartRoute, null, res.orders);
               });
             });
@@ -342,9 +343,9 @@ export class MapPage implements OnInit {
       icons: [
         {
           min: 2,
-          url: "./assets/markercluster/pipka.png",
+          url: './assets/markercluster/pipka.png',
           label: {
-            color: "black",
+            color: 'black',
             bold: true,
             fontSize: 16,
           },
@@ -352,37 +353,37 @@ export class MapPage implements OnInit {
         },
       ],
     };
-    let markerCluster: MarkerCluster = this.map.addMarkerClusterSync(options);
+    const markerCluster: MarkerCluster = this.map.addMarkerClusterSync(options);
     console.log(`sys:: MarkerCluster added: `, markerCluster);
     markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(async (params) => {
-      let marker: Marker = params[1];
-      let popover = await this.popover(GoogleMapsEvent.MARKER_CLICK, marker.get('info'));
+      const marker: Marker = params[1];
+      const popover = await this.popover(GoogleMapsEvent.MARKER_CLICK, marker.get('info'));
       popover.present();
-    })
+    });
 
   }
 
   createInfoContent(order: Order) {
-    let sameGeoOrders: Array<any> = this.orders.filter(
+    const sameGeoOrders: Array<any> = this.orders.filter(
       (iOrder) => iOrder.lt == order.lt && iOrder.lg == order.lg
     );
-    let tabsContent = "";
-    let note = localStorage.getItem(String(order.id))
+    let tabsContent = '';
+    const note = localStorage.getItem(String(order.id))
       ? localStorage.getItem(String(order.id))
-      : "";
-    let arrows =
+      : '';
+    const arrows =
       sameGeoOrders.length > 1
         ? `<div class="swiper-button-prev" onClick='this.parentElement.parentElement.parentElement.slidePrev()'></div>
 <div class="swiper-button-next" onClick='this.parentElement.parentElement.parentElement.slideNext()'></div>`
-        : "";
+        : '';
     sameGeoOrders.forEach((order) => {
       tabsContent += `
       <ion-slide class='slide'>
       <div style='width: 100%;text-align: start;margin: 0 30px;'>
 <span class='order-id'>${order.client_id}</span>
 <hr style="background: #D6CFCF;"/>
-<span class='prop'>Дата доставки: c</span>  <span class='val'>${order.datetime_from?.slice(11, 16) || ""
-        }</span> <span class='prop'>До:</span> <span class='val'> ${order.datetime_to ? order.datetime_to?.slice(11, 16) : ""
+<span class='prop'>Дата доставки: c</span>  <span class='val'>${order.datetime_from?.slice(11, 16) || ''
+        }</span> <span class='prop'>До:</span> <span class='val'> ${order.datetime_to ? order.datetime_to?.slice(11, 16) : ''
         } </span>
 <br/><span class='prop'>Имя:</span>  <span class='val'>${order.client_fio
         }</span>
@@ -400,7 +401,7 @@ ${arrows}
      `;
     });
 
-    let frame: HTMLElement = document.createElement("div");
+    const frame: HTMLElement = document.createElement('div');
 
     frame.innerHTML = `
 <style>
@@ -430,19 +431,19 @@ ${arrows}
   }
 </style>
 `;
-    let options = {
+    const options = {
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
     };
 
-    let slides: HTMLIonSlidesElement = document.createElement("ion-slides");
+    const slides: HTMLIonSlidesElement = document.createElement('ion-slides');
     slides.innerHTML = `${tabsContent}`;
     slides.options = options;
     if (sameGeoOrders.length > 1) {
-      let div = document.createElement("div");
-      div.setAttribute("style", "text-align:center;");
+      const div = document.createElement('div');
+      div.setAttribute('style', 'text-align:center;');
       div.innerText = `${sameGeoOrders.length} заказов`;
       frame.appendChild(div);
     }
@@ -457,30 +458,30 @@ ${arrows}
       event: ev,
       translucent: true,
       componentProps: {
-        'content': content
+        content: content
       },
       cssClass: 'popover'
     });
-    return popover
+    return popover;
   }
 
   requestDirection(lat: number, lng: number) {
     this.destination = { lat, lng };
     this.directionsService.route({
-      'origin': this.myLocation.latLng,
-      'destination': this.destination,
-      'travelMode': 'DRIVING'
+      origin: this.myLocation.latLng,
+      destination: this.destination,
+      travelMode: 'DRIVING'
     },
       (result: DirectionsResult, status: string) => {
         console.log('sys:: Статус запроса directionsService:', status);
         this.bounds = result.routes[0].bounds;
 
-        let decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
+        const decodedPoints = GoogleMaps.getPlugin().geometry.encoding.decodePath(
           result.routes[0].overview_polyline
         );
         this.map.addPolyline({
           points: decodedPoints,
-          'color': '#4a4a4a',
+          color: '#4a4a4a',
           width: 4,
           geodesic: false
         });

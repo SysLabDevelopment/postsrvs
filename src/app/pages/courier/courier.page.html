@@ -37,13 +37,13 @@
     </ion-button>
     <ion-segment (ionChange)="segmentChanged($event)" value='1'>
       <ion-segment-button value="1">
-        <ion-label>В работе <b>{{courier.sortOrders?.g_process}}</b></ion-label>
+        <ion-label>В работе <br/><b>{{courier.sortOrders?.g_process}}</b></ion-label>
       </ion-segment-button>
       <ion-segment-button value="5">
-        <ion-label>Доставлено <b>{{courier.sortOrders?.g_done}}</b></ion-label>
+        <ion-label>Доставлено <br/><b>{{courier.sortOrders?.g_done}}</b></ion-label>
       </ion-segment-button>
       <ion-segment-button value="4">
-        <ion-label>Не доставлено <b>{{courier.sortOrders?.g_fail}}</b></ion-label>
+        <ion-label>Не доставлено <br/><b>{{courier.sortOrders?.g_fail}}</b></ion-label>
       </ion-segment-button>
     </ion-segment>
     <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
