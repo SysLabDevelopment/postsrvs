@@ -26,7 +26,10 @@
   ],
   "rules": {
     "no-unused-vars": "off",
-    "unicorn/prevent-abbreviations": "off"
+    "unicorn/prevent-abbreviations": "off",
+    "prefer-const": "warn",
+    "no-const-assign": "warn",
+    "no-var": "error"
   },
   "root": true
 }
