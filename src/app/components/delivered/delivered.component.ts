@@ -41,7 +41,6 @@ export class DeliveredComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() { }
   ionViewDidEnter() {
-    this.introService.setOptions({})
     this.introService.start(null, '1');
   }
   dismiss(role = '') {

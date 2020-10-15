@@ -167,12 +167,14 @@
         "parents": {
           "NSLocationWhenInUseUsageDescription": [
             {
-              "xml": "<string>This app requires access to your location when the screen is on and the app is displayed.</string>",
+              "xml": "<string>This app wants to get your location while this app runs only.</string>",
               "count": 1
             },
             {
-              "xml": "<string>This app wants to get your location while this app runs only.</string>",
-              "count": 1
+              "xml": "<string>Информация о геолокации необходима для правильного построения маршрутов и отрисовки их на карте</string>",
+              "count": 1,
+              "mode": "merge",
+              "id": "config.xml"
             }
           ],
           "NSLocationAlwaysAndWhenInUseUsageDescription": [
@@ -212,13 +214,13 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 25
+              "count": 26
             }
           ],
           "NSCameraUsageDescription": [
             {
               "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 25
+              "count": 26
             }
           ]
         }
