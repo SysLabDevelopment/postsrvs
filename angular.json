@@ -42,16 +42,9 @@
               },
               {
                 "input": "src/app/app.scss"
-              },
-              {
-                "input": "node_modules/intro.js/introjs.css"
               }
             ],
-            "scripts": [
-              {
-                "input": "node_modules/intro.js/intro.js"
-              }
-            ],
+            "scripts": [],
             "sourceMap": true
           },
           "configurations": {

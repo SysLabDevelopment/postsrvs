@@ -4,24 +4,24 @@
         "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
-        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
-    },
-    {
         "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/xml_provider_paths.xml.flat",
         "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/xml/provider_paths.xml"
+    },
+    {
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
     },
     {
         "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-hdpi_screen.png.flat",
         "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"
     },
     {
-        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
-        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
-    },
-    {
         "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxhdpi_screen.png.flat",
         "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"
+    },
+    {
+        "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
+        "source": "/Users/timkovik/Documents/postsrvs/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
     },
     {
         "merged": "/Users/timkovik/Documents/postsrvs/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi_notification_icon.png.flat",

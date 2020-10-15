@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { OrderPage } from './order.page';
 import {IconsModule} from '../../icons/icons.module';
-
 const routes: Routes = [
   {
     path: '',

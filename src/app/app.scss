@@ -4,7 +4,6 @@
 // styles are for the entire app and not just one component. Additionally, this
 // file can hold Sass mixins, functions, and placeholder classes to be imported
 // and used throughout the application.
-
 .active {
   background-color: rgba(229, 238, 235, 1);
   color: #2b637e;
@@ -67,9 +66,7 @@ app-orders-list-guess {
       }
     }
   }
-  .introjs-helperLayer {
-    background-color: rgba(255, 245, 245, 0.2);
-  }
+
 
   .light-blue-button {
     --background: #4ba7c5;
@@ -298,4 +295,13 @@ app-orders-list-guess {
       }
     }
   }
+}
+@import "../../node_modules/@esfaenza/ngx-introjs/introjs.css";
+.introjs-helperLayer {
+  opacity: 20%;
+  /* background-color: rgba(255,255,255,.7); */
+}
+
+.introjs-overlay {
+  background-color: rgb(0 0 0 / 0.5);
 }
