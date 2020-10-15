@@ -5,7 +5,6 @@
     "es6": true
   },
   "extends": [
-    "tslint.json",
     "angular",
     "plugin:angular/johnpapa",
     "airbnb-base",
@@ -29,7 +28,11 @@
     "unicorn/prevent-abbreviations": "off",
     "prefer-const": "warn",
     "no-const-assign": "warn",
-    "no-var": "error"
+    "no-var": "error",
+    "no-new-object": "error",
+    "object-shorthand": "error",
+    "quote-props": ["error", "as-needed"],
+    "no-prototype-builtins": "error"
   },
   "root": true
 }
