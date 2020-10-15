@@ -40,9 +40,9 @@ export class DeliveredComponent implements OnInit, AfterViewInit {
   ngOnInit() { }
 
   ngAfterViewInit() { }
-  ionViewDidEnter() {
-    this.introService.start(null, '1');
-  }
+
+  ionViewDidEnter() {}
+
   dismiss(role = '') {
     const details = (role == 'cancel' ? undefined : {
       drawNeedle: this.drawNeedle,

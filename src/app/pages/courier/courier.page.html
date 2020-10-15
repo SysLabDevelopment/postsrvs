@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class='toolbar'>
     <ion-buttons slot="start">
-      <ion-button (click)="findOrder()">
+      <ion-button (click)="findOrder()" [intro]="IntroItems" [Order]="1">
         <i-feather name="search" slot='start'></i-feather>
       </ion-button>
       <ion-button *ngIf="auth.getGuessMode()">
@@ -20,7 +20,7 @@
       <ion-button *ngIf="courier.sortOrders?.g_process == 0 && !isWorkEnded" (click)="endWork()">
         <i-feather name="check-square"></i-feather>
       </ion-button>
-      <ion-button (click)="showHelp($event)">
+      <ion-button (click)="showHelp()">
         <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -48,7 +48,7 @@
     </ion-segment>
     <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
       <ion-searchbar placeholder="Поиск по заказам" inputmode="text" (ionChange)="onSearchChange($event)"
-        [debounce]="250" [(ngModel)]="searchString" animated></ion-searchbar>
+        [debounce]="250" [(ngModel)]="searchString" animated [intro]="IntroItems" [Order]="2"></ion-searchbar>
 
       <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="50"
         style="height: 100%; width: 100%; min-height: 50vh;">
@@ -93,7 +93,7 @@
           </ion-label>
           <ion-icon name="ellipsis-vertical" slot='start' class='points'></ion-icon>
 
-          <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()">
+          <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()" [intro]="IntroItems" [Order]="3" data-position="left">
             <ion-icon src='../../../assets/actions-arrows.svg' [ngClass]="{turned: order.show == true }"></ion-icon>
           </div>
         </ion-item>
@@ -101,7 +101,7 @@
     </div>
     <div class='ion-padding sub-footer'>
 
-      <div class="checking" *ngIf="auth.checkState !== 'checkedOut'">
+      <div class="checking" *ngIf="auth.checkState !== 'checkedOut'" [intro]="IntroItems" [Order]="4">
         <ion-button (click)="auth.check('In')" expand="full" fill="solid" *ngIf="auth.checkState == 'checkedundefined'">
           Приехал на склад
         </ion-button>

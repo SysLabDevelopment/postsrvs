@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { IconsModule } from '../../icons/icons.module';
 import { CourierPage } from './courier.page';
+import {IntroJsModule} from '@esfaenza/ngx-introjs';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -19,15 +20,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    IconsModule,
-    CommonModule,
-    FormsModule,
-    DragDropModule,
-    IonicModule,
-    ScrollingModule,
-    RouterModule.forChild(routes)
-  ],
+    imports: [
+        IconsModule,
+        CommonModule,
+        FormsModule,
+        DragDropModule,
+        IonicModule,
+        ScrollingModule,
+        RouterModule.forChild(routes),
+        IntroJsModule
+    ],
   declarations: [CourierPage],
   providers: [
     { provide: LOCALE_ID, useFactory: () => 'ru' }

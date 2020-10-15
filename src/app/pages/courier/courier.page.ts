@@ -29,6 +29,8 @@ import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
 import { DataService } from '../../services/sys/data.service';
 import {FirebaseX} from '@ionic-native/firebase-x/ngx';
+import {IntroJsService} from '@esfaenza/ngx-introjs';
+import {IntroJsOptions} from '@esfaenza/ngx-introjs/lib/models/IntroJsOptions';
 
 
 @Component({
@@ -88,25 +90,31 @@ export class CourierPage implements OnInit {
   public order: Order;
   public noDrag = false;
   private segment: number[] = [1];
+  public IntroItems = {
+    Group: '2',
+    '1': 'Сканирование штрихкода заказа, поиск по штрихкоду',
+    '2': 'Текстовый поиск заказов по адресу, ФИО и компании',
+    '3': 'Показать быстрые действия',
+    '4': 'Сканировать QR-код на складе, чтобы отметиться'
+  };
 
   constructor(public courier: CourierService,
-    private router: Router,
-    public state$: StateService,
-    public auth: AuthService,
-    private bs: BarcodeScanner,
-    public vbr: Vibration,
-    public settings: SettingsService,
-    private sys: SysService,
-    private data: DataService,
-    public popoverController: PopoverController,
-    private map: MapService,
-    private orderService: OrderService,
-    private CL: CallNumber,
-    private network: Network,
-    private http: HttpClient,
-    private firebase: FirebaseX
-
-
+              private router: Router,
+              public state$: StateService,
+              public auth: AuthService,
+              private bs: BarcodeScanner,
+              public vbr: Vibration,
+              public settings: SettingsService,
+              private sys: SysService,
+              private data: DataService,
+              public popoverController: PopoverController,
+              private map: MapService,
+              private orderService: OrderService,
+              private CL: CallNumber,
+              private network: Network,
+              private http: HttpClient,
+              private firebase: FirebaseX,
+              public introService: IntroJsService
   ) {
     const self = this;
 
@@ -218,11 +226,11 @@ export class CourierPage implements OnInit {
     if (this.scan_process) { return false; }
     this.scan_process = true;
     if (this.find_order) {
-      setTimeout(function () {
+      setTimeout(function() {
         self.scanSearch();
       }, 1500);
     } else {
-      setTimeout(function () {
+      setTimeout(function() {
         self.scanInputStart();
       }, 1500);
     }
@@ -233,7 +241,7 @@ export class CourierPage implements OnInit {
     console.log('SUBMIT_ORDER_CALL');
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
-      setTimeout(function () {
+      setTimeout(function() {
         self.sInput.nativeElement.focus();
       }, 500);
       return false;
@@ -379,7 +387,7 @@ export class CourierPage implements OnInit {
   public sendStartRoute(cid: number, start: boolean, stop: boolean) {
     const url = 'geo/route_start.php';
     const data = {
-      cid: cid,
+      cid,
       lt: this.state$.position.getValue().lt,
       lg: this.state$.position.getValue().lg,
       start: '',
@@ -429,7 +437,7 @@ export class CourierPage implements OnInit {
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
       this.find_order = true;
-      setTimeout(function () {
+      setTimeout(function() {
         self.sInput.nativeElement.focus();
       }, 500);
       return false;
@@ -510,9 +518,13 @@ export class CourierPage implements OnInit {
     return popover;
   }
 
-  async showHelp(ev: any) {
-    const popover = await this.popoverHelp(ev);
-    popover.present();
+  public showHelp() {
+    this.introService.intro
+        .setOption('prevLabel', 'Назад')
+        .setOption('nextLabel', 'Далее')
+        .setOption('skipLabel', 'Пропустить')
+        .setOption('doneLabel', 'Завершить');
+    this.introService.start(null, '2');
 
   }
 
@@ -534,7 +546,7 @@ export class CourierPage implements OnInit {
       translucent: true,
       cssClass: 'help',
       componentProps: {
-        orderId: orderId
+        orderId
       }
     });
     return popover;
@@ -624,7 +636,7 @@ export class CourierPage implements OnInit {
       console.log(`sys:: данные штрихкода: ${data.text}`);
       const url = this.sys.proxy + 'https://mobile.postsrvs.ru/getScanPVZ.php';
       const reqData = {
-        type: "scanOrder",
+        type: 'scanOrder',
         uuid: this.auth.getUuid(),
         courieriId: this.auth.getUserId(),
         clientId: data.text
@@ -635,13 +647,13 @@ export class CourierPage implements OnInit {
           color = 'danger';
         }
         this.sys.presentToast(resp.dateTime, 'success', resp.message);
-      })
+      });
 
     });
   }
 
-  //Возвращает заметку к заказу
-  //@orderId - ид заказа
+  // Возвращает заметку к заказу
+  // @orderId - ид заказа
   public orderNote(orderId: string) {
     return localStorage.getItem(orderId);
   }
