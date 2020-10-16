@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 import { StateService } from '../services/state.service';
 import { SysService } from '../services/sys.service';
 import { SettingsService } from './settings.service';
-declare var ymaps: any;
+declare let ymaps: any;
 @Injectable({
   providedIn: 'root'
 })
@@ -18,10 +18,10 @@ export class CourierService {
   public ordersInfo: Array<any> = [];
   public ordersShortData: Subject<any> = new Subject();
   public sortOrders = {
-    "g_done": 0,
-    "g_process": 0,
-    "g_fail": 0,
-    "all": 0
+    g_done: 0,
+    g_process: 0,
+    g_fail: 0,
+    all: 0
   };
 
   constructor(private http: HttpClient,
@@ -35,7 +35,7 @@ export class CourierService {
     //при выходе из приложения возвращаем начальное состояние
     var self = this;
     this.state$.interval_1ss.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
-      let old_val = self.state$.load_lvl.getValue();
+      const old_val = self.state$.load_lvl.getValue();
       self.state$.load_lvl.next(old_val + 1.7);
     });
 
@@ -68,9 +68,9 @@ export class CourierService {
    */
   public changeRouteMode(mode: string) {
     if (this.state$.way.getValue() !== null) {
-      let url = 'orders';
+      const url = 'orders';
       const routeId = this.state$.way.getValue()[0].route;
-      let data = { 'action': 'changeRouteMode', 'routeId': this.state$.way.getValue()[0].route, 'mode': '' };
+      const data = { action: 'changeRouteMode', routeId: this.state$.way.getValue()[0].route, mode: '' };
       if (mode == 'auto' || mode == 'fullHand') {
         data['mode'] = mode;
       } else {
@@ -78,7 +78,7 @@ export class CourierService {
         return false;
       }
 
-      let self = this;
+      const self = this;
       this.auth.sendPost(url, data).subscribe((resp) => {
         if (resp.success == 'true') {
           self.state$.manual_route = resp.mode == 'fullHand' ? true : false;
@@ -107,7 +107,7 @@ export class CourierService {
 
   //Собираем необходимую инфу по заказам
   public initOrders() {
-    var self = this;
+    const self = this;
 
     //проверяем наличие координат перед запуском
     if (this.state$.position.getValue() == null) {
@@ -151,7 +151,7 @@ export class CourierService {
                 });
               } else if (data.reason == 'empty' || data.reason == 'нет заказов') {
                 console.log('Массив данных о заказах пуст');
-                let rmpt: [] = [];
+                const rmpt: [] = [];
                 self.state$.orders.next(rmpt);
                 self.state$.orders_data = rmpt;
                 self.state$.state.next('orders_init');
@@ -173,7 +173,7 @@ export class CourierService {
 
   //следит за изменениями заказов
   public checkWay() {
-    var self = this;
+    const self = this;
     if (!this.state$.check_state) {
 
 
@@ -193,29 +193,29 @@ export class CourierService {
   */
   public getWay() {
     console.log('sys::getWay()');
-    let routingMode = this.auth.getRoutingMode();
+    const routingMode = this.auth.getRoutingMode();
     let mode: string;
     if (routingMode !== 'standart') {
       mode = '1';
     } else {
       mode = '0'
     }
-    let url = 'orders';
-    let data = {
-      'action': 'getWay',
-      'lt': this.state$.position.getValue().lt,
-      'lg': this.state$.position.getValue().lg,
-      'auto': mode,
-      'mode': ''
+    const url = 'orders';
+    const data = {
+      action: 'getWay',
+      lt: this.state$.position.getValue().lt,
+      lg: this.state$.position.getValue().lg,
+      auto: mode,
+      mode: ''
     }
-    let app_mode = this.auth.getMode();
+    const app_mode = this.auth.getMode();
     if ((app_mode == 'fullHand' || app_mode == 'hand') || this.state$.manual_route) {
       data['mode'] = "manual";
     } else {
       data['mode'] = "auto";
     }
-    let resp: Subject<any> = new Subject();
-    let self = this;
+    const resp: Subject<any> = new Subject();
+    const self = this;
 
     this.auth.sendPost(url, data).subscribe((orders: any) => {
       if (orders.success == 'true') {
@@ -224,7 +224,7 @@ export class CourierService {
         self.state$.state.next('way_init');
       } else if (orders.reason == 'empty') {
         self.state$.manual_route = false;
-        let emt: [] = [];
+        const emt: [] = [];
         self.state$.way.next(emt);
         self.state$.state.next('way_init');
       }
@@ -250,7 +250,7 @@ export class CourierService {
       ids = [];
     }
 
-    let routingAuto = this.auth.getRoutingMode();
+    const routingAuto = this.auth.getRoutingMode();
     let auto: string;
     if (routingAuto !== 'standart') {
       auto = '1'
@@ -259,9 +259,9 @@ export class CourierService {
     }
 
 
-    let data = {
-      'action': 'getOrders',
-      'orders_id': ids
+    const data = {
+      action: 'getOrders',
+      orders_id: ids
     }
 
     return this.auth.sendPost(url, data);
@@ -274,8 +274,8 @@ export class CourierService {
   //@CL - код филлиала
   public getBalance(sync_id: number, more = 0) {
     this.firebase.setUserId(String(sync_id));
-    let CL = this.settings.get('cl');
-    let url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=' + CL;
+    const CL = this.settings.get('cl');
+    const url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=' + CL;
     return this.http.get(url);
   }
 
@@ -283,9 +283,9 @@ export class CourierService {
     if (order.status_id == 1) {
       return 'Доставляется';
     } else {
-      let statuses = this.state$.statuses.getValue();
-      for (var i = 0; i < statuses.length; i++) {
-        let status = statuses[i];
+      const statuses = this.state$.statuses.getValue();
+      for (let i = 0; i < statuses.length; i++) {
+        const status = statuses[i];
         if (status.id == order.status_id) {
           return status.status;
         }
@@ -294,21 +294,21 @@ export class CourierService {
   }
 
 
-  public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date = '', check = '', recognizedCheckData: string = null, cardNums?: number) {
-    let url = 'orders';
-    let draw = localStorage.getItem('drawImg');
-    let data = {
-      'action': 'changedStatus',
-      'status': status,
-      'id': id,
-      'comment': comment,
-      'reason': reason,
-      'goods': goods,
-      'payment': payment,
-      'new_plam_date': new_plan_date,
-      'check': check,
-      'recognizedCheckData': recognizedCheckData,
-      'sign': '',
+  public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date = '', check = '', recognizedCheckData: string = null, cardNums?: string) {
+    const url = 'orders';
+    const draw = localStorage.getItem('drawImg');
+    const data = {
+      action: 'changedStatus',
+      status,
+      id,
+      comment,
+      reason,
+      goods,
+      payment,
+      new_plam_date: new_plan_date,
+      check,
+      recognizedCheckData,
+      sign: '',
       cardNums
     };
     if (draw) data['sign'] = draw;
@@ -320,7 +320,7 @@ export class CourierService {
         if (req !== undefined) {
           requests = req;
         }
-        requests.push({ url: url, data: data });
+        requests.push({ url, data });
         this.cache.saveItem('requests', requests);
       });
       return from([{ success: 'true' }])
@@ -338,19 +338,19 @@ export class CourierService {
    */
   public findOrder(code: string) {
     const url = 'orders';
-    let data = {
-      'action': 'findOrder',
-      'code': code
+    const data = {
+      action: 'findOrder',
+      code
     }
-    let resp: Subject<any> = new Subject();
-    let orders = this.state$.orders_data;
+    const resp: Subject<any> = new Subject();
+    const orders = this.state$.orders_data;
 
     this.auth.sendPost(url, data).subscribe((od) => {
       if (od.success == 'true') {
         let n_f = true;
-        let orderId = od.order_id;
+        const orderId = od.order_id;
 
-        for (var i = 0; i < orders.length; i++) {
+        for (let i = 0; i < orders.length; i++) {
           if (orders[i].id == orderId) {
             n_f = false;
           }
@@ -368,14 +368,14 @@ export class CourierService {
   }
 
   public sumbitOrder(orderId: string) {
-    let url = 'orders';
-    let data = {
-      'action': 'submitOrder',
-      'orderId': orderId
+    const url = 'orders';
+    const data = {
+      action: 'submitOrder',
+      orderId
     }
     console.log('submit_order_data', data);
-    let self = this;
-    let ret: Subject<any> = new Subject<any>();
+    const self = this;
+    const ret: Subject<any> = new Subject<any>();
 
     this.auth.sendPost(url, data).subscribe((resp: any) => {
       console.log('submit_order_response', resp);
@@ -397,7 +397,7 @@ export class CourierService {
     let g_done = 0;
     let g_process = 0;
     let g_fail = 0;
-    let all = orders.length;
+    const all = orders.length;
     for (let i = 0; i < orders.length; i++) {
       switch (String(orders[i].status_id)) {
         case '4':
@@ -415,14 +415,14 @@ export class CourierService {
       }
     }
     this.sortOrders = {
-      g_done: g_done,
-      g_process: g_process,
-      g_fail: g_fail,
-      all: all
+      g_done,
+      g_process,
+      g_fail,
+      all
     }
   }
   public initStatuses() {
-    const statuses = [{ "id": 4, "status": "Не доставлено" }, { "id": 5, "status": "Доставлено" }, { "id": 6, "status": "Частично доставлено" }];
+    const statuses = [{ id: 4, status: "Не доставлено" }, { id: 5, status: "Доставлено" }, { id: 6, status: "Частично доставлено" }];
     this.state$.statuses.next(statuses);
     this.state$.s_state.next('status_init');
   }
@@ -434,11 +434,11 @@ export class CourierService {
       'Access-Control-Allow-Origin': '*',
       'Content-type': 'application/json'
     });
-    let data = {
-      "token": "l;sdfjkhglsoapl[",
-      "cId": this.auth.getUserId()
+    const data = {
+      token: "l;sdfjkhglsoapl[",
+      cId: this.auth.getUserId()
     }
 
-    return this.http.post(url, data, { headers: headers })
+    return this.http.post(url, data, { headers })
   }
 }

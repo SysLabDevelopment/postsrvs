@@ -123,7 +123,7 @@ export class OrderPage implements OnInit {
   public openCompany = false;
   public checkBase64Image: string;
   public drawNeedle = true;
-  public cardNums: number;
+  public cardNums: string;
   constructor(
     private router: Router,
     private route: ActivatedRoute,

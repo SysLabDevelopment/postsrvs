@@ -21,7 +21,7 @@ export class OrderService {
 
   public sendDelayedCall(order: Order, status: number) {
     order.status_id = status;
-    let self = this;
+    const self = this;
     this.submitChange(order, status);
     this.getPayData(order.client_id).subscribe((res: any) => {
       if (res.success == "true") {
@@ -38,16 +38,16 @@ export class OrderService {
 
   private sendPay(order: Order) {
     this.notPayData = false;
-    let callback_url = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
-    let products = [];
-    for (let code in order.quants) {
+    const callback_url = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
+    const products = [];
+    for (const code in order.quants) {
       if (order.quants[code]["amount"] > 0) {
         for (let i = 0; i < order.goods.length; i++) {
           if (order.goods[i]["Code"] == code) {
-            let good_name = order.goods[i]["Name"];
-            let good_amount = order.quants[code]["amount"];
-            let good_price = Math.round(order.quants[code]["price"] * 100) / 100;
-            let pos = {
+            const good_name = order.goods[i]["Name"];
+            const good_amount = order.quants[code]["amount"];
+            const good_price = Math.round(order.quants[code]["price"] * 100) / 100;
+            const pos = {
               name: good_name,
               price: good_price,
               quantity: good_amount,
@@ -58,17 +58,17 @@ export class OrderService {
       }
     }
 
-    let purchase = { products: products };
+    const purchase = { products };
     console.log("goods_description\n", purchase);
-    let self = this;
-    let order_data = {
+    const self = this;
+    const order_data = {
       apikey: String(this.pay_access_data.api_key),
       login: String(this.pay_access_data.phone),
       cashier_name:
         String(this.pay_access_data.name) +
         String(this.pay_access_data.phone),
-      purchase: purchase,
-      callback_url: callback_url,
+      purchase,
+      callback_url,
       mode: "email",
       customer_email: order.email_input,
       customer_phone: order.phone_input,
@@ -89,12 +89,12 @@ export class OrderService {
   }
 
   public submitChange(order: Order, status: number) {
-    let self = this;
+    const self = this;
     let noSkip = true;
     switch (status) {
       case 4:
         if (order.selectedReason != null) {
-          let new_plan_date = new Date(order.new_plan_date);
+          const new_plan_date = new Date(order.new_plan_date);
           this.courier
             .changeStatus(
               String(status),
@@ -160,22 +160,22 @@ export class OrderService {
     }
   }
   public getPayData(client_id: number) {
-    let url = "pay_order";
-    let data = { action: "getData", orderId: client_id };
+    const url = "pay_order";
+    const data = { action: "getData", orderId: client_id };
     return this.auth.sendPost(url, data)
   }
 
 
   public send_api_data(api_data: any, order: Order) {
     const url = "pay_order";
-    let self = this;
+    const self = this;
     order.rur = 0;
 
     api_data.purchase.products.forEach((product: any) => {
       order.rur += product.price * product.quantity;
     });
 
-    let data = {
+    const data = {
       action: "sendPay",
       orderData: api_data,
       orderId: order.id,

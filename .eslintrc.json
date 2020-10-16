@@ -5,13 +5,7 @@
     "es6": true
   },
   "extends": [
-    "angular",
-    "plugin:angular/johnpapa",
-    "airbnb-base",
-    "plugin:unicorn/recommended",
-    "plugin:prettier/recommended",
-    "prettier",
-    "prettier/unicorn"
+    "plugin:angular/johnpapa"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,9 +13,7 @@
     "sourceType": "module"
   },
   "plugins": [
-    "angular",
-    "prettier",
-    "unicorn"
+    "angular"
   ],
   "rules": {
     "no-unused-vars": "off",
