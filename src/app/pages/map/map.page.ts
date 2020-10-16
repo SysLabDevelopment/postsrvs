@@ -36,7 +36,7 @@ import { SysService } from './../../services/sys.service';
 import { MapService } from './../../services/sys/map.service';
 import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
-declare var google: any;
+declare let google: any;
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -223,18 +223,18 @@ export class MapPage implements OnInit {
   }
 
   // Подготовка массива заказов к отрисовке в виду не рабочести markerCluster
-  markeredOrders(orders: Array<any>) {
+  private markeredOrders(orders: Array<any>) {
     const markeredOrders: MarkerOptions[] = [];
     orders?.forEach((order: Order) => {
       const info = this.createInfoContent(order);
       this.existsGeos.push([Number(order.lt), Number(order.lg)]);
       markeredOrders.push({
         position: {
-          lat: parseFloat(order.lt),
-          lng: parseFloat(order.lg),
+          lat: Number(order.lt),
+          lng: Number(order.lg),
         },
         name: order.id,
-        info: info
+        info
 
       });
     });
@@ -458,7 +458,7 @@ ${arrows}
       event: ev,
       translucent: true,
       componentProps: {
-        content: content
+        content
       },
       cssClass: 'popover'
     });
