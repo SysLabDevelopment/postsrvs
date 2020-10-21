@@ -1,17 +1,19 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.28.36",
-	"versionCode": "149",
+	"version": "1.28.38",
+	"versionCode": "151",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "ng build",
+		"build": "ng build --plugin ngx-build-modern --prod",
 		"test": "jest",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
-		"postinstall": "ngcc"
+		"postinstall": "ngcc",
+		"build:modern": "ng build --plugin ngx-build-modern --prod",
+		"build:modern:app": "ng build --plugin ngx-build-modern --project app --prod"
 	},
 	"private": true,
 	"dependencies": {
@@ -80,6 +82,7 @@
 		"feather-icons": "^4.28.0",
 		"ionic-cache": "^5.2.0",
 		"mx.ferreyra.callnumber": "0.0.2",
+		"ngx-build-modern": "^1.1.10",
 		"ngx-mask": "^9.1.2",
 		"path-browserify": "^1.0.1",
 		"paulstelzer-ionic-angular-toolkit": "^2.0.0",
