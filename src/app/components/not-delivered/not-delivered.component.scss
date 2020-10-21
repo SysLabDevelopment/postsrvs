@@ -22,6 +22,9 @@
       --border-style: none;
       font-size: 14px;
       --min-height: 35px;
+      &:nth-child(even) {
+        --background: #f6fdff;
+      }
       ion-radio {
         margin-right: 5px;
       }
