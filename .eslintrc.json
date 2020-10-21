@@ -24,7 +24,12 @@
     "no-new-object": "error",
     "object-shorthand": "error",
     "quote-props": ["error", "as-needed"],
-    "no-prototype-builtins": "error"
+    "no-prototype-builtins": "error",
+    "quotes": ["error", "single"],
+    "prefer-template": "error",
+    "template-curly-spacing": "error",
+    "no-eval": "error",
+    "no-useless-escape": "error"
   },
   "root": true
 }
