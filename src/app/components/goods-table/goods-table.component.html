@@ -1,0 +1,13 @@
+<h1>Товары в заказе</h1>
+        <table>
+          <thead>
+            <th>Название</th>
+            <th>Кол-во</th>
+            <th>Цена</th>
+          </thead>
+          <tr *ngFor="let good of goods">
+            <td>{{good.Name}}</td>
+            <td>{{good.kol_vo}}</td>
+            <td>{{good.Price}} р.</td>
+          </tr>
+        </table>
