@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import {
   DirectionsRenderer,
   DirectionsResult,
@@ -34,7 +35,6 @@ import { CourierService } from './../../services/courier.service';
 import { SettingsService } from './../../services/settings.service';
 import { SysService } from './../../services/sys.service';
 import { MapService } from './../../services/sys/map.service';
-import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
 declare let google: any;
 @Component({
@@ -327,6 +327,7 @@ export class MapPage implements OnInit {
                   this.orders.length = 1;
                 }
                 console.log('sys:: заказы', this.orders);
+                this.data.orders.next(this.orders);
                 this.drawData(this.settings.rules.autoStartRoute, null, res.orders);
               });
             });

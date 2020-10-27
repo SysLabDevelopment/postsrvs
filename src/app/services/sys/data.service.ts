@@ -30,7 +30,7 @@ export class DataService {
       this.storage.get('orders').then((orders: Array<Order>) => {
         this.ordersMap = this.getOrdersMap(orders);
         this.orders.subscribe((orders: Order[]) => {
-          console.trace('sys:: Пришли заказы в стрим data.orders');
+          console.log('sys:: Пришли заказы в стрим data.orders', orders);
           this.saveOrders(orders).then(() => {
             console.log('sys:: Список заказов сохранен в сторож: ', orders);
           });

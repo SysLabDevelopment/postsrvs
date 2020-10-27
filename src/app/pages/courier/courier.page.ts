@@ -301,10 +301,9 @@ export class CourierPage implements OnInit {
 
   public initContent() {
     const self = this;
-    this.state$.orders.subscribe(() => {
-      this.orders = this.state$.orders_data;
+    this.data.orders.subscribe((orders: Order[]) => {
+      this.orders = orders;
       console.log('sys::initСontent orders', this.orders);
-      this.data.orders.next(this.orders);
       this.statuses = [{ id: 4, status: 'Не доставлено' }, { id: 5, status: 'Доставлено' }, { id: 6, status: 'Частично доставлено' }];
       this.ordersInit = true;
       self.count_orders();
