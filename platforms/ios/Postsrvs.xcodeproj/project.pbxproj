@@ -116,6 +116,7 @@
 		F85A6C30BC9C48E782797A7F /* PluginMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17F4644EEB4B6589B1D50E /* PluginMap.m */; };
 		FC18649B40CB481892D37D17 /* PluginTileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF39550F104461AB8B06DA7 /* PluginTileProvider.m */; };
 		FE972DF8E17246C2956D9A3A /* CDVWKProcessPoolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F26AD50F019247FEBDF384C4 /* CDVWKProcessPoolFactory.m */; };
+		95DE2B01DFF0418AA3A55E30 /* UpdateNotifierPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6646D180FC497AB60C0F4C /* UpdateNotifierPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -343,6 +344,7 @@
 		F955D506F14E4B1BAA10771F /* FirebasePluginMessageReceiverManager.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = FirebasePluginMessageReceiverManager.m; path = "cordova-plugin-firebasex/FirebasePluginMessageReceiverManager.m"; sourceTree = "<group>"; };
 		FA7CA3301FD94D4F93956635 /* PluginMarker.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = PluginMarker.m; path = "cordova-plugin-googlemaps/PluginMarker.m"; sourceTree = "<group>"; };
 		FF0911198437465FAE9B71D5 /* CordovaGoogleMaps.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CordovaGoogleMaps.h; path = "cordova-plugin-googlemaps/CordovaGoogleMaps.h"; sourceTree = "<group>"; };
+		5E6646D180FC497AB60C0F4C /* UpdateNotifierPlugin.swift */ = {isa = PBXFileReference; name = "UpdateNotifierPlugin.swift"; path = "cordova-plugin-update-notifier/UpdateNotifierPlugin.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -650,6 +652,7 @@
 				B1D7AD42F11E44AAA2357EC5 /* FirebasePlugin.h */,
 				DCFC1466A69C4894AA02F81B /* FirebasePluginMessageReceiver.h */,
 				F05FA4E3F14F41A6957CCA11 /* FirebasePluginMessageReceiverManager.h */,
+				5E6646D180FC497AB60C0F4C /* UpdateNotifierPlugin.swift */,
 			);
 			name = Plugins;
 			path = Postsrvs/Plugins;
@@ -1084,6 +1087,7 @@
 				E36E58A7AFCC4A3AA56158F0 /* FirebasePlugin.m in Sources */,
 				E603A41E8701490797B6F29F /* FirebasePluginMessageReceiver.m in Sources */,
 				20798FBF48DB4B1EA3C6350E /* FirebasePluginMessageReceiverManager.m in Sources */,
+				95DE2B01DFF0418AA3A55E30 /* UpdateNotifierPlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1161,10 +1165,11 @@
 					"@executable_path/Frameworks",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = flexcore.postsrvs.w;
+				PRODUCT_BUNDLE_IDENTIFIER = postsrvs.i;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1196,10 +1201,11 @@
 					"@executable_path/Frameworks",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = flexcore.postsrvs.w;
+				PRODUCT_BUNDLE_IDENTIFIER = postsrvs.i;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1518,6 +1524,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 1;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1565,6 +1572,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 1;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

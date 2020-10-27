@@ -159,6 +159,14 @@
             {
               "xml": "<feature name=\"FirebasePlugin\"><param name=\"ios-package\" value=\"FirebasePlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"UpdateNotifier\"><param name=\"ios-package\" value=\"CDVUpdateNotifierPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"SwiftVersion\" value=\"5.0\" />",
+              "count": 1
             }
           ]
         }
@@ -210,13 +218,13 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 30
+              "count": 31
             }
           ],
           "NSCameraUsageDescription": [
             {
               "xml": "<string>Вам нужно будет сканировать штрих-коды и делать фото</string>",
-              "count": 30
+              "count": 31
             }
           ]
         }
@@ -317,6 +325,9 @@
       "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
       "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
       "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-update-notifier": {
+      "PACKAGE_NAME": "flexcore.postsrvs.wUITests"
     }
   },
   "dependent_plugins": {},
@@ -801,6 +812,7 @@
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-firebasex": "10.2.0-cli"
+    "cordova-plugin-firebasex": "10.2.0-cli",
+    "cordova-plugin-update-notifier": "1.0.1"
   }
 }

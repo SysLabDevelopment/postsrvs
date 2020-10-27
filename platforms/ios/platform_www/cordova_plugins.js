@@ -480,6 +480,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-firebasex": "10.2.0-cli"
+    "cordova-plugin-firebasex": "10.2.0-cli",
+    "cordova-plugin-update-notifier": "1.0.1"
   };
 });

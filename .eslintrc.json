@@ -12,9 +12,6 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": [
-    "angular"
-  ],
   "rules": {
     "no-unused-vars": "off",
     "unicorn/prevent-abbreviations": "off",
@@ -23,9 +20,15 @@
     "no-var": "error",
     "no-new-object": "error",
     "object-shorthand": "error",
-    "quote-props": ["error", "as-needed"],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
     "no-prototype-builtins": "error",
-    "quotes": ["error", "single"],
+    "quotes": [
+      "error",
+      "single"
+    ],
     "prefer-template": "error",
     "template-curly-spacing": "error",
     "no-eval": "error",

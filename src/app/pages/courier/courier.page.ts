@@ -9,8 +9,10 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
+import { IntroJsService } from '@esfaenza/ngx-introjs';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { PopoverController } from '@ionic/angular';
@@ -28,9 +30,6 @@ import { SettingsService } from '../../services/settings.service';
 import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
 import { DataService } from '../../services/sys/data.service';
-import {FirebaseX} from '@ionic-native/firebase-x/ngx';
-import {IntroJsService} from '@esfaenza/ngx-introjs';
-import {IntroJsOptions} from '@esfaenza/ngx-introjs/lib/models/IntroJsOptions';
 
 
 @Component({
@@ -92,29 +91,29 @@ export class CourierPage implements OnInit {
   private segment: number[] = [1];
   public IntroItems = {
     Group: '2',
-    '1': 'Сканирование штрихкода заказа, поиск по штрихкоду',
-    '2': 'Текстовый поиск заказов по адресу, ФИО и компании',
-    '3': 'Показать быстрые действия',
-    '4': 'Сканировать QR-код на складе, чтобы отметиться'
+    1: 'Сканирование штрихкода заказа, поиск по штрихкоду',
+    2: 'Текстовый поиск заказов по адресу, ФИО и компании',
+    3: 'Показать быстрые действия',
+    4: 'Сканировать QR-код на складе, чтобы отметиться'
   };
 
   constructor(public courier: CourierService,
-              private router: Router,
-              public state$: StateService,
-              public auth: AuthService,
-              private bs: BarcodeScanner,
-              public vbr: Vibration,
-              public settings: SettingsService,
-              private sys: SysService,
-              private data: DataService,
-              public popoverController: PopoverController,
-              private map: MapService,
-              private orderService: OrderService,
-              private CL: CallNumber,
-              private network: Network,
-              private http: HttpClient,
-              private firebase: FirebaseX,
-              public introService: IntroJsService
+    private router: Router,
+    public state$: StateService,
+    public auth: AuthService,
+    private bs: BarcodeScanner,
+    public vbr: Vibration,
+    public settings: SettingsService,
+    private sys: SysService,
+    private data: DataService,
+    public popoverController: PopoverController,
+    private map: MapService,
+    private orderService: OrderService,
+    private CL: CallNumber,
+    private network: Network,
+    private http: HttpClient,
+    private firebase: FirebaseX,
+    public introService: IntroJsService
   ) {
     const self = this;
 
@@ -171,7 +170,7 @@ export class CourierPage implements OnInit {
     if (!this.settings.checkout) {
       this.auth.checkState = 'checkedOut';
     } else {
-      this.auth.checkState = 'checked' + localStorage.check;
+      this.auth.checkState = `checked ${localStorage.check}`;
     }
     if (this.settings.rules.appMode == 'hand') {
       this.state$.manual_route = true;
@@ -226,11 +225,11 @@ export class CourierPage implements OnInit {
     if (this.scan_process) { return false; }
     this.scan_process = true;
     if (this.find_order) {
-      setTimeout(function() {
+      setTimeout(function () {
         self.scanSearch();
       }, 1500);
     } else {
-      setTimeout(function() {
+      setTimeout(function () {
         self.scanInputStart();
       }, 1500);
     }
@@ -241,7 +240,7 @@ export class CourierPage implements OnInit {
     console.log('SUBMIT_ORDER_CALL');
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
-      setTimeout(function() {
+      setTimeout(function () {
         self.sInput.nativeElement.focus();
       }, 500);
       return false;
@@ -305,6 +304,7 @@ export class CourierPage implements OnInit {
     this.state$.orders.subscribe(() => {
       this.orders = this.state$.orders_data;
       console.log('sys::initСontent orders', this.orders);
+      this.data.orders.next(this.orders);
       this.statuses = [{ id: 4, status: 'Не доставлено' }, { id: 5, status: 'Доставлено' }, { id: 6, status: 'Частично доставлено' }];
       this.ordersInit = true;
       self.count_orders();
@@ -437,7 +437,7 @@ export class CourierPage implements OnInit {
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
       this.find_order = true;
-      setTimeout(function() {
+      setTimeout(function () {
         self.sInput.nativeElement.focus();
       }, 500);
       return false;
@@ -464,7 +464,7 @@ export class CourierPage implements OnInit {
       }
     },
       error => {
-        this.sys.presentToast('Ошибка: ' + error.message, 'danger');
+        this.sys.presentToast(`Ошибка: ${error.message}`, 'danger');
       });
 
   }
@@ -520,10 +520,10 @@ export class CourierPage implements OnInit {
 
   public showHelp() {
     this.introService.intro
-        .setOption('prevLabel', 'Назад')
-        .setOption('nextLabel', 'Далее')
-        .setOption('skipLabel', 'Пропустить')
-        .setOption('doneLabel', 'Завершить');
+      .setOption('prevLabel', 'Назад')
+      .setOption('nextLabel', 'Далее')
+      .setOption('skipLabel', 'Пропустить')
+      .setOption('doneLabel', 'Завершить');
     this.introService.start(null, '2');
 
   }
@@ -614,13 +614,13 @@ export class CourierPage implements OnInit {
   // Жонглирование '8' / '+7'
   private normalizePhoneNumber(phone: string): string {
     if (phone[0] !== '8' && phone[0] !== '7' && phone.length !== 11) {
-      phone = '8' + phone;
+      phone = `8${phone}`;
     }
     if (phone.length == 7 || phone.length == 10) {
-      phone = '8' + phone;
+      phone = `8${phone}`;
     }
     if (phone[0] !== '8' && phone.length == 11) {
-      phone = '8' + phone.slice(1);
+      phone = `8${phone.slice(1)}`;
     }
     return phone;
   }
@@ -634,7 +634,7 @@ export class CourierPage implements OnInit {
   public getScanData() {
     this.bs.scan().then((data) => {
       console.log(`sys:: данные штрихкода: ${data.text}`);
-      const url = this.sys.proxy + 'https://mobile.postsrvs.ru/getScanPVZ.php';
+      const url = `${this.sys.proxy}https://mobile.postsrvs.ru/getScanPVZ.php`;
       const reqData = {
         type: 'scanOrder',
         uuid: this.auth.getUuid(),

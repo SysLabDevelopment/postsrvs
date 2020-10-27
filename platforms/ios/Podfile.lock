@@ -143,6 +143,7 @@ PODS:
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.11)
   - Protobuf (3.13.0)
+  - Siren (5.5.0)
 
 DEPENDENCIES:
   - Firebase/Auth (= 6.28.1)
@@ -153,6 +154,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig (= 6.28.1)
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `6.28.1`)
   - GoogleSignIn (= 5.0.2)
+  - Siren
 
 SPEC REPOS:
   trunk:
@@ -179,6 +181,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
+    - Siren
 
 EXTERNAL SOURCES:
   FirebaseFirestore:
@@ -215,7 +218,8 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
+  Siren: 5083b9ed37ce83e7e5dced736b97215e76d12d82
 
-PODFILE CHECKSUM: 5c48fa80e21830b7eb7ddbfab33cf7b64f411064
+PODFILE CHECKSUM: c8e20cc2dec38c2263c73afa6354235c56a1ed73
 
 COCOAPODS: 1.9.3

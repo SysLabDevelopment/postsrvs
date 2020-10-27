@@ -2,7 +2,7 @@
     "declarations": {
         "use_frameworks!": {
             "declaration": "use_frameworks!",
-            "count": 1
+            "count": 2
         }
     },
     "sources": {
@@ -51,6 +51,10 @@
         "GoogleSignIn": {
             "name": "GoogleSignIn",
             "spec": "5.0.2",
+            "count": 1
+        },
+        "Siren": {
+            "name": "Siren",
             "count": 1
         }
     }

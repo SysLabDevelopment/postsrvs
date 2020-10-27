@@ -86,6 +86,9 @@
       "ANDROID_FIREBASE_CRASHLYTICS_NDK_VERSION": "17.0.1",
       "ANDROID_GSON_VERSION": "2.8.6",
       "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-update-notifier": {
+      "PACKAGE_NAME": "postsrvs.i"
     }
   },
   "dependent_plugins": {

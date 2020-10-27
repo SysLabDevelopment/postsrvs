@@ -21,6 +21,7 @@ import { Meta } from 'src/app/interfaces/meta';
 import { Order } from 'src/app/interfaces/order';
 import { DeliveredComponent } from '../../components/delivered/delivered.component';
 import { NotDeliveredComponent } from '../../components/not-delivered/not-delivered.component';
+import {PartDeliveredComponent} from '../../components/part-delivered/part-delivered.component';
 import { Reason } from '../../interfaces/reason';
 import { Statuses } from '../../interfaces/statuses';
 import { AuthService } from '../../services/auth.service';
@@ -149,7 +150,7 @@ export class OrderPage implements OnInit {
 
     const img = localStorage.getItem('drawImg');
     if (img) {
-      this.imageToShow = 'data:image/jpg;base64,' + img;
+      this.imageToShow = `data:image/jpg;base64,${img}`;
     }
   }
 
@@ -163,7 +164,7 @@ export class OrderPage implements OnInit {
   ngAfterViewChecked() {
     const img = localStorage.getItem('drawImg');
     if (img) {
-      this.imageToShow = 'data:image/jpg;base64,' + img;
+      this.imageToShow = `data:image/jpg;base64,${img}`;
     }
   }
 
@@ -209,13 +210,13 @@ export class OrderPage implements OnInit {
 
   private normalizePhoneNumber(phone: string): string {
     if (phone[0] !== '8' && phone[0] !== '7' && phone.length !== 11) {
-      phone = '8' + phone;
+      phone = `8${phone}`;
     }
     if (phone.length == 7 || phone.length == 10) {
-      phone = '8' + phone;
+      phone = `8${phone}`;
     }
     if (phone[0] !== '8' && phone.length == 11) {
-      phone = '8' + phone.slice(1);
+      phone = `8${phone.slice(1)}`;
     }
     return phone;
   }
@@ -549,7 +550,7 @@ export class OrderPage implements OnInit {
     const goods = this.order.goods;
     const quants = this.g_quants;
     const callback_url =
-      this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/pay_callback.php';
+      `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/pay_callback.php`;
     const products = [];
 
     for (const code in quants) {
@@ -728,8 +729,8 @@ export class OrderPage implements OnInit {
       if (this.selectedPayment == '2') {
         this.sendPayCall();
         this.sys.checkPhoto().then((imageData) => {
-          this.checkBase64Image = 'data:image/jpeg;base64,' + imageData;
-          const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/orders';
+          this.checkBase64Image = `data:image/jpeg;base64,${imageData}`;
+          const url = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/orders`;
           const data = {
             action: 'save_check_data',
             order_id: this.orderId,
@@ -771,7 +772,7 @@ export class OrderPage implements OnInit {
 
   public scanReturned() {
     this.bs.scan().then((data) => {
-      const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/orders';
+      const url = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/orders`;
       const data1 = {
         orderId: this.orderId,
         box_barcode: data.text,
@@ -830,6 +831,32 @@ export class OrderPage implements OnInit {
 
   }
 
+  public async presentPartDeliveredModal() {
+    const modal = await this.modalController.create({
+      component: PartDeliveredComponent,
+      cssClass: 'done-order-modal',
+      componentProps: {
+        goods: this.goods,
+        pay_type: this.order.pay_type,
+        pay_type_change_allowed: this.order.pay_type_change_allowed
+      },
+      showBackdrop: true
+    });
+    await modal.present();
+    const details = await modal.onDidDismiss();
+    console.log('sys:: dismiss details: ', details);
+    this.drawNeedle = details.data.drawNeedle;
+    this.selectedPayment = details.data.selectedPayment;
+    this.email_input = details.data.email_input;
+    this.phone_input = details.data.phone_input;
+    this.commentText = details.data.commentText;
+    this.cardNums = details.data.cardNums;
+
+    if (details.data) {
+      this.doneOrder();
+    }
+  }
+
   //Изменение товаров на основе мифических quants
   //Возвращает goods
   public changeGoods(order: Order, quants: any) {
@@ -838,4 +865,6 @@ export class OrderPage implements OnInit {
     });
     return order.goods;
   }
+
+
 }

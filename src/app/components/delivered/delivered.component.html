@@ -51,20 +51,11 @@
     </ion-item>
     <ion-item>
       <ion-label>
-        <h1>Товары в заказе</h1>
-        <table>
-          <thead>
-            <th>Название</th>
-            <th>Кол-во</th>
-            <th>Цена</th>
-          </thead>
-          <tr *ngFor="let good of goods">
-            <td>{{good.Name}}</td>
-            <td>{{good.kol_vo}}</td>
-            <td>{{good.Price}} р.</td>
-          </tr>
-        </table>
+        <app-goods-table [goods]="goods"></app-goods-table>
       </ion-label>
+    </ion-item>
+    <ion-item>
+
     </ion-item>
   </ion-list>
   <ion-button [disabled]="!cardNums && selectedPayment == '2'" expand="full" fill="solid" shape="round"

@@ -74,6 +74,9 @@
       "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
       "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
       "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-update-notifier": {
+      "PACKAGE_NAME": "flexcore.postsrvs.wUITests"
     }
   },
   "dependent_plugins": {

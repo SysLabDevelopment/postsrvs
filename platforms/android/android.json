@@ -131,6 +131,10 @@
             {
               "xml": "<feature name=\"FirebasePlugin\"><param name=\"android-package\" value=\"org.apache.cordova.firebase.FirebasePlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"UpdateNotifier\"><param name=\"android-package\" value=\"com.ayogo.cordova.updatenotifier.UpdateNotifierPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -388,6 +392,20 @@
             }
           ]
         }
+      },
+      "res/values/strings.xml": {
+        "parents": {
+          "/resources": [
+            {
+              "xml": "<string name=\"app_update_ready\">An update has just been downloaded.</string>",
+              "count": 1
+            },
+            {
+              "xml": "<string name=\"app_update_install\">RESTART</string>",
+              "count": 1
+            }
+          ]
+        }
       }
     }
   },
@@ -479,6 +497,9 @@
       "ANDROID_FIREBASE_CRASHLYTICS_VERSION": "17.0.1",
       "ANDROID_FIREBASE_CRASHLYTICS_NDK_VERSION": "17.0.1",
       "ANDROID_GSON_VERSION": "2.8.6",
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-update-notifier": {
       "PACKAGE_NAME": "postsrvs.i"
     }
   },
@@ -945,6 +966,7 @@
     "cordova-androidx-build": "1.0.4",
     "cordova-plugin-googlemaps": "2.8.0-20200709-2008",
     "cordova-plugin-androidx": "2.0.0",
-    "cordova-plugin-firebasex": "10.2.0-cli"
+    "cordova-plugin-firebasex": "10.2.0-cli",
+    "cordova-plugin-update-notifier": "1.0.1"
   }
 }

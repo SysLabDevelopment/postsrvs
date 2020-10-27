@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { IntroJsModule } from '@esfaenza/ngx-introjs';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
@@ -31,21 +32,32 @@ import { AppComponent } from './app.component';
 import { CashoutFailOComponent } from './components/balance/cashout-fail-o/cashout-fail-o.component';
 import { CashoutWComponent } from './components/balance/cashout-w/cashout-w.component';
 import { DeliveredComponent } from './components/delivered/delivered.component';
+import { GoodsTableComponent } from './components/goods-table/goods-table.component';
 import { HelpComponent } from './components/help/help.component';
 import { NotDeliveredComponent } from './components/not-delivered/not-delivered.component';
 import { NoteComponent } from './components/note/note.component';
+import { PartDeliveredComponent } from './components/part-delivered/part-delivered.component';
 import { LongPressDirective } from './directives/long-press.directive';
 import { IconsModule } from './icons/icons.module';
 import { ErrorIntercept } from './interceptors/error.interceptor';
 import { HttpErrorInterceptor } from './interceptors/http.interceptor';
-import {IntroJsModule} from '@esfaenza/ngx-introjs';
-
 registerLocaleData(localeRu, 'ru');
 @NgModule({
-  declarations: [AppComponent, CashoutFailOComponent, CashoutWComponent, HelpComponent, NoteComponent, LongPressDirective, NotDeliveredComponent, DeliveredComponent],
+  declarations: [
+    GoodsTableComponent,
+    CashoutFailOComponent,
+    AppComponent,
+    CashoutWComponent,
+    HelpComponent,
+    NoteComponent,
+    LongPressDirective,
+    NotDeliveredComponent,
+    DeliveredComponent,
+    PartDeliveredComponent
+  ],
   entryComponents: [],
   imports: [
-      IntroJsModule,
+    IntroJsModule,
     FormsModule,
     IconsModule,
     BrowserModule,
@@ -74,7 +86,6 @@ registerLocaleData(localeRu, 'ru');
     Diagnostic,
     Camera,
     CallNumber,
-    // GoogleMaps,
     Network,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
