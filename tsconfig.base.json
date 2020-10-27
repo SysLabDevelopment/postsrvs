@@ -23,6 +23,8 @@
     "disableTypeScriptVersionCheck": true,
     "annotationsAs": true,
     "strictInputTypes": true,
-    "strictInputAccessModifiers":true
+    "strictInputAccessModifiers": true,
+    "strictMetadataEmit": true,
+    "strictTemplates": true,
   }
 }

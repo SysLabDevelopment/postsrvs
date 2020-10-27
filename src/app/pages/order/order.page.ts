@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
@@ -21,7 +22,7 @@ import { Meta } from 'src/app/interfaces/meta';
 import { Order } from 'src/app/interfaces/order';
 import { DeliveredComponent } from '../../components/delivered/delivered.component';
 import { NotDeliveredComponent } from '../../components/not-delivered/not-delivered.component';
-import {PartDeliveredComponent} from '../../components/part-delivered/part-delivered.component';
+import { PartDeliveredComponent } from '../../components/part-delivered/part-delivered.component';
 import { Reason } from '../../interfaces/reason';
 import { Statuses } from '../../interfaces/statuses';
 import { AuthService } from '../../services/auth.service';
@@ -33,7 +34,6 @@ import { MapService } from '../../services/sys/map.service';
 import { OrderService } from '../../services/sys/order.service';
 import { DrawPage } from '../draw/draw.page';
 import { DataService } from './../../services/sys/data.service';
-import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
 @Component({
   selector: 'app-order',
@@ -144,7 +144,7 @@ export class OrderPage implements OnInit {
     private bs: BarcodeScanner,
     private device: Device,
     public modalController: ModalController,
-    private firebase:FirebaseX
+    private firebase: FirebaseX
   ) {
     this.orderId = this.route.snapshot.paramMap.get('id');
 
@@ -158,7 +158,7 @@ export class OrderPage implements OnInit {
     this.initOrder();
     this.courier.initStatuses();
     this.note = localStorage.getItem(this.orderId);
-  this.firebase.setScreenName('order');
+    this.firebase.setScreenName('order');
   }
 
   ngAfterViewChecked() {
@@ -279,7 +279,6 @@ export class OrderPage implements OnInit {
       this.coords = [this.order.lt, this.order.lg];
       this.setQuants();
       this.ifPaid();
-      this.getBalnce();
       this.getPayData();
       this.initClientInfo();
     });
@@ -350,8 +349,6 @@ export class OrderPage implements OnInit {
   public getStatus(): string {
     return this.courier.getStatus(this.order);
   }
-
-  public getBalnce() { }
 
   public changeStatus() {
     if (!this.changeWindow) {

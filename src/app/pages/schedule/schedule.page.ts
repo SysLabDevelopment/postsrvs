@@ -1,8 +1,8 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { AlertController } from '@ionic/angular';
 import { SysService } from 'src/app/services/sys.service';
-import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.page.html',
@@ -71,7 +71,7 @@ export class SchedulePage implements OnInit {
     await alert.present();
   }
 
-  public delWorkDate(index: string, date: string) {
+  public delWorkDate(index: number, date: string) {
     this.presentAlertConfirmDel(date, this.delDate, index)
 
   }
@@ -140,7 +140,7 @@ export class SchedulePage implements OnInit {
   delDate(index: number) {
     this.workDates.splice(index, 1);
   }
-  async presentAlertConfirmDel(date: string, confirmHandler: any, index = '') {
+  async presentAlertConfirmDel(date: string, confirmHandler: any, index: number) {
     const alert = await this.alertController.create({
       cssClass: 'alertDel',
       header: `Удалить рабочий день ${date}?`,
@@ -156,7 +156,7 @@ export class SchedulePage implements OnInit {
         }, {
           text: 'Подтвердить',
           handler: () => {
-            this.delDate(Number(index));
+            this.delDate(index);
           }
         }
       ]

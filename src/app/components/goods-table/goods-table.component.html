@@ -1,25 +1,25 @@
 <h1>Товары в заказе</h1>
-        <table>
-          <thead>
-          <tr>
-            <th>Название</th>
-            <th>Кол-во</th>
-            <th>Цена</th>
-          </tr>
-          </thead>
-          <tr *ngFor="let good of goods">
-            <td>{{good.Name}}</td>
-            <td>
-              <span>
-              <ion-button>
-                  <ion-icon name="minus" slot="icon-only"></ion-icon>
-              </ion-button>
-              <ion-text>{{good.kol_vo}}</ion-text>
-              <ion-button>
-                <ion-icon name="plus" slot="icon-only"></ion-icon>
-              </ion-button>
-                </span>
-            </td>
-            <td>{{good.Price}} р.</td>
-          </tr>
-        </table>
+<table>
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Кол-во</th>
+      <th>Цена</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let good of goods">
+    <td>{{good.Name}}</td>
+    <td>
+      <span>
+        <ion-button (click)="minus()">
+          <ion-icon name="minus" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-text>{{good.kol_vo}}</ion-text>
+        <ion-button (click)="plus()">
+          <ion-icon name="plus" slot="icon-only"></ion-icon>
+        </ion-button>
+      </span>
+    </td>
+    <td>{{good.Price}} р.</td>
+  </tr>
+</table>

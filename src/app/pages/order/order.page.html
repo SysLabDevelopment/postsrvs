@@ -151,7 +151,7 @@
       Не доставлено
     </ion-button>
     <ion-button expand="full" fill="solid" shape="round" id='light-blue-button' class='action'
-      (click)="selectStatus(6)">
+      (click)="selectStatus(6); presentPartDeliveredModal()">
       <ion-icon slot="start" src='../../../assets/pie-chart.svg'></ion-icon>
       Частично доставлено
     </ion-button>
@@ -220,10 +220,12 @@
     <div class="sc-payment">
       <div class="sc-payment__title">Оплата</div>
       <div class="dc-payment__wrp">
-        <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == 1}" (click)="selectPayment('1')">
+        <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == '1'}"
+          (click)="selectPayment('1')">
           Наличными
         </div>
-        <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == 2}" (click)="selectPayment('2')">
+        <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == '2'}"
+          (click)="selectPayment('2')">
           Картой
         </div>
       </div>
@@ -242,8 +244,7 @@
     </div>
 
     <div class="sc-s-wrp">
-      <button class="sc-submit" (click)="doneOrder()"
-        [ngClass]="{'c_t_del' : selectedStatus == 6}">
+      <button class="sc-submit" (click)="doneOrder()" [ngClass]="{'c_t_del' : selectedStatus == 6}">
         <span class="l_btn_del">Доставлено</span>
       </button>
     </div>
