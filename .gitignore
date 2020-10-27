@@ -28,3 +28,11 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 platforms/
 www/
+platforms/ios/ios.json
+platforms/ios/Pods/Pods.xcodeproj/xcuserdata/timkovik.xcuserdatad/xcschemes/Pods-Postsrvs.xcscheme
+platforms/ios/Pods/Pods.xcodeproj/xcuserdata/timkovik.xcuserdatad/xcschemes/PromisesObjC.xcscheme
+platforms/ios/Pods/Pods.xcodeproj/xcuserdata/timkovik.xcuserdatad/xcschemes/xcschememanagement.plist
+platforms/ios/Postsrvs/config.xml
+platforms/ios/Postsrvs/Postsrvs-Info.plist
+platforms/ios/Postsrvs.xcodeproj/project.pbxproj
+platforms/ios/www/index.html

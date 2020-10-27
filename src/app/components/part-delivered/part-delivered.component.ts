@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ModalController} from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-part-delivered',
@@ -13,11 +13,11 @@ export class PartDeliveredComponent implements OnInit {
   private phone_input: any;
   private commentText: any;
   private cardNums: any;
-  @Input() goods:any[];
+  @Input() goods: any[];
   constructor(public modalController: ModalController,
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   dismiss(role = '') {
     const details = (role == 'cancel' ? undefined : {
@@ -29,5 +29,9 @@ export class PartDeliveredComponent implements OnInit {
       cardNums: this.cardNums
     });
     this.modalController.dismiss(details);
+  }
+
+  public setGoods(event) {
+
   }
 }

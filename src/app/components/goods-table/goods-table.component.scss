@@ -39,31 +39,28 @@ tr {
   td {
     color: #333333;
 
-    &:nth-child(2){
-      span{
-      display: flex;
-      justify-content: space-around;
-      border: 0;
-      ion-button{
-        margin: 0;
-        width: 22px;
-        height: 22px;
-        vertical-align: bottom;
-      }
-      ion-text{
-        vertical-align: bottom;
-        font-size: 18px;
-        margin: 0 5px;
-      }
-
-
+    &:nth-child(2) {
+      span {
+        display: flex;
+        justify-content: space-around;
+        border: 0;
+        ion-button {
+          margin: 0;
+          width: 22px;
+          height: 22px;
+          vertical-align: bottom;
+          --background: #4ba7c5;
+        }
+        ion-text {
+          vertical-align: bottom;
+          font-size: 18px;
+          margin: 0 5px;
+        }
       }
     }
-
   }
 }
 
-h1{
+h1 {
   text-align: left;
 }
-

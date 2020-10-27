@@ -67,6 +67,7 @@
 		8F259094384B4104A843CC92 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E72FCE3F5D4878903B03CA /* CDVStatusBar.m */; };
 		93BB17C2C9584BBBA95EF3DD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54EF6F8B711C4E24A53A8D24 /* CoreLocation.framework */; };
 		94FB57B6038646A4B1FF4BD0 /* pgm_Localizable_fr.json in Resources */ = {isa = PBXBuildFile; fileRef = 527936E1F3514B25AD3AAF70 /* pgm_Localizable_fr.json */; };
+		95DE2B01DFF0418AA3A55E30 /* UpdateNotifierPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6646D180FC497AB60C0F4C /* UpdateNotifierPlugin.swift */; };
 		96BC9A6AC3334424B8205566 /* pgm_Localizable_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = D56ECD3DB5FD40DF98976CE4 /* pgm_Localizable_ru.json */; };
 		96BEADBABEFC463EA0489451 /* PluginLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B954BAD4A64857BB8B3C8E /* PluginLocationService.m */; };
 		96CED28CEC6148538140C5A8 /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E060ADE1AB4859BF88EAED /* CDVWKWebViewUIDelegate.m */; };
@@ -116,7 +117,6 @@
 		F85A6C30BC9C48E782797A7F /* PluginMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17F4644EEB4B6589B1D50E /* PluginMap.m */; };
 		FC18649B40CB481892D37D17 /* PluginTileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF39550F104461AB8B06DA7 /* PluginTileProvider.m */; };
 		FE972DF8E17246C2956D9A3A /* CDVWKProcessPoolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F26AD50F019247FEBDF384C4 /* CDVWKProcessPoolFactory.m */; };
-		95DE2B01DFF0418AA3A55E30 /* UpdateNotifierPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6646D180FC497AB60C0F4C /* UpdateNotifierPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +221,7 @@
 		5B9CA513687B47B4AE492979 /* PluginDirectionsService.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = PluginDirectionsService.h; path = "cordova-plugin-googlemaps/PluginDirectionsService.h"; sourceTree = "<group>"; };
 		5CCB4332E2B24CFCBD96159A /* CDVJpegHeaderWriter.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVJpegHeaderWriter.h; path = "cordova-plugin-camera/CDVJpegHeaderWriter.h"; sourceTree = "<group>"; };
 		5CCC4079B97C44EF9ED13913 /* PluginTileOverlay.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = PluginTileOverlay.m; path = "cordova-plugin-googlemaps/PluginTileOverlay.m"; sourceTree = "<group>"; };
+		5E6646D180FC497AB60C0F4C /* UpdateNotifierPlugin.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = UpdateNotifierPlugin.swift; path = "cordova-plugin-update-notifier/UpdateNotifierPlugin.swift"; sourceTree = "<group>"; };
 		5ECED86E0B394EE58E8743F7 /* CDVWKProcessPoolFactory.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKProcessPoolFactory.h; path = "cordova-plugin-ionic-webview/CDVWKProcessPoolFactory.h"; sourceTree = "<group>"; };
 		5F0373CF603B4814BC5975C8 /* CoreText.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		6158D39F145D4155BBC6B34C /* CDVIonicKeyboard.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVIonicKeyboard.h; path = "cordova-plugin-ionic-keyboard/CDVIonicKeyboard.h"; sourceTree = "<group>"; };
@@ -344,7 +345,6 @@
 		F955D506F14E4B1BAA10771F /* FirebasePluginMessageReceiverManager.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = FirebasePluginMessageReceiverManager.m; path = "cordova-plugin-firebasex/FirebasePluginMessageReceiverManager.m"; sourceTree = "<group>"; };
 		FA7CA3301FD94D4F93956635 /* PluginMarker.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = PluginMarker.m; path = "cordova-plugin-googlemaps/PluginMarker.m"; sourceTree = "<group>"; };
 		FF0911198437465FAE9B71D5 /* CordovaGoogleMaps.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CordovaGoogleMaps.h; path = "cordova-plugin-googlemaps/CordovaGoogleMaps.h"; sourceTree = "<group>"; };
-		5E6646D180FC497AB60C0F4C /* UpdateNotifierPlugin.swift */ = {isa = PBXFileReference; name = "UpdateNotifierPlugin.swift"; path = "cordova-plugin-update-notifier/UpdateNotifierPlugin.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1162,14 +1162,14 @@
 				INFOPLIST_FILE = "Postsrvs/Postsrvs-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = postsrvs.i;
+				PRODUCT_BUNDLE_IDENTIFIER = flexcore.postsrvs.w;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1198,14 +1198,14 @@
 				INFOPLIST_FILE = "Postsrvs/Postsrvs-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = postsrvs.i;
+				PRODUCT_BUNDLE_IDENTIFIER = flexcore.postsrvs.w;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1243,8 +1243,8 @@
 				INFOPLIST_FILE = w/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1286,8 +1286,8 @@
 				INFOPLIST_FILE = w/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1333,8 +1333,8 @@
 				INFOPLIST_FILE = wTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1375,8 +1375,8 @@
 				INFOPLIST_FILE = wTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1422,8 +1422,8 @@
 				INFOPLIST_FILE = wUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1463,8 +1463,8 @@
 				INFOPLIST_FILE = wUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1517,14 +1517,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				WK_WEB_VIEW_ONLY = 1;
 				SWIFT_VERSION = 5.0;
+				WK_WEB_VIEW_ONLY = 1;
 			};
 			name = Debug;
 		};
@@ -1565,14 +1565,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
 					"$(inherited)",
+					"@executable_path/Frameworks",
 				);
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=*]" = flexcore.postsrvs.w;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
-				WK_WEB_VIEW_ONLY = 1;
 				SWIFT_VERSION = 5.0;
+				WK_WEB_VIEW_ONLY = 1;
 			};
 			name = Release;
 		};
