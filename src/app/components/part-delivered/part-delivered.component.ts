@@ -31,7 +31,7 @@ export class PartDeliveredComponent implements OnInit {
     this.modalController.dismiss(details);
   }
 
-  public setGoods(event) {
+  public setGoods(goods: any[]) {
 
   }
 }

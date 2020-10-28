@@ -26,5 +26,6 @@
     "strictInputAccessModifiers": true,
     "strictMetadataEmit": true,
     "strictTemplates": true,
+    "strictNullInputTypes": true,
   }
 }

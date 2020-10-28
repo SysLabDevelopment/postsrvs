@@ -1,11 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-@Component({
-    selector: 'app-goods-table',
-    templateUrl: './goods-table.component.html',
-    styleUrls: ['./goods-table.component.scss'],
-})
-
 interface Good {
     ClientBarCode: string,
     Code: number,
@@ -15,6 +9,13 @@ interface Good {
     ReturnCnt: unknown,
     kol_vo: number
 }
+@Component({
+    selector: 'app-goods-table',
+    templateUrl: './goods-table.component.html',
+    styleUrls: ['./goods-table.component.scss'],
+})
+
+
 export class GoodsTableComponent {
     @Input() goods: Good[];
     @Input() isChangeble: boolean = false;
