@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="postsrvs.i"
     android:hardwareAccelerated="true"
-    android:versionCode="152"
-    android:versionName="1.28.39" >
+    android:versionCode="154"
+    android:versionName="1.28.41" >
 
     <uses-sdk
         android:minSdkVersion="23"

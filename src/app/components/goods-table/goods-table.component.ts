@@ -21,18 +21,16 @@ export class GoodsTableComponent {
     @Input() isChangeble: boolean = false;
     @Output() goodsChanges = new EventEmitter();
 
-    public minusGood(code: number) {
-        const index = this.goods.findIndex(good => good.Code == code);
+    public minusGood(code: number, count = 1) {
+        const index = this.goods.findIndex((good) => good.Code == code);
         if (this.goods[index].kol_vo == 0) return false;
 
-        --this.goods[index].kol_vo;
+        this.goods[index].kol_vo -= this.goods[index].kol_vo * count;
         this.goodsChanges.emit(this.goods)
     }
 
     public plusGood(code: number) {
-        const index = this.goods.findIndex(good => good.Code == code);
-        const max = this.goods[index].kol_vo;
-        if (this.goods[index].kol_vo == max) return false;
+        const index = this.goods.findIndex((good) => good.Code == code);
 
         ++this.goods[index].kol_vo;
         this.goodsChanges.emit(this.goods)

@@ -47,6 +47,16 @@
     "implicit-arrow-linebreak": [
       "error",
       "beside"
+    ],
+    "no-useless-constructor": "error",
+    "no-dupe-class-members": "error",
+    "class-methods-use-this": [
+      "error",
+      {
+        "exceptMethods": [
+          "foo"
+        ]
+      }
     ]
   },
   "root": true

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "341711898125-tkn38012v7neiojp9s12vqbd2c84mh7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "postsrvs.i",
+            "certificate_hash": "428dcccbffad6070f672e3e1a2296a5c7b7a8058"
+          }
+        },
+        {
           "client_id": "341711898125-69onib0tvr2ramum82asd83ojdj7qtpq.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,59 @@
             {
               "client_id": "341711898125-69onib0tvr2ramum82asd83ojdj7qtpq.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "341711898125-8hh6v4t9je0vlbqbe3vmrtg5avritlim.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "flexcore.postsrvs.w",
+                "app_store_id": "1491156686"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341711898125:android:eb64d69e4b9292d3a5b744",
+        "android_client_info": {
+          "package_name": "postsrvs.w"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341711898125-pgs041pvhlt0bkkkjlflhramtjtj8fts.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "postsrvs.w",
+            "certificate_hash": "e8149557cb41a1eeb087197a0621eee182742a7b"
+          }
+        },
+        {
+          "client_id": "341711898125-69onib0tvr2ramum82asd83ojdj7qtpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqSMx1lDupPb3VieMUmPITIwtykJr0UY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341711898125-69onib0tvr2ramum82asd83ojdj7qtpq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "341711898125-8hh6v4t9je0vlbqbe3vmrtg5avritlim.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "flexcore.postsrvs.w",
+                "app_store_id": "1491156686"
+              }
             }
           ]
         }

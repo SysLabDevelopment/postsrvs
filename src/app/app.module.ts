@@ -31,6 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CashoutFailOComponent } from './components/balance/cashout-fail-o/cashout-fail-o.component';
 import { CashoutWComponent } from './components/balance/cashout-w/cashout-w.component';
+import { ClientReceiptComponent } from './components/client-receipt/client-receipt.component';
 import { DeliveredComponent } from './components/delivered/delivered.component';
 import { GoodsTableComponent } from './components/goods-table/goods-table.component';
 import { HelpComponent } from './components/help/help.component';
@@ -44,6 +45,7 @@ import { HttpErrorInterceptor } from './interceptors/http.interceptor';
 registerLocaleData(localeRu, 'ru');
 @NgModule({
   declarations: [
+    ClientReceiptComponent,
     GoodsTableComponent,
     CashoutFailOComponent,
     AppComponent,

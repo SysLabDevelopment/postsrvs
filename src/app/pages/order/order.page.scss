@@ -124,10 +124,9 @@ ion-content {
   .main-info > div:nth-child(even) {
     text-align: right;
   }
-  #call {
+  .call {
     --background: #2b637e;
-    margin-bottom: 0;
-    margin-top: 15px;
+    margin: 15px 0 0 0;
     text-transform: none;
     font-weight: bold;
     height: 42px;

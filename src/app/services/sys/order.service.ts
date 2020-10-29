@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Storage } from "@ionic/storage";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Device } from '@ionic-native/device/ngx';
+import { Storage } from '@ionic/storage';
 import { Order } from '../../interfaces/order';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../courier.service';
@@ -17,6 +20,10 @@ export class OrderService {
     private storage: Storage,
     private sys: SysService,
     private courier: CourierService,
+    private bs: BarcodeScanner,
+    private device: Device,
+    private http: HttpClient,
+
   ) { }
 
   public sendDelayedCall(order: Order, status: number) {
@@ -24,7 +31,7 @@ export class OrderService {
     const self = this;
     this.submitChange(order, status);
     this.getPayData(order.client_id).subscribe((res: any) => {
-      if (res.success == "true") {
+      if (res.success == 'true') {
         self.pay_access_data = res;
         if (status == 5 || status == 6) {
           this.sendPay(order);
@@ -38,15 +45,15 @@ export class OrderService {
 
   private sendPay(order: Order) {
     this.notPayData = false;
-    const callback_url = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/pay_callback.php";
+    const callback_url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/pay_callback.php';
     const products = [];
     for (const code in order.quants) {
-      if (order.quants[code]["amount"] > 0) {
+      if (order.quants[code]['amount'] > 0) {
         for (let i = 0; i < order.goods.length; i++) {
-          if (order.goods[i]["Code"] == code) {
-            const good_name = order.goods[i]["Name"];
-            const good_amount = order.quants[code]["amount"];
-            const good_price = Math.round(order.quants[code]["price"] * 100) / 100;
+          if (order.goods[i]['Code'] == code) {
+            const good_name = order.goods[i]['Name'];
+            const good_amount = order.quants[code]['amount'];
+            const good_price = Math.round(order.quants[code]['price'] * 100) / 100;
             const pos = {
               name: good_name,
               price: good_price,
@@ -59,7 +66,7 @@ export class OrderService {
     }
 
     const purchase = { products };
-    console.log("goods_description\n", purchase);
+    console.log('goods_description\n', purchase);
     const self = this;
     const order_data = {
       apikey: String(this.pay_access_data.api_key),
@@ -69,20 +76,20 @@ export class OrderService {
         String(this.pay_access_data.phone),
       purchase,
       callback_url,
-      mode: "email",
+      mode: 'email',
       customer_email: order.email_input,
       customer_phone: order.phone_input,
       card_amount: '',
       cash_amount: ''
     };
-    if (order.selectedPayment == "2") {
-      order_data["card_amount"] = "#";
+    if (order.selectedPayment == '2') {
+      order_data['card_amount'] = '#';
     } else {
-      order_data["cash_amount"] = "#";
+      order_data['cash_amount'] = '#';
     }
 
-    if (order.phone_input != "") {
-      order_data["customer_phone"] = order.phone_input;
+    if (order.phone_input != '') {
+      order_data['customer_phone'] = order.phone_input;
     }
 
     this.send_api_data(order_data, order);
@@ -106,7 +113,7 @@ export class OrderService {
               new_plan_date.toLocaleDateString()
             )
             .subscribe((data: any) => {
-              localStorage.removeItem("drawImg");
+              localStorage.removeItem('drawImg');
             });
         }
         break;
@@ -120,7 +127,7 @@ export class OrderService {
             .changeStatus(
               String(status),
               String(order.id),
-              order.commentText ?? "",
+              order.commentText ?? '',
               undefined,
               undefined,
               order.selectedPayment,
@@ -130,7 +137,7 @@ export class OrderService {
               order.cardNums
             )
             .subscribe((data: any) => {
-              localStorage.removeItem("drawImg");
+              localStorage.removeItem('drawImg');
             });
         })
         break;
@@ -153,21 +160,21 @@ export class OrderService {
               order.cardNums
             )
             .subscribe((data: any | null) => {
-              localStorage.removeItem("drawImg");
+              localStorage.removeItem('drawImg');
             });
         })
         break;
     }
   }
   public getPayData(client_id: number) {
-    const url = "pay_order";
-    const data = { action: "getData", orderId: client_id };
+    const url = 'pay_order';
+    const data = { action: 'getData', orderId: client_id };
     return this.auth.sendPost(url, data)
   }
 
 
   public send_api_data(api_data: any, order: Order) {
-    const url = "pay_order";
+    const url = 'pay_order';
     const self = this;
     order.rur = 0;
 
@@ -176,7 +183,7 @@ export class OrderService {
     });
 
     const data = {
-      action: "sendPay",
+      action: 'sendPay',
       orderData: api_data,
       orderId: order.id,
     };
@@ -246,5 +253,22 @@ export class OrderService {
   //   }
   //   return phone;
   // }
+
+  //Скан штрих-кода товара на возврат
+  public async scanReturned(orderId: string) {
+    const url = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/orders`;
+    const data = await this.bs.scan().then((scanData) => (
+      {
+        orderId,
+        box_barcode: scanData.text,
+        action: 'get_box',
+        uuid: this.device.uuid
+      }
+    )
+    );
+
+    const goodCode = await this.http.post(url, data).toPromise().then((res: string[]) => res[0]);
+    return goodCode;
+  }
 
 }

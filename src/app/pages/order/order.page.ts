@@ -8,9 +8,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-import { Device } from '@ionic-native/device/ngx';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { ModalController } from '@ionic/angular';
@@ -141,8 +139,6 @@ export class OrderPage implements OnInit {
     private cache: CacheService,
     private network: Network,
     private orderService: OrderService,
-    private bs: BarcodeScanner,
-    private device: Device,
     public modalController: ModalController,
     private firebase: FirebaseX
   ) {
@@ -767,21 +763,7 @@ export class OrderPage implements OnInit {
     });
   }
 
-  public scanReturned() {
-    this.bs.scan().then((data) => {
-      const url = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/orders`;
-      const data1 = {
-        orderId: this.orderId,
-        box_barcode: data.text,
-        action: 'get_box',
-        uuid: this.device.uuid
-      };
-      this.http.post(url, data1).subscribe((res: string[]) => {
-        console.log(`sys:: ответ скана возврата: ${res}`);
-        this.changeQuant(res[0], 'delete');
-      });
-    });
-  }
+
 
   async presentNotDeliveredModal() {
     const modal = await this.modalController.create({
@@ -828,14 +810,15 @@ export class OrderPage implements OnInit {
 
   }
 
-  public async presentPartDeliveredModal() {
+  public async presentPartDeliveredModal(orderId = this.order.id) {
     const modal = await this.modalController.create({
       component: PartDeliveredComponent,
       cssClass: 'done-order-modal',
       componentProps: {
         goods: this.goods,
         pay_type: this.order.pay_type,
-        pay_type_change_allowed: this.order.pay_type_change_allowed
+        pay_type_change_allowed: this.order.pay_type_change_allowed,
+        orderId
       },
       showBackdrop: true
     });

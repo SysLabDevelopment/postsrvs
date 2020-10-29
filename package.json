@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.28.40",
-	"versionCode": "153",
+	"version": "1.28.41",
+	"versionCode": "154",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -10,10 +10,12 @@
 		"build": "ng build --plugin ngx-build-modern --prod",
 		"test": "jest",
 		"lint": "ng lint",
+		"lint1": "eslint --ext .js,.jsx src/",
 		"e2e": "ng e2e",
 		"postinstall": "ngcc",
 		"build:modern": "ng build --plugin ngx-build-modern --prod",
-		"build:modern:app": "ng build --plugin ngx-build-modern --project app --prod"
+		"build:modern:app": "ng build --plugin ngx-build-modern --project app --prod",
+		"prod": "BABEL_ENV=production webpack --env=prod --progress"
 	},
 	"private": true,
 	"dependencies": {
@@ -148,7 +150,8 @@
 		"prettier": "^2.0.5",
 		"protractor": "~7.0.0",
 		"ts-node": "~8.6.2",
-		"typescript": "^4.0.3"
+		"typescript": "^4.0.3",
+		"webpack-cli": "^4.1.0"
 	},
 	"description": "Логистическая платформа",
 	"cordova": {

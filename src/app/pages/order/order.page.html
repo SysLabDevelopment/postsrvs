@@ -74,7 +74,7 @@
             <div class='primary-color bold'>{{order.amount}} шт. / {{order.mass}} кг</div>
           </div>
         </div>
-        <ion-button id='call' expand='full' fill='solid' (click)="phoneClick('init')">
+        <ion-button class='call' expand='full' fill='solid' (click)="phoneClick('init')">
           Позвонить клиенту
         </ion-button>
       </ion-label>
@@ -162,43 +162,6 @@
     </ion-button>
   </div>
   <!-- Легаси! -->
-  <div class="sc-row o-row" *ngIf="selectedStatus == 6 ||order.status_id == 6">
-    <div class="sc-goods-block">
-      <div class="goods-row o-row">
-        <div class="gr-title o-t">Товары в заказе</div>
-        <div class="gr-goods-list">
-          <div class="gr-head">
-            <div class="gr-col">Название</div>
-            <div class="gr-col">Кол-во</div>
-            <div class="gr-col">Цена</div>
-          </div>
-          <div *ngFor="let good of goods">
-            <div class="gr-item" [ngClass]="{
-                            'st_fail': (g_quants[good.Code]['amount'] == 0),
-                            'st_done': (order.status_id == 6 && g_quants[good.Code]['amount'] > 0 )
-                          }">
-              <div class="gr-col">{{good.Name}}</div>
-              <div class="gr-col gr-quant">
-                <div (click)="changeQuant(good.Code,'minus')" *ngIf="order.status_id == 1">
-                  <i-feather name="minus-circle"></i-feather>
-                </div>
-                {{g_quants[good.Code]['amount']}}
-                <div (click)="changeQuant(good.Code,'plus')" *ngIf="order.status_id == 1">
-                  <i-feather name="plus-circle"></i-feather>
-                </div>
-              </div>
-              <div class="gr-col gr-price">{{good.Price}}р.</div>
-            </div>
-          </div>
-          <div><b>Итого: </b>{{order.rur}}р.</div>
-        </div>
-      </div>
-    </div>
-    <ion-button (click)="scanReturned()" expand="block" fill="solid" shape="round"
-      *ngIf="selectedStatus == 6 ||order.status_id == 6">
-      Сканировать возврат
-    </ion-button>
-  </div>
 
   <div *ngIf="selectedStatus == 6">
     <!-- Блок подписи -->

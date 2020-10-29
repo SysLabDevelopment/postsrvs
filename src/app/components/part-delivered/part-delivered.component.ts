@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-
+import { OrderService } from 'src/app/services/sys/order.service';
+import { GoodsTableComponent } from '../goods-table/goods-table.component';
 @Component({
   selector: 'app-part-delivered',
   templateUrl: './part-delivered.component.html',
@@ -14,7 +15,11 @@ export class PartDeliveredComponent implements OnInit {
   private commentText: any;
   private cardNums: any;
   @Input() goods: any[];
-  constructor(public modalController: ModalController,
+  @Input() orderId: string;
+  @ViewChild('goodsTable') goodsTable: GoodsTableComponent;
+  constructor(
+    public modalController: ModalController,
+    private order: OrderService
   ) { }
 
   ngOnInit() { }
@@ -33,5 +38,9 @@ export class PartDeliveredComponent implements OnInit {
 
   public setGoods(goods: any[]) {
 
+  }
+
+  public scanReturned() {
+    this.order.scanReturned(this.orderId).then((goodCode) => this.goodsTable.minusGood(+goodCode));
   }
 }

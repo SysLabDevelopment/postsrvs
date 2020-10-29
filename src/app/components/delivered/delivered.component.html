@@ -1,17 +1,8 @@
-<div class="ion-padding" >
+<div class="ion-padding">
   <h1>Доставлено <a (click)="dismiss('cancel')">Закрыть</a></h1>
   <ion-list>
-    <ion-item class='block' [intro]="IntroItems" [Order]="1">
-      <ion-label class='title' >
-        Требуется подпись клиента
-        <p class='link'>
-          <a (click)="draw()" [intro]="IntroItems" [Order]="2">
-            Редактировать подпись
-          </a>
-        </p>
-      </ion-label>
-      <ion-toggle slot="end" checked [(ngModel)]="drawNeedle" ></ion-toggle>
-    </ion-item>
+    <app-client-receipt [IntroItems]="IntroItems" [draw]="draw" [drawNeedle]="drawNeedle" [$event]="$event">
+    </app-client-receipt>
     <ion-item class='block' [intro]="IntroItems" [Order]="3">
       <ion-label class='title'>
         Оплата заказа
@@ -59,7 +50,7 @@
     </ion-item>
   </ion-list>
   <ion-button [disabled]="!cardNums && selectedPayment == '2'" expand="full" fill="solid" shape="round"
-    id='light-green-button' class='action' (click)="dismiss()" [intro]="IntroItems" [Order]="5" >
+    id='light-green-button' class='action' (click)="dismiss()" [intro]="IntroItems" [Order]="5">
     Доставлено
   </ion-button>
 </div>

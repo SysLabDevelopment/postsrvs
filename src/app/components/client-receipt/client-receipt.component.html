@@ -1,0 +1,13 @@
+<ng-container>
+    <ion-item class='block' [intro]="IntroItems" [Order]="1">
+        <ion-label class='title'>
+            Требуется подпись клиента
+            <p class='link'>
+                <a (click)="draw()" [intro]="IntroItems" [Order]="2">
+                    Редактировать подпись
+                </a>
+            </p>
+        </ion-label>
+        <ion-toggle slot="end" checked [(ngModel)]="drawNeedle"></ion-toggle>
+    </ion-item>
+</ng-container>
