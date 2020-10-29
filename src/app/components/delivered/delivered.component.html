@@ -1,41 +1,9 @@
 <div class="ion-padding">
   <h1>Доставлено <a (click)="dismiss('cancel')">Закрыть</a></h1>
   <ion-list>
-    <app-client-receipt [IntroItems]="IntroItems" [draw]="draw" [drawNeedle]="drawNeedle" [$event]="$event">
+    <app-client-receipt #receipt [pay_type_change_allowed]="pay_type_change_allowed" [pay_type]="pay_type">
     </app-client-receipt>
-    <ion-item class='block' [intro]="IntroItems" [Order]="3">
-      <ion-label class='title'>
-        Оплата заказа
-        <p>
-          <ion-button [disabled]='isDisabled("наличные")' size='large' [ngClass]='{"light": selectedPayment !== "1"}'
-            (click)='selectPayment("1")'>
-            Наличными
-          </ion-button>
-          <ion-button [disabled]='isDisabled("карта")' size='large' [ngClass]='{"light": selectedPayment !== "2"}'
-            (click)='selectPayment("2")'>
-            Картой
-          </ion-button>
-        </p>
-      </ion-label>
-    </ion-item>
-    <ion-item class='input' *ngIf='selectedPayment == "2"' [intro]="IntroItems" [Order]="4">
-      <ion-label position="stacked" class='title'>3 цифры карты <ion-text color="danger">*</ion-text>
-      </ion-label>
-      <ion-input type="number" [(ngModel)]="cardNums"></ion-input>
-    </ion-item>
 
-    <ion-item class='input'>
-      <ion-label class='title' position="stacked">
-        E-mail клиента
-      </ion-label>
-      <ion-input [(ngModel)]="email_input"></ion-input>
-    </ion-item>
-    <ion-item class='input'>
-      <ion-label class='title' position="stacked">
-        Телефон клиента
-      </ion-label>
-      <ion-input type='tel' [(ngModel)]='phone_input'></ion-input>
-    </ion-item>
     <ion-item class='comment input' lines='none'>
       <ion-label position="stacked">Комментарий</ion-label>
       <ion-textarea [(ngModel)]="commentText"></ion-textarea>
@@ -50,7 +18,7 @@
     </ion-item>
   </ion-list>
   <ion-button [disabled]="!cardNums && selectedPayment == '2'" expand="full" fill="solid" shape="round"
-    id='light-green-button' class='action' (click)="dismiss()" [intro]="IntroItems" [Order]="5">
+    class='action light-green-button' (click)="dismiss()" [intro]="IntroItems" [Order]="5">
     Доставлено
   </ion-button>
 </div>

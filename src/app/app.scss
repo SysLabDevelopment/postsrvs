@@ -144,24 +144,22 @@ app-orders-list-guess {
     --box-shadow: none;
     margin-right: 13px;
     margin-left: 0;
+    &.light-blue-button {
+      --background: #c9e9fa;
+      color: #2b637e;
+    }
+    &.light-green-button {
+      --background: #d7f3dd;
+      color: #3a543b;
+    }
     ion-icon {
       margin-left: 0;
     }
   }
 
-  #light-blue-button {
-    --background: #c9e9fa;
-    --color: #2b637e;
-  }
-
   #light-purple-button {
     --background: #c9cbfa;
     --color: #533f69;
-  }
-
-  #light-green-button {
-    --background: #d7f3dd;
-    color: #3a543b;
   }
 }
 .done-order-modal {

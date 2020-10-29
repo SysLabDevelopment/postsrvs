@@ -150,69 +150,17 @@
       <ion-icon slot="start" name="close"></ion-icon>
       Не доставлено
     </ion-button>
-    <ion-button expand="full" fill="solid" shape="round" id='light-blue-button' class='action'
+    <ion-button expand="full" fill="solid" shape="round" class='action light-blue-button'
       (click)="selectStatus(6); presentPartDeliveredModal()">
       <ion-icon slot="start" src='../../../assets/pie-chart.svg'></ion-icon>
       Частично доставлено
     </ion-button>
-    <ion-button expand="full" fill="solid" shape="round" id='light-green-button' class='action'
+    <ion-button expand="full" fill="solid" shape="round" class='action light-green-button'
       (click)="selectStatus(5); presentDeliveredModal()">
       <ion-icon slot="start" name="checkmark-done"></ion-icon>
       Доставлено
     </ion-button>
   </div>
-  <!-- Легаси! -->
-
-  <div *ngIf="selectedStatus == 6">
-    <!-- Блок подписи -->
-    <div class="draw">
-      <div class="asc-row">
-        <div class="title">Требуется ли подпись клиента?</div>
-        <div class="draw-btns">
-          <button class="drawBtn" [ngClass]="{'draw_btn_active'   : drawNeedle}" (click)="drawBtn(true)">
-            Да
-          </button>
-          <button class="drawBtn" [ngClass]="{'draw_btn_active'   : !drawNeedle}" (click)="drawBtn(false)">
-            Нет
-          </button>
-        </div>
-      </div>
-      <img [src]="imageToShow" alt="Подпись" *ngIf="imageToShow && drawNeedle" style="height: 200px;" />
-      <button *ngIf="drawNeedle" class="drawBtn changeDraw" (click)="drawBtn(true)">Изменить подпись</button>
-    </div>
-    <div class="sc-payment">
-      <div class="sc-payment__title">Оплата</div>
-      <div class="dc-payment__wrp">
-        <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == '1'}"
-          (click)="selectPayment('1')">
-          Наличными
-        </div>
-        <div class="sc-payment-item" [ngClass]="{'payment_active' : selectedPayment == '2'}"
-          (click)="selectPayment('2')">
-          Картой
-        </div>
-      </div>
-    </div>
-
-    <div class="sc-payment-block o-row" *ngIf="pay_access">
-      <div class="pb-email" *ngIf="show_email">
-        <div class="pb-email__title">Email клиента</div>
-        <input type="email" class="pb-email__input" [(ngModel)]="email_input" />
-      </div>
-      <div class="pb-phone">
-        <div class="pb-phone__title" *ngIf="showPhone">Телефон клиента</div>
-        <input *ngIf="showPhone" type="tel" class="pb-phone__input" [(ngModel)]="phone_input" />
-      </div>
-      <button class="show-phone" (click)="enterPhone()">Прочее</button>
-    </div>
-
-    <div class="sc-s-wrp">
-      <button class="sc-submit" (click)="doneOrder()" [ngClass]="{'c_t_del' : selectedStatus == 6}">
-        <span class="l_btn_del">Доставлено</span>
-      </button>
-    </div>
-  </div>
-  <!-- Конец Легаси -->
   <div id="call-window" *ngIf="callWindow">
     <div class="cw-body">
       <i-feather name="x-square" (click)="phoneClick('init')" size="large"></i-feather>

@@ -25,7 +25,7 @@ export class GoodsTableComponent {
         const index = this.goods.findIndex((good) => good.Code == code);
         if (this.goods[index].kol_vo == 0) return false;
 
-        this.goods[index].kol_vo -= this.goods[index].kol_vo * count;
+        this.goods[index].kol_vo -= 1 * count;
         this.goodsChanges.emit(this.goods)
     }
 

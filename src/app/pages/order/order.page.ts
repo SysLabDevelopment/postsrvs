@@ -825,14 +825,15 @@ export class OrderPage implements OnInit {
     await modal.present();
     const details = await modal.onDidDismiss();
     console.log('sys:: dismiss details: ', details);
-    this.drawNeedle = details.data.drawNeedle;
-    this.selectedPayment = details.data.selectedPayment;
-    this.email_input = details.data.email_input;
-    this.phone_input = details.data.phone_input;
-    this.commentText = details.data.commentText;
-    this.cardNums = details.data.cardNums;
-
     if (details.data) {
+      this.drawNeedle = details.data.drawNeedle;
+      this.selectedPayment = details.data.selectedPayment;
+      this.email_input = details.data.email_input;
+      this.phone_input = details.data.phone_input;
+      this.commentText = details.data.commentText;
+      this.cardNums = details.data.cardNums;
+      this.order.goods = details.data.goods;
+      this.setQuants();
       this.doneOrder();
     }
   }
