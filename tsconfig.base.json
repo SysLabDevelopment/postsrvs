@@ -27,6 +27,7 @@
     "strictMetadataEmit": true,
     "strictTemplates": true,
     "strictNullInputTypes": true,
-    "strictAttributeTypes": true
+    "strictAttributeTypes": true,
+    "disableExpressionLowering": true
   }
 }

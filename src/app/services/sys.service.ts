@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
-import { ToastController } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Order } from '../interfaces/order';
 import { Response } from '../interfaces/response';
@@ -22,9 +22,14 @@ export class SysService {
     private device: Device,
     public toastController: ToastController,
     private camera: Camera,
-    private wi: WebIntent
+    private wi: WebIntent,
+    private platform: Platform,
 
   ) {
+
+    if (!(this.platform.is('android') && this.platform.is('ios'))) {
+      this.proxy == ''
+    }
 
   }
   //Распознавание текста
