@@ -10,11 +10,11 @@ import { GoodsTableComponent } from '../goods-table/goods-table.component';
   styleUrls: ['./part-delivered.component.css'],
 })
 export class PartDeliveredComponent implements OnInit {
-  private selectedPayment: any;
+  public selectedPayment: any;
   private email_input: any;
   private phone_input: any;
   private commentText: any;
-  private cardNums: any;
+  public cardNums: any;
   @Input() goods: any[];
   @Input() orderId: string;
   @Input() pay_type: string;

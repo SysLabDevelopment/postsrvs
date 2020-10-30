@@ -14,7 +14,7 @@ export class DeliveredComponent implements AfterViewInit {
   @Input() goods: any[];
   @Input() pay_type: string;
   @Input() pay_type_change_allowed: boolean;
-  public cardNums;
+  public cardNums: string;
   public selectedPayment = '1';
   public IntroItems = {
     Group: '1',

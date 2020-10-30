@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.28.41",
-	"versionCode": "154",
+	"version": "1.29.43",
+	"versionCode": "156",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -52,6 +52,7 @@
 		"@ionic/angular": "^5.3.5",
 		"@ionic/core": "^5.3.5",
 		"@ionic/storage": "^2.2.0",
+		"@nrwl/cli": "^10.3.1",
 		"@types/intro.js": "^2.4.7",
 		"angular": "^1.8.1",
 		"angular-feather": "^6.0.10",
