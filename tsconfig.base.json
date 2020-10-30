@@ -28,6 +28,7 @@
     "strictTemplates": true,
     "strictNullInputTypes": true,
     "strictAttributeTypes": true,
-    "disableExpressionLowering": true
+    "disableExpressionLowering": true,
+    "strictSafeNavigationTypes": true
   }
 }
