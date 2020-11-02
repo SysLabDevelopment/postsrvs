@@ -30,6 +30,7 @@
     "strictAttributeTypes": true,
     "disableExpressionLowering": true,
     "strictSafeNavigationTypes": true,
-    "strictDomLocalRefTypes": true
+    "strictDomLocalRefTypes": true,
+    "strictOutputEventTypes": true
   }
 }
