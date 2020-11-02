@@ -29,6 +29,7 @@
     "strictNullInputTypes": true,
     "strictAttributeTypes": true,
     "disableExpressionLowering": true,
-    "strictSafeNavigationTypes": true
+    "strictSafeNavigationTypes": true,
+    "strictDomLocalRefTypes": true
   }
 }
