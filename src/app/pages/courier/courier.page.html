@@ -50,55 +50,55 @@
       <ion-searchbar placeholder="Поиск по заказам" inputmode="text" (ionChange)="onSearchChange($event)"
         [debounce]="250" [(ngModel)]="searchString" animated [intro]="IntroItems" [Order]="2"></ion-searchbar>
 
-      <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="50"
+      <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="10"
         style="height: 100%; width: 100%; min-height: 50vh;">
-        <ion-item *ngFor="let order of orders_c | async" [ngClass]="{
-         overdue: isOverdueTime(order),
-         warnTime: isWarnTime(order.datetime_to)
-        }" (click)="selectOrder(order.id)" appLongPress (longPress)="vibr()" (hold)="vibr()" (cdkDragStarted)="vibr()"
-          cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'>
-          <ion-label [@openClose]="order.show ? 'open' : 'closed'">
-            <div class='title'>
-              <span>
-                <span class='client-id'> {{order.client_id}}</span>
-                <span> ({{order.company}})</span>
-              </span>
-              <span class='client-id'>
-                <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'H:mm':'ru' }} </span>
-                <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'H:mm':'ru' }}</span>
-              </span>
-            </div>
-            <div class='name'>{{order.client_fio}}</div>
-            <div class='addr'>{{order.client_address}}</div>
+        <ion-list>
+          <ion-item *ngFor="let order of orders_c | async; trackBy: trackFn" [ngClass]=" { overdue:
+            isOverdueTime(order), warnTime: isWarnTime(order.datetime_to) }" (click)="selectOrder(order.id)"
+            (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'>
+            <ion-label [@openClose]="order.show ? 'open' : 'closed'">
+              <div class='title'>
+                <span>
+                  <span class='client-id'> {{order.client_id}}</span>
+                  <span> ({{order.company}})</span>
+                </span>
+                <span class='client-id'>
+                  <span *ngIf="order.datetime_from">c {{ order.datetime_from | date: 'H:mm':'ru' }} </span>
+                  <span *ngIf="order.datetime_to">до {{ order.datetime_to | date: 'H:mm':'ru' }}</span>
+                </span>
+              </div>
+              <div class='name'>{{order.client_fio}}</div>
+              <div class='addr'>{{order.client_address}}</div>
 
-            <div class="actions" *ngIf='order.show'>
-              <ion-button fill="solid" size='default' (click)="note($event, order.id); $event.stopPropagation()"
-                id='light-blue-button'>
-                <ion-icon slot="start" name='document'></ion-icon>
-                Заметки
-              </ion-button>
-              <ion-button fill="solid" size='default' (click)="showRoute(order); $event.stopPropagation()"
-                id="light-purple-button">
-                <ion-icon slot="start" name="location-outline"></ion-icon>
-                Маршрут
-              </ion-button>
-              <ion-button fill="solid" size='default' (click)="phoneClick('init', order); $event.stopPropagation()"
-                id='light-green-button'>
-                <ion-icon slot="start" name="call-outline"></ion-icon>
-                Позвонить
-              </ion-button>
-            </div>
-            <ion-text *ngIf="!!orderNote(order.id)" class='note' color="dark">
-              &nbsp;<span>{{orderNote(order.id)}}</span>&nbsp;
-            </ion-text>
-          </ion-label>
-          <ion-icon name="ellipsis-vertical" slot='start' class='points'></ion-icon>
+              <div class="actions" *ngIf='order.show'>
+                <ion-button fill="solid" size='default' (click)="note($event, order.id); $event.stopPropagation()"
+                  id='light-blue-button'>
+                  <ion-icon slot="start" name='document'></ion-icon>
+                  Заметки
+                </ion-button>
+                <ion-button fill="solid" size='default' (click)="showRoute(order); $event.stopPropagation()"
+                  id="light-purple-button">
+                  <ion-icon slot="start" name="location-outline"></ion-icon>
+                  Маршрут
+                </ion-button>
+                <ion-button fill="solid" size='default' (click)="phoneClick('init', order); $event.stopPropagation()"
+                  id='light-green-button'>
+                  <ion-icon slot="start" name="call-outline"></ion-icon>
+                  Позвонить
+                </ion-button>
+              </div>
+              <ion-text *ngIf="!!orderNote(order.id)" class='note' color="dark">
+                &nbsp;<span>{{orderNote(order.id)}}</span>&nbsp;
+              </ion-text>
+            </ion-label>
+            <ion-icon name="ellipsis-vertical" slot='start' class='points'></ion-icon>
 
-          <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()" [intro]="IntroItems"
-            [Order]="3" data-position="left">
-            <ion-icon src='../../../assets/actions-arrows.svg' [ngClass]="{turned: order.show == true }"></ion-icon>
-          </div>
-        </ion-item>
+            <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()"
+              [intro]="IntroItems" [Order]="3" data-position="left">
+              <ion-icon src='../../../assets/actions-arrows.svg' [ngClass]="{turned: order.show == true }"></ion-icon>
+            </div>
+          </ion-item>
+        </ion-list>
       </cdk-virtual-scroll-viewport>
     </div>
     <div class='ion-padding sub-footer'>

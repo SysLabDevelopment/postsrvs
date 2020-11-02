@@ -24,7 +24,6 @@
     "annotationsAs": true,
     "strictInputTypes": true,
     "strictInputAccessModifiers": true,
-    "strictMetadataEmit": true,
     "strictTemplates": true,
     "strictNullInputTypes": true,
     "strictAttributeTypes": true,

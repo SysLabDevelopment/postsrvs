@@ -7,7 +7,7 @@ import {
 } from '@angular/animations';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { IntroJsService } from '@esfaenza/ngx-introjs';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
@@ -20,7 +20,6 @@ import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/interfaces/order';
 import { MapService } from 'src/app/services/sys/map.service';
-import { OrderService } from 'src/app/services/sys/order.service';
 import { HelpComponent } from '../../components/help/help.component';
 import { NoteComponent } from '../../components/note/note.component';
 import { ScanPVZResponse } from '../../interfaces/scan-pvzresponse';
@@ -52,7 +51,8 @@ import { DataService } from '../../services/sys/data.service';
         animate('0.5s')
       ]),
     ])
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourierPage implements OnInit {
   @ViewChild('sInput') public sInput: ElementRef;
@@ -97,7 +97,8 @@ export class CourierPage implements OnInit {
     4: 'Сканировать QR-код на складе, чтобы отметиться'
   };
 
-  constructor(public courier: CourierService,
+  constructor(
+    public courier: CourierService,
     private router: Router,
     public state$: StateService,
     public auth: AuthService,
@@ -108,7 +109,6 @@ export class CourierPage implements OnInit {
     private data: DataService,
     public popoverController: PopoverController,
     private map: MapService,
-    private orderService: OrderService,
     private CL: CallNumber,
     private network: Network,
     private http: HttpClient,
@@ -317,16 +317,17 @@ export class CourierPage implements OnInit {
 
   public selectOrder(id: string) {
 
-    this.router.navigate(['/order', id]);
+    this.router.navigate(['order', id]);
   }
 
   public tabSelect(tab: number) {
     this.selectedTab = tab;
   }
 
-  customTrackBy(index: number, obj: any): any {
-    return index;
+  trackFn(index: number, el: any): number {
+    return el.id;
   }
+
 
   public getCondition(status: number) {
     switch (this.selectedTab) {
@@ -672,7 +673,7 @@ export class CourierPage implements OnInit {
 
   //проверяет необходимость подсветки заказа красным
   public isOverdueTime(order: Order) {
-    const isOverTime:boolean = (new Date(order.datetime_to).getTime() < new Date().getTime());
+    const isOverTime: boolean = (new Date(order.datetime_to).getTime() < new Date().getTime());
     return ((order.overdue == '1' || order.required == true || isOverTime) && order.status_id == 1)
   }
 }

@@ -11,6 +11,9 @@ ion-chip {
 }
 ion-toolbar {
   --min-height: 30px;
+  ion-title {
+    height: auto;
+  }
 }
 
 .toolbar {
@@ -196,7 +199,8 @@ ion-item {
 ion-content {
   &.ios,
   &.md {
-    min-height: 85vh;
+    min-height: 80vh;
+    max-height: calc(100vh - 150px);
     ion-segment {
       height: 60px;
     }

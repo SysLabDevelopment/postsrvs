@@ -5,10 +5,10 @@ import localeRu from '@angular/common/locales/ru';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { IntroJsModule } from '@esfaenza/ngx-introjs';
 import { IonicModule } from '@ionic/angular';
 import { IconsModule } from '../../icons/icons.module';
 import { CourierPage } from './courier.page';
-import {IntroJsModule} from '@esfaenza/ngx-introjs';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -20,16 +20,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [
-        IconsModule,
-        CommonModule,
-        FormsModule,
-        DragDropModule,
-        IonicModule,
-        ScrollingModule,
-        RouterModule.forChild(routes),
-        IntroJsModule
-    ],
+  imports: [
+    IntroJsModule,
+    IconsModule,
+    CommonModule,
+    FormsModule,
+    DragDropModule,
+    IonicModule,
+    ScrollingModule,
+    RouterModule.forChild(routes)
+  ],
   declarations: [CourierPage],
   providers: [
     { provide: LOCALE_ID, useFactory: () => 'ru' }

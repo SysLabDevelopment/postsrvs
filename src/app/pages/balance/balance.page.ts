@@ -96,7 +96,8 @@ export class BalancePage implements OnInit {
   public nonWorkDates: Array<any> = [];
   public notWorkRules = {};
 
-  constructor(private courier: CourierService,
+  constructor(
+    private courier: CourierService,
     private auth: AuthService,
     private router: Router,
     public state$: StateService,

@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.31.44",
-	"versionCode": "157",
+	"version": "1.31.46",
+	"versionCode": "159",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -15,7 +15,9 @@
 		"postinstall": "ngcc",
 		"build:modern": "ng build --plugin ngx-build-modern --prod",
 		"build:modern:app": "ng build --plugin ngx-build-modern --project app --prod",
-		"prod": "BABEL_ENV=production webpack --env=prod --progress"
+		"prod": "BABEL_ENV=production webpack --env=prod --progress",
+		"deploy": "sh build-release.sh",
+		"iosdebug": "ionic cordova run ios --external --target=B52DF596-4F4F-4F32-8CF3-34C36DCF6FCB"
 	},
 	"private": true,
 	"dependencies": {
