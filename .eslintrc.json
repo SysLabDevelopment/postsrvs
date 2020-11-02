@@ -63,6 +63,20 @@
       {
         "includeExports": true
       }
+    ],
+    "no-iterator": "error",
+    "no-restricted-syntax": [
+      "error",
+      "FunctionExpression",
+      "WithStatement",
+      "BinaryExpression[operator='in']"
+    ],
+    "generator-star-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": false
+      }
     ]
   },
   "root": true
