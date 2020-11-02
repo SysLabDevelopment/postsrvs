@@ -41,5 +41,6 @@ export interface Order {
     cardNums?: string,
     pay_type_change_allowed?: Boolean, //Можно ли изменять тип оплаты?
     pay_type?: string //Тип оплаты
-
+    required: boolean,
+    overdue: string
 }

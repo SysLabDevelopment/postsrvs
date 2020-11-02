@@ -37,13 +37,13 @@
     </ion-button>
     <ion-segment (ionChange)="segmentChanged($event)" value='1'>
       <ion-segment-button value="1">
-        <ion-label>В работе <br/><b>{{courier.sortOrders?.g_process}}</b></ion-label>
+        <ion-label>В работе <br /><b>{{courier.sortOrders?.g_process}}</b></ion-label>
       </ion-segment-button>
       <ion-segment-button value="5">
-        <ion-label>Доставлено <br/><b>{{courier.sortOrders?.g_done}}</b></ion-label>
+        <ion-label>Доставлено <br /><b>{{courier.sortOrders?.g_done}}</b></ion-label>
       </ion-segment-button>
       <ion-segment-button value="4">
-        <ion-label>Не доставлено <br/><b>{{courier.sortOrders?.g_fail}}</b></ion-label>
+        <ion-label>Не доставлено <br /><b>{{courier.sortOrders?.g_fail}}</b></ion-label>
       </ion-segment-button>
     </ion-segment>
     <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
@@ -53,7 +53,8 @@
       <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="50"
         style="height: 100%; width: 100%; min-height: 50vh;">
         <ion-item *ngFor="let order of orders_c | async" [ngClass]="{
-         overdue: (order.overdue == '1' || order.required == true) && order.status_id == 1
+         overdue: isOverdueTime(order),
+         warnTime: isWarnTime(order.datetime_to)
         }" (click)="selectOrder(order.id)" appLongPress (longPress)="vibr()" (hold)="vibr()" (cdkDragStarted)="vibr()"
           cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'>
           <ion-label [@openClose]="order.show ? 'open' : 'closed'">
@@ -93,7 +94,8 @@
           </ion-label>
           <ion-icon name="ellipsis-vertical" slot='start' class='points'></ion-icon>
 
-          <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()" [intro]="IntroItems" [Order]="3" data-position="left">
+          <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()" [intro]="IntroItems"
+            [Order]="3" data-position="left">
             <ion-icon src='../../../assets/actions-arrows.svg' [ngClass]="{turned: order.show == true }"></ion-icon>
           </div>
         </ion-item>

@@ -54,7 +54,7 @@
       "warn",
       {
         "exceptMethods": [
-          "foo"
+          "static"
         ]
       }
     ],
@@ -67,7 +67,6 @@
     "no-iterator": "error",
     "no-restricted-syntax": [
       "error",
-      "FunctionExpression",
       "WithStatement",
       "BinaryExpression[operator='in']"
     ],

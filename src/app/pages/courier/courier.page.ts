@@ -657,4 +657,22 @@ export class CourierPage implements OnInit {
     return localStorage.getItem(orderId);
   }
 
+  //Проверяет, наступил ли дедлайн (час до таргетного времени)
+  public isWarnTime(date: string): boolean {
+    if (date !== null) {
+      const hour = 3600000;
+      const deadline = new Date(date);
+      const now = new Date();
+      return (new Date(deadline.getTime() - hour) <= now)
+    } else {
+      return false;
+    }
+
+  }
+
+  //проверяет необходимость подсветки заказа красным
+  public isOverdueTime(order: Order) {
+    const isOverTime:boolean = (new Date(order.datetime_to).getTime() < new Date().getTime());
+    return ((order.overdue == '1' || order.required == true || isOverTime) && order.status_id == 1)
+  }
 }

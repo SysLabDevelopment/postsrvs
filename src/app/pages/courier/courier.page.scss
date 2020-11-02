@@ -112,12 +112,18 @@ ion-item:nth-child(odd) {
 ion-reorder {
   margin: 0;
 }
-ion-item.overdue {
-  --border-color: red;
-  --inner-border-width: 0;
-  .title {
-    .client-id {
-      color: red;
+ion-item {
+  --highlight-color: var(--ion-color-warning);
+  &.warnTime {
+    --border-color: var(--highlight-color);
+    --inner-border-width: 0;
+    .title {
+      .client-id {
+        color: var(--highlight-color);
+      }
+    }
+    &.overdue {
+      --highlight-color: var(--ion-color-danger);
     }
   }
 }
