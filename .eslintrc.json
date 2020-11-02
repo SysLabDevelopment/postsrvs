@@ -57,6 +57,12 @@
           "foo"
         ]
       }
+    ],
+    "no-duplicate-imports": [
+      "error",
+      {
+        "includeExports": true
+      }
     ]
   },
   "root": true
