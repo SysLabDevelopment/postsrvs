@@ -207,6 +207,86 @@
           }
         }
       }
+    },
+    "libtest": {
+      "projectType": "library",
+      "root": "projects/libtest",
+      "sourceRoot": "projects/libtest/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/libtest/tsconfig.lib.json",
+            "project": "projects/libtest/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libtest/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/libtest/src/test.ts",
+            "tsConfig": "projects/libtest/tsconfig.spec.json",
+            "karmaConfig": "projects/libtest/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/libtest/tsconfig.lib.json",
+              "projects/libtest/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "libtestcomponents": {
+      "projectType": "library",
+      "root": "projects/libtestcomponents",
+      "sourceRoot": "projects/libtestcomponents/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/libtestcomponents/tsconfig.lib.json",
+            "project": "projects/libtestcomponents/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libtestcomponents/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/libtestcomponents/src/test.ts",
+            "tsConfig": "projects/libtestcomponents/tsconfig.spec.json",
+            "karmaConfig": "projects/libtestcomponents/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/libtestcomponents/tsconfig.lib.json",
+              "projects/libtestcomponents/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

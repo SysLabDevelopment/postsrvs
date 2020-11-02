@@ -152,7 +152,7 @@
       Показать на карте
     </ion-button>
   </div>
-  <div id='done-buttons' *ngIf="!(status_id == 5 || status_id == 6 || status_id == 4)" [intro]="introItems" [Order]="6">
+  <div id='done-buttons' *ngIf="!(status_id == 5 || status_id == 6)" [intro]="introItems" [Order]="6">
     <ion-button expand="full" fill="solid" shape="round" id='light-purple-button' class='action'
       (click)="selectStatus(4); presentNotDeliveredModal()">
       <ion-icon slot="start" name="close"></ion-icon>
