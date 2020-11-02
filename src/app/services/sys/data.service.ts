@@ -31,9 +31,11 @@ export class DataService {
         this.ordersMap = this.getOrdersMap(orders);
         this.orders.subscribe((orders: Order[]) => {
           console.log('sys:: Пришли заказы в стрим data.orders', orders);
-          this.saveOrders(orders).then(() => {
-            console.log('sys:: Список заказов сохранен в сторож: ', orders);
-          });
+          if (orders.length > 0) {
+            this.saveOrders(orders).then(() => {
+              console.log('sys:: Список заказов сохранен в сторож: ', orders);
+            });
+          }
         })
 
         if (orders == null) {
@@ -41,8 +43,8 @@ export class DataService {
         } else {
           this.orders.next(orders);
         }
-
       })
+      return true;
     });
     this.state$.g_state.subscribe((state) => {
       if (state == 'unLogin') {
