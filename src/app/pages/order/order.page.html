@@ -4,6 +4,11 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf='order'>{{order.client_id}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showHelp()">
+        <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -74,7 +79,8 @@
             <div class='primary-color bold'>{{order.amount}} шт. / {{order.mass}} кг</div>
           </div>
         </div>
-        <ion-button class='call' expand='full' fill='solid' (click)="phoneClick('init')">
+        <ion-button class='call' expand='full' fill='solid' (click)="phoneClick('init')" [intro]="introItems"
+          [Order]="1">
           Позвонить клиенту
         </ion-button>
       </ion-label>
@@ -125,11 +131,11 @@
           </ion-item>
         </ion-card>
       </ion-label>
-      <div class="actions-button" (click)="tapBlock()">
+      <div class="actions-button" (click)="tapBlock()" [intro]="introItems" [Order]="2">
         <ion-icon src='../../../assets/actions-arrows.svg' [ngClass]="{turned: openCompany == true }"></ion-icon>
       </div>
     </ion-item>
-    <ion-item id='note-item'>
+    <ion-item id='note-item' [intro]="introItems" [Order]="3">
       <ion-input placeholder='Введите заметку по заказу' [(ngModel)]="note"></ion-input>
       <ion-button (click)="saveNote()">
         <ion-icon slot="icon-only" name="save"></ion-icon>
@@ -137,14 +143,16 @@
     </ion-item>
   </ion-list>
   <div id='navigate-buttons'>
-    <ion-button expand="block" fill="solid" shape="round" (click)="intentStart()" class='action'>
+    <ion-button expand="block" fill="solid" shape="round" (click)="intentStart()" class='action' [intro]="introItems"
+      [Order]="4">
       Открыть в навигаторе
     </ion-button>
-    <ion-button expand="block" fill="solid" shape="round" (click)="showRoute(order)" class='action'>
+    <ion-button expand="block" fill="solid" shape="round" (click)="showRoute(order)" class='action' [intro]="introItems"
+      [Order]="5">
       Показать на карте
     </ion-button>
   </div>
-  <div id='done-buttons' *ngIf="!(status_id == 5 || status_id == 6 || status_id == 4)">
+  <div id='done-buttons' *ngIf="!(status_id == 5 || status_id == 6 || status_id == 4)" [intro]="introItems" [Order]="6">
     <ion-button expand="full" fill="solid" shape="round" id='light-purple-button' class='action'
       (click)="selectStatus(4); presentNotDeliveredModal()">
       <ion-icon slot="start" name="close"></ion-icon>

@@ -8,6 +8,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IntroJsService } from '@esfaenza/ngx-introjs';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Network } from '@ionic-native/network/ngx';
@@ -123,6 +124,17 @@ export class OrderPage implements OnInit {
   public checkBase64Image: string;
   public drawNeedle = true;
   public cardNums: string;
+  public introItems = {
+    Group: '3',
+    1: 'Звонок клиенту',
+    2: 'Посмотреть дополнительную информацию об отправителе',
+    3: 'Ваша заметка о заказе',
+    4: 'Открыть маршрут до заказа в Яндекс.Навигаторе',
+    5: 'Показать на карте маршрут до заказа',
+    6: 'Кнопки закрытия заказа'
+  };
+
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -140,7 +152,9 @@ export class OrderPage implements OnInit {
     private network: Network,
     private orderService: OrderService,
     public modalController: ModalController,
-    private firebase: FirebaseX
+    private firebase: FirebaseX,
+    public introService: IntroJsService
+
   ) {
     this.orderId = this.route.snapshot.paramMap.get('id');
 
@@ -148,6 +162,13 @@ export class OrderPage implements OnInit {
     if (img) {
       this.imageToShow = `data:image/jpg;base64,${img}`;
     }
+    this.introService.intro
+      .setOption('prevLabel', 'Назад')
+      .setOption('nextLabel', 'Далее')
+      .setOption('skipLabel', 'Пропустить')
+      .setOption('doneLabel', 'Завершить')
+      .setOption('scrollToElement', true)
+      .setOption('scrollTo', 'element');
   }
 
   ngOnInit() {
@@ -847,5 +868,9 @@ export class OrderPage implements OnInit {
     return order.goods;
   }
 
+  public showHelp() {
 
+    this.introService.start(null, '3');
+
+  }
 }

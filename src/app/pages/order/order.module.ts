@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { IntroJsModule } from '@esfaenza/ngx-introjs';
 import { IonicModule } from '@ionic/angular';
+import { IconsModule } from '../../icons/icons.module';
 import { OrderPage } from './order.page';
-import {IconsModule} from '../../icons/icons.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +20,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    IntroJsModule
   ],
   declarations: [OrderPage]
 })
