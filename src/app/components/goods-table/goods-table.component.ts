@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 
 interface Good {
     ClientBarCode: string,
@@ -20,6 +21,14 @@ export class GoodsTableComponent {
     @Input() goods: Good[];
     @Input() isChangeble: boolean = false;
     @Output() goodsChanges = new EventEmitter();
+    public $sum: Observable<number>;
+
+    constructor() {
+        this.$sum = new Observable((sum) => {
+            sum.next(this.getSum());
+            this.goodsChanges.subscribe(() => sum.next(this.getSum()))
+        });
+    }
 
     public minusGood(code: number, count = 1) {
         const index = this.goods.findIndex((good) => good.Code == code);
@@ -33,8 +42,13 @@ export class GoodsTableComponent {
         const index = this.goods.findIndex((good) => good.Code == code);
 
         ++this.goods[index].kol_vo;
-        this.goodsChanges.emit(this.goods)
+        this.goodsChanges.emit(this.goods);
     }
 
+    private getSum() {
+        let sum = 0;
+        this.goods.forEach((good) => sum += good.kol_vo * good.Price);
+        return sum;
+    }
 
 }

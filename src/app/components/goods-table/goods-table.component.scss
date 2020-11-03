@@ -12,6 +12,7 @@ thead {
 }
 tfoot {
   box-shadow: inset 0 2px;
+  font-weight: bold;
 }
 
 table > tr:nth-child(odd),
@@ -65,4 +66,19 @@ tr {
 
 h1 {
   text-align: left;
+}
+ion-col {
+  display: flex;
+
+  ion-item {
+    --inner-padding-end: 0;
+    --border-style: none;
+    ion-note {
+      margin: 0;
+      font-weight: bolder;
+      --color: black;
+      font-size: 1em;
+      padding-top: 14px;
+    }
+  }
 }

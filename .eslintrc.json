@@ -41,7 +41,7 @@
     ],
     "arrow-body-style": [
       "error",
-      "never"
+      "as-needed"
     ],
     "no-confusing-arrow": "error",
     "implicit-arrow-linebreak": [

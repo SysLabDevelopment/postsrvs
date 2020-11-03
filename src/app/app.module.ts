@@ -42,6 +42,7 @@ import { LongPressDirective } from './directives/long-press.directive';
 import { IconsModule } from './icons/icons.module';
 import { ErrorIntercept } from './interceptors/error.interceptor';
 import { HttpErrorInterceptor } from './interceptors/http.interceptor';
+import { InspectorModule } from '@ngneat/inspector';
 registerLocaleData(localeRu, 'ru');
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ registerLocaleData(localeRu, 'ru');
     ScrollingModule,
     IonicStorageModule.forRoot(),
     CacheModule.forRoot({ keyPrefix: 'offlineData' }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    environment.production ? [] : InspectorModule.forRoot()
   ],
   providers: [
     FirebaseX,

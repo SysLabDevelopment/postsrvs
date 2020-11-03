@@ -54,11 +54,11 @@ export class SysService {
   //Получение списка заказов по idшникам
   public getOrders(ids: Array<string>): Observable<Response> {
 
-    const url = this.proxy + "https://mobile.postsrvs.ru/mobile/orders";
-    let data = {
-      'uuid': this.device.uuid,
-      'action': 'getOrders',
-      'orders_id': ids
+    const url = `${this.proxy}https://mobile.postsrvs.ru/mobile/orders`;
+    const data = {
+      uuid: this.getUuid(),
+      action: 'getOrders',
+      orders_id: ids
     }
     if (localStorage.debug == 'true') {
       data['uuid'] = '6b356755575fce31';
@@ -76,22 +76,22 @@ export class SysService {
   //Тост
   async presentToast(message: string, color: string, header: string = '') {
     const toast = await this.toastController.create({
-      header: header,
-      message: message,
+      header,
+      message,
       duration: 3000,
-      color: color,
+      color,
       position: 'bottom'
     });
     toast.present();
   }
 
   public goToWork(dates: Array<any>) {
-    const url = this.proxy + "https://mobile.postsrvs.ru/sheduleData.php";
-    let data = {
-      "type": "goToWork",
-      "dates": dates,
-      "courieriId": localStorage.user,
-      "uuid": this.device.uuid
+    const url = `${this.proxy}https://mobile.postsrvs.ru/sheduleData.php`;
+    const data = {
+      type: 'goToWork',
+      dates,
+      courieriId: localStorage.user,
+      uuid: this.device.uuid
     }
 
     const httpOptions = {
@@ -103,11 +103,11 @@ export class SysService {
   }
 
   public getNotWorkRules() {
-    const url = this.proxy + "https://mobile.postsrvs.ru/sheduleData.php";
-    let data = {
-      "type": "rules",
-      "courieriId": localStorage.user,
-      "uuid": this.device.uuid
+    const url = `${this.proxy}https://mobile.postsrvs.ru/sheduleData.php`;
+    const data = {
+      type: 'rules',
+      courieriId: localStorage.user,
+      uuid: this.device.uuid
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -120,12 +120,12 @@ export class SysService {
 
   //Отправка данных о нерабочих днях и причинах
   public stopWork(dates: Array<any>) {
-    const url = this.proxy + "https://mobile.postsrvs.ru/sheduleData.php";
-    let data = {
-      "type": "stopWork",
-      "dates": dates,
-      "courieriId": localStorage.user,
-      "uuid": this.device.uuid
+    const url = `${this.proxy}https://mobile.postsrvs.ru/sheduleData.php`;
+    const data = {
+      type: 'stopWork',
+      dates,
+      courieriId: localStorage.user,
+      uuid: this.device.uuid
     }
 
     const httpOptions = {
@@ -149,9 +149,9 @@ export class SysService {
   //Проверка на авторизованность
   public checkAuth() {
     const url = `${this.proxy}https://mobile.postsrvs.ru/mobile/orders`;
-    let data = {
-      "action": "checkAuth",
-      "uuid": this.device.uuid
+    const data = {
+      action: 'checkAuth',
+      uuid: this.getUuid()
     }
     if (localStorage.debug == 'true') {
       data['uuid'] = '6b356755575fce31';
@@ -179,30 +179,30 @@ export class SysService {
   //Проверяет, отметил ли курьер, что едет на работу
   //@cId - ид курьера
   public isCheckedToWork(cId: string): Observable<{ success: boolean, checked: boolean }> {
-    const url = this.proxy + 'https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php';
-    let data = {
-      "token": "l;sdfjkhglsoapl[",
+    const url = `${this.proxy}https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php`;
+    const data = {
+      token: 'l;sdfjkhglsoapl[',
       cId
     }
     const headers = {
       'Content-type': 'application/json'
     }
-    return this.http.post<{ success: boolean, checked: boolean }>(url, data, { headers: headers });
+    return this.http.post<{ success: boolean, checked: boolean }>(url, data, { headers });
   }
 
   //Отметить "еду на работу"
   //@cId - ид курьера
   public check_to_work(cId: string) {
-    let url = this.proxy + 'https://mobile.postsrvs.ru/admin/ajax/check_to_work.php';
-    let data = {
+    const url = `${this.proxy}https://mobile.postsrvs.ru/admin/ajax/check_to_work.php`;
+    const data = {
       cId,
-      token: "l;sdfjkhglsoapl[",
+      token: 'l;sdfjkhglsoapl[',
     }
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Content-type': 'application/json'
     })
-    return this.http.post(url, data, { headers: headers })
+    return this.http.post(url, data, { headers })
   }
 
   //Обработка интентов
@@ -216,6 +216,11 @@ export class SysService {
     this.wi.startActivity(options).then((data) => {
       console.log('sys:: Обработчик интента запущен', data);
     });
+  }
+
+  public getUuid() {
+    if (this.device.platform == 'browser') return 'webapp';
+    return this.device.uuid;
   }
 
 
