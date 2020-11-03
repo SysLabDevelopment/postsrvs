@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { FirebaseX } from "@ionic-native/firebase-x/ngx";
-import { Environment } from "@ionic-native/google-maps";
 import { Network } from '@ionic-native/network/ngx';
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
@@ -74,12 +73,6 @@ export class AppComponent {
       if (this.settings.rules.typeRoute == "standart") {
         this.routingModeAuto = false;
       }
-      Environment.setEnv({
-        // api key for server
-        API_KEY_FOR_BROWSER_RELEASE: "AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164",
-        // api key for local development
-        API_KEY_FOR_BROWSER_DEBUG: "AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164",
-      });
 
       this.firebase.setAnalyticsCollectionEnabled(true);
       this.firebase.setCrashlyticsCollectionEnabled(true);

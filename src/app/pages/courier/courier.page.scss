@@ -200,7 +200,6 @@ ion-content {
   &.ios,
   &.md {
     min-height: 80vh;
-    max-height: calc(100vh - 150px);
     ion-segment {
       height: 60px;
     }

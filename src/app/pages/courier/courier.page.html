@@ -50,12 +50,12 @@
       <ion-searchbar placeholder="Поиск по заказам" inputmode="text" (ionChange)="onSearchChange($event)"
         [debounce]="250" [(ngModel)]="searchString" animated [intro]="IntroItems" [Order]="2"></ion-searchbar>
 
-      <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="10"
+      <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="30"
         style="height: 100%; width: 100%; min-height: 50vh;">
         <ion-list>
           <ion-item *ngFor="let order of orders_c | async; trackBy: trackFn" [ngClass]=" { overdue:
             isOverdueTime(order), warnTime: isWarnTime(order.datetime_to) }" (click)="selectOrder(order.id)"
-            (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500" [cdkDragDisabled]='noDrag'>
+            (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500" cdk>
             <ion-label [@openClose]="order.show ? 'open' : 'closed'">
               <div class='title'>
                 <span>

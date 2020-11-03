@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { AlertController, Platform } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -17,7 +18,6 @@ import { CourierService } from '../../services/courier.service';
 import { SettingsService } from '../../services/settings.service';
 import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
-import {FirebaseX} from '@ionic-native/firebase-x/ngx';
 
 @Component({
   selector: 'app-login',
@@ -79,9 +79,9 @@ export class LoginPage implements OnInit {
     public settings: SettingsService,
     public sys: SysService,
     public sysMap: MapService,
-              private firebase: FirebaseX
+    private firebase: FirebaseX
   ) {
-    let self = this;
+    const self = this;
 
     //проверяет авторизован ли пользователь на сервере
 
@@ -112,17 +112,17 @@ export class LoginPage implements OnInit {
   }
 
   public scanAuth() {
-    let self = this;
+    const self = this;
     this.auth.scanData().then((data) => {
-      let id = data.text.slice(0, -4);
+      const id = data.text.slice(0, -4);
       localStorage.setItem('cId', id);
-      let a_data = {
-        'action': 'auth',
-        'barcode': data.text,
+      const a_data = {
+        action: 'auth',
+        barcode: data.text,
         // 'barcode': '33dbcda2db5311e39760309e88d17f08,3431',
       };
       self.auth.login(a_data).subscribe((data: any) => {
-        if (data.success == "true") {
+        if (data.success == 'true') {
           self.auth.initLogin(data.sync_id);
           this.auth.setUser(data.sync_id);
           this.settings.getSettings(data.sync_id);
@@ -157,9 +157,9 @@ export class LoginPage implements OnInit {
   }
 
   public sendPhone() {
-    const url = this.sys.proxy + "https://mok.flexcore.ru/client/registerP/";
-    const data = "action=registerP&phone=8" + this.phone + "&type=courier";
-    var self = this;
+    const url = `${this.sys.proxy}https://mok.flexcore.ru/client/registerP/`;
+    const data = `action=registerP&phone=8${this.phone}&type=courier`;
+    const self = this;
     this.sendPost(url, data).subscribe((res: any) => {
       if (res.success == 'true') {
         self.authStep();
@@ -173,7 +173,6 @@ export class LoginPage implements OnInit {
   }
 
   public sendPost(url: string, data: any) {
-    console.log('send_data', data);
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
@@ -191,13 +190,11 @@ export class LoginPage implements OnInit {
   }
 
   public enterCode() {
-    const url = this.sys.proxy + "https://mok.flexcore.ru/courier/authP/";
-    var data = "action=authP&phone=8" + this.phone + "&code=" + this.code + "&type=courier";
+    const url = `${this.sys.proxy}https://mok.flexcore.ru/courier/authP/`;
+    const data = `action=authP&phone=8${this.phone}&code=${this.code}&type=courier`;
 
-    var self = this;
+    const self = this;
     this.sendPost(url, data).subscribe((res: any) => {
-      console.log('sendCode', res);
-
       if (res.success == 'true') {
         self.login(res.user);
       } else {
@@ -207,17 +204,17 @@ export class LoginPage implements OnInit {
   }
 
   public login(courier: string) {
-    let base = "33dbcda2db5311e39760309e88d17f08," + courier;
+    const base = `33dbcda2db5311e39760309e88d17f08,${courier}`;
     localStorage.setItem('cId', courier);
-    var self = this;
-    let a_data = {
-      'action': 'auth',
-      'barcode': base,
+    const self = this;
+    const a_data = {
+      action: 'auth',
+      barcode: base,
     };
 
     this.auth.login(a_data).subscribe((data: any) => {
 
-      if (data.success == "true") {
+      if (data.success == 'true') {
         this.auth.setUser(data.sync_id);
         this.settings.getSettings(data.sync_id);
         self.router.navigate(['map']);
@@ -252,7 +249,7 @@ export class LoginPage implements OnInit {
     }
     this.resend_dis = true;
     this.dis_timer = 30;
-    var self = this;
+    const self = this;
 
     this.state$.interval_1ss.pipe(takeUntil(this.$stopTimer)).subscribe(() => {
       self.dis_timer--;

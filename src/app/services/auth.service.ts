@@ -58,9 +58,9 @@ export class AuthService {
 
   public checkAuth() {
     const url = 'orders';
-    let data = {
+    const data = {
 
-      'action': 'checkAuth'
+      action: 'checkAuth'
     }
 
     return this.sendPost(url, data);
@@ -83,8 +83,7 @@ export class AuthService {
   }
   public sendPost(url: string, data: { uuid?: string, action?: string, barcode?: string, cid?: unknown, lt?: unknown, lg?: unknown, start?: string, stop?: string }) {
 
-    let host = this.sys.proxy + "https://mobile.postsrvs.ru/mobile/"
-
+    const host = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/`
 
     url = host + url;
     data['uuid'] = (this.isDebug ? '6b356755575fce31' : this.getUuid());
@@ -93,14 +92,14 @@ export class AuthService {
         'Content-type': 'application/json'
       })
     };
-    let self = this;
-    let resp = new Subject<any>();
+    const self = this;
+    const resp = new Subject<any>();
 
     this.plt.ready().then(() => {
       self.http.post(url, data, httpOptions).subscribe((data: any) => {
         if (data) {
           console.log('sys:: data == true, data.success', data.success);
-          if (data.success == 'false' && data.reason == "not_auth") {
+          if (data.success == 'false' && data.reason == 'not_auth') {
             self.logout();
           } else {
             resp.next(data);
@@ -114,8 +113,9 @@ export class AuthService {
 
     return resp;
   }
+
   public getUuid() {
-    // return 'c446ca560c6e0383';
+    if (this.device.platform == 'browser') return 'webapp';
     return this.device.uuid;
   }
 
@@ -255,14 +255,14 @@ export class AuthService {
 
   //Сохранение режима построения маршрута по умолчанию
   setDefaultRouteBuilding(defaultRouteBuilding: boolean) {
-    defaultRouteBuilding && localStorage.setItem('defaultRouteBuilding', '' + defaultRouteBuilding);
+    defaultRouteBuilding && localStorage.setItem('defaultRouteBuilding', `${defaultRouteBuilding}`);
   }
 
   getDefaultRouteBuilding() {
     return this.settings.rules.autoStartRoute;
   }
   setRoutingMode(auto: string) {
-    auto && localStorage.setItem('auto', auto + '');
+    auto && localStorage.setItem('auto', `${auto}`);
   }
   public getRoutingMode() {
     return this.settings.rules.typeRoute;
@@ -271,20 +271,20 @@ export class AuthService {
   public check(mode: string) {
     this.bScan.scan().then((scanData) => {
       console.log('sys:: auth.check() данные qr-кода: ', scanData);
-      let url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/wh.php';
-      let data = {
-        'cId': this.getUserId(),
-        'token': "l;sdfjkhglsoapl[",
-        'qr': scanData.text,
-        'mode': 'check' + mode
+      const url = `${this.sys.proxy}https://mobile.postsrvs.ru/admin/ajax/wh.php`;
+      const data = {
+        cId: this.getUserId(),
+        token: 'l;sdfjkhglsoapl[',
+        qr: scanData.text,
+        mode: `check${mode}`
       }
       const headers = new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
         'Content-type': 'application/json'
       })
-      this.http.post(url, data, { headers: headers }).subscribe((data: any) => {
+      this.http.post(url, data, { headers }).subscribe((data: any) => {
         if (data.success == true) {
-          this.checkState = 'checked' + mode;
+          this.checkState = `checked${mode}`;
           localStorage.check = mode;
         }
       })

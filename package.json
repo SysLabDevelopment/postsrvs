@@ -7,7 +7,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "ng build --plugin ngx-build-modern --prod",
+		"build": "ng build",
 		"test": "jest",
 		"lint": "ng lint",
 		"lint1": "eslint --ext .js,.jsx src/",
@@ -17,7 +17,7 @@
 		"build:modern:app": "ng build --plugin ngx-build-modern --project app --prod",
 		"prod": "BABEL_ENV=production webpack --env=prod --progress",
 		"deploy": "sh build-release.sh",
-		"iosdebug": "ionic cordova run ios --external --target=B52DF596-4F4F-4F32-8CF3-34C36DCF6FCB"
+		"iosdebug": "ionic cordova run ios -l --external --target=B52DF596-4F4F-4F32-8CF3-34C36DCF6FCB"
 	},
 	"private": true,
 	"dependencies": {
