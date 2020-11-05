@@ -76,6 +76,13 @@
         "before": true,
         "after": false
       }
+    ],
+    "dot-notation": "error",
+    "no-restricted-properties": [
+      2,
+      {
+        "object": "require"
+      }
     ]
   },
   "root": true

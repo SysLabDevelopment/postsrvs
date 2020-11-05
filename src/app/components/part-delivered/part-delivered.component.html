@@ -1,7 +1,7 @@
 <ion-content>
   <div class="ion-padding">
     <h1>Частично доставлено <a (click)="dismiss('cancel')">Закрыть</a></h1>
-    <app-goods-table #goodsTable [goods]="goods" [isChangeble]="true" (goodsChanges)="setGoods(null)"></app-goods-table>
+    <app-goods-table #goodsTable [goods]="goods" [isChangeble]="true"></app-goods-table>
     <ion-button class='call' expand='full' fill='solid' (click)="scanReturned()">
       Сканировать возврат
     </ion-button>
