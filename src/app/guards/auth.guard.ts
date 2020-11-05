@@ -1,11 +1,8 @@
 
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { NavService } from '../services/nav.service';
 import { StateService } from '../services/state.service';
-import { Platform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +20,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
     let url = next.routeConfig.path;
+    console.debug(`sys:: nagitage to ${url}`);
     switch (url) {
       case 'courier':
         this.nav_s.tabNav.next(3);

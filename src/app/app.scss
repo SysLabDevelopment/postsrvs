@@ -56,6 +56,9 @@ app-orders-list-guess {
 }
 
 :root {
+  #content1 {
+    bottom: 40px;
+  }
   ion-footer {
     ion-buttons {
       display: flex;
@@ -90,14 +93,18 @@ app-orders-list-guess {
     }
   }
 
-  ion-header * {
-    font-size: 16px;
-
+  ion-header {
+    * {
+      font-size: 16px;
+    }
     ion-toolbar {
       --background: #2b637e;
       color: white;
       text-align: center;
       --min-height: 30px;
+      ion-title {
+        height: auto;
+      }
 
       ion-back-button {
         height: 30px;

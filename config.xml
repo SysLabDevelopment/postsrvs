@@ -3,7 +3,7 @@
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ionic@flexcore.ru" href="https://postsrvs.web.app/">Psvs Team</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content original-src="index.html" src="http://192.168.0.109:8100" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -146,4 +146,5 @@
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-firebasex" spec="~11.0.1" />
     <allow-navigation href="http://localhost:8100" sessionid="855e7208" />
+    <allow-navigation href="http://192.168.0.109:8100" sessionid="f676f082" />
 </widget>

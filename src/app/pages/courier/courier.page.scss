@@ -1,3 +1,6 @@
+app-coutier {
+  height: calc(100% - 40px);
+}
 ion-chip {
   white-space: nowrap;
 }
@@ -11,9 +14,6 @@ ion-chip {
 }
 ion-toolbar {
   --min-height: 30px;
-  ion-title {
-    height: auto;
-  }
 }
 
 .toolbar {

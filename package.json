@@ -17,7 +17,7 @@
 		"build:modern:app": "ng build --plugin ngx-build-modern --project app --prod",
 		"prod": "BABEL_ENV=production webpack --env=prod --progress",
 		"deploy": "sh build-release.sh",
-		"iosdebug": "ionic cordova run ios -l --external --target=B52DF596-4F4F-4F32-8CF3-34C36DCF6FCB"
+		"iosdebug": "ionic cordova run ios -l --external --target=4CC6A2A8-FC70-43C5-B503-040FA27AE018"
 	},
 	"private": true,
 	"dependencies": {
@@ -55,6 +55,7 @@
 		"@ionic/core": "^5.3.5",
 		"@ionic/storage": "^2.2.0",
 		"@nrwl/cli": "^10.3.1",
+		"@nrwl/workspace": "9999.0.0",
 		"@types/intro.js": "^2.4.7",
 		"angular": "^1.8.1",
 		"angular-feather": "^6.0.10",
@@ -107,7 +108,7 @@
 	},
 	"devDependencies": {
 		"@angular-devkit/architect": "0.900.6",
-		"@angular-devkit/build-angular": "~0.1000.0",
+		"@angular-devkit/build-angular": "^0.1002.0",
 		"@angular-devkit/core": "^10.1.4",
 		"@angular-devkit/schematics": "^10.1.4",
 		"@angular/cli": "^10.1.4",

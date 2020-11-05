@@ -19,7 +19,7 @@ import {
   MarkerOptions,
   MyLocation
 } from '@ionic-native/google-maps';
-import { NavController, Platform, PopoverController } from '@ionic/angular';
+import { Platform, PopoverController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Observable, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -81,7 +81,6 @@ export class MapPage implements OnInit {
     private sysMap: MapService,
     private auth: AuthService,
     private nav: NavService,
-    public navCtrl: NavController,
     public popoverController: PopoverController,
     private data: DataService,
     private storage: Storage,
