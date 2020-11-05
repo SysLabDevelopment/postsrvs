@@ -6,7 +6,6 @@ import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import {
   DirectionsRenderer,
   DirectionsResult,
-
   GoogleMap,
   GoogleMapOptions,
   GoogleMaps,
@@ -19,7 +18,7 @@ import {
   MarkerOptions,
   MyLocation
 } from '@ionic-native/google-maps';
-import { Platform, PopoverController } from '@ionic/angular';
+import { NavController, Platform, PopoverController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Observable, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -84,7 +83,8 @@ export class MapPage implements OnInit {
     public popoverController: PopoverController,
     private data: DataService,
     private storage: Storage,
-    private firebase: FirebaseX
+    private firebase: FirebaseX,
+    public navCtrl: NavController,
   ) {
   }
 

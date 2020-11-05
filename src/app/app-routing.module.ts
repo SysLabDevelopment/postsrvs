@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'courier1',
-    loadChildren: () => import('./pages/courier1/courier1.module').then( m => m.Courier1PageModule)
+    loadChildren: () => import('./pages/courier1/courier1.module').then(m => m.Courier1PageModule)
   },
 ];
 

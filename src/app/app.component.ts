@@ -1,24 +1,24 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
-import { FirebaseX } from "@ionic-native/firebase-x/ngx";
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Network } from '@ionic-native/network/ngx';
-import { SplashScreen } from "@ionic-native/splash-screen/ngx";
-import { StatusBar } from "@ionic-native/status-bar/ngx";
-import { AlertController, Platform } from "@ionic/angular";
-import { CacheService } from "ionic-cache";
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AlertController, Platform } from '@ionic/angular';
+import { CacheService } from 'ionic-cache';
 import { Order } from 'src/app/interfaces/order';
-import { AuthService } from "./services/auth.service";
-import { CourierService } from "./services/courier.service";
-import { NavService } from "./services/nav.service";
-import { SettingsService } from "./services/settings.service";
+import { AuthService } from './services/auth.service';
+import { CourierService } from './services/courier.service';
+import { NavService } from './services/nav.service';
+import { SettingsService } from './services/settings.service';
 import { StateService } from './services/state.service';
 import { SysService } from './services/sys.service';
 import { OrderService } from './services/sys/order.service';
 import { RemoteConfigService } from './services/sys/remote-config.service';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "app.component.html",
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
 })
 export class AppComponent {
   public nav: any = 2;
@@ -70,7 +70,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      if (this.settings.rules.typeRoute == "standart") {
+      if (this.settings.rules.typeRoute == 'standart') {
         this.routingModeAuto = false;
       }
 
@@ -86,8 +86,8 @@ export class AppComponent {
         }
       })
       this.firebase.getToken()
-        .then(token => console.log(`sys:: Токен для push'ей:  ${token}`)) // save the token server-side and use it to push notifications to this device
-        .catch(error => console.error('sys:: Ошибка получения токена', error));
+        .then((token) => console.log(`sys:: Токен для push'ей:  ${token}`)) // save the token server-side and use it to push notifications to this device
+        .catch((error) => console.error('sys:: Ошибка получения токена', error));
 
       this.firebase.onMessageReceived()
         .subscribe((data: any) => {
@@ -114,16 +114,16 @@ export class AppComponent {
   public navTo(index: number) {
     switch (index) {
       case 1:
-        this.router.navigate(["balance"]);
+        this.router.navigate(['balance']);
         break;
       case 2:
-        this.router.navigate(["map"]);
+        this.router.navigate(['map']);
         break;
       case 3:
-        this.router.navigate(["courier"]);
+        this.router.navigateByUrl('/courier');
         break;
       case 0:
-        this.router.navigate(["login"]);
+        this.router.navigate(['login']);
         break;
     }
   }
