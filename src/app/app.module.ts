@@ -43,6 +43,7 @@ import { IconsModule } from './icons/icons.module';
 import { ErrorIntercept } from './interceptors/error.interceptor';
 import { HttpErrorInterceptor } from './interceptors/http.interceptor';
 import { InspectorModule } from '@ngneat/inspector';
+import { Courier1Pipe } from './pages/courier1.pipe';
 registerLocaleData(localeRu, 'ru');
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ registerLocaleData(localeRu, 'ru');
     LongPressDirective,
     NotDeliveredComponent,
     DeliveredComponent,
-    PartDeliveredComponent
+    PartDeliveredComponent,
+    Courier1Pipe
   ],
   entryComponents: [],
   imports: [
