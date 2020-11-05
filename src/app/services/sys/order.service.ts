@@ -22,8 +22,7 @@ export class OrderService {
     private courier: CourierService,
     private bs: BarcodeScanner,
     private device: Device,
-    private http: HttpClient,
-
+    private http: HttpClient
   ) { }
 
   public sendDelayedCall(order: Order, status: number) {
@@ -262,7 +261,7 @@ export class OrderService {
         orderId,
         box_barcode: scanData.text,
         action: 'get_box',
-        uuid: this.device.uuid
+        uuid: this.sys.getUuid()
       }
     )
     );

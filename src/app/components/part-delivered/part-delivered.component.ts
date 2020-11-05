@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { SysService } from 'src/app/services/sys.service';
 import { OrderService } from 'src/app/services/sys/order.service';
 import { ClientReceiptComponent } from '../client-receipt/client-receipt.component';
 import { GoodsTableComponent } from '../goods-table/goods-table.component';
@@ -11,8 +12,6 @@ import { GoodsTableComponent } from '../goods-table/goods-table.component';
 })
 export class PartDeliveredComponent implements OnInit {
   public selectedPayment: any;
-  private email_input: any;
-  private phone_input: any;
   private commentText: any;
   public cardNums: any;
   @Input() goods: any[];
@@ -25,7 +24,8 @@ export class PartDeliveredComponent implements OnInit {
 
   constructor(
     public modalController: ModalController,
-    private order: OrderService
+    private order: OrderService,
+    private sys: SysService
   ) { }
 
   ngOnInit() { }
@@ -43,11 +43,15 @@ export class PartDeliveredComponent implements OnInit {
     this.modalController.dismiss(details);
   }
 
-  public setGoods(goods: any[]) {
-
-  }
-
   public scanReturned() {
-    this.order.scanReturned(this.orderId).then((goodCode) => this.goodsTable.minusGood(+goodCode));
+    this.order.scanReturned(this.orderId).then((goodCode) => {
+      if (goodCode) {
+        const index = this.goods.findIndex((good) => good.Code == goodCode);
+        const good = this.goods[index];
+        this.goodsTable.minusGood(+goodCode, good.kol_vo)
+      } else {
+        this.sys.presentToast('Товар не найден', 'danger')
+      }
+    });
   }
 }
