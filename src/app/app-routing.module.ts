@@ -14,11 +14,7 @@ const routes: Routes = [
   {
     path: 'version',
     loadChildren: () => import('./pages/version/version.module').then((m) => m.VersionPageModule)
-  },
-  {
-    path: 'courier1',
-    loadChildren: () => import('./pages/courier1/courier1.module').then(m => m.Courier1PageModule)
-  },
+  }
 ];
 
 @NgModule({
