@@ -294,7 +294,7 @@ export class CourierService {
   }
 
 
-  public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date = '', check = '', recognizedCheckData: string = null, cardNums?: string) {
+  public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date = '', check = '', recognizedCheckData: string = null, cardNums?: string, waitingMinutes?: number) {
     const url = 'orders';
     const draw = localStorage.getItem('drawImg');
     const data = {
@@ -309,7 +309,8 @@ export class CourierService {
       check,
       recognizedCheckData,
       sign: '',
-      cardNums
+      cardNums,
+      waitingMinutes
     };
     if (draw) data['sign'] = draw;
 

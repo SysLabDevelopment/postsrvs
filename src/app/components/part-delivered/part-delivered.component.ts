@@ -38,7 +38,9 @@ export class PartDeliveredComponent implements OnInit {
       phone_input: this.receiptComponent.phone_input,
       commentText: this.commentText,
       cardNums: this.receiptComponent.cardNums,
-      goods: this.goodsTable.goods
+      goods: this.goodsTable.goods,
+      waitingMinutes: this.receiptComponent.waitingMinutes
+
     });
     this.modalController.dismiss(details);
   }

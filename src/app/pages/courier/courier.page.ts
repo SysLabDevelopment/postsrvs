@@ -29,7 +29,7 @@ import { SettingsService } from '../../services/settings.service';
 import { StateService } from '../../services/state.service';
 import { SysService } from '../../services/sys.service';
 import { DataService } from '../../services/sys/data.service';
-
+import { OrderService } from '../../services/sys/order.service';
 
 @Component({
   selector: 'app-courier',
@@ -113,7 +113,8 @@ export class CourierPage implements OnInit {
     private network: Network,
     private http: HttpClient,
     private firebase: FirebaseX,
-    public introService: IntroJsService
+    public introService: IntroJsService,
+    public orderService: OrderService
   ) {
     const self = this;
 
@@ -600,15 +601,7 @@ export class CourierPage implements OnInit {
 
   // Парсинг номера телефона из строки с лишним мусором
   public parsePhone(phone: string): Array<string> {
-    const phones: Array<string> = [];
-    phone = phone.replace(/\D+/g, '');
-
-    while (phone.length > 7) {
-      phone = this.normalizePhoneNumber(phone);
-      phones.push(phone.slice(null, 11));
-      phone = phone.slice(11);
-    }
-    return phones;
+    return this.orderService.parsePhone(phone)
   }
 
   // Жонглирование '8' / '+7'

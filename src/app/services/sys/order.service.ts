@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { Storage } from '@ionic/storage';
+import { findPhoneNumbersInText } from 'libphonenumber-js';
 import { Order } from '../../interfaces/order';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../courier.service';
 import { SysService } from '../sys.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -44,15 +46,15 @@ export class OrderService {
 
   private sendPay(order: Order) {
     this.notPayData = false;
-    const callback_url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/pay_callback.php';
+    const callback_url = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/pay_callback.php`;
     const products = [];
     for (const code in order.quants) {
-      if (order.quants[code]['amount'] > 0) {
+      if (order.quants[code].amount > 0) {
         for (let i = 0; i < order.goods.length; i++) {
-          if (order.goods[i]['Code'] == code) {
-            const good_name = order.goods[i]['Name'];
-            const good_amount = order.quants[code]['amount'];
-            const good_price = Math.round(order.quants[code]['price'] * 100) / 100;
+          if (order.goods[i].Code == code) {
+            const good_name = order.goods[i].Name;
+            const good_amount = order.quants[code].amount;
+            const good_price = Math.round(order.quants[code].price * 100) / 100;
             const pos = {
               name: good_name,
               price: good_price,
@@ -82,13 +84,13 @@ export class OrderService {
       cash_amount: ''
     };
     if (order.selectedPayment == '2') {
-      order_data['card_amount'] = '#';
+      order_data.card_amount = '#';
     } else {
-      order_data['cash_amount'] = '#';
+      order_data.cash_amount = '#';
     }
 
     if (order.phone_input != '') {
-      order_data['customer_phone'] = order.phone_input;
+      order_data.customer_phone = order.phone_input;
     }
 
     this.send_api_data(order_data, order);
@@ -133,7 +135,8 @@ export class OrderService {
               '',
               order.check,
               recognizedData,
-              order.cardNums
+              order.cardNums,
+              order.waitingMinutes
             )
             .subscribe((data: any) => {
               localStorage.removeItem('drawImg');
@@ -156,7 +159,8 @@ export class OrderService {
               '',
               order.check,
               recognizedData,
-              order.cardNums
+              order.cardNums,
+              order.waitingMinutes
             )
             .subscribe((data: any | null) => {
               localStorage.removeItem('drawImg');
@@ -226,33 +230,11 @@ export class OrderService {
   //   }
   // }
 
-  // //Парсинг номера телефона из строки с лишним мусором
-  // public parsePhone(phone): Array<string> {
-  //   let phones: Array<string> = [];
-  //   phone = phone.replace(/\D+/g, "");
+  public parsePhone(string: string) {
+    const phoneNumber = findPhoneNumbersInText(string, 'RU')
+    return phoneNumber.map((number) => number.number.number as string);
 
-  //   while (phone.length > 7) {
-  //     phone = this.normalizePhoneNumber(phone);
-  //     phones.push(phone.slice("", 11));
-  //     phone = phone.slice(11);
-  //   }
-  //   return phones;
-  // }
-
-  // //Жонглирование '8' / '+7'
-  // private normalizePhoneNumber(phone): string {
-  //   if (phone[0] !== "8" && phone[0] !== "7" && phone.length !== 11) {
-  //     phone = "8" + phone;
-  //   }
-  //   if (phone.length == 7 || phone.length == 10) {
-  //     phone = "8" + phone;
-  //   }
-  //   if (phone[0] !== "8" && phone.length == 11) {
-  //     phone = "8" + phone.slice(1);
-  //   }
-  //   return phone;
-  // }
-
+  }
   //Скан штрих-кода товара на возврат
   public async scanReturned(orderId: string) {
     const url = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/orders`;

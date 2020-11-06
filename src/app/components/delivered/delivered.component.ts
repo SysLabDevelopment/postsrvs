@@ -44,7 +44,8 @@ export class DeliveredComponent implements AfterViewInit {
       email_input: this.receiptComponent.email_input,
       phone_input: this.receiptComponent.phone_input,
       commentText: this.commentText,
-      cardNums: this.receiptComponent.cardNums
+      cardNums: this.receiptComponent.cardNums,
+      waitingMinutes: this.receiptComponent.waitingMinutes
     });
     this.modalController.dismiss(details);
   }

@@ -13,6 +13,7 @@ export class ClientReceiptComponent {
     public cardNums: string;
     public email_input = '';
     public phone_input = '';
+    public waitingMinutes: number;
 
     @Input() pay_type_change_allowed: boolean;
     @Input() pay_type: string;

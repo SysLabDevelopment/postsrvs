@@ -133,7 +133,7 @@ export class OrderPage implements OnInit {
     5: 'Показать на карте маршрут до заказа',
     6: 'Кнопки закрытия заказа'
   };
-
+  public waitingMinutes: number;
 
   constructor(
     private router: Router,
@@ -213,16 +213,8 @@ export class OrderPage implements OnInit {
   }
 
   public parsePhone(phone: string): Array<string> {
-    const phones: Array<string> = [];
-    phone = phone.replace(/\D+/g, '');
 
-    while (phone.length > 7) {
-      phone = this.normalizePhoneNumber(phone);
-      phones.push(phone.slice(null, 11));
-      phone = phone.slice(11);
-    }
-
-    return phones;
+    return this.orderService.parsePhone(phone);
   }
 
   private normalizePhoneNumber(phone: string): string {
@@ -824,7 +816,7 @@ export class OrderPage implements OnInit {
     this.phone_input = details.data.phone_input;
     this.commentText = details.data.commentText;
     this.cardNums = details.data.cardNums;
-
+    this.order.waitingMinutes = details.data.waitingMinutes
     if (details.data) {
       this.doneOrder();
     }
@@ -854,6 +846,8 @@ export class OrderPage implements OnInit {
       this.commentText = details.data.commentText;
       this.cardNums = details.data.cardNums;
       this.order.goods = details.data.goods;
+      this.order.waitingMinutes = details.data.waitingMinutes
+
       this.setQuants();
       this.doneOrder();
     }

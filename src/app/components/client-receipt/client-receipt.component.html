@@ -44,5 +44,9 @@
             </ion-label>
             <ion-input type='tel' [(ngModel)]='phone_input'></ion-input>
         </ion-item>
+        <ion-item class='input'>
+            <ion-label class='title' position="stacked">Время ожидания</ion-label>
+            <ion-input type='number' [(ngModel)]="waitingMinutes"></ion-input>
+        </ion-item>
     </ion-list>
 </ng-container>

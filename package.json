@@ -88,6 +88,7 @@
     "es6-promise-plugin": "^4.2.2",
     "feather-icons": "^4.28.0",
     "ionic-cache": "^5.2.0",
+    "libphonenumber-js": "^1.8.7",
     "mx.ferreyra.callnumber": "0.0.2",
     "ngx-build-modern": "^1.1.10",
     "ngx-mask": "^9.1.2",

@@ -117,7 +117,7 @@ export class AppComponent {
         this.router.navigate(['balance']);
         break;
       case 2:
-        this.router.navigate(['map']);
+        this.router.navigate(['']);
         break;
       case 3:
         this.router.navigateByUrl('/courier');

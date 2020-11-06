@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
     let url = next.routeConfig.path;
-    console.debug(`sys:: nagitage to ${url}`);
+    console.debug(`sys:: navigate to ${url}`);
     switch (url) {
       case 'courier':
         this.nav_s.tabNav.next(3);
