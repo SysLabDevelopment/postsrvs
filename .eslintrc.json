@@ -13,7 +13,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-unused-vars": "off",
+    "no-unused-vars": "error",
     "unicorn/prevent-abbreviations": "off",
     "prefer-const": "warn",
     "no-const-assign": "warn",
@@ -83,7 +83,12 @@
       {
         "object": "require"
       }
-    ]
+    ],
+    "no-undef": "error",
+    "one-var": "error",
+    "no-multi-assign": "error",
+    "no-plusplus": "error",
+    "operator-linebreak": "error",
   },
   "root": true
 }
