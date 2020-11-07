@@ -14,6 +14,7 @@ import {
 import { Platform, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
 import { Order } from 'src/app/interfaces/order';
+import { SysService } from "../sys.service";
 @Injectable({
   providedIn: "root",
 })
@@ -27,7 +28,8 @@ export class MapService {
     private device: Device,
     private platform: Platform,
     private router: Router,
-    public viewCtrl: PopoverController
+    public viewCtrl: PopoverController,
+    private sys: SysService
   ) { }
 
   public getWay(coords: { lt: number; lg: number }): Observable<any> {
@@ -39,7 +41,7 @@ export class MapService {
       lg: coords?.lg,
       auto: 0,
       mode: "auto",
-      uuid: this.device.uuid,
+      uuid: this.sys.getUuid(),
     };
     const httpOptions = {
       headers: new HttpHeaders({

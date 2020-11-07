@@ -84,4 +84,12 @@ export class SettingsService {
       }
     })
   }
+  public async getRules(cid: string) {
+    const data = {
+      cid
+    }
+    const url = this.sys.proxy + 'https://mobile.postsrvs.ru/mobile/getRules.php';
+    const resp = await this.http.post<{ success: boolean, rules: Rules }>(url, data).toPromise();
+    return resp.rules;
+  }
 }

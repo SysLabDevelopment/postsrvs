@@ -90,22 +90,19 @@ export class MapPage implements OnInit {
 
   ngOnInit() {
     console.log('sys:: map init');
-    this.settings.state
-      .pipe(filter((state) => state == 'hasRules'))
-      .subscribe(() => {
-        this.getOrdersId()
-          .pipe(filter((ids) => ids.length > 0))
-          .subscribe((ids: Array<any>) => {
-            this.getOrders(ids).subscribe((res: Response) => {
-              this.orders = res.orders;
-              if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
-                this.orders.length = 1;
-              }
-              console.log('sys:: заказы', this.orders);
-              this.orders && this.data.orders.next(this.orders);
-              this.drawData(this.settings.rules.autoStartRoute);
-            });
-          });
+
+    this.getOrdersId()
+      .pipe(filter((ids) => ids.length > 0))
+      .subscribe((ids: Array<any>) => {
+        this.getOrders(ids).subscribe((res: Response) => {
+          this.orders = res.orders;
+          if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
+            this.orders.length = 1;
+          }
+          console.log('sys:: заказы', this.orders);
+          this.orders && this.data.orders.next(this.orders);
+          this.drawData(this.settings.rules.autoStartRoute);
+        });
       });
     this.state$.g_state.subscribe((state) => {
       if (state == 'login') {
@@ -211,7 +208,7 @@ export class MapPage implements OnInit {
 
   private getOrdersId(): Observable<any> {
     return new Observable((ids) => {
-      if (this.settings.rules.typeRoute == 'standart') {
+      if (this.settings.rules.appMode.includes('hand')) {
         this.orders && ids.next(this.orders.filter(order => order.status_id == 1).map((order) => order.id));
       } else {
         this.sysMap.getWay(this.coords).subscribe((resp: Response) => {
@@ -243,7 +240,8 @@ export class MapPage implements OnInit {
   public drawData(autoStartRoute: string = '0', customData: any = null, drawOrders?: Order[]) {
     if (this.map !== undefined) {
       this.map.clear().then(async () => {
-        if (this.routeToOrder && customData?.label == 'showRouteToOrder') {
+        const rules = await this.settings.getRules(this.auth.getUserId());
+        if ((this.routeToOrder && customData?.label == 'showRouteToOrder') || rules.appMode.includes('auto')) {
           this.requestDirection(parseFloat(customData.order.lt), parseFloat(customData.order.lg));
           this.addCluster(this.markeredOrders([customData.order]));
         } else {
