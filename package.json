@@ -54,7 +54,7 @@
     "@ionic/angular": "^5.4.2",
     "@ionic/core": "^5.4.2",
     "@ionic/storage": "^2.2.0",
-    "@nrwl/cli": "^10.3.1",
+    "@nrwl/cli": "^10.3.2",
     "@nrwl/workspace": "9999.0.0",
     "@types/intro.js": "^2.4.7",
     "angular": "^1.8.1",

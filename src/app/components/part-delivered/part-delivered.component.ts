@@ -48,9 +48,7 @@ export class PartDeliveredComponent implements OnInit {
   public scanReturned() {
     this.order.scanReturned(this.orderId).then((goodCode) => {
       if (goodCode) {
-        const index = this.goods.findIndex((good) => good.Code == goodCode);
-        const good = this.goods[index];
-        this.goodsTable.minusGood(+goodCode, good.kol_vo)
+        this.goodsTable.minusGood(+goodCode)
       } else {
         this.sys.presentToast('Товар не найден', 'danger')
       }
