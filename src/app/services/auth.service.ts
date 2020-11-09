@@ -43,9 +43,6 @@ export class AuthService {
       showFlipCameraButton: true
     };
 
-    if (!this.getMode()) {
-      this.setMode('hand');
-    }
     if (!this.getScanMode()) {
       this.setScanMode('camera');
     }
@@ -70,7 +67,7 @@ export class AuthService {
     localStorage.setItem('mode', mode);
   }
 
-  public getMode(): String {
+  public getMode() {
     return this.settings.rules.appMode;
   }
 

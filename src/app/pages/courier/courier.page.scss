@@ -192,6 +192,12 @@ ion-item {
         --background: var(--corporate);
         border-radius: 2px;
       }
+      .route {
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+        padding: 0;
+      }
     }
   }
 }

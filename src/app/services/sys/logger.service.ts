@@ -10,7 +10,9 @@ export class LoggerService {
 
   public log(...logs: any) {
     const prefix = 'sys:: ';
+    console.groupCollapsed();
     console.trace(prefix, logs);
+    console.groupEnd();
     this.firebase.logEvent('log', logs);
 
   }

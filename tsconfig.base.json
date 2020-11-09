@@ -30,6 +30,7 @@
     "disableExpressionLowering": true,
     "strictSafeNavigationTypes": true,
     "strictDomLocalRefTypes": true,
-    "strictContextGenerics": true
+    "strictContextGenerics": true,
+    "strictLiteralTypes": true
   }
 }

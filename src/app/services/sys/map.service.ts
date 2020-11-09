@@ -2,14 +2,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Device } from "@ionic-native/device/ngx";
-import { Geolocation } from "@ionic-native/geolocation/ngx";
 import {
   Environment,
   GoogleMap,
   GoogleMapOptions,
   GoogleMaps,
   GoogleMapsEvent,
-  MapTypeId
+
+  LocationService, MapTypeId
 } from "@ionic-native/google-maps";
 import { Platform, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
@@ -24,7 +24,6 @@ export class MapService {
   public infoUpdated = new Subject();
   constructor(
     private http: HttpClient,
-    private geo: Geolocation,
     private device: Device,
     private platform: Platform,
     private router: Router,
@@ -153,5 +152,9 @@ export class MapService {
     };
     this.infoUpdated.next(meta);
     this.router.navigate(['map']);
+  }
+
+  public getMyLocation() {
+    return LocationService.getMyLocation();
   }
 }

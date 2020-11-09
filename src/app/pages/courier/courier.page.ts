@@ -167,11 +167,11 @@ export class CourierPage implements OnInit {
   }
 
   ngOnInit() {
-    this.settings.checkout = !!(this.settings.rules.storeCheckMode - 0);
+    this.settings.checkout = !!(Number(this.settings.rules.storeCheckMode));
     if (!this.settings.checkout) {
       this.auth.checkState = 'checkedOut';
     } else {
-      this.auth.checkState = `checked ${localStorage.check}`;
+      this.auth.checkState = `checked${localStorage.check}`;
     }
     if (this.settings.rules.appMode == 'hand') {
       this.state$.manual_route = true;
@@ -290,15 +290,6 @@ export class CourierPage implements OnInit {
     this.state$.orders_page_check = false;
   }
 
-  public manualRoute() {
-    if (this.state$.manual_route) {
-      this.courier.changeRouteMode('auto');
-    } else {
-      this.courier.changeRouteMode('fullHand');
-    }
-    this.vbr.vibrate(300);
-  }
-
 
   public initContent() {
     const self = this;
@@ -385,12 +376,13 @@ export class CourierPage implements OnInit {
   }
 
 
-  public sendStartRoute(cid: number, start: boolean, stop: boolean) {
+  public async sendStartRoute(cid: number, start: boolean, stop: boolean) {
     const url = 'geo/route_start.php';
+    const currentLocation = await this.map.getMyLocation();
     const data = {
       cid,
-      lt: this.state$.position.getValue().lt,
-      lg: this.state$.position.getValue().lg,
+      lt: currentLocation.latLng.lat,
+      lg: currentLocation.latLng.lng,
       start: '',
       stop: ''
     };

@@ -21,7 +21,7 @@ export class SettingsService {
     scanMode: "",
     autoStartRoute: "",
     typeRoute: "",
-    storeCheckMode: "",
+    storeCheckMode: "0",
     gess: undefined,
     schedule: undefined,
     phoneMode: '',

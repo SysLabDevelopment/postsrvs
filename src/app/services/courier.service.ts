@@ -63,33 +63,6 @@ export class CourierService {
       self.state$.state.next('init');
     })
   }
-  /**
-   * Меняем на серере режим маршрута
-   */
-  public changeRouteMode(mode: string) {
-    if (this.state$.way.getValue() !== null) {
-      const url = 'orders';
-      const routeId = this.state$.way.getValue()[0].route;
-      const data = { action: 'changeRouteMode', routeId: this.state$.way.getValue()[0].route, mode: '' };
-      if (mode == 'auto' || mode == 'fullHand') {
-        data['mode'] = mode;
-      } else {
-        this.auth.showError(5);
-        return false;
-      }
-
-      const self = this;
-      this.auth.sendPost(url, data).subscribe((resp) => {
-        if (resp.success == 'true') {
-          self.state$.manual_route = resp.mode == 'fullHand' ? true : false;
-          self.state$.updateWayInfo.next(null);
-        } else {
-          self.auth.showError(5);
-        }
-      });
-    }
-
-  }
 
   public updateOrders() {
 

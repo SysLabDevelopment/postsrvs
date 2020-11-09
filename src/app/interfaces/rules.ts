@@ -3,7 +3,7 @@ export interface Rules {
   scanMode: string;
   autoStartRoute: string;
   typeRoute: string;
-  storeCheckMode: any;
+  storeCheckMode: '1' | '0';
   gess: number;
   schedule: number;
   phoneMode: string;
