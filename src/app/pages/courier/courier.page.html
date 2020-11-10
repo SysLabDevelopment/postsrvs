@@ -55,9 +55,11 @@
       <cdk-virtual-scroll-viewport cdkDropList (cdkDropListDropped)="drop($event)" itemSize="30"
         style="height: 100%; width: 100%; min-height: 50vh;">
         <ion-list>
-          <ion-item *ngFor="let order of orders_c | async; trackBy: trackFn" [ngClass]=" { overdue:
-            isOverdueTime(order), warnTime: isWarnTime(order.datetime_to) }" (click)="selectOrder(order.id)"
-            (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500" cdk>
+          <ion-item *ngFor="let order of orders_c | async; trackBy: trackFn" [ngClass]=" {
+             overdue:
+            isOverdueTime(order),
+             warnTime: isWarnTime(order)
+          }" (click)="selectOrder(order.id)" (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500" cdk>
             <ion-label [@openClose]="order.show ? 'open' : 'closed'">
               <div class='title'>
                 <span>
@@ -114,10 +116,10 @@
         </ion-button>
       </div>
       <div class="route" *ngIf="settings.rules.appMode.includes('auto') && auth.checkState == 'checkedOut'">
-        <ion-button (click)="startRoute()" expand="full" fill="solid" color='success' *ngIf="btn_go">
+        <ion-button (click)="startRoute()" expand="full" fill="solid" color='success' *ngIf="!btn_go">
           Начать маршрут
         </ion-button>
-        <ion-button class="satrt-r-btn sr-stop" (click)="stopRoute()" *ngIf="!btn_go" expand="full" fill="solid"
+        <ion-button class="satrt-r-btn sr-stop" (click)="stopRoute()" *ngIf="btn_go" expand="full" fill="solid"
           color='danger'>
           Остановить маршрут
         </ion-button>

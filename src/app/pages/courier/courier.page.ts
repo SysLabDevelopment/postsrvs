@@ -644,16 +644,17 @@ export class CourierPage implements OnInit {
   }
 
   //Проверяет, наступил ли дедлайн (час до таргетного времени)
-  public isWarnTime(date: string): boolean {
-    if (date !== null) {
+  public isWarnTime(order: Order): boolean {
+    let warnTime: boolean;
+    if (order.datetime_to !== null) {
       const hour = 3600000;
-      const deadline = new Date(date);
+      const deadline = new Date(order.datetime_to);
       const now = new Date();
-      return (new Date(deadline.getTime() - hour) <= now)
+      warnTime = (new Date(deadline.getTime() - hour) <= now);
     } else {
-      return false;
+      warnTime = false;
     }
-
+    return warnTime && (order.status_id == 1);
   }
 
   //проверяет необходимость подсветки заказа красным

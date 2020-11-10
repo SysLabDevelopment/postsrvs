@@ -89,6 +89,11 @@
     "no-multi-assign": "error",
     "no-plusplus": "error",
     "operator-linebreak": "error",
+    "eqeqeq": "error",
+    "no-case-declarations": "error",
+    "no-nested-ternary": "error",
+    "no-unneeded-ternary": "error",
+    "no-mixed-operators": "error",
   },
   "root": true
 }

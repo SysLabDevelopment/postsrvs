@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="163" id="postsrvs.i" version="1.32.50" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="164" id="postsrvs.i" version="1.33.51" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ionic@flexcore.ru" href="https://postsrvs.web.app/">Psvs Team</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
