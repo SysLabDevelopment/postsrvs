@@ -16,4 +16,12 @@ export class LoggerService {
     this.firebase.logEvent('log', `${description}: ${JSON.stringify(logObj)}`);
 
   }
+
+  public debug(logObj, ...params: any) {
+    const prefix = 'dbg:: ';
+    console.debug(logObj, params);
+    console.groupCollapsed('Стек вызовов');
+    console.trace('Стек вызовов');
+    console.groupEnd();
+  }
 }

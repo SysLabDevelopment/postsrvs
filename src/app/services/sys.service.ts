@@ -61,9 +61,7 @@ export class SysService {
       action: 'getOrders',
       orders_id: ids
     }
-    if (localStorage.debug == 'true') {
-      data['uuid'] = '6b356755575fce31';
-    }
+
 
     const httpOptions = {
       headers: new HttpHeaders({

@@ -7,7 +7,7 @@ import {
 } from '@angular/animations';
 import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { IntroJsService } from '@esfaenza/ngx-introjs';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
@@ -51,8 +51,7 @@ import { OrderService } from '../../services/sys/order.service';
         animate('0.5s')
       ]),
     ])
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  ]
 })
 export class CourierPage implements OnInit {
   @ViewChild('sInput') public sInput: ElementRef;

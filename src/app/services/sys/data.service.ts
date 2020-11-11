@@ -7,7 +7,7 @@ import { AuthService } from '../auth.service';
 import { CourierService } from '../courier.service';
 import { StateService } from '../state.service';
 import { SysService } from '../sys.service';
-
+import { LoggerService } from '../sys/logger.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,13 +24,14 @@ export class DataService {
     private auth: AuthService,
     private sys: SysService,
     public state$: StateService,
+    private logger: LoggerService
   ) {
 
     storage.ready().then(() => {
       this.storage.get('orders').then((orders: Array<Order>) => {
         this.ordersMap = this.getOrdersMap(orders);
         this.orders.subscribe((orders: Order[]) => {
-          console.log('sys:: Пришли заказы в стрим data.orders', orders);
+          this.logger.debug('Пришли заказы в стрим data.orders', orders);
           if (orders.length > 0) {
             this.saveOrders(orders).then(() => {
               console.log('sys:: Список заказов сохранен в сторож: ', orders);
