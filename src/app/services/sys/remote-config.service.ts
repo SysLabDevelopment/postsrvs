@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 export class RemoteConfigService {
   remoteConfig: any = null;
   deviceInfo: Device;
-
+  private configData: any;
   constructor(
     private platform: Platform,
     private firebase: FirebaseX,
@@ -32,9 +32,8 @@ export class RemoteConfigService {
     return false;
   }
   private async _init() {
-    if (this.platform.is('mobileweb')) {
-      this.remoteConfig = this.firebase.getInfo()
-    }
+    this.remoteConfig = this.firebase.getInfo();
+    this.configData = await this.firebase.getInfo();
   }
   private async _fetchRemoteVersion() {
     return new Promise<string>((resolve, reject) => {
@@ -66,5 +65,9 @@ export class RemoteConfigService {
       }
     }
     return false;
+  }
+
+  get config() {
+    return this.configData
   }
 }

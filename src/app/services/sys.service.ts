@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { WebIntent } from '@ionic-native/web-intent/ngx';
-import { Platform, ToastController } from '@ionic/angular';
+import { AlertController, Platform, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Order } from '../interfaces/order';
 import { Response } from '../interfaces/response';
@@ -24,6 +24,7 @@ export class SysService {
     private camera: Camera,
     private wi: WebIntent,
     private platform: Platform,
+    private alert: AlertController,
 
   ) {
 
@@ -223,5 +224,25 @@ export class SysService {
     return this.device.uuid;
   }
 
+  public async showAlert(header: string, message: string, handlers: { ok: any, cancel: any }) {
+    const alert = await this.alert.create({
+      header,
+      message,
+      buttons: [{
+        text: 'Отмена',
+        role: 'cancel',
+        handler: (blah) => {
+          handlers.cancel()
+        }
+      }, {
+        text: 'Ок',
+        handler: () => {
+          handlers.ok();
+        }
+      }]
+    });
+
+    await alert.present();
+  }
 
 }

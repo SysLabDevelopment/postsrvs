@@ -5,19 +5,21 @@ import { CacheService } from "ionic-cache";
 import { Observable, Subject } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { SysService } from '../services/sys.service';
-
+import { LoggerService } from '../services/sys/logger.service';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpErrorInterceptor implements HttpInterceptor {
-  private isOnline = true;
   constructor(
     public sys: SysService,
     private cache: CacheService,
-    private network: Network
+    private network: Network,
+    private logger: LoggerService
   ) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): any {
+    const body = request.body;
     let url = request.url;
+    this.logger.log('Http-запрос', { url, body });
     let cacheKey = url + request.body?.action;
     let req = next.handle(request).pipe(
       tap(
@@ -30,9 +32,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       ),
       filter(response => !(response instanceof HttpErrorResponse))
     );
-
-
-
     return this.completedResponse(cacheKey, req);
 
   }
@@ -47,7 +46,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return this.cache.loadFromObservable(cacheKey, req).pipe(
       tap(
         resp => {
-          console.log(`sys:: returned response: `, resp.body)
+          this.logger.log(`Http-ответ`, resp.body)
         }
       )
     )

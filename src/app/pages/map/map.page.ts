@@ -257,20 +257,18 @@ export class MapPage implements OnInit {
     }
   }
 
-  public p_btn() {
+  public signOut() {
     setTimeout(() => {
       this.out_counter = 0;
       this.out_process = false;
-      console.log('outprocess_die');
     }, 1000);
 
     if (this.out_process) {
       this.out_counter++;
       if (this.out_counter == 2) {
-        this.logout();
+        this.sys.showAlert('Аккаунт Postservice', 'Вы уверены, что хотите выйти?', { ok: this.logout.bind(this), cancel: console.log })
       }
     } else {
-      console.log('outprocess_false');
       this.out_process = true;
     }
   }

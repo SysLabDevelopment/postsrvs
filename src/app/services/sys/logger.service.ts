@@ -8,12 +8,12 @@ export class LoggerService {
 
   constructor(private firebase: FirebaseX) { }
 
-  public log(...logs: any) {
+  public log(description?: string, logObj?: any) {
     const prefix = 'sys:: ';
-    console.groupCollapsed();
-    console.trace(prefix, logs);
+    console.groupCollapsed(`${prefix} ${description}`, logObj);
+    console.trace();
     console.groupEnd();
-    this.firebase.logEvent('log', logs);
+    this.firebase.logEvent('log', `${description}: ${JSON.stringify(logObj)}`);
 
   }
 }
