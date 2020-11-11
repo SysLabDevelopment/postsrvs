@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Postsrvs</string>
-    <string name="launcher_name">@string/app_name</string>
-    <string name="activity_name">@string/launcher_name</string>
-    <string name="app_update_ready">An update has just been downloaded.</string>
-    <string name="app_update_install">RESTART</string>
-</resources>
