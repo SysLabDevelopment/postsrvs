@@ -51,7 +51,7 @@
     <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
       <ion-searchbar placeholder="Поиск по заказам" inputmode="text" (ionChange)="onSearchChange($event)"
         [debounce]="250" [(ngModel)]="searchString" animated [intro]="IntroItems" [Order]="2"></ion-searchbar>
-
+      <ion-progress-bar type="indeterminate" reversed="true" *ngIf="wayRequested"></ion-progress-bar>
       <ion-item *ngIf="settings.rules.appMode.includes('auto') && !orders.length">
         <ion-label class='ion-text-wrap ion-padding'>Для загрузки заказов нажмите "начать маршрут"</ion-label>
       </ion-item>
@@ -121,7 +121,10 @@
       </div>
       <div class="route" *ngIf="settings.rules.appMode.includes('auto') && auth.checkState == 'checkedOut'">
         <ion-button (click)="startRoute()" expand="full" fill="solid" color='success' *ngIf="!btn_go">
-          Начать маршрут
+          <ion-text *ngIf="!loader">
+            Начать маршрут
+          </ion-text>
+          <ion-spinner name="circles" *ngIf="loader"></ion-spinner>
         </ion-button>
         <ion-button class="satrt-r-btn sr-stop" (click)="stopRoute()" *ngIf="btn_go" expand="full" fill="solid"
           color='danger'>

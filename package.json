@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.33.51",
-	"versionCode": "164",
+	"version": "1.34.62",
+	"versionCode": "175",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -38,7 +38,7 @@
 		"@ionic-native/barcode-scanner": "^5.26.0",
 		"@ionic-native/call-number": "^5.22.0",
 		"@ionic-native/camera": "^5.22.0",
-		"@ionic-native/core": "^5.27.0",
+		"@ionic-native/core": "^5.29.0",
 		"@ionic-native/device": "^5.22.0",
 		"@ionic-native/diagnostic": "^5.23.0",
 		"@ionic-native/firebase-x": "^5.28.0",
@@ -54,8 +54,6 @@
 		"@ionic/angular": "^5.4.2",
 		"@ionic/core": "^5.4.2",
 		"@ionic/storage": "^2.2.0",
-		"@nrwl/cli": "^10.3.2",
-		"@nrwl/workspace": "9999.0.0",
 		"@types/intro.js": "^2.4.7",
 		"angular": "^1.8.1",
 		"angular-feather": "^6.0.10",

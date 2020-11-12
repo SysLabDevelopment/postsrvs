@@ -7,7 +7,7 @@ var PROJECT_PROPERTIES_PATH = "./platforms/android/project.properties";
 var MANIFEST_PATH = "./platforms/android/app/src/main/AndroidManifest.xml";
 var TARGET_FILE_REGEX = /(\.java|\.xml)/;
 
-var deferral, fs, path, now, recursiveDir;
+var deferral, fs, path, perf_hooks, recursiveDir;
 
 function log(message) {
     console.log(PLUGIN_NAME + ": " + message);
@@ -23,12 +23,12 @@ function run() {
         fs = require('fs');
         path = require('path');
         recursiveDir = require("recursive-readdir");
-        now = require("performance-now")
+        perf_hooks = require('perf_hooks');
     } catch (e) {
         throw("Failed to load dependencies: " + e.toString());
     }
 
-    var startTime = now();
+    var startTime = perf_hooks.performance.now();
 
     var artifactMappings = JSON.parse(fs.readFileSync(path.join(__dirname, '.', ARTIFACT_MAPPINGS_FILE)).toString()),
         buildGradle = fs.readFileSync(BUILD_GRADLE_PATH).toString(),
@@ -36,11 +36,10 @@ function run() {
         androidManifest = fs.readFileSync(MANIFEST_PATH).toString();
 
     // Replace artifacts in build.gradle, project.properties & AndroidManifest.xml
-    for(var oldArtifactName in artifactMappings){
-        var newArtifactName = artifactMappings[oldArtifactName],
-            artifactRegExpStr = sanitiseForRegExp(oldArtifactName) + ':[0-9.+]+';
-        buildGradle = buildGradle.replace(new RegExp(artifactRegExpStr, 'gm'), newArtifactName);
-        projectProperties = projectProperties.replace(new RegExp(artifactRegExpStr, 'gm'), newArtifactName);
+    for (var oldArtifactName in artifactMappings) {
+        var newArtifactName = artifactMappings[oldArtifactName];
+        buildGradle = replaceArtifact(buildGradle, oldArtifactName, newArtifactName);
+        projectProperties = replaceArtifact(projectProperties, oldArtifactName, newArtifactName);
     }
     fs.writeFileSync(BUILD_GRADLE_PATH, buildGradle, 'utf8');
     fs.writeFileSync(PROJECT_PROPERTIES_PATH, projectProperties, 'utf8');
@@ -49,7 +48,7 @@ function run() {
 
     // Replace class/package names in AndroidManifest.xml
     for (var oldClassName in classMappings){
-        androidManifest = androidManifest.replace(new RegExp(oldClassName, 'g'), classMappings[oldClassName]);
+        androidManifest = replaceClassName(androidManifest, oldClassName, classMappings[oldClassName]);
     }
     fs.writeFileSync(MANIFEST_PATH, androidManifest, 'utf8');
 
@@ -65,13 +64,22 @@ function run() {
         for(var filePath of files){
             var fileContents = fs.readFileSync(filePath).toString();
             for (var oldClassName in classMappings){
-                fileContents = fileContents.replace(new RegExp(oldClassName, 'g'), classMappings[oldClassName]);
+                fileContents = replaceClassName(fileContents, oldClassName, classMappings[oldClassName]);
             }
             fs.writeFileSync(filePath, fileContents, 'utf8');
         }
-        log("Processed " + files.length + " source files in " + parseInt(now() - startTime) + "ms");
+        log("Processed " + files.length + " source files in " + parseInt(perf_hooks.performance.now() - startTime) + "ms");
         deferral.resolve();
     }));
+}
+
+function replaceArtifact(target, oldName, newName){
+    return target.replace(new RegExp(sanitiseForRegExp(oldName) + ':[0-9.+]+', 'gm'), newName);
+}
+
+function replaceClassName(target, oldName, newName){
+    oldName = '(?:'+sanitiseForRegExp(oldName)+')([^a-zA-Z0-9]+)';
+    return target.replace(new RegExp(oldName, 'g'), newName+'$1');
 }
 
 function sanitiseForRegExp(str) {

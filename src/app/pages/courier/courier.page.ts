@@ -80,7 +80,6 @@ export class CourierPage implements OnInit {
   public find_order = false;
   public isWorkEnded = false;
   public searchString = '';
-  private ord: Observable<any[]>;
   public orders_c: Observable<Order[]>;
   public slicer: number = this.howSlice();
   public callWindow = false;
@@ -96,6 +95,7 @@ export class CourierPage implements OnInit {
     3: 'Показать быстрые действия',
     4: 'Сканировать QR-код на складе, чтобы отметиться'
   };
+  public wayRequested = false;
 
   constructor(
     public courier: CourierService,
@@ -133,7 +133,7 @@ export class CourierPage implements OnInit {
       }
     });
     this.initConditions();
-    this.ord = this.data.orders.asObservable();
+    this.data.orders.asObservable();
     this.orders_c = this.data.orders;
     this.prepareOrdersList();
 
@@ -366,10 +366,15 @@ export class CourierPage implements OnInit {
   }
 
   public startRoute(start = true, stop = false) {
+    this.loader = true;
     const self = this;
     this.auth.checkAuth().subscribe((data) => {
       if (data.success == 'true') {
-        self.sendStartRoute(data.sync_id, start, stop);
+        self.sendStartRoute(data.sync_id, start, stop).then(() => {
+          this.loader = false;
+        });
+      } else {
+        this.loader = false
       }
     });
   }
@@ -399,7 +404,9 @@ export class CourierPage implements OnInit {
     this.auth.sendPost(url, data).subscribe((data) => {
       if (data.success == true) {
         self.btn_go = true;
+        this.wayRequested = true;
         this.map.getWay({ lt: currentLocation.latLng.lat, lg: currentLocation.latLng.lng }).subscribe((response) => {
+          this.wayRequested = false;
           this.data.orders.next(response.orders)
         })
         if (data.result == 'stop') {

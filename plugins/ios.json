@@ -76,7 +76,7 @@
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-update-notifier": {
-      "PACKAGE_NAME": "flexcore.postsrvs.wUITests"
+      "PACKAGE_NAME": "postsrvs.i"
     }
   },
   "dependent_plugins": {

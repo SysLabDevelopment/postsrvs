@@ -1,22 +1,44 @@
 {
-  "name": "cordova-plugin-update-notifier",
-  "version": "1.0.1",
-  "author": "Ayogo Health Inc. <info@ayogo.com>",
-  "contributors": [
-    "Darryl Pogue <darryl@dpogue.ca>",
-    "Jeff Chang <jeffreychang2010@gmail.com>"
-  ],
-  "description": "Cordova plugin for showing a notification for app updates.",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AyogoHealth/cordova-plugin-update-notifier.git"
+  "_from": "cordova-plugin-update-notifier@1.0.1",
+  "_id": "cordova-plugin-update-notifier@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-BNx4Lyc4+s8ouC/hHjGF89wVrABN5GA1gfesl1ZLvPeWFvuJfxZLqmEDyhHVjzRnWS8X1A4jqxkKbuXwYucaFg==",
+  "_location": "/cordova-plugin-update-notifier",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-update-notifier@1.0.1",
+    "name": "cordova-plugin-update-notifier",
+    "escapedName": "cordova-plugin-update-notifier",
+    "rawSpec": "1.0.1",
+    "saveSpec": null,
+    "fetchSpec": "1.0.1"
   },
-  "keywords": [
-    "cordova",
-    "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios"
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-update-notifier/-/cordova-plugin-update-notifier-1.0.1.tgz",
+  "_shasum": "25de9b5988777ea83c3cf6ea330f8278debd8a56",
+  "_spec": "cordova-plugin-update-notifier@1.0.1",
+  "_where": "/Users/timkovik/Documents/postsrvs",
+  "author": {
+    "name": "Ayogo Health Inc.",
+    "email": "info@ayogo.com"
+  },
+  "bugs": {
+    "url": "https://github.com/AyogoHealth/cordova-plugin-update-notifier/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Darryl Pogue",
+      "email": "darryl@dpogue.ca"
+    },
+    {
+      "name": "Jeff Chang",
+      "email": "jeffreychang2010@gmail.com"
+    }
   ],
   "cordova": {
     "platforms": [
@@ -24,6 +46,9 @@
       "android"
     ]
   },
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Cordova plugin for showing a notification for app updates.",
   "engines": [
     {
       "name": "cordova-android",
@@ -34,5 +59,18 @@
       "version": ">= 5.0.0"
     }
   ],
-  "dependencies": {}
+  "homepage": "https://github.com/AyogoHealth/cordova-plugin-update-notifier#readme",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache-2.0",
+  "name": "cordova-plugin-update-notifier",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyogoHealth/cordova-plugin-update-notifier.git"
+  },
+  "version": "1.0.1"
 }
