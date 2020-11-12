@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../courier.service';
 import { SysService } from '../sys.service';
 import { SysCourierService } from '../sys/courier.service';
+import { DataService } from './data.service';
 import { LoggerService } from './logger.service';
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,9 @@ export class OrderService {
     private bs: BarcodeScanner,
     private http: HttpClient,
     private sysCourier: SysCourierService,
-    private logger: LoggerService
+    private logger: LoggerService,
+    private data: DataService
+
 
   ) { }
 
@@ -168,7 +171,6 @@ export class OrderService {
         })
         break;
     }
-    debugger;
     const id = Number(this.auth.getUserId());
     this.sysCourier.sendStartRoute(id, '1').then((resp) => {
       this.logger.log('Отправлен запрос на route_start')

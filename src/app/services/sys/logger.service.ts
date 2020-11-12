@@ -20,9 +20,14 @@ export class LoggerService {
 
   public debug(logObj: any, ...params: any) {
     const prefix = 'dbg:: ';
-    console.debug(logObj, params);
+    console.debug(prefix, logObj, params);
     console.groupCollapsed('Стек вызовов');
     console.trace('Стек вызовов');
     console.groupEnd();
+  }
+
+  public profile(label: string, end?: boolean) {
+    const prefix = 'profile:: ';
+    end ? console.profileEnd(`${prefix} ${label}`) : console.profile(`${prefix} ${label}`)
   }
 }

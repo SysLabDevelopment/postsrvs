@@ -36,8 +36,7 @@
     "prefer-arrow-callback": "error",
     "arrow-spacing": "error",
     "arrow-parens": [
-      "error",
-      "always"
+      "warn"
     ],
     "arrow-body-style": [
       "error",
@@ -50,14 +49,6 @@
     ],
     "no-useless-constructor": "warn",
     "no-dupe-class-members": "error",
-    "class-methods-use-this": [
-      "warn",
-      {
-        "exceptMethods": [
-          "static"
-        ]
-      }
-    ],
     "no-duplicate-imports": [
       "error",
       {

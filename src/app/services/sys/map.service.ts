@@ -13,6 +13,7 @@ import {
 } from "@ionic-native/google-maps";
 import { Platform, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
+import { filter, map } from "rxjs/operators";
 import { Order } from 'src/app/interfaces/order';
 import { Response } from '../../interfaces/response';
 import { SysService } from "../sys.service";
@@ -32,7 +33,7 @@ export class MapService {
     private sys: SysService
   ) { }
 
-  public getWay(coords: { lt: number; lg: number }): Observable<Response> {
+  public getWay(coords: { lt: number; lg: number }): Observable<Order[]> {
     const url =
       "http://mobile.postsrvs.ru:8080/https://mobile.postsrvs.ru/mobile/orders";
     let data = {
@@ -48,7 +49,7 @@ export class MapService {
         "Content-type": "application/json",
       }),
     };
-    return this.http.post<Response>(url, data, httpOptions);
+    return this.http.post<Response>(url, data, httpOptions).pipe(filter(resp => resp.success as boolean), map(resp => resp.orders));
   }
 
   async attachMap(

@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject, interval } from 'rxjs';
 import { Order } from '../../interfaces/order';
 import { Response } from '../../interfaces/response';
 import { AuthService } from '../auth.service';
-import { CourierService } from '../courier.service';
 import { StateService } from '../state.service';
 import { SysService } from '../sys.service';
 import { LoggerService } from '../sys/logger.service';
@@ -20,11 +20,12 @@ export class DataService {
 
   constructor(
     private storage: Storage,
-    private courier: CourierService,
     private auth: AuthService,
     private sys: SysService,
     public state$: StateService,
-    private logger: LoggerService
+    private logger: LoggerService,
+    private http: HttpClient
+
   ) {
 
     storage.ready().then(() => {
@@ -71,8 +72,13 @@ export class DataService {
 
   }
 
+  public getBalance(sync_id: number, more = 0) {
+    const url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=';
+    return this.http.get(url);
+  }
+
   public getApiData() {
-    return this.courier.getBalance(Number(this.auth.userId), 1).subscribe((res: Response) => {
+    return this.getBalance(Number(this.auth.userId), 1).subscribe((res: Response) => {
       this.sys.getOrders(res.res_more.map((order: Order) => order.id.toString())).subscribe((resp: Response) => {
         this.saveOrders(resp.orders).then(() => {
           this.storage.get('orders').then((orders) => {

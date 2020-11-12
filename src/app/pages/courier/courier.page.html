@@ -120,13 +120,13 @@
         </ion-button>
       </div>
       <div class="route" *ngIf="settings.rules.appMode.includes('auto') && auth.checkState == 'checkedOut'">
-        <ion-button (click)="startRoute()" expand="full" fill="solid" color='success' *ngIf="!btn_go">
+        <ion-button (click)="startRoute()" expand="full" fill="solid" color='success' *ngIf="!isRouteStarted">
           <ion-text *ngIf="!loader">
             Начать маршрут
           </ion-text>
           <ion-spinner name="circles" *ngIf="loader"></ion-spinner>
         </ion-button>
-        <ion-button class="satrt-r-btn sr-stop" (click)="stopRoute()" *ngIf="btn_go" expand="full" fill="solid"
+        <ion-button class="satrt-r-btn sr-stop" (click)="stopRoute()" *ngIf="isRouteStarted" expand="full" fill="solid"
           color='danger'>
           Остановить маршрут
         </ion-button>

@@ -11,7 +11,9 @@ import { StateService } from '../services/state.service';
 import { SysService } from '../services/sys.service';
 import { SettingsService } from './settings.service';
 import { SysCourierService } from './sys/courier.service';
+import { DataService } from './sys/data.service';
 import { LoggerService } from './sys/logger.service';
+import { MapService } from './sys/map.service';
 declare let ymaps: any;
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,8 @@ export class CourierService {
     all: 0
   };
 
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     private state$: StateService,
     private auth: AuthService,
     private settings: SettingsService,
@@ -34,7 +37,11 @@ export class CourierService {
     private cache: CacheService,
     private firebase: FirebaseX,
     private sysCourier: SysCourierService,
-    private logger: LoggerService
+    private logger: LoggerService,
+    private map: MapService,
+    private data: DataService
+
+
 
   ) {
     //при выходе из приложения возвращаем начальное состояние
@@ -299,7 +306,13 @@ export class CourierService {
     const iD = Number(this.auth.getUserId());
     this.sysCourier.sendStartRoute(iD, '1').then((req) => {
       req.subscribe((resp) => {
-        this.logger.debug('Стукнуто на start_route')
+        this.logger.debug('Стукнуто на start_route');
+        this.map.getMyLocation().then((location) => {
+          resp.success && this.map.getWay({ lt: location.latLng.lat, lg: location.latLng.lng }).subscribe((orders) => {
+            this.data.orders.next(orders)
+          })
+        })
+
       })
     });
     return this.auth.sendPost(url, data).pipe(retry(5), catchError(() => { return EMPTY }));

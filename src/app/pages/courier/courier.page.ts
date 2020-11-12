@@ -19,7 +19,7 @@ import { PopoverController } from '@ionic/angular';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/interfaces/order';
-import { SysCourierService } from 'src/app/services/sys/courier.service';
+import { LoggerService } from 'src/app/services/sys/logger.service';
 import { MapService } from 'src/app/services/sys/map.service';
 import { HelpComponent } from '../../components/help/help.component';
 import { NoteComponent } from '../../components/note/note.component';
@@ -72,7 +72,6 @@ export class CourierPage implements OnInit {
   public g_process = 0;
   public g_fail = 0;
   public lvl_ind = { width: '0%' };
-  public btn_go = false;
   public subBtnCond = true;
   public scanView = false;
   public scanInput: string;
@@ -115,7 +114,8 @@ export class CourierPage implements OnInit {
     private firebase: FirebaseX,
     public introService: IntroJsService,
     public orderService: OrderService,
-    private sysCourier: SysCourierService
+    private logger: LoggerService
+
 
   ) {
     const self = this;
@@ -188,6 +188,13 @@ export class CourierPage implements OnInit {
     this.firebase.setScreenName('courier');
   }
 
+  get isRouteStarted() {
+    return !!localStorage.routeStarted
+  }
+  set isRouteStarted(isStarted: boolean) {
+    localStorage.routeStarted = isStarted;
+    isStarted && this.logger.profile('Кнопка старта маршрута ==> стейт isRouteStarted', true);
+  }
   public scanInputStart() {
     const self = this;
     this.scanView = !this.scanView;
@@ -366,12 +373,14 @@ export class CourierPage implements OnInit {
   }
 
   public startRoute(start = true, stop = false) {
+    this.logger.profile('Кнопка старта маршрута ==> стейт isRouteStarted');
     this.loader = true;
     const self = this;
     this.auth.checkAuth().subscribe((data) => {
       if (data.success == 'true') {
         self.sendStartRoute(data.sync_id, start, stop).then(() => {
           this.loader = false;
+          this.isRouteStarted = !stop;
         });
       } else {
         this.loader = false
@@ -403,14 +412,14 @@ export class CourierPage implements OnInit {
     const self = this;
     this.auth.sendPost(url, data).subscribe((data) => {
       if (data.success == true) {
-        self.btn_go = true;
+        self.isRouteStarted = true;
         this.wayRequested = true;
-        this.map.getWay({ lt: currentLocation.latLng.lat, lg: currentLocation.latLng.lng }).subscribe((response) => {
+        this.map.getWay({ lt: currentLocation.latLng.lat, lg: currentLocation.latLng.lng }).subscribe((orders) => {
           this.wayRequested = false;
-          this.data.orders.next(response.orders)
+          this.data.orders.next(orders)
         })
         if (data.result == 'stop') {
-          self.btn_go = false;
+          self.isRouteStarted = false;
         }
       }
     });

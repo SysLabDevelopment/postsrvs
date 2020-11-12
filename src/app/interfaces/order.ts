@@ -44,5 +44,6 @@ export interface Order {
     required: boolean,
     overdue: string,
     waitingMinutes?: number,
-    show?: boolean
+    show?: boolean,
+    confirm?: string
 }
