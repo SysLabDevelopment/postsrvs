@@ -1,6 +1,6 @@
 export interface Order {
     id: number,
-    client_id: number,
+    client_id: string | number,
     goods?: Array<any>,
     quants?: any,
     email_input?: any,
@@ -43,5 +43,6 @@ export interface Order {
     pay_type?: string //Тип оплаты
     required: boolean,
     overdue: string,
-    waitingMinutes?: number
+    waitingMinutes?: number,
+    show?: boolean
 }

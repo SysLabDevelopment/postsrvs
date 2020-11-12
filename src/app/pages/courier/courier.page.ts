@@ -19,6 +19,7 @@ import { PopoverController } from '@ionic/angular';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/interfaces/order';
+import { SysCourierService } from 'src/app/services/sys/courier.service';
 import { MapService } from 'src/app/services/sys/map.service';
 import { HelpComponent } from '../../components/help/help.component';
 import { NoteComponent } from '../../components/note/note.component';
@@ -60,7 +61,7 @@ export class CourierPage implements OnInit {
   @ViewChildren(CdkDrag)
   DragItems: QueryList<CdkDrag>;
 
-  public orders: any = null;
+  public orders: Order[] | null = null;
   public statuses: any = null;
   public selectedTab = 1;
   public ordersInit = false;
@@ -80,7 +81,7 @@ export class CourierPage implements OnInit {
   public isWorkEnded = false;
   public searchString = '';
   private ord: Observable<any[]>;
-  public orders_c: Observable<any>;
+  public orders_c: Observable<Order[]>;
   public slicer: number = this.howSlice();
   public callWindow = false;
   public selectedPhone: string;
@@ -113,7 +114,9 @@ export class CourierPage implements OnInit {
     private http: HttpClient,
     private firebase: FirebaseX,
     public introService: IntroJsService,
-    public orderService: OrderService
+    public orderService: OrderService,
+    private sysCourier: SysCourierService
+
   ) {
     const self = this;
 
@@ -131,6 +134,7 @@ export class CourierPage implements OnInit {
     });
     this.initConditions();
     this.ord = this.data.orders.asObservable();
+    this.orders_c = this.data.orders;
     this.prepareOrdersList();
 
   }
@@ -483,13 +487,12 @@ export class CourierPage implements OnInit {
 
   }
   public prepareOrdersList(ids = this.segment) {
-
-    this.orders_c = this.ord.pipe(
+    this.orders_c = this.orders_c.pipe(
       map(
         orders => orders && orders.filter(order => ids.includes(Number(order.status_id)))
           .filter(
             order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
-              order.client_id.toLowerCase().includes(this.searchString.toLowerCase())
+              (order.client_id as string).toLowerCase().includes(this.searchString.toLowerCase())
           )
           .slice(this.slicer)
       ),

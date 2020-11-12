@@ -10,6 +10,8 @@ import { AuthService } from '../services/auth.service';
 import { StateService } from '../services/state.service';
 import { SysService } from '../services/sys.service';
 import { SettingsService } from './settings.service';
+import { SysCourierService } from './sys/courier.service';
+import { LoggerService } from './sys/logger.service';
 declare let ymaps: any;
 @Injectable({
   providedIn: 'root'
@@ -30,7 +32,10 @@ export class CourierService {
     private settings: SettingsService,
     public sys: SysService,
     private cache: CacheService,
-    private firebase: FirebaseX
+    private firebase: FirebaseX,
+    private sysCourier: SysCourierService,
+    private logger: LoggerService
+
   ) {
     //при выходе из приложения возвращаем начальное состояние
     var self = this;
@@ -291,6 +296,12 @@ export class CourierService {
       });
       return from([{ success: 'true' }])
     }
+    const iD = Number(this.auth.getUserId());
+    this.sysCourier.sendStartRoute(iD, '1').then((req) => {
+      req.subscribe((resp) => {
+        this.logger.debug('Стукнуто на start_route')
+      })
+    });
     return this.auth.sendPost(url, data).pipe(retry(5), catchError(() => { return EMPTY }));
   }
 

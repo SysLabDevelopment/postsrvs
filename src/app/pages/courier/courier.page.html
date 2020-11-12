@@ -52,7 +52,7 @@
       <ion-searchbar placeholder="Поиск по заказам" inputmode="text" (ionChange)="onSearchChange($event)"
         [debounce]="250" [(ngModel)]="searchString" animated [intro]="IntroItems" [Order]="2"></ion-searchbar>
 
-      <ion-item *ngIf="settings.rules.appMode.includes('auto') && orders_c | async">
+      <ion-item *ngIf="settings.rules.appMode.includes('auto') && !orders.length">
         <ion-label class='ion-text-wrap ion-padding'>Для загрузки заказов нажмите "начать маршрут"</ion-label>
       </ion-item>
 

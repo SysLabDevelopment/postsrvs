@@ -80,7 +80,7 @@ export class AuthService {
   }
   public sendPost(url: string, data: { uuid?: string, action?: string, barcode?: string, cid?: unknown, lt?: unknown, lg?: unknown, start?: string, stop?: string }) {
 
-    const host = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/`
+    const host = `${this.sys.proxy}https://mobile.postsrvs.ru/mobile/`;
 
     url = host + url;
     data['uuid'] = (this.isDebug ? '6b356755575fce31' : this.getUuid());

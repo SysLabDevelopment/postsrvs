@@ -1,7 +1,7 @@
 //Ответ Апишки в JSON формате
 import { Order } from './order';
 export interface Response {
-  success?: string,
+  success?: string | boolean,
   signature?: string,
   orders?: Array<any>,
   sync_id?: string | number,

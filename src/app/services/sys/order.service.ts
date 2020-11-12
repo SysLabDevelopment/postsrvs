@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { Device } from '@ionic-native/device/ngx';
-import { Storage } from '@ionic/storage';
 import { findPhoneNumbersInText } from 'libphonenumber-js';
 import { Order } from '../../interfaces/order';
 import { AuthService } from '../../services/auth.service';
 import { CourierService } from '../courier.service';
 import { SysService } from '../sys.service';
-
+import { SysCourierService } from '../sys/courier.service';
+import { LoggerService } from './logger.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,19 +18,20 @@ export class OrderService {
 
   constructor(
     private auth: AuthService,
-    private storage: Storage,
     private sys: SysService,
     private courier: CourierService,
     private bs: BarcodeScanner,
-    private device: Device,
-    private http: HttpClient
+    private http: HttpClient,
+    private sysCourier: SysCourierService,
+    private logger: LoggerService
+
   ) { }
 
   public sendDelayedCall(order: Order, status: number) {
     order.status_id = status;
     const self = this;
     this.submitChange(order, status);
-    this.getPayData(order.client_id).subscribe((res: any) => {
+    this.getPayData(order.client_id as number).subscribe((res: any) => {
       if (res.success == 'true') {
         self.pay_access_data = res;
         if (status == 5 || status == 6) {
@@ -115,6 +115,7 @@ export class OrderService {
             )
             .subscribe((data: any) => {
               localStorage.removeItem('drawImg');
+
             });
         }
         break;
@@ -123,7 +124,6 @@ export class OrderService {
           noSkip = false
         }
         this.sys.doOCR(order.check, noSkip).then((recognizedData) => {
-
           this.courier
             .changeStatus(
               String(status),
@@ -168,6 +168,11 @@ export class OrderService {
         })
         break;
     }
+    debugger;
+    const id = Number(this.auth.getUserId());
+    this.sysCourier.sendStartRoute(id, '1').then((resp) => {
+      this.logger.log('Отправлен запрос на route_start')
+    });
   }
   public getPayData(client_id: number) {
     const url = 'pay_order';
