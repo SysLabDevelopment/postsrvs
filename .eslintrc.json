@@ -94,6 +94,12 @@
     "no-nested-ternary": "error",
     "no-unneeded-ternary": "error",
     "no-mixed-operators": "error",
+    "nonblock-statement-body-position": [
+      "error",
+      "beside"
+    ],
+    "brace-style": "error",
+    "no-else-return": "error"
   },
   "root": true
 }
