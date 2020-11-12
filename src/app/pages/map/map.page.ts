@@ -96,9 +96,6 @@ export class MapPage implements OnInit {
       .subscribe((ids: Array<any>) => {
         this.getOrders(ids).subscribe((res: Response) => {
           this.orders = res.orders;
-          if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
-            this.orders.length = 1;
-          }
           console.log('sys:: заказы', this.orders);
           this.orders && this.data.orders.next(this.orders);
           this.drawData(this.settings.rules.autoStartRoute);
@@ -210,10 +207,6 @@ export class MapPage implements OnInit {
     return new Observable((ids) => {
       if (this.settings.rules.appMode.includes('hand')) {
         this.orders && ids.next(this.orders.filter(order => order.status_id == 1).map((order) => order.id));
-      } else {
-        this.sysMap.getWay(this.coords).subscribe((resp: Response) => {
-          ids.next(resp.orders.map((order) => order.id));
-        });
       }
     });
   }

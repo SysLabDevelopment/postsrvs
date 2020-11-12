@@ -395,6 +395,9 @@ export class CourierPage implements OnInit {
     this.auth.sendPost(url, data).subscribe((data) => {
       if (data.success == true) {
         self.btn_go = true;
+        this.map.getWay({ lt: currentLocation.latLng.lat, lg: currentLocation.latLng.lng }).subscribe((response) => {
+          this.data.orders.next(response.orders)
+        })
         if (data.result == 'stop') {
           self.btn_go = false;
         }

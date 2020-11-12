@@ -14,6 +14,7 @@ import {
 import { Platform, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
 import { Order } from 'src/app/interfaces/order';
+import { Response } from '../../interfaces/response';
 import { SysService } from "../sys.service";
 @Injectable({
   providedIn: "root",
@@ -31,11 +32,11 @@ export class MapService {
     private sys: SysService
   ) { }
 
-  public getWay(coords: { lt: number; lg: number }): Observable<any> {
+  public getWay(coords: { lt: number; lg: number }): Observable<Response> {
     const url =
       "http://mobile.postsrvs.ru:8080/https://mobile.postsrvs.ru/mobile/orders";
     let data = {
-      action: "getWay",
+      action: "getWayShort",
       lt: coords?.lt,
       lg: coords?.lg,
       auto: 0,
@@ -47,7 +48,7 @@ export class MapService {
         "Content-type": "application/json",
       }),
     };
-    return this.http.post(url, data, httpOptions);
+    return this.http.post<Response>(url, data, httpOptions);
   }
 
   async attachMap(

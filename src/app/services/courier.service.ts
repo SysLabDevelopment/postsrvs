@@ -81,21 +81,13 @@ export class CourierService {
   //Собираем необходимую инфу по заказам
   public initOrders() {
     const self = this;
-
     //проверяем наличие координат перед запуском
     if (this.state$.position.getValue() == null) {
-
       return false;
     }
-
     //Запускаем инициализацию
-
-
     //Костыль для мгновенного отображения листина в обход ожидания статусов по апи
     this.initStatuses();
-
-
-
     if (!this.state$.courier_init) {
       this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
         console.log('sys:: state', JSON.stringify(state));
