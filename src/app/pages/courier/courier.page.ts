@@ -192,7 +192,12 @@ export class CourierPage implements OnInit {
     return !!localStorage.routeStarted
   }
   set isRouteStarted(isStarted: boolean) {
-    localStorage.routeStarted = isStarted;
+    if (isStarted) {
+      localStorage.routeStarted = isStarted;
+    } else {
+      localStorage.removeItem('routeStarted');
+    }
+
     isStarted && this.logger.profile('Кнопка старта маршрута ==> стейт isRouteStarted', true);
   }
   public scanInputStart() {
@@ -412,15 +417,12 @@ export class CourierPage implements OnInit {
     const self = this;
     this.auth.sendPost(url, data).subscribe((data) => {
       if (data.success == true) {
-        self.isRouteStarted = true;
+        self.isRouteStarted = !stop;
         this.wayRequested = true;
         this.map.getWay({ lt: currentLocation.latLng.lat, lg: currentLocation.latLng.lng }).subscribe((orders) => {
           this.wayRequested = false;
           this.data.orders.next(orders)
         })
-        if (data.result == 'stop') {
-          self.isRouteStarted = false;
-        }
       }
     });
   }

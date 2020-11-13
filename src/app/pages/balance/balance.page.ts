@@ -89,7 +89,7 @@ export class BalancePage implements OnInit {
   public failsOrder: boolean = false;
   public failsOrderNotFull: boolean = false;
   public failOrdersCount: number = 0;
-  public fo_comment: string = ""; //комментарий к частичной сдаче заказов
+  public fo_comment: string = ''; //комментарий к частичной сдаче заказов
   public schedule = Boolean(this.settings.rules.schedule);
   public isShowSchedule: boolean = false;
   public isGoToWork: boolean = false;
@@ -117,7 +117,7 @@ export class BalancePage implements OnInit {
       this.loader = true;
     }
     this.state$.map_state.next('init');
-    let self = this;
+    const self = this;
     self.updateInfo();
     self.initCashout();
     if (!this.state$.balance_check) {
@@ -149,7 +149,7 @@ export class BalancePage implements OnInit {
 
 
   public updateInfo() {
-    var self = this;
+    const self = this;
 
     this.auth.checkAuth().subscribe((data: any) => {
       if (data.success = 'true') {
@@ -159,7 +159,7 @@ export class BalancePage implements OnInit {
   }
 
   public getInfo(sync_id: number) {
-    var self = this;
+    const self = this;
 
     this.courier.getBalance(sync_id).subscribe((data: any) => {
       self.info = data;
@@ -183,24 +183,24 @@ export class BalancePage implements OnInit {
   public sendCash(photo: string) {
     this.loader = true;
 
-    const url = 'orders';
-    let data = { 'action': 'cashout', 'sum': this.info.sumNal, 'image': photo, 'isFull': '', 'ordersCount': 0, 'comment': '', 'ordersComment': '' };
+    const url = 'orders',
+      data = { action: 'cashout', sum: this.info.sumNal, image: photo, isFull: '', ordersCount: 0, comment: '', ordersComment: '' };
 
     if (this.commentText != '' && this.commentText) {
-      data['isFull'] = '0';
-      data['comment'] = this.commentText;
+      data.isFull = '0';
+      data.comment = this.commentText;
     } else {
-      data['isFull'] = '1';
+      data.isFull = '1';
     }
 
     if (this.failsOrderNotFull) {
-      data['ordersCount'] = this.failOrdersCount;
-      data['ordersComment'] = this.fo_comment;
+      data.ordersCount = this.failOrdersCount;
+      data.ordersComment = this.fo_comment;
     }
-    console.log('o_c', data['ordersCount']);
-    console.log('ocm', data['ordersComment']);
+    console.log('o_c', data.ordersCount);
+    console.log('ocm', data.ordersComment);
 
-    var self = this;
+    const self = this;
     this.auth.sendPost(url, data).subscribe((resp: any) => {
       console.log('CASHOUT_RESPONSE', resp);
       if (resp.success == 'true') {
@@ -212,14 +212,14 @@ export class BalancePage implements OnInit {
   }
 
   public checkCash() {
-    var url = 'orders';
-    var data = { 'action': 'checkCashout' }
+    const url = 'orders',
+      data = { action: 'checkCashout' }
 
     return this.auth.sendPost(url, data);
   }
 
   public initCashout() {
-    var self = this;
+    const self = this;
     this.checkCash().subscribe((data: any) => {
       if (data.success == 'true') {
         self.cashCheck = true;
@@ -236,11 +236,11 @@ export class BalancePage implements OnInit {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
-    }
+    },
 
-    var self = this;
+      self = this;
     this.camera.getPicture(options).then((imageData) => {
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      const base64Image = `data:image/jpeg;base64,${imageData}`;
       console.log('image_str', base64Image);
       self.sendCash(base64Image);
     });
@@ -284,9 +284,9 @@ export class BalancePage implements OnInit {
     if (this.info.ordersFail == 0) {
       this.openBtn = true;
       return false;
-    } else {
-      this.failsOrder = true;
     }
+    this.failsOrder = true;
+
   }
 
   public fo_answer(flag: boolean) {
@@ -302,7 +302,7 @@ export class BalancePage implements OnInit {
       if (flag) {
         this.failsOrderNotFull = false;
       } else {
-        if (this.failOrdersCount == 0 || this.fo_comment == "" || !this.fo_comment) {
+        if (this.failOrdersCount == 0 || this.fo_comment == '' || !this.fo_comment) {
           this.commentError = true;
         } else {
           this.openBtn = true;
@@ -313,31 +313,6 @@ export class BalancePage implements OnInit {
 
   public commentInput() {
     this.commentError = false;
-  }
-
-  //отзыв о приложении
-  public writeReview() {
-    this.review_w = !this.review_w;
-  }
-
-
-  public sendReview(text: String) {
-    this.loader = true;
-    let url = 'orders';
-    let data = {
-      'action': 'writeReview',
-      'text': text
-    }
-    let self = this;
-    this.auth.sendPost(url, data).subscribe((resp: any) => {
-      if (resp.success == 'true') {
-        self.auth.showError(7);
-      } else {
-        self.auth.showError(8);
-      }
-      self.review_w = false;
-      self.loader = false;
-    });
   }
 
   public showSchedule() {

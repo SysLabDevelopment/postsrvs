@@ -13,7 +13,6 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-unused-vars": "error",
     "unicorn/prevent-abbreviations": "off",
     "prefer-const": "warn",
     "no-const-assign": "warn",
