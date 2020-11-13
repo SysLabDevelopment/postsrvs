@@ -128,7 +128,7 @@ export class CourierPage implements OnInit {
 
     this.state$.state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
       const a = state;
-      if (state == 'orders_init') {
+      if (state === 'orders_init') {
         self.initContent();
       }
     });

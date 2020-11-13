@@ -75,7 +75,6 @@
       }
     ],
     "no-undef": "error",
-    "one-var": "error",
     "no-multi-assign": "error",
     "no-plusplus": "error",
     "operator-linebreak": "error",

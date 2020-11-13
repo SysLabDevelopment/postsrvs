@@ -5,9 +5,11 @@ import { BehaviorSubject, interval } from 'rxjs';
 import { Order } from '../../interfaces/order';
 import { Response } from '../../interfaces/response';
 import { AuthService } from '../auth.service';
+import { SettingsService } from '../settings.service';
 import { StateService } from '../state.service';
 import { SysService } from '../sys.service';
 import { LoggerService } from '../sys/logger.service';
+import { MapService } from './map.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,8 +26,9 @@ export class DataService {
     private sys: SysService,
     public state$: StateService,
     private logger: LoggerService,
-    private http: HttpClient
-
+    private http: HttpClient,
+    private map: MapService,
+    public settings: SettingsService,
   ) {
 
     storage.ready().then(() => {
@@ -73,22 +76,26 @@ export class DataService {
   }
 
   public getBalance(sync_id: number, more = 0) {
-    const url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=';
+    const url = `${this.sys.proxy}https://terminal.vestovoy.ru/info/stat.php?cid=${sync_id}&more=${more}&CL=`;
     return this.http.get(url);
   }
 
-  public getApiData() {
-    return this.getBalance(Number(this.auth.userId), 1).subscribe((res: Response) => {
-      this.sys.getOrders(res.res_more.map((order: Order) => order.id.toString())).subscribe((resp: Response) => {
-        this.saveOrders(resp.orders).then(() => {
-          this.storage.get('orders').then((orders) => {
-            this.orders.next(orders);
-          })
-
-        });
-
+  public async getApiData() {
+    if (this.settings.rules.appMode.includes('auto')) {
+      const currentLocation = await this.map.getMyLocation();
+      const orders = await this.map.getWay({ lt: currentLocation.latLng.lat, lg: currentLocation.latLng.lng }).toPromise();
+      this.orders.next(orders);
+    } else {
+      this.getBalance(Number(this.auth.userId), 1).subscribe((res: Response) => {
+        this.sys.getOrders(res.res_more.map((order: Order) => order.id.toString())).subscribe((resp: Response) => {
+          this.saveOrders(resp.orders).then(() => {
+            this.storage.get('orders').then((orders) => {
+              this.orders.next(orders);
+            })
+          });
+        })
       })
-    })
+    }
   }
   public getOrders(ids: Array<string>) {
     this.sys.getOrders(ids).subscribe((resp: Response) => {
