@@ -12,6 +12,7 @@ export class LoggerService {
     const prefix = 'sys:: ';
     console.groupCollapsed(`${prefix} ${description}`, logObj);
     if (Array.isArray(logObj)) console.table(logObj);
+    console.count(description);
     console.trace();
     console.groupEnd();
     this.firebase.logEvent('log', `${description}: ${JSON.stringify(logObj)}`);

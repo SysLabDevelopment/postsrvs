@@ -121,7 +121,7 @@ export class CourierPage implements OnInit {
     const self = this;
 
     this.initContent();
-    if (this.state$.position.getValue() != null) {
+    if (this.state$.position.getValue() !== null) {
       this.startRoute(false);
     }
 
@@ -182,9 +182,6 @@ export class CourierPage implements OnInit {
     if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
       this.noDrag = true;
     }
-    this.data.orders.subscribe((orders) => {
-      this.courier.count_orders(orders);
-    });
     this.firebase.setScreenName('courier');
   }
 

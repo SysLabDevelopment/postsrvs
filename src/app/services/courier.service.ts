@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
-import { CacheService } from "ionic-cache";
+import { CacheService } from 'ionic-cache';
 import { EMPTY, from, Observable, Subject } from 'rxjs';
 import { catchError, retry, takeUntil } from 'rxjs/operators';
 import { Order } from '../interfaces/order';
@@ -121,7 +121,7 @@ export class CourierService {
                 self.state$.orders_data = data.orders;
                 self.state$.state.next('orders_init');
                 this.state$.confirmed = true;
-                data.orders.forEach(order => {
+                data.orders.forEach((order) => {
                   if (order.confirm == '0') {
                     self.state$.confirmed = false;
                   }
@@ -177,26 +177,26 @@ export class CourierService {
     } else {
       mode = '0'
     }
-    const url = 'orders';
-    const data = {
-      action: 'getWay',
-      lt: this.state$.position.getValue().lt,
-      lg: this.state$.position.getValue().lg,
-      auto: mode,
-      mode: ''
-    }
-    const app_mode = this.auth.getMode();
+    const url = 'orders',
+      data = {
+        action: 'getWay',
+        lt: this.state$.position.getValue().lt,
+        lg: this.state$.position.getValue().lg,
+        auto: mode,
+        mode: ''
+      },
+      app_mode = this.auth.getMode();
     if ((app_mode == 'fullHand' || app_mode == 'hand') || this.state$.manual_route) {
-      data['mode'] = "manual";
+      data.mode = 'manual';
     } else {
-      data['mode'] = "auto";
+      data.mode = 'auto';
     }
-    const resp: Subject<any> = new Subject();
-    const self = this;
+    const resp: Subject<any> = new Subject(),
+      self = this;
 
     this.auth.sendPost(url, data).subscribe((orders: any) => {
       if (orders.success == 'true') {
-        self.state$.manual_route = orders.mode == "manual" ? true : false;
+        self.state$.manual_route = orders.mode == 'manual';
         self.state$.way.next(orders.orders);
         self.state$.state.next('way_init');
       } else if (orders.reason == 'empty') {
@@ -211,9 +211,9 @@ export class CourierService {
 
 
   public getOrders(): Observable<any> {
-    const url = "orders";
-    let ids = [];
-    let way = this.ordersInfo;
+    const url = 'orders';
+    let ids = [],
+      way = this.ordersInfo;
     this.ordersShortData.subscribe((data) => {
       way = data;
     })
@@ -251,45 +251,45 @@ export class CourierService {
   //@CL - код филлиала
   public getBalance(sync_id: number, more = 0) {
     this.firebase.setUserId(String(sync_id));
-    const CL = this.settings.get('cl');
-    const url = this.sys.proxy + "https://terminal.vestovoy.ru/info/stat.php?cid=" + sync_id + '&more=' + more + '&CL=' + CL;
+    const CL = this.settings.get('cl'),
+      url = `${this.sys.proxy}https://terminal.vestovoy.ru/info/stat.php?cid=${sync_id}&more=${more}&CL=${CL}`;
     return this.http.get(url);
   }
 
   public getStatus(order: Order) {
     if (order.status_id == 1) {
       return 'Доставляется';
-    } else {
-      const statuses = this.state$.statuses.getValue();
-      for (let i = 0; i < statuses.length; i++) {
-        const status = statuses[i];
-        if (status.id == order.status_id) {
-          return status.status;
-        }
+    }
+    const statuses = this.state$.statuses.getValue();
+    for (let i = 0; i < statuses.length; i++) {
+      const status = statuses[i];
+      if (status.id == order.status_id) {
+        return status.status;
       }
     }
+
   }
 
 
   public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date = '', check = '', recognizedCheckData: string = null, cardNums?: string, waitingMinutes?: number) {
-    const url = 'orders';
-    const draw = localStorage.getItem('drawImg');
-    const data = {
-      action: 'changedStatus',
-      status,
-      id,
-      comment,
-      reason,
-      goods,
-      payment,
-      new_plam_date: new_plan_date,
-      check,
-      recognizedCheckData,
-      sign: '',
-      cardNums,
-      waitingMinutes
-    };
-    if (draw) data['sign'] = draw;
+    const url = 'orders',
+      draw = localStorage.getItem('drawImg'),
+      data = {
+        action: 'changedStatus',
+        status,
+        id,
+        comment,
+        reason,
+        goods,
+        payment,
+        new_plam_date: new_plan_date,
+        check,
+        recognizedCheckData,
+        sign: '',
+        cardNums,
+        waitingMinutes
+      };
+    if (draw) data.sign = draw;
 
     if (!navigator.onLine) {
       let requests: any = [];
@@ -318,7 +318,7 @@ export class CourierService {
         }
       })
     });
-    return this.auth.sendPost(url, data).pipe(retry(5), catchError(() => { return EMPTY }));
+    return this.auth.sendPost(url, data).pipe(retry(5), catchError(() => EMPTY));
   }
 
 
@@ -330,13 +330,13 @@ export class CourierService {
    * @param code //штрих-код
    */
   public findOrder(code: string) {
-    const url = 'orders';
-    const data = {
-      action: 'findOrder',
-      code
-    }
-    const resp: Subject<any> = new Subject();
-    const orders = this.state$.orders_data;
+    const url = 'orders',
+      data = {
+        action: 'findOrder',
+        code
+      },
+      resp: Subject<any> = new Subject(),
+      orders = this.state$.orders_data;
 
     this.auth.sendPost(url, data).subscribe((od) => {
       if (od.success == 'true') {
@@ -361,14 +361,14 @@ export class CourierService {
   }
 
   public sumbitOrder(orderId: string) {
-    const url = 'orders';
-    const data = {
-      action: 'submitOrder',
-      orderId
-    }
+    const url = 'orders',
+      data = {
+        action: 'submitOrder',
+        orderId
+      }
     console.log('submit_order_data', data);
-    const self = this;
-    const ret: Subject<any> = new Subject<any>();
+    const self = this,
+      ret: Subject<any> = new Subject<any>();
 
     this.auth.sendPost(url, data).subscribe((resp: any) => {
       console.log('submit_order_response', resp);
@@ -387,23 +387,24 @@ export class CourierService {
 
 
   public count_orders(orders: Order[]) {
-    let g_done = 0;
-    let g_process = 0;
-    let g_fail = 0;
+    this.logger.log('Подсчет заказов по статусам');
+    let g_done = 0,
+      g_process = 0,
+      g_fail = 0;
     const all = orders.length;
-    for (let i = 0; i < orders.length; i++) {
+    for (let i = 0; i < orders.length; i += 1) {
       switch (String(orders[i].status_id)) {
         case '4':
-          g_fail++;
+          g_fail += 1;
           break;
         case '5':
-          g_done++;
+          g_done += 1;
           break;
         case '6':
-          g_done++;
+          g_done += 1;
           break;
         case '1':
-          g_process++;
+          g_process += 1;
           break;
       }
     }
@@ -415,22 +416,22 @@ export class CourierService {
     }
   }
   public initStatuses() {
-    const statuses = [{ id: 4, status: "Не доставлено" }, { id: 5, status: "Доставлено" }, { id: 6, status: "Частично доставлено" }];
+    const statuses = [{ id: 4, status: 'Не доставлено' }, { id: 5, status: 'Доставлено' }, { id: 6, status: 'Частично доставлено' }];
     this.state$.statuses.next(statuses);
     this.state$.s_state.next('status_init');
   }
 
   //Завершение рабочего дня курьера
   public endWork() {
-    const url = this.sys.proxy + 'https://mobile.postsrvs.ru/admin/ajax/end_work.php';
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-type': 'application/json'
-    });
-    const data = {
-      token: "l;sdfjkhglsoapl[",
-      cId: this.auth.getUserId()
-    }
+    const url = `${this.sys.proxy}https://mobile.postsrvs.ru/admin/ajax/end_work.php`,
+      headers = new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Content-type': 'application/json'
+      }),
+      data = {
+        token: 'l;sdfjkhglsoapl[',
+        cId: this.auth.getUserId()
+      }
 
     return this.http.post(url, data, { headers })
   }
