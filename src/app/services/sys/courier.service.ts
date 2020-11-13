@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { retry } from 'rxjs/internal/operators/retry';
+import { tap } from 'rxjs/operators';
 import { Response } from '../../interfaces/response';
 import { SysService } from '../sys.service';
 import { MapService } from './map.service';
@@ -28,6 +29,11 @@ export class SysCourierService {
       stop: stop ?? '',
       uuid: this.sys.getUuid()
     };
-    return this.http.post<Response>(url, data).pipe(retry(5));
+    return this.http.post<Response>(url, data).pipe(
+      retry(5),
+      tap((resp) => {
+        resp.success || this.sys.presentToast('Попробуйте еще раз', 'danger', 'Ошибка')
+      })
+    );
   }
 }

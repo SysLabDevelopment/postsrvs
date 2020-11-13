@@ -306,13 +306,16 @@ export class CourierService {
     const iD = Number(this.auth.getUserId());
     this.sysCourier.sendStartRoute(iD, '1').then((req) => {
       req.subscribe((resp) => {
-        this.logger.debug('Стукнуто на start_route');
-        this.map.getMyLocation().then((location) => {
-          resp.success && this.map.getWay({ lt: location.latLng.lat, lg: location.latLng.lng }).subscribe((orders) => {
-            this.data.orders.next(orders)
+        if (resp.success) {
+          this.logger.debug('Стукнуто на start_route');
+          this.map.getMyLocation().then((location) => {
+            resp.success && this.map.getWay({ lt: location.latLng.lat, lg: location.latLng.lng }).subscribe((orders) => {
+              this.data.orders.next(orders)
+            })
           })
-        })
-
+        } else {
+          this.sys.presentToast('Попробуйте еще раз', 'danger', 'Ошибка')
+        }
       })
     });
     return this.auth.sendPost(url, data).pipe(retry(5), catchError(() => { return EMPTY }));

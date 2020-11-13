@@ -13,7 +13,7 @@ import {
 } from "@ionic-native/google-maps";
 import { Platform, PopoverController } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
-import { filter, map } from "rxjs/operators";
+import { filter, map, tap } from "rxjs/operators";
 import { Order } from 'src/app/interfaces/order';
 import { Response } from '../../interfaces/response';
 import { SysService } from "../sys.service";
@@ -49,7 +49,12 @@ export class MapService {
         "Content-type": "application/json",
       }),
     };
-    return this.http.post<Response>(url, data, httpOptions).pipe(filter(resp => resp.success as boolean), map(resp => resp.orders));
+    return this.http.post<Response>(url, data, httpOptions).pipe(
+      tap((resp) => {
+        resp.success || this.sys.presentToast('Попробуйте еще раз', 'danger', 'Ошибка')
+      }),
+      filter(resp => resp.success as boolean),
+      map(resp => resp.orders));
   }
 
   async attachMap(
