@@ -74,6 +74,7 @@ export class SysService {
 
   //Тост
   async presentToast(message: string, color: string, header: string = '') {
+    console.time('presentToast');
     const toast = await this.toastController.create({
       header,
       message,
@@ -82,6 +83,7 @@ export class SysService {
       position: 'bottom'
     });
     toast.present();
+    console.timeEnd('presentToast');
   }
 
   public goToWork(dates: Array<any>) {
