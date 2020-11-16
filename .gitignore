@@ -206,3 +206,5 @@ dist/out-tsc/src/environments/environment.js
 dist/out-tsc/src/environments/environment.js.map
 dist/out-tsc/src/environments/environment.prod.js
 dist/out-tsc/src/environments/environment.prod.js.map
+plugins/fetch.json
+.firebase/hosting.d3d3.cache

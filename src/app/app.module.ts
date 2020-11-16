@@ -71,7 +71,10 @@ registerLocaleData(localeRu, 'ru');
     AppRoutingModule,
     NgxMaskModule.forRoot(),
     ScrollingModule,
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: '__postsrvsDB',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
     CacheModule.forRoot({ keyPrefix: 'offlineData' }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],

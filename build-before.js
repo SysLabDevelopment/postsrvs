@@ -2,27 +2,30 @@ const fs = require('fs');
 
 module.exports = (ctx) => {
 
-    if (ctx.build && ctx.build.configuration && ctx.build.configuration === "production") {
+    if (ctx.build && ctx.build.configuration && ctx.build.configuration === 'production') {
+        fs.unlink('platforms/android/app/build/outputs/apk/release/postsrvs.apk', () => {
+            console.log('%cБилд удален', 'color:blue, font-weight:bold')
+        });
 
-        console.log("production build: performing version bump...");
+        console.log('production build: performing version bump...');
 
         // update package.json:
-        let packageJSON = JSON.parse(fs.readFileSync('package.json', 'utf-8').toString());
-        let versionArray = packageJSON.version.split(".");
+        const packageJSON = JSON.parse(fs.readFileSync('package.json', 'utf-8').toString());
+        const versionArray = packageJSON.version.split('.');
         let versionCode = packageJSON.versionCode;
         versionArray[2] = (parseInt(versionArray[2]) + 1).toString();
         versionCode = (parseInt(versionCode) + 1).toString();
-        packageJSON.version = versionArray.join(".");
+        packageJSON.version = versionArray.join('.');
         packageJSON.versionCode = versionCode;
         console.warn(`sys:: versionCode is ${packageJSON.versionCode}`);
         console.warn(`sys:: app version is ${packageJSON.version}`);
-        fs.writeFileSync('package.json', JSON.stringify(packageJSON, null, "\t"), 'utf-8');
-        console.log("package.json app version updated");
+        fs.writeFileSync('package.json', JSON.stringify(packageJSON, null, '\t'), 'utf-8');
+        console.log('package.json app version updated');
 
-        let prodEnvData = fs.readFileSync(`src/environments/environment.prod.ts`, 'utf-8');
+        let prodEnvData = fs.readFileSync('src/environments/environment.prod.ts', 'utf-8');
         prodEnvData = prodEnvData.replace(/CURRENT_VERSION: ".*"/, `CURRENT_VERSION: "${packageJSON.version}"`);
         fs.writeFileSync('src/environments/environment.prod.ts', prodEnvData, 'utf-8');
-        console.log("environments.prod.ts app version updated");
+        console.log('environments.prod.ts app version updated');
 
         // let devEnvData = fs.readFileSync(`src/environments/environment.dev.ts`, 'utf-8');
         // devEnvData = devEnvData.replace(/CURRENT_VERSION: ".*"/, `CURRENT_VERSION: "${packageJSON.version}"`);
@@ -45,7 +48,7 @@ module.exports = (ctx) => {
         configXmlData = configXmlData.replace(/android-versionCode=".*" id/, `android-versionCode="${packageJSON.versionCode}" id`);
 
         fs.writeFileSync('config.xml', configXmlData,'utf-8');
-        console.log("config.xml app version updated");
+        console.log('config.xml app version updated');
         // let file = new URL('file:platforms/android/app/build/outputs/apk/release/postsrvs.apk')
         // fs.rmdirSync(file);
     };
