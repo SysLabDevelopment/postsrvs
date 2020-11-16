@@ -85,7 +85,11 @@
         </ion-button>
       </ion-label>
     </ion-item>
-    <ion-item class='yellow'>
+    <ion-item class='yellow' [ngClass]="{
+      'yellow': order.status_id == 1,
+      'pink':order.status_id == 4,
+      'green': order.status_id == 5
+  }">
       <ion-label>
         Статус: <span class='bold'>{{getStatus()}} </span>
       </ion-label>
