@@ -143,13 +143,17 @@ export class CourierPage implements OnInit {
     const app_mode = this.auth.getMode();
     switch (app_mode) {
       case 'fullAuto':
-        if (!this.state$.confirmed) { this.subBtnCond = true; }
+        if (!this.state$.confirmed) {
+          this.subBtnCond = true;
+        }
         break;
       case 'auto':
         this.subBtnCond = false;
         break;
       case 'fullHand':
-        if (!this.state$.confirmed) { this.subBtnCond = true; }
+        if (!this.state$.confirmed) {
+          this.subBtnCond = true;
+        }
         break;
       case 'hand':
         this.subBtnCond = false;
@@ -160,7 +164,7 @@ export class CourierPage implements OnInit {
   ngAfterViewChecked() {
     this.Drop_L.autoScrollDisabled = false;
     this.DragItems.changes.subscribe((r) => {
-      this.DragItems.forEach(DragItem => {
+      this.DragItems.forEach((DragItem) => {
         DragItem.dragStartDelay = {
           touch: 500,
           mouse: 100
@@ -176,13 +180,11 @@ export class CourierPage implements OnInit {
     } else {
       this.auth.checkState = `checked${localStorage.check}`;
     }
-    if (this.settings.rules.appMode == 'hand') {
-      this.state$.manual_route = true;
-    }
     if (this.settings.rules.appMode.toLowerCase().includes('auto')) {
       this.noDrag = true;
     }
     this.firebase.setScreenName('courier');
+    this.isRouteStarted && this.data.getApiData();
   }
 
   get isRouteStarted() {
@@ -201,7 +203,7 @@ export class CourierPage implements OnInit {
     const self = this;
     this.scanView = !this.scanView;
     this.loader = true;
-    if (this.auth.getScanMode() == 'scan') {
+    if (this.auth.getScanMode() === 'scan') {
       self.courier.findOrder(this.scanInput).subscribe((res) => {
         self.scanInput = null;
         if (res.success == 'true') {
@@ -235,14 +237,16 @@ export class CourierPage implements OnInit {
   public scanInputChange() {
     console.log('inputData', this.scanInput);
     const self = this;
-    if (this.scan_process) { return false; }
+    if (this.scan_process) {
+      return false;
+    }
     this.scan_process = true;
     if (this.find_order) {
-      setTimeout(function () {
+      setTimeout(() => {
         self.scanSearch();
       }, 1500);
     } else {
-      setTimeout(function () {
+      setTimeout(() => {
         self.scanInputStart();
       }, 1500);
     }
@@ -253,7 +257,7 @@ export class CourierPage implements OnInit {
     console.log('SUBMIT_ORDER_CALL');
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
-      setTimeout(function () {
+      setTimeout(() => {
         self.sInput.nativeElement.focus();
       }, 500);
       return false;
@@ -289,7 +293,7 @@ export class CourierPage implements OnInit {
   public ordersListChanged(orders: Order[]) {
     this.orders = orders;
     const way: any[] = new Array();
-    orders.forEach(order => {
+    orders.forEach((order) => {
       if (Number(order.status_id) == 1) {
         way.push(order.id);
       }
@@ -336,13 +340,19 @@ export class CourierPage implements OnInit {
   public getCondition(status: number) {
     switch (this.selectedTab) {
       case 1:
-        if (status == 1) { return true; }
+        if (status == 1) {
+          return true;
+        }
         break;
       case 2:
-        if (status == 5 || status == 6) { return true; }
+        if (status == 5 || status == 6) {
+          return true;
+        }
         break;
       case 3:
-        if (status == 4) { return true; }
+        if (status == 4) {
+          return true;
+        }
         break;
     }
     return false;
@@ -453,7 +463,7 @@ export class CourierPage implements OnInit {
     if (this.auth.getScanMode() == 'scan') {
       this.scanView = !this.scanView;
       this.find_order = true;
-      setTimeout(function () {
+      setTimeout(() => {
         self.sInput.nativeElement.focus();
       }, 500);
       return false;
@@ -479,7 +489,7 @@ export class CourierPage implements OnInit {
           'success');
       }
     },
-      error => {
+      (error) => {
         this.sys.presentToast(`Ошибка: ${error.message}`, 'danger');
       });
 
@@ -504,20 +514,24 @@ export class CourierPage implements OnInit {
 
   }
   public prepareOrdersList(ids = this.segment) {
-    this.orders_c = this.orders_c.pipe(
+    this.orders_c = this.data.orders.pipe(
       map(
-        orders => orders && orders.filter(order => ids.includes(Number(order.status_id)))
+        (orders) => orders && orders.filter((order) => ids.includes(Number(order.status_id)))
           .filter(
-            order => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
+            (order) => order.client_address.toLowerCase().includes(this.searchString.toLowerCase()) || order.client_fio.toLowerCase().includes(this.searchString.toLowerCase()) ||
               (order.client_id as string).toLowerCase().includes(this.searchString.toLowerCase())
           )
           .slice(this.slicer)
       ),
       map(
-        (orders) => { orders.forEach((order) => { order.show = false; }); this.orders = orders; return orders; }
+        (orders) => {
+          orders.forEach((order) => {
+            order.show = false;
+          }); this.orders = orders; return orders;
+        }
       )
     );
-
+    this.data.orders.next(this.data.orders.getValue())
   }
   public howSlice(): number {
     return (this.settings.rules.typeRoute === 'standart' ? 0 : 1);

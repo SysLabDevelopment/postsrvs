@@ -309,11 +309,6 @@ export class MapPage implements OnInit {
                   }
                 });
                 this.orders = res.orders;
-                if (
-                  this.settings.rules.appMode.toLowerCase().includes('auto')
-                ) {
-                  this.orders.length = 1;
-                }
                 console.log('sys:: заказы', this.orders);
                 this.data.orders.next(this.orders);
                 this.drawData(this.settings.rules.autoStartRoute, null, res.orders);
