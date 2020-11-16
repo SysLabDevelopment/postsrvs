@@ -186,12 +186,12 @@ export class OrderService {
   public send_api_data(api_data: any, order: Order) {
     const url = 'pay_order';
     const self = this;
-    order.rur = 0;
-
-    api_data.purchase.products.forEach((product: any) => {
-      order.rur += product.price * product.quantity;
-    });
-
+    if (api_data.products.length > 0) {
+      order.rur = 0;
+      api_data.purchase.products.forEach((product: any) => {
+        order.rur += product.price * product.quantity;
+      });
+    }
     const data = {
       action: 'sendPay',
       orderData: api_data,

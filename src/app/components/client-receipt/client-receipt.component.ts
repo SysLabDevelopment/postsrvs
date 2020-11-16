@@ -10,7 +10,7 @@ import { DrawPage } from 'src/app/pages/draw/draw.page';
 export class ClientReceiptComponent {
     public drawNeedle = true;
     public selectedPayment = '1';
-    public cardNums: number;
+    public cardNums: string;
     public email_input = '';
     public phone_input = '';
     public waitingMinutes: string;

@@ -525,7 +525,7 @@ export class OrderPage implements OnInit {
   }
 
   public getSum() {
-    if (this.order) {
+    if (this.order && this.order.goods.length > 0) {
       let price = 0;
       const quants = this.g_quants;
       for (const code in quants) {
@@ -635,12 +635,12 @@ export class OrderPage implements OnInit {
   public send_api_data(api_data: any) {
     const url = 'pay_order';
     const self = this;
-    this.order.rur = 0;
-
-    api_data.purchase.products.forEach((product: any) => {
-      this.order.rur += product.price * product.quantity;
-    });
-
+    if (api_data.products.length > 0) {
+      this.order.rur = 0;
+      api_data.purchase.products.forEach((product: any) => {
+        this.order.rur += product.price * product.quantity;
+      });
+    }
     const data = {
       action: 'sendPay',
       orderData: api_data,
