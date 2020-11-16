@@ -10,10 +10,10 @@ import { DrawPage } from 'src/app/pages/draw/draw.page';
 export class ClientReceiptComponent {
     public drawNeedle = true;
     public selectedPayment = '1';
-    public cardNums: string;
+    public cardNums: number;
     public email_input = '';
     public phone_input = '';
-    public waitingMinutes: number;
+    public waitingMinutes: string;
 
     @Input() pay_type_change_allowed: boolean;
     @Input() pay_type: string;

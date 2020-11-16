@@ -428,7 +428,8 @@ export class CourierPage implements OnInit {
         this.wayRequested = true;
         this.map.getWay({ lt: currentLocation.latLng.lat, lg: currentLocation.latLng.lng }).subscribe((orders) => {
           this.wayRequested = false;
-          this.data.orders.next(orders)
+          this.data.orders.next(orders);
+          this.map.showRoute(orders[0])
         })
       } else {
         this.sys.presentToast('Попробуйте еще раз', 'danger', 'Ошибка')
