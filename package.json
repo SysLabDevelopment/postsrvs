@@ -5,6 +5,7 @@
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
+		"clean": "rm -rf dist && rm -rf app/*.ngfactory.ts && cd compiled && find . ! -name 'main-prod.ts' -type f -exec rm -f {} + && cd ..",
 		"ng": "ng",
 		"start": "ng serve",
 		"build": "ng build",

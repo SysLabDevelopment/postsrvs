@@ -88,7 +88,8 @@
       "beside"
     ],
     "brace-style": "error",
-    "no-else-return": "error"
+    "no-else-return": "error",
+    "spaced-comment": "error"
   },
   "root": true
 }
