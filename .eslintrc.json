@@ -145,7 +145,15 @@
         "beforeColon": false
       }
     ],
-    "no-trailing-spaces": "error"
+    "no-trailing-spaces": "error",
+    "comma-style": [
+      "error",
+      "last"
+    ],
+    "comma-dangle": [
+      "error",
+      "always"
+    ]
   },
   "root": true
 }
