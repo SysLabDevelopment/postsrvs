@@ -89,7 +89,68 @@
     ],
     "brace-style": "error",
     "no-else-return": "error",
-    "spaced-comment": "error"
+    "spaced-comment": "error",
+    "indent": [
+      "error",
+      2
+    ],
+    "space-before-blocks": "error",
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true
+      }
+    ],
+    "space-infix-ops": "error",
+    "eol-last": "error",
+    "newline-per-chained-call": "error",
+    "no-whitespace-before-property": "error",
+    "padded-blocks": [
+      "error",
+      "never"
+    ],
+    "no-multiple-empty-lines": "error",
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "never"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100
+      }
+    ],
+    "block-spacing": "error",
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "computed-property-spacing": [
+      "error",
+      "never"
+    ],
+    "func-call-spacing": [
+      "error",
+      "never"
+    ],
+    "key-spacing": [
+      "error",
+      {
+        "beforeColon": false
+      }
+    ],
+    "no-trailing-spaces": "error"
   },
   "root": true
 }

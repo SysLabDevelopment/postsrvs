@@ -863,8 +863,6 @@ export class OrderPage implements OnInit {
   }
 
   public showHelp() {
-
     this.introService.start(null, '3');
-
   }
 }

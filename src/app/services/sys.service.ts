@@ -33,7 +33,7 @@ export class SysService {
     }
 
   }
-  //Распознавание текста
+  // Распознавание текста
   async doOCR(base64Image: string, noSkip = true) {
     //  if(noSkip){
     // const worker = createWorker({
@@ -52,7 +52,7 @@ export class SysService {
 
 
   }
-  //Получение списка заказов по idшникам
+  // Получение списка заказов по idшникам
   public getOrders(ids: Array<string>): Observable<Response> {
 
     const url = `${this.proxy}https://mobile.postsrvs.ru/mobile/orders`;
@@ -72,7 +72,7 @@ export class SysService {
     return this.http.post(url, data, httpOptions)
   }
 
-  //Тост
+  // Тост
   async presentToast(message: string, color: string, header: string = '') {
     console.time('presentToast');
     const toast = await this.toastController.create({
@@ -119,7 +119,7 @@ export class SysService {
 
   }
 
-  //Отправка данных о нерабочих днях и причинах
+  // Отправка данных о нерабочих днях и причинах
   public stopWork(dates: Array<any>) {
     const url = `${this.proxy}https://mobile.postsrvs.ru/sheduleData.php`;
     const data = {
@@ -138,16 +138,16 @@ export class SysService {
 
   }
 
-  //Возвращает сигнатуру, кодированную ключем яндекс.навигатора
-  //@lat - широта
-  //@lon - долгота
+  // Возвращает сигнатуру, кодированную ключем яндекс.навигатора
+  // @lat - широта
+  // @lon - долгота
   public getYandexnaviSignature(lat: string, lon: string): Observable<Response> {
     const url = `${this.proxy}https://mobile.postsrvs.ru/admin/accessKeySignature/index.php?LAT=${lat}&LON=${lon}`;
     return this.http.get<Response>(url);
 
   }
 
-  //Проверка на авторизованность
+  // Проверка на авторизованность
   public checkAuth() {
     const url = `${this.proxy}https://mobile.postsrvs.ru/mobile/orders`;
     const data = {
@@ -177,8 +177,8 @@ export class SysService {
 
   }
 
-  //Проверяет, отметил ли курьер, что едет на работу
-  //@cId - ид курьера
+  // Проверяет, отметил ли курьер, что едет на работу
+  // @cId - ид курьера
   public isCheckedToWork(cId: string): Observable<{ success: boolean, checked: boolean }> {
     const url = `${this.proxy}https://mobile.postsrvs.ru/admin/ajax/is_checked_to_work.php`;
     const data = {
@@ -191,8 +191,8 @@ export class SysService {
     return this.http.post<{ success: boolean, checked: boolean }>(url, data, { headers });
   }
 
-  //Отметить "еду на работу"
-  //@cId - ид курьера
+  // Отметить "еду на работу"
+  // @cId - ид курьера
   public check_to_work(cId: string) {
     const url = `${this.proxy}https://mobile.postsrvs.ru/admin/ajax/check_to_work.php`;
     const data = {
@@ -206,7 +206,7 @@ export class SysService {
     return this.http.post(url, data, { headers })
   }
 
-  //Обработка интентов
+  // Обработка интентов
   public intentStart(url: string, pkg: string) {
     console.log('sys:: intent url: ', url);
     const options = {

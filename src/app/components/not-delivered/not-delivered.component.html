@@ -1,7 +1,12 @@
 <div class="ion-padding">
-  <h1>Не доставлено <a (click)="dismiss('cancel')">Закрыть</a></h1>
+  <h1>Не доставлено
+    <ion-button (click)="showHelp()" class='ion-float-end'>
+      <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+    </ion-button>
+    <a (click)="dismiss('cancel')">Закрыть</a>
+  </h1>
   <p>Укажите причину невыполненной доставки заказа:</p>
-  <ion-list>
+  <ion-list [intro]="introItems" [Order]="1">
     <ion-radio-group name="reason" [(ngModel)]="selectedReason">
       <ion-item *ngFor="let reason of reasons">
         <ion-label>{{reason.reason}}</ion-label>
@@ -18,12 +23,12 @@
       value="{{tomorrow.toISOString()}}" [(ngModel)]='new_plan_date'></ion-datetime>
   </ion-item>
 
-  <ion-item class='comment' lines='none'>
+  <ion-item class='comment' lines='none' [intro]="introItems" [Order]="2">
     <ion-label position="stacked">Комментарий</ion-label>
     <ion-textarea [(ngModel)]="commentText"></ion-textarea>
   </ion-item>
   <ion-button [disabled]='selectedReason == 8 && !new_plan_date' expand="full" fill="solid" shape="round"
-    id='light-purple-button' class='action' (click)="dismiss()">
+    id='light-purple-button' class='action' (click)="dismiss()" [intro]="introItems" [Order]="3">
     Завершить заказ
   </ion-button>
 </div>
