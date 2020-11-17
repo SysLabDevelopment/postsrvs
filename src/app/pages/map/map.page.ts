@@ -23,6 +23,7 @@ import { Storage } from '@ionic/storage';
 import { Observable, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/interfaces/order';
+import { LoggerService } from 'src/app/services/sys/logger.service';
 import { OrderComponent } from '../../components/order/order.component';
 import { Meta } from '../../interfaces/meta';
 import { AuthService } from '../../services/auth.service';
@@ -70,7 +71,7 @@ export class MapPage implements OnInit {
   public destination: ILatLng;
   public currentOrder = '';
   directionsService = new google.maps.DirectionsService;
-
+  public pageName: 'map';
   constructor(
     public state$: StateService,
     public platform: Platform,
@@ -85,6 +86,7 @@ export class MapPage implements OnInit {
     private storage: Storage,
     private firebase: FirebaseX,
     public navCtrl: NavController,
+    private logger: LoggerService
   ) {
   }
 
@@ -123,8 +125,7 @@ export class MapPage implements OnInit {
       });
     });
 
-    this.firebase.setScreenName('map');
-
+    this.firebase.setScreenName(this.pageName);
   }
 
   ngOnDestroy() {
@@ -206,7 +207,7 @@ export class MapPage implements OnInit {
   private getOrdersId(): Observable<any> {
     return new Observable((ids) => {
       if (this.settings.rules.appMode.includes('hand')) {
-        this.orders && ids.next(this.orders.filter(order => order.status_id == 1).map((order) => order.id));
+        this.orders && ids.next(this.orders.filter((order) => order.status_id == 1).map((order) => order.id));
       }
     });
   }
@@ -240,13 +241,14 @@ export class MapPage implements OnInit {
         } else {
           this.routeToOrder = false;
           if (autoStartRoute == '0') {
-            if (!drawOrders) { drawOrders = await this.storage.get('orders'); }
+            if (!drawOrders) {
+              drawOrders = await this.storage.get('orders');
+            }
             this.orders = drawOrders.filter((order: Order) => order.status_id == 1);
             this.addCluster(this.markeredOrders(this.orders));
           }
         }
       });
-
     }
   }
 
@@ -338,13 +340,13 @@ export class MapPage implements OnInit {
       ],
     };
     const markerCluster: MarkerCluster = this.map.addMarkerClusterSync(options);
-    console.log(`sys:: MarkerCluster added: `, markerCluster);
+    this.logger.log('MarkerCluster added: ', markerCluster, '#ced408');
+    this.sys.presentToast('Заказы добавлены на карту', 'dark');
     markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(async (params) => {
       const marker: Marker = params[1];
       const popover = await this.popover(GoogleMapsEvent.MARKER_CLICK, marker.get('info'));
       popover.present();
     });
-
   }
 
   createInfoContent(order: Order) {
@@ -486,7 +488,4 @@ ${arrows}
         // }
       });
   }
-
-
-
 }

@@ -5,18 +5,23 @@ import { FirebaseX } from '@ionic-native/firebase-x/ngx';
   providedIn: 'root'
 })
 export class LoggerService {
-
+  private colors: { [key: string]: string } = {
+    'map': '#ced408'
+  }
   constructor(private firebase: FirebaseX) { }
 
-  public log(description?: string, logObj?: any) {
+  private colorOf(pageName: string) {
+    return this.colors[pageName]
+  }
+  public log(description?: string, logObj?: any, color?: string) {
     const prefix = 'sys:: ';
-    console.groupCollapsed(`${prefix} ${description}`, logObj);
+    console.log(`%c${prefix} ${description}`, 'background: #ced408; color:black', logObj);
+    console.groupCollapsed('Подробнее');
     if (Array.isArray(logObj)) console.table(logObj);
     console.count(description);
     console.trace();
     console.groupEnd();
     this.firebase.logEvent('log', `${description}: ${JSON.stringify(logObj)}`);
-
   }
 
   public debug(logObj: any, ...params: any) {

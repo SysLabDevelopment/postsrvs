@@ -80,7 +80,16 @@ export class SysService {
       message,
       duration: 3000,
       color,
-      position: 'bottom'
+      position: 'bottom',
+      buttons: [
+        {
+          text: 'Х',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
     });
     toast.present();
     console.timeEnd('presentToast');
