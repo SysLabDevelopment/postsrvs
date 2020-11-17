@@ -57,8 +57,7 @@
     "no-iterator": "error",
     "no-restricted-syntax": [
       "error",
-      "WithStatement",
-      "BinaryExpression[operator='in']"
+      "WithStatement"
     ],
     "generator-star-spacing": [
       "error",
@@ -90,10 +89,6 @@
     "brace-style": "error",
     "no-else-return": "error",
     "spaced-comment": "error",
-    "indent": [
-      "error",
-      2
-    ],
     "space-before-blocks": "error",
     "keyword-spacing": [
       "error",

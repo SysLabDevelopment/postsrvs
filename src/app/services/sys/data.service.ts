@@ -15,7 +15,6 @@ import { MapService } from './map.service';
 })
 
 export class DataService {
-
   public orders: BehaviorSubject<Array<Order>> = new BehaviorSubject([]);
   public ordersMap: Map<number, Order>;
   public interval10min = interval(600000);
@@ -30,7 +29,6 @@ export class DataService {
     private map: MapService,
     public settings: SettingsService,
   ) {
-
     storage.ready().then(() => {
       this.storage.get('orders').then((orders: Array<Order>) => {
         this.ordersMap = this.getOrdersMap(orders);
@@ -68,11 +66,11 @@ export class DataService {
       this.storage.keys().then((keys) => console.log('записи в стораже: ', keys));
       this.storage.get('orders').then((orders: Array<Order>) => {
         console.log('Список заказов из стоража', orders);
-      }).catch((error) => {
-        console.log(error)
       })
+        .catch((error) => {
+          console.log(error)
+        })
     })
-
   }
 
   public getBalance(sync_id: number, more = 0) {
@@ -104,7 +102,7 @@ export class DataService {
     })
   }
 
-  //Сохранение заказов в сторож с сохранением порядка
+  // Сохранение заказов в сторож с сохранением порядка
   public saveOrders(orders: Order[]) {
     const incomOrdersMap = this.getOrdersMap(orders);
     this.ordersMap.forEach((order, key) => {
@@ -116,7 +114,6 @@ export class DataService {
         incomOrdersMap.delete(key);
         console.log(`sys:: Заказ ${key} не будет обновлен (входящий status_id меньше текущего)`);
       }
-
     })
     const ordersMapMerged = new Map([...this.ordersMap, ...incomOrdersMap]);
     orders = Array.from(ordersMapMerged.values());
@@ -124,7 +121,7 @@ export class DataService {
     return this.storage.set('orders', orders);
   }
 
-  //Возвращает MAP заказов (не сортируемый)
+  // Возвращает MAP заказов (не сортируемый)
   public getOrdersMap(orders: Array<Order>): Map<number, Order> {
     const map = new Map();
     orders && orders.forEach((order: Order) => {
@@ -133,7 +130,7 @@ export class DataService {
     return map
   }
 
-  //Перезапись списка заказов (если надо изменить сортировку)
+  // Перезапись списка заказов (если надо изменить сортировку)
   public rewriteOrders(orders: Order[]) {
     this.ordersMap = this.getOrdersMap(orders);
     this.orders.next(orders)

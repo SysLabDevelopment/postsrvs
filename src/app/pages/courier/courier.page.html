@@ -63,7 +63,8 @@
              overdue:
             isOverdueTime(order),
              warnTime: isWarnTime(order)
-          }" (click)="selectOrder(order.id)" (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500" cdk>
+          }" (click)="selectOrder(order.id)" (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500" cdkDragHandle
+            [cdkDragHandleDisabled]='ios'>
             <ion-label [@openClose]="order.show ? 'open' : 'closed'">
               <div class='title'>
                 <span>
@@ -99,7 +100,8 @@
                 &nbsp;<span>{{orderNote(order.id)}}</span>&nbsp;
               </ion-text>
             </ion-label>
-            <ion-icon name="ellipsis-vertical" slot='start' class='points'></ion-icon>
+            <ion-icon name="ellipsis-vertical" slot='start' class='points' cdkDragHandle>
+            </ion-icon>
 
             <div class="actions-button" (click)="order.show = !order.show; $event.stopPropagation()"
               [intro]="IntroItems" [Order]="3" data-position="left">

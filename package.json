@@ -18,7 +18,7 @@
 		"build:modern:app": "ng build --plugin ngx-build-modern --project app --prod",
 		"prod": "BABEL_ENV=production webpack --env=prod --progress",
 		"deploy": "sh build-release.sh",
-		"iosdebug": "ionic cordova run ios -l --external --target=4CC6A2A8-FC70-43C5-B503-040FA27AE018"
+		"iosdebug": "ionic cordova run ios -l --external --target=F2F5FDA8-32F0-4EF3-8172-3D3650512901"
 	},
 	"private": true,
 	"dependencies": {
@@ -28,7 +28,7 @@
 		"@angular/core": "^11.0.0-rc.2",
 		"@angular/forms": "^11.0.0-rc.2",
 		"@angular/localize": "^11.0.0-rc.2",
-		"@angular/material": "^11.0.0",
+		"@angular/material": "^8.2.3",
 		"@angular/platform-browser": "^11.0.0-rc.2",
 		"@angular/platform-browser-dynamic": "^11.0.0-rc.2",
 		"@angular/router": "^11.0.0-rc.2",

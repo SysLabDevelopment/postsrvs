@@ -15,7 +15,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
-import { PopoverController } from '@ionic/angular';
+import { Platform, PopoverController } from '@ionic/angular';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { Order } from 'src/app/interfaces/order';
@@ -56,10 +56,8 @@ import { OrderService } from '../../services/sys/order.service';
 })
 export class CourierPage implements OnInit {
   @ViewChild('sInput') public sInput: ElementRef;
-  @ViewChild(CdkDropList, { static: false })
-  Drop_L: CdkDropList;
-  @ViewChildren(CdkDrag)
-  DragItems: QueryList<CdkDrag>;
+  @ViewChild(CdkDropList, { static: false }) Drop_L: CdkDropList;
+  @ViewChildren(CdkDrag) DragItems: QueryList<CdkDrag>;
 
   public orders: Order[] | null = null;
   public statuses: any = null;
@@ -72,7 +70,7 @@ export class CourierPage implements OnInit {
   public g_process = 0;
   public g_fail = 0;
   public lvl_ind = { width: '0%' };
-  public subBtnCond = true;
+  public subBtnCond = false;
   public scanView = false;
   public scanInput: string;
   public scan_process = false;
@@ -95,7 +93,7 @@ export class CourierPage implements OnInit {
     4: 'Сканировать QR-код на складе, чтобы отметиться'
   };
   public wayRequested = false;
-
+  public ios = this.platform.is('ios');
   constructor(
     public courier: CourierService,
     private router: Router,
@@ -114,9 +112,8 @@ export class CourierPage implements OnInit {
     private firebase: FirebaseX,
     public introService: IntroJsService,
     public orderService: OrderService,
-    private logger: LoggerService
-
-
+    private logger: LoggerService,
+    private platform: Platform
   ) {
     const self = this;
 
@@ -124,7 +121,6 @@ export class CourierPage implements OnInit {
     if (this.state$.position.getValue() !== null) {
       this.startRoute(false);
     }
-
 
     this.state$.state.pipe(takeUntil(this.local_stop$)).subscribe((state) => {
       const a = state;
@@ -136,11 +132,10 @@ export class CourierPage implements OnInit {
     this.data.orders.asObservable();
     this.orders_c = this.data.orders;
     this.prepareOrdersList();
-
   }
 
   public initConditions() {
-    const app_mode = this.auth.getMode();
+    const app_mode = this.settings.rules.appMode;
     switch (app_mode) {
       case 'fullAuto':
         if (!this.state$.confirmed) {
@@ -290,17 +285,6 @@ export class CourierPage implements OnInit {
     });
   }
 
-  public ordersListChanged(orders: Order[]) {
-    this.orders = orders;
-    const way: any[] = new Array();
-    orders.forEach((order) => {
-      if (Number(order.status_id) == 1) {
-        way.push(order.id);
-      }
-    });
-    this.state$.old_way = way;
-  }
-
   ngOnDestroy() {
     this.local_stop$.next(null);
     this.state$.orders_page_check = false;
@@ -312,7 +296,17 @@ export class CourierPage implements OnInit {
     this.data.orders.subscribe((orders: Order[]) => {
       this.orders = orders;
       console.log('sys::initСontent orders', this.orders);
-      this.statuses = [{ id: 4, status: 'Не доставлено' }, { id: 5, status: 'Доставлено' }, { id: 6, status: 'Частично доставлено' }];
+      this.statuses = [
+        {
+          id: 4, status: 'Не доставлено'
+        },
+        {
+          id: 5, status: 'Доставлено'
+        },
+        {
+          id: 6, status: 'Частично доставлено'
+        }
+      ];
       this.ordersInit = true;
       self.count_orders();
     });
@@ -555,7 +549,6 @@ export class CourierPage implements OnInit {
       .setOption('skipLabel', 'Пропустить')
       .setOption('doneLabel', 'Завершить');
     this.introService.start(null, '2');
-
   }
 
   public showRoute(order: Order) {
@@ -563,7 +556,6 @@ export class CourierPage implements OnInit {
   }
 
   public drop(event: CdkDragDrop<any[]>) {
-
     moveItemInArray(this.orders, event.previousIndex, event.currentIndex);
     this.data.rewriteOrders(this.orders);
     console.log('sys:: массив заказов после перетаскивания: ', this.orders);
@@ -699,4 +691,5 @@ export class CourierPage implements OnInit {
     const isOverTime: boolean = (new Date(order.datetime_to).getTime() < new Date().getTime());
     return ((order.overdue == '1' || order.required == true || isOverTime) && order.status_id == 1)
   }
+
 }

@@ -3,7 +3,7 @@
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ionic@flexcore.ru" href="https://postsrvs.web.app/">Psvs Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.0.109:8100" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -27,7 +27,7 @@
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="Hostname" value="localhost" />
-    <preference name="Scheme" value="http" />
+    <preference name="Scheme" value="https" />
     <platform name="android">
         <resource-file src="resources/android/icon/drawable-mdpi-icon.png" target="app/src/main/res/drawable-mdpi/notification_icon.png" />
         <resource-file src="resources/android/icon/drawable-hdpi-icon.png" target="app/src/main/res/drawable-hdpi/notification_icon.png" />
@@ -146,4 +146,5 @@
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-firebasex" spec="~11.0.1" />
     <allow-navigation href="http://localhost:8100" sessionid="855e7208" />
+    <allow-navigation href="http://192.168.0.109:8100" sessionid="113fcc4b" />
 </widget>

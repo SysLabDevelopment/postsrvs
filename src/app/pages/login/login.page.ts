@@ -5,7 +5,7 @@ import {
   transition, trigger
 } from '@angular/animations';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
@@ -58,7 +58,6 @@ import { SysService } from '../../services/sys.service';
   ]
 })
 export class LoginPage implements OnInit {
-
   public pl_window: boolean = false;
   public error_phone: boolean = false;
   public phone = '';
@@ -68,6 +67,8 @@ export class LoginPage implements OnInit {
   public resend_dis: boolean = false;
   public dis_timer: number = null;
   public $stopTimer: Subject<any> = new Subject();
+  @ViewChild('input') input: HTMLInputElement;
+
   constructor(private auth: AuthService,
     private router: Router,
     private alert: AlertController,
@@ -83,8 +84,7 @@ export class LoginPage implements OnInit {
   ) {
     const self = this;
 
-    //проверяет авторизован ли пользователь на сервере
-
+    // проверяет авторизован ли пользователь на сервере
     this.plt.ready().then((readySource) => {
       console.log('sys:: платформа готова:', readySource);
       if (readySource == 'android') {
@@ -99,17 +99,19 @@ export class LoginPage implements OnInit {
         } else {
         }
       })
-
     })
+
+
   }
 
   ngOnInit() {
-
     if (localStorage.debug == 'true') {
       this.auth.isDebug = true;
     }
     this.firebase.setScreenName('login');
   }
+
+
 
   public scanAuth() {
     const self = this;
@@ -127,7 +129,6 @@ export class LoginPage implements OnInit {
           this.auth.setUser(data.sync_id);
           this.settings.getSettings(data.sync_id);
           self.router.navigate(['map']);
-
         } else {
           self.auth.showError(1);
         }
@@ -149,7 +150,6 @@ export class LoginPage implements OnInit {
     } else {
       this.error_phone = true;
     }
-
   }
 
   public changePhone() {
@@ -213,7 +213,6 @@ export class LoginPage implements OnInit {
     };
 
     this.auth.login(a_data).subscribe((data: any) => {
-
       if (data.success == 'true') {
         this.auth.setUser(data.sync_id);
         this.settings.getSettings(data.sync_id);
@@ -240,7 +239,6 @@ export class LoginPage implements OnInit {
         this.auth.showError(err_n);
         break;
     }
-
   }
 
   public startTimer() {
