@@ -146,5 +146,5 @@
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-firebasex" spec="~11.0.1" />
     <allow-navigation href="http://localhost:8100" sessionid="855e7208" />
-    <allow-navigation href="http://192.168.0.109:8100" sessionid="113fcc4b" />
+    <allow-navigation href="http://192.168.0.109:8100" sessionid="41f2cdc3" />
 </widget>

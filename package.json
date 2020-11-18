@@ -18,7 +18,7 @@
 		"build:modern:app": "ng build --plugin ngx-build-modern --project app --prod",
 		"prod": "BABEL_ENV=production webpack --env=prod --progress",
 		"deploy": "sh build-release.sh",
-		"iosdebug": "ionic cordova run ios -l --external --target=F2F5FDA8-32F0-4EF3-8172-3D3650512901"
+		"iosdebug": "ionic cordova run ios -l --external --target=AAC35A12-8CD8-4FC7-82BC-68C6D8199740"
 	},
 	"private": true,
 	"dependencies": {

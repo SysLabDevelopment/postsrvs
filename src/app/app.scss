@@ -56,16 +56,17 @@ app-orders-list-guess {
 }
 
 :root {
-  #content1 {
-    bottom: 40px;
-  }
+  // #content1 {
+  //   bottom: 40px;
+  // }
   ion-footer {
+    z-index: 999999;
     ion-buttons {
       display: flex;
       justify-content: space-around;
-
       ion-button {
         flex-grow: 1;
+        height:45px;
       }
     }
   }
@@ -307,7 +308,4 @@ app-orders-list-guess {
 
 .introjs-overlay {
   background-color: rgba(0, 0, 0, 0.5);
-}
-app-coutier {
-  height: calc(100% - 40px);
 }

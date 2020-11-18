@@ -7,10 +7,10 @@
 
   <ion-button class='check_to_work' (click)="check_to_work()" expand="block" fill="clear" shape="round"
     *ngIf="!checkedOnWork">
-    Еду на работу
+    Еду на работу!
   </ion-button>
 
-  <ion-footer slot="fixed">
+  <ion-footer slot="fixed" *ngIf="nav==2">
     <ion-toolbar>
       <ion-buttons>
         <ion-button [ngClass]="{active:nav == 1}" *ngIf="nav == 2" [routerLink]="['/balance']">
@@ -18,10 +18,6 @@
         </ion-button>
         <ion-button [ngClass]="{active:nav == 3}" *ngIf="nav == 2" [routerLink]="['/courier']">
           <i-feather name="list"></i-feather>
-        </ion-button>
-        <ion-button (click)="navTo(2)" color="light" expand="block" fill="clear" shape="round"
-          *ngIf="!(nav == 2) && !(nav == 0)">
-          Назад
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
