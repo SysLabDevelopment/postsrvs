@@ -150,10 +150,6 @@
       "error",
       "last"
     ],
-    "comma-dangle": [
-      "error",
-      "always"
-    ],
     "semi": [
       "error",
       "always"

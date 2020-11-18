@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Network } from '@ionic-native/network/ngx';
-import { CacheService } from "ionic-cache";
+import { CacheService } from 'ionic-cache';
 import { Observable, Subject } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { SysService } from '../services/sys.service';
@@ -18,38 +18,36 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   ) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): any {
     const body = request.body;
-    let url = request.url;
+    const url = request.url;
     this.logger.log('Http-запрос', { url, body });
-    let cacheKey = url + request.body?.action;
-    let req = next.handle(request).pipe(
+    const cacheKey = url + request.body?.action;
+    const req = next.handle(request).pipe(
       tap(
-        event => { },
-        error => {
+        (event) => { },
+        (error) => {
           if (error instanceof HttpErrorResponse) {
-            // this.sys.presentToast('Ошибка сети (или сервера)', 'warning');
+            this.cache.saveItem('syncRequests', request, 'delayedCalls');
           }
         }
       ),
-      filter(response => !(response instanceof HttpErrorResponse))
+      filter((response) => !(response instanceof HttpErrorResponse))
     );
     return this.completedResponse(cacheKey, req);
-
   }
 
   private completedResponse(cacheKey: string, req: any): Observable<any> {
-    let response = new Subject();
+    const response = new Subject();
     if (this.network.type !== 'none') {
       this.cache.removeItem(cacheKey).then(() => {
-        response.next(null)
-      })
+        response.next(null);
+      });
     }
     return this.cache.loadFromObservable(cacheKey, req).pipe(
       tap(
-        resp => {
-          this.logger.log(`Http-ответ`, resp.body)
+        (resp) => {
+          this.logger.log('Http-ответ', resp.body);
         }
       )
-    )
+    );
   }
-
 }

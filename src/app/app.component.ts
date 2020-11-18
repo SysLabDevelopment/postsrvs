@@ -6,13 +6,14 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AlertController, Platform } from '@ionic/angular';
 import { CacheService } from 'ionic-cache';
-import { Order } from 'src/app/interfaces/order';
+import { PostData } from './interfaces/post-data';
 import { AuthService } from './services/auth.service';
 import { CourierService } from './services/courier.service';
 import { NavService } from './services/nav.service';
 import { SettingsService } from './services/settings.service';
 import { StateService } from './services/state.service';
 import { SysService } from './services/sys.service';
+import { LoggerService } from './services/sys/logger.service';
 import { OrderService } from './services/sys/order.service';
 import { RemoteConfigService } from './services/sys/remote-config.service';
 
@@ -33,44 +34,26 @@ export class AppComponent {
     public courier: CourierService,
     public auth: AuthService,
     public settings: SettingsService,
-    cache: CacheService,
+    private cache: CacheService,
     private network: Network,
     private order: OrderService,
     private firebase: FirebaseX,
     private state$: StateService,
     private sys: SysService,
     private remoteConfig: RemoteConfigService,
-    private alertC: AlertController
+    private alertC: AlertController,
+    private logger: LoggerService,
   ) {
     this.initializeApp();
     console.log(this.platform.platforms());
     cache.setDefaultTTL(60 * 60 * 24);
-    cache.itemExists('syncRequests').then((exist) => {
-      if (!exist) {
-        cache.saveItem('syncRequests', [])
-      }
-      this.network.onConnect().subscribe(() => {
-        console.warn('network connected!');
-        cache.getItem('syncRequests').then((syncRequests: Array<{ order: Order, newStatus: number }>) => {
-          syncRequests && syncRequests.forEach((syncRequest) => {
-            this.order.sendDelayedCall(syncRequest.order, syncRequest.newStatus);
-          });
-          cache.clearGroup('delayedCalls');
-        })
-
-      });
-      this.network.onDisconnect().subscribe(() => {
-        console.warn('sys:: disconnected');
-      })
-    })
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      if (this.settings.rules.typeRoute == 'standart') {
+      if (this.settings.rules.typeRoute === 'standart') {
         this.routingModeAuto = false;
       }
 
@@ -84,7 +67,7 @@ export class AppComponent {
             if (!resp.checked) this.checkedOnWork = false;
           });
         }
-      })
+      });
       this.firebase.getToken()
         .then((token) => console.log(`sys:: Токен для push'ей:  ${token}`)) // save the token server-side and use it to push notifications to this device
         .catch((error) => console.error('sys:: Ошибка получения токена', error));
@@ -95,20 +78,35 @@ export class AppComponent {
           if (data.updateUrl) {
             this.sys.intentStart(data.updateUrl, 'com.android.chrome');
           }
-
         });
 
       this.firebase.onTokenRefresh()
-        .subscribe((token: string) => console.log(`sys:: получен новый токен${token}`));
+        .subscribe(
+          (token: string) => console.log(`sys:: получен новый токен${token}`)
+        );
+      this.network.onConnect().subscribe(() => {
+        console.warn('network connected!');
+      });
+      this.network.onDisconnect().subscribe(() => {
+        console.warn('sys:: disconnected');
+      });
 
-      this.remoteConf();
-    })
+      this.cache.itemExists('syncRequests').then((exist) => {
+        if (exist) {
+          this.sys.showConfirmAlert(
+            'Обнаружены не синхронизированные заказы',
+            'Закрытие некоторых заказов было отложено из-за проблем с интернетом. Синхронизировать сейчас?',
+            { ok: this.sendDelayedOrdersChanges, cancel: () => { } }
+          );
+        } else {
+          this.cache.saveItem('syncRequests', []);
+        }
+      });
+    });
     const self = this;
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
     });
-
-
   }
 
   public navTo(index: number) {
@@ -132,7 +130,7 @@ export class AppComponent {
   public check_to_work(cId: string = this.auth.userId) {
     this.sys.check_to_work(cId).subscribe((data: any) => {
       if (data.success == true) this.checkedOnWork = true;
-    })
+    });
   }
 
   public async remoteConf() {
@@ -146,15 +144,29 @@ export class AppComponent {
           text: 'Update',
           handler: async () => {
             if (this.platform.is('ios')) {
-              this.sys.intentStart('https://apps.apple.com/us/app/id1491156686', 'com.android.chrome')
+              this.sys.intentStart('https://apps.apple.com/us/app/id1491156686', 'com.android.chrome');
             } else if (this.platform.is('android')) {
-              this.sys.intentStart('https://play.google.com/store/apps/details?id=postsrvs.i', 'com.android.chrome')
+              this.sys.intentStart('https://play.google.com/store/apps/details?id=postsrvs.i', 'com.android.chrome');
             }
           }
         }]
       });
       await alert.present();
     }
-
+  }
+  private sendDelayedOrdersChanges() {
+    let failedRequests = [];
+    this.cache.getItem<{ url: string, data: PostData }[]>('syncRequests').then((requests) => {
+      requests.forEach((req) => {
+        this.auth.sendPost(req.url, req.data).subscribe((resp) => {
+          if (!resp.success) {
+            failedRequests.push(req);
+          }
+        });
+      });
+      this.cache.saveItem('syncRequests', failedRequests, 'delayedCalls').then(() => {
+        this.logger.log('Не удалось синхронизировать запросы:', failedRequests);
+      });
+    });
   }
 }

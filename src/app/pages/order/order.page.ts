@@ -385,18 +385,12 @@ export class OrderPage implements OnInit {
     order.goods = this.changeGoods(order, this.g_quants);
     if (this.network.type == 'none') {
       // Если оффлайн
-      this.cache.getItem('syncRequests').then((syncRequests: Array<any>) => {
-        order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums }, ...{ goods: this.goods } };
-        syncRequests && syncRequests.push({ order, newStatus });
-        this.cache.saveItem('syncRequests', syncRequests, 'delayedCalls').then(() => {
-          console.log(`sys:: Отложено изменение статуса на ${newStatus} для заказа ${order.client_id}`);
-          this.localModifyOrders(newStatus, order.goods);
-          this.router.navigate(['courier']);
-        });
-      });
+      order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums }, ...{ goods: this.goods } };
+      console.log(`sys:: Отложено изменение статуса на ${newStatus} для заказа ${order.client_id}`);
+      this.localModifyOrders(newStatus, order.goods);
+      this.router.navigate(['courier']);
     } else {
       // Если онлайн
-
       order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums } };
       this.localModifyOrders(newStatus, order.goods);
       this.orderService.sendDelayedCall(order, newStatus);

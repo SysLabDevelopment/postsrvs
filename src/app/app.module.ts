@@ -25,7 +25,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { CacheModule } from 'ionic-cache';
 import { NgxMaskModule } from 'ngx-mask';
-import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CashoutFailOComponent } from './components/balance/cashout-fail-o/cashout-fail-o.component';
@@ -72,10 +71,10 @@ registerLocaleData(localeRu, 'ru',);
     ScrollingModule,
     IonicStorageModule.forRoot({
       name: '__postsrvsDB',
-      driverOrder: ['indexeddb', 'sqlite', 'websql',],
+      driverOrder: ['indexeddb', 'sqlite', 'websql'],
     }),
-    CacheModule.forRoot({ keyPrefix: 'offlineData', },),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, },),
+    CacheModule.forRoot({ keyPrefix: 'offlineData', }),
+    ServiceWorkerModule.register('ngsw-worker.js'),
   ],
   providers: [
     FirebaseX,

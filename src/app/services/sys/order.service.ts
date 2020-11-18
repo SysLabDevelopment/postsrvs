@@ -118,7 +118,6 @@ export class OrderService {
             )
             .subscribe((data: any) => {
               localStorage.removeItem('drawImg');
-
             });
         }
         break;

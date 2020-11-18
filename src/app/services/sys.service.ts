@@ -27,11 +27,9 @@ export class SysService {
     private alert: AlertController,
 
   ) {
-
     if (!(this.platform.is('android') && this.platform.is('ios'))) {
-      this.proxy == ''
+      this.proxy == '';
     }
-
   }
   // Распознавание текста
   async doOCR(base64Image: string, noSkip = true) {
@@ -47,29 +45,26 @@ export class SysService {
     // await worker.terminate();
     // return text;
     //  }else{
-    return ''
+    return '';
     //  }
-
-
   }
   // Получение списка заказов по idшникам
   public getOrders(ids: Array<string>): Observable<Response> {
-
     const url = `${this.proxy}https://mobile.postsrvs.ru/mobile/orders`;
     const data = {
       uuid: this.getUuid(),
       action: 'getOrders',
       orders_id: ids
-    }
+    };
 
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
       })
-    }
+    };
 
-    return this.http.post(url, data, httpOptions)
+    return this.http.post(url, data, httpOptions);
   }
 
   // Тост
@@ -102,14 +97,14 @@ export class SysService {
       dates,
       courieriId: localStorage.user,
       uuid: this.device.uuid
-    }
+    };
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
       })
-    }
-    return this.http.post(url, data, httpOptions)
+    };
+    return this.http.post(url, data, httpOptions);
   }
 
   public getNotWorkRules() {
@@ -118,14 +113,13 @@ export class SysService {
       type: 'rules',
       courieriId: localStorage.user,
       uuid: this.device.uuid
-    }
+    };
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
       })
-    }
-    return this.http.post(url, data, httpOptions)
-
+    };
+    return this.http.post(url, data, httpOptions);
   }
 
   // Отправка данных о нерабочих днях и причинах
@@ -136,15 +130,14 @@ export class SysService {
       dates,
       courieriId: localStorage.user,
       uuid: this.device.uuid
-    }
+    };
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
       })
-    }
-    return this.http.post(url, data, httpOptions)
-
+    };
+    return this.http.post(url, data, httpOptions);
   }
 
   // Возвращает сигнатуру, кодированную ключем яндекс.навигатора
@@ -153,7 +146,6 @@ export class SysService {
   public getYandexnaviSignature(lat: string, lon: string): Observable<Response> {
     const url = `${this.proxy}https://mobile.postsrvs.ru/admin/accessKeySignature/index.php?LAT=${lat}&LON=${lon}`;
     return this.http.get<Response>(url);
-
   }
 
   // Проверка на авторизованность
@@ -162,9 +154,9 @@ export class SysService {
     const data = {
       action: 'checkAuth',
       uuid: this.getUuid()
-    }
+    };
     if (localStorage.debug == 'true') {
-      data['uuid'] = '6b356755575fce31';
+      data.uuid = '6b356755575fce31';
     }
 
     const httpOptions = {
@@ -172,7 +164,7 @@ export class SysService {
         'Content-type': 'application/json'
       }),
     };
-    return this.http.post(url, data, httpOptions)
+    return this.http.post(url, data, httpOptions);
   }
 
   public checkPhoto() {
@@ -181,9 +173,8 @@ export class SysService {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
-    }
-    return this.camera.getPicture(options)
-
+    };
+    return this.camera.getPicture(options);
   }
 
   // Проверяет, отметил ли курьер, что едет на работу
@@ -193,10 +184,10 @@ export class SysService {
     const data = {
       token: 'l;sdfjkhglsoapl[',
       cId
-    }
+    };
     const headers = {
       'Content-type': 'application/json'
-    }
+    };
     return this.http.post<{ success: boolean, checked: boolean }>(url, data, { headers });
   }
 
@@ -207,12 +198,12 @@ export class SysService {
     const data = {
       cId,
       token: 'l;sdfjkhglsoapl[',
-    }
+    };
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Content-type': 'application/json'
-    })
-    return this.http.post(url, data, { headers })
+    });
+    return this.http.post(url, data, { headers });
   }
 
   // Обработка интентов
@@ -222,7 +213,7 @@ export class SysService {
       action: this.wi.ACTION_VIEW,
       url,
       package: pkg
-    }
+    };
     this.wi.startActivity(options).then((data) => {
       console.log('sys:: Обработчик интента запущен', data);
     });
@@ -233,15 +224,15 @@ export class SysService {
     return this.device.uuid;
   }
 
-  public async showAlert(header: string, message: string, handlers: { ok: any, cancel: any }) {
+  public async showConfirmAlert(header: string, message: string, handlers: { ok: any, cancel: any }) {
     const alert = await this.alert.create({
       header,
       message,
       buttons: [{
         text: 'Отмена',
         role: 'cancel',
-        handler: (blah) => {
-          handlers.cancel()
+        handler: () => {
+          handlers.cancel();
         }
       }, {
         text: 'Ок',
@@ -253,5 +244,4 @@ export class SysService {
 
     await alert.present();
   }
-
 }

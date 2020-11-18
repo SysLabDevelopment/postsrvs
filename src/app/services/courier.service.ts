@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
+import { Network } from '@ionic-native/network/ngx';
 import { CacheService } from 'ionic-cache';
 import { EMPTY, from, Observable, Subject } from 'rxjs';
 import { catchError, retry, takeUntil } from 'rxjs/operators';
 import { Order } from '../interfaces/order';
+import { PostData } from '../interfaces/post-data';
 import { Response } from '../interfaces/response';
 import { AuthService } from '../services/auth.service';
 import { StateService } from '../services/state.service';
@@ -39,12 +41,10 @@ export class CourierService {
     private sysCourier: SysCourierService,
     private logger: LoggerService,
     private map: MapService,
-    private data: DataService
-
-
-
+    private data: DataService,
+    private network: Network,
   ) {
-    //при выходе из приложения возвращаем начальное состояние
+    // при выходе из приложения возвращаем начальное состояние
     var self = this;
     this.state$.interval_1ss.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
       const old_val = self.state$.load_lvl.getValue();
@@ -52,7 +52,7 @@ export class CourierService {
     });
 
     var self = this;
-    //обновляем заказы по запросу
+    // обновляем заказы по запросу
     this.state$.updateWayInfo.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
       self.updateOrders();
     });
@@ -62,22 +62,20 @@ export class CourierService {
         self.initOrders();
         self.updateOrders();
       }
-    })
+    });
 
     this.state$.init_params_state.subscribe((state) => {
       if (state == 'init_geo_done') {
-
         self.initOrders();
       }
-    })
+    });
 
     this.state$.status_changed.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
       self.state$.state.next('init');
-    })
+    });
   }
 
   public updateOrders() {
-
     this.state$.state.next('init');
   }
 
@@ -90,15 +88,15 @@ export class CourierService {
   }
 
 
-  //Собираем необходимую инфу по заказам
+  // Собираем необходимую инфу по заказам
   public initOrders() {
     const self = this;
-    //проверяем наличие координат перед запуском
+    // проверяем наличие координат перед запуском
     if (this.state$.position.getValue() == null) {
       return false;
     }
-    //Запускаем инициализацию
-    //Костыль для мгновенного отображения листина в обход ожидания статусов по апи
+    // Запускаем инициализацию
+    // Костыль для мгновенного отображения листина в обход ожидания статусов по апи
     this.initStatuses();
     if (!this.state$.courier_init) {
       this.state$.state.pipe(takeUntil(this.state$.stop$)).subscribe((state) => {
@@ -136,7 +134,7 @@ export class CourierService {
               }
             },
               (error) => {
-                console.error('sys:: Ошибка получения данных о заказах!')
+                console.error('sys:: Ошибка получения данных о заказах!');
               });
             break;
         }
@@ -148,14 +146,11 @@ export class CourierService {
     this.checkWay();
   }
 
-  //следит за изменениями заказов
+  // следит за изменениями заказов
   public checkWay() {
     const self = this;
     if (!this.state$.check_state) {
-
-
       this.state$.interval_3.pipe(takeUntil(this.state$.stop$)).subscribe(() => {
-
         self.state$.load_lvl.next(0);
         self.state$.state.next('init');
       });
@@ -164,7 +159,7 @@ export class CourierService {
   }
 
 
-  /*Запрос списка заказов курьера
+  /* Запрос списка заказов курьера
     В зависимости от режима либо запоминаем данные в сервисе,
     либо сравниваем с маршрутом созданным курьером(manualWay)
   */
@@ -175,7 +170,7 @@ export class CourierService {
     if (routingMode !== 'standart') {
       mode = '1';
     } else {
-      mode = '0'
+      mode = '0';
     }
     const url = 'orders',
       data = {
@@ -209,19 +204,17 @@ export class CourierService {
   }
 
 
-
   public getOrders(): Observable<any> {
     const url = 'orders';
     let ids = [],
       way = this.ordersInfo;
     this.ordersShortData.subscribe((data) => {
       way = data;
-    })
+    });
 
     if (way !== undefined) {
       for (let i = 0; i < way.length; i++) {
         ids.push(way[i].id);
-
       }
     } else {
       ids = [];
@@ -230,25 +223,25 @@ export class CourierService {
     const routingAuto = this.auth.getRoutingMode();
     let auto: string;
     if (routingAuto !== 'standart') {
-      auto = '1'
+      auto = '1';
     } else {
-      auto = '0'
+      auto = '0';
     }
 
 
     const data = {
       action: 'getOrders',
       orders_id: ids
-    }
+    };
 
     return this.auth.sendPost(url, data);
   }
 
 
-  //Запрос основных данных курьера
-  //@sync_id - ид курьера
-  //@more - флаг необходимости доп данных (краткая инфа о заказах для листинга)
-  //@CL - код филлиала
+  // Запрос основных данных курьера
+  // @sync_id - ид курьера
+  // @more - флаг необходимости доп данных (краткая инфа о заказах для листинга)
+  // @CL - код филлиала
   public getBalance(sync_id: number, more = 0) {
     this.firebase.setUserId(String(sync_id));
     const CL = this.settings.get('cl'),
@@ -267,57 +260,52 @@ export class CourierService {
         return status.status;
       }
     }
-
   }
 
 
   public changeStatus(status = '', id = '', comment = '', reason = '', goods = '', payment = '', new_plan_date = '', check = '', recognizedCheckData: string = null, cardNums?: string, waitingMinutes?: number) {
     const url = 'orders',
-      draw = localStorage.getItem('drawImg'),
-      data = {
-        action: 'changedStatus',
-        status,
-        id,
-        comment,
-        reason,
-        goods,
-        payment,
-        new_plam_date: new_plan_date,
-        check,
-        recognizedCheckData,
-        sign: '',
-        cardNums,
-        waitingMinutes
-      };
+      draw = localStorage.getItem('drawImg');
+    const data = {
+      action: 'changedStatus',
+      status,
+      id,
+      comment,
+      reason,
+      goods,
+      payment,
+      new_plam_date: new_plan_date,
+      check,
+      recognizedCheckData,
+      sign: '',
+      cardNums,
+      waitingMinutes
+    };
     if (draw) data.sign = draw;
-
-    if (!navigator.onLine) {
-      let requests: any = [];
-      this.cache.getItem('requests').then((req: any
-      ) => {
-        if (req !== undefined) {
-          requests = req;
-        }
-        requests.push({ url, data });
-        this.cache.saveItem('requests', requests);
+    if (this.network.type === 'none') {
+      this.cache.getItem<{ url: string, data: PostData }[]>('syncRequests').then((req) => {
+        req.push({ url, data });
+        this.cache.saveItem('syncRequests', req, 'delayedCalls');
       });
-      return from([{ success: 'true' }])
+      return from([{ success: 'true' }]);
     }
     const iD = Number(this.auth.getUserId());
-    this.sysCourier.sendStartRoute(iD, '1').then((req) => {
-      req.subscribe((resp) => {
-        if (resp.success) {
-          this.logger.debug('Стукнуто на start_route');
-          this.map.getMyLocation().then((location) => {
-            resp.success && this.map.getWay({ lt: location.latLng.lat, lg: location.latLng.lng }).subscribe((orders) => {
-              this.data.orders.next(orders)
-            })
-          })
-        } else {
-          this.sys.presentToast('Попробуйте еще раз', 'danger', 'Ошибка')
-        }
-      })
-    });
+    if (this.settings.rules.appMode.includes('auto')) {
+      this.sysCourier.sendStartRoute(iD, '1').then((req) => {
+        req.subscribe((resp) => {
+          if (resp.success) {
+            this.logger.debug('Стукнуто на start_route');
+            this.map.getMyLocation().then((location) => {
+              resp.success && this.map.getWay({ lt: location.latLng.lat, lg: location.latLng.lng }).subscribe((orders) => {
+                this.data.orders.next(orders);
+              });
+            });
+          } else {
+            this.sys.presentToast('Попробуйте еще раз', 'danger', 'Ошибка');
+          }
+        });
+      });
+    }
     return this.auth.sendPost(url, data).pipe(retry(5), catchError(() => EMPTY));
   }
 
@@ -365,7 +353,7 @@ export class CourierService {
       data = {
         action: 'submitOrder',
         orderId
-      }
+      };
     console.log('submit_order_data', data);
     const self = this,
       ret: Subject<any> = new Subject<any>();
@@ -383,7 +371,6 @@ export class CourierService {
 
     return ret;
   }
-
 
 
   public count_orders(orders: Order[]) {
@@ -413,7 +400,7 @@ export class CourierService {
       g_process,
       g_fail,
       all
-    }
+    };
   }
   public initStatuses() {
     const statuses = [{ id: 4, status: 'Не доставлено' }, { id: 5, status: 'Доставлено' }, { id: 6, status: 'Частично доставлено' }];
@@ -421,7 +408,7 @@ export class CourierService {
     this.state$.s_state.next('status_init');
   }
 
-  //Завершение рабочего дня курьера
+  // Завершение рабочего дня курьера
   public endWork() {
     const url = `${this.sys.proxy}https://mobile.postsrvs.ru/admin/ajax/end_work.php`,
       headers = new HttpHeaders({
@@ -431,8 +418,8 @@ export class CourierService {
       data = {
         token: 'l;sdfjkhglsoapl[',
         cId: this.auth.getUserId()
-      }
+      };
 
-    return this.http.post(url, data, { headers })
+    return this.http.post(url, data, { headers });
   }
 }

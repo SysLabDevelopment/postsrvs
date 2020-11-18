@@ -261,7 +261,7 @@ export class MapPage implements OnInit {
     if (this.out_process) {
       this.out_counter++;
       if (this.out_counter == 2) {
-        this.sys.showAlert('Аккаунт Postservice', 'Вы уверены, что хотите выйти?', { ok: this.logout.bind(this), cancel: console.log })
+        this.sys.showConfirmAlert('Аккаунт Postservice', 'Вы уверены, что хотите выйти?', { ok: this.logout.bind(this), cancel: console.log })
       }
     } else {
       this.out_process = true;
