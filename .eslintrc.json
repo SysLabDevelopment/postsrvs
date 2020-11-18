@@ -153,6 +153,10 @@
     "comma-dangle": [
       "error",
       "always"
+    ],
+    "semi": [
+      "error",
+      "always"
     ]
   },
   "root": true
