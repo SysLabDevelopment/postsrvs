@@ -105,16 +105,6 @@
     "is_top_level": false,
     "variables": {}
   },
-  "cordova.plugins.diagnostic": {
-    "source": {
-      "type": "registry",
-      "id": "cordova.plugins.diagnostic@^5.0.1"
-    },
-    "is_top_level": true,
-    "variables": {
-      "ANDROID_SUPPORT_VERSION": "28.+"
-    }
-  },
   "phonegap-plugin-barcodescanner": {
     "source": {
       "type": "registry",

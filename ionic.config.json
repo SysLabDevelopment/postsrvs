@@ -9,5 +9,6 @@
   "type": "angular",
   "hooks": {
     "build:before": "./build-before.js"
-  }
+  },
+  "interactive": false
 }

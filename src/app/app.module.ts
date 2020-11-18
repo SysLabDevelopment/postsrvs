@@ -14,7 +14,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Device } from '@ionic-native/device/ngx';
-import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Network } from '@ionic-native/network/ngx';
@@ -88,7 +87,6 @@ registerLocaleData(localeRu, 'ru',);
     WebIntent,
     Vibration,
     AndroidPermissions,
-    Diagnostic,
     Camera,
     CallNumber,
     Network,

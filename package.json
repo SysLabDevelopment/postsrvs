@@ -1,7 +1,7 @@
 {
 	"name": "postsrvs.i",
-	"version": "1.36.74",
-	"versionCode": "187",
+	"version": "1.36.75",
+	"versionCode": "188",
 	"author": "Flexcore",
 	"homepage": "https://postsrvs.web.app/",
 	"scripts": {
@@ -41,7 +41,6 @@
 		"@ionic-native/camera": "^5.22.0",
 		"@ionic-native/core": "^5.29.0",
 		"@ionic-native/device": "^5.22.0",
-		"@ionic-native/diagnostic": "^5.23.0",
 		"@ionic-native/firebase-x": "^5.28.0",
 		"@ionic-native/geolocation": "^5.22.0",
 		"@ionic-native/google-maps": "^5.27.0-beta-20200630",
@@ -82,7 +81,6 @@
 		"cordova-sqlite-storage": "^5.0.0",
 		"cordova-support-android-plugin": "1.0.2",
 		"cordova-support-google-services": "1.4.1",
-		"cordova.plugins.diagnostic": "^5.0.1",
 		"core-js": "^3.6.4",
 		"es6-promise-plugin": "^4.2.2",
 		"feather-icons": "^4.28.0",
@@ -174,9 +172,6 @@
 			"call-number": {},
 			"cordova-plugin-vibration": {},
 			"cordova-plugin-screen-orientation": {},
-			"cordova.plugins.diagnostic": {
-				"ANDROID_SUPPORT_VERSION": "28.+"
-			},
 			"phonegap-plugin-barcodescanner": {
 				"ANDROID_SUPPORT_V4_VERSION": "27.+"
 			},

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="187" id="postsrvs.i" version="1.36.74" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="188" id="postsrvs.i" version="1.36.75" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Postsrvs</name>
     <description>Postsrvs.</description>
     <author email="ionic@flexcore.ru" href="https://postsrvs.web.app/">Psvs Team</author>
-    <content original-src="index.html" src="http://192.168.0.109:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -23,7 +23,6 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
-    <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="Hostname" value="localhost" />
@@ -142,9 +141,7 @@
     <plugin name="cordova-plugin-android-permissions" spec="~1.0.2" />
     <plugin name="cordova-plugin-vibration" spec="^3.1.1" />
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.2" />
-    <plugin name="cordova.plugins.diagnostic" spec="~5.0.1" />
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-firebasex" spec="~11.0.1" />
     <allow-navigation href="http://localhost:8100" sessionid="855e7208" />
-    <allow-navigation href="http://192.168.0.109:8100" sessionid="41f2cdc3" />
 </widget>

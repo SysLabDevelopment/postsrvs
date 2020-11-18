@@ -43,9 +43,6 @@
     "cordova-plugin-screen-orientation": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova.plugins.diagnostic": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "postsrvs.i"
     },
