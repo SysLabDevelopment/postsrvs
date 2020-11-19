@@ -73,7 +73,7 @@ registerLocaleData(localeRu, 'ru',);
       name: '__postsrvsDB',
       driverOrder: ['indexeddb', 'sqlite', 'websql'],
     }),
-    CacheModule.forRoot({ keyPrefix: 'offlineData', }),
+    CacheModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js'),
   ],
   providers: [

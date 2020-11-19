@@ -283,9 +283,10 @@ export class CourierService {
     };
     if (draw) data.sign = draw;
     if (this.network.type === 'none') {
-      this.cache.getItem<{ url: string, data: PostData }[]>('syncRequests').then((req) => {
-        req.push({ url, data });
-        this.cache.saveItem('syncRequests', req, 'delayedCalls');
+      this.cache.getItem<Array<{ url: string, data: PostData }>>('syncRequests').then((req) => {
+        const requests = req ?? [];
+        requests.push({ url, data });
+        this.cache.saveItem('syncRequests', requests, 'delayedCalls');
       });
       return from([{ success: 'true' }]);
     }

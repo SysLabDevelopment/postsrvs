@@ -26,7 +26,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         (event) => { },
         (error) => {
           if (error instanceof HttpErrorResponse) {
-            this.cache.saveItem('syncRequests', request, 'delayedCalls');
           }
         }
       ),

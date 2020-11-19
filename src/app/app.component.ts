@@ -24,7 +24,10 @@ import { RemoteConfigService } from './services/sys/remote-config.service';
 export class AppComponent {
   public nav: any = 2;
   public routingModeAuto: boolean;
-  public checkedOnWork = true; // True = Курьер нажал кнопку "Еду на работу"
+  // True = Курьер нажал кнопку "Еду на работу"
+  public checkedOnWork = true;
+  private delayedRequest: { url: string, data: PostData }[];
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -47,8 +50,13 @@ export class AppComponent {
     this.initializeApp();
     console.log(this.platform.platforms());
     cache.setDefaultTTL(60 * 60 * 24);
+    this.getDelayedRequests();
+
   }
 
+  private async getDelayedRequests() {
+    this.delayedRequest = await this.cache.getItem<{ url: string, data: PostData }[]>('syncRequests');
+  }
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -62,14 +70,15 @@ export class AppComponent {
       this.firebase.setPerformanceCollectionEnabled(true);
 
       this.state$.g_state.subscribe((state: string) => {
-        if (state == 'login') {
+        if (state === 'login') {
           this.sys.isCheckedToWork(this.auth.userId).subscribe((resp) => {
             if (!resp.checked) this.checkedOnWork = false;
           });
         }
       });
       this.firebase.getToken()
-        .then((token) => console.log(`sys:: Токен для push'ей:  ${token}`)) // save the token server-side and use it to push notifications to this device
+        // save the token server-side and use it to push notifications to this device
+        .then((token) => console.log(`sys:: Токен для push'ей:  ${token}`))
         .catch((error) => console.error('sys:: Ошибка получения токена', error));
 
       this.firebase.onMessageReceived()
@@ -92,14 +101,14 @@ export class AppComponent {
       });
 
       this.cache.itemExists('syncRequests').then((exist) => {
-        if (exist) {
+        if (exist && this.delayedRequest.length > 0) {
           this.sys.showConfirmAlert(
             'Обнаружены не синхронизированные заказы',
             'Закрытие некоторых заказов было отложено из-за проблем с интернетом. Синхронизировать сейчас?',
-            { ok: this.sendDelayedOrdersChanges, cancel: () => { } }
+            { ok: this.sendDelayedOrdersChanges.bind(this), cancel: () => { } }
           );
         } else {
-          this.cache.saveItem('syncRequests', []);
+          this.cache.saveItem('syncRequests', [], 'delayedCalls');
         }
       });
     });
@@ -155,8 +164,8 @@ export class AppComponent {
     }
   }
   private sendDelayedOrdersChanges() {
-    let failedRequests = [];
-    this.cache.getItem<{ url: string, data: PostData }[]>('syncRequests').then((requests) => {
+    const failedRequests: { url: string, data: PostData }[] = [];
+    this.cache.getItem('syncRequests').then((requests: { url: string, data: PostData }[]) => {
       requests.forEach((req) => {
         this.auth.sendPost(req.url, req.data).subscribe((resp) => {
           if (!resp.success) {

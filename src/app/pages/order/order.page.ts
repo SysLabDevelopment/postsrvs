@@ -388,6 +388,7 @@ export class OrderPage implements OnInit {
       order = { ...{ phone_input: this.phone_input }, ...{ email_input: this.email_input }, ...{ quants: this.g_quants }, ...order, ...{ selectedPayment: this.selectedPayment }, ...{ selectedReason: this.selectedReason }, ...{ new_plan_date: this.new_plan_date }, ...{ commentText: this.commentText }, ...{ check: this.checkBase64Image }, ...{ cardNums: this.cardNums }, ...{ goods: this.goods } };
       console.log(`sys:: Отложено изменение статуса на ${newStatus} для заказа ${order.client_id}`);
       this.localModifyOrders(newStatus, order.goods);
+      this.orderService.sendDelayedCall(order, newStatus);
       this.router.navigate(['courier']);
     } else {
       // Если онлайн
