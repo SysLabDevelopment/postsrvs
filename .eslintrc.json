@@ -153,7 +153,9 @@
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "no-new-wrappers": "error",
+    "radix": "error",
   },
   "root": true
 }
