@@ -103,7 +103,7 @@ export class CourierPage implements OnInit {
     public vbr: Vibration,
     public settings: SettingsService,
     private sys: SysService,
-    private data: DataService,
+    public data: DataService,
     public popoverController: PopoverController,
     private map: MapService,
     private CL: CallNumber,

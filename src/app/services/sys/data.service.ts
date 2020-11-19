@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject, interval } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Order } from '../../interfaces/order';
 import { Response } from '../../interfaces/response';
 import { AuthService } from '../auth.service';
@@ -134,5 +135,21 @@ export class DataService {
   public rewriteOrders(orders: Order[]) {
     this.ordersMap = this.getOrdersMap(orders);
     this.orders.next(orders)
+  }
+
+  /**
+   * Подсчет количества заказов со статусом @status
+   */
+  public ordersCountWithStatus(status: string) {
+    const statusIds: { [key: string]: number[] } = {
+      process: [1],
+      done: [5, 6],
+      fail: [4]
+    };
+    return this.orders.pipe(
+      map(
+        orders => orders.filter(order => statusIds[status].includes(order.status_id)).length
+      )
+    )
   }
 }

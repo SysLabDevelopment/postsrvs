@@ -26,7 +26,7 @@
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyDSWxDW_twugay-5q2T3aEuER8Lph5d164" />
     <preference name="Hostname" value="localhost" />
-    <preference name="Scheme" value="https" />
+    <preference name="Scheme" value="http" />
     <platform name="android">
         <resource-file src="resources/android/icon/drawable-mdpi-icon.png" target="app/src/main/res/drawable-mdpi/notification_icon.png" />
         <resource-file src="resources/android/icon/drawable-hdpi-icon.png" target="app/src/main/res/drawable-hdpi/notification_icon.png" />

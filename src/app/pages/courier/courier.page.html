@@ -19,7 +19,7 @@
       <ion-button *ngIf="subBtnCond" (click)="submitOrder()">
         <i-feather name="box"></i-feather>
       </ion-button>
-      <ion-button *ngIf="courier.sortOrders?.g_process == 0 && !isWorkEnded" (click)="endWork()">
+      <ion-button *ngIf="(data.ordersCountWithStatus('done') | async) == 0 && !isWorkEnded" (click)="endWork()">
         <i-feather name="check-square"></i-feather>
       </ion-button>
       <ion-button (click)="showHelp()">
@@ -39,13 +39,13 @@
     </ion-button>
     <ion-segment (ionChange)="segmentChanged($event)" value='1'>
       <ion-segment-button value="1">
-        <ion-label>В работе <br /><b>{{courier.sortOrders?.g_process}}</b></ion-label>
+        <ion-label>В работе <br /><b>{{data.ordersCountWithStatus('process') | async}}</b></ion-label>
       </ion-segment-button>
       <ion-segment-button value="5">
-        <ion-label>Доставлено <br /><b>{{courier.sortOrders?.g_done}}</b></ion-label>
+        <ion-label>Доставлено <br /><b>{{data.ordersCountWithStatus('done') | async}}</b></ion-label>
       </ion-segment-button>
       <ion-segment-button value="4">
-        <ion-label>Не доставлено <br /><b>{{courier.sortOrders?.g_fail}}</b></ion-label>
+        <ion-label>Не доставлено <br /><b>{{data.ordersCountWithStatus('fail') | async}}</b></ion-label>
       </ion-segment-button>
     </ion-segment>
     <div class="c-body" *ngIf="ordersInit && !auth.getGuessMode()">
