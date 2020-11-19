@@ -21,12 +21,12 @@ export class GoodsTableComponent implements OnInit {
     @Input() goods: Good[];
     @Input() isChangeble: boolean = false;
     @Output() goodsChanges = new EventEmitter();
-    public $sum: Observable<string>;
+    public sum$: Observable<string>;
 
     constructor(
         private logger: LoggerService
     ) {
-        this.$sum = new Observable((sum) => {
+        this.sum$ = new Observable((sum) => {
             this.goodsChanges.subscribe(() => sum.next(this.getSum()))
         });
 

@@ -70,13 +70,13 @@
           </div>
           <div>
             Сумма с клиента:
-            <div class='primary-color bold'>
+            <div class='bold big-red'>
               {{order.rur?.toLocaleString('ru') || 0}} р.
             </div>
           </div>
           <div>
             Количество / Вес
-            <div class='primary-color bold'>{{order.amount}} шт. / {{order.mass}} кг</div>
+            <div class='bold'>{{order.amount}} шт. / {{order.mass}} кг</div>
           </div>
         </div>
         <ion-button class='call' expand='full' fill='solid' (click)="phoneClick('init')" [intro]="introItems"

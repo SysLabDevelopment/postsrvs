@@ -1,13 +1,11 @@
 <ion-col class="ion-align-items-baseline ion-justify-content-between">
-
   <ion-text>
     <h1>Товары в заказе</h1>
   </ion-text>
   <ion-item>
     <ion-label>Сумма с клиента</ion-label>
-    <ion-note slot="end">{{$sum | async}}р.</ion-note>
+    <ion-note slot="end">{{(sum$ | async) || '0'}}р.</ion-note>
   </ion-item>
-
 </ion-col>
 
 <table>
@@ -36,7 +34,7 @@
   <tfoot>
     <tr>
       <td colspan="2">Итого</td>
-      <td>{{$sum | async}} р.</td>
+      <td class='sum'>{{(sum$ | async) || "0"}} р.</td>
 
     </tr>
   </tfoot>

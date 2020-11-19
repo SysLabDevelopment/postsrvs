@@ -33,6 +33,11 @@ ion-content {
     ion-label {
       margin: 0;
       white-space: pre-wrap;
+      .big-red{
+        font-size: 1.5em;
+        color:red;
+        font-weight: bolder;
+      }
     }
     div {
       white-space: pre-wrap;
