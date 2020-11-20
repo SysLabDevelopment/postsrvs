@@ -116,6 +116,10 @@ export class AppComponent {
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
     });
+
+    this.remoteConfig.getConfig().then((config: any) => {
+      this.logger.debug(config);
+    })
   }
 
   public navTo(index: number) {

@@ -19,6 +19,9 @@ export class RemoteConfigService {
     this._init();
   }
 
+  public getConfig() {
+    return this.firebase.getInfo();
+  }
   async isNewVersionAvailable() {
     if (this.remoteConfig) {
       const currentVersion = environment?.CURRENT_VERSION || '0.0.0';

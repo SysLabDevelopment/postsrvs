@@ -156,6 +156,10 @@
     ],
     "no-new-wrappers": "error",
     "radix": "error",
+    "id-length": "error",
+    "camelcase": "error",
+    "new-cap": "error",
+    "no-underscore-dangle": "error",
   },
   "root": true
 }
