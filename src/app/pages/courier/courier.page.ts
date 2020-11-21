@@ -93,7 +93,7 @@ export class CourierPage implements OnInit {
     4: 'Сканировать QR-код на складе, чтобы отметиться'
   };
   public wayRequested = false;
-  public ios = this.platform.is('ios');
+  public isIOS = false;
   constructor(
     public courier: CourierService,
     private router: Router,
@@ -132,6 +132,9 @@ export class CourierPage implements OnInit {
     this.data.orders.asObservable();
     this.orders_c = this.data.orders;
     this.prepareOrdersList();
+    this.platform.ready().then(() => {
+      this.isIOS = this.platform.is('ios');
+    })
   }
 
   public initConditions() {

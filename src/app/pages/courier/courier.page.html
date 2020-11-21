@@ -63,9 +63,8 @@
              overdue:
             isOverdueTime(order),
              warnTime: isWarnTime(order)
-          }" (click)="selectOrder(order.id)" (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500" cdkDragHandle
-            [cdkDragHandleDisabled]='ios'>
-            <ion-label [@openClose]="order.show ? 'open' : 'closed'">
+          }" (click)="selectOrder(order.id)" (cdkDragStarted)="vibr()" cdkDrag [cdkDragStartDelay]="500">
+            <ion-label [@openClose]="order.show ? 'open' : 'closed'" cdkDragHandle [cdkDragHandleDisabled]="isIOS">
               <div class='title'>
                 <span>
                   <span class='client-id'> {{order.client_id}}</span>

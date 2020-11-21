@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class RemoteConfigService {
-  remoteConfig: any = null;
+  public remoteConfig: any = null;
   deviceInfo: Device;
   private configData: any;
   constructor(
@@ -20,7 +20,7 @@ export class RemoteConfigService {
   }
 
   public getConfig() {
-    return this.firebase.getInfo();
+    return this.firebase.fetch(0);
   }
   async isNewVersionAvailable() {
     if (this.remoteConfig) {
@@ -73,4 +73,5 @@ export class RemoteConfigService {
   get config() {
     return this.configData
   }
+
 }

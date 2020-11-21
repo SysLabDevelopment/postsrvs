@@ -111,15 +111,22 @@ export class AppComponent {
           this.cache.saveItem('syncRequests', [], 'delayedCalls');
         }
       });
+      this.remoteConfig.getConfig().then((config: any) => {
+        this.logger.debug(config);
+        this.firebase.activateFetched().then((some: any) => {
+          this.logger.log(some);
+          this.firebase.getInfo().then((data: any) => {
+            this.logger.log(data);
+          })
+
+        })
+      })
     });
     const self = this;
     this.nav_s.tabNav.subscribe((data) => {
       self.nav = data;
     });
 
-    this.remoteConfig.getConfig().then((config: any) => {
-      this.logger.debug(config);
-    })
   }
 
   public navTo(index: number) {
