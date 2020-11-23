@@ -4,7 +4,7 @@ import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { CacheService } from 'ionic-cache';
 import { EMPTY, from, Observable, Subject } from 'rxjs';
-import { catchError, retry, takeUntil } from 'rxjs/operators';
+import { catchError, retry, takeUntil, tap } from 'rxjs/operators';
 import { Order } from '../interfaces/order';
 import { PostData } from '../interfaces/post-data';
 import { Response } from '../interfaces/response';
@@ -307,7 +307,11 @@ export class CourierService {
         });
       });
     }
-    return this.auth.sendPost(url, data).pipe(retry(5), catchError(() => EMPTY));
+    return this.auth.sendPost(url, data).pipe(retry(5), tap((resp) => {
+      if (!resp.success) {
+        this.sys.presentToast('Попробуйте еще раз', 'danger', 'Ошибка');
+      }
+    }), catchError(() => EMPTY));
   }
 
 
