@@ -77,6 +77,15 @@
   "dependent_plugins": {
     "cordova-plugin-androidx": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-androidx-build": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   }
 }

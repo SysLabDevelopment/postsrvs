@@ -2,7 +2,7 @@
   "_args": [
     [
       "mx.ferreyra.callnumber@0.0.2",
-      "/Users/timkovik/Documents/postsrvs"
+      "/home/timkovik/posts/postsrvs"
     ]
   ],
   "_from": "mx.ferreyra.callnumber@0.0.2",
@@ -26,7 +26,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/mx.ferreyra.callnumber/-/mx.ferreyra.callnumber-0.0.2.tgz",
   "_spec": "0.0.2",
-  "_where": "/Users/timkovik/Documents/postsrvs",
+  "_where": "/home/timkovik/posts/postsrvs",
   "author": "",
   "bugs": {
     "url": "https://github.com/Rohfosho/CordovaCallNumberPlugin/issues"

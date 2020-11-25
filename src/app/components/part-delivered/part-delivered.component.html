@@ -1,14 +1,18 @@
 <ion-content>
   <div class="ion-padding">
-    <h1>Частично доставлено <a (click)="dismiss('cancel')">Закрыть</a></h1>
-    <app-goods-table #goodsTable [goods]="goods" [isChangeble]="true"></app-goods-table>
-    <ion-button class='call' expand='full' fill='solid' (click)="scanReturned()">
+    <h1>Частично доставлено 
+       <ion-button (click)="showHelp()" class='ion-float-end'>
+      <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+    </ion-button><a (click)="dismiss('cancel')">Закрыть</a>
+  </h1>
+    <app-goods-table #goodsTable [goods]="goods" [isChangeble]="true" [intro]="introItems" [Order]="1"></app-goods-table>
+    <ion-button class='call' expand='full' fill='solid' (click)="scanReturned()" [intro]="introItems" [Order]="2">
       Сканировать возврат
     </ion-button>
-    <app-client-receipt #receipt [pay_type_change_allowed]="pay_type_change_allowed" [pay_type]="pay_type">
+    <app-client-receipt #receipt [pay_type_change_allowed]="pay_type_change_allowed" [pay_type]="pay_type" [intro]="introItems" [Order]="3">
     </app-client-receipt>
     <ion-button [disabled]="!cardNums && selectedPayment == '2'" expand="full" fill="solid" shape="round"
-      class='light-blue-button action' (click)="dismiss()">
+      class='light-blue-button action' (click)="dismiss()" [intro]="introItems" [Order]="4">
       Доставлено
     </ion-button>
   </div>

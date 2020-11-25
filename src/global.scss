@@ -27,6 +27,13 @@
         font-weight: bold;
         font-size: 14px;
         text-align: center;
+        ion-button {
+          --background: transparent;
+          color: var(--corporate);
+          --box-shadow: none;
+          margin: 0 10px;
+        }
+    
         a {
           float: right;
           color: #2b637e;

@@ -7,63 +7,19 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-uniquedeviceid": {
+    "call-number": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "com-darryncampbell-cordova-plugin-intent": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "call-number": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
     "cordova-plugin-android-permissions": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-screen-orientation": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "phonegap-plugin-barcodescanner": {
-      "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "postsrvs.i"
     },
-    "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-camera": {
-      "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "postsrvs.i"
-    },
-    "cordova-plugin-googlemaps": {
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-firebasex": {
@@ -83,18 +39,61 @@
       "ANDROID_GSON_VERSION": "2.8.6",
       "PACKAGE_NAME": "postsrvs.i"
     },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-uniquedeviceid": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
     "cordova-plugin-update-notifier": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "postsrvs.i"
     }
   },
   "dependent_plugins": {
-    "es6-promise-plugin": {
+    "com.googlemaps.ios": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-androidx-build": {
       "PACKAGE_NAME": "postsrvs.i"
     },
     "cordova-plugin-androidx": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "es6-promise-plugin": {
       "PACKAGE_NAME": "postsrvs.i"
     }
   }

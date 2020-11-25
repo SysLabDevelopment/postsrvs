@@ -82,6 +82,12 @@
     },
     "cordova-plugin-androidx": {
       "PACKAGE_NAME": "postsrvs.i"
+    },
+    "cordova-androidx-build": {
+      "PACKAGE_NAME": "postsrvs.i"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "postsrvs.i"
     }
   }
 }
